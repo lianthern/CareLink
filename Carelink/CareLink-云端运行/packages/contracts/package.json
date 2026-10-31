@@ -1,0 +1,11 @@
+{
+  "name": "@unseen/contracts",
+  "version": "0.0.0-c4",
+  "private": true,
+  "license": "UNLICENSED",
+  "type": "module",
+  "files": [
+    "generated"
+  ]
+}
+

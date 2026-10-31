@@ -1,0 +1,106 @@
+{
+  "reviewDate": "2026-09-24",
+  "reviewedIntegration": "6ae5e9c",
+  "productionCodeChangedByAudit": false,
+  "tests": [
+    {
+      "revision": "cfddf1c",
+      "scope": "accounts, presence, realtime, spatial import and transfer",
+      "tests": 116,
+      "passed": 116,
+      "failed": 0,
+      "skipped": 0
+    },
+    {
+      "revision": "f010b3a",
+      "scope": "device and public exporter",
+      "tests": 36,
+      "passed": 36,
+      "failed": 0,
+      "skipped": 0
+    }
+  ],
+  "publicExport": {
+    "sourceRevision": "f010b3abdb944a378cbc5f01dc0826512fd975f5",
+    "exportedFiles": 192,
+    "patternScanFindings": 0,
+    "manifestVerified": true,
+    "dependencyInstall": "exported server lockfile; offline pnpm",
+    "healthVersion": "0.4.8",
+    "staticResponses": 32,
+    "localHTTP": {
+      "pages": true,
+      "qrDependency": true,
+      "privatePathsDenied": true,
+      "realtimeDisabled": true,
+      "realtimeStartRejected": true,
+      "syntheticPhotoRoundTrip": true,
+      "logoutRevoked": true
+    },
+    "storage": "fresh LocalStore outside repository",
+    "cloudRequests": 0,
+    "providerRequests": 0,
+    "browserTest": false,
+    "hardwareTest": false
+  },
+  "privateDeploymentFileReadiness": {
+    "verification": "configuration-only",
+    "networkRequests": 0,
+    "serviceEnabled": false,
+    "configurationReady": false,
+    "reason": "实时语音服务尚未配置完成",
+    "fields": {
+      "AI_REALTIME_PROVIDER": "missing",
+      "AI_REALTIME_TRTC_APP_ID": "missing",
+      "AI_REALTIME_TRTC_SDK_SECRET": "missing",
+      "AI_REALTIME_TRTC_SECRET_ID": "missing",
+      "AI_REALTIME_TRTC_SECRET_KEY": "missing",
+      "AI_REALTIME_LLM_JSON": "missing",
+      "AI_REALTIME_TTS_JSON": "missing"
+    },
+    "cleanupControlReady": false,
+    "roomAuthAttested": false,
+    "cleanupTriggerConfigured": false,
+    "cleanupTriggerVerified": false,
+    "llm": {
+      "mode": "other-or-incomplete",
+      "apiKeyPresent": false,
+      "credentialScope": "unverified",
+      "httpStreamVerified": false,
+      "trtcStreamVerified": false,
+      "trtcAcceptHeaderVerified": false
+    },
+    "tts": {
+      "supportedModels": [
+        "flow_02_turbo",
+        "flow_01_turbo"
+      ],
+      "model": "missing-or-unsupported",
+      "voicePresent": false,
+      "legacyModel": false,
+      "providerVerified": false
+    },
+    "remaining": [
+      "TRTC activation and billing",
+      "TRTC cloud API permissions",
+      "Room permission enforcement",
+      "LLM credential scope decision",
+      "TRTC to LLM streaming including Accept header",
+      "Flow model and voice entitlement",
+      "Independent cleanup Timer deployment and observed execution",
+      "Real microphone, speaker and interruption test"
+    ]
+  },
+  "auditPerformed": {
+    "cloudFamilyRequests": 0,
+    "paidProviderRequests": 0,
+    "deployed": false,
+    "published": false,
+    "realMicrophone": false,
+    "link2Hardware": false,
+    "browserClicks": false,
+    "inspectedSuppliedBrowserScreenshots": true
+  },
+  "newReleaseBlockers": [],
+  "realtimeEnablementBlocked": true
+}

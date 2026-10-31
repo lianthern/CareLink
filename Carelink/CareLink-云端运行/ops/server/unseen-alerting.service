@@ -1,0 +1,52 @@
+[Unit]
+Description=UNSEEN server alerting check (healthz + unit ActiveState/NRestarts + disk + backup freshness -> Telegram)
+Documentation=file:///opt/unseen/alerting/README.md
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+# Oneshot, triggered by unseen-alerting.timer -- same shape as unseen-backup.service: either
+# completes or fails visibly, the next timer tick just tries again. See check.mjs's own header
+# for why "found and reported a critical problem" is a normal (exit 0) run, not a failure.
+Type=oneshot
+User=root
+Group=root
+# Needs root to read /var/backups/unseen (0700 root:root, see backup.sh) for backup-freshness
+# checking, and to query systemd unit state for units owned by other users.
+#
+# Deliberately NOT under /opt/unseen/releases/<commit> at a moving "current" alias -- see
+# ops/release/unseen.service.example's comment: WorkingDirectory must be the exact immutable
+# release checkout this unit runs against. Filled in by enable-alerting.sh, same convention as
+# ops/server/enable-minimax-worker.sh.
+WorkingDirectory=/opt/unseen/releases/REQUIRED_IMMUTABLE_RELEASE_COMMIT
+EnvironmentFile=/etc/unseen/alerting.env
+UnsetEnvironment=NODE_OPTIONS NODE_PATH PATH LD_PRELOAD LD_LIBRARY_PATH LD_AUDIT LD_DEBUG LD_DEBUG_OUTPUT LD_PROFILE GCONV_PATH BASH_ENV ENV PYTHONPATH PYTHONHOME PERL5OPT RUBYOPT OPENSSL_CONF OPENSSL_MODULES SSLKEYLOGFILE
+ExecStart=/usr/local/bin/node ops/server/alerting/check.mjs
+TimeoutStartSec=60
+Nice=10
+UMask=0077
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectHome=true
+ProtectSystem=strict
+ProtectClock=true
+ProtectControlGroups=true
+ProtectKernelLogs=true
+ProtectKernelModules=true
+ProtectKernelTunables=true
+RestrictNamespaces=true
+RestrictSUIDSGID=true
+RestrictRealtime=true
+LockPersonality=true
+RemoveIPC=true
+# Needs real network (loopback to the app's own healthz, plus egress to api.telegram.org) --
+# unlike unseen-minimax-worker.service's tighter sandbox, this unit is NOT a candidate for
+# PrivateNetwork=true or an IPAddressDeny allowlist, since its entire job is to reach both.
+ReadWritePaths=/var/lib/unseen/alerting
+StandardInput=null
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=unseen-alerting
+
+[Install]
+WantedBy=multi-user.target

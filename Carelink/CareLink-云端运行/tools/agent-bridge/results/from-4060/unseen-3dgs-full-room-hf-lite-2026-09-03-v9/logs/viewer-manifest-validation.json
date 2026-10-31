@@ -1,0 +1,78 @@
+{
+  "schemaVersion": "1.0",
+  "status": "PASS",
+  "cameraCount": 371,
+  "trainingDataparserTransformMaxAbsDelta": 0.0,
+  "trainingDataparserScaleAbsDelta": 0.0,
+  "startMode": "walk",
+  "startPitchDegrees": 0.0,
+  "startRollDegrees": 0.0,
+  "eyeHeight": -0.001308525,
+  "startY": -0.001308525,
+  "boundaryVertexCount": 24,
+  "moveSpeed": 0.24496473312377928,
+  "sprintMultiplier": 3.0,
+  "fovRangeDegrees": [
+    30.0,
+    90.0
+  ],
+  "anchors": [
+    {
+      "id": "000016",
+      "label": "Meetingroom 000016",
+      "sceneRevisionId": "tandt-meetingroom-hf-r001",
+      "position": [
+        -0.057833582,
+        -0.022238506,
+        -0.848994911
+      ],
+      "quaternion": [
+        0.008184958,
+        0.955242325,
+        -0.062794755,
+        0.288966998
+      ],
+      "fov": 50.205282456,
+      "sourceFrame": "images_2/000016.jpg",
+      "thumbnail": "./assets/v9/thumb-000016.jpg"
+    },
+    {
+      "id": "000202",
+      "label": "Meetingroom 000202",
+      "sceneRevisionId": "tandt-meetingroom-hf-r001",
+      "position": [
+        0.082724199,
+        -0.000721392,
+        0.151282683
+      ],
+      "quaternion": [
+        -0.030814483,
+        0.920818938,
+        0.032809372,
+        0.387384172
+      ],
+      "fov": 50.205282456,
+      "sourceFrame": "images_2/000202.jpg",
+      "thumbnail": "./assets/v9/thumb-000202.jpg"
+    },
+    {
+      "id": "000357",
+      "label": "Meetingroom 000357",
+      "sceneRevisionId": "tandt-meetingroom-hf-r001",
+      "position": [
+        0.171569005,
+        -0.014320028,
+        0.519765854
+      ],
+      "quaternion": [
+        0.031211481,
+        -0.211034045,
+        0.026403086,
+        0.976623444
+      ],
+      "fov": 50.205282456,
+      "sourceFrame": "images_2/000357.jpg",
+      "thumbnail": "./assets/v9/thumb-000357.jpg"
+    }
+  ]
+}

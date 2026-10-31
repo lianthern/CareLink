@@ -1,0 +1,15 @@
+{
+  "schemaVersion": "1.0",
+  "jobId": "unseen-companion-one-2026-09-21-v1",
+  "state": "RECEIVED_VERIFIED",
+  "createdAt": "2026-09-21T10:00:46.9947824Z",
+  "agent": "4060 Agent",
+  "machine": "DESKTOP-NIBL3D4",
+  "message": "Private Release, tag contract, byte size, asset SHA256 and complete payload manifest verified.",
+  "evidence": [
+    "asset_sha256:ae2d8feeeaf55eeafad0177582754a15702f15433b3de00601ebd0df20c64bd6",
+    "asset_bytes:22456",
+    "payload_manifest_sha256:14247aca3daa5d20939e59eade800f52ee25f80cd45d32c8956af86041b1bb43",
+    "payload_files:10"
+  ]
+}

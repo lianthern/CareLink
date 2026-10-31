@@ -1,0 +1,299 @@
+{
+  "schemaVersion": "1.0",
+  "jobId": "unseen-3dgs-photo-return-goal-2026-09-04-v14",
+  "baselines": [
+    {
+      "experimentId": "v12-single-descriptor-sift",
+      "status": "FAIL",
+      "queryKeypoints": 640,
+      "ratioMatches": 13,
+      "geometricInliers": 0,
+      "reason": "insufficient globally consistent 2D-3D correspondences"
+    },
+    {
+      "experimentId": "v13-multiview-rootsift-bank",
+      "status": "FAIL",
+      "queryKeypoints": 4880,
+      "ratioMatches": 56,
+      "geometricInliers": 0,
+      "reason": "descriptor coverage improved, but globally matched landmarks remained geometrically inconsistent"
+    }
+  ],
+  "experiments": [
+    {
+      "schemaVersion": "1.0",
+      "experimentId": "sift-track-v1-20260904T041102Z",
+      "method": "training-pose-epipolar-sift-track-v1",
+      "hypothesis": "exact training keypoint tracks plus known-pose epipolar filtering remove the false 2D-3D associations seen in v13",
+      "status": "METHOD_MISS_CONTINUE_GOAL",
+      "implementationSha256": "4825b5ce59805d27427fde814014cd6b209b72d1af45f98529f0a13242338d33",
+      "indexTreeSha256": "f677b0ef4d00184c0303a59dd7184c27bacbe8aac7322096c728141aa4c93952",
+      "gpuInferenceRuns": 0,
+      "groundTruthRead": false,
+      "hardcodedPoseUsed": false,
+      "runs": [
+        {
+          "runId": "final-01",
+          "returnCode": 1,
+          "status": "NO_ESTIMATE"
+        },
+        {
+          "runId": "final-02",
+          "returnCode": 1,
+          "status": "NO_ESTIMATE"
+        },
+        {
+          "runId": "final-03",
+          "returnCode": 1,
+          "status": "NO_ESTIMATE"
+        },
+        {
+          "runId": "final-04",
+          "returnCode": 0,
+          "status": "INTERNAL_GEOMETRY_FAIL",
+          "geometricInliers": 5,
+          "geometricInlierRatio": 0.2631578947368421,
+          "medianReprojectionPx": 0.15550880134105682,
+          "reportSha256": "e5a8c3bce568885cf63ce278451d8047dfb19e1a5db641055e536039217abec2"
+        },
+        {
+          "runId": "final-05",
+          "returnCode": 1,
+          "status": "NO_ESTIMATE"
+        }
+      ],
+      "nextDecision": "inspect retrieval/per-reference match logs, then try a genuinely different covisibility or learned local-feature method",
+      "createdAt": "2026-09-04T04:13:51.300310+00:00"
+    },
+    {
+      "schemaVersion": "1.0",
+      "experimentId": "verified-retrieval-v1-20260904T041641Z",
+      "method": "content-verified-nearest-training-camera-v1",
+      "hypothesis": "the held-out photo is close enough to a training camera that content retrieval plus robust 2D geometry gives an accepted coarse pose without relying on an incorrect 3D association",
+      "status": "METHOD_MISS_CONTINUE_GOAL",
+      "implementationSha256": "9cc544082197afb682966c430876dd30e1faf29166ca81639a31ba7cfd5da49c",
+      "indexTreeSha256": "f677b0ef4d00184c0303a59dd7184c27bacbe8aac7322096c728141aa4c93952",
+      "gpuInferenceRuns": 0,
+      "groundTruthRead": false,
+      "hardcodedPoseUsed": false,
+      "stableReferenceAcrossVariants": false,
+      "runs": [
+        {
+          "runId": "final-01",
+          "returnCode": 1,
+          "status": "NO_ESTIMATE"
+        },
+        {
+          "runId": "final-02",
+          "returnCode": 1,
+          "status": "NO_ESTIMATE"
+        },
+        {
+          "runId": "final-03",
+          "returnCode": 1,
+          "status": "NO_ESTIMATE"
+        },
+        {
+          "runId": "final-04",
+          "returnCode": 1,
+          "status": "NO_ESTIMATE"
+        },
+        {
+          "runId": "final-05",
+          "returnCode": 1,
+          "status": "NO_ESTIMATE"
+        }
+      ],
+      "nextDecision": "inspect selected references and geometric models, then continue with covisibility or learned local features",
+      "createdAt": "2026-09-04T04:18:55.653541+00:00"
+    },
+    {
+      "schemaVersion": "1.0",
+      "experimentId": "lightglue-track-v1-20260904T045045Z",
+      "method": "alexnet-superpoint-lightglue-training-track-v1",
+      "hypothesis": "ImageNet content retrieval plus SuperPoint/LightGlue correspondences and training-pose epipolar triangulation can recover enough correct 2D-3D tracks on the low-texture wall",
+      "status": "ALGORITHM_FINAL_GATE_ACCEPTED_5_OF_5",
+      "builderSha256": "ab540740b997a8fd44323cdbd3dd8271a7d378f77abdb0fc3bbe8c1bd740bd9b",
+      "implementationSha256": "7620f3d9d296f679b555b461e45fc36fecaf9bf28db8bb6ddee1031ba043f4ec",
+      "indexTreeSha256": "cb97169c17c6a662fc33936445f6eb90aa3367b9021407ed38f2a1d1d993e7d9",
+      "indexObservationCount": 381601,
+      "trainingPairs": 2042,
+      "queryImagesOpenedDuringIndexBuild": 0,
+      "gpuInferenceRuns": {
+        "diagnostic": 4,
+        "indexBuild": 1,
+        "cleanPreflight": 5,
+        "privateFinalGate": 5,
+        "totalBeforeViewer": 15
+      },
+      "groundTruthReadByCandidate": false,
+      "hardcodedPoseUsed": false,
+      "dependencies": {
+        "LightGlueCommit": "eb42fee2d71449efb0aa5c10549752b5d75384d8",
+        "SuperPointWeightSha256": "52b6708629640ca883673b5d5c097c4ddad37d8048b33f09c8ca0d69db12c40e",
+        "LightGlueWeightSha256": "6ff7040d0a497fc6639337946d7538dae07428c18f77a067a0b5a960e7cc551a",
+        "AlexNetWeightSha256": "7be5be791159472b1fbf3c69796f7cb30dca7ad8466c2df70058c37116cdee02"
+      },
+      "runs": [
+        {
+          "runId": "final-01",
+          "querySha256": "ba584e2887f79192457db9b0db08c90b3116a37b59fb3a40fc86689033a802f7",
+          "operation": "identity-jpeg-q98",
+          "processReturnCode": 0,
+          "failure": null,
+          "status": "PASS",
+          "geometricInliers": 55,
+          "geometricInlierRatio": 0.3125,
+          "medianReprojectionPx": 2.732203245162964,
+          "translationError": 0.011863167514966053,
+          "translationErrorSceneFraction": 0.000870871662816173,
+          "rotationErrorDegrees": 0.5481692477334771
+        },
+        {
+          "runId": "final-02",
+          "querySha256": "29c143908c88b80bbf78722e4a3e736cd20dd2cfcee96dacd518cef5cd5df246",
+          "operation": "identity-jpeg-q90",
+          "processReturnCode": 0,
+          "failure": null,
+          "status": "PASS",
+          "geometricInliers": 59,
+          "geometricInlierRatio": 0.34911242603550297,
+          "medianReprojectionPx": 2.533625602722168,
+          "translationError": 0.010463134346133815,
+          "translationErrorSceneFraction": 0.0007680956367505733,
+          "rotationErrorDegrees": 0.4659767871407918
+        },
+        {
+          "runId": "final-03",
+          "querySha256": "a466d8b5726385ec2e7da6673cbd22ffbb2bbff5ad0ea4af4a21fcf93aca8508",
+          "operation": "gamma-0.90",
+          "processReturnCode": 0,
+          "failure": null,
+          "status": "PASS",
+          "geometricInliers": 57,
+          "geometricInlierRatio": 0.3392857142857143,
+          "medianReprojectionPx": 2.8320882320404053,
+          "translationError": 0.014268157571621668,
+          "translationErrorSceneFraction": 0.0010474212805345257,
+          "rotationErrorDegrees": 0.8045867548404282
+        },
+        {
+          "runId": "final-04",
+          "querySha256": "1e155549e343faf2aee0e653bf08c0aee9c19b474149882bc2656f3913508389",
+          "operation": "gamma-1.10",
+          "processReturnCode": 0,
+          "failure": null,
+          "status": "PASS",
+          "geometricInliers": 60,
+          "geometricInlierRatio": 0.3314917127071823,
+          "medianReprojectionPx": 2.8152825832366943,
+          "translationError": 0.00910045680697737,
+          "translationErrorSceneFraction": 0.0006680618765503305,
+          "rotationErrorDegrees": 0.5552953944386425
+        },
+        {
+          "runId": "final-05",
+          "querySha256": "1dec61dca462d57d3a899c62c6fe5e39d064ac9d7b95c0c7fe1d38aabdee326c",
+          "operation": "contrast-1.05-beta-minus-5",
+          "processReturnCode": 0,
+          "failure": null,
+          "status": "PASS",
+          "geometricInliers": 66,
+          "geometricInlierRatio": 0.3567567567567568,
+          "medianReprojectionPx": 2.5560426712036133,
+          "translationError": 0.007816383129951287,
+          "translationErrorSceneFraction": 0.0005737984029140162,
+          "rotationErrorDegrees": 0.2978867990420268
+        }
+      ],
+      "nextDecision": "await direct Max rereview of the single final-01 spatial-context demonstration; do not self-assert acceptance",
+      "createdAt": "2026-09-04T04:50:45.023580+00:00",
+      "viewerEvidence": {
+        "status": "MAC_TECHNICAL_ACCEPTED_5_OF_5",
+        "browserLaunches": 5,
+        "browserContexts": 5,
+        "distinctFreeWalkStarts": true,
+        "estimatedPhotoReturnsPassed": 5,
+        "sogReady": true,
+        "walkAndZoomPassed": true,
+        "consoleAndPageErrors": 0,
+        "groundTruthAnchorUsed": false,
+        "viewerE2eSha256": "3e06232354f4148480926fac7a68b6232f80e95317a08178c74165b209551809",
+        "contactSheetSha256": "6b31281ab5c2a65d10a62c2568985d8fab82427b8fa78cef9d77e3be332e8622",
+        "viewerOverviewSha256": "a6fd01f06d6b1a374e263d2040e4d8b05e46fecbffddb8f443d28274465f527a",
+        "maxVisualAcceptance": {
+          "status": "MAX_VISUAL_REJECTED_CONTEXT_EVIDENCE_REQUESTED",
+          "rejection": "我没看到原空间.",
+          "requestComment": "https://github.com/maxi-max-dev/max-agent-bridge/issues/15#issuecomment-5537182020",
+          "contextEvidenceAdded": true,
+          "directRereview": "PENDING",
+          "note": "This package does not claim visual acceptance or terminal completion."
+        },
+        "sceneManifestSha256": "0aebf762799689bc0049e693c77d4856c2ed629f09ba52113066800f9c4e8993",
+        "viewerPoseChainSha256": "eb551574a5501b70c4108d8359b99b5c19fb94f4a6a825befe361652e1e0611d",
+        "projectionCaptureSha256": "a6ed2b7cd22e42c3eee53bb113ec183b256c02ffb55c59c650127ed3b5223341",
+        "projectionMatched": {
+          "widthPixels": 1024,
+          "heightPixels": 1024,
+          "aspectWidthOverHeight": 1.0,
+          "verticalFovDegrees": 100.0,
+          "status": "PASS_5_OF_5"
+        },
+        "sourceHashClosure": {
+          "status": "MAC_ACCEPTED",
+          "jsonFiles": 7,
+          "challengeSha256": "ccf14ff274a7ff4756ca6414e0bb8c2405b140affc31ba53c2894a432e6fa0b8",
+          "estimateSha256": {
+            "final-01": "046fae057f65d9bf197d66d2f38ef2064788db26040943f981d93720a9eccb47",
+            "final-02": "069a359ea1e67d755659919bb5e020f9d97c5a1c0ea1a01ebfd3c8492e74ce15",
+            "final-03": "716bceb6d223376726926a0810a82fedbe9a96d2979422041d68b26cb088c77d",
+            "final-04": "3c147541aa8d4b55a4097d95eeabf9e6de14f78f75df7dd236598b409c1eb4e1",
+            "final-05": "2117a77e7b296d0fee0e2f2db97b726033c5d13e1023f9c7efdd81db0ba3d978"
+          },
+          "dataparserTransformsSha256": "222d93b0bc05f666bd5d94a0097d8de4071cc63343786c1d794bba053486dcaa",
+          "absolutePrivatePathsIncluded": false,
+          "mediaIncluded": false
+        },
+        "spatialContextEvidence": {
+          "status": "EVIDENCE_ADDED_PENDING_MAX_REREVIEW",
+          "representativeRun": "final-01",
+          "videoSha256": "b8941a08293f4b8cc6c0a500851be11d26400a92acaf45bd4e1e2a6fa0cfca74",
+          "videoSizeBytes": 785942,
+          "contactSheetSha256": "f58d9735dfed2ae63ddb92cabc5e7b8b9662fc443e668670dbe37169f9240d91",
+          "contactSheetSizeBytes": 219160,
+          "logSha256": "cd527987043027d170dc031070b42b87b1c3b4c5465b9568bae141237277e151",
+          "continuousVideo": true,
+          "postArrivalPresentedAsEstimatedPose": false
+        }
+      }
+    }
+  ],
+  "evidenceCorrection": {
+    "status": "MAC_TECHNICAL_ACCEPTED_5_OF_5",
+    "rejectedCompletionReceiptPreserved": true,
+    "localizationInferenceRunsAdded": 0,
+    "viewerMechanicsRunsAdded": 0,
+    "gpuTrainingRunsAdded": 0,
+    "generatedAt": "2026-09-04T07:47:28.130502+00:00"
+  },
+  "spatialContextSupplement": {
+    "status": "EVIDENCE_ADDED_PENDING_MAX_REREVIEW",
+    "requestComment": "https://github.com/maxi-max-dev/max-agent-bridge/issues/15#issuecomment-5537182020",
+    "representativeRun": "final-01",
+    "localizationInferenceRunsAdded": 0,
+    "viewerMechanicsGateRunsAdded": 0,
+    "gpuTrainingRunsAdded": 0,
+    "media": {
+      "status": "EVIDENCE_ADDED_PENDING_MAX_REREVIEW",
+      "representativeRun": "final-01",
+      "videoSha256": "b8941a08293f4b8cc6c0a500851be11d26400a92acaf45bd4e1e2a6fa0cfca74",
+      "videoSizeBytes": 785942,
+      "contactSheetSha256": "f58d9735dfed2ae63ddb92cabc5e7b8b9662fc443e668670dbe37169f9240d91",
+      "contactSheetSizeBytes": 219160,
+      "logSha256": "cd527987043027d170dc031070b42b87b1c3b4c5465b9568bae141237277e151",
+      "continuousVideo": true,
+      "postArrivalPresentedAsEstimatedPose": false
+    },
+    "generatedAt": "2026-09-04T07:47:28.130502+00:00"
+  }
+}

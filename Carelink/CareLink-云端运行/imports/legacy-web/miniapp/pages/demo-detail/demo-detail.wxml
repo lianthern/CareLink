@@ -1,0 +1,22 @@
+<view class="page-shell detail-page" style="padding-top:{{navBarTop}}px">
+  <view class="native-nav detail-nav" style="height:{{navBarHeight}}px">
+    <view class="nav-back" bindtap="onBack" aria-role="button" aria-label="返回档案馆">‹</view>
+    <text class="nav-title">AI 演示档案馆</text><view class="nav-spacer"></view>
+  </view>
+  <view class="detail-main">
+    <view class="detail-hero">
+      <text class="detail-eyebrow">{{detail.eyebrow}}</text>
+      <text class="detail-accent">{{detail.accent}}</text>
+      <text class="detail-title">{{detail.title}}</text>
+      <text class="detail-lead">{{detail.lead}}</text>
+    </view>
+    <view class="detail-sections">
+      <view class="detail-section" wx:for="{{detail.sections}}" wx:key="title">
+        <text class="detail-number">0{{index + 1}}</text>
+        <view><text>{{item.title}}</text><text>{{item.copy}}</text></view>
+      </view>
+    </view>
+    <button class="detail-action" bindtap="onAction">{{detail.action}} <text>→</text></button>
+    <view class="detail-note">静态演示档案 · 不读取云端数据，不上传照片</view>
+  </view>
+</view>

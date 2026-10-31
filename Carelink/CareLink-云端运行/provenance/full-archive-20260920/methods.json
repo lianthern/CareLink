@@ -1,0 +1,37 @@
+[
+  {
+    "file": "scan.py.txt",
+    "sha256": "f0b0cd3355d426bcc21c2c98b426cbbda380a3da8d29b3332babb252795fa0d0",
+    "role": "historical capture method, not a runtime entry point"
+  },
+  {
+    "file": "build_archive_parallel.py.txt",
+    "sha256": "0402a91de4ff46f6edfe6c99e5d30d4676294d6b4318b3007a78170efce0f3c1",
+    "role": "historical capture method, not a runtime entry point"
+  },
+  {
+    "file": "capture-additional.py.txt",
+    "sha256": "534a8900f4ef2b2c764a5703d3f13fe372816888820738ebb07258ede4a47ab0",
+    "role": "historical capture method, not a runtime entry point"
+  },
+  {
+    "file": "refresh-cloud.py.txt",
+    "sha256": "4489cfeddd35c04ad0086d32e4eac9c56e5b9356f73262723d2cc1bd3d0777ea",
+    "role": "historical capture method, not a runtime entry point"
+  },
+  {
+    "file": "read-remaining-cloud.py.txt",
+    "sha256": "0a7104ffbaa90dfffebcce713288a9ac692d6e8f36dd22b11099f5a52bda42ea",
+    "role": "historical capture method, not a runtime entry point"
+  },
+  {
+    "file": "hydrate.swift.txt",
+    "sha256": "9af29dfdfbd6720cf5bd896fb315a9132ffb52d82197369bd42a2e22918e858e",
+    "role": "historical capture method, not a runtime entry point"
+  },
+  {
+    "file": "retry-cloud.swift.txt",
+    "sha256": "e8658d00e71309aefc77b082501a5a7394704d1d99a037eda2ed51383b90b254",
+    "role": "historical capture method, not a runtime entry point"
+  }
+]

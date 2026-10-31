@@ -1,0 +1,125 @@
+{
+  "schema": "unseen-renderer-control-ack-fix-evidence/1",
+  "generatedAt": "2026-08-15T04:43:08Z",
+  "status": "CODE_GATES_PASS_TARGET_RETRY_REQUIRED",
+  "baseCommit": "f17c0610461f9266f218be201c256d5843bf51a6",
+  "baseTree": "73a17f149d11c0bb2616d01087c9b0f8be37b8bd",
+  "failureEvidence": {
+    "commit": "f17c0610461f9266f218be201c256d5843bf51a6",
+    "path": "release-evidence/r0/target-deployment-candidatebbb-renderer-control-p1-20260815/MACHINE-EVIDENCE.json",
+    "sha256": "596e6cdea8614cca8ecbc53e90066e95fbf6678ce7cff33eb648fe1c50aec5ac",
+    "stableError": "renderer_control_timeout",
+    "singleSyntheticNonprivateAttempt": true,
+    "liveUserDataUsed": false
+  },
+  "initialCodeCommit": "60c5113ba56619c93db84c882769f2db524e987e",
+  "initialCodeTree": "5a6bc50f6671ca809ed7b561c5d610d5ef382d94",
+  "codeCommit": "c9102b8f46422ed423b2de8be795dc19044cf588",
+  "codeTree": "3fcbf0f9c57f97b30aad03252744fe320a672522",
+  "fix": {
+    "responseSchema": "unseen-book-renderer-control-response/1",
+    "canonicalNewlineJson": true,
+    "maximumControlBytes": 4096,
+    "serverAllowHalfOpenExplicit": true,
+    "serverEndsAfterDurableBackingValidationAndEnqueue": true,
+    "waitsForRenderCompletionBeforeAck": false,
+    "clientBindsAcceptedResponseToOperationAndRequestId": true,
+    "rejectedTransportClosedTransportErrorAndTimeoutDistinct": true,
+    "duplicateAndLostResponseReplayIdempotent": true,
+    "backingValidationSeparatedFromSchedulingAndTailAppend": true,
+    "deadlineClaimIsSingleFlightBeforeAnyControlSideEffect": true,
+    "lateValidationAfterTimeoutIsDiscarded": true,
+    "publicContractChanged": false,
+    "systemdUnitChanged": false,
+    "bookDefaultOff": true
+  },
+  "machineChecks": {
+    "focusedFilesystemIpcLifecycleAndControl": {
+      "command": "node --test tests/e2e/book-lab/dedicated-renderer.verify.mjs",
+      "total": 33,
+      "passed": 33,
+      "failed": 0
+    },
+    "apiRendererIntegration": {
+      "command": "node --test services/api/tests/book-renderer-integration.test.mjs",
+      "total": 4,
+      "passed": 4,
+      "failed": 0
+    },
+    "apiFull": {
+      "command": "npm test -w services/api",
+      "total": 129,
+      "passed": 129,
+      "failed": 0
+    },
+    "deploymentLifecycle": {
+      "command": "node --test tests/e2e/book-lab/deployment-lifecycle.verify.mjs",
+      "total": 3,
+      "passed": 3,
+      "failed": 0
+    },
+    "existingRendererWorker": {
+      "command": "node --test tests/e2e/book-lab/renderer-worker.verify.mjs",
+      "total": 3,
+      "passed": 3,
+      "failed": 0
+    },
+    "productionPackage": {
+      "command": "node tests/e2e/production-package.verify.mjs",
+      "status": "PASS",
+      "candidateCommit": "c9102b8f46422ed423b2de8be795dc19044cf588",
+      "acceptanceNegativeCases": 32,
+      "portableBundleVerified": true,
+      "standaloneNonGitCwdVerified": true,
+      "externalNetworkRequests": 0,
+      "bindingChanged": false
+    },
+    "contracts": {
+      "command": "npm run contracts:check",
+      "status": "CONTRACT_GENERATION_CLEAN",
+      "files": 11
+    },
+    "format": {
+      "command": "npm run format:check",
+      "status": "FORMAT_OK",
+      "files": 40
+    },
+    "secretScan": {
+      "command": "npm run secret:scan",
+      "status": "SECRET_SCAN_CLEAN",
+      "findings": 0
+    },
+    "targetUbuntuExecutionAfterFix": "NOT_RUN"
+  },
+  "codeArtifactSha256": {
+    "infra/integration/book-lab/renderer-client.mjs": "97f672b2ec91cfa8a54fca33c22ccd9be6579afba29e7aa74770e3198e74a230",
+    "infra/integration/book-lab/renderer-ipc-protocol.mjs": "d09833fa26e43738b51c8d335287e4258aac83c36a818cafbf8a128b87d45fcb",
+    "infra/integration/book-lab/renderer-service.mjs": "d633c9dc5164544f2cd5c3211a34a8eb93b7dff9f5d221c0784e9ed651a9dc16",
+    "tests/e2e/book-lab/dedicated-renderer.verify.mjs": "0c4144cf6664306e867e5a3049657b0a610543d57d08203411ba14e1169253e2",
+    "runbooks/release/PRODUCTION-DEPLOYMENT.md": "c943062b0ea4d003241a255e54476e1f25a7eb1ce0556cad011cae009d2f6b9b"
+  },
+  "newCoverage": [
+    "accepted_response_arrives_before_render_completion",
+    "deadline_race_accepts_once_before_expiry_or_rejects_with_zero_side_effects_after_expiry",
+    "delayed_backing_validation_result_is_discarded_after_timeout_and_restart_cleanup_renders_zero_times",
+    "duplicate_and_lost_response_render_once_and_leave_zero_spool_residual",
+    "malformed_extra_double_newline_oversized_and_unbacked_control_rejected",
+    "paused_reader_and_peer_abort_do_not_crash_daemon",
+    "graceful_empty_close_reset_stall_wrong_id_and_oversized_response_fail_closed",
+    "existing_restart_cancel_ack_and_crash_replay_remain_green"
+  ],
+  "defaultOff": true,
+  "liveTargetChanged": false,
+  "rendererStartedByThisLane": false,
+  "bookEnabled": false,
+  "openCodeP0": 0,
+  "openCodeP1": 0,
+  "nonClaims": [
+    "not target renderer acceptance",
+    "not Book enabled",
+    "not production GO",
+    "not a live-user render",
+    "not a target deterministic render retry"
+  ],
+  "sensitiveDataRecorded": false
+}

@@ -1,0 +1,250 @@
+{
+  "06c748d4-1e10-493c-90f0-f3c87821cd79": {
+    "prompt": [
+      8,
+      "06c748d4-1e10-493c-90f0-f3c87821cd79",
+      {
+        "119": {
+          "class_type": "VAELoader",
+          "inputs": {
+            "vae_name": "minimax_h3_video_vae_fp16.safetensors"
+          }
+        },
+        "120": {
+          "class_type": "VAELoader",
+          "inputs": {
+            "vae_name": "minimax_h3_audio_vae_fp32.safetensors"
+          }
+        },
+        "121": {
+          "class_type": "VAEDecodeAudio",
+          "inputs": {
+            "samples": [
+              "125",
+              0
+            ],
+            "vae": [
+              "120",
+              0
+            ]
+          }
+        },
+        "122": {
+          "class_type": "VAEDecode",
+          "inputs": {
+            "samples": [
+              "125",
+              0
+            ],
+            "vae": [
+              "119",
+              0
+            ]
+          }
+        },
+        "123": {
+          "class_type": "KSamplerSelect",
+          "inputs": {
+            "sampler_name": "res_multistep"
+          }
+        },
+        "124": {
+          "class_type": "BasicScheduler",
+          "inputs": {
+            "model": [
+              "134",
+              0
+            ],
+            "scheduler": "simple",
+            "steps": 8,
+            "denoise": 1.0
+          }
+        },
+        "125": {
+          "class_type": "SamplerCustomAdvanced",
+          "inputs": {
+            "noise": [
+              "129",
+              0
+            ],
+            "guider": [
+              "126",
+              0
+            ],
+            "sampler": [
+              "123",
+              0
+            ],
+            "sigmas": [
+              "124",
+              0
+            ],
+            "latent_image": [
+              "131",
+              1
+            ]
+          }
+        },
+        "126": {
+          "class_type": "BasicGuider",
+          "inputs": {
+            "model": [
+              "134",
+              0
+            ],
+            "conditioning": [
+              "131",
+              0
+            ]
+          }
+        },
+        "127": {
+          "class_type": "UNETLoader",
+          "inputs": {
+            "unet_name": "minimax_h3_fl2va_pruned_int8_convrot.safetensors",
+            "weight_dtype": "default"
+          }
+        },
+        "128": {
+          "class_type": "CLIPLoader",
+          "inputs": {
+            "clip_name": "qwen3vl_32b_minimax_h3_nvfp4_awq.safetensors",
+            "type": "minimax",
+            "device": "default"
+          }
+        },
+        "129": {
+          "class_type": "RandomNoise",
+          "inputs": {
+            "noise_seed": 2026091585
+          }
+        },
+        "130": {
+          "class_type": "CreateVideo",
+          "inputs": {
+            "images": [
+              "122",
+              0
+            ],
+            "fps": 24.0,
+            "audio": [
+              "121",
+              0
+            ],
+            "bit_depth": "auto",
+            "color_space": "sRGB",
+            "codec": "none"
+          }
+        },
+        "131": {
+          "class_type": "MiniMaxH3ImageToVideo",
+          "inputs": {
+            "clip": [
+              "128",
+              0
+            ],
+            "vae": [
+              "119",
+              0
+            ],
+            "prompt": "Fixed camera. The boy with the GREEN backpack turns around to FACE THE CAMERA fully. We see the FRONT of his white shirt. He walks TOWARD THE CAMERA, taking three steps diagonally toward the bottom-left corner. His face and body become LARGER in frame as he approaches. The teacher already at LEFT foreground gently welcomes him to her side. The child with the dark blue backpack steps sideways left to make room. The protagonist never walks toward the distant parents, never walks away from the camera, and does not wave. Keep the gate, parents far in the background, boy's face and clothes completely unchanged. One simple continuous approaching movement, locked camera, no zoom, no tracking shot, no cut. Natural footsteps only, no dialogue or music.\n",
+            "width": 608,
+            "height": 352,
+            "length": 107,
+            "first_frame": [
+              "200",
+              0
+            ]
+          }
+        },
+        "134": {
+          "class_type": "LoraLoaderModelOnly",
+          "inputs": {
+            "model": [
+              "127",
+              0
+            ],
+            "lora_name": "minimax_h3_fl2v_turbo_8step_v1.0_comfyui_bf16.safetensors",
+            "strength_model": 1.0
+          }
+        },
+        "92": {
+          "class_type": "SaveVideo",
+          "inputs": {
+            "video": [
+              "130",
+              0
+            ],
+            "filename_prefix": "unseen-full-v1/S03/attempt-03",
+            "format": "mp4",
+            "format.codec": "h264",
+            "format.codec.encoding": "auto"
+          }
+        },
+        "200": {
+          "class_type": "LoadImage",
+          "inputs": {
+            "image": "S03-4c87989af86e2e24.png"
+          }
+        }
+      },
+      {
+        "client_id": "unseen-h3-full-film-2026-09-13-v1/S03/attempt-03",
+        "create_time": 1789347977555
+      },
+      [
+        "92"
+      ]
+    ],
+    "outputs": {
+      "92": {
+        "images": [
+          {
+            "filename": "attempt-03_00001_.mp4",
+            "subfolder": "unseen-full-v1\\S03",
+            "type": "output"
+          }
+        ],
+        "animated": [
+          true
+        ]
+      }
+    },
+    "status": {
+      "status_str": "success",
+      "completed": true,
+      "messages": [
+        [
+          "execution_start",
+          {
+            "prompt_id": "06c748d4-1e10-493c-90f0-f3c87821cd79",
+            "timestamp": 1789347977557
+          }
+        ],
+        [
+          "execution_cached",
+          {
+            "nodes": [],
+            "prompt_id": "06c748d4-1e10-493c-90f0-f3c87821cd79",
+            "timestamp": 1789347977557
+          }
+        ],
+        [
+          "execution_success",
+          {
+            "prompt_id": "06c748d4-1e10-493c-90f0-f3c87821cd79",
+            "timestamp": 1789348124119
+          }
+        ]
+      ]
+    },
+    "meta": {
+      "92": {
+        "node_id": "92",
+        "display_node": "92",
+        "parent_node": null,
+        "real_node_id": "92"
+      }
+    }
+  }
+}

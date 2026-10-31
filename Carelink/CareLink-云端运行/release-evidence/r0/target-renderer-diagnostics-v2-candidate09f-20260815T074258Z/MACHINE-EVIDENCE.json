@@ -1,0 +1,176 @@
+{
+  "schema": "unseen-target-renderer-diagnostics-v2-evidence/1",
+  "kind": "TARGET_RENDERER_DIAGNOSTIC_STOPPED_ON_FIRST_FAILURE_NONSECRET_EVIDENCE",
+  "observedDate": "2026-08-15",
+  "sourceRepositoryHeadBeforeEvidence": "864105f436d778f5161281c7d9d5b4f436878bf6",
+  "deploymentEvidenceCommit": "389cb3f4ea4144a49533bea232850346cd52c7a2",
+  "deploymentEvidenceReceiptHashCorrectionCommit": "864105f436d778f5161281c7d9d5b4f436878bf6",
+  "candidate": {
+    "commit": "09f29ba002d11b38f3ac0f1a78e59822fb14844e",
+    "tree": "738f457162b44c1b12e02d316167b3af899c22b0",
+    "activeRepositoryClean": true
+  },
+  "operatorHarnessTargetOnlyFix": {
+    "repositoryProductChanged": false,
+    "sourceHarnessSha256": "dba45fcd495bb120ef17c937d3b4d89215732b7476254f4636910cbb38c18148",
+    "patchedHarnessSha256": "4301d11bd880a3091ae781e08a75f9cbcd272a6232655c706dd88dbbfc3be9de",
+    "statusBranchSha256": "1bb1ae1b8ffe2020a453339f5ffa8bef476e76b4363698313c7dc37c1f323504",
+    "failedFixtureSelfTest": "PASS",
+    "failedAndCancelledExactKeys": [
+      "stableError",
+      "status"
+    ],
+    "readyOnlyArtifactAccess": true,
+    "unknownStatusRejected": true,
+    "extraKeyRejected": true
+  },
+  "preExecutionOperatorCorrections": [
+    {
+      "code": "DIAGNOSTIC_PARENT_DAC_BLOCKED_SERVICE_USER_SCRIPT_VISIBILITY",
+      "completedStagesBeforeCorrection": 0,
+      "chromiumExecutionsBeforeCorrection": 0,
+      "pdfArtifactsBeforeCorrection": 0,
+      "corrected": true
+    },
+    {
+      "code": "DIAGNOSTIC_RUN_ROOT_ENVIRONMENT_WAS_UNSET",
+      "symptom": "ERR_INVALID_ARG_TYPE_BEFORE_STAGE_S1",
+      "completedStagesBeforeCorrection": 0,
+      "chromiumExecutionsBeforeCorrection": 0,
+      "pdfArtifactsBeforeCorrection": 0,
+      "correction": "DERIVE_RUN_ROOT_FROM_MODULE_URL_WITHOUT_ADDING_UNIT_ENVIRONMENT",
+      "corrected": true
+    }
+  ],
+  "diagnosticBoundary": {
+    "claim": "DIAGNOSTIC_NARROWING_ONLY_NOT_RENDERER_RETRY_NOT_ACCEPTANCE",
+    "formalServiceSourceSha256": "8ef370f46b123b645fc11ceea1bef6283281de37b6178ffa5e13b1e854cc3421",
+    "diagnosticUnitSourceSha256": "cc5b3513c8ea9a1199eb09665bfb6fee754f36687cbc8b54ffa482a88a3c0a73",
+    "diagnosticRunnerSha256": "3dad978532bf711b92805254ae8f456006f946aca5c6b8b63b39293ebbae12d4",
+    "effectivePropertiesSha256": "d489cb3b50abd577dd43a80b9fc825041313c49d81c1c2ba8e2e217589ff62a0",
+    "appArmorProfileSha256": "6e641e3e8a5036c8f02443eb0b235e8e357957fa03a00e0c51fc88998575162d",
+    "systemdAnalyzeVerify": "PASS",
+    "servicePrincipal": "unseen-renderer",
+    "ipcGroup": "unseen-render-ipc",
+    "type": "oneshot",
+    "productionSocketUsed": false,
+    "productionSpoolPresent": false,
+    "diagnosticReadWriteRootOnly": true,
+    "privateNetwork": true,
+    "restrictAddressFamilies": [
+      "AF_UNIX"
+    ],
+    "ipAddressDeny": [
+      "0.0.0.0/0",
+      "::/0"
+    ],
+    "stageTimeoutMs": 15000,
+    "totalTimeoutMs": 60000,
+    "timeoutKillsWholeProcessGroupAndAwaitsClose": true,
+    "firstFailureStopsLaterStages": true,
+    "rawStreamsRecorded": false,
+    "argvRecorded": false,
+    "pathValuesRecorded": false,
+    "contentRecorded": false
+  },
+  "diagnosticRun": {
+    "status": "DIAGNOSTIC_STOPPED_ON_FIRST_FAILURE",
+    "resultSha256": "19dfc0354ef579df59ac029c4eceacc7502cc1fb628937cd8ef1bfebecd0cdee",
+    "elapsedMs": 219,
+    "stages": [
+      {
+        "stage": "S1_NODE_VERSION",
+        "exitCode": 0,
+        "signal": null,
+        "stderrBytes": 0,
+        "outputHash": "c42fcf0db5a550bda2f566fcdc21955df3e5a8ec3aeb90ac533f3776e7fce32a",
+        "match": true
+      },
+      {
+        "stage": "S2_NODE_PERMISSION_NETWORK_DENY_NOOP",
+        "exitCode": 0,
+        "signal": null,
+        "stderrBytes": 0,
+        "outputHash": "0417110ebba47e3495546fee6eece02a414b931e364f734b2551e2427c678e9b",
+        "match": true
+      },
+      {
+        "stage": "S3_NODE_DESCENDANT_CHROMIUM_VERSION",
+        "exitCode": 0,
+        "signal": null,
+        "stderrBytes": 211,
+        "outputHash": "91a7b4e121afdabc374f04d53220353ef25ecf30bf153ff5dc0670b237dc4be5",
+        "expectedReceiptVersionOutputHash": "4c131bdedefcc784857e3ac2db4152b0c409ca84eb43c89f27402c98d6e4d3df",
+        "match": false
+      }
+    ],
+    "notRunAfterFirstFailure": [
+      "S4_PRODUCTION_FLAG_ORDER_BLANK_PDF",
+      "S5_PINNED_PDFINFO_PDFTOTEXT"
+    ],
+    "rendererAcceptanceRetryExecuted": false,
+    "liveBookRequestExecuted": false
+  },
+  "cleanup": {
+    "status": "PASS",
+    "diagnosticUnit": "NOT_FOUND_INACTIVE",
+    "diagnosticProcesses": 0,
+    "rendererProcesses": 0,
+    "rendererSocketPresent": false,
+    "appArmorProfileLoaded": false,
+    "productionSpoolPresent": false,
+    "runRootPresent": false,
+    "cupsPort631Listeners": 0,
+    "appArmorDeniedCount": 0,
+    "quarantineRootOnly": true,
+    "quarantineFileCount": 9,
+    "quarantineManifestSha256": "597ebf1e13b2183d4cf1b6101a2aafc8e1871c1cc8cb7869a9a595cd3a83596f"
+  },
+  "postCleanupCoreInvariants": {
+    "activeCommit": "09f29ba002d11b38f3ac0f1a78e59822fb14844e",
+    "activeTree": "738f457162b44c1b12e02d316167b3af899c22b0",
+    "activeRepositoryClean": true,
+    "apiActive": true,
+    "apiMainPid": 293190,
+    "apiNRestarts": 10,
+    "webActive": true,
+    "webMainPid": 293192,
+    "webNRestarts": 10,
+    "databaseQuickCheck": "ok",
+    "migrationCount": 10,
+    "accounts": 0,
+    "photos": 0,
+    "privateAiJobs": 0,
+    "caddyConfigurationSha256": "c5691b38229753bcc2bbdcd8cc8b32f691433ab5924b9c3130c3436b8ea787db",
+    "caddyMainPid": 24470,
+    "caddyChangedOrReloaded": false,
+    "webLoopbackStatus": 200,
+    "apiProxyBoundaryHealthStatus": 503,
+    "apiProxyBoundaryHealthReason": "OTP_UNCONFIGURED",
+    "bookEnabled": false,
+    "privateAiEnabled": false,
+    "otpConfigured": false
+  },
+  "openFindings": {
+    "p0": [],
+    "p1": [
+      "renderer_target_child_nonzero_exit_candidate09f"
+    ],
+    "p2": [
+      "diagnostic_s3_node_descendant_chromium_version_output_did_not_match_receipt_bound_output_and_stopped_s4_s5"
+    ]
+  },
+  "nonClaims": [
+    "not renderer target acceptance",
+    "not a renderer retry",
+    "not Book enabled",
+    "not production GO",
+    "not live user data",
+    "not a production Chromium render",
+    "not S4 or S5 evidence",
+    "not evidence containing stdout, stderr, argv, filesystem path values, HTML, PDF or credentials"
+  ],
+  "productionReady": false,
+  "releaseDecision": "NO_GO",
+  "sensitiveDataRecorded": false
+}

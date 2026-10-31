@@ -1,0 +1,109 @@
+{
+  "schema": "unseen-renderer-snapd-cache-hardlink-evidence/1",
+  "generatedAt": "2026-08-15T10:58:56Z",
+  "status": "CODE_GATES_PASS_TARGET_RETRY_REQUIRED",
+  "baseCommit": "87687c956770a409f040ec15c5bbbf9f93aa70a9",
+  "baseTree": "03e0e1e18de6187d2b1a6d5f62db84bbcc29c825",
+  "codeCommit": "2e7a2276f233b973fa17e4c05120772d17381c93",
+  "codeTree": "6822d64b5ce9c8000732dfbdfe1bd0b9275a3ea6",
+  "targetFailureInput": {
+    "commit": "87687c956770a409f040ec15c5bbbf9f93aa70a9",
+    "path": "release-evidence/r0/target-deployment-candidate48a-renderer-snap-hardlink-p1-20260815T104618Z/MACHINE-EVIDENCE.json",
+    "sha256": "96a6372d2f4eb61609920f936feb6346edb565ba2c653d462ec0b96e1c27f380"
+  },
+  "observedFileDac": {
+    "source": "TARGET_OBSERVED_EVIDENCE_87687C956770A409F040EC15C5BBBF9F93AA70A9",
+    "archive": "root:root:0600",
+    "cacheLink": "root:root:0600",
+    "sameDeviceAndInode": true,
+    "linkCount": 2,
+    "bytes": 202833920
+  },
+  "sourcePolicy": {
+    "snapdCommit": "93a01322cdc0ad70afcd641ff31fcf7bf070f144",
+    "cacheDirectory": "/var/lib/snapd/cache",
+    "cacheDirectoryDac": "root:root:0700",
+    "cacheKey": "SHA3_384_LOWERCASE_HEX",
+    "cacheLinkMechanism": "CONTENT_BASED_HARDLINK",
+    "parentDirectoryPolicy": "ROOT_OWNED_NONSYMLINK_NO_GROUP_WORLD_WRITE_NOT_TARGET_OBSERVED_EXACT_MODE"
+  },
+  "linkTopology": {
+    "schema": "unseen-snapd-cache-hardlink-policy/1",
+    "policySha256": "49d8cec790a4cb3c6abfaf589bc6d37b8dc5e9ae007d0afbb8dc06f8b8aceac5",
+    "allowedStates": [
+      "ARCHIVE_ONLY",
+      "ARCHIVE_AND_SNAPD_SHA3_CACHE"
+    ],
+    "archivePath": "/var/lib/snapd/snaps/chromium_3507.snap",
+    "cachePath": "/var/lib/snapd/cache/77155504d7c5fdfa516545da086bd3f31fa6f6283901e93885cbb39366ae55bea834c4042bebfc870a0330904df04c07",
+    "singleLinkRequiresCachePathAbsent": true,
+    "twoLinksRequireExactSameDeviceAndInode": true,
+    "moreThanTwoLinksRejected": true,
+    "noFollowFileDescriptors": true,
+    "metadataBoundBeforeAfterHash": true,
+    "exactPathsReopenedAfterHash": true,
+    "cacheMutationPerformed": false
+  },
+  "buildBinding": {
+    "rendererImplementationSha256": "27b8943e46f0c86bc2ea0f7039b8e2b03aa44637998512569122dbffaedf3ee9",
+    "targetVerifierSha256": "e98c44546f9ed6d1b8fb8ff81267715cf229d0a2dbbd12902bea1ea28e86212d",
+    "rendererProtocolSha256": "b92299865981eac805ea8f3f418c83aaecfc3ab1295686114870a380f44f07de",
+    "productionPackageSha256": "fc805bdb4d7cbe403524b84b4576f986da54330f978aa380ff8aefb6f606027d"
+  },
+  "negativeCoverage": [
+    "NLINK1_WITH_CACHE_PATH_PRESENT",
+    "WRONG_CACHE_KEY_PATH",
+    "SAME_BYTES_DIFFERENT_INODE",
+    "CACHE_SYMLINK",
+    "NLINK_GREATER_THAN_TWO",
+    "FILE_MODE_DRIFT",
+    "OWNER_POLICY_DRIFT",
+    "HASH_DRIFT",
+    "SIZE_DRIFT",
+    "UNSAFE_ANCESTOR",
+    "CACHE_DIRECTORY_MODE_DRIFT",
+    "SYMLINK_ANCESTOR",
+    "LINK_REMOVED_DURING_HASH",
+    "ARCHIVE_PATH_REPLACED_DURING_HASH",
+    "RECEIPT_POLICY_STATE_COUNT_EXTRA_FIELD_DRIFT"
+  ],
+  "machineChecks": {
+    "dedicatedRenderer": {
+      "total": 44,
+      "passed": 44
+    },
+    "apiWorkspace": {
+      "total": 129,
+      "passed": 129
+    },
+    "deploymentLifecycleAndRendererWorker": {
+      "total": 6,
+      "passed": 6
+    },
+    "productionPackage": {
+      "total": 1,
+      "passed": 1,
+      "acceptanceNegativeCases": 32,
+      "portableBundleVerified": true,
+      "standaloneNonGitCwdVerified": true,
+      "detachedHeadVerified": true,
+      "freshCloneVerified": true
+    },
+    "contracts": "CONTRACT_GENERATION_CLEAN",
+    "format": "FORMAT_OK",
+    "secretScan": "SECRET_SCAN_CLEAN"
+  },
+  "executionBoundary": {
+    "targetRetry": "NOT_RUN",
+    "liveTargetChanged": false,
+    "snapdCacheChanged": false,
+    "publicDtoChanged": false,
+    "publicRouteChanged": false,
+    "bookDefaultOff": true,
+    "productionEnabled": false
+  },
+  "openCodeP0": 0,
+  "openCodeP1": 0,
+  "remainingGate": "TARGET_RENDERER_ACCEPTANCE_RETRY_REQUIRED",
+  "releaseDecision": "NO_GO"
+}

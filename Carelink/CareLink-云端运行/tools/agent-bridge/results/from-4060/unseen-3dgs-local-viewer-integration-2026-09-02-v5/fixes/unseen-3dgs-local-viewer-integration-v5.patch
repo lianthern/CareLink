@@ -1,0 +1,2949 @@
+diff --git a/RUNBOOK.md b/RUNBOOK.md
+new file mode 100644
+index 0000000..5276b59
+--- /dev/null
++++ b/RUNBOOK.md
+@@ -0,0 +1,135 @@
++# UNSEEN local Viewer integration v5 runbook
++
++This runbook targets the verified machine layout on `Ubuntu-22.04` and keeps the repaired Pexels v3 profile separate from the TUM RGB-D v4 profile. The v5 integration does not train a model, export a PLY, or convert a SOG. It reuses and verifies the frozen artifacts already present under `/home/max/src/unseen-3dgs-sceneworker`.
++
++## 1. Static and unit gates (WSL)
++
++Fetch the official portable ShellCheck 0.11.0 binary to a temporary directory (Windows PowerShell; no system install):
++
++```powershell
++$toolDir = "$env:TEMP\unseen-v5-shellcheck"
++New-Item -ItemType Directory -Force -Path $toolDir | Out-Null
++Invoke-WebRequest -UseBasicParsing -Uri "https://github.com/koalaman/shellcheck/releases/download/v0.11.0/shellcheck-v0.11.0.linux.x86_64.tar.xz" -OutFile "$toolDir\shellcheck-v0.11.0.linux.x86_64.tar.xz"
++wsl.exe -d Ubuntu-22.04 -- bash -lc "mkdir -p /tmp/unseen-v5-shellcheck && tar -xJf /mnt/c/Users/15pro/AppData/Local/Temp/unseen-v5-shellcheck/shellcheck-v0.11.0.linux.x86_64.tar.xz -C /tmp/unseen-v5-shellcheck"
++```
++
++```bash
++cd /home/max/src/unseen-3dgs-sceneworker
++source .venv/bin/activate
++python -m py_compile \
++  scripts/repair_sfm_v3.py \
++  scripts/evaluate_repair_v3.py \
++  scripts/validate_repair_v3_artifacts.py \
++  scripts/generate_repair_v3_viewer.py \
++  scripts/validate_repair_v3_viewer_anchors.py \
++  scripts/tum_v4_adapter.py \
++  scripts/evaluate_tum_v4.py \
++  scripts/validate_tum_v4_artifacts.py \
++  scripts/generate_tum_v4_viewer.py
++bash -n scripts/run_repair_v3_train.sh scripts/run_tum_v4_train.sh
++/tmp/unseen-v5-shellcheck/shellcheck-v0.11.0/shellcheck \
++  scripts/run_repair_v3_train.sh scripts/run_tum_v4_train.sh
++python scripts/test_generate_repair_v3_viewer.py
++python scripts/test_tum_v4_adapter.py
++python scripts/test_generate_tum_v4_viewer.py
++python tests/verify_contract.py
++```
++
++## 2. Verify the frozen v3 SOG and its Viewer-local copy (WSL)
++
++Both commands must print `0d417735d1b91573f2e2199b53567c07014a420943dac8c84cb73811a1ec0e01` and `2693010` bytes.
++
++```bash
++cd /home/max/src/unseen-3dgs-sceneworker
++sha256sum artifacts/export/repair-v3/scene.sog viewer/assets/repair-v3.scene.sog
++stat -c '%s %n' artifacts/export/repair-v3/scene.sog viewer/assets/repair-v3.scene.sog
++```
++
++## 3. Rebuild only the two Viewer contracts (WSL)
++
++These commands do not train or convert artifacts. They use the correct v5 CLI shapes: both Viewer generators take `--manifest-output` and `--validation-output`.
++
++```bash
++cd /home/max/src/unseen-3dgs-sceneworker
++source .venv/bin/activate
++mkdir -p reports/integration-v5/logs
++
++python scripts/generate_repair_v3_viewer.py \
++  --transforms reports/repair-v3/processed/SIMPLE_RADIAL_AUTO/transforms.json \
++  --dataparser-transforms artifacts/training/repair-v3/pexels-simple-radial-auto-v3/splatfacto/2026-09-02_142353/dataparser_transforms.json \
++  --scene-asset-url ./assets/repair-v3.scene.sog \
++  --manifest-output viewer/repair-v3.scene.json \
++  --validation-output reports/integration-v5/logs/repair-v3-viewer-generator.json
++
++python scripts/generate_tum_v4_viewer.py \
++  --transforms data/tum-v4/processed/desk-5hz/transforms.json \
++  --dataparser-transforms artifacts/training/tum-v4/freiburg1-desk-v4/splatfacto/2026-09-02_134448/dataparser_transforms.json \
++  --scene-asset-url ./assets/tum-v4.scene.sog \
++  --manifest-output viewer/tum-v4.scene.json \
++  --validation-output reports/integration-v5/logs/tum-v4-viewer-generator.json
++
++python scripts/validate_repair_v3_viewer_anchors.py \
++  --config artifacts/training/repair-v3/pexels-simple-radial-auto-v3/splatfacto/2026-09-02_142353/config.yml \
++  --manifest viewer/repair-v3.scene.json \
++  --output reports/integration-v5/logs/repair-v3-viewer-anchors.json
++```
++
++## 4. Start the loopback-only Viewer and open it (Windows PowerShell)
++
++No administrator privileges are used. The launcher verifies the frozen SOG, binds only `127.0.0.1`, tries port `8765` first and then `8766` through `8775`, records the actual PID/URL, and opens the default Windows browser.
++
++```powershell
++powershell.exe -NoProfile -ExecutionPolicy Bypass -File "\\wsl.localhost\Ubuntu-22.04\home\max\src\unseen-3dgs-sceneworker\scripts\windows\Start-Local-PexelsViewer.ps1" -OpenBrowser
++```
++
++## 5. Check HTTP from both sides (Windows PowerShell)
++
++```powershell
++$statePath = "\\wsl.localhost\Ubuntu-22.04\home\max\src\unseen-3dgs-sceneworker\reports\integration-v5\local-viewer-state.json"
++$state = Get-Content -LiteralPath $statePath -Raw | ConvertFrom-Json
++(Invoke-WebRequest -UseBasicParsing -Uri $state.url).StatusCode
++wsl.exe -d Ubuntu-22.04 -- python3 -c "import urllib.request; print(urllib.request.urlopen('$($state.url)', timeout=5).status)"
++```
++
++Both status codes must be `200`.
++
++## 6. Run the real-SOG browser gate (Windows PowerShell)
++
++This produces the one v5 generated-scene screenshot. It verifies `SOG ready`, bounded movement, the fixed `navigation.eyeHeight` walk plane, UI/walk-height agreement, and exact full pose/FOV restoration of the default photo anchor.
++
++```powershell
++$project = "\\wsl.localhost\Ubuntu-22.04\home\max\src\unseen-3dgs-sceneworker"
++$state = Get-Content -LiteralPath "$project\reports\integration-v5\local-viewer-state.json" -Raw | ConvertFrom-Json
++$node = "$env:USERPROFILE\.cache\codex-runtimes\codex-primary-runtime\dependencies\node\bin\node.exe"
++$env:NODE_PATH = "$env:USERPROFILE\.cache\codex-runtimes\codex-primary-runtime\dependencies\node\node_modules"
++& $node "$project\scripts\viewer_repair_v3_e2e.js" $state.url "$project\reports\integration-v5\logs\viewer-e2e.json" "$project\reports\integration-v5\viewer-screenshot.png"
++if ($LASTEXITCODE -ne 0) { throw "Viewer E2E gate failed" }
++```
++
++Leave the Viewer running after the v5 delivery. To stop it later:
++
++```powershell
++powershell.exe -NoProfile -ExecutionPolicy Bypass -File "\\wsl.localhost\Ubuntu-22.04\home\max\src\unseen-3dgs-sceneworker\scripts\windows\Stop-Local-PexelsViewer.ps1"
++```
++
++## 7. Profile construction commands (provenance only; not run by v5)
++
++The repaired Pexels profile uses a positional candidate, not `--candidate`:
++
++```bash
++cd /home/max/src/unseen-3dgs-sceneworker
++source .venv/bin/activate
++python scripts/repair_sfm_v3.py SIMPLE_RADIAL_AUTO
++```
++
++The TUM adapter accepts only `--source` and `--output`; it has no `--target-hz` or `--max-frames` options:
++
++```bash
++cd /home/max/src/unseen-3dgs-sceneworker
++source .venv/bin/activate
++python scripts/tum_v4_adapter.py \
++  --source data/tum-v4/raw/rgbd_dataset_freiburg1_desk \
++  --output data/tum-v4/processed/desk-5hz
++```
++
++The guarded training entry points are `scripts/run_repair_v3_train.sh` and `scripts/run_tum_v4_train.sh`. They intentionally refuse to overwrite the existing frozen outputs. The evaluation and artifact validators write their JSON result before returning exit code `1` when a threshold fails.
+diff --git a/scripts/evaluate_repair_v3.py b/scripts/evaluate_repair_v3.py
+new file mode 100755
+index 0000000..b390895
+--- /dev/null
++++ b/scripts/evaluate_repair_v3.py
+@@ -0,0 +1,173 @@
++#!/usr/bin/env python3
++"""Render the repaired v3 checkpoint at the three contract anchors."""
++
++from __future__ import annotations
++
++import argparse
++import json
++from pathlib import Path
++
++import cv2
++import numpy as np
++import torch
++from PIL import Image
++from nerfstudio.utils.eval_utils import eval_setup
++
++
++ANCHORS = ("frame_00001.jpg", "frame_00036.jpg", "frame_00072.jpg")
++
++
++def save_rgb(path: Path, tensor: torch.Tensor) -> None:
++    array = (
++        tensor.detach().cpu().clamp(0.0, 1.0).mul(255.0).round().to(torch.uint8).numpy()
++    )
++    Image.fromarray(array).save(path)
++
++
++def undistort_original(image: np.ndarray, transforms: dict) -> np.ndarray:
++    """Apply the same OpenCV projection used by Nerfstudio's image cache."""
++    intrinsic = np.asarray(
++        [
++            [transforms["fl_x"], 0.0, transforms["cx"] - 0.5],
++            [0.0, transforms["fl_y"], transforms["cy"] - 0.5],
++            [0.0, 0.0, 1.0],
++        ],
++        dtype=np.float64,
++    )
++    distortion = np.asarray(
++        [
++            transforms.get("k1", 0.0),
++            transforms.get("k2", 0.0),
++            transforms.get("p1", 0.0),
++            transforms.get("p2", 0.0),
++            transforms.get("k3", 0.0),
++            0.0,
++            0.0,
++            0.0,
++        ],
++        dtype=np.float64,
++    )
++    new_intrinsic, (x, y, width, height) = cv2.getOptimalNewCameraMatrix(
++        intrinsic, distortion, (image.shape[1], image.shape[0]), 0
++    )
++    undistorted = cv2.undistort(image, intrinsic, distortion, None, new_intrinsic)
++    return undistorted[y : y + height, x : x + width]
++
++
++def main() -> int:
++    parser = argparse.ArgumentParser()
++    parser.add_argument("--config", type=Path, required=True)
++    parser.add_argument("--original-root", type=Path, required=True)
++    parser.add_argument("--output", type=Path, required=True)
++    args = parser.parse_args()
++    args.output.mkdir(parents=True, exist_ok=True)
++
++    _, pipeline, checkpoint_path, step = eval_setup(args.config, test_mode="test")
++    datamanager = pipeline.datamanager
++    model = pipeline.model
++    transforms_path = Path(datamanager.config.dataparser.data) / "transforms.json"
++    transforms = json.loads(transforms_path.read_text(encoding="utf-8"))
++    cached_train = datamanager.cached_train
++    names = [path.name for path in datamanager.train_dataset.image_filenames]
++    rows = []
++    for anchor in ANCHORS:
++        if anchor not in names:
++            raise RuntimeError(f"contract anchor is not in train split: {anchor}")
++        index = names.index(anchor)
++        camera = datamanager.train_dataset.cameras[index : index + 1].to(pipeline.device)
++        batch = cached_train[index]
++        with torch.no_grad():
++            outputs = model.get_outputs_for_camera(camera)
++        rendered = outputs["rgb"]
++        source_tensor = model.get_gt_img(batch["image"])
++        processed_path = Path(datamanager.train_dataset.image_filenames[index])
++        original_path = args.original_root / anchor
++        processed_source = np.asarray(Image.open(processed_path).convert("RGB"), dtype=np.uint8)
++        original_source = np.asarray(Image.open(original_path).convert("RGB"), dtype=np.uint8)
++        original_metric_target = undistort_original(original_source, transforms)
++        cached_source = (
++            source_tensor.detach()
++            .cpu()
++            .clamp(0.0, 1.0)
++            .mul(255.0)
++            .round()
++            .to(torch.uint8)
++            .numpy()
++        )
++        if original_metric_target.shape != tuple(rendered.shape):
++            raise RuntimeError(
++                f"original-source projection shape {original_metric_target.shape} "
++                f"does not match render {tuple(rendered.shape)}"
++            )
++        original_tensor = (
++            torch.from_numpy(original_metric_target.copy()).to(rendered.device).float() / 255.0
++        )
++        gt_metric = torch.moveaxis(original_tensor, -1, 0)[None, ...]
++        prediction_metric = torch.moveaxis(rendered, -1, 0)[None, ...]
++        metrics = {
++            "psnr": float(model.psnr(gt_metric, prediction_metric).item()),
++            "ssim": float(model.ssim(gt_metric, prediction_metric)),
++            "lpips": float(model.lpips(gt_metric, prediction_metric)),
++        }
++        save_rgb(args.output / f"{Path(anchor).stem}-checkpoint.png", rendered)
++        Image.fromarray(original_metric_target).save(
++            args.output / f"{Path(anchor).stem}-source-projected.png"
++        )
++        rows.append(
++            {
++                "frame": Path(anchor).stem,
++                "trainIndex": index,
++                "psnr": metrics["psnr"],
++                "ssim": metrics["ssim"],
++                "lpips": metrics["lpips"],
++                "processedSourceMatchesOriginalExactly": bool(
++                    np.array_equal(processed_source, original_source)
++                ),
++                "processedSourceMaxAbsByteError": int(
++                    np.max(
++                        np.abs(
++                            processed_source.astype(np.int16)
++                            - original_source.astype(np.int16)
++                        )
++                    )
++                ),
++                "metricTarget": "Nerfstudio/OpenCV projection applied directly to the original source",
++                "originalShape": list(original_source.shape),
++                "metricTargetShape": list(original_metric_target.shape),
++                "metricTargetVsTrainingCacheMaxAbsByteError": int(
++                    np.max(
++                        np.abs(
++                            original_metric_target.astype(np.int16)
++                            - cached_source.astype(np.int16)
++                        )
++                    )
++                ),
++            }
++        )
++    result = {
++        "checkpoint": str(checkpoint_path),
++        "step": step,
++        "anchors": rows,
++        "means": {
++            key: float(np.mean([float(row[key]) for row in rows]))
++            for key in ("psnr", "ssim", "lpips")
++        },
++        "gate": {
++            "thresholds": {"psnrMin": 20.0, "ssimMin": 0.80, "lpipsMax": 0.30},
++            "pass": all(
++                float(row["psnr"]) >= 20.0
++                and float(row["ssim"]) >= 0.80
++                and float(row["lpips"]) <= 0.30
++                for row in rows
++            ),
++        },
++    }
++    (args.output / "checkpoint-metrics.json").write_text(
++        json.dumps(result, indent=2) + "\n", encoding="utf-8"
++    )
++    print(json.dumps(result, indent=2))
++    return 0 if result["gate"]["pass"] else 1
++
++
++if __name__ == "__main__":
++    raise SystemExit(main())
+diff --git a/scripts/evaluate_tum_v4.py b/scripts/evaluate_tum_v4.py
+new file mode 100755
+index 0000000..b9664d0
+--- /dev/null
++++ b/scripts/evaluate_tum_v4.py
+@@ -0,0 +1,96 @@
++#!/usr/bin/env python3
++"""Render the v4 checkpoint at the three contract anchors and score sources."""
++
++from __future__ import annotations
++
++import argparse
++import json
++from pathlib import Path
++
++import numpy as np
++import torch
++from PIL import Image
++from nerfstudio.utils.eval_utils import eval_setup
++
++
++ANCHORS = ("frame_00000.png", "frame_00050.png", "frame_00099.png")
++
++
++def save_rgb(path: Path, tensor: torch.Tensor) -> None:
++    array = (
++        tensor.detach().cpu().clamp(0.0, 1.0).mul(255.0).round().to(torch.uint8).numpy()
++    )
++    Image.fromarray(array).save(path)
++
++
++def main() -> int:
++    parser = argparse.ArgumentParser()
++    parser.add_argument("--config", type=Path, required=True)
++    parser.add_argument("--output", type=Path, required=True)
++    args = parser.parse_args()
++    args.output.mkdir(parents=True, exist_ok=True)
++
++    _, pipeline, checkpoint_path, step = eval_setup(args.config, test_mode="test")
++    datamanager = pipeline.datamanager
++    model = pipeline.model
++    names = [path.name for path in datamanager.train_dataset.image_filenames]
++    rows = []
++    for anchor in ANCHORS:
++        if anchor not in names:
++            raise RuntimeError(f"contract anchor is not in train split: {anchor}")
++        index = names.index(anchor)
++        camera = datamanager.train_dataset.cameras[index : index + 1].to(pipeline.device)
++        batch = datamanager.cached_train[index]
++        with torch.no_grad():
++            outputs = model.get_outputs_for_camera(camera)
++            metrics, _ = model.get_image_metrics_and_images(outputs, batch)
++        rendered = outputs["rgb"]
++        source_tensor = model.get_gt_img(batch["image"])
++        source_path = Path(datamanager.train_dataset.image_filenames[index])
++        disk_source = np.asarray(Image.open(source_path).convert("RGB"), dtype=np.uint8)
++        cached_source = (
++            source_tensor.detach().cpu().clamp(0.0, 1.0).mul(255.0).round().to(torch.uint8).numpy()
++        )
++        save_rgb(args.output / f"{Path(anchor).stem}-checkpoint.png", rendered)
++        save_rgb(args.output / f"{Path(anchor).stem}-source.png", source_tensor)
++        rows.append(
++            {
++                "frame": Path(anchor).stem,
++                "trainIndex": index,
++                "sourcePath": str(source_path),
++                "psnr": metrics["psnr"],
++                "ssim": metrics["ssim"],
++                "lpips": metrics["lpips"],
++                "cachedSourceMatchesDiskExactly": bool(np.array_equal(cached_source, disk_source)),
++                "cachedSourceMaxAbsByteError": int(
++                    np.max(np.abs(cached_source.astype(np.int16) - disk_source.astype(np.int16)))
++                ),
++            }
++        )
++    result = {
++        "checkpoint": str(checkpoint_path),
++        "step": step,
++        "anchors": rows,
++        "means": {
++            key: float(np.mean([float(row[key]) for row in rows]))
++            for key in ("psnr", "ssim", "lpips")
++        },
++        "gate": {
++            "thresholds": {"psnrMin": 18.0, "ssimMin": 0.70, "lpipsMax": 0.40},
++            "pass": all(
++                float(row["psnr"]) >= 18.0
++                and float(row["ssim"]) >= 0.70
++                and float(row["lpips"]) <= 0.40
++                for row in rows
++            ),
++        },
++    }
++    (args.output / "checkpoint-metrics.json").write_text(
++        json.dumps(result, indent=2) + "\n", encoding="utf-8"
++    )
++    print(json.dumps(result, indent=2))
++    return 0 if result["gate"]["pass"] else 1
++
++
++if __name__ == "__main__":
++    raise SystemExit(main())
+diff --git a/scripts/generate_repair_v3_viewer.py b/scripts/generate_repair_v3_viewer.py
+new file mode 100755
+index 0000000..23ad648
+--- /dev/null
++++ b/scripts/generate_repair_v3_viewer.py
+@@ -0,0 +1,222 @@
++#!/usr/bin/env python3
++"""Generate the repaired v3 Viewer manifest from actual training cameras."""
++
++from __future__ import annotations
++
++import argparse
++import json
++import math
++from pathlib import Path
++
++import cv2
++import numpy as np
++
++
++ANCHOR_FRAMES = ("frame_00001.jpg", "frame_00036.jpg", "frame_00072.jpg")
++DEFAULT_PHOTO_ANCHOR = "frame_00036"
++PLAYCANVAS_FROM_NERFSTUDIO = np.asarray(
++    [
++        [1.0, 0.0, 0.0, 0.0],
++        [0.0, 0.0, 1.0, 0.0],
++        [0.0, -1.0, 0.0, 0.0],
++        [0.0, 0.0, 0.0, 1.0],
++    ]
++)
++
++
++def matrix_to_quaternion_xyzw(matrix: np.ndarray) -> list[float]:
++    trace = float(np.trace(matrix))
++    if trace > 0.0:
++        s = math.sqrt(trace + 1.0) * 2.0
++        w = 0.25 * s
++        x = (matrix[2, 1] - matrix[1, 2]) / s
++        y = (matrix[0, 2] - matrix[2, 0]) / s
++        z = (matrix[1, 0] - matrix[0, 1]) / s
++    else:
++        index = int(np.argmax(np.diag(matrix)))
++        if index == 0:
++            s = math.sqrt(1.0 + matrix[0, 0] - matrix[1, 1] - matrix[2, 2]) * 2.0
++            x = 0.25 * s
++            y = (matrix[0, 1] + matrix[1, 0]) / s
++            z = (matrix[0, 2] + matrix[2, 0]) / s
++            w = (matrix[2, 1] - matrix[1, 2]) / s
++        elif index == 1:
++            s = math.sqrt(1.0 + matrix[1, 1] - matrix[0, 0] - matrix[2, 2]) * 2.0
++            x = (matrix[0, 1] + matrix[1, 0]) / s
++            y = 0.25 * s
++            z = (matrix[1, 2] + matrix[2, 1]) / s
++            w = (matrix[0, 2] - matrix[2, 0]) / s
++        else:
++            s = math.sqrt(1.0 + matrix[2, 2] - matrix[0, 0] - matrix[1, 1]) * 2.0
++            x = (matrix[0, 2] + matrix[2, 0]) / s
++            y = (matrix[1, 2] + matrix[2, 1]) / s
++            z = 0.25 * s
++            w = (matrix[1, 0] - matrix[0, 1]) / s
++    quaternion = np.asarray([x, y, z, w], dtype=np.float64)
++    quaternion /= np.linalg.norm(quaternion)
++    return quaternion.tolist()
++
++
++def apply_dataparser_transform(
++    saved_c2w: np.ndarray, dataparser_transform: np.ndarray, dataparser_scale: float
++) -> np.ndarray:
++    transform = np.eye(4, dtype=np.float64)
++    transform[:3, :4] = dataparser_transform
++    result = transform @ saved_c2w
++    result[:3, 3] *= dataparser_scale
++    return result
++
++
++def rounded(values: np.ndarray, digits: int = 9) -> list[float]:
++    return [round(float(value), digits) for value in values]
++
++
++def training_vertical_fov_degrees(source: dict) -> float:
++    """Reproduce Nerfstudio's perspective undistortion and cropped training FOV."""
++    height, width = int(source["h"]), int(source["w"])
++    intrinsic = np.asarray(
++        [
++            [source["fl_x"], 0.0, source["cx"] - 0.5],
++            [0.0, source["fl_y"], source["cy"] - 0.5],
++            [0.0, 0.0, 1.0],
++        ],
++        dtype=np.float64,
++    )
++    distortion = np.asarray(
++        [
++            source.get("k1", 0.0),
++            source.get("k2", 0.0),
++            source.get("p1", 0.0),
++            source.get("p2", 0.0),
++            source.get("k3", 0.0),
++            0.0,
++            0.0,
++            0.0,
++        ],
++        dtype=np.float64,
++    )
++    new_intrinsic, (_, _, _, cropped_height) = cv2.getOptimalNewCameraMatrix(
++        intrinsic, distortion, (width, height), 0
++    )
++    return math.degrees(
++        2.0 * math.atan(float(cropped_height) / (2.0 * float(new_intrinsic[1, 1])))
++    )
++
++
++def main() -> int:
++    parser = argparse.ArgumentParser()
++    parser.add_argument("--transforms", type=Path, required=True)
++    parser.add_argument("--dataparser-transforms", type=Path, required=True)
++    parser.add_argument("--scene-asset-url", default="./assets/repair-v3.scene.sog")
++    parser.add_argument("--manifest-output", type=Path, required=True)
++    parser.add_argument("--validation-output", type=Path, required=True)
++    args = parser.parse_args()
++
++    source = json.loads(args.transforms.read_text(encoding="utf-8"))
++    parser_data = json.loads(args.dataparser_transforms.read_text(encoding="utf-8"))
++    combined_transform = np.eye(4, dtype=np.float64)
++    combined_transform[:3, :4] = np.asarray(parser_data["transform"], dtype=np.float64)
++    applied_transform = np.eye(4, dtype=np.float64)
++    if "applied_transform" in source:
++        applied_transform[:3, :4] = np.asarray(
++            source["applied_transform"], dtype=np.float64
++        )
++    # dataparser_transforms.json maps original COLMAP coordinates to the
++    # normalized scene, while frame matrices are already in saved coordinates.
++    dataparser_transform = (combined_transform @ np.linalg.inv(applied_transform))[:3, :4]
++    dataparser_scale = float(parser_data["scale"])
++    fov = training_vertical_fov_degrees(source)
++    camera_by_name: dict[str, np.ndarray] = {}
++    all_positions = []
++    for frame in source["frames"]:
++        name = Path(frame["file_path"]).name
++        saved_c2w = np.asarray(frame["transform_matrix"], dtype=np.float64)
++        nerfstudio_c2w = apply_dataparser_transform(saved_c2w, dataparser_transform, dataparser_scale)
++        playcanvas_c2w = PLAYCANVAS_FROM_NERFSTUDIO @ nerfstudio_c2w
++        camera_by_name[name] = playcanvas_c2w
++        all_positions.append(playcanvas_c2w[:3, 3])
++
++    missing = set(ANCHOR_FRAMES) - camera_by_name.keys()
++    if missing:
++        raise RuntimeError(f"missing anchor cameras: {sorted(missing)}")
++    anchors = []
++    for name in ANCHOR_FRAMES:
++        c2w = camera_by_name[name]
++        stem = Path(name).stem
++        anchors.append(
++            {
++                "id": stem,
++                "label": f"Repaired source {stem}",
++                "sceneRevisionId": "pexels-simple-radial-v3-r001",
++                "position": rounded(c2w[:3, 3]),
++                "quaternion": rounded(np.asarray(matrix_to_quaternion_xyzw(c2w[:3, :3]))),
++                "fov": round(fov, 9),
++                "sourceFrame": f"images/{name}",
++            }
++        )
++    start_pose = {
++        "position": anchors[0]["position"],
++        "quaternion": anchors[0]["quaternion"],
++        "fov": anchors[0]["fov"],
++    }
++    positions = np.asarray(all_positions)
++    margin = 0.15
++    min_x, max_x = float(positions[:, 0].min() - margin), float(positions[:, 0].max() + margin)
++    min_z, max_z = float(positions[:, 2].min() - margin), float(positions[:, 2].max() + margin)
++    boundary = [
++        [round(min_x, 9), round(min_z, 9)],
++        [round(max_x, 9), round(min_z, 9)],
++        [round(max_x, 9), round(max_z, 9)],
++        [round(min_x, 9), round(max_z, 9)],
++    ]
++    manifest = {
++        "$schema": "./scene.schema.json",
++        "sceneRevisionId": "pexels-simple-radial-v3-r001",
++        "name": "Pexels interior — SIMPLE_RADIAL repair v3",
++        "sceneAsset": {
++            "url": args.scene_asset_url,
++            "format": "sog",
++            "required": True,
++            "position": [0.0, 0.0, 0.0],
++            "rotationEuler": [-90.0, 0.0, 0.0],
++            "scale": 1.0,
++        },
++        "backgroundColor": [0.15, 0.15, 0.15],
++        "defaultPhotoAnchorId": DEFAULT_PHOTO_ANCHOR,
++        "navigation": {
++            "eyeHeight": start_pose["position"][1],
++            "moveSpeed": 0.15,
++            "lookSensitivity": 0.11,
++            "boundaryXZ": boundary,
++            "startPose": start_pose,
++        },
++        "photoAnchors": anchors,
++    }
++    args.manifest_output.parent.mkdir(parents=True, exist_ok=True)
++    args.manifest_output.write_text(json.dumps(manifest, indent=2) + "\n", encoding="utf-8")
++    validation = {
++        "status": "PASS",
++        "sourceTransforms": str(args.transforms),
++        "dataparserTransforms": str(args.dataparser_transforms),
++        "coordinateConversion": {
++            "savedToNerfstudio": "saved_transform = dataparser_transform @ inverse(applied_transform); c2w_ns = saved_transform @ c2w_saved; scale c2w_ns translation",
++            "nerfstudioToPlayCanvas": "c2w_pc = Rx(-90deg) @ c2w_ns, mapping NS +Z up to PlayCanvas +Y up",
++            "sceneAssetRotationEulerDegrees": [-90.0, 0.0, 0.0],
++            "fov": "OpenCV optimal-new-camera projection and ROI crop, identical to Nerfstudio training cache",
++        },
++        "fovDegrees": fov,
++        "startSourceFrame": ANCHOR_FRAMES[0],
++        "defaultPhotoAnchorId": DEFAULT_PHOTO_ANCHOR,
++        "anchorCount": len(anchors),
++        "anchors": anchors,
++        "boundaryXZ": boundary,
++        "walkMode": "explicit; first movement switches to navigation.eyeHeight without overwriting photo-anchor Y",
++    }
++    args.validation_output.parent.mkdir(parents=True, exist_ok=True)
++    args.validation_output.write_text(json.dumps(validation, indent=2) + "\n", encoding="utf-8")
++    print(json.dumps(validation, indent=2))
++    return 0
++
++
++if __name__ == "__main__":
++    raise SystemExit(main())
+diff --git a/scripts/generate_tum_v4_viewer.py b/scripts/generate_tum_v4_viewer.py
+new file mode 100755
+index 0000000..dd25098
+--- /dev/null
++++ b/scripts/generate_tum_v4_viewer.py
+@@ -0,0 +1,179 @@
++#!/usr/bin/env python3
++"""Generate the v4 Viewer manifest from trained dataparser cameras."""
++
++from __future__ import annotations
++
++import argparse
++import json
++import math
++from pathlib import Path
++
++import numpy as np
++
++
++ANCHOR_FRAMES = ("frame_00000.png", "frame_00050.png", "frame_00099.png")
++DEFAULT_PHOTO_ANCHOR = "frame_00050"
++PLAYCANVAS_FROM_NERFSTUDIO = np.asarray(
++    [
++        [1.0, 0.0, 0.0, 0.0],
++        [0.0, 0.0, 1.0, 0.0],
++        [0.0, -1.0, 0.0, 0.0],
++        [0.0, 0.0, 0.0, 1.0],
++    ]
++)
++
++
++def matrix_to_quaternion_xyzw(matrix: np.ndarray) -> list[float]:
++    trace = float(np.trace(matrix))
++    if trace > 0.0:
++        s = math.sqrt(trace + 1.0) * 2.0
++        w = 0.25 * s
++        x = (matrix[2, 1] - matrix[1, 2]) / s
++        y = (matrix[0, 2] - matrix[2, 0]) / s
++        z = (matrix[1, 0] - matrix[0, 1]) / s
++    else:
++        index = int(np.argmax(np.diag(matrix)))
++        if index == 0:
++            s = math.sqrt(1.0 + matrix[0, 0] - matrix[1, 1] - matrix[2, 2]) * 2.0
++            x = 0.25 * s
++            y = (matrix[0, 1] + matrix[1, 0]) / s
++            z = (matrix[0, 2] + matrix[2, 0]) / s
++            w = (matrix[2, 1] - matrix[1, 2]) / s
++        elif index == 1:
++            s = math.sqrt(1.0 + matrix[1, 1] - matrix[0, 0] - matrix[2, 2]) * 2.0
++            x = (matrix[0, 1] + matrix[1, 0]) / s
++            y = 0.25 * s
++            z = (matrix[1, 2] + matrix[2, 1]) / s
++            w = (matrix[0, 2] - matrix[2, 0]) / s
++        else:
++            s = math.sqrt(1.0 + matrix[2, 2] - matrix[0, 0] - matrix[1, 1]) * 2.0
++            x = (matrix[0, 2] + matrix[2, 0]) / s
++            y = (matrix[1, 2] + matrix[2, 1]) / s
++            z = 0.25 * s
++            w = (matrix[1, 0] - matrix[0, 1]) / s
++    quaternion = np.asarray([x, y, z, w], dtype=np.float64)
++    quaternion /= np.linalg.norm(quaternion)
++    return quaternion.tolist()
++
++
++def apply_dataparser_transform(
++    saved_c2w: np.ndarray, dataparser_transform: np.ndarray, dataparser_scale: float
++) -> np.ndarray:
++    transform = np.eye(4, dtype=np.float64)
++    transform[:3, :4] = dataparser_transform
++    result = transform @ saved_c2w
++    result[:3, 3] *= dataparser_scale
++    return result
++
++
++def rounded(values: np.ndarray, digits: int = 9) -> list[float]:
++    return [round(float(value), digits) for value in values]
++
++
++def main() -> int:
++    parser = argparse.ArgumentParser()
++    parser.add_argument("--transforms", type=Path, required=True)
++    parser.add_argument("--dataparser-transforms", type=Path, required=True)
++    parser.add_argument("--scene-asset-url", default="./assets/tum-v4.scene.sog")
++    parser.add_argument("--manifest-output", type=Path, required=True)
++    parser.add_argument("--validation-output", type=Path, required=True)
++    args = parser.parse_args()
++
++    source = json.loads(args.transforms.read_text(encoding="utf-8"))
++    parser_data = json.loads(args.dataparser_transforms.read_text(encoding="utf-8"))
++    dataparser_transform = np.asarray(parser_data["transform"], dtype=np.float64)
++    dataparser_scale = float(parser_data["scale"])
++    fov = math.degrees(2.0 * math.atan(float(source["h"]) / (2.0 * float(source["fl_y"]))))
++    camera_by_name: dict[str, np.ndarray] = {}
++    all_positions = []
++    for frame in source["frames"]:
++        name = Path(frame["file_path"]).name
++        saved_c2w = np.asarray(frame["transform_matrix"], dtype=np.float64)
++        nerfstudio_c2w = apply_dataparser_transform(saved_c2w, dataparser_transform, dataparser_scale)
++        playcanvas_c2w = PLAYCANVAS_FROM_NERFSTUDIO @ nerfstudio_c2w
++        camera_by_name[name] = playcanvas_c2w
++        all_positions.append(playcanvas_c2w[:3, 3])
++
++    missing = set(ANCHOR_FRAMES) - camera_by_name.keys()
++    if missing:
++        raise RuntimeError(f"missing anchor cameras: {sorted(missing)}")
++    anchors = []
++    for name in ANCHOR_FRAMES:
++        c2w = camera_by_name[name]
++        stem = Path(name).stem
++        anchors.append(
++            {
++                "id": stem,
++                "label": f"TUM {stem}",
++                "sceneRevisionId": "tum-freiburg1-desk-v4-r001",
++                "position": rounded(c2w[:3, 3]),
++                "quaternion": rounded(np.asarray(matrix_to_quaternion_xyzw(c2w[:3, :3]))),
++                "fov": round(fov, 9),
++                "sourceFrame": f"images/{name}",
++            }
++        )
++    start_pose = {
++        "position": anchors[0]["position"],
++        "quaternion": anchors[0]["quaternion"],
++        "fov": anchors[0]["fov"],
++    }
++    positions = np.asarray(all_positions)
++    margin = 0.15
++    min_x, max_x = float(positions[:, 0].min() - margin), float(positions[:, 0].max() + margin)
++    min_z, max_z = float(positions[:, 2].min() - margin), float(positions[:, 2].max() + margin)
++    boundary = [
++        [round(min_x, 9), round(min_z, 9)],
++        [round(max_x, 9), round(min_z, 9)],
++        [round(max_x, 9), round(max_z, 9)],
++        [round(min_x, 9), round(max_z, 9)],
++    ]
++    manifest = {
++        "$schema": "./scene.schema.json",
++        "sceneRevisionId": "tum-freiburg1-desk-v4-r001",
++        "name": "TUM RGB-D fr1/desk — first usable scene",
++        "sceneAsset": {
++            "url": args.scene_asset_url,
++            "format": "sog",
++            "required": True,
++            "position": [0.0, 0.0, 0.0],
++            "rotationEuler": [-90.0, 0.0, 0.0],
++            "scale": 1.0,
++        },
++        "backgroundColor": [0.15, 0.15, 0.15],
++        "defaultPhotoAnchorId": DEFAULT_PHOTO_ANCHOR,
++        "navigation": {
++            "eyeHeight": start_pose["position"][1],
++            "moveSpeed": 0.15,
++            "lookSensitivity": 0.11,
++            "boundaryXZ": boundary,
++            "startPose": start_pose,
++        },
++        "photoAnchors": anchors,
++    }
++    args.manifest_output.parent.mkdir(parents=True, exist_ok=True)
++    args.manifest_output.write_text(json.dumps(manifest, indent=2) + "\n", encoding="utf-8")
++    validation = {
++        "status": "PASS",
++        "sourceTransforms": str(args.transforms),
++        "dataparserTransforms": str(args.dataparser_transforms),
++        "coordinateConversion": {
++            "savedToNerfstudio": "c2w_ns = dataparser_transform @ c2w_saved; scale c2w_ns translation",
++            "nerfstudioToPlayCanvas": "c2w_pc = Rx(-90deg) @ c2w_ns, mapping NS +Z up to PlayCanvas +Y up",
++            "sceneAssetRotationEulerDegrees": [-90.0, 0.0, 0.0],
++        },
++        "fovDegrees": fov,
++        "startSourceFrame": ANCHOR_FRAMES[0],
++        "defaultPhotoAnchorId": DEFAULT_PHOTO_ANCHOR,
++        "anchorCount": len(anchors),
++        "anchors": anchors,
++        "boundaryXZ": boundary,
++        "walkMode": "explicit; first movement switches to navigation.eyeHeight without overwriting photo-anchor Y",
++    }
++    args.validation_output.parent.mkdir(parents=True, exist_ok=True)
++    args.validation_output.write_text(json.dumps(validation, indent=2) + "\n", encoding="utf-8")
++    print(json.dumps(validation, indent=2))
++    return 0
++
++
++if __name__ == "__main__":
++    raise SystemExit(main())
+diff --git a/scripts/repair_sfm_v3.py b/scripts/repair_sfm_v3.py
+new file mode 100755
+index 0000000..20b39c2
+--- /dev/null
++++ b/scripts/repair_sfm_v3.py
+@@ -0,0 +1,313 @@
++#!/usr/bin/env python3
++"""Run one contract-bounded v3 SfM candidate without touching the baseline.
++
++The script reuses the baseline database so SIFT features and exhaustive matches
++are byte-for-byte identical.  It only replaces the single camera row in an
++isolated database copy, then runs COLMAP mapper and the same final principal
++point bundle adjustment used by Nerfstudio 1.1.5.
++"""
++
++from __future__ import annotations
++
++import argparse
++import hashlib
++import json
++import re
++import shutil
++import sqlite3
++import struct
++import subprocess
++import sys
++from dataclasses import dataclass
++from pathlib import Path
++
++
++PROJECT = Path(__file__).resolve().parents[1]
++BASELINE_DB = PROJECT / "data/processed/preview-primary/colmap/database.db"
++IMAGE_DIR = PROJECT / "data/processed/preview-primary/images"
++OUTPUT_ROOT = PROJECT / "reports/repair-v3/sfm"
++ANCHORS = ("frame_00001.jpg", "frame_00036.jpg", "frame_00072.jpg")
++EVIDENCE_FOCAL = 832.1797717687189
++
++
++@dataclass(frozen=True)
++class Candidate:
++    camera_model: str
++    camera_model_id: int
++    params: tuple[float, ...]
++    prior_focal_length: int
++    refine_focal_length: bool
++    evidence: str
++
++
++CANDIDATES = {
++    "SIMPLE_RADIAL_AUTO": Candidate(
++        camera_model="SIMPLE_RADIAL",
++        camera_model_id=2,
++        params=(1536.0, 640.0, 360.0, 0.0),
++        prior_focal_length=0,
++        refine_focal_length=True,
++        evidence=(
++            "COLMAP default_focal_length_factor=1.2 at max(width,height)=1280; "
++            "principal point is the 1280x720 image center; k=0."
++        ),
++    ),
++    "SIMPLE_RADIAL_PRIOR": Candidate(
++        camera_model="SIMPLE_RADIAL",
++        camera_model_id=2,
++        params=(EVIDENCE_FOCAL, 640.0, 360.0, 0.0),
++        prior_focal_length=1,
++        refine_focal_length=False,
++        evidence=(
++            "f=832.1797717687189 is the plausible horizontal focal component "
++            "from the frozen v2 OPENCV solution; principal point is the image "
++            "center. COLMAP 3.7 has no soft focal prior, so focal refinement is "
++            "disabled to make the sourced prior an actual constraint."
++        ),
++    ),
++    "SQUARE_PIXEL_LOW_DOF_PRIOR": Candidate(
++        camera_model="SIMPLE_PINHOLE",
++        camera_model_id=0,
++        params=(EVIDENCE_FOCAL, 640.0, 360.0),
++        prior_focal_length=1,
++        refine_focal_length=False,
++        evidence=(
++            "SIMPLE_PINHOLE is the alternate square-pixel low-DOF model; "
++            "f=832.1797717687189 comes from the frozen v2 horizontal focal "
++            "component and the principal point is the image center."
++        ),
++    ),
++}
++
++
++def sha256(path: Path) -> str:
++    digest = hashlib.sha256()
++    with path.open("rb") as handle:
++        for chunk in iter(lambda: handle.read(1024 * 1024), b""):
++            digest.update(chunk)
++    return digest.hexdigest()
++
++
++def quote_command(command: list[str]) -> str:
++    return " ".join(subprocess.list2cmdline([part]) for part in command)
++
++
++def run(command: list[str], log_path: Path, command_lines: list[str]) -> str:
++    command_lines.append(quote_command(command))
++    proc = subprocess.run(command, text=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
++    with log_path.open("a", encoding="utf-8") as handle:
++        handle.write(f"\n$ {quote_command(command)}\n")
++        handle.write(proc.stdout)
++    if proc.returncode:
++        raise subprocess.CalledProcessError(proc.returncode, command, output=proc.stdout)
++    return proc.stdout
++
++
++def parse_analyzer(text: str) -> dict[str, float | int | str | None]:
++    patterns = {
++        "cameras": r"^Cameras:\s+(\d+)",
++        "images": r"^Images:\s+(\d+)",
++        "registeredImages": r"^Registered images:\s+(\d+)",
++        "points": r"^Points:\s+(\d+)",
++        "observations": r"^Observations:\s+(\d+)",
++        "meanTrackLength": r"^Mean track length:\s+([0-9.eE+-]+)",
++        "meanObservationsPerImage": r"^Mean observations per image:\s+([0-9.eE+-]+)",
++        "meanReprojectionErrorPx": r"^Mean reprojection error:\s+([0-9.eE+-]+)px",
++    }
++    result: dict[str, float | int | str | None] = {"raw": text}
++    for key, pattern in patterns.items():
++        match = re.search(pattern, text, re.MULTILINE)
++        if not match:
++            result[key] = None
++        elif key in {"cameras", "images", "registeredImages", "points", "observations"}:
++            result[key] = int(match.group(1))
++        else:
++            result[key] = float(match.group(1))
++    return result
++
++
++def replace_camera(database: Path, candidate: Candidate) -> dict[str, object]:
++    connection = sqlite3.connect(database)
++    try:
++        rows = list(
++            connection.execute(
++                "SELECT camera_id, model, width, height, params, prior_focal_length FROM cameras"
++            )
++        )
++        if len(rows) != 1:
++            raise RuntimeError(f"expected one shared camera, found {len(rows)}")
++        camera_id, old_model, width, height, old_blob, old_prior = rows[0]
++        old_params = struct.unpack("<" + "d" * (len(old_blob) // 8), old_blob)
++        new_blob = struct.pack("<" + "d" * len(candidate.params), *candidate.params)
++        connection.execute(
++            "UPDATE cameras SET model=?, params=?, prior_focal_length=? WHERE camera_id=?",
++            (
++                candidate.camera_model_id,
++                new_blob,
++                candidate.prior_focal_length,
++                camera_id,
++            ),
++        )
++        connection.commit()
++        return {
++            "cameraId": camera_id,
++            "width": width,
++            "height": height,
++            "before": {
++                "modelId": old_model,
++                "params": old_params,
++                "priorFocalLength": old_prior,
++            },
++            "after": {
++                "model": candidate.camera_model,
++                "modelId": candidate.camera_model_id,
++                "params": candidate.params,
++                "priorFocalLength": candidate.prior_focal_length,
++            },
++        }
++    finally:
++        connection.close()
++
++
++def main() -> int:
++    parser = argparse.ArgumentParser()
++    parser.add_argument("candidate", choices=CANDIDATES)
++    args = parser.parse_args()
++    candidate = CANDIDATES[args.candidate]
++    output = OUTPUT_ROOT / args.candidate
++    if output.exists():
++        raise SystemExit(f"refusing to overwrite existing isolated candidate: {output}")
++    output.mkdir(parents=True)
++    sparse = output / "sparse"
++    sparse.mkdir()
++    database = output / "database.db"
++    log_path = output / "colmap.log"
++    command_lines: list[str] = []
++
++    shutil.copy2(BASELINE_DB, database)
++    db_before_hash = sha256(BASELINE_DB)
++    camera_change = replace_camera(database, candidate)
++    metadata: dict[str, object] = {
++        "candidate": args.candidate,
++        "cameraModel": candidate.camera_model,
++        "evidence": candidate.evidence,
++        "baselineDatabase": str(BASELINE_DB),
++        "baselineDatabaseSha256": db_before_hash,
++        "matching": "reused byte-identical baseline SIFT features and exhaustive matches",
++        "cameraChange": camera_change,
++        "refineFocalLength": candidate.refine_focal_length,
++    }
++    (output / "candidate-input.json").write_text(
++        json.dumps(metadata, indent=2) + "\n", encoding="utf-8"
++    )
++
++    mapper = [
++        "colmap",
++        "mapper",
++        "--database_path",
++        str(database),
++        "--image_path",
++        str(IMAGE_DIR),
++        "--output_path",
++        str(sparse),
++        "--Mapper.ba_global_function_tolerance=1e-6",
++        "--Mapper.ba_refine_focal_length",
++        "1" if candidate.refine_focal_length else "0",
++    ]
++    run(mapper, log_path, command_lines)
++
++    model_dirs = sorted(path for path in sparse.iterdir() if path.is_dir())
++    if not model_dirs:
++        raise RuntimeError("COLMAP mapper produced no sparse model")
++    summaries: list[dict[str, object]] = []
++    for model_dir in model_dirs:
++        bundle_adjuster = [
++            "colmap",
++            "bundle_adjuster",
++            "--input_path",
++            str(model_dir),
++            "--output_path",
++            str(model_dir),
++            "--BundleAdjustment.refine_focal_length",
++            "1" if candidate.refine_focal_length else "0",
++            "--BundleAdjustment.refine_principal_point",
++            "1",
++        ]
++        run(bundle_adjuster, log_path, command_lines)
++        analyzer = run(
++            ["colmap", "model_analyzer", "--path", str(model_dir)],
++            log_path,
++            command_lines,
++        )
++        (output / f"model_analyzer-{model_dir.name}.txt").write_text(analyzer, encoding="utf-8")
++        parsed = parse_analyzer(analyzer)
++        parsed["modelDirectory"] = model_dir.name
++        summaries.append(parsed)
++
++    best = max(
++        summaries,
++        key=lambda item: (
++            int(item.get("registeredImages") or 0),
++            int(item.get("points") or 0),
++            int(item.get("observations") or 0),
++        ),
++    )
++    best_dir = sparse / str(best["modelDirectory"])
++    txt_dir = output / "model-txt"
++    txt_dir.mkdir()
++    run(
++        [
++            "colmap",
++            "model_converter",
++            "--input_path",
++            str(best_dir),
++            "--output_path",
++            str(txt_dir),
++            "--output_type",
++            "TXT",
++        ],
++        log_path,
++        command_lines,
++    )
++    anchor_list = output / "anchor-images.txt"
++    anchor_list.write_text("\n".join(ANCHORS) + "\n", encoding="utf-8")
++    undistorted = output / "undistorted-anchors"
++    run(
++        [
++            "colmap",
++            "image_undistorter",
++            "--image_path",
++            str(IMAGE_DIR),
++            "--input_path",
++            str(best_dir),
++            "--output_path",
++            str(undistorted),
++            "--output_type",
++            "COLMAP",
++            "--image_list_path",
++            str(anchor_list),
++        ],
++        log_path,
++        command_lines,
++    )
++    result = {
++        **metadata,
++        "models": summaries,
++        "bestModelDirectory": str(best_dir),
++        "bestModel": best,
++        "commands": command_lines,
++    }
++    (output / "candidate-result.json").write_text(
++        json.dumps(result, indent=2) + "\n", encoding="utf-8"
++    )
++    (output / "commands.txt").write_text("\n".join(command_lines) + "\n", encoding="utf-8")
++    print(json.dumps(best, indent=2))
++    return 0
++
++
++if __name__ == "__main__":
++    try:
++        raise SystemExit(main())
++    except subprocess.CalledProcessError as exc:
++        print(exc.output, file=sys.stderr)
++        raise
+diff --git a/scripts/run_repair_v3_train.sh b/scripts/run_repair_v3_train.sh
+new file mode 100755
+index 0000000..3d12d25
+--- /dev/null
++++ b/scripts/run_repair_v3_train.sh
+@@ -0,0 +1,66 @@
++#!/usr/bin/env bash
++set -euo pipefail
++
++project_root="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
++data_root="$project_root/reports/repair-v3/processed/SIMPLE_RADIAL_AUTO"
++output_root="$project_root/artifacts/training/repair-v3"
++report_root="$project_root/reports/repair-v3"
++log_root="$report_root/logs"
++
++[[ -f "$data_root/transforms.json" ]] || { echo "missing repaired dataset" >&2; exit 1; }
++[[ ! -e "$output_root/pexels-simple-radial-auto-v3" ]] || {
++  echo "refusing to launch a second v3 training run: output already exists" >&2
++  exit 1
++}
++mkdir -p "$output_root" "$log_root"
++# The project-local venv is created by bootstrap.
++# shellcheck disable=SC1091
++source "$project_root/.venv/bin/activate"
++
++nvidia-smi --query-gpu=timestamp,memory.used,utilization.gpu \
++  --format=csv,noheader,nounits -lms 500 >"$log_root/gpu-samples.csv" &
++monitor_pid=$!
++cleanup() {
++  kill "$monitor_pid" 2>/dev/null || true
++  wait "$monitor_pid" 2>/dev/null || true
++}
++trap cleanup EXIT
++
++start_epoch=$(date +%s)
++set +e
++/usr/bin/time -v ns-train splatfacto \
++  --output-dir "$output_root" \
++  --experiment-name pexels-simple-radial-auto-v3 \
++  --max-num-iterations 7000 \
++  --steps-per-save 2000 \
++  --steps-per-eval-image 100000 \
++  --steps-per-eval-all-images 100000 \
++  --vis tensorboard \
++  --pipeline.model.use-scale-regularization True \
++  --pipeline.model.random-init False \
++  nerfstudio-data \
++  --data "$data_root" \
++  --load-3D-points True \
++  --orientation-method up \
++  --center-method poses \
++  --auto-scale-poses True \
++  --eval-mode all \
++  2>&1 | tee "$log_root/train.log"
++train_status=${PIPESTATUS[0]}
++set -e
++end_epoch=$(date +%s)
++cleanup
++trap - EXIT
++
++{
++  printf 'start_epoch=%s\n' "$start_epoch"
++  printf 'end_epoch=%s\n' "$end_epoch"
++  printf 'wall_seconds=%s\n' "$((end_epoch - start_epoch))"
++  printf 'train_exit_code=%s\n' "$train_status"
++  awk -F, '
++    {gsub(/ /, "", $2); if (($2 + 0) > peak) peak=$2 + 0}
++    END {printf "peak_vram_mib=%d\n", peak}
++  ' "$log_root/gpu-samples.csv"
++} >"$report_root/train-runtime.txt"
++
++exit "$train_status"
+diff --git a/scripts/run_tum_v4_train.sh b/scripts/run_tum_v4_train.sh
+new file mode 100755
+index 0000000..059fb01
+--- /dev/null
++++ b/scripts/run_tum_v4_train.sh
+@@ -0,0 +1,65 @@
++#!/usr/bin/env bash
++set -euo pipefail
++
++project_root="/home/max/src/unseen-3dgs-sceneworker"
++data_root="$project_root/data/tum-v4/processed/desk-5hz"
++output_root="$project_root/artifacts/training/tum-v4"
++report_root="$project_root/reports/tum-v4"
++log_root="$report_root/logs"
++
++[[ -f "$data_root/transforms.json" ]] || { echo "missing adapter output" >&2; exit 1; }
++[[ ! -e "$output_root/freiburg1-desk-v4" ]] || {
++  echo "refusing to launch a second v4 training run: output already exists" >&2
++  exit 1
++}
++mkdir -p "$output_root" "$log_root"
++# The project-local venv is created by bootstrap.
++# shellcheck disable=SC1091
++source "$project_root/.venv/bin/activate"
++
++nvidia-smi --query-gpu=timestamp,memory.used,utilization.gpu \
++  --format=csv,noheader,nounits -lms 500 >"$log_root/gpu-samples.csv" &
++monitor_pid=$!
++cleanup() {
++  kill "$monitor_pid" 2>/dev/null || true
++  wait "$monitor_pid" 2>/dev/null || true
++}
++trap cleanup EXIT
++
++start_epoch=$(date +%s)
++set +e
++/usr/bin/time -v ns-train splatfacto \
++  --output-dir "$output_root" \
++  --experiment-name freiburg1-desk-v4 \
++  --max-num-iterations 7000 \
++  --steps-per-save 2000 \
++  --steps-per-eval-image 100000 \
++  --steps-per-eval-all-images 100000 \
++  --vis tensorboard \
++  --pipeline.model.use-scale-regularization True \
++  --pipeline.model.random-init False \
++  nerfstudio-data \
++  --data "$data_root" \
++  --load-3D-points True \
++  --orientation-method up \
++  --center-method poses \
++  --auto-scale-poses True \
++  2>&1 | tee "$log_root/train.log"
++train_status=${PIPESTATUS[0]}
++set -e
++end_epoch=$(date +%s)
++cleanup
++trap - EXIT
++
++{
++  printf 'start_epoch=%s\n' "$start_epoch"
++  printf 'end_epoch=%s\n' "$end_epoch"
++  printf 'wall_seconds=%s\n' "$((end_epoch - start_epoch))"
++  printf 'train_exit_code=%s\n' "$train_status"
++  awk -F, '
++    {gsub(/ /, "", $2); if (($2 + 0) > peak) peak=$2 + 0}
++    END {printf "peak_vram_mib=%d\n", peak}
++  ' "$log_root/gpu-samples.csv"
++} >"$report_root/train-runtime.txt"
++
++exit "$train_status"
+diff --git a/scripts/test_generate_repair_v3_viewer.py b/scripts/test_generate_repair_v3_viewer.py
+new file mode 100755
+index 0000000..805a64a
+--- /dev/null
++++ b/scripts/test_generate_repair_v3_viewer.py
+@@ -0,0 +1,54 @@
++#!/usr/bin/env python3
++
++from __future__ import annotations
++
++import unittest
++
++import numpy as np
++
++from generate_repair_v3_viewer import (
++    PLAYCANVAS_FROM_NERFSTUDIO,
++    apply_dataparser_transform,
++    matrix_to_quaternion_xyzw,
++    training_vertical_fov_degrees,
++)
++
++
++def quaternion_xyzw_to_matrix(values: list[float]) -> np.ndarray:
++    x, y, z, w = values
++    return np.asarray(
++        [
++            [1 - 2 * (y * y + z * z), 2 * (x * y - z * w), 2 * (x * z + y * w)],
++            [2 * (x * y + z * w), 1 - 2 * (x * x + z * z), 2 * (y * z - x * w)],
++            [2 * (x * z - y * w), 2 * (y * z + x * w), 1 - 2 * (x * x + y * y)],
++        ]
++    )
++
++
++class ViewerTransformTests(unittest.TestCase):
++    def test_matrix_quaternion_roundtrip(self) -> None:
++        matrix = PLAYCANVAS_FROM_NERFSTUDIO[:3, :3]
++        quaternion = matrix_to_quaternion_xyzw(matrix)
++        np.testing.assert_allclose(quaternion_xyzw_to_matrix(quaternion), matrix, atol=1e-12)
++
++    def test_dataparser_translation_is_scaled_after_transform(self) -> None:
++        pose = np.eye(4)
++        pose[:3, 3] = [1.0, 2.0, 3.0]
++        transform = np.asarray([[1, 0, 0, 4], [0, 1, 0, 5], [0, 0, 1, 6]], dtype=float)
++        result = apply_dataparser_transform(pose, transform, 0.5)
++        np.testing.assert_allclose(result[:3, 3], [2.5, 3.5, 4.5])
++
++    def test_training_fov_reproduces_pinhole_without_distortion(self) -> None:
++        source = {
++            "w": 1280,
++            "h": 720,
++            "fl_x": 1000.0,
++            "fl_y": 1000.0,
++            "cx": 640.0,
++            "cy": 360.0,
++        }
++        self.assertAlmostEqual(training_vertical_fov_degrees(source), 39.5470224441617, places=10)
++
++
++if __name__ == "__main__":
++    unittest.main()
+diff --git a/scripts/test_generate_tum_v4_viewer.py b/scripts/test_generate_tum_v4_viewer.py
+new file mode 100755
+index 0000000..481a59f
+--- /dev/null
++++ b/scripts/test_generate_tum_v4_viewer.py
+@@ -0,0 +1,42 @@
++#!/usr/bin/env python3
++
++from __future__ import annotations
++
++import unittest
++
++import numpy as np
++
++from generate_tum_v4_viewer import (
++    PLAYCANVAS_FROM_NERFSTUDIO,
++    apply_dataparser_transform,
++    matrix_to_quaternion_xyzw,
++)
++
++
++def quaternion_xyzw_to_matrix(values: list[float]) -> np.ndarray:
++    x, y, z, w = values
++    return np.asarray(
++        [
++            [1 - 2 * (y * y + z * z), 2 * (x * y - z * w), 2 * (x * z + y * w)],
++            [2 * (x * y + z * w), 1 - 2 * (x * x + z * z), 2 * (y * z - x * w)],
++            [2 * (x * z - y * w), 2 * (y * z + x * w), 1 - 2 * (x * x + y * y)],
++        ]
++    )
++
++
++class ViewerTransformTests(unittest.TestCase):
++    def test_matrix_quaternion_roundtrip(self) -> None:
++        matrix = PLAYCANVAS_FROM_NERFSTUDIO[:3, :3]
++        quaternion = matrix_to_quaternion_xyzw(matrix)
++        np.testing.assert_allclose(quaternion_xyzw_to_matrix(quaternion), matrix, atol=1e-12)
++
++    def test_dataparser_translation_is_scaled_after_transform(self) -> None:
++        pose = np.eye(4)
++        pose[:3, 3] = [1.0, 2.0, 3.0]
++        transform = np.asarray([[1, 0, 0, 4], [0, 1, 0, 5], [0, 0, 1, 6]], dtype=float)
++        result = apply_dataparser_transform(pose, transform, 0.5)
++        np.testing.assert_allclose(result[:3, 3], [2.5, 3.5, 4.5])
++
++
++if __name__ == "__main__":
++    unittest.main()
+diff --git a/scripts/test_tum_v4_adapter.py b/scripts/test_tum_v4_adapter.py
+new file mode 100755
+index 0000000..058b847
+--- /dev/null
++++ b/scripts/test_tum_v4_adapter.py
+@@ -0,0 +1,38 @@
++#!/usr/bin/env python3
++"""Minimal convention tests for tum_v4_adapter.py."""
++
++from __future__ import annotations
++
++import unittest
++
++import numpy as np
++
++from tum_v4_adapter import TimedPose, nearest_index, tum_pose_matrices
++
++
++class AdapterConventionTests(unittest.TestCase):
++    def test_nearest_timestamp_is_deterministic(self) -> None:
++        timestamps = [1.0, 2.0, 3.0]
++        self.assertEqual(nearest_index(timestamps, 2.49), 1)
++        self.assertEqual(nearest_index(timestamps, 2.50), 1)
++        self.assertEqual(nearest_index(timestamps, 2.51), 2)
++
++    def test_opencv_to_opengl_camera_axes(self) -> None:
++        pose = TimedPose(0.0, np.array([1.0, 2.0, 3.0]), np.array([0.0, 0.0, 0.0, 1.0]))
++        c2w_cv, c2w_gl = tum_pose_matrices(pose)
++        np.testing.assert_allclose(c2w_cv, np.eye(4) + np.array([[0, 0, 0, 1], [0, 0, 0, 2], [0, 0, 0, 3], [0, 0, 0, 0]]))
++        np.testing.assert_allclose(c2w_gl[:3, 0], [1.0, 0.0, 0.0])
++        np.testing.assert_allclose(c2w_gl[:3, 1], [0.0, -1.0, 0.0])
++        np.testing.assert_allclose(c2w_gl[:3, 2], [0.0, 0.0, -1.0])
++        np.testing.assert_allclose(c2w_gl[:3, 3], [1.0, 2.0, 3.0])
++
++    def test_rotation_is_orthonormal(self) -> None:
++        pose = TimedPose(0.0, np.zeros(3), np.array([0.2, -0.3, 0.1, 0.9]))
++        c2w_cv, _ = tum_pose_matrices(pose)
++        rotation = c2w_cv[:3, :3]
++        np.testing.assert_allclose(rotation.T @ rotation, np.eye(3), atol=1e-12)
++        self.assertAlmostEqual(float(np.linalg.det(rotation)), 1.0, places=12)
++
++
++if __name__ == "__main__":
++    unittest.main()
+diff --git a/scripts/tum_v4_adapter.py b/scripts/tum_v4_adapter.py
+new file mode 100755
+index 0000000..7b54d8c
+--- /dev/null
++++ b/scripts/tum_v4_adapter.py
+@@ -0,0 +1,352 @@
++#!/usr/bin/env python3
++"""Build the v4 TUM freiburg1/desk Nerfstudio fixture from known poses.
++
++The adapter deterministically samples at 5 Hz, associates RGB/depth/ground
++truth by timestamp, converts the TUM/OpenCV camera-to-world pose to the
++Nerfstudio/OpenGL convention, and creates a bounded colored depth seed.
++"""
++
++from __future__ import annotations
++
++import argparse
++import bisect
++import json
++import math
++import shutil
++from dataclasses import dataclass
++from pathlib import Path
++
++import cv2
++import numpy as np
++from plyfile import PlyData, PlyElement
++
++
++RGB_FX = 525.0
++RGB_FY = 525.0
++RGB_CX = 319.5
++RGB_CY = 239.5
++WIDTH = 640
++HEIGHT = 480
++DEPTH_FACTOR = 5000.0
++MAX_DEPTH_METERS = 5.0
++SAMPLE_HZ = 5.0
++MAX_FRAMES = 120
++MAX_SEED_POINTS = 200_000
++OPENGL_FROM_OPENCV = np.diag([1.0, -1.0, -1.0, 1.0])
++
++
++@dataclass(frozen=True)
++class TimedPath:
++    timestamp: float
++    path: str
++
++
++@dataclass(frozen=True)
++class TimedPose:
++    timestamp: float
++    translation: np.ndarray
++    quaternion_xyzw: np.ndarray
++
++
++def read_timed_paths(path: Path) -> list[TimedPath]:
++    rows: list[TimedPath] = []
++    for line in path.read_text(encoding="utf-8").splitlines():
++        line = line.strip()
++        if not line or line.startswith("#"):
++            continue
++        timestamp, relative_path = line.split(maxsplit=1)
++        rows.append(TimedPath(float(timestamp), relative_path))
++    return rows
++
++
++def read_timed_poses(path: Path) -> list[TimedPose]:
++    rows: list[TimedPose] = []
++    for line in path.read_text(encoding="utf-8").splitlines():
++        line = line.strip()
++        if not line or line.startswith("#"):
++            continue
++        values = [float(item) for item in line.split()]
++        rows.append(
++            TimedPose(
++                timestamp=values[0],
++                translation=np.asarray(values[1:4], dtype=np.float64),
++                quaternion_xyzw=np.asarray(values[4:8], dtype=np.float64),
++            )
++        )
++    return rows
++
++
++def nearest_index(timestamps: list[float], target: float) -> int:
++    insertion = bisect.bisect_left(timestamps, target)
++    choices = [index for index in (insertion - 1, insertion) if 0 <= index < len(timestamps)]
++    return min(choices, key=lambda index: (abs(timestamps[index] - target), index))
++
++
++def quaternion_xyzw_to_rotation(quaternion: np.ndarray) -> np.ndarray:
++    quaternion = quaternion.astype(np.float64)
++    norm = np.linalg.norm(quaternion)
++    if not np.isfinite(norm) or norm < 1e-12:
++        raise ValueError("invalid quaternion")
++    x, y, z, w = quaternion / norm
++    return np.asarray(
++        [
++            [1 - 2 * (y * y + z * z), 2 * (x * y - z * w), 2 * (x * z + y * w)],
++            [2 * (x * y + z * w), 1 - 2 * (x * x + z * z), 2 * (y * z - x * w)],
++            [2 * (x * z - y * w), 2 * (y * z + x * w), 1 - 2 * (x * x + y * y)],
++        ],
++        dtype=np.float64,
++    )
++
++
++def tum_pose_matrices(pose: TimedPose) -> tuple[np.ndarray, np.ndarray]:
++    """Return TUM/OpenCV c2w and Nerfstudio/OpenGL c2w."""
++    c2w_opencv = np.eye(4, dtype=np.float64)
++    c2w_opencv[:3, :3] = quaternion_xyzw_to_rotation(pose.quaternion_xyzw)
++    c2w_opencv[:3, 3] = pose.translation
++    c2w_opengl = c2w_opencv @ OPENGL_FROM_OPENCV
++    return c2w_opencv, c2w_opengl
++
++
++def backproject_depth(
++    depth: np.ndarray, rgb_bgr: np.ndarray, c2w_opencv: np.ndarray, grid_step: int = 12
++) -> tuple[np.ndarray, np.ndarray]:
++    vv, uu = np.mgrid[0:HEIGHT:grid_step, 0:WIDTH:grid_step]
++    raw_depth = depth[vv, uu].astype(np.float64)
++    z = raw_depth / DEPTH_FACTOR
++    valid = (raw_depth > 0) & np.isfinite(z) & (z >= 0.2) & (z <= MAX_DEPTH_METERS)
++    u = uu[valid].astype(np.float64)
++    v = vv[valid].astype(np.float64)
++    z = z[valid]
++    xyz_camera = np.stack(
++        [
++            (u - RGB_CX) * z / RGB_FX,
++            (v - RGB_CY) * z / RGB_FY,
++            z,
++        ],
++        axis=1,
++    )
++    xyz_world = xyz_camera @ c2w_opencv[:3, :3].T + c2w_opencv[:3, 3]
++    colors_rgb = rgb_bgr[vv[valid], uu[valid], ::-1]
++    return xyz_world.astype(np.float32), colors_rgb.astype(np.uint8)
++
++
++def write_ply(path: Path, points: np.ndarray, colors: np.ndarray) -> None:
++    vertices = np.empty(
++        len(points),
++        dtype=[
++            ("x", "f4"),
++            ("y", "f4"),
++            ("z", "f4"),
++            ("red", "u1"),
++            ("green", "u1"),
++            ("blue", "u1"),
++        ],
++    )
++    vertices["x"], vertices["y"], vertices["z"] = points.T
++    vertices["red"], vertices["green"], vertices["blue"] = colors.T
++    PlyData([PlyElement.describe(vertices, "vertex")], text=False).write(path)
++
++
++def projection_roundtrip_error(depth: np.ndarray, c2w_opencv: np.ndarray) -> dict[str, float | int]:
++    vv, uu = np.mgrid[0:HEIGHT:24, 0:WIDTH:24]
++    raw_depth = depth[vv, uu].astype(np.float64)
++    z = raw_depth / DEPTH_FACTOR
++    valid = (raw_depth > 0) & (z >= 0.2) & (z <= MAX_DEPTH_METERS)
++    u = uu[valid].astype(np.float64)
++    v = vv[valid].astype(np.float64)
++    z = z[valid]
++    camera = np.stack([(u - RGB_CX) * z / RGB_FX, (v - RGB_CY) * z / RGB_FY, z], axis=1)
++    world = camera @ c2w_opencv[:3, :3].T + c2w_opencv[:3, 3]
++    recovered = (world - c2w_opencv[:3, 3]) @ c2w_opencv[:3, :3]
++    projected_u = RGB_FX * recovered[:, 0] / recovered[:, 2] + RGB_CX
++    projected_v = RGB_FY * recovered[:, 1] / recovered[:, 2] + RGB_CY
++    error = np.sqrt((projected_u - u) ** 2 + (projected_v - v) ** 2)
++    return {
++        "validSamples": int(len(error)),
++        "medianReprojectionErrorPx": float(np.median(error)),
++        "maxReprojectionErrorPx": float(np.max(error)),
++        "minRecoveredDepthMeters": float(np.min(recovered[:, 2])),
++    }
++
++
++def main() -> int:
++    parser = argparse.ArgumentParser()
++    parser.add_argument("--source", type=Path, required=True)
++    parser.add_argument("--output", type=Path, required=True)
++    args = parser.parse_args()
++    source = args.source.resolve()
++    output = args.output.resolve()
++    if output.exists():
++        raise SystemExit(f"refusing to overwrite existing adapter output: {output}")
++    (output / "images").mkdir(parents=True)
++    (output / "depth").mkdir()
++
++    rgb_rows = read_timed_paths(source / "rgb.txt")
++    depth_rows = read_timed_paths(source / "depth.txt")
++    pose_rows = read_timed_poses(source / "groundtruth.txt")
++    rgb_times = [row.timestamp for row in rgb_rows]
++    depth_times = [row.timestamp for row in depth_rows]
++    pose_times = [row.timestamp for row in pose_rows]
++    overlap_start = max(rgb_times[0], depth_times[0], pose_times[0])
++    overlap_end = min(rgb_times[-1], depth_times[-1], pose_times[-1])
++    requested_count = min(MAX_FRAMES, int(math.floor((overlap_end - overlap_start) * SAMPLE_HZ)) + 1)
++
++    selected: list[dict[str, object]] = []
++    used_rgb_indices: set[int] = set()
++    all_points: list[np.ndarray] = []
++    all_colors: list[np.ndarray] = []
++    frames: list[dict[str, object]] = []
++    for target_index in range(requested_count):
++        target_timestamp = overlap_start + target_index / SAMPLE_HZ
++        rgb_index = nearest_index(rgb_times, target_timestamp)
++        if rgb_index in used_rgb_indices:
++            continue
++        used_rgb_indices.add(rgb_index)
++        rgb_row = rgb_rows[rgb_index]
++        depth_row = depth_rows[nearest_index(depth_times, rgb_row.timestamp)]
++        pose_row = pose_rows[nearest_index(pose_times, rgb_row.timestamp)]
++        c2w_opencv, c2w_opengl = tum_pose_matrices(pose_row)
++
++        frame_name = f"frame_{len(selected):05d}.png"
++        depth_name = f"depth_{len(selected):05d}.png"
++        shutil.copy2(source / rgb_row.path, output / "images" / frame_name)
++        shutil.copy2(source / depth_row.path, output / "depth" / depth_name)
++        rgb_bgr = cv2.imread(str(source / rgb_row.path), cv2.IMREAD_COLOR)
++        depth = cv2.imread(str(source / depth_row.path), cv2.IMREAD_UNCHANGED)
++        if rgb_bgr is None or depth is None or rgb_bgr.shape[:2] != (HEIGHT, WIDTH) or depth.shape != (HEIGHT, WIDTH):
++            raise RuntimeError(f"unexpected image shape at {rgb_row.path} / {depth_row.path}")
++        points, colors = backproject_depth(depth, rgb_bgr, c2w_opencv)
++        all_points.append(points)
++        all_colors.append(colors)
++        frames.append(
++            {
++                "file_path": f"images/{frame_name}",
++                "transform_matrix": c2w_opengl.tolist(),
++            }
++        )
++        selected.append(
++            {
++                "index": len(selected),
++                "targetTimestamp": target_timestamp,
++                "rgbTimestamp": rgb_row.timestamp,
++                "rgbSource": rgb_row.path,
++                "depthTimestamp": depth_row.timestamp,
++                "depthSource": depth_row.path,
++                "groundTruthTimestamp": pose_row.timestamp,
++                "targetToRgbDeltaSeconds": abs(target_timestamp - rgb_row.timestamp),
++                "rgbToDepthDeltaSeconds": abs(rgb_row.timestamp - depth_row.timestamp),
++                "rgbToGroundTruthDeltaSeconds": abs(rgb_row.timestamp - pose_row.timestamp),
++                "tumTranslationMeters": pose_row.translation.tolist(),
++                "tumQuaternionXyzw": pose_row.quaternion_xyzw.tolist(),
++                "c2wOpenCv": c2w_opencv.tolist(),
++                "c2wNerfstudioOpenGl": c2w_opengl.tolist(),
++                "outputImage": f"images/{frame_name}",
++                "outputDepth": f"depth/{depth_name}",
++                "validDepthSeedPointsBeforeBound": int(len(points)),
++            }
++        )
++
++    points = np.concatenate(all_points, axis=0)
++    colors = np.concatenate(all_colors, axis=0)
++    before_bound = len(points)
++    if before_bound > MAX_SEED_POINTS:
++        rng = np.random.default_rng(20260902)
++        keep = np.sort(rng.choice(before_bound, size=MAX_SEED_POINTS, replace=False))
++        points, colors = points[keep], colors[keep]
++    write_ply(output / "sparse_pc.ply", points, colors)
++
++    anchor_indices = [0, len(selected) // 2, len(selected) - 1]
++    anchor_validation = []
++    for index in anchor_indices:
++        row = selected[index]
++        depth = cv2.imread(str(output / str(row["outputDepth"])), cv2.IMREAD_UNCHANGED)
++        c2w_opencv = np.asarray(row["c2wOpenCv"], dtype=np.float64)
++        anchor_validation.append(
++            {
++                "index": index,
++                "image": row["outputImage"],
++                "depth": row["outputDepth"],
++                "poseDeterminant": float(np.linalg.det(c2w_opencv[:3, :3])),
++                "rotationOrthogonalityMaxAbsError": float(
++                    np.max(np.abs(c2w_opencv[:3, :3].T @ c2w_opencv[:3, :3] - np.eye(3)))
++                ),
++                "cameraForwardWorldOpenCv": c2w_opencv[:3, 2].tolist(),
++                "projectionRoundtrip": projection_roundtrip_error(depth, c2w_opencv),
++            }
++        )
++
++    eval_indices = [index for index in range(5, len(selected), 10) if index not in anchor_indices]
++    train_indices = [index for index in range(len(selected)) if index not in eval_indices]
++    train_filenames = [str(frames[index]["file_path"]) for index in train_indices]
++    eval_filenames = [str(frames[index]["file_path"]) for index in eval_indices]
++    transforms = {
++        "camera_model": "OPENCV",
++        "fl_x": RGB_FX,
++        "fl_y": RGB_FY,
++        "cx": RGB_CX,
++        "cy": RGB_CY,
++        "w": WIDTH,
++        "h": HEIGHT,
++        "k1": 0.0,
++        "k2": 0.0,
++        "p1": 0.0,
++        "p2": 0.0,
++        "ply_file_path": "sparse_pc.ply",
++        "frames": frames,
++        "train_filenames": train_filenames,
++        "val_filenames": eval_filenames,
++        "test_filenames": eval_filenames,
++    }
++    (output / "transforms.json").write_text(json.dumps(transforms, indent=2) + "\n", encoding="utf-8")
++    manifest = {
++        "schemaVersion": "1.0",
++        "source": str(source),
++        "samplingHz": SAMPLE_HZ,
++        "maxFrames": MAX_FRAMES,
++        "overlapStart": overlap_start,
++        "overlapEnd": overlap_end,
++        "selectedCount": len(selected),
++        "calibration": {
++            "source": "TUM official recommended ROS default for pre-registered RGB-D",
++            "fx": RGB_FX,
++            "fy": RGB_FY,
++            "cx": RGB_CX,
++            "cy": RGB_CY,
++            "distortion": [0.0, 0.0, 0.0, 0.0, 0.0],
++            "depthFactor": DEPTH_FACTOR,
++        },
++        "coordinateConversion": "c2w_nerfstudio = c2w_tum_opencv @ diag(1,-1,-1,1)",
++        "frames": selected,
++    }
++    (output / "frame-manifest.json").write_text(json.dumps(manifest, indent=2) + "\n", encoding="utf-8")
++    deltas_depth = [float(row["rgbToDepthDeltaSeconds"]) for row in selected]
++    deltas_pose = [float(row["rgbToGroundTruthDeltaSeconds"]) for row in selected]
++    validation = {
++        "status": "PASS",
++        "selectedFrames": len(selected),
++        "uniqueRgbFrames": len(used_rgb_indices),
++        "trainFrames": len(train_indices),
++        "evalFrames": len(eval_indices),
++        "rgbDepthDeltaSeconds": {
++            "median": float(np.median(deltas_depth)),
++            "max": float(np.max(deltas_depth)),
++        },
++        "rgbGroundTruthDeltaSeconds": {
++            "median": float(np.median(deltas_pose)),
++            "max": float(np.max(deltas_pose)),
++        },
++        "depthSeed": {
++            "pointsBeforeBound": before_bound,
++            "pointsAfterBound": int(len(points)),
++            "maxDepthMeters": MAX_DEPTH_METERS,
++            "shaSeed": 20260902,
++        },
++        "anchors": anchor_validation,
++    }
++    (output / "adapter-validation.json").write_text(json.dumps(validation, indent=2) + "\n", encoding="utf-8")
++    print(json.dumps(validation, indent=2))
++    return 0
++
++
++if __name__ == "__main__":
++    raise SystemExit(main())
+diff --git a/scripts/validate_repair_v3_artifacts.py b/scripts/validate_repair_v3_artifacts.py
+new file mode 100755
+index 0000000..aaff0f2
+--- /dev/null
++++ b/scripts/validate_repair_v3_artifacts.py
+@@ -0,0 +1,167 @@
++#!/usr/bin/env python3
++"""Validate checkpoint -> raw PLY -> SOG at the three repaired v3 cameras."""
++
++from __future__ import annotations
++
++import argparse
++import json
++from pathlib import Path
++
++import numpy as np
++import torch
++from gsplat.rendering import rasterization
++from nerfstudio.models.splatfacto import get_viewmat
++from nerfstudio.utils.eval_utils import eval_setup
++from PIL import Image
++from plyfile import PlyData
++
++
++ANCHORS = ("frame_00001.jpg", "frame_00036.jpg", "frame_00072.jpg")
++
++
++def load_splat(path: Path, device: torch.device) -> tuple[dict[str, torch.Tensor], int]:
++    vertex = PlyData.read(path)["vertex"].data
++    names = vertex.dtype.names or ()
++    means = np.stack([vertex[name] for name in ("x", "y", "z")], axis=1).copy()
++    quats = np.stack([vertex[f"rot_{index}"] for index in range(4)], axis=1).copy()
++    scales = np.stack([vertex[f"scale_{index}"] for index in range(3)], axis=1).copy()
++    opacities = np.asarray(vertex["opacity"], dtype=np.float32).copy()
++    dc = np.stack([vertex[f"f_dc_{index}"] for index in range(3)], axis=1).copy()
++    rest_names = sorted(
++        (name for name in names if name.startswith("f_rest_")),
++        key=lambda name: int(name.rsplit("_", 1)[1]),
++    )
++    rest_flat = np.stack([vertex[name] for name in rest_names], axis=1).copy()
++    if len(rest_names) % 3:
++        raise RuntimeError(f"invalid SH property count in {path}")
++    coeffs_per_channel = len(rest_names) // 3
++    rest = rest_flat.reshape(len(vertex), 3, coeffs_per_channel).transpose(0, 2, 1).copy()
++    colors = np.concatenate([dc[:, None, :], rest], axis=1)
++    sh_degree = int(round(np.sqrt(colors.shape[1]) - 1))
++    if (sh_degree + 1) ** 2 != colors.shape[1]:
++        raise RuntimeError(f"invalid SH shape in {path}: {colors.shape}")
++    tensors = {
++        "means": torch.from_numpy(means).to(device),
++        "quats": torch.from_numpy(quats).to(device),
++        "scales": torch.from_numpy(scales).to(device),
++        "opacities": torch.from_numpy(opacities).to(device),
++        "colors": torch.from_numpy(colors).to(device),
++    }
++    return tensors, sh_degree
++
++
++def render_splat(
++    tensors: dict[str, torch.Tensor], sh_degree: int, camera, background: torch.Tensor
++) -> torch.Tensor:
++    viewmat = get_viewmat(camera.camera_to_worlds)
++    intrinsics = camera.get_intrinsics_matrices().to(camera.device)
++    width, height = int(camera.width.item()), int(camera.height.item())
++    render, alpha, _ = rasterization(
++        means=tensors["means"],
++        quats=tensors["quats"],
++        scales=torch.exp(tensors["scales"]),
++        opacities=torch.sigmoid(tensors["opacities"]),
++        colors=tensors["colors"],
++        viewmats=viewmat,
++        Ks=intrinsics,
++        width=width,
++        height=height,
++        packed=False,
++        near_plane=0.01,
++        far_plane=1e10,
++        render_mode="RGB+ED",
++        sh_degree=sh_degree,
++        sparse_grad=False,
++        absgrad=False,
++        rasterize_mode="classic",
++    )
++    rgb = render[0, ..., :3] + (1.0 - alpha[0]) * background
++    return rgb.clamp(0.0, 1.0)
++
++
++def metrics(model, reference: torch.Tensor, prediction: torch.Tensor) -> dict[str, float]:
++    reference_nchw = torch.moveaxis(reference, -1, 0)[None, ...]
++    prediction_nchw = torch.moveaxis(prediction, -1, 0)[None, ...]
++    return {
++        "psnr": float(model.psnr(reference_nchw, prediction_nchw).item()),
++        "ssim": float(model.ssim(reference_nchw, prediction_nchw).item()),
++        "lpips": float(model.lpips(reference_nchw, prediction_nchw).item()),
++        "maxAbsPixelError": float(torch.max(torch.abs(reference - prediction)).item()),
++    }
++
++
++def save_rgb(path: Path, tensor: torch.Tensor) -> None:
++    pixels = tensor.detach().cpu().mul(255.0).round().clamp(0, 255).to(torch.uint8).numpy()
++    Image.fromarray(pixels).save(path)
++
++
++def main() -> int:
++    parser = argparse.ArgumentParser()
++    parser.add_argument("--config", type=Path, required=True)
++    parser.add_argument("--raw-ply", type=Path, required=True)
++    parser.add_argument("--sog-roundtrip-ply", type=Path, required=True)
++    parser.add_argument("--output", type=Path, required=True)
++    args = parser.parse_args()
++    args.output.mkdir(parents=True, exist_ok=True)
++
++    _, pipeline, _, step = eval_setup(args.config, test_mode="test")
++    model = pipeline.model
++    datamanager = pipeline.datamanager
++    device = pipeline.device
++    # Trigger the same in-place camera undistortion used during training before
++    # taking any camera slices. SIMPLE_RADIAL crops this dataset to 1279x719.
++    _ = datamanager.cached_train
++    names = [path.name for path in datamanager.train_dataset.image_filenames]
++    raw, raw_degree = load_splat(args.raw_ply, device)
++    sog, sog_degree = load_splat(args.sog_roundtrip_ply, device)
++    rows = []
++    for anchor in ANCHORS:
++        index = names.index(anchor)
++        camera = datamanager.train_dataset.cameras[index : index + 1].to(device)
++        with torch.no_grad():
++            checkpoint_outputs = model.get_outputs_for_camera(camera)
++            checkpoint = checkpoint_outputs["rgb"]
++            background = checkpoint_outputs["background"]
++            raw_render = render_splat(raw, raw_degree, camera, background)
++            sog_render = render_splat(sog, sog_degree, camera, background)
++        save_rgb(args.output / f"{Path(anchor).stem}-raw-ply.png", raw_render)
++        save_rgb(args.output / f"{Path(anchor).stem}-sog.png", sog_render)
++        rows.append(
++            {
++                "frame": Path(anchor).stem,
++                "rawPlyVsCheckpoint": metrics(model, checkpoint, raw_render),
++                "sogVsRawPly": metrics(model, raw_render, sog_render),
++            }
++        )
++    checks = {
++        "rawPlyMatchesCheckpoint": all(
++            row["rawPlyVsCheckpoint"]["maxAbsPixelError"] <= 1e-6 for row in rows
++        ),
++        "sogIntroducesNoStructuralRegression": all(
++            row["sogVsRawPly"]["psnr"] >= 25.0
++            and row["sogVsRawPly"]["ssim"] >= 0.95
++            and row["sogVsRawPly"]["lpips"] <= 0.10
++            for row in rows
++        ),
++    }
++    result = {
++        "step": step,
++        "rawPly": {"path": str(args.raw_ply), "gaussians": int(raw["means"].shape[0]), "shDegree": raw_degree},
++        "sogRoundtrip": {
++            "path": str(args.sog_roundtrip_ply),
++            "gaussians": int(sog["means"].shape[0]),
++            "shDegree": sog_degree,
++        },
++        "anchors": rows,
++        "checks": checks,
++        "status": "PASS" if all(checks.values()) else "FAIL",
++    }
++    (args.output / "artifact-boundary.json").write_text(
++        json.dumps(result, indent=2) + "\n", encoding="utf-8"
++    )
++    print(json.dumps(result, indent=2))
++    return 0 if result["status"] == "PASS" else 1
++
++
++if __name__ == "__main__":
++    raise SystemExit(main())
+diff --git a/scripts/validate_repair_v3_viewer_anchors.py b/scripts/validate_repair_v3_viewer_anchors.py
+new file mode 100755
+index 0000000..197f7ad
+--- /dev/null
++++ b/scripts/validate_repair_v3_viewer_anchors.py
+@@ -0,0 +1,125 @@
++#!/usr/bin/env python3
++"""Compare every v3 Viewer anchor against the loaded training cameras."""
++
++from __future__ import annotations
++
++import argparse
++import json
++import math
++from pathlib import Path
++
++import numpy as np
++from nerfstudio.utils.eval_utils import eval_setup
++
++
++PLAYCANVAS_FROM_NERFSTUDIO = np.asarray(
++    [
++        [1.0, 0.0, 0.0, 0.0],
++        [0.0, 0.0, 1.0, 0.0],
++        [0.0, -1.0, 0.0, 0.0],
++        [0.0, 0.0, 0.0, 1.0],
++    ]
++)
++
++
++def quaternion_xyzw_to_matrix(values: list[float]) -> np.ndarray:
++    x, y, z, w = values
++    return np.asarray(
++        [
++            [1 - 2 * (y * y + z * z), 2 * (x * y - z * w), 2 * (x * z + y * w)],
++            [2 * (x * y + z * w), 1 - 2 * (x * x + z * z), 2 * (y * z - x * w)],
++            [2 * (x * z - y * w), 2 * (y * z + x * w), 1 - 2 * (x * x + y * y)],
++        ]
++    )
++
++
++def point_in_polygon(x: float, z: float, polygon: list[list[float]]) -> bool:
++    inside = False
++    previous = len(polygon) - 1
++    for index, (current_x, current_z) in enumerate(polygon):
++        previous_x, previous_z = polygon[previous]
++        if (current_z > z) != (previous_z > z) and x < (
++            (previous_x - current_x) * (z - current_z) / (previous_z - current_z)
++            + current_x
++        ):
++            inside = not inside
++        previous = index
++    return inside
++
++
++def main() -> int:
++    parser = argparse.ArgumentParser()
++    parser.add_argument("--config", type=Path, required=True)
++    parser.add_argument("--manifest", type=Path, required=True)
++    parser.add_argument("--output", type=Path, required=True)
++    args = parser.parse_args()
++
++    manifest = json.loads(args.manifest.read_text(encoding="utf-8"))
++    _, pipeline, _, _ = eval_setup(args.config, test_mode="test")
++    datamanager = pipeline.datamanager
++    _ = datamanager.cached_train
++    names = [path.name for path in datamanager.train_dataset.image_filenames]
++    cameras = datamanager.train_dataset.cameras
++    rows = []
++    for anchor in manifest["photoAnchors"]:
++        source_name = Path(anchor["sourceFrame"]).name
++        index = names.index(source_name)
++        actual = np.eye(4, dtype=np.float64)
++        actual[:3, :4] = cameras.camera_to_worlds[index].cpu().numpy()
++        actual_playcanvas = PLAYCANVAS_FROM_NERFSTUDIO @ actual
++        manifest_rotation = quaternion_xyzw_to_matrix(anchor["quaternion"])
++        actual_fov = math.degrees(
++            2.0
++            * math.atan(
++                float(cameras.height[index].item()) / (2.0 * float(cameras.fy[index].item()))
++            )
++        )
++        rows.append(
++            {
++                "id": anchor["id"],
++                "sourceFrame": source_name,
++                "trainIndex": index,
++                "positionMaxAbsError": float(
++                    np.max(np.abs(np.asarray(anchor["position"]) - actual_playcanvas[:3, 3]))
++                ),
++                "rotationMatrixMaxAbsError": float(
++                    np.max(np.abs(manifest_rotation - actual_playcanvas[:3, :3]))
++                ),
++                "fovAbsErrorDegrees": abs(float(anchor["fov"]) - actual_fov),
++            }
++        )
++    boundary = manifest["navigation"]["boundaryXZ"]
++    all_training_cameras_inside = True
++    for actual in cameras.camera_to_worlds.cpu().numpy():
++        playcanvas_position = (PLAYCANVAS_FROM_NERFSTUDIO[:3, :3] @ actual[:3, 3]).tolist()
++        all_training_cameras_inside &= point_in_polygon(
++            playcanvas_position[0], playcanvas_position[2], boundary
++        )
++    checks = {
++        "anchorCountAtLeastThree": len(rows) >= 3,
++        "allAnchorsAreTrainingCameras": all(
++            row["positionMaxAbsError"] < 1e-7
++            and row["rotationMatrixMaxAbsError"] < 1e-7
++            and row["fovAbsErrorDegrees"] < 1e-7
++            for row in rows
++        ),
++        "startPoseIsFirstAnchor": manifest["navigation"]["startPose"]
++        == {
++            key: manifest["photoAnchors"][0][key]
++            for key in ("position", "quaternion", "fov")
++        },
++        "allTrainingCamerasInsideBoundary": bool(all_training_cameras_inside),
++    }
++    result = {
++        "status": "PASS" if all(checks.values()) else "FAIL",
++        "anchors": rows,
++        "checks": checks,
++    }
++    args.output.parent.mkdir(parents=True, exist_ok=True)
++    args.output.write_text(json.dumps(result, indent=2) + "\n", encoding="utf-8")
++    print(json.dumps(result, indent=2))
++    return 0 if result["status"] == "PASS" else 1
++
++
++if __name__ == "__main__":
++    raise SystemExit(main())
+diff --git a/scripts/validate_tum_v4_artifacts.py b/scripts/validate_tum_v4_artifacts.py
+new file mode 100755
+index 0000000..276a7a5
+--- /dev/null
++++ b/scripts/validate_tum_v4_artifacts.py
+@@ -0,0 +1,164 @@
++#!/usr/bin/env python3
++"""Validate checkpoint -> raw PLY -> SOG at the three v4 cameras."""
++
++from __future__ import annotations
++
++import argparse
++import json
++from pathlib import Path
++
++import numpy as np
++import torch
++from gsplat.rendering import rasterization
++from nerfstudio.models.splatfacto import get_viewmat
++from nerfstudio.utils.eval_utils import eval_setup
++from PIL import Image
++from plyfile import PlyData
++
++
++ANCHORS = ("frame_00000.png", "frame_00050.png", "frame_00099.png")
++
++
++def load_splat(path: Path, device: torch.device) -> tuple[dict[str, torch.Tensor], int]:
++    vertex = PlyData.read(path)["vertex"].data
++    names = vertex.dtype.names or ()
++    means = np.stack([vertex[name] for name in ("x", "y", "z")], axis=1).copy()
++    quats = np.stack([vertex[f"rot_{index}"] for index in range(4)], axis=1).copy()
++    scales = np.stack([vertex[f"scale_{index}"] for index in range(3)], axis=1).copy()
++    opacities = np.asarray(vertex["opacity"], dtype=np.float32).copy()
++    dc = np.stack([vertex[f"f_dc_{index}"] for index in range(3)], axis=1).copy()
++    rest_names = sorted(
++        (name for name in names if name.startswith("f_rest_")),
++        key=lambda name: int(name.rsplit("_", 1)[1]),
++    )
++    rest_flat = np.stack([vertex[name] for name in rest_names], axis=1).copy()
++    if len(rest_names) % 3:
++        raise RuntimeError(f"invalid SH property count in {path}")
++    coeffs_per_channel = len(rest_names) // 3
++    rest = rest_flat.reshape(len(vertex), 3, coeffs_per_channel).transpose(0, 2, 1).copy()
++    colors = np.concatenate([dc[:, None, :], rest], axis=1)
++    sh_degree = int(round(np.sqrt(colors.shape[1]) - 1))
++    if (sh_degree + 1) ** 2 != colors.shape[1]:
++        raise RuntimeError(f"invalid SH shape in {path}: {colors.shape}")
++    tensors = {
++        "means": torch.from_numpy(means).to(device),
++        "quats": torch.from_numpy(quats).to(device),
++        "scales": torch.from_numpy(scales).to(device),
++        "opacities": torch.from_numpy(opacities).to(device),
++        "colors": torch.from_numpy(colors).to(device),
++    }
++    return tensors, sh_degree
++
++
++def render_splat(
++    tensors: dict[str, torch.Tensor], sh_degree: int, camera, background: torch.Tensor
++) -> torch.Tensor:
++    viewmat = get_viewmat(camera.camera_to_worlds)
++    intrinsics = camera.get_intrinsics_matrices().to(camera.device)
++    width, height = int(camera.width.item()), int(camera.height.item())
++    render, alpha, _ = rasterization(
++        means=tensors["means"],
++        quats=tensors["quats"],
++        scales=torch.exp(tensors["scales"]),
++        opacities=torch.sigmoid(tensors["opacities"]),
++        colors=tensors["colors"],
++        viewmats=viewmat,
++        Ks=intrinsics,
++        width=width,
++        height=height,
++        packed=False,
++        near_plane=0.01,
++        far_plane=1e10,
++        render_mode="RGB+ED",
++        sh_degree=sh_degree,
++        sparse_grad=False,
++        absgrad=False,
++        rasterize_mode="classic",
++    )
++    rgb = render[0, ..., :3] + (1.0 - alpha[0]) * background
++    return rgb.clamp(0.0, 1.0)
++
++
++def metrics(model, reference: torch.Tensor, prediction: torch.Tensor) -> dict[str, float]:
++    reference_nchw = torch.moveaxis(reference, -1, 0)[None, ...]
++    prediction_nchw = torch.moveaxis(prediction, -1, 0)[None, ...]
++    return {
++        "psnr": float(model.psnr(reference_nchw, prediction_nchw).item()),
++        "ssim": float(model.ssim(reference_nchw, prediction_nchw).item()),
++        "lpips": float(model.lpips(reference_nchw, prediction_nchw).item()),
++        "maxAbsPixelError": float(torch.max(torch.abs(reference - prediction)).item()),
++    }
++
++
++def save_rgb(path: Path, tensor: torch.Tensor) -> None:
++    pixels = tensor.detach().cpu().mul(255.0).round().clamp(0, 255).to(torch.uint8).numpy()
++    Image.fromarray(pixels).save(path)
++
++
++def main() -> int:
++    parser = argparse.ArgumentParser()
++    parser.add_argument("--config", type=Path, required=True)
++    parser.add_argument("--raw-ply", type=Path, required=True)
++    parser.add_argument("--sog-roundtrip-ply", type=Path, required=True)
++    parser.add_argument("--output", type=Path, required=True)
++    args = parser.parse_args()
++    args.output.mkdir(parents=True, exist_ok=True)
++
++    _, pipeline, _, step = eval_setup(args.config, test_mode="test")
++    model = pipeline.model
++    datamanager = pipeline.datamanager
++    device = pipeline.device
++    names = [path.name for path in datamanager.train_dataset.image_filenames]
++    raw, raw_degree = load_splat(args.raw_ply, device)
++    sog, sog_degree = load_splat(args.sog_roundtrip_ply, device)
++    rows = []
++    for anchor in ANCHORS:
++        index = names.index(anchor)
++        camera = datamanager.train_dataset.cameras[index : index + 1].to(device)
++        with torch.no_grad():
++            checkpoint_outputs = model.get_outputs_for_camera(camera)
++            checkpoint = checkpoint_outputs["rgb"]
++            background = checkpoint_outputs["background"]
++            raw_render = render_splat(raw, raw_degree, camera, background)
++            sog_render = render_splat(sog, sog_degree, camera, background)
++        save_rgb(args.output / f"{Path(anchor).stem}-raw-ply.png", raw_render)
++        save_rgb(args.output / f"{Path(anchor).stem}-sog.png", sog_render)
++        rows.append(
++            {
++                "frame": Path(anchor).stem,
++                "rawPlyVsCheckpoint": metrics(model, checkpoint, raw_render),
++                "sogVsRawPly": metrics(model, raw_render, sog_render),
++            }
++        )
++    checks = {
++        "rawPlyMatchesCheckpoint": all(
++            row["rawPlyVsCheckpoint"]["maxAbsPixelError"] <= 1e-6 for row in rows
++        ),
++        "sogIntroducesNoStructuralRegression": all(
++            row["sogVsRawPly"]["psnr"] >= 25.0
++            and row["sogVsRawPly"]["ssim"] >= 0.95
++            and row["sogVsRawPly"]["lpips"] <= 0.10
++            for row in rows
++        ),
++    }
++    result = {
++        "step": step,
++        "rawPly": {"path": str(args.raw_ply), "gaussians": int(raw["means"].shape[0]), "shDegree": raw_degree},
++        "sogRoundtrip": {
++            "path": str(args.sog_roundtrip_ply),
++            "gaussians": int(sog["means"].shape[0]),
++            "shDegree": sog_degree,
++        },
++        "anchors": rows,
++        "checks": checks,
++        "status": "PASS" if all(checks.values()) else "FAIL",
++    }
++    (args.output / "artifact-boundary.json").write_text(
++        json.dumps(result, indent=2) + "\n", encoding="utf-8"
++    )
++    print(json.dumps(result, indent=2))
++    return 0 if result["status"] == "PASS" else 1
++
++
++if __name__ == "__main__":
++    raise SystemExit(main())
+diff --git a/scripts/viewer_repair_v3_e2e.js b/scripts/viewer_repair_v3_e2e.js
+new file mode 100644
+index 0000000..02ed002
+--- /dev/null
++++ b/scripts/viewer_repair_v3_e2e.js
+@@ -0,0 +1,140 @@
++const fs = require("fs");
++
++const args = process.argv.slice(2);
++if (args.includes("--help") || args.includes("-h")) {
++  console.log("Usage: node viewer_repair_v3_e2e.js <viewer-url> <result-json> <screenshot-png>");
++  process.exit(0);
++}
++if (args.length !== 3) {
++  console.error("Usage: node viewer_repair_v3_e2e.js <viewer-url> <result-json> <screenshot-png>");
++  process.exit(2);
++}
++
++const { chromium } = require("playwright");
++
++function pointInPolygon(x, z, polygon) {
++  let inside = false;
++  for (let i = 0, j = polygon.length - 1; i < polygon.length; j = i++) {
++    const [xi, zi] = polygon[i];
++    const [xj, zj] = polygon[j];
++    if (zi > z !== zj > z && x < ((xj - xi) * (z - zi)) / (zj - zi) + xi) inside = !inside;
++  }
++  return inside;
++}
++
++function numbers(value) {
++  return value.split(",").map(Number);
++}
++
++function maxAbs(left, right) {
++  return Math.max(...left.map((value, index) => Math.abs(value - right[index])));
++}
++
++(async () => {
++  const [url, resultPath, screenshotPath] = args;
++  const browser = await chromium.launch({
++    headless: true,
++    executablePath:
++      process.env.CHROME_PATH || "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe",
++  });
++  const page = await browser.newPage({ viewport: { width: 960, height: 600 }, deviceScaleFactor: 1 });
++  await page.goto(url, { waitUntil: "networkidle" });
++  await page.waitForFunction(
++    () => document.querySelector("#sceneState")?.textContent?.includes("SOG ready"),
++    null,
++    { timeout: 30000 }
++  );
++  await page.waitForFunction(() => document.querySelector("#sceneCanvas")?.dataset.cameraPosition);
++  const manifest = await page.evaluate(() => {
++    const sceneUrl = new URLSearchParams(window.location.search).get("scene");
++    if (!sceneUrl) throw new Error("viewer URL is missing the scene query parameter");
++    return fetch(sceneUrl).then((response) => response.json());
++  });
++  const selectedAnchor = manifest.photoAnchors.find(
++    (anchor) => anchor.id === manifest.defaultPhotoAnchorId
++  );
++  const initial = await page.locator("#sceneCanvas").evaluate((canvas) => ({
++    position: canvas.dataset.cameraPosition.split(",").map(Number),
++    quaternion: canvas.dataset.cameraQuaternion.split(",").map(Number),
++    fov: Number(canvas.dataset.cameraFov),
++    mode: canvas.dataset.navigationMode,
++  }));
++  await page.locator("#sceneCanvas").click({ position: { x: 400, y: 260 } });
++  await page.keyboard.down("w");
++  await new Promise((resolve) => setTimeout(resolve, 700));
++  await page.keyboard.up("w");
++  await new Promise((resolve) => setTimeout(resolve, 200));
++  const walked = await page.locator("#sceneCanvas").evaluate((canvas) => ({
++    position: canvas.dataset.cameraPosition.split(",").map(Number),
++    mode: canvas.dataset.navigationMode,
++    walkY: Number(canvas.dataset.walkY),
++  }));
++  const displayedEyeHeight = Number(await page.locator("#eyeHeight").innerText());
++  await page.locator("#anchorAction").click();
++  await new Promise((resolve) => setTimeout(resolve, 900));
++  const returned = await page.locator("#sceneCanvas").evaluate((canvas) => ({
++    position: canvas.dataset.cameraPosition.split(",").map(Number),
++    quaternion: canvas.dataset.cameraQuaternion.split(",").map(Number),
++    fov: Number(canvas.dataset.cameraFov),
++    mode: canvas.dataset.navigationMode,
++  }));
++  const message = await page.locator("#modeNoteText").innerText();
++  await page.screenshot({ path: screenshotPath, type: "png" });
++  const movementDistance = Math.hypot(
++    walked.position[0] - initial.position[0],
++    walked.position[2] - initial.position[2]
++  );
++  const validation = {
++    status: "PASS",
++    sceneState: await page.locator("#sceneState").innerText(),
++    fps: Number(await page.locator("#fpsValue").innerText()),
++    initial,
++    walked,
++    movementDistance,
++    walkedInsideBoundary: pointInPolygon(
++      walked.position[0],
++      walked.position[2],
++      manifest.navigation.boundaryXZ
++    ),
++    returned,
++    expectedPhotoAnchor: selectedAnchor,
++    photoAnchorErrors: {
++      positionMaxAbs: maxAbs(returned.position, selectedAnchor.position),
++      quaternionMaxAbs: Math.min(
++        maxAbs(returned.quaternion, selectedAnchor.quaternion),
++        maxAbs(returned.quaternion, selectedAnchor.quaternion.map((value) => -value))
++      ),
++      fovAbs: Math.abs(returned.fov - selectedAnchor.fov),
++    },
++    message,
++    checks: {
++      sogReady: true,
++      boundedWalkMoved: movementDistance > 0.005,
++      boundedWalkStayedInside: pointInPolygon(
++        walked.position[0],
++        walked.position[2],
++        manifest.navigation.boundaryXZ
++      ),
++      walkModeActivated: walked.mode === "walk",
++      walkHeightMatchesManifest:
++        Math.abs(walked.position[1] - manifest.navigation.eyeHeight) < 1e-7 &&
++        Math.abs(walked.walkY - manifest.navigation.eyeHeight) < 1e-7,
++      displayedEyeHeightMatchesWalkPlane:
++        Math.abs(displayedEyeHeight - walked.walkY) < 0.005,
++      photoModeRestored: returned.mode === "photo-anchor",
++      photoPositionExact: maxAbs(returned.position, selectedAnchor.position) < 1e-7,
++      photoQuaternionExact:
++        Math.min(
++          maxAbs(returned.quaternion, selectedAnchor.quaternion),
++          maxAbs(returned.quaternion, selectedAnchor.quaternion.map((value) => -value))
++        ) < 1e-7,
++      photoFovExact: Math.abs(returned.fov - selectedAnchor.fov) < 1e-7,
++      confirmationMessage: message.includes("已回到这张照片的拍摄视角"),
++    },
++  };
++  validation.status = Object.values(validation.checks).every(Boolean) ? "PASS" : "FAIL";
++  fs.writeFileSync(resultPath, JSON.stringify(validation, null, 2) + "\n");
++  console.log(JSON.stringify(validation, null, 2));
++  await browser.close();
++  if (validation.status !== "PASS") process.exitCode = 1;
++})();
+diff --git a/scripts/viewer_v4_e2e.js b/scripts/viewer_v4_e2e.js
+new file mode 100644
+index 0000000..fb5e258
+--- /dev/null
++++ b/scripts/viewer_v4_e2e.js
+@@ -0,0 +1,140 @@
++const fs = require("fs");
++
++const args = process.argv.slice(2);
++if (args.includes("--help") || args.includes("-h")) {
++  console.log("Usage: node viewer_v4_e2e.js <viewer-url> <result-json> <screenshot-png>");
++  process.exit(0);
++}
++if (args.length !== 3) {
++  console.error("Usage: node viewer_v4_e2e.js <viewer-url> <result-json> <screenshot-png>");
++  process.exit(2);
++}
++
++const { chromium } = require("playwright");
++
++function pointInPolygon(x, z, polygon) {
++  let inside = false;
++  for (let i = 0, j = polygon.length - 1; i < polygon.length; j = i++) {
++    const [xi, zi] = polygon[i];
++    const [xj, zj] = polygon[j];
++    if (zi > z !== zj > z && x < ((xj - xi) * (z - zi)) / (zj - zi) + xi) inside = !inside;
++  }
++  return inside;
++}
++
++function numbers(value) {
++  return value.split(",").map(Number);
++}
++
++function maxAbs(left, right) {
++  return Math.max(...left.map((value, index) => Math.abs(value - right[index])));
++}
++
++(async () => {
++  const [url, resultPath, screenshotPath] = args;
++  const browser = await chromium.launch({
++    headless: true,
++    executablePath:
++      process.env.CHROME_PATH || "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe",
++  });
++  const page = await browser.newPage({ viewport: { width: 960, height: 600 }, deviceScaleFactor: 1 });
++  await page.goto(url, { waitUntil: "networkidle" });
++  await page.waitForFunction(
++    () => document.querySelector("#sceneState")?.textContent?.includes("SOG ready"),
++    null,
++    { timeout: 30000 }
++  );
++  await page.waitForFunction(() => document.querySelector("#sceneCanvas")?.dataset.cameraPosition);
++  const manifest = await page.evaluate(() => {
++    const sceneUrl = new URLSearchParams(window.location.search).get("scene");
++    if (!sceneUrl) throw new Error("viewer URL is missing the scene query parameter");
++    return fetch(sceneUrl).then((response) => response.json());
++  });
++  const selectedAnchor = manifest.photoAnchors.find(
++    (anchor) => anchor.id === manifest.defaultPhotoAnchorId
++  );
++  const initial = await page.locator("#sceneCanvas").evaluate((canvas) => ({
++    position: canvas.dataset.cameraPosition.split(",").map(Number),
++    quaternion: canvas.dataset.cameraQuaternion.split(",").map(Number),
++    fov: Number(canvas.dataset.cameraFov),
++    mode: canvas.dataset.navigationMode,
++  }));
++  await page.locator("#sceneCanvas").click({ position: { x: 400, y: 260 } });
++  await page.keyboard.down("w");
++  await new Promise((resolve) => setTimeout(resolve, 700));
++  await page.keyboard.up("w");
++  await new Promise((resolve) => setTimeout(resolve, 200));
++  const walked = await page.locator("#sceneCanvas").evaluate((canvas) => ({
++    position: canvas.dataset.cameraPosition.split(",").map(Number),
++    mode: canvas.dataset.navigationMode,
++    walkY: Number(canvas.dataset.walkY),
++  }));
++  const displayedEyeHeight = Number(await page.locator("#eyeHeight").innerText());
++  await page.locator("#anchorAction").click();
++  await new Promise((resolve) => setTimeout(resolve, 900));
++  const returned = await page.locator("#sceneCanvas").evaluate((canvas) => ({
++    position: canvas.dataset.cameraPosition.split(",").map(Number),
++    quaternion: canvas.dataset.cameraQuaternion.split(",").map(Number),
++    fov: Number(canvas.dataset.cameraFov),
++    mode: canvas.dataset.navigationMode,
++  }));
++  const message = await page.locator("#modeNoteText").innerText();
++  await page.screenshot({ path: screenshotPath, type: "png" });
++  const movementDistance = Math.hypot(
++    walked.position[0] - initial.position[0],
++    walked.position[2] - initial.position[2]
++  );
++  const validation = {
++    status: "PASS",
++    sceneState: await page.locator("#sceneState").innerText(),
++    fps: Number(await page.locator("#fpsValue").innerText()),
++    initial,
++    walked,
++    movementDistance,
++    walkedInsideBoundary: pointInPolygon(
++      walked.position[0],
++      walked.position[2],
++      manifest.navigation.boundaryXZ
++    ),
++    returned,
++    expectedPhotoAnchor: selectedAnchor,
++    photoAnchorErrors: {
++      positionMaxAbs: maxAbs(returned.position, selectedAnchor.position),
++      quaternionMaxAbs: Math.min(
++        maxAbs(returned.quaternion, selectedAnchor.quaternion),
++        maxAbs(returned.quaternion, selectedAnchor.quaternion.map((value) => -value))
++      ),
++      fovAbs: Math.abs(returned.fov - selectedAnchor.fov),
++    },
++    message,
++    checks: {
++      sogReady: true,
++      boundedWalkMoved: movementDistance > 0.005,
++      boundedWalkStayedInside: pointInPolygon(
++        walked.position[0],
++        walked.position[2],
++        manifest.navigation.boundaryXZ
++      ),
++      walkModeActivated: walked.mode === "walk",
++      walkHeightMatchesManifest:
++        Math.abs(walked.position[1] - manifest.navigation.eyeHeight) < 1e-7 &&
++        Math.abs(walked.walkY - manifest.navigation.eyeHeight) < 1e-7,
++      displayedEyeHeightMatchesWalkPlane:
++        Math.abs(displayedEyeHeight - walked.walkY) < 0.005,
++      photoModeRestored: returned.mode === "photo-anchor",
++      photoPositionExact: maxAbs(returned.position, selectedAnchor.position) < 1e-7,
++      photoQuaternionExact:
++        Math.min(
++          maxAbs(returned.quaternion, selectedAnchor.quaternion),
++          maxAbs(returned.quaternion, selectedAnchor.quaternion.map((value) => -value))
++        ) < 1e-7,
++      photoFovExact: Math.abs(returned.fov - selectedAnchor.fov) < 1e-7,
++      confirmationMessage: message.includes("已回到这张照片的拍摄视角"),
++    },
++  };
++  validation.status = Object.values(validation.checks).every(Boolean) ? "PASS" : "FAIL";
++  fs.writeFileSync(resultPath, JSON.stringify(validation, null, 2) + "\n");
++  console.log(JSON.stringify(validation, null, 2));
++  await browser.close();
++  if (validation.status !== "PASS") process.exitCode = 1;
++})();
+diff --git a/scripts/windows/Start-Local-PexelsViewer.ps1 b/scripts/windows/Start-Local-PexelsViewer.ps1
+new file mode 100644
+index 0000000..24ed07e
+--- /dev/null
++++ b/scripts/windows/Start-Local-PexelsViewer.ps1
+@@ -0,0 +1,118 @@
++[CmdletBinding()]
++param(
++    [string]$Distro = "Ubuntu-22.04",
++    [string]$ProjectPath = "/home/max/src/unseen-3dgs-sceneworker",
++    [switch]$OpenBrowser
++)
++
++$ErrorActionPreference = "Stop"
++$ExpectedSogBytes = 2693010
++$ExpectedSogSha256 = "0d417735d1b91573f2e2199b53567c07014a420943dac8c84cb73811a1ec0e01"
++
++if ($ProjectPath -notmatch '^/[A-Za-z0-9._/-]+$') {
++    throw "ProjectPath must be an absolute WSL path containing only letters, numbers, dot, underscore, dash, and slash."
++}
++if ($Distro -notmatch '^[A-Za-z0-9._-]+$') {
++    throw "Distro contains unsupported characters."
++}
++
++$ViewerPath = "$ProjectPath/viewer"
++$ReportPath = "$ProjectPath/reports/integration-v5"
++$StatePath = "$ReportPath/local-viewer-state.json"
++$ServerLogPath = "$ReportPath/server.log"
++$SourceSogPath = "$ProjectPath/artifacts/export/repair-v3/scene.sog"
++$ViewerSogPath = "$ViewerPath/assets/repair-v3.scene.sog"
++$StateWindowsPath = "\\wsl.localhost\$Distro" + ($StatePath -replace '/', '\')
++
++function Invoke-Wsl {
++    param([Parameter(Mandatory)][string]$Command)
++    $output = & wsl.exe -d $Distro -- bash -lc $Command 2>&1
++    $exitCode = $LASTEXITCODE
++    $clean = @($output | ForEach-Object { ([string]$_).Replace(([char]0).ToString(), '') })
++    if ($exitCode -ne 0) {
++        throw "WSL command failed with exit code $exitCode`: $($clean -join [Environment]::NewLine)"
++    }
++    return $clean
++}
++
++Invoke-Wsl "test -d '$ViewerPath' && test -f '$ViewerPath/index.html' && mkdir -p '$ReportPath' '$ViewerPath/assets'" | Out-Null
++
++$sourceHashLine = Invoke-Wsl "test -f '$SourceSogPath' && sha256sum '$SourceSogPath'"
++$sourceByteLine = Invoke-Wsl "stat -c %s '$SourceSogPath'"
++$sourceHash = ((@($sourceHashLine | Where-Object { $_ -match '^[0-9a-f]{64}\s' })[-1]) -split '\s+')[0]
++$sourceBytes = [int64](@($sourceByteLine | Where-Object { $_ -match '^\d+$' })[-1])
++if ($sourceHash -ne $ExpectedSogSha256 -or $sourceBytes -ne $ExpectedSogBytes) {
++    throw "The repair-v3 source SOG does not match the frozen v5 artifact contract."
++}
++
++$assetFacts = Invoke-Wsl "if test -f '$ViewerSogPath'; then sha256sum '$ViewerSogPath'; stat -c %s '$ViewerSogPath'; else printf 'MISSING'; fi"
++$assetHashLine = @($assetFacts | Where-Object { $_ -match '^[0-9a-f]{64}\s' })
++$assetByteLine = @($assetFacts | Where-Object { $_ -match '^\d+$' })
++$assetHash = if ($assetHashLine) { ($assetHashLine[-1] -split '\s+')[0] } else { "" }
++$assetBytes = if ($assetByteLine) { [int64]$assetByteLine[-1] } else { 0 }
++if ($assetHash -ne $ExpectedSogSha256 -or $assetBytes -ne $ExpectedSogBytes) {
++    Invoke-Wsl "cp --reflink=auto '$SourceSogPath' '$ViewerSogPath'" | Out-Null
++}
++
++for ($port = 8765; $port -le 8775; $port++) {
++    $alreadyListening = [System.Net.NetworkInformation.IPGlobalProperties]::GetIPGlobalProperties().GetActiveTcpListeners() |
++        Where-Object { $_.Port -eq $port }
++    if ($alreadyListening) {
++        continue
++    }
++
++    $serverCommand = "cd '$ViewerPath' && exec python3 -m http.server $port --bind 127.0.0.1 > '$ServerLogPath' 2>&1"
++    $wslArguments = "-d $Distro -- bash -lc `"$serverCommand`""
++    $wslProcess = Start-Process -FilePath "wsl.exe" -ArgumentList $wslArguments -WindowStyle Hidden -PassThru
++    $healthUrl = "http://127.0.0.1:$port/repair-v3.scene.json"
++    $ready = $false
++    for ($attempt = 0; $attempt -lt 30; $attempt++) {
++        if ($wslProcess.HasExited) {
++            break
++        }
++        try {
++            $response = Invoke-WebRequest -UseBasicParsing -Uri $healthUrl -TimeoutSec 2
++            if ($response.StatusCode -eq 200) {
++                $ready = $true
++                break
++            }
++        } catch {
++        }
++        Start-Sleep -Milliseconds 200
++    }
++    $pidOutput = Invoke-Wsl "pgrep -n -f '^python3 -m http.server $port --bind 127.0.0.1$' || true"
++    $pidLine = @($pidOutput | Where-Object { $_ -match '^\d+$' } | Select-Object -Last 1)
++    $serverPid = if ($pidLine) { [int]$pidLine[0] } else { 0 }
++    if ($serverPid -eq 0) {
++        $ready = $false
++    }
++    if (-not $ready) {
++        Invoke-Wsl "pkill -f '^python3 -m http.server $port --bind 127.0.0.1$' || true" | Out-Null
++        if (-not $wslProcess.HasExited) {
++            Stop-Process -Id $wslProcess.Id -Force
++        }
++        continue
++    }
++
++    $sceneUrl = "http://127.0.0.1:$port/?scene=./repair-v3.scene.json"
++    $state = [ordered]@{
++        distro = $Distro
++        projectPath = $ProjectPath
++        pid = $serverPid
++        windowsPid = $wslProcess.Id
++        port = $port
++        bindAddress = "127.0.0.1"
++        url = $sceneUrl
++        sogBytes = $ExpectedSogBytes
++        sogSha256 = $ExpectedSogSha256
++        startedAt = (Get-Date).ToString("o")
++    }
++    $state | ConvertTo-Json | Set-Content -LiteralPath $StateWindowsPath -Encoding utf8
++    if ($OpenBrowser) {
++        Start-Process $sceneUrl
++    }
++    $state | ConvertTo-Json
++    exit 0
++}
++
++throw "No loopback port was available in the preferred range 8765-8775."
+diff --git a/scripts/windows/Stop-Local-PexelsViewer.ps1 b/scripts/windows/Stop-Local-PexelsViewer.ps1
+new file mode 100644
+index 0000000..55b4780
+--- /dev/null
++++ b/scripts/windows/Stop-Local-PexelsViewer.ps1
+@@ -0,0 +1,44 @@
++[CmdletBinding()]
++param(
++    [string]$Distro = "Ubuntu-22.04",
++    [string]$ProjectPath = "/home/max/src/unseen-3dgs-sceneworker"
++)
++
++$ErrorActionPreference = "Stop"
++if ($ProjectPath -notmatch '^/[A-Za-z0-9._/-]+$') {
++    throw "ProjectPath must be an absolute WSL path containing only letters, numbers, dot, underscore, dash, and slash."
++}
++if ($Distro -notmatch '^[A-Za-z0-9._-]+$') {
++    throw "Distro contains unsupported characters."
++}
++
++$StatePath = "$ProjectPath/reports/integration-v5/local-viewer-state.json"
++$StateWindowsPath = "\\wsl.localhost\$Distro" + ($StatePath -replace '/', '\')
++if (-not (Test-Path -LiteralPath $StateWindowsPath -PathType Leaf)) {
++    Write-Output "No v5 local Viewer state file was found; nothing was stopped."
++    exit 0
++}
++
++$state = Get-Content -LiteralPath $StateWindowsPath -Raw | ConvertFrom-Json
++if ($state.distro -ne $Distro -or $state.projectPath -ne $ProjectPath) {
++    throw "The state file does not match the requested distro and project."
++}
++if ($state.pid -notmatch '^\d+$' -or $state.port -notmatch '^\d+$') {
++    throw "The state file does not contain a valid PID and port."
++}
++
++$commandLine = & wsl.exe -d $Distro -- bash -lc "ps -p '$($state.pid)' -o args= 2>/dev/null" 2>&1
++$cleanCommandLine = (@($commandLine | ForEach-Object { ([string]$_).Replace(([char]0).ToString(), '') }) -join " ").Trim()
++if ($LASTEXITCODE -eq 0) {
++    $expected = "python3 -m http.server $($state.port) --bind 127.0.0.1"
++    if (-not $cleanCommandLine.Contains($expected)) {
++        throw "Refusing to stop PID $($state.pid): it is not the recorded loopback Viewer process."
++    }
++    & wsl.exe -d $Distro -- bash -lc "kill '$($state.pid)'" | Out-Null
++    if ($LASTEXITCODE -ne 0) {
++        throw "Failed to stop Viewer PID $($state.pid)."
++    }
++}
++
++Remove-Item -LiteralPath $StateWindowsPath -Force
++Write-Output "Stopped the v5 local Viewer on $($state.url)."
+diff --git a/viewer/app.js b/viewer/app.js
+index f3827e1..ed2ed20 100755
+--- a/viewer/app.js
++++ b/viewer/app.js
+@@ -46,6 +46,8 @@ const state = {
+   lookPointerId: null,
+   lastLook: null,
+   transition: null,
++  navigationMode: "photo-anchor",
++  walkY: null,
+   path: [],
+   lastPathPosition: null,
+   fpsFrames: 0,
+@@ -96,9 +98,17 @@ function validateManifest(manifest) {
+   if (!Array.isArray(manifest?.photoAnchors) || manifest.photoAnchors.length < 1) {
+     errors.push("at least one photo anchor is required");
+   } else {
+-    const anchor = manifest.photoAnchors[0];
+-    if (!anchor.sceneRevisionId || !isNumbers(anchor.position, 3) || !isNumbers(anchor.quaternion, 4) || !Number.isFinite(anchor.fov)) {
+-      errors.push("photo anchor requires sceneRevisionId, position, quaternion and fov");
++    for (const anchor of manifest.photoAnchors) {
++      if (!anchor.sceneRevisionId || !isNumbers(anchor.position, 3) || !isNumbers(anchor.quaternion, 4) || !Number.isFinite(anchor.fov)) {
++        errors.push("every photo anchor requires sceneRevisionId, position, quaternion and fov");
++        break;
++      }
++    }
++    if (
++      manifest.defaultPhotoAnchorId &&
++      !manifest.photoAnchors.some((anchor) => anchor.id === manifest.defaultPhotoAnchorId)
++    ) {
++      errors.push("defaultPhotoAnchorId must name an existing photo anchor");
+     }
+   }
+   if (errors.length) throw new Error(`Invalid scene manifest: ${errors.join("; ")}`);
+@@ -120,13 +130,23 @@ function relativeAssetUrl(path) {
+   return new URL(path, state.manifestUrl).href;
+ }
+ 
++function syncWalkHeightUI() {
++  const walkY = Number.isFinite(state.walkY)
++    ? state.walkY
++    : state.manifest.navigation.eyeHeight;
++  ui.eyeHeight.textContent = walkY.toFixed(2);
++  ui.helpEyeHeight.textContent = walkY.toFixed(2);
++}
++
+ function configureManifestUI() {
+   const { manifest } = state;
+   const nav = manifest.navigation;
+-  state.anchor = manifest.photoAnchors[0];
++  state.anchor =
++    manifest.photoAnchors.find((anchor) => anchor.id === manifest.defaultPhotoAnchorId) ||
++    manifest.photoAnchors[0];
++  state.walkY = nav.eyeHeight;
+   ui.sceneName.textContent = manifest.name;
+-  ui.eyeHeight.textContent = nav.eyeHeight.toFixed(2);
+-  ui.helpEyeHeight.textContent = nav.eyeHeight.toFixed(2);
++  syncWalkHeightUI();
+   ui.anchorRevision.textContent = state.anchor.sceneRevisionId;
+   ui.anchorRevision.title = state.anchor.sceneRevisionId;
+   ui.anchorPosition.textContent = state.anchor.position.map((value) => value.toFixed(2)).join(" / ");
+@@ -235,11 +255,16 @@ function pointInPolygon(x, z, polygon) {
+   return inside;
+ }
+ 
+-function setCameraPose(pose) {
+-  const { pc, camera, manifest } = state;
+-  camera.setPosition(pose.position[0], manifest.navigation.eyeHeight, pose.position[2]);
++function setCameraPose(pose, mode = "photo-anchor") {
++  const { pc, camera } = state;
++  camera.setPosition(...pose.position);
+   camera.setRotation(new pc.Quat(...pose.quaternion));
+   camera.camera.fov = pose.fov;
++  state.navigationMode = mode;
++  if (mode === "walk") {
++    state.walkY = pose.position[1];
++    syncWalkHeightUI();
++  }
+   const euler = camera.getEulerAngles();
+   state.pitch = euler.x;
+   state.yaw = euler.y;
+@@ -250,26 +275,35 @@ function normalizedQuaternion(values) {
+   return values.map((value) => value / length);
+ }
+ 
+-function beginPoseTransition(pose) {
++function announcePhotoReturn(message) {
++  if (!message) return;
++  ui.modeNoteText.textContent = message;
++  ui.modeNote.hidden = false;
++}
++
++function beginPoseTransition(pose, mode = "photo-anchor", completionMessage = null) {
+   if (!state.camera) return;
+   const currentPosition = state.camera.getPosition();
+   const currentRotation = state.camera.getRotation();
+   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+   if (reduceMotion) {
+     state.transition = null;
+-    setCameraPose(pose);
++    setCameraPose(pose, mode);
++    announcePhotoReturn(completionMessage);
+     return;
+   }
+   state.transition = {
+     elapsed: 0,
+     duration: 0.48,
+     fromPosition: [currentPosition.x, currentPosition.y, currentPosition.z],
+-    toPosition: [pose.position[0], state.manifest.navigation.eyeHeight, pose.position[2]],
++    toPosition: [...pose.position],
+     fromQuaternion: [currentRotation.x, currentRotation.y, currentRotation.z, currentRotation.w],
+     toQuaternion: pose.quaternion,
+     fromFov: state.camera.camera.fov,
+     toFov: pose.fov,
+-    finalPose: pose
++    finalPose: pose,
++    finalMode: mode,
++    completionMessage
+   };
+ }
+ 
+@@ -292,7 +326,8 @@ function updateTransition(dt) {
+   state.camera.setRotation(new state.pc.Quat(...rotation));
+   state.camera.camera.fov = transition.fromFov + (transition.toFov - transition.fromFov) * t;
+   if (linear >= 1) {
+-    setCameraPose(transition.finalPose);
++    setCameraPose(transition.finalPose, transition.finalMode);
++    announcePhotoReturn(transition.completionMessage);
+     state.transition = null;
+   }
+   return true;
+@@ -319,6 +354,11 @@ function updateMovement(dt) {
+   if (Math.abs(inputX) < 0.001 && Math.abs(inputY) < 0.001) return;
+ 
+   const position = state.camera.getPosition();
++  if (state.navigationMode !== "walk") {
++    state.navigationMode = "walk";
++    state.walkY = state.manifest.navigation.eyeHeight;
++    syncWalkHeightUI();
++  }
+   const forward = state.camera.forward.clone();
+   const right = state.camera.right.clone();
+   forward.y = 0;
+@@ -334,7 +374,7 @@ function updateMovement(dt) {
+ 
+   if (pointInPolygon(position.x + dx, position.z, boundary)) nextX = position.x + dx;
+   if (pointInPolygon(nextX, position.z + dz, boundary)) nextZ = position.z + dz;
+-  state.camera.setPosition(nextX, state.manifest.navigation.eyeHeight, nextZ);
++  state.camera.setPosition(nextX, state.walkY, nextZ);
+ }
+ 
+ function updateCameraLook(dx, dy) {
+@@ -348,6 +388,12 @@ function updateCameraLook(dx, dy) {
+ function updateReadouts(dt) {
+   if (!state.camera) return;
+   const position = state.camera.getPosition();
++  const rotation = state.camera.getRotation();
++  ui.canvas.dataset.navigationMode = state.navigationMode;
++  ui.canvas.dataset.walkY = state.walkY.toString();
++  ui.canvas.dataset.cameraPosition = [position.x, position.y, position.z].join(",");
++  ui.canvas.dataset.cameraQuaternion = [rotation.x, rotation.y, rotation.z, rotation.w].join(",");
++  ui.canvas.dataset.cameraFov = state.camera.camera.fov.toString();
+   ui.coordinate.textContent = `X ${position.x.toFixed(2)} · Z ${position.z.toFixed(2)}`;
+   ui.mapCamera.setAttribute(
+     "transform",
+@@ -462,10 +508,13 @@ function bindControls() {
+   ui.joystick.addEventListener("pointerup", releaseJoystick);
+   ui.joystick.addEventListener("pointercancel", releaseJoystick);
+ 
+-  const goToAnchor = () => beginPoseTransition(state.anchor);
++  const goToAnchor = () =>
++    beginPoseTransition(state.anchor, "photo-anchor", "已回到这张照片的拍摄视角");
+   ui.anchorAction.addEventListener("click", goToAnchor);
+   ui.worldAnchor.addEventListener("click", goToAnchor);
+-  ui.homeAction.addEventListener("click", () => beginPoseTransition(state.manifest.navigation.startPose));
++  ui.homeAction.addEventListener("click", () =>
++    beginPoseTransition(state.manifest.navigation.startPose, "photo-anchor")
++  );
+ 
+   const openHelp = () => {
+     ui.helpSheet.hidden = false;
+@@ -517,7 +566,7 @@ async function initializeViewer() {
+     });
+     app.root.addChild(camera);
+     state.camera = camera;
+-    setCameraPose(state.manifest.navigation.startPose);
++    setCameraPose(state.manifest.navigation.startPose, "photo-anchor");
+ 
+     app.start();
+     await loadSceneAsset(pc, app);
+diff --git a/viewer/scene.schema.json b/viewer/scene.schema.json
+index 638c70f..513259f 100755
+--- a/viewer/scene.schema.json
++++ b/viewer/scene.schema.json
+@@ -26,6 +26,7 @@
+       "minItems": 3,
+       "maxItems": 3
+     },
++    "defaultPhotoAnchorId": { "type": "string", "minLength": 1 },
+     "navigation": {
+       "type": "object",
+       "required": ["eyeHeight", "boundaryXZ", "startPose"],

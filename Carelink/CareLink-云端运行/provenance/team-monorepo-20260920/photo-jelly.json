@@ -1,0 +1,40 @@
+{
+  "id": "photo-jelly",
+  "path": "demos/photo-jelly",
+  "repository": "https://github.com/maxi-max-dev/unseen-photo-jelly",
+  "commit": "55c6ecfb54308f97b52db89c8d53f5463d5d6958",
+  "includedFiles": 6,
+  "includedBytes": 309906,
+  "inventory": [
+    {
+      "path": "icon.svg",
+      "bytes": 254,
+      "sha256": "8c73a3d3a3021aae5bb990cc647bc78786ea7e11eeffb06d51e955f9a201eca2"
+    },
+    {
+      "path": "index.html",
+      "bytes": 3648,
+      "sha256": "c7b47ac7c64e702a3b8c2f7ee4bb417316c881190ec6ff6b0862a73ef34924f9"
+    },
+    {
+      "path": "jelly-core.js",
+      "bytes": 1585,
+      "sha256": "00a37f3a5b0a3dd774373108dab8e80b858cdb05f995a1abb5a7fdd82155d749"
+    },
+    {
+      "path": "jelly.css",
+      "bytes": 10539,
+      "sha256": "acac6a9c721ac378944097f26c06fe9e07c58d036ff3853c3d74d19d04b8227f"
+    },
+    {
+      "path": "jelly.js",
+      "bytes": 24202,
+      "sha256": "0e7b1a425f0678b1009d5ddf499bce2bb11625230dd3067322ade6ee2cfe636c"
+    },
+    {
+      "path": "photos/photo1_cheers.jpg",
+      "bytes": 269678,
+      "sha256": "4efabbd72ddce5b7ac57e8719dcb58b774fb133a6553fff21627d0f8d022e1fd"
+    }
+  ]
+}

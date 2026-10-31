@@ -1,0 +1,38 @@
+[
+  {
+    "case": "normal",
+    "expected": 0,
+    "actual": 0,
+    "passed": true
+  },
+  {
+    "case": "child_nonzero",
+    "expected": 7,
+    "actual": 7,
+    "passed": true
+  },
+  {
+    "case": "guard_loss",
+    "expected": 1,
+    "actual": 1,
+    "passed": true
+  },
+  {
+    "case": "cleanup_failure",
+    "expected": 1,
+    "actual": 1,
+    "passed": true
+  },
+  {
+    "case": "survivor",
+    "expected": 1,
+    "actual": 1,
+    "passed": true
+  },
+  {
+    "case": "missing_status",
+    "expected": 1,
+    "actual": 1,
+    "passed": true
+  }
+]

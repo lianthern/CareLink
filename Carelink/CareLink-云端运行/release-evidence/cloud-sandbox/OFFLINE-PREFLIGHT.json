@@ -1,0 +1,26 @@
+{
+  "schemaVersion": 1,
+  "status": "OFFLINE-PREFLIGHT",
+  "acceptedBaseCommit": "51ffb45393fab9bd352cdfbd0dda421841c6f8f0",
+  "transport": "injectable-fetch",
+  "externalNetworkDenied": true,
+  "networkRequests": 0,
+  "cloudWrites": 0,
+  "credentialsLoaded": false,
+  "sandboxAuthorized": false,
+  "track1BPass": false,
+  "implemented": [
+    "oss-media-store-put-if-absent",
+    "oss-media-store-head",
+    "oss-media-store-get",
+    "oss-media-store-delete",
+    "offline-error-and-retry-tests"
+  ],
+  "notImplemented": [
+    "direct-upload-seam-owned-by-track-1a",
+    "otp-adapter",
+    "cloudbase-deployment",
+    "real-sandbox-validation",
+    "production-wiring"
+  ]
+}

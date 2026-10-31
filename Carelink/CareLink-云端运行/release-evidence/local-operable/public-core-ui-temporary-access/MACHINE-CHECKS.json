@@ -1,0 +1,74 @@
+{
+  "base": "09ce09c170bbd4b5992a3a1b016e814be2013486",
+  "codeCommit": "4e5fd762d4bc53bc1713b675eaa4027e6f787105",
+  "codeTree": "57310340d3bb8110964906065f87ac4015c017af",
+  "scope": [
+    "apps/web/index.html",
+    "apps/web/src/app.js",
+    "apps/web/src/styles.css",
+    "apps/web/src/temporary-access.js",
+    "apps/web/assets/brand/favicon.svg",
+    "apps/web/tests/temporary-access.test.mjs",
+    "apps/web/tests/temporary-access-browser.mjs",
+    "release-evidence/local-operable/public-core-ui-temporary-access/**"
+  ],
+  "serviceChanged": false,
+  "apiChanged": false,
+  "caddyChanged": false,
+  "contractsChanged": false,
+  "rootLockChanged": false,
+  "packageChanged": false,
+  "livePortsTouched": false,
+  "productFixtureAdded": false,
+  "productionInput": false,
+  "cloudWrites": 0,
+  "checks": {
+    "temporaryAccessUnit": { "passed": 3, "failed": 0 },
+    "web": { "total": 46, "passed": 45, "skipped": 1, "failed": 0 },
+    "chromeViewports": { "passed": 2, "failed": 0 },
+    "failClosedBrowserCases": { "passed": 2, "failed": 0,
+      "cases": ["missing-200", "illegal-503"] },
+    "healthRequest": { "method": "GET", "sameOrigin": true, "body": false,
+      "exactMode": "temporary-basic-auth-invite", "acceptedStatuses": [200, 503] },
+    "browserDiagnostics": {
+      "consoleErrors": 0,
+      "exceptions": 0,
+      "failedRequests": 0,
+      "unexpectedHttpErrors": 0,
+      "externalRequests": 0,
+      "productMutations": 0
+    },
+    "accessibility": { "keyboard": "PASS", "statusRole": "PASS", "copyInAxTree": "PASS",
+      "reducedMotion": "PASS", "zoom200": "PASS", "horizontalOverflow": 0 },
+    "favicon": { "status": 200, "contentType": "image/svg+xml", "html": false,
+      "sha256": "9b3214901dd5138962f1c57837e0034b789629edcfbe4def62da44a826f6cc7f" },
+    "format": "FORMAT_OK",
+    "secretScan": "SECRET_SCAN_CLEAN",
+    "diffCheck": "CLEAN",
+    "scopeCheck": "CLEAN"
+  },
+  "screenshots": {
+    "desktop-1440.png": "369051c9c7dfa98585514d745af05d060f4cb69a635acbfaeed425766e4f9146",
+    "mobile-390.png": "dc95c279a9c027f572de9ba643c66e26d0b75f4b7570a8bfbcca47b14ba31b9e"
+  },
+  "staging4282": {
+    "status": "ok",
+    "listener": "loopback_only",
+    "externalExposure": false,
+    "cloudWrites": 0,
+    "readOnlyCheck": true,
+    "candidateMounted": false
+  },
+  "claudeReview": "N/A_BY_MAX",
+  "remainingP0": [],
+  "remainingP1": [],
+  "remainingP2": [],
+  "resolvedP2": [{
+    "issue": "live exact X-Unseen-Access-Mode response header",
+    "status": "PROVEN_BY_BASE",
+    "baseCommit": "09ce09c170bbd4b5992a3a1b016e814be2013486",
+    "evidence": "release-evidence/r0/public-core-ui-target-20260814T232050Z/MACHINE-EVIDENCE.json",
+    "responseAccessModeHeader": "temporary-basic-auth-invite",
+    "accessModeHeaderPresent": true
+  }]
+}

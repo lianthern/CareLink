@@ -1,0 +1,12 @@
+{
+  "schemaVersion": "1.0",
+  "jobId": "unseen-3dgs-room-and-local-upload-2026-09-02-v6",
+  "state": "RUNNING",
+  "createdAt": "2026-09-02T10:58:05.9253802Z",
+  "agent": "4060 Agent",
+  "machine": "DESKTOP-NIBL3D4",
+  "message": "Sync-only audit in progress; no retraining, redownload, adapter, PLY, or SOG work will be started. Existing local v6 evidence is being located and truthfully inventoried.",
+  "evidence": [
+    "jobs/to-4060/unseen-3dgs-room-and-local-upload-2026-09-02-v6/SYNC-ONLY-RETURN.md"
+  ]
+}

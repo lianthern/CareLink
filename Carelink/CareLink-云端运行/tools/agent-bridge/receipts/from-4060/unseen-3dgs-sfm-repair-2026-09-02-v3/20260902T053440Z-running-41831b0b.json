@@ -1,0 +1,10 @@
+{
+  "schemaVersion": "1.0",
+  "jobId": "unseen-3dgs-sfm-repair-2026-09-02-v3",
+  "state": "RUNNING",
+  "createdAt": "2026-09-02T05:34:40.5292769Z",
+  "agent": "4060 Agent",
+  "machine": "DESKTOP-NIBL3D4",
+  "message": "SIMPLE_RADIAL_AUTO passed the v3 SfM gate at 72/72 images, 7382 points, 71485 observations, 9.683690 mean track length, and 1.037061 px; preparing the one authorized preview 7k.",
+  "evidence": []
+}

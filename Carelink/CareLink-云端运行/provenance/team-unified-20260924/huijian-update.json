@@ -1,0 +1,80 @@
+{
+  "schema": "unseen-huijian-source-update/1",
+  "repository": "https://github.com/maxi-max-dev/huijian",
+  "previousSourceCommit": "8c4905420dc11d356f60f00951b3a352de664791",
+  "sourceCommit": "268e5b99fe49ef659bfbdcc7969c3291cfe5e52c",
+  "commits": [
+    "01a9efbf1dfda611de65a9a46aa10d17d44cd141",
+    "268e5b99fe49ef659bfbdcc7969c3291cfe5e52c"
+  ],
+  "files": [
+    {
+      "path": "apps/huijian/deploy/release-candidate.mjs",
+      "sourceSha256": "a8246bd5f78bdf5a8ddd62ed149166426effb10f27b70fd5cccc5c4947247904",
+      "resultSha256": "03a92d78cb9ec6e87df4166180fcbc6ba22f0d00241547f4ba5aca460f9b39ea",
+      "transformation": "incremental patch preserves monorepo adapters; package-lock remains optional because root owns lock; app-v2 and split-asset verification added"
+    },
+    {
+      "path": "apps/huijian/public/app-v2.html",
+      "sourceSha256": "0f4d19533a2b80b2b3297c6d5a537fb609276145ba07b19a319779d09bac5834",
+      "resultSha256": "0f4d19533a2b80b2b3297c6d5a537fb609276145ba07b19a319779d09bac5834",
+      "transformation": "regenerated with existing monorepo build; no historical bundles copied"
+    },
+    {
+      "path": "apps/huijian/public/moment-app.js",
+      "sourceSha256": "f53e402d96091d8e4309bbe9d8335721de6e1fee11b4c8e01778ef1acd5c2299",
+      "resultSha256": "f53e402d96091d8e4309bbe9d8335721de6e1fee11b4c8e01778ef1acd5c2299",
+      "transformation": "verbatim source update"
+    },
+    {
+      "path": "apps/huijian/public/moment-community.js",
+      "sourceSha256": "dcfa63a436a9890eefa357634342bc6f3d8ade3636f2ac0fcd8ed0f455e7ff83",
+      "resultSha256": "dcfa63a436a9890eefa357634342bc6f3d8ade3636f2ac0fcd8ed0f455e7ff83",
+      "transformation": "verbatim source update"
+    },
+    {
+      "path": "apps/huijian/public/moment-family-frame.js",
+      "sourceSha256": "ac8fe09a54ff9adfe104e977172085ac1834ff63718c617ba5593e7f348a1694",
+      "resultSha256": "ac8fe09a54ff9adfe104e977172085ac1834ff63718c617ba5593e7f348a1694",
+      "transformation": "verbatim source update"
+    },
+    {
+      "path": "apps/huijian/public/moment-v2.css",
+      "sourceSha256": "4cc59d394bcbbd3e1ca3d7749f49089ab75ef336115d1cdcdc38456547351f38",
+      "resultSha256": "4cc59d394bcbbd3e1ca3d7749f49089ab75ef336115d1cdcdc38456547351f38",
+      "transformation": "verbatim source update"
+    },
+    {
+      "path": "apps/huijian/public/unseen-app.html",
+      "sourceSha256": "b242982a9f2b70ecb9233faa50f9723dcf9c7d077e26b1fb77be52ca65a2c3fa",
+      "resultSha256": "b242982a9f2b70ecb9233faa50f9723dcf9c7d077e26b1fb77be52ca65a2c3fa",
+      "transformation": "regenerated with existing monorepo build; no historical bundles copied"
+    },
+    {
+      "path": "apps/huijian/test/moment-family-frame.test.mjs",
+      "sourceSha256": "ce552722cd973915cceb927993dbb752749132c20efd3c8c810e2cdbba25382d",
+      "resultSha256": "ce552722cd973915cceb927993dbb752749132c20efd3c8c810e2cdbba25382d",
+      "transformation": "verbatim source update"
+    },
+    {
+      "path": "apps/huijian/test/release-candidate.test.mjs",
+      "sourceSha256": "20c7a24f528844cd22f5b6f723fa826d3ea42b8529f41e677f90a79633557c3a",
+      "resultSha256": "20c7a24f528844cd22f5b6f723fa826d3ea42b8529f41e677f90a79633557c3a",
+      "transformation": "verbatim source update"
+    }
+  ],
+  "excluded": [
+    "historical public/app-assets bundles",
+    ".task source diagnostics"
+  ],
+  "preserved": "Existing monorepo server, dependency, provider key, build and test adaptations; old source files unchanged outside listed updates.",
+  "validation": {
+    "command": "npm run app:check",
+    "passed": 642,
+    "failed": 0,
+    "skipped": 0,
+    "log": "/tmp/unseen-huijian-update-check.log",
+    "deployed": false
+  },
+  "buildNote": "Build generates ignored content-addressed assets locally and updates two tracked HTML entries. Build diagnostic restored after validation; normal build regenerates it."
+}

@@ -1,0 +1,32 @@
+[
+  {
+    "name": "01-home.png",
+    "path": "/",
+    "status": "ok"
+  },
+  {
+    "name": "02-home-logged-in.png",
+    "path": "(client-side nav)",
+    "status": "ok"
+  },
+  {
+    "name": "05-open.png",
+    "path": "/open",
+    "status": "ok"
+  },
+  {
+    "name": "06-open-campaign.png",
+    "path": "/open/gongguang-2026",
+    "status": "ok"
+  },
+  {
+    "name": "08-album.png",
+    "path": "/s/space-gongguang/album",
+    "status": "ok"
+  },
+  {
+    "name": "10-scene.png",
+    "path": "/s/space-gongguang/scene",
+    "status": "ok"
+  }
+]

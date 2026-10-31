@@ -1,0 +1,113 @@
+{
+  "schemaVersion": "1.0",
+  "jobId": "unseen-3dgs-local-viewer-integration-2026-09-02-v5",
+  "state": "COMPLETED",
+  "completedAt": "2026-09-02T08:06:18Z",
+  "scope": {
+    "integrationProfiles": ["repair-v3", "tum-v4"],
+    "startedViewerProfile": "repair-v3",
+    "newTrainingRuns": 0,
+    "quality30kRuns": 0,
+    "newPlyExports": 0,
+    "newSogConversions": 0,
+    "productionSystemsTouched": false
+  },
+  "sog": {
+    "path": "/home/max/src/unseen-3dgs-sceneworker/artifacts/export/repair-v3/scene.sog",
+    "viewerLocalPath": "/home/max/src/unseen-3dgs-sceneworker/viewer/assets/repair-v3.scene.sog",
+    "bytes": 2693010,
+    "sha256": "0d417735d1b91573f2e2199b53567c07014a420943dac8c84cb73811a1ec0e01",
+    "sourceAndViewerCopyMatch": true
+  },
+  "integration": {
+    "patch": {
+      "path": "fixes/unseen-3dgs-local-viewer-integration-v5.patch",
+      "bytes": 116031,
+      "sha256": "30dca681aad09cfdadb85ad075e14f68173076953e25d241005822249e269781",
+      "gitApplyCheckCleanPoc": true,
+      "fileCount": 21,
+      "viewerAppIncludedOnce": true,
+      "viewerSchemaIncludedOnce": true
+    },
+    "missingV4AndE2eScriptsIncluded": [
+      "scripts/run_tum_v4_train.sh",
+      "scripts/evaluate_tum_v4.py",
+      "scripts/validate_tum_v4_artifacts.py",
+      "scripts/viewer_v4_e2e.js",
+      "scripts/viewer_repair_v3_e2e.js"
+    ],
+    "windowsScripts": [
+      "scripts/windows/Start-Local-PexelsViewer.ps1",
+      "scripts/windows/Stop-Local-PexelsViewer.ps1"
+    ],
+    "gateValidatorsExitNonzeroOnFail": true,
+    "photoAnchorFullYRestore": true,
+    "firstMovementUsesNavigationEyeHeight": true,
+    "eyeHeightUiMatchesWalkY": true,
+    "runbookCommandsAudited": true
+  },
+  "tests": {
+    "pythonCompile": "PASS",
+    "bashSyntax": "PASS",
+    "shellcheck": "PASS (0.11.0)",
+    "nodeCheck": "PASS",
+    "jsonParseAndSchema": "PASS",
+    "unitTests": {"passed": 8, "failed": 0},
+    "pocContract": "PASS",
+    "repairV3ViewerAnchors": "PASS",
+    "browserE2e": "PASS"
+  },
+  "viewer": {
+    "distro": "Ubuntu-22.04",
+    "bindAddress": "127.0.0.1",
+    "port": 8765,
+    "wslPid": 420,
+    "windowsWslPid": 19544,
+    "url": "http://127.0.0.1:8765/?scene=./repair-v3.scene.json",
+    "wslHttpStatus": 200,
+    "windowsHttpStatus": 200,
+    "defaultBrowserLaunchRequested": true,
+    "stillRunning": true,
+    "sceneState": "SOG ready",
+    "e2eSampleFps": 220,
+    "screenshotInstantFps": 212,
+    "fpsIsNotStableBenchmark": true,
+    "movementDistanceXZ": 0.10627589956010673,
+    "movementStayedInsideBoundary": true,
+    "walkY": -0.010611543,
+    "walkYMatchesNavigationEyeHeight": true,
+    "displayedEyeHeightMatchesWalkY": true,
+    "photoAnchor": {
+      "id": "frame_00036",
+      "modeRestored": true,
+      "positionMaxAbsError": 5.257560720117738e-9,
+      "quaternionMaxAbsError": 7.756686210003139e-9,
+      "fovAbsError": 0.0,
+      "fullYRestored": true,
+      "confirmationMessage": "已回到这张照片的拍摄视角"
+    },
+    "screenshot": {
+      "path": "viewer-screenshot.png",
+      "bytes": 506038,
+      "sha256": "dd6413b84f3faa5896e469dcc0aa2f6d9eea23dff190c2b24e1dd600c4e2bdf9"
+    }
+  },
+  "artifactFreeze": {
+    "v1ThroughV4Checked": true,
+    "mutations": 0,
+    "details": "logs/artifact-freeze.json"
+  },
+  "uploadPolicy": {
+    "forbiddenFileCount": 0,
+    "viewerScreenshotCount": 1,
+    "sogIncluded": false,
+    "plyIncluded": false,
+    "checkpointIncluded": false,
+    "sourceFramesIncluded": false,
+    "videoIncluded": false,
+    "depthIncluded": false,
+    "archiveIncluded": false,
+    "environmentOrTokenIncluded": false
+  },
+  "allRequiredGatesPass": true
+}

@@ -1,0 +1,15 @@
+{
+  "schemaVersion": "1.0",
+  "jobId": "unseen-3dgs-sceneworker-2026-09-02-v1",
+  "state": "RUNNING",
+  "createdAt": "2026-09-02T01:31:49.0083207Z",
+  "agent": "4060 Agent",
+  "machine": "DESKTOP-NIBL3D4",
+  "message": "GitHub Release and inner manifest/payload verified on RTX 4060 laptop; beginning WSL2 setup and isolated Pexels preview canary.",
+  "evidence": [
+    "outer_sha256:4187dcb112286bb4581da17eb014c6391211140db458a32f83f7eecadfbbe462",
+    "inner_manifest_sha256:d3c747510fdeb7c3388e7505450752e20f7891e1440327cc0848bac9906a3c05",
+    "payload_sha256:0a456db259120fbe43be28104c76e2994d096e128a372ebc608a0e9d17b7f42b",
+    "gpu:NVIDIA GeForce RTX 4060 Laptop GPU"
+  ]
+}

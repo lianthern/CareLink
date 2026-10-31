@@ -1,0 +1,10 @@
+{
+  "schemaVersion": "1.0",
+  "jobId": "unseen-3dgs-local-viewer-integration-2026-09-02-v5",
+  "state": "RUNNING",
+  "createdAt": "2026-09-02T07:23:40.4023633Z",
+  "agent": "4060 Agent",
+  "machine": "DESKTOP-NIBL3D4",
+  "message": "v5 preflight passed: no training/COLMAP/SOG job is active; existing Pexels v3 SOG matches 2693010 bytes and SHA256 0d417735d1b91573f2e2199b53567c07014a420943dac8c84cb73811a1ec0e01. Integrating code only; retraining remains zero.",
+  "evidence": []
+}

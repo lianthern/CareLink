@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "1.0",
+  "note": "Read-only references to the already completed v3/v4 gates; v5 did not retrain, export PLY, or convert SOG.",
+  "repairV3": {
+    "step": 6999,
+    "checkpointAnchorMean": {
+      "psnr": 29.032833099365234,
+      "ssim": 0.9545907974243164,
+      "lpips": 0.09682126094897588
+    },
+    "checkpointGatePass": true,
+    "artifactGatePass": true,
+    "rawPlyMatchesCheckpointPixelsExactly": true
+  },
+  "tumV4": {
+    "step": 6999,
+    "checkpointAnchorMean": {
+      "psnr": 23.752007802327473,
+      "ssim": 0.8512579798698425,
+      "lpips": 0.17345661918322244
+    },
+    "checkpointGatePass": true,
+    "artifactGatePass": true,
+    "rawPlyMatchesCheckpointPixelsExactly": true
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "logo": "/__auth/env/logo.svg",
+  "name": "云开发 CloudBase",
+  "backgroundColor": "#f3f3f3",
+  "miniprogram": [
+    {
+      "id": "__openid_login",
+      "label": "OpenID登录",
+      "type": "openid_login",
+      "enable": true
+    }
+  ],
+  "web": [
+    {
+      "id": "__password",
+      "label": "账户密码登录",
+      "type": "password",
+      "enable": true,
+      "extraLink":{"title":"忘记账号或密码","url":"https://developers.weixin.qq.com/miniprogram/dev/wxcloud/guide/extensions/manage-system/faq.html","type":"_blank"},
+      "icon": "https://cloudcache.tencent-cloud.com/qcloud/ui/static/static_source_business/c0774b3d-2718-46b7-bb21-785e164f1ca0.svg"
+    }
+  ],
+  "agreement": {
+    "enable": false,
+    "items": [
+      {
+        "label": "隐私协议",
+        "type": "privacy",
+        "value": "",
+        "enable": false
+      },
+      {
+        "label": "用户协议",
+        "type": "user",
+        "value": "",
+        "enable": false
+      }
+    ]
+  },
+  "userRegistry": {
+    "enable": false
+  },
+  "access": {
+    "needLogin": true,
+    "noPermissionPolicy": "show_warning",
+    "defaultRoleId": "",
+    "defaultExternalRoleId": "",
+    "whiteListPageIds": "",
+    "configVersion": "v2",
+    "type": "env"
+  },
+  "security": {
+    "expiresTime": 2592000,
+    "enableLoginStatusShare": true
+  }
+}

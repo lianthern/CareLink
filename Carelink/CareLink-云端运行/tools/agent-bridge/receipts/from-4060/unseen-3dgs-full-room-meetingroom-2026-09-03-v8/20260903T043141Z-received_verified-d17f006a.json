@@ -1,0 +1,14 @@
+{
+  "schemaVersion": "1.0",
+  "jobId": "unseen-3dgs-full-room-meetingroom-2026-09-03-v8",
+  "state": "RECEIVED_VERIFIED",
+  "createdAt": "2026-09-03T04:31:41.2066552Z",
+  "agent": "4060 Agent",
+  "machine": "DESKTOP-NIBL3D4",
+  "message": "v8 full-room long-video and Viewer correction task received; research canary only, production off.",
+  "evidence": [
+    "jobs/to-4060/unseen-3dgs-full-room-meetingroom-2026-09-03-v8/README.md",
+    "jobs/to-4060/unseen-3dgs-full-room-meetingroom-2026-09-03-v8/ACCEPTANCE.md",
+    "jobs/to-4060/unseen-3dgs-full-room-meetingroom-2026-09-03-v8/TASK.json"
+  ]
+}

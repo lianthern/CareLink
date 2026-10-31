@@ -1,0 +1,11 @@
+{
+  "shot": "S11",
+  "attempt": 1,
+  "promptId": "6cf2222b-77e6-4f51-8ec0-5980c3073ba9",
+  "video": "D:\\H3-runtime\\projects\\unseen-full-v1\\generated\\unseen-full-v1\\S11\\attempt-01_00001_.mp4",
+  "bytes": 648798,
+  "sha256": "5411b455d0c9f4605a7f18f17a2966bce5c73606d75138144dabd1f736b2920e",
+  "decodeExit": 0,
+  "endedAt": "2026-09-14T04:05:11.978394+00:00",
+  "visualVerdict": "pending_agent_review"
+}

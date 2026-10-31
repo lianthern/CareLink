@@ -1,0 +1,114 @@
+{
+  "schema": "unseen-renderer-cleanup-atomic-promotion-evidence/1",
+  "generatedAt": "2026-08-15T05:17:38Z",
+  "status": "CODE_GATES_PASS_TARGET_RETRY_REQUIRED",
+  "baseCommit": "7a8baee70865b4035afb367ab768cff53bc097c0",
+  "baseTree": "ebe80c4f10254afe2f2b1224a6109b75b1ce9006",
+  "codeCommit": "4a49fb34004ada76d4d1f6cad6e1af46c0bd52f9",
+  "codeTree": "96a12fa9ee11ef96df52fc039105b0ce99d46ad8",
+  "reviewFinding": {
+    "observedGate": "npm test -w services/api",
+    "observedUnderLoad": "128/129",
+    "stableError": "renderer_spool_file_invalid",
+    "rootCause": "cleanup marker reader observed atomicWriteFile after link and before temporary unlink with nlink=2",
+    "targetedRerunHadPassed": true
+  },
+  "fix": {
+    "scope": "waitForCleanup cleanup marker only",
+    "genericSecureReadRelaxed": false,
+    "destinationNameExact": true,
+    "temporaryNameExactSameDirectoryUuid": true,
+    "uniqueTemporaryRequired": true,
+    "sameDeviceAndInodeRequired": true,
+    "destinationAndTemporaryRegularNonSymlink": true,
+    "nlinkExactlyTwoDuringPromotion": true,
+    "ownerGroupModeSizeExact": true,
+    "canonicalBytesAndHashExact": true,
+    "promotionRetryMs": 10,
+    "usesExistingCleanupDeadline": true,
+    "persistentPromotionAccepted": false,
+    "publicContractChanged": false,
+    "bookDefaultOff": true
+  },
+  "machineChecks": {
+    "focusedFilesystemIpcLifecycleAndControl": {
+      "command": "node --test tests/e2e/book-lab/dedicated-renderer.verify.mjs",
+      "total": 36,
+      "passed": 36,
+      "failed": 0,
+      "durationMs": 7916.803125
+    },
+    "deterministicPromotionTestRepeated": {
+      "command": "node --test --test-name-pattern='cleanup reader retries only' tests/e2e/book-lab/dedicated-renderer.verify.mjs",
+      "runs": 3,
+      "passedRuns": 3,
+      "failedRuns": 0,
+      "linkBeforeUnlinkHoldMs": 40,
+      "readerObservedWaitMinimumMs": 35
+    },
+    "apiFullConcurrentLoad": {
+      "command": "npm test -w services/api",
+      "concurrentRuns": 3,
+      "testsPerRun": 129,
+      "passedPerRun": [129, 129, 129],
+      "failedPerRun": [0, 0, 0],
+      "durationMs": [8214.133417, 8202.548708, 8121.652792]
+    },
+    "apiRendererIntegration": {
+      "command": "node --test services/api/tests/book-renderer-integration.test.mjs",
+      "total": 4,
+      "passed": 4,
+      "failed": 0
+    },
+    "productionPackage": {
+      "command": "node tests/e2e/production-package.verify.mjs",
+      "status": "PASS",
+      "candidateCommit": "4a49fb34004ada76d4d1f6cad6e1af46c0bd52f9",
+      "acceptanceNegativeCases": 32,
+      "portableBundleVerified": true,
+      "standaloneNonGitCwdVerified": true,
+      "externalNetworkRequests": 0
+    },
+    "contracts": {
+      "command": "npm run contracts:check",
+      "status": "CONTRACT_GENERATION_CLEAN",
+      "files": 11
+    },
+    "format": {
+      "command": "npm run format:check",
+      "status": "FORMAT_OK",
+      "files": 40
+    },
+    "secretScan": {
+      "command": "npm run secret:scan",
+      "status": "SECRET_SCAN_CLEAN",
+      "findings": 0
+    },
+    "targetUbuntuExecutionAfterFix": "NOT_RUN"
+  },
+  "negativeCoverage": [
+    "persistent_exact_nlink2_times_out_fail_closed",
+    "nlink3_extra_hardlink_rejected",
+    "wrong_temporary_name_rejected",
+    "right_temporary_name_wrong_inode_rejected",
+    "wrong_destination_and_temporary_mode_rejected"
+  ],
+  "codeArtifactSha256": {
+    "infra/integration/book-lab/renderer-client.mjs": "38259dd0da597090cd831fa0b5d6e14be37a921a683b51026ce8d42676c02545",
+    "tests/e2e/book-lab/dedicated-renderer.verify.mjs": "a107e69c845c30ac5afeacaadcfee050d0ea847abfc7570f6df77cf59840b1d3"
+  },
+  "defaultOff": true,
+  "liveTargetChanged": false,
+  "rendererStartedByThisLane": false,
+  "bookEnabled": false,
+  "openCodeP0": 0,
+  "openCodeP1": 0,
+  "nonClaims": [
+    "not target renderer acceptance",
+    "not Book enabled",
+    "not production GO",
+    "not a live-user render",
+    "not a target deterministic render retry"
+  ],
+  "sensitiveDataRecorded": false
+}

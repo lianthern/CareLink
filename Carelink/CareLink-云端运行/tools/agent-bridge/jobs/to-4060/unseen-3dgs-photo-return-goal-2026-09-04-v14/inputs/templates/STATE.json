@@ -1,0 +1,11 @@
+{
+  "schemaVersion": "1.0",
+  "jobId": "unseen-3dgs-photo-return-goal-2026-09-04-v14",
+  "state": "RUNNING",
+  "currentMethod": "training-pose-epipolar-sift-track-v1",
+  "algorithmFinalGate": "PENDING",
+  "viewerGate": "PENDING_AFTER_ALGORITHM_5_OF_5",
+  "terminalAlgorithmFailureAllowed": false,
+  "lastExperimentId": null,
+  "nextDecision": "build and measure the supplied truth-free SIFT track starter"
+}

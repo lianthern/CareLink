@@ -1,0 +1,102 @@
+{
+  "schema": "unseen-basic-auth-incident-rotation-evidence/1",
+  "kind": "INCIDENT_MITIGATION_NOT_SHADOW_ACCEPTANCE",
+  "observedAt": "2026-08-14T18:36:44Z",
+  "claimBoundary": {
+    "stage5InputCommit": "8e268c8c6145e200cf38fc9f2086f6109d0cd6e3",
+    "deployedCandidateCommit": "49856278ce0c891bc7c5c736a902bb9ca106d879",
+    "packageRebuilt": false,
+    "shadowAcceptanceRun": false,
+    "productionReady": false,
+    "releaseClaim": "NO_GO"
+  },
+  "incident": {
+    "trigger": "legacy_basicauth_directive_was_not_matched_by_a_read_only_redaction_filter",
+    "exposure": "one_existing_basic_auth_verifier_was_emitted_to_tool_output",
+    "exposedValueRecordedHere": false,
+    "systemLogsDeleted": false,
+    "shadowWorkStoppedBeforeRuntimeCreation": true
+  },
+  "mitigation": {
+    "operatorHandoffAtomicallyReplaced": true,
+    "operatorHandoffMode": "0600",
+    "operatorHandoffLinkCount": 1,
+    "operatorHandoffRegularNonSymlink": true,
+    "oldPlaintextTemporaryFileRemoved": true,
+    "newValueRecorded": false,
+    "newVerifierRecorded": false,
+    "serverValueTransit": "SSH_STDIN_ONLY_NOT_ARGV_OR_OUTPUT",
+    "caddyConfigHashChanged": true,
+    "caddyConfigByteScope": "one_existing_legacy_basicauth_verifier_line_only",
+    "caddyLineCountUnchanged": true,
+    "caddyValidate": "PASS",
+    "caddyReload": "PASS",
+    "liveConfigMetadata": "0640_root_caddy_regular_nlink1",
+    "rootOnlyBackup": "/var/backups/unseen/shadow-acceptance/20260814T182953Z/Caddyfile.before",
+    "rootOnlyBackupMetadata": "0600_root_root_regular_nlink1",
+    "remoteRotationTemporaryFilesRemoved": true
+  },
+  "http": {
+    "missingCredentialStatus": 401,
+    "retiredCredentialStatus": 401,
+    "rotatedCredentialStatus": 200,
+    "authorizedBodyBytes": 1991,
+    "authorizedBodySha256": "c5a79af691e0b96c83bd3133379ab369dcf139dbd6300040a7ed0810a69fa3fc",
+    "authorizedBodyUnchanged": true,
+    "authorizedServerHeaderPresent": false,
+    "authorizedCacheControl": "private, no-store, max-age=0",
+    "authorizedPermissionsPolicy": "camera=(), microphone=(), geolocation=()"
+  },
+  "liveInvariants": {
+    "apiUnitActive": true,
+    "webUnitActive": true,
+    "caddyUnitActive": true,
+    "appListeners": [
+      "127.0.0.1:4173",
+      "127.0.0.1:4282"
+    ],
+    "newPublicListenerCreated": false,
+    "sqliteQuickCheck": "ok",
+    "schemaMigrationCount": 10,
+    "accountCount": 0,
+    "spaceCount": 0,
+    "privateAiAuthorizationCount": 0,
+    "privateAiJobCount": 0,
+    "privateAiWorkerEnabled": false,
+    "coreFactsProviderEnabled": false,
+    "bookLabEnabled": false,
+    "macWorkerLaunchdState": "not_running_runs1_exit0",
+    "localStaging4282Healthy": true,
+    "rootDomainDnsChanged": false,
+    "wwwHostDnsChanged": false,
+    "authoritativeNameServers": [
+      "ns1.qeodns.com.",
+      "ns2.qeodns.com."
+    ]
+  },
+  "shadowFreeze": {
+    "shadowUnitCount": 0,
+    "shadowStateDirectoryCount": 0,
+    "shadowRuntimeDirectoryCount": 0,
+    "shadowTokenGenerated": false,
+    "caddyShadowRouteInstalled": false,
+    "macOneShotRun": false,
+    "subscriptionImageSubmitted": false
+  },
+  "approvedToolingInstall": {
+    "package": "libimage-exiftool-perl",
+    "version": "12.76+dfsg-1",
+    "source": "Ubuntu_official_repository",
+    "productionRuntimeDependency": false
+  },
+  "outputHygiene": {
+    "mitigationCommandsEmittedVerifier": false,
+    "mitigationCommandsEmittedPlaintext": false,
+    "mitigationCommandsEmittedAuthorizationHeader": false,
+    "repositoryEvidenceContainsCredentialMaterial": false
+  },
+  "p0": [],
+  "p1": [
+    "INDEPENDENT_REVIEW_OF_BASIC_AUTH_ROTATION_EVIDENCE_REQUIRED"
+  ]
+}

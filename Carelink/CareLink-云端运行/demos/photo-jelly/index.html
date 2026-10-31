@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="color-scheme" content="light">
+  <title>照片果冻 · UNSEEN 实验</title>
+  <meta name="description" content="把一张照片变成可以按压、拉伸和回弹的果冻。照片只在本机处理。">
+  <link rel="icon" href="./icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="./jelly.css">
+</head>
+<body>
+  <div class="ambient ambient--blue" aria-hidden="true"></div>
+  <div class="ambient ambient--pink" aria-hidden="true"></div>
+
+  <header class="topbar">
+    <a class="wordmark" href="https://huijian.maxxam.xyz/unseen-demo" aria-label="返回 UNSEEN 设计演示">
+      <span>UNSEEN</span>
+      <small>TOUCH STUDY 01</small>
+    </a>
+    <p><i aria-hidden="true"></i> 照片只留在本机</p>
+  </header>
+
+  <main class="demo-layout">
+    <section class="intro" aria-labelledby="jelly-title">
+      <p class="eyebrow">PHOTO JELLY · 照片触感实验</p>
+      <h1 id="jelly-title">把照片，<br><em>捏成一块果冻。</em></h1>
+      <p class="lede">按住、拖开、松手。它会黏住你的手指，再晃悠悠地弹回去。</p>
+
+      <div class="preset-group" aria-label="选择果冻手感">
+        <span>手感</span>
+        <div class="segmented" role="group" aria-label="果冻手感">
+          <button type="button" data-preset="soft" aria-pressed="false">软糯</button>
+          <button type="button" data-preset="bounce" class="is-active" aria-pressed="true">Q 弹</button>
+          <button type="button" data-preset="sticky" aria-pressed="false">黏稠</button>
+        </div>
+      </div>
+
+      <div class="intro-actions">
+        <label class="upload-button">
+          <span>换一张照片</span>
+          <input id="photo-upload" type="file" accept="image/jpeg,image/png,image/webp">
+        </label>
+        <button class="quiet-button" id="sound-toggle" type="button" aria-pressed="true">
+          <span class="sound-icon" aria-hidden="true"><i></i><i></i><i></i></span>
+          <span id="sound-label">声音开</span>
+        </button>
+        <button class="quiet-button" id="reset-jelly" type="button">重置果冻</button>
+      </div>
+
+      <p class="privacy-note">不需要 AI，也不会上传原图。刷新页面后，本次选择就会消失。</p>
+    </section>
+
+    <section class="playground" aria-label="照片果冻互动区">
+      <div class="stage" id="jelly-stage">
+        <div class="stage-label" aria-hidden="true">
+          <span>TOUCH</span>
+          <b>按住照片，拖起来看厚度</b>
+        </div>
+        <div class="jelly-shadow" id="jelly-shadow" aria-hidden="true"></div>
+        <canvas
+          id="jelly-canvas"
+          tabindex="0"
+          role="application"
+          aria-label="可按压和拉伸的照片果冻"
+          aria-describedby="interaction-hint"
+        ></canvas>
+        <p class="loading-note" id="loading-note" aria-live="polite">正在把照片变软……</p>
+        <div class="drag-cursor" id="drag-cursor" aria-hidden="true"><i></i></div>
+      </div>
+
+      <div class="stage-footer">
+        <p id="interaction-hint"><span aria-hidden="true">↗</span> 从照片中间按住，拖开看看果冻侧面</p>
+        <output id="feel-readout" aria-live="polite"><i></i> 3D · Q 弹</output>
+      </div>
+    </section>
+  </main>
+
+  <footer class="page-note">
+    <span>UNSEEN PLAYGROUND</span>
+    <span>单图 · 本地 · 实时软体模拟</span>
+  </footer>
+
+  <script type="module" src="./jelly.js"></script>
+</body>
+</html>

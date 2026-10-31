@@ -1,0 +1,15 @@
+{
+  "schemaVersion": "1.0",
+  "jobId": "unseen-3dgs-sceneworker-2026-09-02-v1",
+  "state": "RUNNING",
+  "createdAt": "2026-09-02T01:37:42.8353821Z",
+  "agent": "4060 Agent",
+  "machine": "DESKTOP-NIBL3D4",
+  "message": "Windows wrapper hit a reproducible wslpath backslash-argument bug before extraction. Original Release remains immutable; executing a one-line local wrapper patch that converts the archive path to forward slashes. Payload SHA256 is unchanged.",
+  "evidence": [
+    "error:wslpath_received_C:Users_path_without_backslashes",
+    "original_wrapper_sha256:583beda0b87eeca336decccf857c0fb1bfea45ef7d0e4c84df19c3a4be2c2096",
+    "patched_wrapper_sha256:96bba842c83e039af7536b072efd288c1e7dbf5102af7d56943bcb565992247c",
+    "payload_sha256:0a456db259120fbe43be28104c76e2994d096e128a372ebc608a0e9d17b7f42b"
+  ]
+}

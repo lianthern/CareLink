@@ -1,0 +1,155 @@
+{
+  "schemaVersion": "1.0",
+  "jobId": "unseen-3dgs-360roam-base-2026-09-03-v10",
+  "targetAgent": "Max RTX 4060 Laptop Agent",
+  "publishedAt": "2026-09-03T10:00:32Z",
+  "state": "PUBLISHED",
+  "artifact": {
+    "delivery": "github-private-release",
+    "releaseTag": "unseen-3dgs-sceneworker-2026-09-02-v1",
+    "assetName": "02-UNSEEN-3DGS-SINGLE-ZIP-sha256-4187dcb112286bb4581da17eb014c6391211140db458a32f83f7eecadfbbe462.zip",
+    "sha256": "4187dcb112286bb4581da17eb014c6391211140db458a32f83f7eecadfbbe462",
+    "bytes": 1373866,
+    "format": "zip"
+  },
+  "inputs": [
+    {
+      "path": "inputs/source-manifest.json",
+      "bytes": 15037,
+      "sha256": "af7600e39ddc3ebceb0bb58376faa7620cf8e58d21eef7eda6f328cc2791d475"
+    },
+    {
+      "path": "inputs/scripts/linux/prepare_360roam_base.py",
+      "bytes": 21739,
+      "sha256": "fc85fe36fc553ed2cf6c1b2c77168ca0d96e46b15eeb9ee57a14d07eaad8d963"
+    },
+    {
+      "path": "inputs/scripts/linux/Prepare-V10-360Roam.sh",
+      "bytes": 2287,
+      "sha256": "d1ff8528a844597ac711e0adefb6c4c157e5db51fc942136355d3fb342847b14"
+    },
+    {
+      "path": "inputs/scripts/linux/Run-V10-Preview.sh",
+      "bytes": 4170,
+      "sha256": "23b9557ac21c7d7279f3fa82e9b8c0f4f1353ecca81305c41869348dd516fbe1"
+    },
+    {
+      "path": "inputs/scripts/windows/Start-V10-360Roam.ps1",
+      "bytes": 2092,
+      "sha256": "8eb756b29db77f48def546e3c65729b4bdd4d8cd11929443a15375092d042f21"
+    },
+    {
+      "path": "inputs/tests/test_prepare_360roam_base.py",
+      "bytes": 2477,
+      "sha256": "3868b853d8282e5da32efb7d7bb707b79d3e0586269daa9802db8647781cc81b"
+    }
+  ],
+  "execution": {
+    "mode": "real-moving-360-panorama-known-pose-to-walkable-3dgs",
+    "priority": "P0",
+    "comparisonJobId": "unseen-3dgs-full-room-hf-lite-2026-09-03-v9",
+    "reuseExistingLocalEnvironment": true,
+    "reuseExistingIntegratedSource": true,
+    "productionConnectionEnabled": false,
+    "researchCanaryOnly": true,
+    "maxConcurrentGpuJobs": 1,
+    "maxTrainingInvocations": 2,
+    "maxFromScratchTrainingRuns": 1,
+    "maxPreview7000Runs": 1,
+    "quality30000Allowed": "ONLY_AFTER_7K_TECHNICAL_AND_USER_GATES_PASS",
+    "localProjectPath": "/home/max/src/unseen-3dgs-sceneworker",
+    "sceneRevisionId": "360roam-base-r001",
+    "source": {
+      "provider": "HKUST 360Roam authors public Synology share",
+      "projectUrl": "https://huajianup.github.io/research/360Roam/",
+      "shareUrl": "https://hkust-vgd.nas.ust.hk:5001/sharing/LSeTZWca6",
+      "scene": "base",
+      "format": "moving-equirectangular-jpeg-sequence-with-author-poses",
+      "literalMp4": false,
+      "fullPanoramaCount": 198,
+      "fullPanoramaBytes": 2231668064,
+      "selectedPanoramaCount": 60,
+      "selectedBytes": 674276821,
+      "imageWidth": 6080,
+      "imageHeight": 3040,
+      "cameraExif": "insta360 one x2",
+      "poseTrainCount": 148,
+      "poseTestCount": 50,
+      "poseBytes": 66048,
+      "poseSha256": "8e46d6ffc867b8544e2066634a6ee3f7f2f0a1e04d5a7a486fc67c98a8d330a2",
+      "containsPrivateMaterial": false,
+      "explicitDatasetLicensePublished": false,
+      "usageBoundary": "Max-owned-machine local non-commercial research/personal experiment only; direct author download; no redistribution"
+    },
+    "processing": {
+      "adapter": "equirectangular-to-overlapping-pinhole-v1",
+      "selectedTrainPanoramas": 50,
+      "selectedValidationPanoramas": 10,
+      "viewsPerPanorama": 10,
+      "horizontalYawDegrees": [0, 45, 90, 135, 180, -135, -90, -45],
+      "polarPitchDegrees": [65, -65],
+      "faceFovDegrees": 100,
+      "faceWidth": 1024,
+      "faceHeight": 1024,
+      "trainViews": 500,
+      "validationViews": 100,
+      "usesAuthorPoses": true,
+      "usesAuthorScenePly": false
+    },
+    "training": {
+      "trainer": "nerfstudio-splatfacto",
+      "nerfstudioVersionExpected": "1.1.5",
+      "stages": [7000, 30000],
+      "qualityStageGatedByPreview": true,
+      "randomInit": true,
+      "load3DPoints": false,
+      "cameraOptimizer": "off"
+    },
+    "viewer": {
+      "reuseVerifiedV9Viewer": true,
+      "bindAddress": "127.0.0.1",
+      "preferredPort": 8765,
+      "allowedPortRange": [8765, 8775],
+      "manifest": "viewer/360roam-base-v10.scene.json",
+      "fovRangeDegrees": [30, 90],
+      "sprintMultiplier": 3.0,
+      "walkStartsLevel": true,
+      "navigationBoundary": "buffered-planar-camera-footprint",
+      "photoRelocalization": false,
+      "coverageDirections": ["front", "back", "left", "right", "up", "down"]
+    },
+    "firstAction": "Pull main, read the v10 README/SOURCE-EVIDENCE/ACCEPTANCE/MAC-VERIFICATION/TASK/STATUS completely, submit RECEIVED_VERIFIED, prepare and visually gate the frozen 60-panorama subset, then run exactly one 7k preview before any optional 30k continuation."
+  },
+  "receipt": {
+    "repository": "maxi-max-dev/max-agent-bridge",
+    "issueNumber": 11,
+    "directory": "receipts/from-4060/unseen-3dgs-360roam-base-2026-09-03-v10",
+    "reportPath": "results/from-4060/unseen-3dgs-360roam-base-2026-09-03-v10/V10-REPORT.md",
+    "requiredStates": ["RECEIVED_VERIFIED", "RUNNING", "UPLOADING", "COMPLETED"],
+    "failureStatesAllowed": ["BLOCKED", "FAILED"],
+    "githubIsAuthoritative": true,
+    "icloudReportIsBestEffortOnly": true
+  },
+  "security": {
+    "allowedNetwork": "outbound-https-to-github-and-360roam-author-share-plus-loopback-http-only",
+    "productionApiAllowed": false,
+    "paidApiAllowed": false,
+    "firewallChangeAllowed": false,
+    "lanOrPublicListenAllowed": false,
+    "privateVideoAllowed": false,
+    "safeViewerScreenRecordingAllowed": true,
+    "forbiddenUploads": [
+      "source panoramas",
+      "pose_c2w.json",
+      "virtual-view images",
+      "download manifest lock",
+      "checkpoint",
+      "PLY",
+      "SOG",
+      "work directory",
+      "private media",
+      "token",
+      ".env"
+    ]
+  }
+}

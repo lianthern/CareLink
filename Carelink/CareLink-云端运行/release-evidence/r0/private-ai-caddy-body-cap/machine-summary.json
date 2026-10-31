@@ -1,0 +1,52 @@
+{
+  "schema": "unseen-private-ai-caddy-body-cap-evidence/1",
+  "observedAt": "2026-08-14T18:58:52Z",
+  "claim": "CODE_ONLY_NOT_DEPLOYED",
+  "baseCommit": "1ea8323e61a1baa4deb760ff26c28b8859161261",
+  "codeCommit": "a3c47c8500207bd6dbd2440ad9a10f5430e1b3b9",
+  "codeTree": "9c62a124eed27fe40625d5eafb8fa77345c31217",
+  "rootCause": {
+    "sizeLiteral": "32KB is 32000 bytes; the frozen boundary is 32KiB or 32768 bytes",
+    "proxyFailure": "a reverse proxy body-read overflow can surface as 502, so declared oversize and chunked POSTs are rejected before proxying"
+  },
+  "caddy": {
+    "version": "v2.11.4",
+    "binarySha256": "e9ebf99dfd4b72259debe1830c83e86c63fb89a88e28b4e7c5e78a35fa76c92d",
+    "officialArchive": "caddy_2.11.4_mac_arm64.tar.gz",
+    "officialArchiveSha512": "3190ae0df98b59ab4b6021556fa35adc3c526a4f3e138776b0eaec8a037cc26121cbbb1ad53453f565551b47d37d5ba4755e2c2c3652256737fe2ce9e53c8ec0"
+  },
+  "boundary": {
+    "exactBytesPassedToUpstream": 32768,
+    "oversizeBytesRejectedLocally": [32769, 65536],
+    "chunkedPostRejectedLocally": true,
+    "upstreamRequestsForOversize": 0,
+    "oversizeStatus": 413,
+    "oversizeProtocolHeader": "unseen-private-ai-pull/1",
+    "oversizeCacheControl": "private, no-store, max-age=0",
+    "oversizeContentType": "application/json",
+    "oversizeBody": "empty_no_forged_request_id",
+    "hostPreserved": true,
+    "forwardedProtoHttps": true,
+    "missingBearerStatus": 401,
+    "wrongBearerStatus": 401,
+    "disabledStatus": 503,
+    "nonInternalStatus": 401
+  },
+  "gates": {
+    "privateBetaDeployment": "PASS",
+    "realCaddyBoundary": "PASS",
+    "format": "PASS",
+    "secretScan": "PASS",
+    "diffCheck": "PASS",
+    "scope": "PASS"
+  },
+  "commands": [
+    "node tests/e2e/private-beta-deployment.verify.mjs",
+    "UNSEEN_CADDY_BIN=<verified-caddy-bin> node tests/e2e/private-ai-caddy-body-cap.integration.mjs",
+    "npm run format:check",
+    "npm run secret:scan",
+    "git diff --check"
+  ],
+  "openP0": [],
+  "openP1": []
+}

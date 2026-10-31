@@ -1,0 +1,10 @@
+{
+  "schemaVersion": "1.0",
+  "jobId": "unseen-3dgs-photo-return-goal-2026-09-04-v14",
+  "state": "RUNNING",
+  "createdAt": "2026-09-04T04:05:44.1167672Z",
+  "agent": "4060 Agent",
+  "machine": "DESKTOP-NIBL3D4",
+  "message": "v14 persistent goal started with the supplied truth-free training-pose-epipolar-sift-track-v1 method; issue remains open across evidence-driven methods until acceptance.",
+  "evidence": []
+}

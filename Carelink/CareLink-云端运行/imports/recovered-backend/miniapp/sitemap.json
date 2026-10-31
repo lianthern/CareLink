@@ -1,0 +1,6 @@
+{
+  "desc": "UNSEEN 空间记忆小程序，空间内容通过应用内入口或空间编号访问。",
+  "rules": [
+    { "action": "disallow", "page": "*" }
+  ]
+}

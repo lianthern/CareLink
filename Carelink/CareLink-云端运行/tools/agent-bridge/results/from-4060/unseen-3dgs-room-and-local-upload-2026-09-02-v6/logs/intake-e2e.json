@@ -1,0 +1,27 @@
+{
+  "status": "PASS",
+  "url": "http://127.0.0.1:8780/",
+  "title": "UNSEEN 本机视频入口",
+  "heading": "把视频送进 WSL",
+  "health": {
+    "status": "READY",
+    "bindAddress": "127.0.0.1",
+    "port": 8780,
+    "trainingStartsAutomatically": false,
+    "intakeRoot": "/home/max/src/unseen-3dgs-sceneworker/data/local-intake"
+  },
+  "consoleErrors": [],
+  "checks": {
+    "http200": true,
+    "expectedTitle": true,
+    "expectedHeading": true,
+    "localOnlyDisclosure": true,
+    "noAutoTrainDisclosure": true,
+    "mp4AndMovOnly": true,
+    "healthReady": true,
+    "loopbackOnly": true,
+    "trainingDoesNotStartAutomatically": true,
+    "noConsoleErrors": true
+  },
+  "privateVideoSelectedOrUploaded": false
+}

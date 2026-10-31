@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/maxi-max-dev/max-agent-bridge/schemas/receipt.schema.json",
+  "title": "Max Agent Bridge Receipt",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaVersion", "jobId", "state", "createdAt", "agent", "machine", "message", "evidence"],
+  "properties": {
+    "schemaVersion": {"const": "1.0"},
+    "jobId": {"type": "string", "pattern": "^[a-z0-9][a-z0-9-]{5,127}$"},
+    "state": {"enum": ["RECEIVED_VERIFIED", "RUNNING", "UPLOADING", "COMPLETED", "BLOCKED", "FAILED"]},
+    "createdAt": {"type": "string", "format": "date-time"},
+    "agent": {"type": "string", "minLength": 1},
+    "machine": {"type": "string", "minLength": 1},
+    "message": {"type": "string", "minLength": 1, "maxLength": 2000},
+    "evidence": {"type": "array", "items": {"type": "string", "maxLength": 500}}
+  }
+}

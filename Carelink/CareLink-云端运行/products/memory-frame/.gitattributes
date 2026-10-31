@@ -1,0 +1,10 @@
+* text=auto
+*.sh text eol=lf
+*.mjs text eol=lf
+*.js text eol=lf
+*.json text eol=lf
+*.yaml text eol=lf
+**/scf_bootstrap text eol=lf
+*.jpg binary
+*.png binary
+*.woff2 binary

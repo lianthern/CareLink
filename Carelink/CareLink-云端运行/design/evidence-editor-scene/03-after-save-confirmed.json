@@ -1,0 +1,25 @@
+{
+  "step": "真实浏览器操作：打开编辑器 -> 360 预览可见 -> 在预览里拖动视角 -> 点击『确认位置』保存 -> 状态变为 confirmed",
+  "dragResult": "拖动后 HUD 显示『方向 327° · 高度 0°』（第一张测试照片 photo_36f27e976ec6421c9091c3abb974dd8a）",
+  "saveRequest": "POST /v1/photos/photo_36f27e976ec6421c9091c3abb974dd8a/placement-revisions {mode:'manual', yawDeg:326.72, pitchDeg:0, confirmationMode:'manual'}",
+  "afterSaveEditViewResponse": {
+    "photoId": "photo_36f27e976ec6421c9091c3abb974dd8a",
+    "placementState": "confirmed",
+    "confirmationMode": "manual",
+    "sceneContext": {
+      "placement": {
+        "status": "confirmed",
+        "confirmationMode": "manual",
+        "yawDeg": 326.72,
+        "pitchDeg": 0,
+        "fovDeg": 75
+      }
+    }
+  },
+  "placementQueueAfterConfirm": [],
+  "sceneViewAfterConfirm": "GET /s/{sid}/scene 正常渲染 360 全景，侧边栏出现『已定位 · 当前照片』标记，证明保存后的照片能被公开的、confirmed-only 的 viewer 路径正常读取——回到了完全未改动的原有行为。",
+  "secondRepro": {
+    "photoId": "photo_4423f464f53248759d1103b939d22c70",
+    "note": "用第二张、独立上传的照片（photo-4.jpg 夹具）重复了一遍完整流程（队列 -> 编辑器 360 预览可见，方向 0°/0° -> 确认位置），标题从『确认照片所在方向』变为『调整照片位置』，同样成功。这次是在修复了 local-operable.mjs 投影层的 anchor 覆盖 bug 之后测的，sceneContext.photoId 与目标照片完全一致。"
+  }
+}

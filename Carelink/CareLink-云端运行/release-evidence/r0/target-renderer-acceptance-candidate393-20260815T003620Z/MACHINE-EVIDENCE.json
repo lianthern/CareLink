@@ -1,0 +1,118 @@
+{
+  "schema": "unseen-target-renderer-acceptance-attempt-evidence/1",
+  "generatedAt": "2026-08-15T00:52:00Z",
+  "status": "BLOCKED_BEFORE_RENDERER_INSTALL_OR_EXECUTION",
+  "claim": "TARGET_RENDERER_ACCEPTANCE_NOT_ACHIEVED",
+  "candidate": {
+    "commit": "39316d62e0216e38a3c826f049ddf9cc4030a1c4",
+    "tree": "e36cb6b16888baac73665d1b999d6e958a309a87",
+    "clean": true,
+    "rendererCodeAccepted": true
+  },
+  "officialProfileGate": {
+    "repository": "Ubuntu noble-updates",
+    "package": "apparmor-profiles",
+    "version": "4.0.1really4.0.1-0ubuntu0.24.04.7",
+    "architecture": "all",
+    "debSha256": "bdac5b74d884643653565c52ed7483c9582e646ff72cce8d95d0eb8467a3139c",
+    "packageInstalled": true,
+    "profilePath": "/usr/share/apparmor/extra-profiles/bwrap-userns-restrict",
+    "profileSha256": "11d39094f044f0cda0febb3ad517b830301da6b2ce929664af09ee9e4dd264f9",
+    "profileMetadata": "root:root:0644:regular:nlink1",
+    "parserDryRun": "PASS",
+    "profileLoaded": false
+  },
+  "rendererRuntimeInventory": {
+    "bubblewrap": {
+      "version": "0.9.0-1ubuntu0.1",
+      "path": "/usr/bin/bwrap",
+      "sha256": "52231e1caf55bcbc667b269f49c63599a6f7db4767ae6a039580d0ff853db712",
+      "metadata": "root:root:0755:regular"
+    },
+    "chromium": {
+      "distribution": "official Ubuntu snap",
+      "revision": "3507",
+      "channel": "latest/stable",
+      "version": "151.0.7922.108",
+      "numericRevisionPath": "/snap/chromium/3507/usr/lib/chromium-browser/chrome",
+      "binarySha256": "c38a09eb6554dab8c41256cba62510bbeb1697c72e60fee0b6725180457ee0d7",
+      "snapArtifactSha256": "cf10676bdf7a3b4d14201fd6004ec5c8c137ee7365779133cba7c1d39263fae0",
+      "refreshInProgress": false
+    },
+    "pdfTools": {
+      "package": "poppler-utils",
+      "version": "24.02.0-1ubuntu9.9",
+      "packageSha256": "fb936375b183a9d8ecb5b1fc5665a44110ca130c445946fb575c0b800b1dc0f4",
+      "libraryPackage": "libpoppler134",
+      "libraryVersion": "24.02.0-1ubuntu9.9",
+      "libraryPackageSha256": "841aa0086bbd83cc3f20a69882e65b656e483c05e1393aa32452093723554457",
+      "pdftotextSha256": "0fb98ea179e19154a90202608c164f2a319b79f16576fa6534b2d601033565e7",
+      "pdfinfoSha256": "3293dda06d80e1e38dab859aa47368c2876aedc41cbc2e24e8fb9a4e66392078",
+      "newServiceOrSocketUnits": 0,
+      "listenerInventoryChanged": false,
+      "dpkgAuditLines": 0
+    },
+    "fontFileCount": 8
+  },
+  "cupsGate": {
+    "service": {
+      "loadState": "not-found",
+      "unitFileState": null,
+      "activeState": "inactive",
+      "subState": "dead"
+    },
+    "socket": {
+      "loadState": "not-found",
+      "unitFileState": null,
+      "activeState": "inactive",
+      "subState": "dead"
+    },
+    "systemctlIsActiveExitStatus": 4,
+    "tcpPort631ListenerCount": 0,
+    "udpPort631ListenerCount": 0,
+    "unixSocketPresent": false,
+    "ssPort631ListenerCount": 0,
+    "actualCupsConnectionBoundary": "DISCONNECTED",
+    "acceptedVerifierAllowsExitStatuses": [0, 3],
+    "acceptedVerifierResult": "renderer_target_cups_probe_invalid"
+  },
+  "failClosedCleanup": {
+    "rendererServiceInstalled": false,
+    "rendererSocketInstalled": false,
+    "rendererServiceActive": false,
+    "rendererSocketActive": false,
+    "rendererAppArmorProfileLoaded": false,
+    "officialBwrapProfileLoaded": false,
+    "rendererExecuted": false,
+    "chromiumExecutedByRenderer": false,
+    "renderSocketPresent": false,
+    "bookEnabled": false,
+    "liveApiActive": true,
+    "liveWebActive": true,
+    "liveCandidateUnchanged": true,
+    "caddyChanged": false,
+    "databaseChanged": false
+  },
+  "stopReason": {
+    "severity": "P1",
+    "code": "renderer_target_verifier_rejects_absent_cups_units_despite_zero_listeners",
+    "details": "The exact target verifier treats systemctl exit status 4 as failure even when both CUPS units are not found, inactive and dead and every TCP, UDP and filesystem CUPS listener probe is zero.",
+    "unsafeWorkaroundRejected": "Installing or fabricating CUPS units solely to produce exit status 3 would expand the target and could activate a print listener.",
+    "minimumOwnerFix": "Accept exit status 4 only when both exact units have LoadState=not-found, ActiveState=inactive, SubState=dead and TCP, UDP and filesystem listener counts remain zero; preserve every other fail-closed check."
+  },
+  "testsNotRunAfterStop": [
+    "target_receipt_generation",
+    "systemd_renderer_unit_measurement",
+    "synthetic_pdf_render_twice_and_restart",
+    "filesystem_af_unix_socket_activation",
+    "network_namespace_and_host_canaries",
+    "crash_restart_cancel_and_ack_target_smoke"
+  ],
+  "evidenceContainsUserContent": false,
+  "evidenceContainsCredentials": false,
+  "openP0": 0,
+  "openP1": [
+    "renderer_target_verifier_rejects_absent_cups_units_despite_zero_listeners"
+  ],
+  "openP2": []
+}

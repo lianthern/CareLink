@@ -1,0 +1,405 @@
+{
+  "timestamp": "2026-09-23T09:33:03.844Z",
+  "origin": "https://memory-frame-demo-d7djiee0702b6c.service.tcloudbase.com",
+  "expectedVersion": "0.4.4",
+  "evidence": "Cloud HTTP/static checks; actual model attempts recorded below; no browser or microphone interaction",
+  "newFamilies": 0,
+  "contentWrites": 0,
+  "confirmedActions": 0,
+  "contactRequests": 0,
+  "modelRequestsAttempted": 5,
+  "checks": [
+    {
+      "check": "ordinary-chat",
+      "imageCount": 0,
+      "answerCharacters": 19,
+      "answerSha256": "794237ae567045469ec702d1266eb01567e393d96d191c7cd2c988299dee0e9b",
+      "actionKind": null
+    },
+    {
+      "check": "multi-turn-chat",
+      "imageCount": 0,
+      "answerCharacters": 3,
+      "answerSha256": "974741a09d8e2054dcd8202c3bef21327402bb2b04dd4c60104dbdd9692e18e2",
+      "actionKind": null
+    },
+    {
+      "check": "message-candidate-only",
+      "imageCount": 0,
+      "answerCharacters": 42,
+      "answerSha256": "9a35f2a72c28bdec1c755b9d881341dafd4eb8f116182b0fa0814cf378e0740f",
+      "actionKind": "message"
+    },
+    {
+      "check": "single-photo",
+      "imageCount": 1,
+      "answerCharacters": 182,
+      "answerSha256": "a07c0deda87810ea2124eb6169b32a3f4dfcc07451d33bf47604bdbad9a5b056",
+      "actionKind": null
+    },
+    {
+      "check": "multiple-photos",
+      "imageCount": 2,
+      "answerCharacters": 347,
+      "answerSha256": "b3a63558741c5e3f982bd7a01275cd364e794432b12b6befbfe2ab9d7c164d28",
+      "actionKind": null
+    },
+    {
+      "check": "read-only-outcome",
+      "sharedRecordsBefore": 8,
+      "sharedRecordsAfter": 8
+    }
+  ],
+  "staticFiles": [
+    {
+      "file": "account-auth.js",
+      "bytes": 9769,
+      "sha256": "d3ec465ea23b8d220d11cf69ca2561fb801a4ea2c60c0a5ca6d25d4a1575372a"
+    },
+    {
+      "file": "ai-action-ui.js",
+      "bytes": 18160,
+      "sha256": "70ce1559e931ba31a60eb6f0b00e3f7cfd1c3a4ac1b506560caf37fbee8d53d0"
+    },
+    {
+      "file": "ai-conversation.css",
+      "bytes": 1360,
+      "sha256": "c47d2907c0db42812e5839293de72be867b826278c5cc7928b61bc8f55f5419d"
+    },
+    {
+      "file": "ai-conversation.js",
+      "bytes": 13159,
+      "sha256": "eedf48249516a8670adf0754751f7a1049efa5dea6171c56331b41c4bb346f24"
+    },
+    {
+      "file": "ai-voice.js",
+      "bytes": 4575,
+      "sha256": "3fe5303d8038ab4ba7bfc3c3fb1fcd5af82e2ea6ae1fdda8f790ea5778dbb5d6"
+    },
+    {
+      "file": "app.js",
+      "bytes": 47156,
+      "sha256": "dfa69db489d52b0e915ad1b7396704027f1b57084bfa805b884ee9fa52e2929f"
+    },
+    {
+      "file": "assets/fonts/unseen-sans/fonts.css",
+      "bytes": 35953,
+      "sha256": "71af124b855635b0282b4c22f046a54affb0e9985fb27acb24c6a88ede495c4c"
+    },
+    {
+      "file": "assets/fonts/unseen-sans/LICENSE.txt",
+      "bytes": 4463,
+      "sha256": "fcac737e761ec63dbfbdce11030a1780161920d80315edba9c8beff1c2bac5a2"
+    },
+    {
+      "file": "assets/fonts/unseen-sans/manifest.json",
+      "bytes": 37443,
+      "sha256": "74c7c755cc76caff05d186ee62c919e2248dc24a6a28f01a689d6cdb0f8a6625"
+    },
+    {
+      "file": "assets/fonts/unseen-sans/text-00-8ce3d529f0e1.woff2",
+      "bytes": 201076,
+      "sha256": "8ce3d529f0e130f986333edf0064dc811034e307743285fb832fa26ad07d3aa1"
+    },
+    {
+      "file": "assets/fonts/unseen-sans/text-01-4d0df9b1d799.woff2",
+      "bytes": 243364,
+      "sha256": "4d0df9b1d79974b764f0aab9b8b9034da28fdc0ddc28229c0a22d7091a139702"
+    },
+    {
+      "file": "assets/fonts/unseen-sans/text-02-7c9e962e6711.woff2",
+      "bytes": 271836,
+      "sha256": "7c9e962e671120fe94265fe7508afb3bd857ba817f80e4171b75b93420be8c54"
+    },
+    {
+      "file": "assets/fonts/unseen-sans/text-03-a7fbb81c4a54.woff2",
+      "bytes": 343668,
+      "sha256": "a7fbb81c4a549abf81d44b7f40bfd75b13e7fe5e2cb4073937b5beb1eea4e82a"
+    },
+    {
+      "file": "assets/fonts/unseen-sans/text-04-a871dbd7aee9.woff2",
+      "bytes": 390244,
+      "sha256": "a871dbd7aee9bd95dfdcca2823e5b9199142dc03d35fdc22eda48619b3a181ea"
+    },
+    {
+      "file": "assets/fonts/unseen-sans/text-05-14a4be2bba80.woff2",
+      "bytes": 347428,
+      "sha256": "14a4be2bba8092c16749a02eddfbc2976f6f221d102d35b0db0bab5e7eff7d58"
+    },
+    {
+      "file": "assets/fonts/unseen-sans/text-06-075afbd38fd0.woff2",
+      "bytes": 399248,
+      "sha256": "075afbd38fd05dc5e1b73818aa3eb08d5c1c82661b6f4d09d3130664238b827f"
+    },
+    {
+      "file": "assets/fonts/unseen-sans/text-07-15aaa7662e97.woff2",
+      "bytes": 363740,
+      "sha256": "15aaa7662e973c32b733b3ca73a3ca23725218ac4a3e54099ceea4dfb7cb591e"
+    },
+    {
+      "file": "assets/fonts/unseen-sans/text-08-8676094d7fd2.woff2",
+      "bytes": 404820,
+      "sha256": "8676094d7fd2c61b643642c9049b438019e541b9b672390e04d77ededcee04d1"
+    },
+    {
+      "file": "assets/fonts/unseen-sans/text-09-8b2ffc08e918.woff2",
+      "bytes": 421240,
+      "sha256": "8b2ffc08e91875fc92d17f4bd1aaef7107fe794eaaec818cc1654cddfc5909f1"
+    },
+    {
+      "file": "assets/fonts/unseen-sans/text-10-c13dd3f76832.woff2",
+      "bytes": 434876,
+      "sha256": "c13dd3f7683244e79ca71878a28ba15c33ed0a3e8e2ebb6b43a13e5f0ac6828d"
+    },
+    {
+      "file": "assets/fonts/unseen-sans/text-11-a6f22aee42ef.woff2",
+      "bytes": 490708,
+      "sha256": "a6f22aee42efd289c4f2d06d0d45adcc39ab1ac5dfc25948b0d85a8d9411227c"
+    },
+    {
+      "file": "assets/fonts/unseen-sans/text-12-92887657739c.woff2",
+      "bytes": 498652,
+      "sha256": "92887657739ccd84b04b1467e3c74446a147348cb57efbc2aa4bb56ff18ea3d9"
+    },
+    {
+      "file": "assets/fonts/unseen-sans/text-13-96a1c5bec1d5.woff2",
+      "bytes": 484564,
+      "sha256": "96a1c5bec1d5e97c9381d672d839b5a0f3eae236b277e3ecf9eb2e0344087cc5"
+    },
+    {
+      "file": "assets/fonts/unseen-sans/text-14-6abf37a35f1d.woff2",
+      "bytes": 516988,
+      "sha256": "6abf37a35f1d631883019ef9d9182200721d07c3fa40cd5d6e3374eae7c91a45"
+    },
+    {
+      "file": "assets/fonts/unseen-sans/text-15-3b2f7b79b0ec.woff2",
+      "bytes": 534264,
+      "sha256": "3b2f7b79b0ecc3944dfd8df6998cdf1eaee1da068ba43778e155b8b0e7a0fa12"
+    },
+    {
+      "file": "assets/fonts/unseen-sans/text-16-b3d4590074bc.woff2",
+      "bytes": 482148,
+      "sha256": "b3d4590074bc53ae34e1e8e6121490f21c8d9e71bd259e2e0e8ebca0b4e1fe47"
+    },
+    {
+      "file": "assets/fonts/unseen-sans/text-17-2030a54db76f.woff2",
+      "bytes": 596228,
+      "sha256": "2030a54db76f393872857d7b2d958450d83cf85fa4df85da2a46298fa4b9dd01"
+    },
+    {
+      "file": "assets/fonts/unseen-sans/text-18-f82b46841232.woff2",
+      "bytes": 485508,
+      "sha256": "f82b4684123270e7025a03b2a5e9dc76c6e76db82da2e10cf067c0c1758f3a24"
+    },
+    {
+      "file": "assets/fonts/unseen-sans/text-19-abde830fec73.woff2",
+      "bytes": 527848,
+      "sha256": "abde830fec7300c4669d0a70f2c8363fe709b1f37bed1e5b3b4cb885ba7cbf6b"
+    },
+    {
+      "file": "assets/fonts/unseen-sans/text-20-953372d0c299.woff2",
+      "bytes": 664224,
+      "sha256": "953372d0c299999e5d10c40e8aaa310bca8be8bb33fd30a0705011694acdb301"
+    },
+    {
+      "file": "assets/fonts/unseen-sans/text-21-2c869ded83c6.woff2",
+      "bytes": 538468,
+      "sha256": "2c869ded83c6a418b0e19cfa86d0885d47223e4476faec275ab7c22c411b49bd"
+    },
+    {
+      "file": "assets/fonts/unseen-sans/text-22-1dcc47dafcd5.woff2",
+      "bytes": 594172,
+      "sha256": "1dcc47dafcd557159a92f29fa2f0ced89505987cc07766dc0c2633715062a5e7"
+    },
+    {
+      "file": "assets/fonts/unseen-sans/text-23-10a90a520e7d.woff2",
+      "bytes": 581292,
+      "sha256": "10a90a520e7da9b8f1a2a57fffaff6025272f3de12b6ecc2319c402fa9e51a1d"
+    },
+    {
+      "file": "assets/fonts/unseen-sans/text-24-08f0f09bfef2.woff2",
+      "bytes": 479932,
+      "sha256": "08f0f09bfef25b55053cc941fc9790632238f7124a5e2a779a9ccb63ac8cff0c"
+    },
+    {
+      "file": "assets/fonts/unseen-sans/text-25-47eaff65e872.woff2",
+      "bytes": 597488,
+      "sha256": "47eaff65e872b3fdf7c630f75409538fa180a8c22f8db5b4ed1f69270cfa3d18"
+    },
+    {
+      "file": "assets/fonts/unseen-sans/text-26-8edddec4de37.woff2",
+      "bytes": 485016,
+      "sha256": "8edddec4de375ec2b42874ac51f4029184c4338bbaa66080f6d3705b97e47923"
+    },
+    {
+      "file": "assets/fonts/unseen-sans/text-27-072c7f20b628.woff2",
+      "bytes": 598716,
+      "sha256": "072c7f20b628ce94f55b61291e9c93fa1b805332428717408ada6deec0ef3e24"
+    },
+    {
+      "file": "assets/fonts/unseen-sans/text-28-ffe269c637bb.woff2",
+      "bytes": 595768,
+      "sha256": "ffe269c637bbdce5a7b07c7754effa02d6653706a0393ce3e539161b05ec1d09"
+    },
+    {
+      "file": "assets/fonts/unseen-sans/text-29-1175932ec3e5.woff2",
+      "bytes": 94688,
+      "sha256": "1175932ec3e511c6e6e4bdb9ba34b0ffd1d38f227c2856035adfbfdacac13d31"
+    },
+    {
+      "file": "assets/fonts/unseen-sans/text-30-ccfe72b4ce43.woff2",
+      "bytes": 89520,
+      "sha256": "ccfe72b4ce439c0cea822aab1390d735a030781121a7b4b7d13024c52410b644"
+    },
+    {
+      "file": "assets/fonts/unseen-sans/text-31-4ba7a552cce2.woff2",
+      "bytes": 89144,
+      "sha256": "4ba7a552cce2e3b88385edc6889e02aa23358d895ba779bd64adab6cb19fc126"
+    },
+    {
+      "file": "assets/fonts/unseen-sans/text-32-f5edc2b584b1.woff2",
+      "bytes": 86544,
+      "sha256": "f5edc2b584b13f8f68561cd4ef7f596bbfaa51d3b5c4030538731569097b1aaa"
+    },
+    {
+      "file": "assets/fonts/unseen-sans/text-33-b37c69b548db.woff2",
+      "bytes": 79624,
+      "sha256": "b37c69b548db55bc77cf9c17a6eecf203909318eedb13315b5e299a351e458d8"
+    },
+    {
+      "file": "assets/fonts/unseen-sans/text-34-ac3a095b472c.woff2",
+      "bytes": 94460,
+      "sha256": "ac3a095b472c6f7f1f27ade45416d820ab9fa516b7953941dcdda767d4ad673a"
+    },
+    {
+      "file": "assets/fonts/unseen-sans/text-35-9606e6e13947.woff2",
+      "bytes": 93416,
+      "sha256": "9606e6e13947be08107aac8792add15a9e46c828f592466f1f7c35e2ec656329"
+    },
+    {
+      "file": "assets/fonts/unseen-sans/text-36-1b8e04823030.woff2",
+      "bytes": 95552,
+      "sha256": "1b8e04823030baa89b0d12c43014e8048d8166662cfef4cf7aff9fd758e502b7"
+    },
+    {
+      "file": "assets/fonts/unseen-sans/text-37-6f2281ee619b.woff2",
+      "bytes": 92388,
+      "sha256": "6f2281ee619bfbb2b9f978aacd1704e8fbdb1bf68d60103f62a00bb6134e6245"
+    },
+    {
+      "file": "assets/fonts/unseen-sans/text-38-2f8103a49612.woff2",
+      "bytes": 89980,
+      "sha256": "2f8103a49612b35d531d76be7d792680deb9f844cfc28b2900559d2e7f71189e"
+    },
+    {
+      "file": "assets/fonts/unseen-sans/text-39-ed0fb8c09d10.woff2",
+      "bytes": 124052,
+      "sha256": "ed0fb8c09d10debf0cf7f4b29c687d2007de802df9500a8f9e0dd95011abe8e2"
+    },
+    {
+      "file": "assets/fonts/unseen-sans/text-40-804edf99dd7b.woff2",
+      "bytes": 265256,
+      "sha256": "804edf99dd7be6ab769850497d86215c9287eb3408d19cd41d69da9b9e45fe15"
+    },
+    {
+      "file": "assets/fonts/unseen-sans/text-41-b0ff39a75d2e.woff2",
+      "bytes": 360288,
+      "sha256": "b0ff39a75d2e3c09dbe37b26977bfe962b955afed2f4a789c2d0c42daf4f5bba"
+    },
+    {
+      "file": "assets/fonts/unseen-sans/text-42-5aba4a885de7.woff2",
+      "bytes": 397656,
+      "sha256": "5aba4a885de7c6d180d27a492118a378536918b91dd04fb49f483e6c68ce1b3d"
+    },
+    {
+      "file": "assets/fonts/unseen-sans/text-43-5d073412c350.woff2",
+      "bytes": 60480,
+      "sha256": "5d073412c3505a0b13455b06982f28ef94131d0c7a56ed88836d83619afb315b"
+    },
+    {
+      "file": "assets/fonts/unseen-sans/ui-cc1ee866a271.woff2",
+      "bytes": 246520,
+      "sha256": "cc1ee866a2711ce513d278fffb67a8e8373563204b21a2651bd71edf441365ce"
+    },
+    {
+      "file": "family-call.css",
+      "bytes": 1030,
+      "sha256": "9b6eb6dffa0848cda5687bc6f7489cfcd47437e765f7b4ce9b24a00d10702119"
+    },
+    {
+      "file": "family-call.js",
+      "bytes": 28525,
+      "sha256": "8aca97d694cc843481d0b2edeec2376b4a108f368d4ec1730fa5812ae7614e56"
+    },
+    {
+      "file": "family-contact.css",
+      "bytes": 1857,
+      "sha256": "3c3e60478bbf9c4e2880b67f8d40ef2a42ee3977142b641429f3a6f5fd3dd7f3"
+    },
+    {
+      "file": "family-contact.js",
+      "bytes": 8962,
+      "sha256": "1b4cfb2e1418b887b630473e039663e1a5c334ca40da9900d4133b067aa874df"
+    },
+    {
+      "file": "family-experience.js",
+      "bytes": 25685,
+      "sha256": "8db3c2fe4780260beb45010ab123cfe7912fa8dce69a4184cc320f98f3b9e49e"
+    },
+    {
+      "file": "index.html",
+      "bytes": 1777,
+      "sha256": "0de39bcfc349a5832944efbc9df4cacc7cbeb249907fa34d25cf0ec79794c537"
+    },
+    {
+      "file": "style.css",
+      "bytes": 17496,
+      "sha256": "b3bad1cbcb35ed6eed941a0d1dd03125613a89a44f3ee39f9f4e0870e8aa142a"
+    }
+  ],
+  "testSessionsRevoked": 2,
+  "scope": "text-and-vision",
+  "visionVerified": true,
+  "modelOutputHumanReviewed": false,
+  "browserVerified": false,
+  "realAudioCallVerified": false,
+  "version": "0.4.4",
+  "capabilities": {
+    "text": true,
+    "vision": true,
+    "asr": true,
+    "speechOutput": "browser"
+  },
+  "callCapabilities": {
+    "enabled": false,
+    "audioCall": false,
+    "reason": "家庭语音通话尚未启用"
+  },
+  "passed": true,
+  "deployedCode": "51686dc",
+  "coordinatorReviewedModelOutputs": true,
+  "modelProviders": {
+    "text": {
+      "provider": "CloudBase",
+      "model": "hy3"
+    },
+    "vision": {
+      "provider": "MiniMax",
+      "model": "MiniMax-M3",
+      "endpoint": "https://api.minimax.cn/v1"
+    }
+  },
+  "visionEvidence": "Cloud single/two-image requests used existing tiny fixtures and validate the deployed pipeline, not detailed scene accuracy. Direct real-provider shape images separately verified colors/shapes and photo-message candidate semantics; see MINIMAX-CLOUD-VERIFICATION.json.",
+  "privatePaths": [
+    {
+      "path": "/.tools/minimax.local.env",
+      "status": 404,
+      "denied": true
+    },
+    {
+      "path": "/cloudbaserc.local.json",
+      "status": 404,
+      "denied": true
+    }
+  ]
+}

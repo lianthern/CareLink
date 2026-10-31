@@ -1,0 +1,94 @@
+{
+  "explicitlyExcluded": [
+    "source video",
+    "frames",
+    "PLY",
+    "SOG",
+    "tokens",
+    "private media"
+  ],
+  "files": [
+    {
+      "path": "UNSEEN-3DGS-CANARY-REPORT.md",
+      "sha256": "9c3c743d1a2b8b1e2de3b5c877a6ae5b8dbeaf3509148adf502d6cc9427dff7f",
+      "sizeBytes": 3066
+    },
+    {
+      "path": "NEXT-AGENT-HANDOFF.md",
+      "sha256": "c5da2ba2a37c336b6244e8627d50ba3c5afde64ca0d9f37d114270a7e815b09c",
+      "sizeBytes": 6423
+    },
+    {
+      "path": "VISUAL-QUALITY-ASSESSMENT.json",
+      "sha256": "15b78ba90594ecae7e638f5ff6a2bd2a71fc4f3244c10c564fe9de96146f97ac",
+      "sizeBytes": 1299
+    },
+    {
+      "path": "doctor.log",
+      "sha256": "64f4921cd20805325c3c4bd1d4133842bbc0c00ac2f92121a47e31c0a2f8118c",
+      "sizeBytes": 1551
+    },
+    {
+      "path": "dry-run.log",
+      "sha256": "31078e72ee0ecd68885b28f111ae9a7ea6f0b0dcf6ae9de2fa3598c34c6e4c88",
+      "sizeBytes": 10946
+    },
+    {
+      "path": "preview-benchmark.json",
+      "sha256": "2ae9b2d678aae16c8e1153fde073813a040071248ebf8b62975d9e08917b134f",
+      "sizeBytes": 8358
+    },
+    {
+      "path": "preview-benchmark.md",
+      "sha256": "86beb12c90f906695aa4743a6ac34b39f6ae856365f1029a3e1b44d07d32471f",
+      "sizeBytes": 4710
+    },
+    {
+      "path": "preview-worker-status.json",
+      "sha256": "4e1c57028abdabc7ea2f64b542e361de1adc8b2744dbb52c51bc1a4f08dc880c",
+      "sizeBytes": 1194
+    },
+    {
+      "path": "stage-logs/preview-colmap-primary.log",
+      "sha256": "cca714741116df1e6bb43593b9ca786a00c887c27a7dfbb29025e941d329ada2",
+      "sizeBytes": 209
+    },
+    {
+      "path": "stage-logs/preview-compress_sog-primary.log",
+      "sha256": "62f2245899217e6062901a0094fea97f72f741c0324c1fd62f84780ff6fee9f0",
+      "sizeBytes": 591
+    },
+    {
+      "path": "stage-logs/preview-doctor-primary.log",
+      "sha256": "9928abc6feda061e331ddb5c4098c201fad5505d34442a575ee278f5f5b71f6c",
+      "sizeBytes": 1332
+    },
+    {
+      "path": "stage-logs/preview-download-primary.log",
+      "sha256": "f9f5aad6c4994f369a65806a425abf1b90811e73e781b0f0f8f562bf58e9cbd8",
+      "sizeBytes": 320
+    },
+    {
+      "path": "stage-logs/preview-export_ply-primary.log",
+      "sha256": "6e34bec41be99645af975a530c7c54e6b011789227c7adae420e6a2c5689eb2a",
+      "sizeBytes": 2992
+    },
+    {
+      "path": "stage-logs/preview-extract_frames-primary.log",
+      "sha256": "44ca64372124edce7def152e679f5335d447e24e4b1f97712d9de2261abacbd3",
+      "sizeBytes": 218
+    },
+    {
+      "path": "stage-logs/preview-train-primary.log",
+      "sha256": "2ce361d69bb30eff0585b1c8caf5b8856f4e864beb8a05ccbd0af18d20b31139",
+      "sizeBytes": 772536
+    },
+    {
+      "path": "worker-preview.log",
+      "sha256": "3f4f0de5670c9c7a491137bb0325c7a22ced7eb4cb1b23e6243529c51fc6c717",
+      "sizeBytes": 779301
+    }
+  ],
+  "generatedAt": "2026-09-02T03:29:38+00:00",
+  "schema": "unseen-sceneworker-report-files/1"
+}

@@ -1,0 +1,163 @@
+{
+  "schemaVersion": "1.0",
+  "jobId": "unseen-companion-one-2026-09-21-v1",
+  "repository": "maxi-max-dev/max-agent-bridge",
+  "releaseTag": "unseen-companion-one-2026-09-21-v1",
+  "assetName": "Companion-One-Lab-v0.1.zip",
+  "bytes": 2189790,
+  "sha256": "39d75074db1e40b1fc8e1ee31567ad1aaf9b9be6bd8885843dfc850d277bd321",
+  "rootDirectory": "Companion-One-Lab-v0.1",
+  "files": [
+    {
+      "path": "Companion-One-Lab-v0.1/index.html",
+      "bytes": 5571,
+      "sha256": "685b9e613cef85b7956dd9a5249d9c62f894b6e4dbaec6e09f1b50f4a78607e3"
+    },
+    {
+      "path": "Companion-One-Lab-v0.1/style.css",
+      "bytes": 5867,
+      "sha256": "4c5d920f3f303d8ba41e6fec8f4a72713d40772270f6cc1ac29e3ae21023d79e"
+    },
+    {
+      "path": "Companion-One-Lab-v0.1/server.mjs",
+      "bytes": 2425,
+      "sha256": "1a598d56d840a7cf8a0f0632ab064cb7cdc5dfb8fb02c6209a01d85514b32e4c"
+    },
+    {
+      "path": "Companion-One-Lab-v0.1/package.json",
+      "bytes": 383,
+      "sha256": "cc818ebac8e3720fa1999e5da24d6b3fb6f85e8ea10b024c51589be8b3dceb0a"
+    },
+    {
+      "path": "Companion-One-Lab-v0.1/package-lock.json",
+      "bytes": 2101,
+      "sha256": "52b8b306f88ce9798f3721449021882c30292fd621fabd395a5e2dab88a4abe3"
+    },
+    {
+      "path": "Companion-One-Lab-v0.1/README.md",
+      "bytes": 6761,
+      "sha256": "130a58a75fdb21bf88dbb209ef33c34e813f7633ea163dbc9624d7d8cd45160d"
+    },
+    {
+      "path": "Companion-One-Lab-v0.1/VALIDATION.md",
+      "bytes": 2480,
+      "sha256": "a23e079b7e12a1f35be1f63952586170dbf0c0254af525e090e0b6f330399236"
+    },
+    {
+      "path": "Companion-One-Lab-v0.1/DESIGN.md",
+      "bytes": 1207,
+      "sha256": "7ab10e99188dcb860809fd3948002ca3b1a06a7c7998ee57e639f96d916d8f36"
+    },
+    {
+      "path": "Companion-One-Lab-v0.1/NOTICE.md",
+      "bytes": 751,
+      "sha256": "29fd28381c54f12d8e44256dfffc7d20ef1a8123155164e8bfa84f8aa8703a1f"
+    },
+    {
+      "path": "Companion-One-Lab-v0.1/LICENSE",
+      "bytes": 35144,
+      "sha256": "83b4908df799c568b5ab5c8037f10aeedf18897b2cafe8d5be68dad2e35bc6d3"
+    },
+    {
+      "path": "Companion-One-Lab-v0.1/start-windows.cmd",
+      "bytes": 516,
+      "sha256": "d8ebac86d8d4f0be44ea5eed0fa23cdfee988e1ce677e81baaedc874a6680ae5"
+    },
+    {
+      "path": "Companion-One-Lab-v0.1/start-mac.command",
+      "bytes": 313,
+      "sha256": "e6db85bec50cf0e739f706388b64e96c1f830667fa867a183cff8df3a712364a"
+    },
+    {
+      "path": "Companion-One-Lab-v0.1/playwright.config.mjs",
+      "bytes": 527,
+      "sha256": "a48cf80718849301de388c26ef40701f73a9f12c61100addf62ce1fc2bff4b6f"
+    },
+    {
+      "path": "Companion-One-Lab-v0.1/src/optics.mjs",
+      "bytes": 2800,
+      "sha256": "c31dc5fcc044fa8a47550b463dcd736cc81c394b771fa41ff0ddf0ef776c4d3d"
+    },
+    {
+      "path": "Companion-One-Lab-v0.1/src/scene.js",
+      "bytes": 3938,
+      "sha256": "def240418b9be36c9e16cf1f6dffb5e36059a0a4fdf455215f93469a8587ff78"
+    },
+    {
+      "path": "Companion-One-Lab-v0.1/src/app.js",
+      "bytes": 15666,
+      "sha256": "e04d58db97a281dc9f65ca0960481f7d4cd200c816d6a6cd36236371ba815618"
+    },
+    {
+      "path": "Companion-One-Lab-v0.1/tools/package.py",
+      "bytes": 1385,
+      "sha256": "6f87a62de6fcf79ee712e81560af8b13669b67700169725969b53c6956773117"
+    },
+    {
+      "path": "Companion-One-Lab-v0.1/tools/calibration.mjs",
+      "bytes": 1370,
+      "sha256": "f16b1fe5f2a9687b8a8ffcb7d0e8d831ff3eea0ae26c5c9a4dc9d99b243f89c9"
+    },
+    {
+      "path": "Companion-One-Lab-v0.1/test/optics.test.mjs",
+      "bytes": 3866,
+      "sha256": "55080c07eb7f4a4a825f62164a0bd6f2c44a8cc2919cf2c281ed3a18f2009007"
+    },
+    {
+      "path": "Companion-One-Lab-v0.1/test/browser/lab.spec.js",
+      "bytes": 8357,
+      "sha256": "288d1fa9ca9da8f243123a608a428ec316e0bbf2c60c8db8c1789c52cda499e7"
+    },
+    {
+      "path": "Companion-One-Lab-v0.1/research/quick.md",
+      "bytes": 4358,
+      "sha256": "589f309cbfad141622dc047b4cdbaa725534a31f6036e5152b6024a8550f930f"
+    },
+    {
+      "path": "Companion-One-Lab-v0.1/research/sources/blender-operators.py",
+      "bytes": 91666,
+      "sha256": "ce5519e8511ec0e41e90a682b97e4fdd6c9f8c9cd93df68b5d6e120d300e0702"
+    },
+    {
+      "path": "Companion-One-Lab-v0.1/research/sources/cubevi-unity-license.txt",
+      "bytes": 1284,
+      "sha256": "cbf4f91a272ae63d5cd2957715a8c04590b8e6e8cc2377add6ad0566f0dae68c"
+    },
+    {
+      "path": "Companion-One-Lab-v0.1/node_modules/three/build/three.module.js",
+      "bytes": 626071,
+      "sha256": "1bb0b770bac5da2b59b21aa5fff4c547eeb864d4e408e4c36fbc6ced1dce0e9e"
+    },
+    {
+      "path": "Companion-One-Lab-v0.1/node_modules/three/build/three.core.js",
+      "bytes": 1405971,
+      "sha256": "03fb6e9fa08628385a9096948593251ae473239c7039496d7c280cba73d84631"
+    },
+    {
+      "path": "Companion-One-Lab-v0.1/node_modules/three/examples/jsm/loaders/GLTFLoader.js",
+      "bytes": 114883,
+      "sha256": "a2d45c28c56774cc789b99154e914c34db3197f9ea2b89fee27600cc2509b14f"
+    },
+    {
+      "path": "Companion-One-Lab-v0.1/node_modules/three/examples/jsm/utils/BufferGeometryUtils.js",
+      "bytes": 35539,
+      "sha256": "fda7e946b8e0b5ab39b779206589e7a1079a22eb24efb89d7223e03fdfb1f751"
+    },
+    {
+      "path": "Companion-One-Lab-v0.1/node_modules/three/LICENSE",
+      "bytes": 1081,
+      "sha256": "bfe119ea4fd413f5f7ca3fcd63adb0c4a073ed39daa2fe7d3e6b769e21272601"
+    },
+    {
+      "path": "Companion-One-Lab-v0.1/node_modules/three/package.json",
+      "bytes": 4349,
+      "sha256": "4333673f9eedf7a62072f781a8eae5ac673a160fbe253ca1a3d08238469f7145"
+    },
+    {
+      "path": "Companion-One-Lab-v0.1/artifacts/standard-quilt.png",
+      "bytes": 1871396,
+      "sha256": "d0d03ad5856aea4482ddaf5650aac9f324c289a4bcb6b8ada86734a70c2b7add"
+    }
+  ],
+  "scope": "Exact user-authorized source-included lab runtime; synthetic geometry PNG and MIT runtime dependencies, no private user media or credentials."
+}

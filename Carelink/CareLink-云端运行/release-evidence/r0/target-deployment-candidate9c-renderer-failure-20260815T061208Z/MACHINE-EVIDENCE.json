@@ -1,0 +1,249 @@
+{
+  "schema": "unseen-target-deployment-and-renderer-evidence/1",
+  "kind": "TARGET_CORE_DEPLOYMENT_PASS_RENDERER_ACCEPTANCE_REJECTED_NONSECRET_EVIDENCE",
+  "observedDate": "2026-08-15",
+  "sourceRepositoryHeadBeforeEvidence": "4f9abdfee93649d515935c04e276fd1aeeab5540",
+  "productionReady": false,
+  "releaseDecision": "NO_GO",
+  "candidate": {
+    "commit": "9c0719094ccf04cfef69a0165c6a0a60485505be",
+    "tree": "8a708ee850a34728d8cea601989bb62472ffa12b",
+    "packageName": "production-9c0719094ccf",
+    "manifestSha256": "9eccc2316f1585403193277ec6142ff8ca899e14e35031b9e2b7000588e38eaf",
+    "bundleSha256": "e6cc7931c8a05407ed9a9f4c83fa4880126701e123ca898307ac5b95ac3ea4aa",
+    "remoteStandaloneVerify": "PASS",
+    "immutableDetachedClean": true
+  },
+  "phaseA": {
+    "status": "PASS",
+    "rollbackBaselineCommit": "bbb4383ae02a49170ea7f70e5e3856247795d8b4",
+    "rollbackEvidenceCommit": "f17c0610461f9266f218be201c256d5843bf51a6",
+    "sealedBackupPath": "/var/backups/unseen/private-beta/deploy9c-20260815T055737Z",
+    "snapshotPath": "/var/backups/unseen/private-beta/snapshots/pre-9c-deploy9c-20260815T055737Z",
+    "alternateRestorePath": "/var/lib/unseen/private-beta/restore-tests/deploy9c-20260815T055737Z",
+    "alternateRestore": {
+      "databaseBytesEqual": true,
+      "quickCheck": "ok",
+      "migrationCount": 10
+    },
+    "transport": {
+      "remotePackageFileCount": 11,
+      "manifestAndBundleHashesExact": true,
+      "standaloneVerify": "PASS"
+    },
+    "switch": {
+      "activeCommit": "9c0719094ccf04cfef69a0165c6a0a60485505be",
+      "activeTree": "8a708ee850a34728d8cea601989bb62472ffa12b",
+      "apiMainPid": 272368,
+      "webMainPid": 272408,
+      "apiWorkingDirectoryExact": true,
+      "webWorkingDirectoryExact": true,
+      "processControlGroupsExact": true,
+      "apiNRestarts": 0,
+      "webNRestarts": 0,
+      "repositoryClean": true
+    },
+    "database": {
+      "quickCheck": "ok",
+      "migrationCount": 10,
+      "accounts": 0,
+      "photos": 0,
+      "privateAiJobs": 0
+    },
+    "publicUi": {
+      "url": "https://unseen.maxxam.xyz",
+      "missingBasicStatus": 401,
+      "wrongBasicStatus": 401,
+      "authorizedStatus": 200,
+      "realWebUi": true,
+      "temporaryInviteBannerVisible": true,
+      "sameOriginResources": 3,
+      "resourceFailures": 0,
+      "externalResources": 0,
+      "svgFaviconMimeCorrect": true,
+      "healthStatus": 503,
+      "healthReason": "OTP_UNCONFIGURED",
+      "dataAccepted": false
+    },
+    "caddy": {
+      "configurationSha256": "c5691b38229753bcc2bbdcd8cc8b32f691433ab5924b9c3130c3436b8ea787db",
+      "mainPid": 24470,
+      "bytesChanged": false,
+      "reloaded": false,
+      "basicAuthChanged": false
+    },
+    "flags": {
+      "otpConfigured": false,
+      "bookEnabled": false,
+      "privateAiEnabled": false,
+      "fixtureEnabled": false
+    }
+  },
+  "rendererTarget": {
+    "status": "REJECTED",
+    "claim": "NOT_DEDICATED_RENDERER_ACCEPTED_DEFAULT_OFF",
+    "inputClass": "SYNTHETIC_NONPRIVATE_TARGET_ACCEPTANCE_INPUT_NOT_LIVE_BOOK",
+    "targetMeasurementReceipt": "PASS",
+    "runtimeTargetVerification": "PASS",
+    "nodeRuntime": {
+      "version": "v22.23.2",
+      "executableSha256": "3517c2df0b2f8cd7f422b4b8450ef81c6889f08eb03e281d6de9079b15e6a327",
+      "archiveSha256": "d60acfe00a2932254bb0ad20e01b0d74397a0875595de719654b214f4b03f307",
+      "signedShasumsSha256": "cfcf12eb3146d641be185d08ca018166b98495b1d8e5f7f94ab77f9965b651d2",
+      "releaseKeyringSha256": "6030d4e0cd53330acf2ab68acd455b7ca98bb5d5975376f0b7c0892308ba2d57"
+    },
+    "chromium": {
+      "version": "151.0.7922.108",
+      "snapRevision": 3507,
+      "binarySha256": "c38a09eb6554dab8c41256cba62510bbeb1697c72e60fee0b6725180457ee0d7"
+    },
+    "bwrap": {
+      "version": "0.9.0",
+      "sha256": "52231e1caf55bcbc667b269f49c63599a6f7db4767ae6a039580d0ff853db712"
+    },
+    "targetPins": {
+      "serviceSourceSha256": "65b82a8e210f1983c7606c7997819022f74dc4a149600a3a360ac10178f577b3",
+      "socketSourceSha256": "ef98f668dbf9711e76e560e7e0fc061bdbe628ede15b234858bf7e2ba0258476",
+      "appArmorProfileSha256": "6e641e3e8a5036c8f02443eb0b235e8e357957fa03a00e0c51fc88998575162d",
+      "acceptanceReceiptSha256": "c95552c2d2b9ef860004327b30430bbe2bab85a7cef75ad7dbed1279edddcfb5"
+    },
+    "operatorPreExecutionCorrection": {
+      "status": "QUARANTINED_BEFORE_ANY_RENDER",
+      "reason": "OPERATOR_GC_FIXTURE_USED_RENDERER_PRIMARY_GID_INSTEAD_OF_IPC_GID",
+      "productFinding": false,
+      "durableControlMarkerCount": 0,
+      "renderResultCount": 0,
+      "retryEligibility": "PURE_PRE_EXECUTION_OPERATOR_FIXTURE_METADATA_TYPO"
+    },
+    "singleActualAttempt": {
+      "attempts": 1,
+      "productionControlTimeoutMs": 5000,
+      "clientError": "renderer_control_timeout",
+      "timeline": {
+        "inboxCommittedAt": "2026-08-15T06:12:08.927Z",
+        "systemdSocketActivationStartingAt": "2026-08-15T06:12:08.943Z",
+        "systemdServiceMainReadyAt": "2026-08-15T06:12:12.839Z",
+        "clientTimeoutObservedAt": "2026-08-15T06:12:13.937Z",
+        "controlAcceptanceMarkerCommittedAt": "2026-08-15T06:12:16.197Z",
+        "terminalFailedResultCommittedAt": "2026-08-15T06:12:17.674Z",
+        "serviceMainReadyMsFromInbox": 3911,
+        "clientTimeoutMsFromInbox": 5010,
+        "markerCommitMsFromInbox": 7270,
+        "terminalResultMsFromInbox": 8747,
+        "firstControlReadAt": null,
+        "firstControlReadInstrumentation": "NOT_PRESENT_IN_ACCEPTED_SERVICE",
+        "timestampSources": "SYSTEMD_JOURNAL_AND_ROOT_OWNED_QUARANTINED_FILE_MTIME"
+      },
+      "controlTransport": {
+        "clientReceivedAccepted": false,
+        "clientWroteCancel": false,
+        "clientCancelFileCount": 0,
+        "markerCommittedAfterClientTimeout": true,
+        "serverAcceptedResponseAttemptAfterMarker": "NOT_OBSERVABLE",
+        "serverPeerClose": "NOT_OBSERVABLE",
+        "acceptedCodeOrdering": "MARKER_COMMIT_PRECEDES_ACCEPTED_RESPONSE",
+        "observedOrder": [
+          "inbox_committed",
+          "systemd_socket_activation_started",
+          "service_main_ready",
+          "client_timeout",
+          "durable_marker_committed",
+          "terminal_failed_result_committed"
+        ]
+      },
+      "durableControlAcceptanceMarkerCount": 1,
+      "durableControlAcceptanceSchemaExact": true,
+      "durableControlAcceptanceReceiptHashBound": true,
+      "serviceTerminalStatus": "failed",
+      "serviceStableError": "render_failed",
+      "innerFailure": {
+        "phase": null,
+        "errorCode": null,
+        "childExitCode": null,
+        "childSignal": null,
+        "visibility": "ACCEPTED_SERVICE_COLLAPSES_RENDER_EXCEPTION_TO_GENERIC_RENDER_FAILED_WITHOUT_JOURNAL_DETAIL"
+      },
+      "htmlArtifactCount": 0,
+      "pdfArtifactCount": 0,
+      "receiptArtifactCount": 0,
+      "appArmorDeniedDelta": 0,
+      "serviceNetworkNamespaceDistinctFromHost": true,
+      "serviceNetworkInterfaceCount": 1,
+      "serviceIpv4RouteCount": 0,
+      "serviceIpv6RouteCount": 0,
+      "hostCanaryTcpConnections": 0,
+      "hostCanaryUdpPackets": 0,
+      "memoryPeakBytes": 519282688,
+      "tasksCurrentAtFailure": 11,
+      "cpuUsageNSecAtFailure": 8581128000,
+      "oomPolicy": "stop",
+      "nRestarts": 0,
+      "serviceJournalLineCount": 3,
+      "serviceJournalRendererErrorCodeCount": 0,
+      "contentRecorded": false,
+      "retry": false
+    },
+    "notRunAfterFailClosedStop": [
+      "second_determinism_render",
+      "cancel_target_smoke",
+      "crash_restart_target_smoke",
+      "real_5s_gc_target_smoke"
+    ],
+    "environmentBoundaries": {
+      "cupsServiceAndSocket": "NOT_FOUND_INACTIVE",
+      "cupsPort631Listeners": 0,
+      "snapRevisionStable": true,
+      "bookEnabled": false,
+      "privateAiEnabled": false,
+      "otpConfigured": false
+    },
+    "cleanup": {
+      "status": "PASS",
+      "quarantinePath": "/var/lib/unseen/renderer-quarantine/renderer9c-actual-20260815T061208Z-failed",
+      "quarantineSummarySha256": "dd63c804aff1e85f116a7c48b9a6d42d434be0ee6ca712c0f9afc6c935e70b50",
+      "quarantineMode": "0700_ROOT_ONLY",
+      "quarantineFileCount": 17,
+      "rendererUnits": "NOT_FOUND_INACTIVE",
+      "rendererProcesses": 0,
+      "rendererSocketPresent": false,
+      "appArmorProfileLoaded": false,
+      "activeSpoolPresent": false,
+      "bookEnabled": false
+    }
+  },
+  "postCleanupLiveInvariants": {
+    "activeCommit": "9c0719094ccf04cfef69a0165c6a0a60485505be",
+    "activeTree": "8a708ee850a34728d8cea601989bb62472ffa12b",
+    "activeRepositoryClean": true,
+    "apiActive": true,
+    "webActive": true,
+    "databaseQuickCheck": "ok",
+    "migrationCount": 10,
+    "accounts": 0,
+    "photos": 0,
+    "privateAiJobs": 0,
+    "caddyConfigurationUnchanged": true,
+    "caddyPidUnchanged": true,
+    "cupsPort631Listeners": 0,
+    "bookEnabled": false,
+    "privateAiEnabled": false,
+    "otpConfigured": false
+  },
+  "openFindings": {
+    "p0": [],
+    "p1": [
+      "renderer_cold_socket_activation_exceeds_production_5s_control_timeout",
+      "renderer_target_render_returns_generic_render_failed_without_artifacts_or_target_diagnostic_code"
+    ],
+    "p2": []
+  },
+  "nonClaims": [
+    "not renderer target acceptance",
+    "not Book enabled",
+    "not production GO",
+    "not live user data",
+    "not a completed deterministic render",
+    "not a cancellation, crash-restart or GC target pass"
+  ],
+  "sensitiveDataRecorded": false
+}

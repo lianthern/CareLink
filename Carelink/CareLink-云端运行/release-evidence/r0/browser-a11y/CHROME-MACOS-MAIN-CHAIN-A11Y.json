@@ -1,0 +1,6300 @@
+{
+  "schema": "unseen-release-chrome-browser-a11y/2",
+  "generatedAt": "2026-08-14T09:56:17.683Z",
+  "status": "CHROME_CURRENT_CANDIDATE_NAMED_MAIN_CHAIN_PASS",
+  "claimBoundary": {
+    "productCandidate": "09076727051411eeb9274a26663f6ccd168378c3",
+    "harnessBaseCommit": "09076727051411eeb9274a26663f6ccd168378c3",
+    "runner": "tests/e2e/release-chrome-browser-a11y.e2e.mjs",
+    "runnerSha256": "724872dbb7f4929b6cbd9092002644b33c64a9bc717e2fa95ca7eeb9a4194cca",
+    "currentCandidateCoverage": true,
+    "currentCandidate": "09076727051411eeb9274a26663f6ccd168378c3",
+    "productionReady": false,
+    "releaseDecision": "NO_GO_PENDING_EXTERNAL_RELEASE_INPUTS_AND_FULL_R0",
+    "liveStaging4282Accessed": false,
+    "liveStaging4180Accessed": false,
+    "credentialsForwarded": [],
+    "externalExposure": false,
+    "cloudWrites": 0
+  },
+  "platform": {
+    "os": "macOS",
+    "version": "15.7.8",
+    "build": "24G824",
+    "hardwareModel": "Mac16,10",
+    "architecture": "arm64",
+    "chrome": {
+      "version": "151.0.7922.138",
+      "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/151.0.0.0 Safari/537.36",
+      "signingTeam": "EQHXZ8M8AV",
+      "strictCodesignPass": false,
+      "strictCodesignDiagnostic": "/Applications/Google Chrome.app: resource fork, Finder information, or similar detritus not allowed",
+      "spctlAccepted": true
+    }
+  },
+  "runtime": {
+    "origin": "dynamic_loopback_redacted",
+    "listener": "loopback_only",
+    "fixtureDisclosureRequired": true,
+    "externalExposure": false,
+    "cloudWrites": 0
+  },
+  "mainChain": {
+    "pass": true,
+    "browserUiOnly": true,
+    "browserExecutedCanonicalApi": [],
+    "viewportCoverage": {
+      "desktop": {
+        "width": 1280,
+        "height": 900
+      },
+      "mobile390": {
+        "width": 390,
+        "height": 844,
+        "routes": [
+          "anonymous-home-mobile-390",
+          "participant-upload-mobile-390",
+          "participant-real-scene-mobile-390"
+        ]
+      }
+    },
+    "manualPlacementConfirmation": false,
+    "steps": [
+      "owner real email/isolated OTP login",
+      "owner visible Space creation",
+      "owner visible collection/sharing controls",
+      "owner panorama input DataTransfer and visible switch",
+      "owner visible invitation creation",
+      "participant visible admission",
+      "participant visible notice acceptance",
+      "participant photo input DataTransfer and visible finalize",
+      "owner visible review approval",
+      "participant real persisted Scene Viewer"
+    ],
+    "automationBoundary": {
+      "nativeFilePickerClaimed": false,
+      "fileBytesViaDataTransfer": true,
+      "detail": "Only the real panorama/photo file inputs receive same-origin bytes through DataTransfer; all product mutations are initiated by visible UI controls."
+    },
+    "structuredIdentifiersRedacted": true,
+    "screenshotBoundary": "isolated ephemeral fixture identifiers only; runtime is destroyed after the run",
+    "screenshots": [
+      "screenshots/chrome-mobile-home-390.png",
+      "screenshots/chrome-owner-invitation.png",
+      "screenshots/chrome-mobile-upload-390.png",
+      "screenshots/chrome-participant-upload.png",
+      "screenshots/chrome-owner-review.png",
+      "screenshots/chrome-real-scene.png",
+      "screenshots/chrome-mobile-real-scene-390.png"
+    ]
+  },
+  "viewerDiagnostic": {
+    "realScene": true,
+    "route": "/s/:space/scene?photo=:photo",
+    "firstUsableDefinition": "navigation start to visible real Viewer canvas/fallback plus named photo control",
+    "profile": {
+      "downloadBitsPerSecond": 25000000,
+      "uploadBitsPerSecond": 25000000,
+      "latencyMs": 0,
+      "cpuSlowdownMultiplier": 1,
+      "cachePolicy": "cold_each_sample",
+      "samples": 5
+    },
+    "percentileMethod": "nearest-rank",
+    "samples": [
+      {
+        "round": 1,
+        "route": "/s/:space/scene",
+        "phase": null,
+        "firstUsableMs": 180.69999998807907,
+        "viewerUsableMs": 487,
+        "realScene": true,
+        "photoControl": true
+      },
+      {
+        "round": 2,
+        "route": "/s/:space/scene",
+        "phase": null,
+        "firstUsableMs": 174.69999998807907,
+        "viewerUsableMs": 483.2999999523163,
+        "realScene": true,
+        "photoControl": true
+      },
+      {
+        "round": 3,
+        "route": "/s/:space/scene",
+        "phase": null,
+        "firstUsableMs": 180.5999999642372,
+        "viewerUsableMs": 491.0999999642372,
+        "realScene": true,
+        "photoControl": true
+      },
+      {
+        "round": 4,
+        "route": "/s/:space/scene",
+        "phase": null,
+        "firstUsableMs": 180.70000004768372,
+        "viewerUsableMs": 491.2000000476837,
+        "realScene": true,
+        "photoControl": true
+      },
+      {
+        "round": 5,
+        "route": "/s/:space/scene",
+        "phase": null,
+        "firstUsableMs": 184.19999998807907,
+        "viewerUsableMs": 509.4000000357628,
+        "realScene": true,
+        "photoControl": true
+      }
+    ],
+    "p75ViewerUsableMs": 491.2000000476837,
+    "diagnosticThresholdMs": 3000,
+    "diagnosticWithinThreshold": true,
+    "formalFrozenProfileVerdict": "INDETERMINATE_PROFILE_UNDERSPECIFIED_FAIL_CLOSED",
+    "missingFrozenProfileSignature": [
+      "RTT/latency",
+      "CPU throttle",
+      "cache cold/warm policy"
+    ]
+  },
+  "accessibility": {
+    "scope": [
+      "anonymous-home",
+      "anonymous-home-mobile-390",
+      "owner-spaces",
+      "participant-upload",
+      "participant-upload-mobile-390",
+      "owner-review",
+      "participant-real-scene",
+      "participant-real-scene-mobile-390"
+    ],
+    "routes": [
+      {
+        "id": "anonymous-home",
+        "route": "/",
+        "viewport": {
+          "width": 1280,
+          "height": 900,
+          "mobile": false
+        },
+        "automated": {
+          "route": "/",
+          "title": "UNSEEN · 打开共同空间",
+          "phase": null,
+          "landmarks": {
+            "main": 1,
+            "header": 1,
+            "nav": 1
+          },
+          "headings": [
+            {
+              "level": 1,
+              "name": "打开受邀空间"
+            }
+          ],
+          "headingSkip": false,
+          "duplicateIds": [],
+          "unlabeledForms": [],
+          "unnamedButtons": [],
+          "textContrast": [],
+          "controlContrast": [],
+          "skippedTextReasons": [
+            {
+              "tag": "STRONG",
+              "name": "本地定位 fixture：high / 需要确认 / failed",
+              "reason": "pseudo-element gradient/image/background",
+              "foreground": {
+                "r": 70,
+                "g": 21,
+                "b": 40,
+                "a": 1
+              },
+              "required": 4.5,
+              "rect": {
+                "x": 48,
+                "y": 12,
+                "width": 284.109375,
+                "height": 20
+              }
+            },
+            {
+              "tag": "SPAN",
+              "name": "非真实定位质量 · 本机数据",
+              "reason": "pseudo-element gradient/image/background",
+              "foreground": {
+                "r": 70,
+                "g": 21,
+                "b": 40,
+                "a": 1
+              },
+              "required": 4.5,
+              "rect": {
+                "x": 340.109375,
+                "y": 12,
+                "width": 186.484375,
+                "height": 20
+              }
+            },
+            {
+              "tag": "A",
+              "name": "跳到主要内容",
+              "reason": "pseudo-element gradient/image/background",
+              "foreground": {
+                "r": 70,
+                "g": 21,
+                "b": 40,
+                "a": 1
+              },
+              "required": 4.5,
+              "rect": {
+                "x": 8,
+                "y": -58,
+                "width": 125.921875,
+                "height": 44
+              }
+            },
+            {
+              "tag": "SPAN",
+              "name": "UNSEEN",
+              "reason": "pseudo-element gradient/image/background",
+              "foreground": {
+                "r": 50,
+                "g": 23,
+                "b": 34,
+                "a": 1
+              },
+              "required": 4.5,
+              "rect": {
+                "x": 92,
+                "y": 64.5,
+                "width": 78.921875,
+                "height": 24
+              }
+            },
+            {
+              "tag": "SPAN",
+              "name": "帮助",
+              "reason": "pseudo-element gradient/image/background",
+              "foreground": {
+                "r": 114,
+                "g": 95,
+                "b": 102,
+                "a": 1
+              },
+              "required": 4.5,
+              "rect": {
+                "x": 1100.71875,
+                "y": 64.5,
+                "width": 32.640625,
+                "height": 24
+              }
+            },
+            {
+              "tag": "SPAN",
+              "name": "登录",
+              "reason": "pseudo-element gradient/image/background",
+              "foreground": {
+                "r": 114,
+                "g": 95,
+                "b": 102,
+                "a": 1
+              },
+              "required": 4.5,
+              "rect": {
+                "x": 1189.359375,
+                "y": 64.5,
+                "width": 32.640625,
+                "height": 24
+              }
+            },
+            {
+              "tag": "STRONG",
+              "name": "确定性本地定位样本",
+              "reason": "pseudo-element gradient/image/background",
+              "foreground": {
+                "r": 70,
+                "g": 21,
+                "b": 40,
+                "a": 1
+              },
+              "required": 4.5,
+              "rect": {
+                "x": 48,
+                "y": 121,
+                "width": 128.53125,
+                "height": 20
+              }
+            },
+            {
+              "tag": "SPAN",
+              "name": "非真实定位质量",
+              "reason": "pseudo-element gradient/image/background",
+              "foreground": {
+                "r": 70,
+                "g": 21,
+                "b": 40,
+                "a": 1
+              },
+              "required": 4.5,
+              "rect": {
+                "x": 184.53125,
+                "y": 121,
+                "width": 112.203125,
+                "height": 20
+              }
+            },
+            {
+              "tag": "P",
+              "name": "共同空间",
+              "reason": "pseudo-element gradient/image/background",
+              "foreground": {
+                "r": 114,
+                "g": 95,
+                "b": 102,
+                "a": 1
+              },
+              "required": 4.5,
+              "rect": {
+                "x": 48,
+                "y": 410,
+                "width": 407.265625,
+                "height": 16
+              }
+            },
+            {
+              "tag": "H1",
+              "name": "打开受邀空间",
+              "reason": "pseudo-element gradient/image/background",
+              "foreground": {
+                "r": 50,
+                "g": 23,
+                "b": 34,
+                "a": 1
+              },
+              "required": 3,
+              "rect": {
+                "x": 48,
+                "y": 434,
+                "width": 269.171875,
+                "height": 52
+              }
+            },
+            {
+              "tag": "P",
+              "name": "查看空间里的照片，或上传你拍到的照片。",
+              "reason": "pseudo-element gradient/image/background",
+              "foreground": {
+                "r": 114,
+                "g": 95,
+                "b": 102,
+                "a": 1
+              },
+              "required": 4.5,
+              "rect": {
+                "x": 48,
+                "y": 502,
+                "width": 317.1875,
+                "height": 56
+              }
+            },
+            {
+              "tag": "BUTTON",
+              "name": "打开空间",
+              "reason": "pseudo-element gradient/image/background",
+              "foreground": {
+                "r": 70,
+                "g": 21,
+                "b": 40,
+                "a": 1
+              },
+              "required": 4.5,
+              "rect": {
+                "x": 48,
+                "y": 590,
+                "width": 360,
+                "height": 52
+              }
+            },
+            {
+              "tag": "A",
+              "name": "我是空间成员，登录",
+              "reason": "pseudo-element gradient/image/background",
+              "foreground": {
+                "r": 114,
+                "g": 95,
+                "b": 102,
+                "a": 1
+              },
+              "required": 4.5,
+              "rect": {
+                "x": 48,
+                "y": 654,
+                "width": 360,
+                "height": 44
+              }
+            },
+            {
+              "tag": "FIGCAPTION",
+              "name": "朋友分享的空间照片",
+              "reason": "pseudo-element gradient/image/background",
+              "foreground": {
+                "r": 255,
+                "g": 248,
+                "b": 245,
+                "a": 1
+              },
+              "required": 4.5,
+              "rect": {
+                "x": 579.265625,
+                "y": 766,
+                "width": 592.734375,
+                "height": 20
+              }
+            }
+          ],
+          "skippedControlReasons": [
+            {
+              "tag": "BUTTON",
+              "name": "打开空间",
+              "reason": "pseudo-element gradient/image/background"
+            }
+          ],
+          "focusables": [
+            {
+              "tag": "A",
+              "name": "跳到主要内容"
+            },
+            {
+              "tag": "A",
+              "name": "UNSEEN 首页"
+            },
+            {
+              "tag": "A",
+              "name": "帮助"
+            },
+            {
+              "tag": "A",
+              "name": "登录"
+            },
+            {
+              "tag": "BUTTON",
+              "name": "打开空间"
+            },
+            {
+              "tag": "A",
+              "name": "我是空间成员，登录"
+            }
+          ]
+        },
+        "pixelText": [
+          {
+            "name": "本地定位 fixture：high / 需要确认 / failed",
+            "status": "INDETERMINATE_NON_UNIFORM",
+            "sampleCount": 6,
+            "channelSpread": 8
+          },
+          {
+            "name": "非真实定位质量 · 本机数据",
+            "status": "MEASURED_UNIFORM_PIXELS",
+            "sampleCount": 6,
+            "channelSpread": 0,
+            "ratio": 13.21,
+            "required": 4.5,
+            "pass": true
+          },
+          {
+            "name": "跳到主要内容",
+            "status": "INDETERMINATE_OUTSIDE_VIEWPORT",
+            "sampleCount": 0,
+            "channelSpread": null
+          },
+          {
+            "name": "UNSEEN",
+            "status": "MEASURED_UNIFORM_PIXELS",
+            "sampleCount": 6,
+            "channelSpread": 0,
+            "ratio": 15.72,
+            "required": 4.5,
+            "pass": true
+          },
+          {
+            "name": "帮助",
+            "status": "MEASURED_UNIFORM_PIXELS",
+            "sampleCount": 6,
+            "channelSpread": 0,
+            "ratio": 5.68,
+            "required": 4.5,
+            "pass": true
+          },
+          {
+            "name": "登录",
+            "status": "MEASURED_UNIFORM_PIXELS",
+            "sampleCount": 6,
+            "channelSpread": 0,
+            "ratio": 5.68,
+            "required": 4.5,
+            "pass": true
+          },
+          {
+            "name": "确定性本地定位样本",
+            "status": "MEASURED_UNIFORM_PIXELS",
+            "sampleCount": 6,
+            "channelSpread": 0,
+            "ratio": 13.21,
+            "required": 4.5,
+            "pass": true
+          },
+          {
+            "name": "非真实定位质量",
+            "status": "MEASURED_UNIFORM_PIXELS",
+            "sampleCount": 6,
+            "channelSpread": 0,
+            "ratio": 13.21,
+            "required": 4.5,
+            "pass": true
+          },
+          {
+            "name": "共同空间",
+            "status": "MEASURED_UNIFORM_PIXELS",
+            "sampleCount": 6,
+            "channelSpread": 0,
+            "ratio": 5.68,
+            "required": 4.5,
+            "pass": true
+          },
+          {
+            "name": "打开受邀空间",
+            "status": "MEASURED_UNIFORM_PIXELS",
+            "sampleCount": 6,
+            "channelSpread": 0,
+            "ratio": 15.72,
+            "required": 3,
+            "pass": true
+          },
+          {
+            "name": "查看空间里的照片，或上传你拍到的照片。",
+            "status": "MEASURED_UNIFORM_PIXELS",
+            "sampleCount": 6,
+            "channelSpread": 0,
+            "ratio": 5.68,
+            "required": 4.5,
+            "pass": true
+          },
+          {
+            "name": "打开空间",
+            "status": "INDETERMINATE_NON_UNIFORM",
+            "sampleCount": 6,
+            "channelSpread": 96
+          },
+          {
+            "name": "我是空间成员，登录",
+            "status": "INDETERMINATE_NON_UNIFORM",
+            "sampleCount": 6,
+            "channelSpread": 6
+          },
+          {
+            "name": "朋友分享的空间照片",
+            "status": "INDETERMINATE_NON_UNIFORM",
+            "sampleCount": 6,
+            "channelSpread": 39
+          }
+        ],
+        "keyboard": {
+          "expected": [
+            {
+              "tag": "A",
+              "name": "跳到主要内容"
+            },
+            {
+              "tag": "A",
+              "name": "UNSEEN 首页"
+            },
+            {
+              "tag": "A",
+              "name": "帮助"
+            },
+            {
+              "tag": "A",
+              "name": "登录"
+            },
+            {
+              "tag": "BUTTON",
+              "name": "打开空间"
+            },
+            {
+              "tag": "A",
+              "name": "我是空间成员，登录"
+            }
+          ],
+          "actual": [
+            {
+              "tag": "A",
+              "name": "跳到主要内容",
+              "visible": true,
+              "focusVisible": true
+            },
+            {
+              "tag": "A",
+              "name": "UNSEEN 首页",
+              "visible": true,
+              "focusVisible": true
+            },
+            {
+              "tag": "A",
+              "name": "帮助",
+              "visible": true,
+              "focusVisible": true
+            },
+            {
+              "tag": "A",
+              "name": "登录",
+              "visible": true,
+              "focusVisible": true
+            },
+            {
+              "tag": "BUTTON",
+              "name": "打开空间",
+              "visible": true,
+              "focusVisible": true
+            },
+            {
+              "tag": "A",
+              "name": "我是空间成员，登录",
+              "visible": true,
+              "focusVisible": true
+            }
+          ],
+          "orderPass": true
+        },
+        "axUnnamed": [],
+        "reflow200": {
+          "applicable": true,
+          "equivalentViewportCssPx": 640,
+          "clientWidth": 640,
+          "scrollWidth": 640,
+          "pass": true
+        },
+        "reducedMotion": {
+          "rule": "opacity transitions <=120ms allowed; animation/continuous/scale/parallax/auto-pan rejected",
+          "offenders": [],
+          "pass": true
+        },
+        "checks": {
+          "landmarks": true,
+          "headings": true,
+          "names": true,
+          "duplicateIds": true,
+          "textContrast": "INDETERMINATE",
+          "controlContrast": "INDETERMINATE",
+          "keyboardOrder": true,
+          "visibleFocus": true,
+          "reflow200": true,
+          "reducedMotion": true
+        }
+      },
+      {
+        "id": "anonymous-home-mobile-390",
+        "route": "/",
+        "viewport": {
+          "width": 390,
+          "height": 844,
+          "mobile": true
+        },
+        "automated": {
+          "route": "/",
+          "title": "UNSEEN · 打开共同空间",
+          "phase": null,
+          "landmarks": {
+            "main": 1,
+            "header": 1,
+            "nav": 1
+          },
+          "headings": [
+            {
+              "level": 1,
+              "name": "打开受邀空间"
+            }
+          ],
+          "headingSkip": false,
+          "duplicateIds": [],
+          "unlabeledForms": [],
+          "unnamedButtons": [],
+          "textContrast": [],
+          "controlContrast": [],
+          "skippedTextReasons": [
+            {
+              "tag": "STRONG",
+              "name": "本地定位 fixture：high / 需要确认 / failed",
+              "reason": "pseudo-element gradient/image/background",
+              "foreground": {
+                "r": 70,
+                "g": 21,
+                "b": 40,
+                "a": 1
+              },
+              "required": 4.5,
+              "rect": {
+                "x": 16,
+                "y": 4,
+                "width": 211.296875,
+                "height": 40
+              }
+            },
+            {
+              "tag": "SPAN",
+              "name": "非真实定位质量 · 本机数据",
+              "reason": "pseudo-element gradient/image/background",
+              "foreground": {
+                "r": 70,
+                "g": 21,
+                "b": 40,
+                "a": 1
+              },
+              "required": 4.5,
+              "rect": {
+                "x": 235.296875,
+                "y": 4,
+                "width": 138.703125,
+                "height": 40
+              }
+            },
+            {
+              "tag": "A",
+              "name": "跳到主要内容",
+              "reason": "pseudo-element gradient/image/background",
+              "foreground": {
+                "r": 70,
+                "g": 21,
+                "b": 40,
+                "a": 1
+              },
+              "required": 4.5,
+              "rect": {
+                "x": 8,
+                "y": -58,
+                "width": 125.921875,
+                "height": 44
+              }
+            },
+            {
+              "tag": "SPAN",
+              "name": "UNSEEN",
+              "reason": "pseudo-element gradient/image/background",
+              "foreground": {
+                "r": 50,
+                "g": 23,
+                "b": 34,
+                "a": 1
+              },
+              "required": 4.5,
+              "rect": {
+                "x": 60,
+                "y": 68.5,
+                "width": 78.921875,
+                "height": 24
+              }
+            },
+            {
+              "tag": "STRONG",
+              "name": "确定性本地定位样本",
+              "reason": "pseudo-element gradient/image/background",
+              "foreground": {
+                "r": 70,
+                "g": 21,
+                "b": 40,
+                "a": 1
+              },
+              "required": 4.5,
+              "rect": {
+                "x": 16,
+                "y": 127,
+                "width": 128.53125,
+                "height": 20
+              }
+            },
+            {
+              "tag": "SPAN",
+              "name": "非真实定位质量",
+              "reason": "pseudo-element gradient/image/background",
+              "foreground": {
+                "r": 70,
+                "g": 21,
+                "b": 40,
+                "a": 1
+              },
+              "required": 4.5,
+              "rect": {
+                "x": 152.53125,
+                "y": 127,
+                "width": 112.203125,
+                "height": 20
+              }
+            },
+            {
+              "tag": "P",
+              "name": "共同空间",
+              "reason": "pseudo-element gradient/image/background",
+              "foreground": {
+                "r": 114,
+                "g": 95,
+                "b": 102,
+                "a": 1
+              },
+              "required": 4.5,
+              "rect": {
+                "x": 16,
+                "y": 613.359375,
+                "width": 358,
+                "height": 16
+              }
+            },
+            {
+              "tag": "H1",
+              "name": "打开受邀空间",
+              "reason": "pseudo-element gradient/image/background",
+              "foreground": {
+                "r": 50,
+                "g": 23,
+                "b": 34,
+                "a": 1
+              },
+              "required": 3,
+              "rect": {
+                "x": 16,
+                "y": 637.359375,
+                "width": 213.5625,
+                "height": 40
+              }
+            },
+            {
+              "tag": "P",
+              "name": "查看空间里的照片，或上传你拍到的照片。",
+              "reason": "pseudo-element gradient/image/background",
+              "foreground": {
+                "r": 114,
+                "g": 95,
+                "b": 102,
+                "a": 1
+              },
+              "required": 4.5,
+              "rect": {
+                "x": 16,
+                "y": 693.359375,
+                "width": 317.1875,
+                "height": 56
+              }
+            },
+            {
+              "tag": "BUTTON",
+              "name": "打开空间",
+              "reason": "pseudo-element gradient/image/background",
+              "foreground": {
+                "r": 70,
+                "g": 21,
+                "b": 40,
+                "a": 1
+              },
+              "required": 4.5,
+              "rect": {
+                "x": 16,
+                "y": 773.359375,
+                "width": 358,
+                "height": 52
+              }
+            },
+            {
+              "tag": "A",
+              "name": "我是空间成员，登录",
+              "reason": "pseudo-element gradient/image/background",
+              "foreground": {
+                "r": 114,
+                "g": 95,
+                "b": 102,
+                "a": 1
+              },
+              "required": 4.5,
+              "rect": {
+                "x": 16,
+                "y": 837.359375,
+                "width": 358,
+                "height": 44
+              }
+            },
+            {
+              "tag": "FIGCAPTION",
+              "name": "朋友分享的空间照片",
+              "reason": "pseudo-element gradient/image/background",
+              "foreground": {
+                "r": 255,
+                "g": 248,
+                "b": 245,
+                "a": 1
+              },
+              "required": 4.5,
+              "rect": {
+                "x": 76,
+                "y": 525.359375,
+                "width": 238,
+                "height": 20
+              }
+            }
+          ],
+          "skippedControlReasons": [
+            {
+              "tag": "BUTTON",
+              "name": "打开空间",
+              "reason": "pseudo-element gradient/image/background"
+            }
+          ],
+          "focusables": [
+            {
+              "tag": "A",
+              "name": "跳到主要内容"
+            },
+            {
+              "tag": "A",
+              "name": "UNSEEN 首页"
+            },
+            {
+              "tag": "A",
+              "name": "帮助"
+            },
+            {
+              "tag": "A",
+              "name": "登录"
+            },
+            {
+              "tag": "BUTTON",
+              "name": "打开空间"
+            },
+            {
+              "tag": "A",
+              "name": "我是空间成员，登录"
+            }
+          ]
+        },
+        "pixelText": [
+          {
+            "name": "本地定位 fixture：high / 需要确认 / failed",
+            "status": "INDETERMINATE_NON_UNIFORM",
+            "sampleCount": 6,
+            "channelSpread": 8
+          },
+          {
+            "name": "非真实定位质量 · 本机数据",
+            "status": "MEASURED_UNIFORM_PIXELS",
+            "sampleCount": 6,
+            "channelSpread": 0,
+            "ratio": 13.21,
+            "required": 4.5,
+            "pass": true
+          },
+          {
+            "name": "跳到主要内容",
+            "status": "INDETERMINATE_OUTSIDE_VIEWPORT",
+            "sampleCount": 0,
+            "channelSpread": null
+          },
+          {
+            "name": "UNSEEN",
+            "status": "MEASURED_UNIFORM_PIXELS",
+            "sampleCount": 6,
+            "channelSpread": 0,
+            "ratio": 15.72,
+            "required": 4.5,
+            "pass": true
+          },
+          {
+            "name": "确定性本地定位样本",
+            "status": "MEASURED_UNIFORM_PIXELS",
+            "sampleCount": 6,
+            "channelSpread": 0,
+            "ratio": 13.21,
+            "required": 4.5,
+            "pass": true
+          },
+          {
+            "name": "非真实定位质量",
+            "status": "MEASURED_UNIFORM_PIXELS",
+            "sampleCount": 6,
+            "channelSpread": 0,
+            "ratio": 13.21,
+            "required": 4.5,
+            "pass": true
+          },
+          {
+            "name": "共同空间",
+            "status": "MEASURED_UNIFORM_PIXELS",
+            "sampleCount": 6,
+            "channelSpread": 2,
+            "ratio": 5.66,
+            "required": 4.5,
+            "pass": true
+          },
+          {
+            "name": "打开受邀空间",
+            "status": "MEASURED_UNIFORM_PIXELS",
+            "sampleCount": 6,
+            "channelSpread": 0,
+            "ratio": 15.72,
+            "required": 3,
+            "pass": true
+          },
+          {
+            "name": "查看空间里的照片，或上传你拍到的照片。",
+            "status": "MEASURED_UNIFORM_PIXELS",
+            "sampleCount": 6,
+            "channelSpread": 0,
+            "ratio": 5.68,
+            "required": 4.5,
+            "pass": true
+          },
+          {
+            "name": "打开空间",
+            "status": "INDETERMINATE_NON_UNIFORM",
+            "sampleCount": 6,
+            "channelSpread": 96
+          },
+          {
+            "name": "我是空间成员，登录",
+            "status": "INDETERMINATE_OUTSIDE_VIEWPORT",
+            "sampleCount": 3,
+            "channelSpread": null
+          },
+          {
+            "name": "朋友分享的空间照片",
+            "status": "INDETERMINATE_NON_UNIFORM",
+            "sampleCount": 6,
+            "channelSpread": 36
+          }
+        ],
+        "keyboard": {
+          "expected": [
+            {
+              "tag": "A",
+              "name": "跳到主要内容"
+            },
+            {
+              "tag": "A",
+              "name": "UNSEEN 首页"
+            },
+            {
+              "tag": "A",
+              "name": "帮助"
+            },
+            {
+              "tag": "A",
+              "name": "登录"
+            },
+            {
+              "tag": "BUTTON",
+              "name": "打开空间"
+            },
+            {
+              "tag": "A",
+              "name": "我是空间成员，登录"
+            }
+          ],
+          "actual": [
+            {
+              "tag": "A",
+              "name": "跳到主要内容",
+              "visible": true,
+              "focusVisible": true
+            },
+            {
+              "tag": "A",
+              "name": "UNSEEN 首页",
+              "visible": true,
+              "focusVisible": true
+            },
+            {
+              "tag": "A",
+              "name": "帮助",
+              "visible": true,
+              "focusVisible": true
+            },
+            {
+              "tag": "A",
+              "name": "登录",
+              "visible": true,
+              "focusVisible": true
+            },
+            {
+              "tag": "BUTTON",
+              "name": "打开空间",
+              "visible": true,
+              "focusVisible": true
+            },
+            {
+              "tag": "A",
+              "name": "我是空间成员，登录",
+              "visible": true,
+              "focusVisible": true
+            }
+          ],
+          "orderPass": true
+        },
+        "axUnnamed": [],
+        "reflow200": {
+          "applicable": false,
+          "reason": "desktop 200% measured separately",
+          "clientWidth": 390,
+          "scrollWidth": 390,
+          "pass": true
+        },
+        "reducedMotion": {
+          "rule": "opacity transitions <=120ms allowed; animation/continuous/scale/parallax/auto-pan rejected",
+          "offenders": [],
+          "pass": true
+        },
+        "checks": {
+          "landmarks": true,
+          "headings": true,
+          "names": true,
+          "duplicateIds": true,
+          "textContrast": "INDETERMINATE",
+          "controlContrast": "INDETERMINATE",
+          "keyboardOrder": true,
+          "visibleFocus": true,
+          "reflow200": true,
+          "reducedMotion": true
+        }
+      },
+      {
+        "id": "owner-spaces",
+        "route": "/spaces",
+        "viewport": {
+          "width": 1280,
+          "height": 900,
+          "mobile": false
+        },
+        "automated": {
+          "route": "/spaces",
+          "title": "我的空间 · UNSEEN",
+          "phase": null,
+          "landmarks": {
+            "main": 1,
+            "header": 1,
+            "nav": 1
+          },
+          "headings": [
+            {
+              "level": 1,
+              "name": "我的空间"
+            },
+            {
+              "level": 2,
+              "name": "还没有空间。创建一个空间开始收集照片。"
+            }
+          ],
+          "headingSkip": false,
+          "duplicateIds": [],
+          "unlabeledForms": [],
+          "unnamedButtons": [],
+          "textContrast": [],
+          "controlContrast": [],
+          "skippedTextReasons": [
+            {
+              "tag": "STRONG",
+              "name": "本地定位 fixture：high / 需要确认 / failed",
+              "reason": "pseudo-element gradient/image/background",
+              "foreground": {
+                "r": 70,
+                "g": 21,
+                "b": 40,
+                "a": 1
+              },
+              "required": 4.5,
+              "rect": {
+                "x": 48,
+                "y": 12,
+                "width": 284.109375,
+                "height": 20
+              }
+            },
+            {
+              "tag": "SPAN",
+              "name": "非真实定位质量 · 本机数据",
+              "reason": "pseudo-element gradient/image/background",
+              "foreground": {
+                "r": 70,
+                "g": 21,
+                "b": 40,
+                "a": 1
+              },
+              "required": 4.5,
+              "rect": {
+                "x": 340.109375,
+                "y": 12,
+                "width": 186.484375,
+                "height": 20
+              }
+            },
+            {
+              "tag": "A",
+              "name": "跳到主要内容",
+              "reason": "pseudo-element gradient/image/background",
+              "foreground": {
+                "r": 70,
+                "g": 21,
+                "b": 40,
+                "a": 1
+              },
+              "required": 4.5,
+              "rect": {
+                "x": 8,
+                "y": -58,
+                "width": 125.921875,
+                "height": 44
+              }
+            },
+            {
+              "tag": "SPAN",
+              "name": "UNSEEN",
+              "reason": "pseudo-element gradient/image/background",
+              "foreground": {
+                "r": 50,
+                "g": 23,
+                "b": 34,
+                "a": 1
+              },
+              "required": 4.5,
+              "rect": {
+                "x": 92,
+                "y": 64.5,
+                "width": 78.921875,
+                "height": 24
+              }
+            },
+            {
+              "tag": "SPAN",
+              "name": "帮助",
+              "reason": "pseudo-element gradient/image/background",
+              "foreground": {
+                "r": 114,
+                "g": 95,
+                "b": 102,
+                "a": 1
+              },
+              "required": 4.5,
+              "rect": {
+                "x": 979.4375,
+                "y": 64.5,
+                "width": 32.640625,
+                "height": 24
+              }
+            },
+            {
+              "tag": "SPAN",
+              "name": "我的空间",
+              "reason": "pseudo-element gradient/image/background",
+              "foreground": {
+                "r": 114,
+                "g": 95,
+                "b": 102,
+                "a": 1
+              },
+              "required": 4.5,
+              "rect": {
+                "x": 1068.078125,
+                "y": 64.5,
+                "width": 65.28125,
+                "height": 24
+              }
+            },
+            {
+              "tag": "SPAN",
+              "name": "账号",
+              "reason": "pseudo-element gradient/image/background",
+              "foreground": {
+                "r": 114,
+                "g": 95,
+                "b": 102,
+                "a": 1
+              },
+              "required": 4.5,
+              "rect": {
+                "x": 1189.359375,
+                "y": 64.5,
+                "width": 32.640625,
+                "height": 24
+              }
+            },
+            {
+              "tag": "STRONG",
+              "name": "确定性本地定位样本",
+              "reason": "pseudo-element gradient/image/background",
+              "foreground": {
+                "r": 70,
+                "g": 21,
+                "b": 40,
+                "a": 1
+              },
+              "required": 4.5,
+              "rect": {
+                "x": 48,
+                "y": 121,
+                "width": 128.53125,
+                "height": 20
+              }
+            },
+            {
+              "tag": "SPAN",
+              "name": "非真实定位质量",
+              "reason": "pseudo-element gradient/image/background",
+              "foreground": {
+                "r": 70,
+                "g": 21,
+                "b": 40,
+                "a": 1
+              },
+              "required": 4.5,
+              "rect": {
+                "x": 184.53125,
+                "y": 121,
+                "width": 112.203125,
+                "height": 20
+              }
+            },
+            {
+              "tag": "P",
+              "name": "账号空间",
+              "reason": "pseudo-element gradient/image/background",
+              "foreground": {
+                "r": 114,
+                "g": 95,
+                "b": 102,
+                "a": 1
+              },
+              "required": 4.5,
+              "rect": {
+                "x": 48,
+                "y": 198,
+                "width": 261.125,
+                "height": 16
+              }
+            },
+            {
+              "tag": "H1",
+              "name": "我的空间",
+              "reason": "pseudo-element gradient/image/background",
+              "foreground": {
+                "r": 50,
+                "g": 23,
+                "b": 34,
+                "a": 1
+              },
+              "required": 3,
+              "rect": {
+                "x": 48,
+                "y": 214,
+                "width": 261.125,
+                "height": 40
+              }
+            },
+            {
+              "tag": "P",
+              "name": "按你的查看、上传和管理权限进入。",
+              "reason": "pseudo-element gradient/image/background",
+              "foreground": {
+                "r": 114,
+                "g": 95,
+                "b": 102,
+                "a": 1
+              },
+              "required": 4.5,
+              "rect": {
+                "x": 48,
+                "y": 270,
+                "width": 261.125,
+                "height": 24
+              }
+            },
+            {
+              "tag": "A",
+              "name": "创建空间",
+              "reason": "pseudo-element gradient/image/background",
+              "foreground": {
+                "r": 70,
+                "g": 21,
+                "b": 40,
+                "a": 1
+              },
+              "required": 4.5,
+              "rect": {
+                "x": 1096.71875,
+                "y": 194,
+                "width": 135.28125,
+                "height": 52
+              }
+            },
+            {
+              "tag": "H2",
+              "name": "还没有空间。创建一个空间开始收集照片。",
+              "reason": "pseudo-element gradient/image/background",
+              "foreground": {
+                "r": 50,
+                "g": 23,
+                "b": 34,
+                "a": 1
+              },
+              "required": 3,
+              "rect": {
+                "x": 412.453125,
+                "y": 452,
+                "width": 455.09375,
+                "height": 32
+              }
+            },
+            {
+              "tag": "A",
+              "name": "查看已归档空间",
+              "reason": "pseudo-element gradient/image/background",
+              "foreground": {
+                "r": 114,
+                "g": 95,
+                "b": 102,
+                "a": 1
+              },
+              "required": 4.5,
+              "rect": {
+                "x": 48,
+                "y": 630,
+                "width": 1184,
+                "height": 44
+              }
+            }
+          ],
+          "skippedControlReasons": [],
+          "focusables": [
+            {
+              "tag": "A",
+              "name": "跳到主要内容"
+            },
+            {
+              "tag": "A",
+              "name": "UNSEEN 首页"
+            },
+            {
+              "tag": "A",
+              "name": "帮助"
+            },
+            {
+              "tag": "A",
+              "name": "我的空间"
+            },
+            {
+              "tag": "A",
+              "name": "账号"
+            },
+            {
+              "tag": "A",
+              "name": "创建空间"
+            },
+            {
+              "tag": "A",
+              "name": "查看已归档空间"
+            }
+          ]
+        },
+        "pixelText": [
+          {
+            "name": "本地定位 fixture：high / 需要确认 / failed",
+            "status": "INDETERMINATE_NON_UNIFORM",
+            "sampleCount": 6,
+            "channelSpread": 8
+          },
+          {
+            "name": "非真实定位质量 · 本机数据",
+            "status": "MEASURED_UNIFORM_PIXELS",
+            "sampleCount": 6,
+            "channelSpread": 0,
+            "ratio": 13.21,
+            "required": 4.5,
+            "pass": true
+          },
+          {
+            "name": "跳到主要内容",
+            "status": "INDETERMINATE_OUTSIDE_VIEWPORT",
+            "sampleCount": 0,
+            "channelSpread": null
+          },
+          {
+            "name": "UNSEEN",
+            "status": "MEASURED_UNIFORM_PIXELS",
+            "sampleCount": 6,
+            "channelSpread": 0,
+            "ratio": 15.72,
+            "required": 4.5,
+            "pass": true
+          },
+          {
+            "name": "帮助",
+            "status": "MEASURED_UNIFORM_PIXELS",
+            "sampleCount": 6,
+            "channelSpread": 0,
+            "ratio": 5.68,
+            "required": 4.5,
+            "pass": true
+          },
+          {
+            "name": "我的空间",
+            "status": "MEASURED_UNIFORM_PIXELS",
+            "sampleCount": 6,
+            "channelSpread": 0,
+            "ratio": 5.68,
+            "required": 4.5,
+            "pass": true
+          },
+          {
+            "name": "账号",
+            "status": "MEASURED_UNIFORM_PIXELS",
+            "sampleCount": 6,
+            "channelSpread": 0,
+            "ratio": 5.68,
+            "required": 4.5,
+            "pass": true
+          },
+          {
+            "name": "确定性本地定位样本",
+            "status": "MEASURED_UNIFORM_PIXELS",
+            "sampleCount": 6,
+            "channelSpread": 0,
+            "ratio": 13.21,
+            "required": 4.5,
+            "pass": true
+          },
+          {
+            "name": "非真实定位质量",
+            "status": "MEASURED_UNIFORM_PIXELS",
+            "sampleCount": 6,
+            "channelSpread": 0,
+            "ratio": 13.21,
+            "required": 4.5,
+            "pass": true
+          },
+          {
+            "name": "账号空间",
+            "status": "INDETERMINATE_NON_UNIFORM",
+            "sampleCount": 6,
+            "channelSpread": 139
+          },
+          {
+            "name": "我的空间",
+            "status": "MEASURED_UNIFORM_PIXELS",
+            "sampleCount": 6,
+            "channelSpread": 0,
+            "ratio": 15.72,
+            "required": 3,
+            "pass": true
+          },
+          {
+            "name": "按你的查看、上传和管理权限进入。",
+            "status": "MEASURED_UNIFORM_PIXELS",
+            "sampleCount": 6,
+            "channelSpread": 0,
+            "ratio": 5.68,
+            "required": 4.5,
+            "pass": true
+          },
+          {
+            "name": "创建空间",
+            "status": "INDETERMINATE_NON_UNIFORM",
+            "sampleCount": 6,
+            "channelSpread": 97
+          },
+          {
+            "name": "还没有空间。创建一个空间开始收集照片。",
+            "status": "MEASURED_UNIFORM_PIXELS",
+            "sampleCount": 6,
+            "channelSpread": 0,
+            "ratio": 16.39,
+            "required": 3,
+            "pass": true
+          },
+          {
+            "name": "查看已归档空间",
+            "status": "MEASURED_UNIFORM_PIXELS",
+            "sampleCount": 6,
+            "channelSpread": 4,
+            "ratio": 5.62,
+            "required": 4.5,
+            "pass": true
+          }
+        ],
+        "keyboard": {
+          "expected": [
+            {
+              "tag": "A",
+              "name": "跳到主要内容"
+            },
+            {
+              "tag": "A",
+              "name": "UNSEEN 首页"
+            },
+            {
+              "tag": "A",
+              "name": "帮助"
+            },
+            {
+              "tag": "A",
+              "name": "我的空间"
+            },
+            {
+              "tag": "A",
+              "name": "账号"
+            },
+            {
+              "tag": "A",
+              "name": "创建空间"
+            },
+            {
+              "tag": "A",
+              "name": "查看已归档空间"
+            }
+          ],
+          "actual": [
+            {
+              "tag": "A",
+              "name": "跳到主要内容",
+              "visible": true,
+              "focusVisible": true
+            },
+            {
+              "tag": "A",
+              "name": "UNSEEN 首页",
+              "visible": true,
+              "focusVisible": true
+            },
+            {
+              "tag": "A",
+              "name": "帮助",
+              "visible": true,
+              "focusVisible": true
+            },
+            {
+              "tag": "A",
+              "name": "我的空间",
+              "visible": true,
+              "focusVisible": true
+            },
+            {
+              "tag": "A",
+              "name": "账号",
+              "visible": true,
+              "focusVisible": true
+            },
+            {
+              "tag": "A",
+              "name": "创建空间",
+              "visible": true,
+              "focusVisible": true
+            },
+            {
+              "tag": "A",
+              "name": "查看已归档空间",
+              "visible": true,
+              "focusVisible": true
+            }
+          ],
+          "orderPass": true
+        },
+        "axUnnamed": [],
+        "reflow200": {
+          "applicable": true,
+          "equivalentViewportCssPx": 640,
+          "clientWidth": 640,
+          "scrollWidth": 640,
+          "pass": true
+        },
+        "reducedMotion": {
+          "rule": "opacity transitions <=120ms allowed; animation/continuous/scale/parallax/auto-pan rejected",
+          "offenders": [],
+          "pass": true
+        },
+        "checks": {
+          "landmarks": true,
+          "headings": true,
+          "names": true,
+          "duplicateIds": true,
+          "textContrast": "INDETERMINATE",
+          "controlContrast": true,
+          "keyboardOrder": true,
+          "visibleFocus": true,
+          "reflow200": true,
+          "reducedMotion": true
+        }
+      },
+      {
+        "id": "participant-upload",
+        "route": "/s/space_0a04cf5678a943cd85ce90658d06a5d3/upload",
+        "viewport": {
+          "width": 1280,
+          "height": 900,
+          "mobile": false
+        },
+        "automated": {
+          "route": "/s/space_0a04cf5678a943cd85ce90658d06a5d3/upload",
+          "title": "上传照片 · UNSEEN",
+          "phase": null,
+          "landmarks": {
+            "main": 1,
+            "header": 1,
+            "nav": 2
+          },
+          "headings": [
+            {
+              "level": 1,
+              "name": "共同空间"
+            },
+            {
+              "level": 2,
+              "name": "选择你拍到的照片"
+            },
+            {
+              "level": 3,
+              "name": "这一批会发生什么"
+            }
+          ],
+          "headingSkip": false,
+          "duplicateIds": [],
+          "unlabeledForms": [],
+          "unnamedButtons": [],
+          "textContrast": [],
+          "controlContrast": [],
+          "skippedTextReasons": [
+            {
+              "tag": "STRONG",
+              "name": "本地定位 fixture：high / 需要确认 / failed",
+              "reason": "pseudo-element gradient/image/background",
+              "foreground": {
+                "r": 70,
+                "g": 21,
+                "b": 40,
+                "a": 1
+              },
+              "required": 4.5,
+              "rect": {
+                "x": 48,
+                "y": 12,
+                "width": 284.109375,
+                "height": 20
+              }
+            },
+            {
+              "tag": "SPAN",
+              "name": "非真实定位质量 · 本机数据",
+              "reason": "pseudo-element gradient/image/background",
+              "foreground": {
+                "r": 70,
+                "g": 21,
+                "b": 40,
+                "a": 1
+              },
+              "required": 4.5,
+              "rect": {
+                "x": 340.109375,
+                "y": 12,
+                "width": 186.484375,
+                "height": 20
+              }
+            },
+            {
+              "tag": "A",
+              "name": "跳到主要内容",
+              "reason": "pseudo-element gradient/image/background",
+              "foreground": {
+                "r": 70,
+                "g": 21,
+                "b": 40,
+                "a": 1
+              },
+              "required": 4.5,
+              "rect": {
+                "x": 8,
+                "y": -58,
+                "width": 125.921875,
+                "height": 44
+              }
+            },
+            {
+              "tag": "SPAN",
+              "name": "UNSEEN",
+              "reason": "pseudo-element gradient/image/background",
+              "foreground": {
+                "r": 50,
+                "g": 23,
+                "b": 34,
+                "a": 1
+              },
+              "required": 4.5,
+              "rect": {
+                "x": 92,
+                "y": 64.5,
+                "width": 78.921875,
+                "height": 24
+              }
+            },
+            {
+              "tag": "SPAN",
+              "name": "帮助",
+              "reason": "pseudo-element gradient/image/background",
+              "foreground": {
+                "r": 114,
+                "g": 95,
+                "b": 102,
+                "a": 1
+              },
+              "required": 4.5,
+              "rect": {
+                "x": 1100.71875,
+                "y": 64.5,
+                "width": 32.640625,
+                "height": 24
+              }
+            },
+            {
+              "tag": "SPAN",
+              "name": "登录",
+              "reason": "pseudo-element gradient/image/background",
+              "foreground": {
+                "r": 114,
+                "g": 95,
+                "b": 102,
+                "a": 1
+              },
+              "required": 4.5,
+              "rect": {
+                "x": 1189.359375,
+                "y": 64.5,
+                "width": 32.640625,
+                "height": 24
+              }
+            },
+            {
+              "tag": "STRONG",
+              "name": "确定性本地定位样本",
+              "reason": "pseudo-element gradient/image/background",
+              "foreground": {
+                "r": 70,
+                "g": 21,
+                "b": 40,
+                "a": 1
+              },
+              "required": 4.5,
+              "rect": {
+                "x": 48,
+                "y": 121,
+                "width": 128.53125,
+                "height": 20
+              }
+            },
+            {
+              "tag": "SPAN",
+              "name": "非真实定位质量",
+              "reason": "pseudo-element gradient/image/background",
+              "foreground": {
+                "r": 70,
+                "g": 21,
+                "b": 40,
+                "a": 1
+              },
+              "required": 4.5,
+              "rect": {
+                "x": 184.53125,
+                "y": 121,
+                "width": 112.203125,
+                "height": 20
+              }
+            },
+            {
+              "tag": "P",
+              "name": "共同空间",
+              "reason": "pseudo-element gradient/image/background",
+              "foreground": {
+                "r": 114,
+                "g": 95,
+                "b": 102,
+                "a": 1
+              },
+              "required": 4.5,
+              "rect": {
+                "x": 48,
+                "y": 194,
+                "width": 125.453125,
+                "height": 16
+              }
+            },
+            {
+              "tag": "H1",
+              "name": "共同空间",
+              "reason": "pseudo-element gradient/image/background",
+              "foreground": {
+                "r": 50,
+                "g": 23,
+                "b": 34,
+                "a": 1
+              },
+              "required": 3,
+              "rect": {
+                "x": 48,
+                "y": 218,
+                "width": 125.453125,
+                "height": 40
+              }
+            },
+            {
+              "tag": "A",
+              "name": "查看",
+              "reason": "pseudo-element gradient/image/background",
+              "foreground": {
+                "r": 114,
+                "g": 95,
+                "b": 102,
+                "a": 1
+              },
+              "required": 4.5,
+              "rect": {
+                "x": 1005.078125,
+                "y": 225,
+                "width": 92.640625,
+                "height": 44
+              }
+            },
+            {
+              "tag": "A",
+              "name": "上传照片",
+              "reason": "pseudo-element gradient/image/background",
+              "foreground": {
+                "r": 50,
+                "g": 23,
+                "b": 34,
+                "a": 1
+              },
+              "required": 4.5,
+              "rect": {
+                "x": 1101.71875,
+                "y": 225,
+                "width": 125.28125,
+                "height": 44
+              }
+            },
+            {
+              "tag": "P",
+              "name": "一次上传",
+              "reason": "pseudo-element gradient/image/background",
+              "foreground": {
+                "r": 114,
+                "g": 95,
+                "b": 102,
+                "a": 1
+              },
+              "required": 4.5,
+              "rect": {
+                "x": 48,
+                "y": 298,
+                "width": 840,
+                "height": 16
+              }
+            },
+            {
+              "tag": "H2",
+              "name": "选择你拍到的照片",
+              "reason": "pseudo-element gradient/image/background",
+              "foreground": {
+                "r": 50,
+                "g": 23,
+                "b": 34,
+                "a": 1
+              },
+              "required": 3,
+              "rect": {
+                "x": 48,
+                "y": 322,
+                "width": 840,
+                "height": 32
+              }
+            },
+            {
+              "tag": "P",
+              "name": "普通照片会逐张上传并尝试自动放回现场。拿不准时，再请你确认位置。",
+              "reason": "pseudo-element gradient/image/background",
+              "foreground": {
+                "r": 114,
+                "g": 95,
+                "b": 102,
+                "a": 1
+              },
+              "required": 4.5,
+              "rect": {
+                "x": 48,
+                "y": 366,
+                "width": 840,
+                "height": 24
+              }
+            },
+            {
+              "tag": "STRONG",
+              "name": "选择一张或多张照片",
+              "reason": "pseudo-element gradient/image/background",
+              "foreground": {
+                "r": 50,
+                "g": 23,
+                "b": 34,
+                "a": 1
+              },
+              "required": 4.5,
+              "rect": {
+                "x": 394.546875,
+                "y": 545,
+                "width": 146.890625,
+                "height": 22
+              }
+            },
+            {
+              "tag": "P",
+              "name": "支持常见手机与相机照片格式",
+              "reason": "pseudo-element gradient/image/background",
+              "foreground": {
+                "r": 114,
+                "g": 95,
+                "b": 102,
+                "a": 1
+              },
+              "required": 4.5,
+              "rect": {
+                "x": 375.171875,
+                "y": 568,
+                "width": 185.640625,
+                "height": 20
+              }
+            },
+            {
+              "tag": "LABEL",
+              "name": "选择本机照片",
+              "reason": "pseudo-element gradient/image/background",
+              "foreground": {
+                "r": 70,
+                "g": 21,
+                "b": 40,
+                "a": 1
+              },
+              "required": 4.5,
+              "rect": {
+                "x": 375.171875,
+                "y": 620,
+                "width": 185.640625,
+                "height": 44
+              }
+            },
+            {
+              "tag": "H3",
+              "name": "这一批会发生什么",
+              "reason": "pseudo-element gradient/image/background",
+              "foreground": {
+                "r": 50,
+                "g": 23,
+                "b": 34,
+                "a": 1
+              },
+              "required": 4.5,
+              "rect": {
+                "x": 933,
+                "y": 319,
+                "width": 278,
+                "height": 70
+              }
+            },
+            {
+              "tag": "LI",
+              "name": "每张照片独立上传和检查",
+              "reason": "pseudo-element gradient/image/background",
+              "foreground": {
+                "r": 114,
+                "g": 95,
+                "b": 102,
+                "a": 1
+              },
+              "required": 4.5,
+              "rect": {
+                "x": 973,
+                "y": 427,
+                "width": 238,
+                "height": 20
+              }
+            },
+            {
+              "tag": "LI",
+              "name": "能自动定位的直接进入现场",
+              "reason": "pseudo-element gradient/image/background",
+              "foreground": {
+                "r": 114,
+                "g": 95,
+                "b": 102,
+                "a": 1
+              },
+              "required": 4.5,
+              "rect": {
+                "x": 973,
+                "y": 447,
+                "width": 238,
+                "height": 20
+              }
+            },
+            {
+              "tag": "LI",
+              "name": "不确定的照片请你确认",
+              "reason": "pseudo-element gradient/image/background",
+              "foreground": {
+                "r": 114,
+                "g": 95,
+                "b": 102,
+                "a": 1
+              },
+              "required": 4.5,
+              "rect": {
+                "x": 973,
+                "y": 467,
+                "width": 238,
+                "height": 20
+              }
+            },
+            {
+              "tag": "LI",
+              "name": "最后生成一份整批结果",
+              "reason": "pseudo-element gradient/image/background",
+              "foreground": {
+                "r": 114,
+                "g": 95,
+                "b": 102,
+                "a": 1
+              },
+              "required": 4.5,
+              "rect": {
+                "x": 973,
+                "y": 487,
+                "width": 238,
+                "height": 20
+              }
+            },
+            {
+              "tag": "P",
+              "name": "完成本批后，失败的照片需要在新的一批里重传。",
+              "reason": "pseudo-element gradient/image/background",
+              "foreground": {
+                "r": 114,
+                "g": 95,
+                "b": 102,
+                "a": 1
+              },
+              "required": 4.5,
+              "rect": {
+                "x": 933,
+                "y": 579,
+                "width": 278,
+                "height": 82
+              }
+            }
+          ],
+          "skippedControlReasons": [],
+          "focusables": [
+            {
+              "tag": "A",
+              "name": "跳到主要内容"
+            },
+            {
+              "tag": "A",
+              "name": "UNSEEN 首页"
+            },
+            {
+              "tag": "A",
+              "name": "帮助"
+            },
+            {
+              "tag": "A",
+              "name": "登录"
+            },
+            {
+              "tag": "A",
+              "name": "查看"
+            },
+            {
+              "tag": "A",
+              "name": "上传照片"
+            }
+          ]
+        },
+        "pixelText": [
+          {
+            "name": "本地定位 fixture：high / 需要确认 / failed",
+            "status": "INDETERMINATE_NON_UNIFORM",
+            "sampleCount": 6,
+            "channelSpread": 8
+          },
+          {
+            "name": "非真实定位质量 · 本机数据",
+            "status": "MEASURED_UNIFORM_PIXELS",
+            "sampleCount": 6,
+            "channelSpread": 0,
+            "ratio": 13.21,
+            "required": 4.5,
+            "pass": true
+          },
+          {
+            "name": "跳到主要内容",
+            "status": "INDETERMINATE_OUTSIDE_VIEWPORT",
+            "sampleCount": 0,
+            "channelSpread": null
+          },
+          {
+            "name": "UNSEEN",
+            "status": "MEASURED_UNIFORM_PIXELS",
+            "sampleCount": 6,
+            "channelSpread": 0,
+            "ratio": 15.72,
+            "required": 4.5,
+            "pass": true
+          },
+          {
+            "name": "帮助",
+            "status": "MEASURED_UNIFORM_PIXELS",
+            "sampleCount": 6,
+            "channelSpread": 0,
+            "ratio": 5.68,
+            "required": 4.5,
+            "pass": true
+          },
+          {
+            "name": "登录",
+            "status": "MEASURED_UNIFORM_PIXELS",
+            "sampleCount": 6,
+            "channelSpread": 0,
+            "ratio": 5.68,
+            "required": 4.5,
+            "pass": true
+          },
+          {
+            "name": "确定性本地定位样本",
+            "status": "MEASURED_UNIFORM_PIXELS",
+            "sampleCount": 6,
+            "channelSpread": 0,
+            "ratio": 13.21,
+            "required": 4.5,
+            "pass": true
+          },
+          {
+            "name": "非真实定位质量",
+            "status": "MEASURED_UNIFORM_PIXELS",
+            "sampleCount": 6,
+            "channelSpread": 0,
+            "ratio": 13.21,
+            "required": 4.5,
+            "pass": true
+          },
+          {
+            "name": "共同空间",
+            "status": "MEASURED_UNIFORM_PIXELS",
+            "sampleCount": 6,
+            "channelSpread": 0,
+            "ratio": 5.68,
+            "required": 4.5,
+            "pass": true
+          },
+          {
+            "name": "共同空间",
+            "status": "MEASURED_UNIFORM_PIXELS",
+            "sampleCount": 6,
+            "channelSpread": 0,
+            "ratio": 15.72,
+            "required": 3,
+            "pass": true
+          },
+          {
+            "name": "查看",
+            "status": "MEASURED_UNIFORM_PIXELS",
+            "sampleCount": 6,
+            "channelSpread": 4,
+            "ratio": 5.88,
+            "required": 4.5,
+            "pass": true
+          },
+          {
+            "name": "上传照片",
+            "status": "INDETERMINATE_NON_UNIFORM",
+            "sampleCount": 6,
+            "channelSpread": 8
+          },
+          {
+            "name": "一次上传",
+            "status": "MEASURED_UNIFORM_PIXELS",
+            "sampleCount": 6,
+            "channelSpread": 0,
+            "ratio": 5.68,
+            "required": 4.5,
+            "pass": true
+          },
+          {
+            "name": "选择你拍到的照片",
+            "status": "MEASURED_UNIFORM_PIXELS",
+            "sampleCount": 6,
+            "channelSpread": 0,
+            "ratio": 15.72,
+            "required": 3,
+            "pass": true
+          },
+          {
+            "name": "普通照片会逐张上传并尝试自动放回现场。拿不准时，再请你确认位置。",
+            "status": "MEASURED_UNIFORM_PIXELS",
+            "sampleCount": 6,
+            "channelSpread": 0,
+            "ratio": 5.68,
+            "required": 4.5,
+            "pass": true
+          },
+          {
+            "name": "选择一张或多张照片",
+            "status": "MEASURED_UNIFORM_PIXELS",
+            "sampleCount": 6,
+            "channelSpread": 0,
+            "ratio": 16.39,
+            "required": 4.5,
+            "pass": true
+          },
+          {
+            "name": "支持常见手机与相机照片格式",
+            "status": "MEASURED_UNIFORM_PIXELS",
+            "sampleCount": 6,
+            "channelSpread": 0,
+            "ratio": 5.93,
+            "required": 4.5,
+            "pass": true
+          },
+          {
+            "name": "选择本机照片",
+            "status": "MEASURED_UNIFORM_PIXELS",
+            "sampleCount": 6,
+            "channelSpread": 0,
+            "ratio": 15.02,
+            "required": 4.5,
+            "pass": true
+          },
+          {
+            "name": "这一批会发生什么",
+            "status": "MEASURED_UNIFORM_PIXELS",
+            "sampleCount": 6,
+            "channelSpread": 0,
+            "ratio": 16.39,
+            "required": 4.5,
+            "pass": true
+          },
+          {
+            "name": "每张照片独立上传和检查",
+            "status": "MEASURED_UNIFORM_PIXELS",
+            "sampleCount": 6,
+            "channelSpread": 0,
+            "ratio": 5.93,
+            "required": 4.5,
+            "pass": true
+          },
+          {
+            "name": "能自动定位的直接进入现场",
+            "status": "MEASURED_UNIFORM_PIXELS",
+            "sampleCount": 6,
+            "channelSpread": 0,
+            "ratio": 5.93,
+            "required": 4.5,
+            "pass": true
+          },
+          {
+            "name": "不确定的照片请你确认",
+            "status": "MEASURED_UNIFORM_PIXELS",
+            "sampleCount": 6,
+            "channelSpread": 0,
+            "ratio": 5.93,
+            "required": 4.5,
+            "pass": true
+          },
+          {
+            "name": "最后生成一份整批结果",
+            "status": "MEASURED_UNIFORM_PIXELS",
+            "sampleCount": 6,
+            "channelSpread": 0,
+            "ratio": 5.93,
+            "required": 4.5,
+            "pass": true
+          },
+          {
+            "name": "完成本批后，失败的照片需要在新的一批里重传。",
+            "status": "MEASURED_UNIFORM_PIXELS",
+            "sampleCount": 6,
+            "channelSpread": 0,
+            "ratio": 5.93,
+            "required": 4.5,
+            "pass": true
+          }
+        ],
+        "keyboard": {
+          "expected": [
+            {
+              "tag": "A",
+              "name": "跳到主要内容"
+            },
+            {
+              "tag": "A",
+              "name": "UNSEEN 首页"
+            },
+            {
+              "tag": "A",
+              "name": "帮助"
+            },
+            {
+              "tag": "A",
+              "name": "登录"
+            },
+            {
+              "tag": "A",
+              "name": "查看"
+            },
+            {
+              "tag": "A",
+              "name": "上传照片"
+            }
+          ],
+          "actual": [
+            {
+              "tag": "A",
+              "name": "跳到主要内容",
+              "visible": true,
+              "focusVisible": true
+            },
+            {
+              "tag": "A",
+              "name": "UNSEEN 首页",
+              "visible": true,
+              "focusVisible": true
+            },
+            {
+              "tag": "A",
+              "name": "帮助",
+              "visible": true,
+              "focusVisible": true
+            },
+            {
+              "tag": "A",
+              "name": "登录",
+              "visible": true,
+              "focusVisible": true
+            },
+            {
+              "tag": "A",
+              "name": "查看",
+              "visible": true,
+              "focusVisible": true
+            },
+            {
+              "tag": "A",
+              "name": "上传照片",
+              "visible": true,
+              "focusVisible": true
+            }
+          ],
+          "orderPass": true
+        },
+        "axUnnamed": [],
+        "reflow200": {
+          "applicable": true,
+          "equivalentViewportCssPx": 640,
+          "clientWidth": 640,
+          "scrollWidth": 640,
+          "pass": true
+        },
+        "reducedMotion": {
+          "rule": "opacity transitions <=120ms allowed; animation/continuous/scale/parallax/auto-pan rejected",
+          "offenders": [],
+          "pass": true
+        },
+        "checks": {
+          "landmarks": true,
+          "headings": true,
+          "names": true,
+          "duplicateIds": true,
+          "textContrast": "INDETERMINATE",
+          "controlContrast": true,
+          "keyboardOrder": true,
+          "visibleFocus": true,
+          "reflow200": true,
+          "reducedMotion": true
+        }
+      },
+      {
+        "id": "participant-upload-mobile-390",
+        "route": "/s/space_0a04cf5678a943cd85ce90658d06a5d3/upload",
+        "viewport": {
+          "width": 390,
+          "height": 844,
+          "mobile": true
+        },
+        "automated": {
+          "route": "/s/space_0a04cf5678a943cd85ce90658d06a5d3/upload",
+          "title": "上传照片 · UNSEEN",
+          "phase": null,
+          "landmarks": {
+            "main": 1,
+            "header": 1,
+            "nav": 2
+          },
+          "headings": [
+            {
+              "level": 1,
+              "name": "共同空间"
+            },
+            {
+              "level": 2,
+              "name": "选择你拍到的照片"
+            },
+            {
+              "level": 3,
+              "name": "这一批会发生什么"
+            }
+          ],
+          "headingSkip": false,
+          "duplicateIds": [],
+          "unlabeledForms": [],
+          "unnamedButtons": [],
+          "textContrast": [],
+          "controlContrast": [],
+          "skippedTextReasons": [
+            {
+              "tag": "STRONG",
+              "name": "本地定位 fixture：high / 需要确认 / failed",
+              "reason": "pseudo-element gradient/image/background",
+              "foreground": {
+                "r": 70,
+                "g": 21,
+                "b": 40,
+                "a": 1
+              },
+              "required": 4.5,
+              "rect": {
+                "x": 16,
+                "y": 4,
+                "width": 211.296875,
+                "height": 40
+              }
+            },
+            {
+              "tag": "SPAN",
+              "name": "非真实定位质量 · 本机数据",
+              "reason": "pseudo-element gradient/image/background",
+              "foreground": {
+                "r": 70,
+                "g": 21,
+                "b": 40,
+                "a": 1
+              },
+              "required": 4.5,
+              "rect": {
+                "x": 235.296875,
+                "y": 4,
+                "width": 138.703125,
+                "height": 40
+              }
+            },
+            {
+              "tag": "A",
+              "name": "跳到主要内容",
+              "reason": "pseudo-element gradient/image/background",
+              "foreground": {
+                "r": 70,
+                "g": 21,
+                "b": 40,
+                "a": 1
+              },
+              "required": 4.5,
+              "rect": {
+                "x": 8,
+                "y": -58,
+                "width": 125.921875,
+                "height": 44
+              }
+            },
+            {
+              "tag": "SPAN",
+              "name": "UNSEEN",
+              "reason": "pseudo-element gradient/image/background",
+              "foreground": {
+                "r": 50,
+                "g": 23,
+                "b": 34,
+                "a": 1
+              },
+              "required": 4.5,
+              "rect": {
+                "x": 60,
+                "y": 68.5,
+                "width": 78.921875,
+                "height": 24
+              }
+            },
+            {
+              "tag": "STRONG",
+              "name": "确定性本地定位样本",
+              "reason": "pseudo-element gradient/image/background",
+              "foreground": {
+                "r": 70,
+                "g": 21,
+                "b": 40,
+                "a": 1
+              },
+              "required": 4.5,
+              "rect": {
+                "x": 16,
+                "y": 127,
+                "width": 128.53125,
+                "height": 20
+              }
+            },
+            {
+              "tag": "SPAN",
+              "name": "非真实定位质量",
+              "reason": "pseudo-element gradient/image/background",
+              "foreground": {
+                "r": 70,
+                "g": 21,
+                "b": 40,
+                "a": 1
+              },
+              "required": 4.5,
+              "rect": {
+                "x": 152.53125,
+                "y": 127,
+                "width": 112.203125,
+                "height": 20
+              }
+            },
+            {
+              "tag": "P",
+              "name": "共同空间",
+              "reason": "pseudo-element gradient/image/background",
+              "foreground": {
+                "r": 114,
+                "g": 95,
+                "b": 102,
+                "a": 1
+              },
+              "required": 4.5,
+              "rect": {
+                "x": 16,
+                "y": 186,
+                "width": 125.453125,
+                "height": 16
+              }
+            },
+            {
+              "tag": "H1",
+              "name": "共同空间",
+              "reason": "pseudo-element gradient/image/background",
+              "foreground": {
+                "r": 50,
+                "g": 23,
+                "b": 34,
+                "a": 1
+              },
+              "required": 3,
+              "rect": {
+                "x": 16,
+                "y": 210,
+                "width": 125.453125,
+                "height": 40
+              }
+            },
+            {
+              "tag": "A",
+              "name": "查看",
+              "reason": "pseudo-element gradient/image/background",
+              "foreground": {
+                "r": 114,
+                "g": 95,
+                "b": 102,
+                "a": 1
+              },
+              "required": 4.5,
+              "rect": {
+                "x": 21,
+                "y": 283,
+                "width": 172,
+                "height": 44
+              }
+            },
+            {
+              "tag": "A",
+              "name": "上传照片",
+              "reason": "pseudo-element gradient/image/background",
+              "foreground": {
+                "r": 50,
+                "g": 23,
+                "b": 34,
+                "a": 1
+              },
+              "required": 4.5,
+              "rect": {
+                "x": 197,
+                "y": 283,
+                "width": 172,
+                "height": 44
+              }
+            },
+            {
+              "tag": "P",
+              "name": "一次上传",
+              "reason": "pseudo-element gradient/image/background",
+              "foreground": {
+                "r": 114,
+                "g": 95,
+                "b": 102,
+                "a": 1
+              },
+              "required": 4.5,
+              "rect": {
+                "x": 16,
+                "y": 356,
+                "width": 358,
+                "height": 16
+              }
+            },
+            {
+              "tag": "H2",
+              "name": "选择你拍到的照片",
+              "reason": "pseudo-element gradient/image/background",
+              "foreground": {
+                "r": 50,
+                "g": 23,
+                "b": 34,
+                "a": 1
+              },
+              "required": 3,
+              "rect": {
+                "x": 16,
+                "y": 380,
+                "width": 358,
+                "height": 32
+              }
+            },
+            {
+              "tag": "P",
+              "name": "普通照片会逐张上传并尝试自动放回现场。拿不准时，再请你确认位置。",
+              "reason": "pseudo-element gradient/image/background",
+              "foreground": {
+                "r": 114,
+                "g": 95,
+                "b": 102,
+                "a": 1
+              },
+              "required": 4.5,
+              "rect": {
+                "x": 16,
+                "y": 424,
+                "width": 358,
+                "height": 48
+              }
+            },
+            {
+              "tag": "STRONG",
+              "name": "选择一张或多张照片",
+              "reason": "pseudo-element gradient/image/background",
+              "foreground": {
+                "r": 50,
+                "g": 23,
+                "b": 34,
+                "a": 1
+              },
+              "required": 4.5,
+              "rect": {
+                "x": 121.546875,
+                "y": 627,
+                "width": 146.890625,
+                "height": 22
+              }
+            },
+            {
+              "tag": "P",
+              "name": "支持常见手机与相机照片格式",
+              "reason": "pseudo-element gradient/image/background",
+              "foreground": {
+                "r": 114,
+                "g": 95,
+                "b": 102,
+                "a": 1
+              },
+              "required": 4.5,
+              "rect": {
+                "x": 102.171875,
+                "y": 650,
+                "width": 185.640625,
+                "height": 20
+              }
+            },
+            {
+              "tag": "LABEL",
+              "name": "选择本机照片",
+              "reason": "pseudo-element gradient/image/background",
+              "foreground": {
+                "r": 70,
+                "g": 21,
+                "b": 40,
+                "a": 1
+              },
+              "required": 4.5,
+              "rect": {
+                "x": 102.171875,
+                "y": 702,
+                "width": 185.640625,
+                "height": 44
+              }
+            },
+            {
+              "tag": "H3",
+              "name": "这一批会发生什么",
+              "reason": "pseudo-element gradient/image/background",
+              "foreground": {
+                "r": 50,
+                "g": 23,
+                "b": 34,
+                "a": 1
+              },
+              "required": 4.5,
+              "rect": {
+                "x": 37,
+                "y": 825,
+                "width": 316,
+                "height": 28
+              }
+            },
+            {
+              "tag": "LI",
+              "name": "每张照片独立上传和检查",
+              "reason": "pseudo-element gradient/image/background",
+              "foreground": {
+                "r": 114,
+                "g": 95,
+                "b": 102,
+                "a": 1
+              },
+              "required": 4.5,
+              "rect": {
+                "x": 77,
+                "y": 891,
+                "width": 276,
+                "height": 20
+              }
+            },
+            {
+              "tag": "LI",
+              "name": "能自动定位的直接进入现场",
+              "reason": "pseudo-element gradient/image/background",
+              "foreground": {
+                "r": 114,
+                "g": 95,
+                "b": 102,
+                "a": 1
+              },
+              "required": 4.5,
+              "rect": {
+                "x": 77,
+                "y": 911,
+                "width": 276,
+                "height": 20
+              }
+            },
+            {
+              "tag": "LI",
+              "name": "不确定的照片请你确认",
+              "reason": "pseudo-element gradient/image/background",
+              "foreground": {
+                "r": 114,
+                "g": 95,
+                "b": 102,
+                "a": 1
+              },
+              "required": 4.5,
+              "rect": {
+                "x": 77,
+                "y": 931,
+                "width": 276,
+                "height": 20
+              }
+            },
+            {
+              "tag": "LI",
+              "name": "最后生成一份整批结果",
+              "reason": "pseudo-element gradient/image/background",
+              "foreground": {
+                "r": 114,
+                "g": 95,
+                "b": 102,
+                "a": 1
+              },
+              "required": 4.5,
+              "rect": {
+                "x": 77,
+                "y": 951,
+                "width": 276,
+                "height": 20
+              }
+            },
+            {
+              "tag": "P",
+              "name": "完成本批后，失败的照片需要在新的一批里重传。",
+              "reason": "pseudo-element gradient/image/background",
+              "foreground": {
+                "r": 114,
+                "g": 95,
+                "b": 102,
+                "a": 1
+              },
+              "required": 4.5,
+              "rect": {
+                "x": 37,
+                "y": 1001,
+                "width": 316,
+                "height": 20
+              }
+            }
+          ],
+          "skippedControlReasons": [],
+          "focusables": [
+            {
+              "tag": "A",
+              "name": "跳到主要内容"
+            },
+            {
+              "tag": "A",
+              "name": "UNSEEN 首页"
+            },
+            {
+              "tag": "A",
+              "name": "帮助"
+            },
+            {
+              "tag": "A",
+              "name": "登录"
+            },
+            {
+              "tag": "A",
+              "name": "查看"
+            },
+            {
+              "tag": "A",
+              "name": "上传照片"
+            }
+          ]
+        },
+        "pixelText": [
+          {
+            "name": "本地定位 fixture：high / 需要确认 / failed",
+            "status": "INDETERMINATE_NON_UNIFORM",
+            "sampleCount": 6,
+            "channelSpread": 8
+          },
+          {
+            "name": "非真实定位质量 · 本机数据",
+            "status": "MEASURED_UNIFORM_PIXELS",
+            "sampleCount": 6,
+            "channelSpread": 0,
+            "ratio": 13.21,
+            "required": 4.5,
+            "pass": true
+          },
+          {
+            "name": "跳到主要内容",
+            "status": "INDETERMINATE_OUTSIDE_VIEWPORT",
+            "sampleCount": 0,
+            "channelSpread": null
+          },
+          {
+            "name": "UNSEEN",
+            "status": "MEASURED_UNIFORM_PIXELS",
+            "sampleCount": 6,
+            "channelSpread": 0,
+            "ratio": 15.72,
+            "required": 4.5,
+            "pass": true
+          },
+          {
+            "name": "确定性本地定位样本",
+            "status": "MEASURED_UNIFORM_PIXELS",
+            "sampleCount": 6,
+            "channelSpread": 0,
+            "ratio": 13.21,
+            "required": 4.5,
+            "pass": true
+          },
+          {
+            "name": "非真实定位质量",
+            "status": "MEASURED_UNIFORM_PIXELS",
+            "sampleCount": 6,
+            "channelSpread": 0,
+            "ratio": 13.21,
+            "required": 4.5,
+            "pass": true
+          },
+          {
+            "name": "共同空间",
+            "status": "MEASURED_UNIFORM_PIXELS",
+            "sampleCount": 6,
+            "channelSpread": 0,
+            "ratio": 5.68,
+            "required": 4.5,
+            "pass": true
+          },
+          {
+            "name": "共同空间",
+            "status": "MEASURED_UNIFORM_PIXELS",
+            "sampleCount": 6,
+            "channelSpread": 0,
+            "ratio": 15.72,
+            "required": 3,
+            "pass": true
+          },
+          {
+            "name": "查看",
+            "status": "MEASURED_UNIFORM_PIXELS",
+            "sampleCount": 6,
+            "channelSpread": 4,
+            "ratio": 5.88,
+            "required": 4.5,
+            "pass": true
+          },
+          {
+            "name": "上传照片",
+            "status": "INDETERMINATE_NON_UNIFORM",
+            "sampleCount": 6,
+            "channelSpread": 8
+          },
+          {
+            "name": "一次上传",
+            "status": "MEASURED_UNIFORM_PIXELS",
+            "sampleCount": 6,
+            "channelSpread": 0,
+            "ratio": 5.68,
+            "required": 4.5,
+            "pass": true
+          },
+          {
+            "name": "选择你拍到的照片",
+            "status": "MEASURED_UNIFORM_PIXELS",
+            "sampleCount": 6,
+            "channelSpread": 0,
+            "ratio": 15.72,
+            "required": 3,
+            "pass": true
+          },
+          {
+            "name": "普通照片会逐张上传并尝试自动放回现场。拿不准时，再请你确认位置。",
+            "status": "MEASURED_UNIFORM_PIXELS",
+            "sampleCount": 6,
+            "channelSpread": 0,
+            "ratio": 5.68,
+            "required": 4.5,
+            "pass": true
+          },
+          {
+            "name": "选择一张或多张照片",
+            "status": "MEASURED_UNIFORM_PIXELS",
+            "sampleCount": 6,
+            "channelSpread": 0,
+            "ratio": 16.39,
+            "required": 4.5,
+            "pass": true
+          },
+          {
+            "name": "支持常见手机与相机照片格式",
+            "status": "MEASURED_UNIFORM_PIXELS",
+            "sampleCount": 6,
+            "channelSpread": 0,
+            "ratio": 5.93,
+            "required": 4.5,
+            "pass": true
+          },
+          {
+            "name": "选择本机照片",
+            "status": "MEASURED_UNIFORM_PIXELS",
+            "sampleCount": 6,
+            "channelSpread": 0,
+            "ratio": 15.02,
+            "required": 4.5,
+            "pass": true
+          },
+          {
+            "name": "这一批会发生什么",
+            "status": "INDETERMINATE_OUTSIDE_VIEWPORT",
+            "sampleCount": 3,
+            "channelSpread": null
+          },
+          {
+            "name": "每张照片独立上传和检查",
+            "status": "INDETERMINATE_OUTSIDE_VIEWPORT",
+            "sampleCount": 0,
+            "channelSpread": null
+          },
+          {
+            "name": "能自动定位的直接进入现场",
+            "status": "INDETERMINATE_OUTSIDE_VIEWPORT",
+            "sampleCount": 0,
+            "channelSpread": null
+          },
+          {
+            "name": "不确定的照片请你确认",
+            "status": "INDETERMINATE_OUTSIDE_VIEWPORT",
+            "sampleCount": 0,
+            "channelSpread": null
+          },
+          {
+            "name": "最后生成一份整批结果",
+            "status": "INDETERMINATE_OUTSIDE_VIEWPORT",
+            "sampleCount": 0,
+            "channelSpread": null
+          },
+          {
+            "name": "完成本批后，失败的照片需要在新的一批里重传。",
+            "status": "INDETERMINATE_OUTSIDE_VIEWPORT",
+            "sampleCount": 0,
+            "channelSpread": null
+          }
+        ],
+        "keyboard": {
+          "expected": [
+            {
+              "tag": "A",
+              "name": "跳到主要内容"
+            },
+            {
+              "tag": "A",
+              "name": "UNSEEN 首页"
+            },
+            {
+              "tag": "A",
+              "name": "帮助"
+            },
+            {
+              "tag": "A",
+              "name": "登录"
+            },
+            {
+              "tag": "A",
+              "name": "查看"
+            },
+            {
+              "tag": "A",
+              "name": "上传照片"
+            }
+          ],
+          "actual": [
+            {
+              "tag": "A",
+              "name": "跳到主要内容",
+              "visible": true,
+              "focusVisible": true
+            },
+            {
+              "tag": "A",
+              "name": "UNSEEN 首页",
+              "visible": true,
+              "focusVisible": true
+            },
+            {
+              "tag": "A",
+              "name": "帮助",
+              "visible": true,
+              "focusVisible": true
+            },
+            {
+              "tag": "A",
+              "name": "登录",
+              "visible": true,
+              "focusVisible": true
+            },
+            {
+              "tag": "A",
+              "name": "查看",
+              "visible": true,
+              "focusVisible": true
+            },
+            {
+              "tag": "A",
+              "name": "上传照片",
+              "visible": true,
+              "focusVisible": true
+            }
+          ],
+          "orderPass": true
+        },
+        "axUnnamed": [],
+        "reflow200": {
+          "applicable": false,
+          "reason": "desktop 200% measured separately",
+          "clientWidth": 390,
+          "scrollWidth": 390,
+          "pass": true
+        },
+        "reducedMotion": {
+          "rule": "opacity transitions <=120ms allowed; animation/continuous/scale/parallax/auto-pan rejected",
+          "offenders": [],
+          "pass": true
+        },
+        "checks": {
+          "landmarks": true,
+          "headings": true,
+          "names": true,
+          "duplicateIds": true,
+          "textContrast": "INDETERMINATE",
+          "controlContrast": true,
+          "keyboardOrder": true,
+          "visibleFocus": true,
+          "reflow200": true,
+          "reducedMotion": true
+        }
+      },
+      {
+        "id": "owner-review",
+        "route": "/manage/space_0a04cf5678a943cd85ce90658d06a5d3",
+        "viewport": {
+          "width": 1280,
+          "height": 900,
+          "mobile": false
+        },
+        "automated": {
+          "route": "/manage/space_0a04cf5678a943cd85ce90658d06a5d3",
+          "title": "Chrome 发布主链现场管理 · UNSEEN",
+          "phase": null,
+          "landmarks": {
+            "main": 1,
+            "header": 1,
+            "nav": 3
+          },
+          "headings": [
+            {
+              "level": 1,
+              "name": "Chrome 发布主链现场"
+            },
+            {
+              "level": 2,
+              "name": "决定谁可以看到"
+            },
+            {
+              "level": 3,
+              "name": "照片 1"
+            }
+          ],
+          "headingSkip": false,
+          "duplicateIds": [],
+          "unlabeledForms": [],
+          "unnamedButtons": [],
+          "textContrast": [],
+          "controlContrast": [],
+          "skippedTextReasons": [
+            {
+              "tag": "STRONG",
+              "name": "本地定位 fixture：high / 需要确认 / failed",
+              "reason": "pseudo-element gradient/image/background",
+              "foreground": {
+                "r": 70,
+                "g": 21,
+                "b": 40,
+                "a": 1
+              },
+              "required": 4.5,
+              "rect": {
+                "x": 48,
+                "y": 12,
+                "width": 284.109375,
+                "height": 20
+              }
+            },
+            {
+              "tag": "SPAN",
+              "name": "非真实定位质量 · 本机数据",
+              "reason": "pseudo-element gradient/image/background",
+              "foreground": {
+                "r": 70,
+                "g": 21,
+                "b": 40,
+                "a": 1
+              },
+              "required": 4.5,
+              "rect": {
+                "x": 340.109375,
+                "y": 12,
+                "width": 186.484375,
+                "height": 20
+              }
+            },
+            {
+              "tag": "A",
+              "name": "跳到主要内容",
+              "reason": "pseudo-element gradient/image/background",
+              "foreground": {
+                "r": 70,
+                "g": 21,
+                "b": 40,
+                "a": 1
+              },
+              "required": 4.5,
+              "rect": {
+                "x": 8,
+                "y": -58,
+                "width": 125.921875,
+                "height": 44
+              }
+            },
+            {
+              "tag": "SPAN",
+              "name": "UNSEEN",
+              "reason": "pseudo-element gradient/image/background",
+              "foreground": {
+                "r": 50,
+                "g": 23,
+                "b": 34,
+                "a": 1
+              },
+              "required": 4.5,
+              "rect": {
+                "x": 92,
+                "y": 64.5,
+                "width": 78.921875,
+                "height": 24
+              }
+            },
+            {
+              "tag": "SPAN",
+              "name": "帮助",
+              "reason": "pseudo-element gradient/image/background",
+              "foreground": {
+                "r": 114,
+                "g": 95,
+                "b": 102,
+                "a": 1
+              },
+              "required": 4.5,
+              "rect": {
+                "x": 979.4375,
+                "y": 64.5,
+                "width": 32.640625,
+                "height": 24
+              }
+            },
+            {
+              "tag": "SPAN",
+              "name": "我的空间",
+              "reason": "pseudo-element gradient/image/background",
+              "foreground": {
+                "r": 114,
+                "g": 95,
+                "b": 102,
+                "a": 1
+              },
+              "required": 4.5,
+              "rect": {
+                "x": 1068.078125,
+                "y": 64.5,
+                "width": 65.28125,
+                "height": 24
+              }
+            },
+            {
+              "tag": "SPAN",
+              "name": "账号",
+              "reason": "pseudo-element gradient/image/background",
+              "foreground": {
+                "r": 114,
+                "g": 95,
+                "b": 102,
+                "a": 1
+              },
+              "required": 4.5,
+              "rect": {
+                "x": 1189.359375,
+                "y": 64.5,
+                "width": 32.640625,
+                "height": 24
+              }
+            },
+            {
+              "tag": "STRONG",
+              "name": "确定性本地定位样本",
+              "reason": "pseudo-element gradient/image/background",
+              "foreground": {
+                "r": 70,
+                "g": 21,
+                "b": 40,
+                "a": 1
+              },
+              "required": 4.5,
+              "rect": {
+                "x": 48,
+                "y": 121,
+                "width": 128.53125,
+                "height": 20
+              }
+            },
+            {
+              "tag": "SPAN",
+              "name": "非真实定位质量",
+              "reason": "pseudo-element gradient/image/background",
+              "foreground": {
+                "r": 70,
+                "g": 21,
+                "b": 40,
+                "a": 1
+              },
+              "required": 4.5,
+              "rect": {
+                "x": 184.53125,
+                "y": 121,
+                "width": 112.203125,
+                "height": 20
+              }
+            },
+            {
+              "tag": "P",
+              "name": "空间管理",
+              "reason": "pseudo-element gradient/image/background",
+              "foreground": {
+                "r": 114,
+                "g": 95,
+                "b": 102,
+                "a": 1
+              },
+              "required": 4.5,
+              "rect": {
+                "x": 48,
+                "y": 198,
+                "width": 319.65625,
+                "height": 16
+              }
+            },
+            {
+              "tag": "H1",
+              "name": "Chrome 发布主链现场",
+              "reason": "pseudo-element gradient/image/background",
+              "foreground": {
+                "r": 50,
+                "g": 23,
+                "b": 34,
+                "a": 1
+              },
+              "required": 3,
+              "rect": {
+                "x": 48,
+                "y": 214,
+                "width": 319.65625,
+                "height": 40
+              }
+            },
+            {
+              "tag": "P",
+              "name": "只显示当前账号有权处理的内容。",
+              "reason": "pseudo-element gradient/image/background",
+              "foreground": {
+                "r": 114,
+                "g": 95,
+                "b": 102,
+                "a": 1
+              },
+              "required": 4.5,
+              "rect": {
+                "x": 48,
+                "y": 270,
+                "width": 319.65625,
+                "height": 24
+              }
+            },
+            {
+              "tag": "A",
+              "name": "查看",
+              "reason": "pseudo-element gradient/image/background",
+              "foreground": {
+                "r": 114,
+                "g": 95,
+                "b": 102,
+                "a": 1
+              },
+              "required": 4.5,
+              "rect": {
+                "x": 908.4375,
+                "y": 199,
+                "width": 92.640625,
+                "height": 44
+              }
+            },
+            {
+              "tag": "A",
+              "name": "上传照片",
+              "reason": "pseudo-element gradient/image/background",
+              "foreground": {
+                "r": 114,
+                "g": 95,
+                "b": 102,
+                "a": 1
+              },
+              "required": 4.5,
+              "rect": {
+                "x": 1005.078125,
+                "y": 199,
+                "width": 125.28125,
+                "height": 44
+              }
+            },
+            {
+              "tag": "A",
+              "name": "管理",
+              "reason": "pseudo-element gradient/image/background",
+              "foreground": {
+                "r": 50,
+                "g": 23,
+                "b": 34,
+                "a": 1
+              },
+              "required": 4.5,
+              "rect": {
+                "x": 1134.359375,
+                "y": 199,
+                "width": 92.640625,
+                "height": 44
+              }
+            },
+            {
+              "tag": "A",
+              "name": "总览",
+              "reason": "pseudo-element gradient/image/background",
+              "foreground": {
+                "r": 114,
+                "g": 95,
+                "b": 102,
+                "a": 1
+              },
+              "required": 4.5,
+              "rect": {
+                "x": 57,
+                "y": 343,
+                "width": 206,
+                "height": 44
+              }
+            },
+            {
+              "tag": "A",
+              "name": "审核",
+              "reason": "pseudo-element gradient/image/background",
+              "foreground": {
+                "r": 70,
+                "g": 21,
+                "b": 40,
+                "a": 1
+              },
+              "required": 4.5,
+              "rect": {
+                "x": 57,
+                "y": 387,
+                "width": 206,
+                "height": 44
+              }
+            },
+            {
+              "tag": "A",
+              "name": "位置",
+              "reason": "pseudo-element gradient/image/background",
+              "foreground": {
+                "r": 114,
+                "g": 95,
+                "b": 102,
+                "a": 1
+              },
+              "required": 4.5,
+              "rect": {
+                "x": 57,
+                "y": 431,
+                "width": 206,
+                "height": 44
+              }
+            },
+            {
+              "tag": "A",
+              "name": "现场",
+              "reason": "pseudo-element gradient/image/background",
+              "foreground": {
+                "r": 114,
+                "g": 95,
+                "b": 102,
+                "a": 1
+              },
+              "required": 4.5,
+              "rect": {
+                "x": 57,
+                "y": 475,
+                "width": 206,
+                "height": 44
+              }
+            },
+            {
+              "tag": "A",
+              "name": "邀请",
+              "reason": "pseudo-element gradient/image/background",
+              "foreground": {
+                "r": 114,
+                "g": 95,
+                "b": 102,
+                "a": 1
+              },
+              "required": 4.5,
+              "rect": {
+                "x": 57,
+                "y": 519,
+                "width": 206,
+                "height": 44
+              }
+            },
+            {
+              "tag": "A",
+              "name": "成员",
+              "reason": "pseudo-element gradient/image/background",
+              "foreground": {
+                "r": 114,
+                "g": 95,
+                "b": 102,
+                "a": 1
+              },
+              "required": 4.5,
+              "rect": {
+                "x": 57,
+                "y": 563,
+                "width": 206,
+                "height": 44
+              }
+            },
+            {
+              "tag": "A",
+              "name": "设置",
+              "reason": "pseudo-element gradient/image/background",
+              "foreground": {
+                "r": 114,
+                "g": 95,
+                "b": 102,
+                "a": 1
+              },
+              "required": 4.5,
+              "rect": {
+                "x": 57,
+                "y": 607,
+                "width": 206,
+                "height": 44
+              }
+            },
+            {
+              "tag": "P",
+              "name": "照片审核",
+              "reason": "pseudo-element gradient/image/background",
+              "foreground": {
+                "r": 114,
+                "g": 95,
+                "b": 102,
+                "a": 1
+              },
+              "required": 4.5,
+              "rect": {
+                "x": 296,
+                "y": 334,
+                "width": 936,
+                "height": 16
+              }
+            },
+            {
+              "tag": "H2",
+              "name": "决定谁可以看到",
+              "reason": "pseudo-element gradient/image/background",
+              "foreground": {
+                "r": 50,
+                "g": 23,
+                "b": 34,
+                "a": 1
+              },
+              "required": 3,
+              "rect": {
+                "x": 296,
+                "y": 358,
+                "width": 936,
+                "height": 32
+              }
+            },
+            {
+              "tag": "H3",
+              "name": "照片 1",
+              "reason": "pseudo-element gradient/image/background",
+              "foreground": {
+                "r": 50,
+                "g": 23,
+                "b": 34,
+                "a": 1
+              },
+              "required": 4.5,
+              "rect": {
+                "x": 497,
+                "y": 454,
+                "width": 714,
+                "height": 28
+              }
+            },
+            {
+              "tag": "P",
+              "name": "参与者 上传 · 待审核",
+              "reason": "pseudo-element gradient/image/background",
+              "foreground": {
+                "r": 114,
+                "g": 95,
+                "b": 102,
+                "a": 1
+              },
+              "required": 4.5,
+              "rect": {
+                "x": 497,
+                "y": 490,
+                "width": 714,
+                "height": 20
+              }
+            },
+            {
+              "tag": "BUTTON",
+              "name": "通过",
+              "reason": "pseudo-element gradient/image/background",
+              "foreground": {
+                "r": 70,
+                "g": 21,
+                "b": 40,
+                "a": 1
+              },
+              "required": 4.5,
+              "rect": {
+                "x": 497,
+                "y": 542,
+                "width": 74.640625,
+                "height": 52
+              }
+            },
+            {
+              "tag": "BUTTON",
+              "name": "隐藏",
+              "reason": "pseudo-element gradient/image/background",
+              "foreground": {
+                "r": 70,
+                "g": 21,
+                "b": 40,
+                "a": 1
+              },
+              "required": 4.5,
+              "rect": {
+                "x": 583.640625,
+                "y": 546,
+                "width": 74.640625,
+                "height": 44
+              }
+            },
+            {
+              "tag": "BUTTON",
+              "name": "拒绝",
+              "reason": "pseudo-element gradient/image/background",
+              "foreground": {
+                "r": 164,
+                "g": 62,
+                "b": 74,
+                "a": 1
+              },
+              "required": 4.5,
+              "rect": {
+                "x": 670.28125,
+                "y": 546,
+                "width": 74.640625,
+                "height": 44
+              }
+            }
+          ],
+          "skippedControlReasons": [
+            {
+              "tag": "BUTTON",
+              "name": "通过",
+              "reason": "pseudo-element gradient/image/background"
+            },
+            {
+              "tag": "BUTTON",
+              "name": "隐藏",
+              "reason": "pseudo-element gradient/image/background"
+            },
+            {
+              "tag": "BUTTON",
+              "name": "拒绝",
+              "reason": "pseudo-element gradient/image/background"
+            }
+          ],
+          "focusables": [
+            {
+              "tag": "A",
+              "name": "跳到主要内容"
+            },
+            {
+              "tag": "A",
+              "name": "UNSEEN 首页"
+            },
+            {
+              "tag": "A",
+              "name": "帮助"
+            },
+            {
+              "tag": "A",
+              "name": "我的空间"
+            },
+            {
+              "tag": "A",
+              "name": "账号"
+            },
+            {
+              "tag": "A",
+              "name": "查看"
+            },
+            {
+              "tag": "A",
+              "name": "上传照片"
+            },
+            {
+              "tag": "A",
+              "name": "管理"
+            },
+            {
+              "tag": "A",
+              "name": "总览"
+            },
+            {
+              "tag": "A",
+              "name": "审核"
+            },
+            {
+              "tag": "A",
+              "name": "位置"
+            },
+            {
+              "tag": "A",
+              "name": "现场"
+            },
+            {
+              "tag": "A",
+              "name": "邀请"
+            },
+            {
+              "tag": "A",
+              "name": "成员"
+            },
+            {
+              "tag": "A",
+              "name": "设置"
+            },
+            {
+              "tag": "BUTTON",
+              "name": "通过"
+            },
+            {
+              "tag": "BUTTON",
+              "name": "隐藏"
+            },
+            {
+              "tag": "BUTTON",
+              "name": "拒绝"
+            }
+          ]
+        },
+        "pixelText": [
+          {
+            "name": "本地定位 fixture：high / 需要确认 / failed",
+            "status": "INDETERMINATE_NON_UNIFORM",
+            "sampleCount": 6,
+            "channelSpread": 8
+          },
+          {
+            "name": "非真实定位质量 · 本机数据",
+            "status": "MEASURED_UNIFORM_PIXELS",
+            "sampleCount": 6,
+            "channelSpread": 0,
+            "ratio": 13.21,
+            "required": 4.5,
+            "pass": true
+          },
+          {
+            "name": "跳到主要内容",
+            "status": "INDETERMINATE_OUTSIDE_VIEWPORT",
+            "sampleCount": 0,
+            "channelSpread": null
+          },
+          {
+            "name": "UNSEEN",
+            "status": "MEASURED_UNIFORM_PIXELS",
+            "sampleCount": 6,
+            "channelSpread": 0,
+            "ratio": 15.72,
+            "required": 4.5,
+            "pass": true
+          },
+          {
+            "name": "帮助",
+            "status": "MEASURED_UNIFORM_PIXELS",
+            "sampleCount": 6,
+            "channelSpread": 0,
+            "ratio": 5.68,
+            "required": 4.5,
+            "pass": true
+          },
+          {
+            "name": "我的空间",
+            "status": "MEASURED_UNIFORM_PIXELS",
+            "sampleCount": 6,
+            "channelSpread": 0,
+            "ratio": 5.68,
+            "required": 4.5,
+            "pass": true
+          },
+          {
+            "name": "账号",
+            "status": "MEASURED_UNIFORM_PIXELS",
+            "sampleCount": 6,
+            "channelSpread": 0,
+            "ratio": 5.68,
+            "required": 4.5,
+            "pass": true
+          },
+          {
+            "name": "确定性本地定位样本",
+            "status": "MEASURED_UNIFORM_PIXELS",
+            "sampleCount": 6,
+            "channelSpread": 0,
+            "ratio": 13.21,
+            "required": 4.5,
+            "pass": true
+          },
+          {
+            "name": "非真实定位质量",
+            "status": "MEASURED_UNIFORM_PIXELS",
+            "sampleCount": 6,
+            "channelSpread": 0,
+            "ratio": 13.21,
+            "required": 4.5,
+            "pass": true
+          },
+          {
+            "name": "空间管理",
+            "status": "INDETERMINATE_NON_UNIFORM",
+            "sampleCount": 6,
+            "channelSpread": 40
+          },
+          {
+            "name": "Chrome 发布主链现场",
+            "status": "MEASURED_UNIFORM_PIXELS",
+            "sampleCount": 6,
+            "channelSpread": 0,
+            "ratio": 15.72,
+            "required": 3,
+            "pass": true
+          },
+          {
+            "name": "只显示当前账号有权处理的内容。",
+            "status": "MEASURED_UNIFORM_PIXELS",
+            "sampleCount": 6,
+            "channelSpread": 0,
+            "ratio": 5.68,
+            "required": 4.5,
+            "pass": true
+          },
+          {
+            "name": "查看",
+            "status": "MEASURED_UNIFORM_PIXELS",
+            "sampleCount": 6,
+            "channelSpread": 0,
+            "ratio": 5.93,
+            "required": 4.5,
+            "pass": true
+          },
+          {
+            "name": "上传照片",
+            "status": "MEASURED_UNIFORM_PIXELS",
+            "sampleCount": 6,
+            "channelSpread": 4,
+            "ratio": 5.88,
+            "required": 4.5,
+            "pass": true
+          },
+          {
+            "name": "管理",
+            "status": "INDETERMINATE_NON_UNIFORM",
+            "sampleCount": 6,
+            "channelSpread": 7
+          },
+          {
+            "name": "总览",
+            "status": "MEASURED_UNIFORM_PIXELS",
+            "sampleCount": 6,
+            "channelSpread": 0,
+            "ratio": 5.93,
+            "required": 4.5,
+            "pass": true
+          },
+          {
+            "name": "审核",
+            "status": "INDETERMINATE_NON_UNIFORM",
+            "sampleCount": 6,
+            "channelSpread": 15
+          },
+          {
+            "name": "位置",
+            "status": "MEASURED_UNIFORM_PIXELS",
+            "sampleCount": 6,
+            "channelSpread": 0,
+            "ratio": 5.93,
+            "required": 4.5,
+            "pass": true
+          },
+          {
+            "name": "现场",
+            "status": "MEASURED_UNIFORM_PIXELS",
+            "sampleCount": 6,
+            "channelSpread": 0,
+            "ratio": 5.93,
+            "required": 4.5,
+            "pass": true
+          },
+          {
+            "name": "邀请",
+            "status": "MEASURED_UNIFORM_PIXELS",
+            "sampleCount": 6,
+            "channelSpread": 0,
+            "ratio": 5.93,
+            "required": 4.5,
+            "pass": true
+          },
+          {
+            "name": "成员",
+            "status": "MEASURED_UNIFORM_PIXELS",
+            "sampleCount": 6,
+            "channelSpread": 0,
+            "ratio": 5.93,
+            "required": 4.5,
+            "pass": true
+          },
+          {
+            "name": "设置",
+            "status": "MEASURED_UNIFORM_PIXELS",
+            "sampleCount": 6,
+            "channelSpread": 0,
+            "ratio": 5.93,
+            "required": 4.5,
+            "pass": true
+          },
+          {
+            "name": "照片审核",
+            "status": "INDETERMINATE_NON_UNIFORM",
+            "sampleCount": 6,
+            "channelSpread": 154
+          },
+          {
+            "name": "决定谁可以看到",
+            "status": "MEASURED_UNIFORM_PIXELS",
+            "sampleCount": 6,
+            "channelSpread": 0,
+            "ratio": 15.72,
+            "required": 3,
+            "pass": true
+          },
+          {
+            "name": "照片 1",
+            "status": "MEASURED_UNIFORM_PIXELS",
+            "sampleCount": 6,
+            "channelSpread": 0,
+            "ratio": 16.39,
+            "required": 4.5,
+            "pass": true
+          },
+          {
+            "name": "参与者 上传 · 待审核",
+            "status": "MEASURED_UNIFORM_PIXELS",
+            "sampleCount": 6,
+            "channelSpread": 0,
+            "ratio": 5.93,
+            "required": 4.5,
+            "pass": true
+          },
+          {
+            "name": "通过",
+            "status": "INDETERMINATE_NON_UNIFORM",
+            "sampleCount": 6,
+            "channelSpread": 106
+          },
+          {
+            "name": "隐藏",
+            "status": "MEASURED_UNIFORM_PIXELS",
+            "sampleCount": 6,
+            "channelSpread": 2,
+            "ratio": 14.95,
+            "required": 4.5,
+            "pass": true
+          },
+          {
+            "name": "拒绝",
+            "status": "MEASURED_UNIFORM_PIXELS",
+            "sampleCount": 6,
+            "channelSpread": 0,
+            "ratio": 6.24,
+            "required": 4.5,
+            "pass": true
+          }
+        ],
+        "keyboard": {
+          "expected": [
+            {
+              "tag": "A",
+              "name": "跳到主要内容"
+            },
+            {
+              "tag": "A",
+              "name": "UNSEEN 首页"
+            },
+            {
+              "tag": "A",
+              "name": "帮助"
+            },
+            {
+              "tag": "A",
+              "name": "我的空间"
+            },
+            {
+              "tag": "A",
+              "name": "账号"
+            },
+            {
+              "tag": "A",
+              "name": "查看"
+            },
+            {
+              "tag": "A",
+              "name": "上传照片"
+            },
+            {
+              "tag": "A",
+              "name": "管理"
+            },
+            {
+              "tag": "A",
+              "name": "总览"
+            },
+            {
+              "tag": "A",
+              "name": "审核"
+            },
+            {
+              "tag": "A",
+              "name": "位置"
+            },
+            {
+              "tag": "A",
+              "name": "现场"
+            }
+          ],
+          "actual": [
+            {
+              "tag": "A",
+              "name": "跳到主要内容",
+              "visible": true,
+              "focusVisible": true
+            },
+            {
+              "tag": "A",
+              "name": "UNSEEN 首页",
+              "visible": true,
+              "focusVisible": true
+            },
+            {
+              "tag": "A",
+              "name": "帮助",
+              "visible": true,
+              "focusVisible": true
+            },
+            {
+              "tag": "A",
+              "name": "我的空间",
+              "visible": true,
+              "focusVisible": true
+            },
+            {
+              "tag": "A",
+              "name": "账号",
+              "visible": true,
+              "focusVisible": true
+            },
+            {
+              "tag": "A",
+              "name": "查看",
+              "visible": true,
+              "focusVisible": true
+            },
+            {
+              "tag": "A",
+              "name": "上传照片",
+              "visible": true,
+              "focusVisible": true
+            },
+            {
+              "tag": "A",
+              "name": "管理",
+              "visible": true,
+              "focusVisible": true
+            },
+            {
+              "tag": "A",
+              "name": "总览",
+              "visible": true,
+              "focusVisible": true
+            },
+            {
+              "tag": "A",
+              "name": "审核",
+              "visible": true,
+              "focusVisible": true
+            },
+            {
+              "tag": "A",
+              "name": "位置",
+              "visible": true,
+              "focusVisible": true
+            },
+            {
+              "tag": "A",
+              "name": "现场",
+              "visible": true,
+              "focusVisible": true
+            }
+          ],
+          "orderPass": true
+        },
+        "axUnnamed": [],
+        "reflow200": {
+          "applicable": true,
+          "equivalentViewportCssPx": 640,
+          "clientWidth": 640,
+          "scrollWidth": 640,
+          "pass": true
+        },
+        "reducedMotion": {
+          "rule": "opacity transitions <=120ms allowed; animation/continuous/scale/parallax/auto-pan rejected",
+          "offenders": [],
+          "pass": true
+        },
+        "checks": {
+          "landmarks": true,
+          "headings": true,
+          "names": true,
+          "duplicateIds": true,
+          "textContrast": "INDETERMINATE",
+          "controlContrast": "INDETERMINATE",
+          "keyboardOrder": true,
+          "visibleFocus": true,
+          "reflow200": true,
+          "reducedMotion": true
+        }
+      },
+      {
+        "id": "participant-real-scene",
+        "route": "/s/space_0a04cf5678a943cd85ce90658d06a5d3/scene",
+        "viewport": {
+          "width": 1280,
+          "height": 900,
+          "mobile": false
+        },
+        "automated": {
+          "route": "/s/space_0a04cf5678a943cd85ce90658d06a5d3/scene",
+          "title": "Chrome 发布主链现场现场 · UNSEEN",
+          "phase": null,
+          "landmarks": {
+            "main": 1,
+            "header": 1,
+            "nav": 3
+          },
+          "headings": [
+            {
+              "level": 1,
+              "name": "Chrome 发布主链现场"
+            }
+          ],
+          "headingSkip": false,
+          "duplicateIds": [],
+          "unlabeledForms": [],
+          "unnamedButtons": [],
+          "textContrast": [],
+          "controlContrast": [],
+          "skippedTextReasons": [
+            {
+              "tag": "STRONG",
+              "name": "本地定位 fixture：high / 需要确认 / failed",
+              "reason": "pseudo-element gradient/image/background",
+              "foreground": {
+                "r": 70,
+                "g": 21,
+                "b": 40,
+                "a": 1
+              },
+              "required": 4.5,
+              "rect": {
+                "x": 48,
+                "y": 12,
+                "width": 284.109375,
+                "height": 20
+              }
+            },
+            {
+              "tag": "SPAN",
+              "name": "非真实定位质量 · 本机数据",
+              "reason": "pseudo-element gradient/image/background",
+              "foreground": {
+                "r": 70,
+                "g": 21,
+                "b": 40,
+                "a": 1
+              },
+              "required": 4.5,
+              "rect": {
+                "x": 340.109375,
+                "y": 12,
+                "width": 186.484375,
+                "height": 20
+              }
+            },
+            {
+              "tag": "A",
+              "name": "跳到主要内容",
+              "reason": "pseudo-element gradient/image/background",
+              "foreground": {
+                "r": 70,
+                "g": 21,
+                "b": 40,
+                "a": 1
+              },
+              "required": 4.5,
+              "rect": {
+                "x": 8,
+                "y": -58,
+                "width": 125.921875,
+                "height": 44
+              }
+            },
+            {
+              "tag": "SPAN",
+              "name": "UNSEEN",
+              "reason": "pseudo-element gradient/image/background",
+              "foreground": {
+                "r": 50,
+                "g": 23,
+                "b": 34,
+                "a": 1
+              },
+              "required": 4.5,
+              "rect": {
+                "x": 92,
+                "y": 64.5,
+                "width": 78.921875,
+                "height": 24
+              }
+            },
+            {
+              "tag": "SPAN",
+              "name": "帮助",
+              "reason": "pseudo-element gradient/image/background",
+              "foreground": {
+                "r": 114,
+                "g": 95,
+                "b": 102,
+                "a": 1
+              },
+              "required": 4.5,
+              "rect": {
+                "x": 1100.71875,
+                "y": 64.5,
+                "width": 32.640625,
+                "height": 24
+              }
+            },
+            {
+              "tag": "SPAN",
+              "name": "登录",
+              "reason": "pseudo-element gradient/image/background",
+              "foreground": {
+                "r": 114,
+                "g": 95,
+                "b": 102,
+                "a": 1
+              },
+              "required": 4.5,
+              "rect": {
+                "x": 1189.359375,
+                "y": 64.5,
+                "width": 32.640625,
+                "height": 24
+              }
+            },
+            {
+              "tag": "STRONG",
+              "name": "确定性本地定位样本",
+              "reason": "pseudo-element gradient/image/background",
+              "foreground": {
+                "r": 70,
+                "g": 21,
+                "b": 40,
+                "a": 1
+              },
+              "required": 4.5,
+              "rect": {
+                "x": 48,
+                "y": 121,
+                "width": 128.53125,
+                "height": 20
+              }
+            },
+            {
+              "tag": "SPAN",
+              "name": "非真实定位质量",
+              "reason": "pseudo-element gradient/image/background",
+              "foreground": {
+                "r": 70,
+                "g": 21,
+                "b": 40,
+                "a": 1
+              },
+              "required": 4.5,
+              "rect": {
+                "x": 184.53125,
+                "y": 121,
+                "width": 112.203125,
+                "height": 20
+              }
+            },
+            {
+              "tag": "P",
+              "name": "本机可操作样本",
+              "reason": "pseudo-element gradient/image/background",
+              "foreground": {
+                "r": 114,
+                "g": 95,
+                "b": 102,
+                "a": 1
+              },
+              "required": 4.5,
+              "rect": {
+                "x": 48,
+                "y": 194,
+                "width": 307.828125,
+                "height": 16
+              }
+            },
+            {
+              "tag": "H1",
+              "name": "Chrome 发布主链现场",
+              "reason": "pseudo-element gradient/image/background",
+              "foreground": {
+                "r": 50,
+                "g": 23,
+                "b": 34,
+                "a": 1
+              },
+              "required": 3,
+              "rect": {
+                "x": 48,
+                "y": 218,
+                "width": 307.828125,
+                "height": 40
+              }
+            },
+            {
+              "tag": "A",
+              "name": "查看",
+              "reason": "pseudo-element gradient/image/background",
+              "foreground": {
+                "r": 50,
+                "g": 23,
+                "b": 34,
+                "a": 1
+              },
+              "required": 4.5,
+              "rect": {
+                "x": 1005.078125,
+                "y": 225,
+                "width": 92.640625,
+                "height": 44
+              }
+            },
+            {
+              "tag": "A",
+              "name": "上传照片",
+              "reason": "pseudo-element gradient/image/background",
+              "foreground": {
+                "r": 114,
+                "g": 95,
+                "b": 102,
+                "a": 1
+              },
+              "required": 4.5,
+              "rect": {
+                "x": 1101.71875,
+                "y": 225,
+                "width": 125.28125,
+                "height": 44
+              }
+            },
+            {
+              "tag": "A",
+              "name": "相册",
+              "reason": "pseudo-element gradient/image/background",
+              "foreground": {
+                "r": 114,
+                "g": 95,
+                "b": 102,
+                "a": 1
+              },
+              "required": 4.5,
+              "rect": {
+                "x": 52,
+                "y": 302,
+                "width": 176,
+                "height": 44
+              }
+            },
+            {
+              "tag": "A",
+              "name": "现场",
+              "reason": "pseudo-element gradient/image/background",
+              "foreground": {
+                "r": 50,
+                "g": 23,
+                "b": 34,
+                "a": 1
+              },
+              "required": 4.5,
+              "rect": {
+                "x": 228,
+                "y": 302,
+                "width": 176,
+                "height": 44
+              }
+            },
+            {
+              "tag": "SPAN",
+              "name": "可环视",
+              "reason": "pseudo-element gradient/image/background",
+              "foreground": {
+                "r": 47,
+                "g": 125,
+                "b": 99,
+                "a": 1
+              },
+              "required": 4.5,
+              "rect": {
+                "x": 60,
+                "y": 390,
+                "width": 71.765625,
+                "height": 28
+              }
+            },
+            {
+              "tag": "SPAN",
+              "name": "从下方选择已定位照片",
+              "reason": "pseudo-element gradient/image/background",
+              "foreground": {
+                "r": 207,
+                "g": 190,
+                "b": 196,
+                "a": 1
+              },
+              "required": 4.5,
+              "rect": {
+                "x": 143.765625,
+                "y": 394,
+                "width": 142.8125,
+                "height": 20
+              }
+            },
+            {
+              "tag": "A",
+              "name": "查看相册",
+              "reason": "pseudo-element gradient/image/background",
+              "foreground": {
+                "r": 255,
+                "g": 248,
+                "b": 245,
+                "a": 1
+              },
+              "required": 4.5,
+              "rect": {
+                "x": 1084.71875,
+                "y": 382,
+                "width": 135.28125,
+                "height": 44
+              }
+            },
+            {
+              "tag": "DIV",
+              "name": "正在回到照片所在位置…",
+              "reason": "pseudo-element gradient/image/background",
+              "foreground": {
+                "r": 255,
+                "g": 248,
+                "b": 245,
+                "a": 1
+              },
+              "required": 4.5,
+              "rect": {
+                "x": 60,
+                "y": 447,
+                "width": 183.09375,
+                "height": 38
+              }
+            },
+            {
+              "tag": "BUTTON",
+              "name": "返回照片",
+              "reason": "pseudo-element gradient/image/background",
+              "foreground": {
+                "r": 255,
+                "g": 248,
+                "b": 245,
+                "a": 1
+              },
+              "required": 4.5,
+              "rect": {
+                "x": 995.4375,
+                "y": 447,
+                "width": 91.28125,
+                "height": 44
+              }
+            },
+            {
+              "tag": "BUTTON",
+              "name": "重置",
+              "reason": "pseudo-element gradient/image/background",
+              "foreground": {
+                "r": 255,
+                "g": 248,
+                "b": 245,
+                "a": 1
+              },
+              "required": 4.5,
+              "rect": {
+                "x": 1094.71875,
+                "y": 447,
+                "width": 58.640625,
+                "height": 44
+              }
+            },
+            {
+              "tag": "BUTTON",
+              "name": "全屏",
+              "reason": "pseudo-element gradient/image/background",
+              "foreground": {
+                "r": 255,
+                "g": 248,
+                "b": 245,
+                "a": 1
+              },
+              "required": 4.5,
+              "rect": {
+                "x": 1161.359375,
+                "y": 447,
+                "width": 58.640625,
+                "height": 44
+              }
+            },
+            {
+              "tag": "BUTTON",
+              "name": "视角向上",
+              "reason": "pseudo-element gradient/image/background",
+              "foreground": {
+                "r": 255,
+                "g": 248,
+                "b": 245,
+                "a": 1
+              },
+              "required": 4.5,
+              "rect": {
+                "x": 108,
+                "y": 571,
+                "width": 44,
+                "height": 44
+              }
+            },
+            {
+              "tag": "BUTTON",
+              "name": "视角向左",
+              "reason": "pseudo-element gradient/image/background",
+              "foreground": {
+                "r": 255,
+                "g": 248,
+                "b": 245,
+                "a": 1
+              },
+              "required": 4.5,
+              "rect": {
+                "x": 60,
+                "y": 619,
+                "width": 44,
+                "height": 44
+              }
+            },
+            {
+              "tag": "BUTTON",
+              "name": "视角向下",
+              "reason": "pseudo-element gradient/image/background",
+              "foreground": {
+                "r": 255,
+                "g": 248,
+                "b": 245,
+                "a": 1
+              },
+              "required": 4.5,
+              "rect": {
+                "x": 108,
+                "y": 619,
+                "width": 44,
+                "height": 44
+              }
+            },
+            {
+              "tag": "BUTTON",
+              "name": "视角向右",
+              "reason": "pseudo-element gradient/image/background",
+              "foreground": {
+                "r": 255,
+                "g": 248,
+                "b": 245,
+                "a": 1
+              },
+              "required": 4.5,
+              "rect": {
+                "x": 156,
+                "y": 619,
+                "width": 44,
+                "height": 44
+              }
+            },
+            {
+              "tag": "P",
+              "name": "方位 0 度，俯仰 0 度",
+              "reason": "pseudo-element gradient/image/background",
+              "foreground": {
+                "r": 255,
+                "g": 248,
+                "b": 245,
+                "a": 1
+              },
+              "required": 4.5,
+              "rect": {
+                "x": 47,
+                "y": 434,
+                "width": 1,
+                "height": 1
+              }
+            },
+            {
+              "tag": "BUTTON",
+              "name": "查看这张已定位照片",
+              "reason": "pseudo-element gradient/image/background",
+              "foreground": {
+                "r": 255,
+                "g": 248,
+                "b": 245,
+                "a": 1
+              },
+              "required": 4.5,
+              "rect": {
+                "x": 60,
+                "y": 968,
+                "width": 175.859375,
+                "height": 44
+              }
+            }
+          ],
+          "skippedControlReasons": [
+            {
+              "tag": "BUTTON",
+              "name": "返回照片",
+              "reason": "pseudo-element gradient/image/background"
+            },
+            {
+              "tag": "BUTTON",
+              "name": "重置",
+              "reason": "pseudo-element gradient/image/background"
+            },
+            {
+              "tag": "BUTTON",
+              "name": "全屏",
+              "reason": "pseudo-element gradient/image/background"
+            },
+            {
+              "tag": "BUTTON",
+              "name": "视角向上",
+              "reason": "pseudo-element gradient/image/background"
+            },
+            {
+              "tag": "BUTTON",
+              "name": "视角向左",
+              "reason": "pseudo-element gradient/image/background"
+            },
+            {
+              "tag": "BUTTON",
+              "name": "视角向下",
+              "reason": "pseudo-element gradient/image/background"
+            },
+            {
+              "tag": "BUTTON",
+              "name": "视角向右",
+              "reason": "pseudo-element gradient/image/background"
+            },
+            {
+              "tag": "BUTTON",
+              "name": "查看这张已定位照片",
+              "reason": "pseudo-element gradient/image/background"
+            }
+          ],
+          "focusables": [
+            {
+              "tag": "A",
+              "name": "跳到主要内容"
+            },
+            {
+              "tag": "A",
+              "name": "UNSEEN 首页"
+            },
+            {
+              "tag": "A",
+              "name": "帮助"
+            },
+            {
+              "tag": "A",
+              "name": "登录"
+            },
+            {
+              "tag": "A",
+              "name": "查看"
+            },
+            {
+              "tag": "A",
+              "name": "上传照片"
+            },
+            {
+              "tag": "A",
+              "name": "相册"
+            },
+            {
+              "tag": "A",
+              "name": "现场"
+            },
+            {
+              "tag": "A",
+              "name": "查看相册"
+            },
+            {
+              "tag": "CANVAS",
+              "name": "360°现场。拖动环视；方向键调整视角；有限视差模式可用 WASD 移动。按 Escape 返回照片。"
+            },
+            {
+              "tag": "BUTTON",
+              "name": "返回照片"
+            },
+            {
+              "tag": "BUTTON",
+              "name": "重置"
+            },
+            {
+              "tag": "BUTTON",
+              "name": "全屏"
+            },
+            {
+              "tag": "BUTTON",
+              "name": "视角向上"
+            },
+            {
+              "tag": "BUTTON",
+              "name": "视角向左"
+            },
+            {
+              "tag": "BUTTON",
+              "name": "视角向下"
+            },
+            {
+              "tag": "BUTTON",
+              "name": "视角向右"
+            },
+            {
+              "tag": "BUTTON",
+              "name": "查看这张已定位照片"
+            }
+          ]
+        },
+        "pixelText": [
+          {
+            "name": "本地定位 fixture：high / 需要确认 / failed",
+            "status": "INDETERMINATE_NON_UNIFORM",
+            "sampleCount": 6,
+            "channelSpread": 8
+          },
+          {
+            "name": "非真实定位质量 · 本机数据",
+            "status": "MEASURED_UNIFORM_PIXELS",
+            "sampleCount": 6,
+            "channelSpread": 0,
+            "ratio": 13.21,
+            "required": 4.5,
+            "pass": true
+          },
+          {
+            "name": "跳到主要内容",
+            "status": "INDETERMINATE_OUTSIDE_VIEWPORT",
+            "sampleCount": 0,
+            "channelSpread": null
+          },
+          {
+            "name": "UNSEEN",
+            "status": "MEASURED_UNIFORM_PIXELS",
+            "sampleCount": 6,
+            "channelSpread": 0,
+            "ratio": 15.72,
+            "required": 4.5,
+            "pass": true
+          },
+          {
+            "name": "帮助",
+            "status": "MEASURED_UNIFORM_PIXELS",
+            "sampleCount": 6,
+            "channelSpread": 0,
+            "ratio": 5.68,
+            "required": 4.5,
+            "pass": true
+          },
+          {
+            "name": "登录",
+            "status": "MEASURED_UNIFORM_PIXELS",
+            "sampleCount": 6,
+            "channelSpread": 0,
+            "ratio": 5.68,
+            "required": 4.5,
+            "pass": true
+          },
+          {
+            "name": "确定性本地定位样本",
+            "status": "MEASURED_UNIFORM_PIXELS",
+            "sampleCount": 6,
+            "channelSpread": 0,
+            "ratio": 13.21,
+            "required": 4.5,
+            "pass": true
+          },
+          {
+            "name": "非真实定位质量",
+            "status": "MEASURED_UNIFORM_PIXELS",
+            "sampleCount": 6,
+            "channelSpread": 0,
+            "ratio": 13.21,
+            "required": 4.5,
+            "pass": true
+          },
+          {
+            "name": "本机可操作样本",
+            "status": "MEASURED_UNIFORM_PIXELS",
+            "sampleCount": 6,
+            "channelSpread": 0,
+            "ratio": 5.68,
+            "required": 4.5,
+            "pass": true
+          },
+          {
+            "name": "Chrome 发布主链现场",
+            "status": "MEASURED_UNIFORM_PIXELS",
+            "sampleCount": 6,
+            "channelSpread": 0,
+            "ratio": 15.72,
+            "required": 3,
+            "pass": true
+          },
+          {
+            "name": "查看",
+            "status": "INDETERMINATE_NON_UNIFORM",
+            "sampleCount": 6,
+            "channelSpread": 7
+          },
+          {
+            "name": "上传照片",
+            "status": "MEASURED_UNIFORM_PIXELS",
+            "sampleCount": 6,
+            "channelSpread": 4,
+            "ratio": 5.88,
+            "required": 4.5,
+            "pass": true
+          },
+          {
+            "name": "相册",
+            "status": "INDETERMINATE_NON_UNIFORM",
+            "sampleCount": 6,
+            "channelSpread": 6
+          },
+          {
+            "name": "现场",
+            "status": "INDETERMINATE_NON_UNIFORM",
+            "sampleCount": 6,
+            "channelSpread": 23
+          },
+          {
+            "name": "可环视",
+            "status": "INDETERMINATE_NON_UNIFORM",
+            "sampleCount": 6,
+            "channelSpread": 232
+          },
+          {
+            "name": "从下方选择已定位照片",
+            "status": "MEASURED_UNIFORM_PIXELS",
+            "sampleCount": 6,
+            "channelSpread": 0,
+            "ratio": 9.72,
+            "required": 4.5,
+            "pass": true
+          },
+          {
+            "name": "查看相册",
+            "status": "INDETERMINATE_NON_UNIFORM",
+            "sampleCount": 6,
+            "channelSpread": 12
+          },
+          {
+            "name": "正在回到照片所在位置…",
+            "status": "INDETERMINATE_NON_UNIFORM",
+            "sampleCount": 6,
+            "channelSpread": 186
+          },
+          {
+            "name": "返回照片",
+            "status": "INDETERMINATE_NON_UNIFORM",
+            "sampleCount": 6,
+            "channelSpread": 105
+          },
+          {
+            "name": "重置",
+            "status": "INDETERMINATE_NON_UNIFORM",
+            "sampleCount": 6,
+            "channelSpread": 97
+          },
+          {
+            "name": "全屏",
+            "status": "INDETERMINATE_NON_UNIFORM",
+            "sampleCount": 6,
+            "channelSpread": 114
+          },
+          {
+            "name": "视角向上",
+            "status": "INDETERMINATE_NON_UNIFORM",
+            "sampleCount": 6,
+            "channelSpread": 207
+          },
+          {
+            "name": "视角向左",
+            "status": "INDETERMINATE_NON_UNIFORM",
+            "sampleCount": 6,
+            "channelSpread": 211
+          },
+          {
+            "name": "视角向下",
+            "status": "INDETERMINATE_NON_UNIFORM",
+            "sampleCount": 6,
+            "channelSpread": 211
+          },
+          {
+            "name": "视角向右",
+            "status": "INDETERMINATE_NON_UNIFORM",
+            "sampleCount": 6,
+            "channelSpread": 217
+          },
+          {
+            "name": "方位 0 度，俯仰 0 度",
+            "status": "INDETERMINATE_OUTSIDE_VIEWPORT",
+            "sampleCount": 0,
+            "channelSpread": null
+          },
+          {
+            "name": "查看这张已定位照片",
+            "status": "INDETERMINATE_OUTSIDE_VIEWPORT",
+            "sampleCount": 0,
+            "channelSpread": null
+          }
+        ],
+        "keyboard": {
+          "expected": [
+            {
+              "tag": "A",
+              "name": "跳到主要内容"
+            },
+            {
+              "tag": "A",
+              "name": "UNSEEN 首页"
+            },
+            {
+              "tag": "A",
+              "name": "帮助"
+            },
+            {
+              "tag": "A",
+              "name": "登录"
+            },
+            {
+              "tag": "A",
+              "name": "查看"
+            },
+            {
+              "tag": "A",
+              "name": "上传照片"
+            },
+            {
+              "tag": "A",
+              "name": "相册"
+            },
+            {
+              "tag": "A",
+              "name": "现场"
+            },
+            {
+              "tag": "A",
+              "name": "查看相册"
+            },
+            {
+              "tag": "CANVAS",
+              "name": "360°现场。拖动环视；方向键调整视角；有限视差模式可用 WASD 移动。按 Escape 返回照片。"
+            },
+            {
+              "tag": "BUTTON",
+              "name": "返回照片"
+            },
+            {
+              "tag": "BUTTON",
+              "name": "重置"
+            }
+          ],
+          "actual": [
+            {
+              "tag": "A",
+              "name": "跳到主要内容",
+              "visible": true,
+              "focusVisible": true
+            },
+            {
+              "tag": "A",
+              "name": "UNSEEN 首页",
+              "visible": true,
+              "focusVisible": true
+            },
+            {
+              "tag": "A",
+              "name": "帮助",
+              "visible": true,
+              "focusVisible": true
+            },
+            {
+              "tag": "A",
+              "name": "登录",
+              "visible": true,
+              "focusVisible": true
+            },
+            {
+              "tag": "A",
+              "name": "查看",
+              "visible": true,
+              "focusVisible": true
+            },
+            {
+              "tag": "A",
+              "name": "上传照片",
+              "visible": true,
+              "focusVisible": true
+            },
+            {
+              "tag": "A",
+              "name": "相册",
+              "visible": true,
+              "focusVisible": true
+            },
+            {
+              "tag": "A",
+              "name": "现场",
+              "visible": true,
+              "focusVisible": true
+            },
+            {
+              "tag": "A",
+              "name": "查看相册",
+              "visible": true,
+              "focusVisible": true
+            },
+            {
+              "tag": "CANVAS",
+              "name": "360°现场。拖动环视；方向键调整视角；有限视差模式可用 WASD 移动。按 Escape 返回照片。",
+              "visible": true,
+              "focusVisible": true
+            },
+            {
+              "tag": "BUTTON",
+              "name": "返回照片",
+              "visible": true,
+              "focusVisible": true
+            },
+            {
+              "tag": "BUTTON",
+              "name": "重置",
+              "visible": true,
+              "focusVisible": true
+            }
+          ],
+          "orderPass": true
+        },
+        "axUnnamed": [],
+        "reflow200": {
+          "applicable": true,
+          "equivalentViewportCssPx": 640,
+          "clientWidth": 640,
+          "scrollWidth": 640,
+          "pass": true
+        },
+        "reducedMotion": {
+          "rule": "opacity transitions <=120ms allowed; animation/continuous/scale/parallax/auto-pan rejected",
+          "offenders": [],
+          "pass": true
+        },
+        "checks": {
+          "landmarks": true,
+          "headings": true,
+          "names": true,
+          "duplicateIds": true,
+          "textContrast": "INDETERMINATE",
+          "controlContrast": "INDETERMINATE",
+          "keyboardOrder": true,
+          "visibleFocus": true,
+          "reflow200": true,
+          "reducedMotion": true
+        }
+      },
+      {
+        "id": "participant-real-scene-mobile-390",
+        "route": "/s/space_0a04cf5678a943cd85ce90658d06a5d3/scene",
+        "viewport": {
+          "width": 390,
+          "height": 844,
+          "mobile": true
+        },
+        "automated": {
+          "route": "/s/space_0a04cf5678a943cd85ce90658d06a5d3/scene",
+          "title": "Chrome 发布主链现场现场 · UNSEEN",
+          "phase": null,
+          "landmarks": {
+            "main": 1,
+            "header": 1,
+            "nav": 3
+          },
+          "headings": [
+            {
+              "level": 1,
+              "name": "Chrome 发布主链现场"
+            }
+          ],
+          "headingSkip": false,
+          "duplicateIds": [],
+          "unlabeledForms": [],
+          "unnamedButtons": [],
+          "textContrast": [],
+          "controlContrast": [],
+          "skippedTextReasons": [
+            {
+              "tag": "STRONG",
+              "name": "本地定位 fixture：high / 需要确认 / failed",
+              "reason": "pseudo-element gradient/image/background",
+              "foreground": {
+                "r": 70,
+                "g": 21,
+                "b": 40,
+                "a": 1
+              },
+              "required": 4.5,
+              "rect": {
+                "x": 16,
+                "y": 4,
+                "width": 211.296875,
+                "height": 40
+              }
+            },
+            {
+              "tag": "SPAN",
+              "name": "非真实定位质量 · 本机数据",
+              "reason": "pseudo-element gradient/image/background",
+              "foreground": {
+                "r": 70,
+                "g": 21,
+                "b": 40,
+                "a": 1
+              },
+              "required": 4.5,
+              "rect": {
+                "x": 235.296875,
+                "y": 4,
+                "width": 138.703125,
+                "height": 40
+              }
+            },
+            {
+              "tag": "A",
+              "name": "跳到主要内容",
+              "reason": "pseudo-element gradient/image/background",
+              "foreground": {
+                "r": 70,
+                "g": 21,
+                "b": 40,
+                "a": 1
+              },
+              "required": 4.5,
+              "rect": {
+                "x": 8,
+                "y": -58,
+                "width": 125.921875,
+                "height": 44
+              }
+            },
+            {
+              "tag": "SPAN",
+              "name": "UNSEEN",
+              "reason": "pseudo-element gradient/image/background",
+              "foreground": {
+                "r": 50,
+                "g": 23,
+                "b": 34,
+                "a": 1
+              },
+              "required": 4.5,
+              "rect": {
+                "x": 60,
+                "y": 68.5,
+                "width": 78.921875,
+                "height": 24
+              }
+            },
+            {
+              "tag": "STRONG",
+              "name": "确定性本地定位样本",
+              "reason": "pseudo-element gradient/image/background",
+              "foreground": {
+                "r": 70,
+                "g": 21,
+                "b": 40,
+                "a": 1
+              },
+              "required": 4.5,
+              "rect": {
+                "x": 16,
+                "y": 127,
+                "width": 128.53125,
+                "height": 20
+              }
+            },
+            {
+              "tag": "SPAN",
+              "name": "非真实定位质量",
+              "reason": "pseudo-element gradient/image/background",
+              "foreground": {
+                "r": 70,
+                "g": 21,
+                "b": 40,
+                "a": 1
+              },
+              "required": 4.5,
+              "rect": {
+                "x": 152.53125,
+                "y": 127,
+                "width": 112.203125,
+                "height": 20
+              }
+            },
+            {
+              "tag": "P",
+              "name": "本机可操作样本",
+              "reason": "pseudo-element gradient/image/background",
+              "foreground": {
+                "r": 114,
+                "g": 95,
+                "b": 102,
+                "a": 1
+              },
+              "required": 4.5,
+              "rect": {
+                "x": 16,
+                "y": 186,
+                "width": 307.828125,
+                "height": 16
+              }
+            },
+            {
+              "tag": "H1",
+              "name": "Chrome 发布主链现场",
+              "reason": "pseudo-element gradient/image/background",
+              "foreground": {
+                "r": 50,
+                "g": 23,
+                "b": 34,
+                "a": 1
+              },
+              "required": 3,
+              "rect": {
+                "x": 16,
+                "y": 210,
+                "width": 307.828125,
+                "height": 40
+              }
+            },
+            {
+              "tag": "A",
+              "name": "查看",
+              "reason": "pseudo-element gradient/image/background",
+              "foreground": {
+                "r": 50,
+                "g": 23,
+                "b": 34,
+                "a": 1
+              },
+              "required": 4.5,
+              "rect": {
+                "x": 21,
+                "y": 283,
+                "width": 172,
+                "height": 44
+              }
+            },
+            {
+              "tag": "A",
+              "name": "上传照片",
+              "reason": "pseudo-element gradient/image/background",
+              "foreground": {
+                "r": 114,
+                "g": 95,
+                "b": 102,
+                "a": 1
+              },
+              "required": 4.5,
+              "rect": {
+                "x": 197,
+                "y": 283,
+                "width": 172,
+                "height": 44
+              }
+            },
+            {
+              "tag": "A",
+              "name": "相册",
+              "reason": "pseudo-element gradient/image/background",
+              "foreground": {
+                "r": 114,
+                "g": 95,
+                "b": 102,
+                "a": 1
+              },
+              "required": 4.5,
+              "rect": {
+                "x": 20,
+                "y": 360,
+                "width": 175,
+                "height": 44
+              }
+            },
+            {
+              "tag": "A",
+              "name": "现场",
+              "reason": "pseudo-element gradient/image/background",
+              "foreground": {
+                "r": 50,
+                "g": 23,
+                "b": 34,
+                "a": 1
+              },
+              "required": 4.5,
+              "rect": {
+                "x": 195,
+                "y": 360,
+                "width": 175,
+                "height": 44
+              }
+            },
+            {
+              "tag": "SPAN",
+              "name": "可环视",
+              "reason": "pseudo-element gradient/image/background",
+              "foreground": {
+                "r": 47,
+                "g": 125,
+                "b": 99,
+                "a": 1
+              },
+              "required": 4.5,
+              "rect": {
+                "x": 28,
+                "y": 451,
+                "width": 62.734375,
+                "height": 46
+              }
+            },
+            {
+              "tag": "SPAN",
+              "name": "从下方选择已定位照片",
+              "reason": "pseudo-element gradient/image/background",
+              "foreground": {
+                "r": 207,
+                "g": 190,
+                "b": 196,
+                "a": 1
+              },
+              "required": 4.5,
+              "rect": {
+                "x": 102.734375,
+                "y": 454,
+                "width": 116.90625,
+                "height": 40
+              }
+            },
+            {
+              "tag": "A",
+              "name": "查看相册",
+              "reason": "pseudo-element gradient/image/background",
+              "foreground": {
+                "r": 255,
+                "g": 248,
+                "b": 245,
+                "a": 1
+              },
+              "required": 4.5,
+              "rect": {
+                "x": 243.640625,
+                "y": 440,
+                "width": 118.359375,
+                "height": 68
+              }
+            },
+            {
+              "tag": "DIV",
+              "name": "正在回到照片所在位置…",
+              "reason": "pseudo-element gradient/image/background",
+              "foreground": {
+                "r": 255,
+                "g": 248,
+                "b": 245,
+                "a": 1
+              },
+              "required": 4.5,
+              "rect": {
+                "x": 24,
+                "y": 525,
+                "width": 147.609375,
+                "height": 50
+              }
+            },
+            {
+              "tag": "BUTTON",
+              "name": "返回照片",
+              "reason": "pseudo-element gradient/image/background",
+              "foreground": {
+                "r": 255,
+                "g": 248,
+                "b": 245,
+                "a": 1
+              },
+              "required": 4.5,
+              "rect": {
+                "x": 179.609375,
+                "y": 525,
+                "width": 85.28125,
+                "height": 44
+              }
+            },
+            {
+              "tag": "BUTTON",
+              "name": "重置",
+              "reason": "pseudo-element gradient/image/background",
+              "foreground": {
+                "r": 255,
+                "g": 248,
+                "b": 245,
+                "a": 1
+              },
+              "required": 4.5,
+              "rect": {
+                "x": 272.890625,
+                "y": 525,
+                "width": 52.640625,
+                "height": 44
+              }
+            },
+            {
+              "tag": "BUTTON",
+              "name": "全屏",
+              "reason": "pseudo-element gradient/image/background",
+              "foreground": {
+                "r": 255,
+                "g": 248,
+                "b": 245,
+                "a": 1
+              },
+              "required": 4.5,
+              "rect": {
+                "x": 179.609375,
+                "y": 577,
+                "width": 52.640625,
+                "height": 44
+              }
+            },
+            {
+              "tag": "BUTTON",
+              "name": "视角向上",
+              "reason": "pseudo-element gradient/image/background",
+              "foreground": {
+                "r": 255,
+                "g": 248,
+                "b": 245,
+                "a": 1
+              },
+              "required": 4.5,
+              "rect": {
+                "x": 72,
+                "y": 657,
+                "width": 44,
+                "height": 44
+              }
+            },
+            {
+              "tag": "BUTTON",
+              "name": "视角向左",
+              "reason": "pseudo-element gradient/image/background",
+              "foreground": {
+                "r": 255,
+                "g": 248,
+                "b": 245,
+                "a": 1
+              },
+              "required": 4.5,
+              "rect": {
+                "x": 24,
+                "y": 705,
+                "width": 44,
+                "height": 44
+              }
+            },
+            {
+              "tag": "BUTTON",
+              "name": "视角向下",
+              "reason": "pseudo-element gradient/image/background",
+              "foreground": {
+                "r": 255,
+                "g": 248,
+                "b": 245,
+                "a": 1
+              },
+              "required": 4.5,
+              "rect": {
+                "x": 72,
+                "y": 705,
+                "width": 44,
+                "height": 44
+              }
+            },
+            {
+              "tag": "BUTTON",
+              "name": "视角向右",
+              "reason": "pseudo-element gradient/image/background",
+              "foreground": {
+                "r": 255,
+                "g": 248,
+                "b": 245,
+                "a": 1
+              },
+              "required": 4.5,
+              "rect": {
+                "x": 120,
+                "y": 705,
+                "width": 44,
+                "height": 44
+              }
+            },
+            {
+              "tag": "P",
+              "name": "方位 0 度，俯仰 0 度",
+              "reason": "pseudo-element gradient/image/background",
+              "foreground": {
+                "r": 255,
+                "g": 248,
+                "b": 245,
+                "a": 1
+              },
+              "required": 4.5,
+              "rect": {
+                "x": 15,
+                "y": 516,
+                "width": 1,
+                "height": 1
+              }
+            },
+            {
+              "tag": "BUTTON",
+              "name": "查看这张已定位照片",
+              "reason": "pseudo-element gradient/image/background",
+              "foreground": {
+                "r": 255,
+                "g": 248,
+                "b": 245,
+                "a": 1
+              },
+              "required": 4.5,
+              "rect": {
+                "x": 28,
+                "y": 1019.515625,
+                "width": 175.859375,
+                "height": 44
+              }
+            }
+          ],
+          "skippedControlReasons": [
+            {
+              "tag": "BUTTON",
+              "name": "返回照片",
+              "reason": "pseudo-element gradient/image/background"
+            },
+            {
+              "tag": "BUTTON",
+              "name": "重置",
+              "reason": "pseudo-element gradient/image/background"
+            },
+            {
+              "tag": "BUTTON",
+              "name": "全屏",
+              "reason": "pseudo-element gradient/image/background"
+            },
+            {
+              "tag": "BUTTON",
+              "name": "视角向上",
+              "reason": "pseudo-element gradient/image/background"
+            },
+            {
+              "tag": "BUTTON",
+              "name": "视角向左",
+              "reason": "pseudo-element gradient/image/background"
+            },
+            {
+              "tag": "BUTTON",
+              "name": "视角向下",
+              "reason": "pseudo-element gradient/image/background"
+            },
+            {
+              "tag": "BUTTON",
+              "name": "视角向右",
+              "reason": "pseudo-element gradient/image/background"
+            },
+            {
+              "tag": "BUTTON",
+              "name": "查看这张已定位照片",
+              "reason": "pseudo-element gradient/image/background"
+            }
+          ],
+          "focusables": [
+            {
+              "tag": "A",
+              "name": "跳到主要内容"
+            },
+            {
+              "tag": "A",
+              "name": "UNSEEN 首页"
+            },
+            {
+              "tag": "A",
+              "name": "帮助"
+            },
+            {
+              "tag": "A",
+              "name": "登录"
+            },
+            {
+              "tag": "A",
+              "name": "查看"
+            },
+            {
+              "tag": "A",
+              "name": "上传照片"
+            },
+            {
+              "tag": "A",
+              "name": "相册"
+            },
+            {
+              "tag": "A",
+              "name": "现场"
+            },
+            {
+              "tag": "A",
+              "name": "查看相册"
+            },
+            {
+              "tag": "CANVAS",
+              "name": "360°现场。拖动环视；方向键调整视角；有限视差模式可用 WASD 移动。按 Escape 返回照片。"
+            },
+            {
+              "tag": "BUTTON",
+              "name": "返回照片"
+            },
+            {
+              "tag": "BUTTON",
+              "name": "重置"
+            },
+            {
+              "tag": "BUTTON",
+              "name": "全屏"
+            },
+            {
+              "tag": "BUTTON",
+              "name": "视角向上"
+            },
+            {
+              "tag": "BUTTON",
+              "name": "视角向左"
+            },
+            {
+              "tag": "BUTTON",
+              "name": "视角向下"
+            },
+            {
+              "tag": "BUTTON",
+              "name": "视角向右"
+            },
+            {
+              "tag": "BUTTON",
+              "name": "查看这张已定位照片"
+            }
+          ]
+        },
+        "pixelText": [
+          {
+            "name": "本地定位 fixture：high / 需要确认 / failed",
+            "status": "INDETERMINATE_NON_UNIFORM",
+            "sampleCount": 6,
+            "channelSpread": 8
+          },
+          {
+            "name": "非真实定位质量 · 本机数据",
+            "status": "MEASURED_UNIFORM_PIXELS",
+            "sampleCount": 6,
+            "channelSpread": 0,
+            "ratio": 13.21,
+            "required": 4.5,
+            "pass": true
+          },
+          {
+            "name": "跳到主要内容",
+            "status": "INDETERMINATE_OUTSIDE_VIEWPORT",
+            "sampleCount": 0,
+            "channelSpread": null
+          },
+          {
+            "name": "UNSEEN",
+            "status": "MEASURED_UNIFORM_PIXELS",
+            "sampleCount": 6,
+            "channelSpread": 0,
+            "ratio": 15.72,
+            "required": 4.5,
+            "pass": true
+          },
+          {
+            "name": "确定性本地定位样本",
+            "status": "MEASURED_UNIFORM_PIXELS",
+            "sampleCount": 6,
+            "channelSpread": 0,
+            "ratio": 13.21,
+            "required": 4.5,
+            "pass": true
+          },
+          {
+            "name": "非真实定位质量",
+            "status": "MEASURED_UNIFORM_PIXELS",
+            "sampleCount": 6,
+            "channelSpread": 0,
+            "ratio": 13.21,
+            "required": 4.5,
+            "pass": true
+          },
+          {
+            "name": "本机可操作样本",
+            "status": "MEASURED_UNIFORM_PIXELS",
+            "sampleCount": 6,
+            "channelSpread": 0,
+            "ratio": 5.68,
+            "required": 4.5,
+            "pass": true
+          },
+          {
+            "name": "Chrome 发布主链现场",
+            "status": "MEASURED_UNIFORM_PIXELS",
+            "sampleCount": 6,
+            "channelSpread": 0,
+            "ratio": 15.72,
+            "required": 3,
+            "pass": true
+          },
+          {
+            "name": "查看",
+            "status": "INDETERMINATE_NON_UNIFORM",
+            "sampleCount": 6,
+            "channelSpread": 8
+          },
+          {
+            "name": "上传照片",
+            "status": "MEASURED_UNIFORM_PIXELS",
+            "sampleCount": 6,
+            "channelSpread": 4,
+            "ratio": 5.88,
+            "required": 4.5,
+            "pass": true
+          },
+          {
+            "name": "相册",
+            "status": "INDETERMINATE_NON_UNIFORM",
+            "sampleCount": 6,
+            "channelSpread": 6
+          },
+          {
+            "name": "现场",
+            "status": "INDETERMINATE_NON_UNIFORM",
+            "sampleCount": 6,
+            "channelSpread": 23
+          },
+          {
+            "name": "可环视",
+            "status": "INDETERMINATE_NON_UNIFORM",
+            "sampleCount": 6,
+            "channelSpread": 232
+          },
+          {
+            "name": "从下方选择已定位照片",
+            "status": "MEASURED_UNIFORM_PIXELS",
+            "sampleCount": 6,
+            "channelSpread": 0,
+            "ratio": 9.72,
+            "required": 4.5,
+            "pass": true
+          },
+          {
+            "name": "查看相册",
+            "status": "INDETERMINATE_NON_UNIFORM",
+            "sampleCount": 6,
+            "channelSpread": 12
+          },
+          {
+            "name": "正在回到照片所在位置…",
+            "status": "INDETERMINATE_NON_UNIFORM",
+            "sampleCount": 6,
+            "channelSpread": 228
+          },
+          {
+            "name": "返回照片",
+            "status": "INDETERMINATE_NON_UNIFORM",
+            "sampleCount": 6,
+            "channelSpread": 104
+          },
+          {
+            "name": "重置",
+            "status": "INDETERMINATE_NON_UNIFORM",
+            "sampleCount": 6,
+            "channelSpread": 105
+          },
+          {
+            "name": "全屏",
+            "status": "INDETERMINATE_NON_UNIFORM",
+            "sampleCount": 6,
+            "channelSpread": 112
+          },
+          {
+            "name": "视角向上",
+            "status": "INDETERMINATE_NON_UNIFORM",
+            "sampleCount": 6,
+            "channelSpread": 227
+          },
+          {
+            "name": "视角向左",
+            "status": "INDETERMINATE_NON_UNIFORM",
+            "sampleCount": 6,
+            "channelSpread": 38
+          },
+          {
+            "name": "视角向下",
+            "status": "INDETERMINATE_NON_UNIFORM",
+            "sampleCount": 6,
+            "channelSpread": 53
+          },
+          {
+            "name": "视角向右",
+            "status": "INDETERMINATE_NON_UNIFORM",
+            "sampleCount": 6,
+            "channelSpread": 114
+          },
+          {
+            "name": "方位 0 度，俯仰 0 度",
+            "status": "INDETERMINATE_OUTSIDE_VIEWPORT",
+            "sampleCount": 0,
+            "channelSpread": null
+          },
+          {
+            "name": "查看这张已定位照片",
+            "status": "INDETERMINATE_OUTSIDE_VIEWPORT",
+            "sampleCount": 0,
+            "channelSpread": null
+          }
+        ],
+        "keyboard": {
+          "expected": [
+            {
+              "tag": "A",
+              "name": "跳到主要内容"
+            },
+            {
+              "tag": "A",
+              "name": "UNSEEN 首页"
+            },
+            {
+              "tag": "A",
+              "name": "帮助"
+            },
+            {
+              "tag": "A",
+              "name": "登录"
+            },
+            {
+              "tag": "A",
+              "name": "查看"
+            },
+            {
+              "tag": "A",
+              "name": "上传照片"
+            },
+            {
+              "tag": "A",
+              "name": "相册"
+            },
+            {
+              "tag": "A",
+              "name": "现场"
+            },
+            {
+              "tag": "A",
+              "name": "查看相册"
+            },
+            {
+              "tag": "CANVAS",
+              "name": "360°现场。拖动环视；方向键调整视角；有限视差模式可用 WASD 移动。按 Escape 返回照片。"
+            },
+            {
+              "tag": "BUTTON",
+              "name": "返回照片"
+            },
+            {
+              "tag": "BUTTON",
+              "name": "重置"
+            }
+          ],
+          "actual": [
+            {
+              "tag": "A",
+              "name": "跳到主要内容",
+              "visible": true,
+              "focusVisible": true
+            },
+            {
+              "tag": "A",
+              "name": "UNSEEN 首页",
+              "visible": true,
+              "focusVisible": true
+            },
+            {
+              "tag": "A",
+              "name": "帮助",
+              "visible": true,
+              "focusVisible": true
+            },
+            {
+              "tag": "A",
+              "name": "登录",
+              "visible": true,
+              "focusVisible": true
+            },
+            {
+              "tag": "A",
+              "name": "查看",
+              "visible": true,
+              "focusVisible": true
+            },
+            {
+              "tag": "A",
+              "name": "上传照片",
+              "visible": true,
+              "focusVisible": true
+            },
+            {
+              "tag": "A",
+              "name": "相册",
+              "visible": true,
+              "focusVisible": true
+            },
+            {
+              "tag": "A",
+              "name": "现场",
+              "visible": true,
+              "focusVisible": true
+            },
+            {
+              "tag": "A",
+              "name": "查看相册",
+              "visible": true,
+              "focusVisible": true
+            },
+            {
+              "tag": "CANVAS",
+              "name": "360°现场。拖动环视；方向键调整视角；有限视差模式可用 WASD 移动。按 Escape 返回照片。",
+              "visible": true,
+              "focusVisible": true
+            },
+            {
+              "tag": "BUTTON",
+              "name": "返回照片",
+              "visible": true,
+              "focusVisible": true
+            },
+            {
+              "tag": "BUTTON",
+              "name": "重置",
+              "visible": true,
+              "focusVisible": true
+            }
+          ],
+          "orderPass": true
+        },
+        "axUnnamed": [],
+        "reflow200": {
+          "applicable": false,
+          "reason": "desktop 200% measured separately",
+          "clientWidth": 390,
+          "scrollWidth": 390,
+          "pass": true
+        },
+        "reducedMotion": {
+          "rule": "opacity transitions <=120ms allowed; animation/continuous/scale/parallax/auto-pan rejected",
+          "offenders": [],
+          "pass": true
+        },
+        "checks": {
+          "landmarks": true,
+          "headings": true,
+          "names": true,
+          "duplicateIds": true,
+          "textContrast": "INDETERMINATE",
+          "controlContrast": "INDETERMINATE",
+          "keyboardOrder": true,
+          "visibleFocus": true,
+          "reflow200": true,
+          "reducedMotion": true
+        }
+      }
+    ],
+    "contrastPolicy": "solid CSS measured; gradient/image/pseudo text measured only when screenshot edge pixels are uniform, otherwise INDETERMINATE; skipped controls remain conservative INDETERMINATE",
+    "reflow200Method": "1280px desktop viewport represented as 640 CSS px plus page scale factor 2",
+    "definiteFindings": [],
+    "indeterminate": [
+      {
+        "route": "anonymous-home",
+        "check": "textContrast",
+        "classification": "INDETERMINATE_GRADIENT_OR_PSEUDO"
+      },
+      {
+        "route": "anonymous-home",
+        "check": "controlContrast",
+        "classification": "INDETERMINATE_GRADIENT_OR_PSEUDO"
+      },
+      {
+        "route": "anonymous-home-mobile-390",
+        "check": "textContrast",
+        "classification": "INDETERMINATE_GRADIENT_OR_PSEUDO"
+      },
+      {
+        "route": "anonymous-home-mobile-390",
+        "check": "controlContrast",
+        "classification": "INDETERMINATE_GRADIENT_OR_PSEUDO"
+      },
+      {
+        "route": "owner-spaces",
+        "check": "textContrast",
+        "classification": "INDETERMINATE_GRADIENT_OR_PSEUDO"
+      },
+      {
+        "route": "participant-upload",
+        "check": "textContrast",
+        "classification": "INDETERMINATE_GRADIENT_OR_PSEUDO"
+      },
+      {
+        "route": "participant-upload-mobile-390",
+        "check": "textContrast",
+        "classification": "INDETERMINATE_GRADIENT_OR_PSEUDO"
+      },
+      {
+        "route": "owner-review",
+        "check": "textContrast",
+        "classification": "INDETERMINATE_GRADIENT_OR_PSEUDO"
+      },
+      {
+        "route": "owner-review",
+        "check": "controlContrast",
+        "classification": "INDETERMINATE_GRADIENT_OR_PSEUDO"
+      },
+      {
+        "route": "participant-real-scene",
+        "check": "textContrast",
+        "classification": "INDETERMINATE_GRADIENT_OR_PSEUDO"
+      },
+      {
+        "route": "participant-real-scene",
+        "check": "controlContrast",
+        "classification": "INDETERMINATE_GRADIENT_OR_PSEUDO"
+      },
+      {
+        "route": "participant-real-scene-mobile-390",
+        "check": "textContrast",
+        "classification": "INDETERMINATE_GRADIENT_OR_PSEUDO"
+      },
+      {
+        "route": "participant-real-scene-mobile-390",
+        "check": "controlContrast",
+        "classification": "INDETERMINATE_GRADIENT_OR_PSEUDO"
+      }
+    ],
+    "pass": true
+  },
+  "diagnostics": {
+    "consoleErrors": 0,
+    "httpErrors": 0,
+    "fetchErrors": 0,
+    "externalRequests": 0
+  },
+  "cleanup": {
+    "processGroupsStopped": true,
+    "temporaryStateRemoved": true,
+    "devtoolsEndpointClosed": true
+  }
+}

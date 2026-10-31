@@ -1,0 +1,13 @@
+{
+  "schemaVersion": "1.0",
+  "jobId": "unseen-3dgs-sceneworker-2026-09-02-v1",
+  "state": "RECEIVED_VERIFIED",
+  "createdAt": "2026-09-02T01:30:34.4167724Z",
+  "agent": "4060 Agent",
+  "machine": "DESKTOP-NIBL3D4",
+  "message": "Private Release downloaded, byte size and SHA256 verified, and ZIP unpacked.",
+  "evidence": [
+    "sha256:4187dcb112286bb4581da17eb014c6391211140db458a32f83f7eecadfbbe462",
+    "bytes:1373866"
+  ]
+}

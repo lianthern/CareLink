@@ -1,0 +1,56 @@
+<view class="page-shell demo-page" style="padding-top:{{navBarTop}}px">
+  <view class="native-nav demo-nav" style="height:{{navBarHeight}}px">
+    <view class="nav-back" bindtap="onBack" aria-role="button" aria-label="返回">‹</view>
+    <text class="nav-title">演示中心</text>
+    <view class="nav-spacer"></view>
+  </view>
+
+  <view class="demo-main">
+    <view class="demo-hero">
+      <text class="demo-kicker">DEMO LAB</text>
+      <text class="demo-title">从理想成品开始看。</text>
+      <text class="demo-copy">三端统一从产品成品、AI 档案馆与六幕故事进入。每张卡都会进入完整页面，不再用文字展开或弹窗代替演示。</text>
+      <view class="demo-legend">
+        <view class="legend-item"><view class="legend-dot legend-dot--product"></view><text>产品演示</text></view>
+        <view class="legend-item"><view class="legend-dot legend-dot--experiment"></view><text>AI 档案</text></view>
+        <view class="legend-item"><view class="legend-dot legend-dot--research"></view><text>正式流程</text></view>
+      </view>
+    </view>
+
+    <view class="section-head demo-section-head">
+      <view><text class="section-title">建议这样看</text><text class="section-lead">先理解成品，再翻完整档案</text></view>
+    </view>
+    <view class="demo-steps">
+      <view class="demo-step"><text class="demo-step-number">01</text><text>看理想成品</text></view><view class="demo-step-line"></view><view class="demo-step"><text class="demo-step-number">02</text><text>看六幕故事</text></view><view class="demo-step-line"></view><view class="demo-step"><text class="demo-step-number">03</text><text>翻 AI 档案</text></view>
+    </view>
+
+    <view class="archive-callout" bindtap="onArchive" aria-role="button" aria-label="打开 AI 演示档案馆">
+      <view class="archive-callout-mark"><text>15</text><text>VERSIONS</text></view>
+      <view class="archive-callout-copy"><text>AI 演示档案馆</text><text>找回全景空间、婚礼旅程、时光轴、相册、机器回忆和路演版。</text></view>
+      <text class="archive-callout-go">→</text>
+    </view>
+
+    <view class="section-head demo-section-head">
+      <view><text class="section-title">产品与体验</text><text class="section-lead">不调用相机，不写入正式空间</text></view>
+    </view>
+    <view class="demo-list">
+      <view class="demo-card demo-card--featured" bindtap="onVision" aria-role="button" aria-label="打开理想的共同记忆空间">
+        <image class="demo-feature-image" src="/assets/panos/s4-n1.jpg" mode="aspectFill" />
+        <view class="demo-card-copy"><text class="demo-card-meta">推荐先看 · 可操作成品</text><text class="demo-card-title">理想的共同记忆空间</text><text class="demo-card-sub">空间首页、时间线、全景和“回到 TA 的视角”收进一个完整 Demo。</text></view>
+        <text class="demo-card-go">进入 ›</text>
+      </view>
+      <view class="demo-card demo-card--product" bindtap="onStory" aria-role="button" aria-label="打开六幕产品故事">
+        <text class="demo-card-icon">✦</text>
+        <view class="demo-card-copy"><text class="demo-card-meta">产品演示 · 约 2 分钟</text><text class="demo-card-title">六幕产品故事</text><text class="demo-card-sub">从“照片散在每个人手机里”到共同补全同一天。</text></view>
+        <text class="demo-card-go">开始 ›</text>
+      </view>
+      <view class="demo-card demo-card--product" bindtap="onFormalFlow" aria-role="button" aria-label="体验正式上传流程">
+        <text class="demo-card-icon">＋</text>
+        <view class="demo-card-copy"><text class="demo-card-meta">正式流程 · 可随时返回</text><text class="demo-card-title">上传优先流程</text><text class="demo-card-sub">查看创建空间、上传普通照片和外部 2:1 全景图的正式路径。</text></view>
+        <text class="demo-card-go">体验 ›</text>
+      </view>
+    </view>
+
+    <view class="notice demo-safety"><text class="notice-strong">演示边界：</text>本页与档案馆均为静态演示，不调用相机、不依赖后端、不会自动上传，也不写入正式空间。拍摄实验不再混进对外演示入口。</view>
+  </view>
+</view>

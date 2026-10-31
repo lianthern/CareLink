@@ -1,0 +1,14 @@
+{
+  "name": "unseen-cloudbase-backend",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Dependency-free CloudBase event function for managed UNSEEN spaces",
+  "main": "index.js",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "check": "node --check index.js && node --check lib/service.js && node --check lib/oss-v1.js && node --check lib/image.js",
+    "test": "node --test test/*.test.js"
+  }
+}

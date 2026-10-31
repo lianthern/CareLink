@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>小信 CareLink 视频脚本</title>
+<style>
+:root{--act:#1665d8;--care:#4BA8EC;--navy:#0B2856;--mute:#52677F;--line:#dde7f4;--mist:#eaf3ff;--bg:#f6f9fd;--card:#fff;--warn:#b5651d}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--navy:#e6eefb;--mute:#9fb2cc;--line:#2a3a55;--mist:#16243b;--bg:#0d1626;--card:#132036;--act:#5aa2ff}}
+:root[data-theme="dark"]{--navy:#e6eefb;--mute:#9fb2cc;--line:#2a3a55;--mist:#16243b;--bg:#0d1626;--card:#132036;--act:#5aa2ff}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--navy);font:15px/1.7 "PingFang SC","Microsoft YaHei","Noto Sans SC",system-ui,sans-serif;padding:40px 16px 80px}
+.w{max-width:1180px;margin:0 auto}
+h1{font-size:32px;font-weight:900;letter-spacing:1px}
+h1 span{font-weight:300;color:var(--mute);font-size:24px;margin-left:10px}
+.bar{width:48px;height:4px;background:var(--act);border-radius:2px;margin:12px 0 18px}
+.meta{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:22px}
+.meta span{background:var(--card);border:1px solid var(--line);border-radius:999px;padding:4px 14px;font-size:13.5px;font-weight:600}
+.box{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px 22px;margin:18px 0}
+.box h3{font-size:17px;margin-bottom:8px}
+.box ul{padding-left:20px;color:var(--mute)}
+.box b{color:var(--navy)}
+h2{font-size:22px;margin:34px 0 12px;display:flex;align-items:center;gap:10px}
+h2 em{font-style:normal;font-size:13px;color:#fff;background:linear-gradient(100deg,#1559d6,#4BA8EC);padding:2px 12px;border-radius:999px}
+.tw{overflow-x:auto;border-radius:14px;border:1px solid var(--line);background:var(--card)}
+table{width:100%;border-collapse:collapse;min-width:900px}
+th{background:var(--mist);text-align:left;font-size:13px;color:var(--mute);padding:10px 12px;font-weight:700;white-space:nowrap}
+td{padding:12px;border-top:1px solid var(--line);vertical-align:top;font-size:14px}
+td.t{font:700 13px Consolas,monospace;color:var(--act);white-space:nowrap}
+td.vo{font-size:15px;font-weight:600;min-width:260px}
+td .src{display:inline-block;margin-top:6px;font-size:12px;background:var(--mist);color:var(--act);border-radius:6px;padding:1px 8px;font-weight:700}
+td .sub{display:block;margin-top:6px;font-size:13px;color:var(--mute)}
+.pg{font-size:12px;font-weight:800;color:var(--act);white-space:nowrap}
+.sec td{background:var(--mist);font-weight:800;font-size:14px;color:var(--navy);padding:8px 12px}
+.note{font-size:13px;color:var(--mute);margin-top:10px}
+.warn{border-left:4px solid var(--warn)}
+@media (max-width:640px){body{padding:24px 16px 60px}h1{font-size:26px}h1 span{display:block;margin:4px 0 0}}
+</style>
+</head>
+<body>
+<div class="w">
+  <h1>小信 CareLink · 产品介绍视频脚本<span>Product Video Script</span></h1>
+  <div class="bar"></div>
+  <div class="meta"><span>主版本 ≈ 2 分 15 秒</span><span>旁白 ≈ 560 字</span><span>结构 = 决赛 PPT 七页</span><span>附 60 秒剪辑版</span></div>
+
+  <div class="box">
+    <h3>叙事主线（和 PPT 同一条逻辑）</h3>
+    <ul>
+      <li><b>开场</b>：客厅里的相框和小信，先给记忆点</li>
+      <li><b>问题</b>：慢病是没有终点的战役 → 两组数据 → 院外三方各缺一环 → 药效再好，也怕院外断药</li>
+      <li><b>方案</b>：家庭慢病管理中枢，三端围绕同一份健康档案 → 早 8 点用药闭环实录</li>
+      <li><b>闭环与创新</b>：只拍照不填表 / 不亮红牌给作弊码 / 不讲医学讲白话 / 安全护栏 / 小信人格</li>
+      <li><b>落地场景</b>：小信到家陪伴套装 + 周边</li>
+      <li><b>价值</b>：三方受益 + 三步路径 + 合规底线</li>
+      <li><b>收尾</b>：让慢病管理，有人情味一点</li>
+    </ul>
+  </div>
+
+  <h2><em>主版本</em>约 2 分 15 秒</h2>
+  <div class="tw"><table>
+    <tr><th>时间</th><th>对应 PPT</th><th>画面</th><th>旁白</th><th>屏幕字幕 / 素材</th></tr>
+
+    <tr class="sec"><td colspan="5">开场 · 记忆点</td></tr>
+    <tr><td class="t">0:00–0:10</td><td class="pg">P1 封面</td>
+      <td>清晨客厅，阳光照进来。镜头缓慢推近相框：照片里是奶奶和女儿。小信从相框旁探出、挥手。</td>
+      <td class="vo">这是小信。它住在慢病患者家里的一只相框里。</td>
+      <td>小信 CareLink<br>慢病患者的家庭智能陪伴终端<span class="src">封面图 hero.png</span></td></tr>
+
+    <tr class="sec"><td colspan="5">问题 · 慢病是一场没有终点的战役</td></tr>
+    <tr><td class="t">0:10–0:20</td><td class="pg">P2 问题</td>
+      <td>深蓝底，数字逐个弹出并放大：6.8%，再到 20–50%。</td>
+      <td class="vo">慢病管理，是一场没有终点的长期战役。心血管高危人群血脂达标率只有 6.8%；GLP-1 类药物，一年停药率高达 20% 到 50%。</td>
+      <td>6.8% 血脂宏观达标率<br>20–50% GLP-1 类 1 年停药率<span class="sub">角标小字写数据出处</span></td></tr>
+    <tr><td class="t">0:20–0:32</td><td class="pg">P2 问题</td>
+      <td>三格分屏：① 奶奶翻着日历，记不清是第几周；② 女儿在外地办公室打电话：「妈，药吃了吗？」；③ 一张空白的院外随访表。</td>
+      <td class="vo">2 周、4 周、6 周的灵活用药，老人记不住；子女在外地，只能打电话追问；出了医院，医生和药企就再也看不到了。</td>
+      <td>居家老人 · 记不住<br>异地子女 · 看不见<br>药企医生 · 没数据<span class="src">实拍或插画</span></td></tr>
+    <tr><td class="t">0:32–0:40</td><td class="pg">P2 问题</td>
+      <td>画面静止，白底大字缓缓浮现。</td>
+      <td class="vo">药效再好，也怕院外断药。缺的不是又一个提醒，而是一个能接住回应的家庭入口。</td>
+      <td><b>药效再好，也怕院外断药。</b></td></tr>
+
+    <tr class="sec"><td colspan="5">方案 · 家庭慢病管理中枢</td></tr>
+    <tr><td class="t">0:40–0:50</td><td class="pg">P3 方案</td>
+      <td>PPT 第 3 页三端动画：相框、云端、手机依次亮起，连线上光点流动，中间「同一份慢病健康档案」点亮。</td>
+      <td class="vo">小信 CareLink 不是娱乐终端，是家庭慢病管理中枢。相框给父母，手机给子女，中间是云端多模态 Agent，三端围绕同一份健康档案。</td>
+      <td>父母端相框 · 云端 Agent · 子女端手机<span class="src">PPT P3 录屏</span></td></tr>
+    <tr><td class="t">0:50–1:10</td><td class="pg">P3 时间轴</td>
+      <td>原型实录。左上角时钟走到 08:00，相框亮灯 → 奶奶按绿键，女儿原声叮嘱 → 按红键说「吃过了，有点头晕」→ 切手机：「奶奶已服药」+ 头晕提醒。</td>
+      <td class="vo">早上八点，相框亮灯。奶奶不用学任何操作：按绿键，听女儿的叮嘱；按红键，说一句「吃过了，有点头晕」。两分钟内，女儿手机就收到了回执，还有一条头晕提醒。</td>
+      <td>08:00 到点推送 › 08:01 绿键听 › 08:02 红键说 › 08:02 子女收到回执<span class="src">原型剧本 ① 早 8 点用药闭环</span></td></tr>
+
+    <tr class="sec"><td colspan="5">闭环与创新 · 把单向提醒，变成家庭对话</td></tr>
+    <tr><td class="t">1:10–1:18</td><td class="pg">P4 创新</td>
+      <td>手机拍一盒降糖药 → 识别 → 核对 → 相框预览出现药盒照片和「白色椭圆片」。</td>
+      <td class="vo">不用填表。拍一张药盒，用药计划就建好了；到点时，相框连药长什么样都告诉老人。</td>
+      <td>只拍照，不填表<span class="src">原型剧本 ⑮ 扫药盒建档</span></td></tr>
+    <tr><td class="t">1:18–1:28</td><td class="pg">P4 创新</td>
+      <td>相框上小信举手摇铃，气泡播报：「咸菜夹一筷子就够……降压药这个减压阀就得加班」。</td>
+      <td class="vo">发现奶奶午饭吃咸了，小信不亮红牌，给一个能照做的办法；也不讲医学，讲老人听得懂的白话。</td>
+      <td>不亮红牌，给作弊码 · 不讲医学，讲白话<span class="src">原型剧本 ⑩ 建议说给奶奶</span></td></tr>
+    <tr><td class="t">1:28–1:36</td><td class="pg">P4 护栏</td>
+      <td>手机陪聊里问小信：「能不能给奶奶减半片？」小信回答：吃多少、能不能停，得听医生的。</td>
+      <td class="vo">问到减药，安全护栏直接挡回，交给医生。</td>
+      <td>G1 剂量安全护栏<span class="src">原型剧本 ⑬ 护栏：问减药 / 小信陪聊</span></td></tr>
+    <tr><td class="t">1:36–1:42</td><td class="pg">P4 小信</td>
+      <td>小信 12 表情快切卡点：提醒一下、我在听、做得很好、今天也加油、晚安啦。</td>
+      <td class="vo">到点提醒，认真倾听，按时吃药就夸一句。对外，只有一个小信。</td>
+      <td>小信 · Agent 的对话人格<span class="src">VI 表情库</span></td></tr>
+
+    <tr class="sec"><td colspan="5">落地场景 · 小信到家</td></tr>
+    <tr><td class="t">1:42–1:55</td><td class="pg">P5 场景</td>
+      <td>开箱：「欢迎小信到家」礼盒打开，取出相框、陪伴手册、一周记录卡、家人联系卡 → 快切周边（水杯、抱枕、钥匙扣）。</td>
+      <td class="vo">随患者援助项目送到家的，是一套「欢迎小信到家」的陪伴套装。老人记住的不是一个设备，而是一个每天陪着他的伙伴。</td>
+      <td>DAY 1 · 欢迎小信到家<span class="src">VI 应用图：到家套装 / 周边</span></td></tr>
+
+    <tr class="sec"><td colspan="5">价值 · 慢病药在院外的标准陪伴入口</td></tr>
+    <tr><td class="t">1:55–2:07</td><td class="pg">P6 价值</td>
+      <td>PPT 第 6 页：三张价值卡依次出现 → 三段箭头路径从左到右点亮 → 三个关键词放大。</td>
+      <td class="vo">对老人，不用学也不用填；对子女，异地也看得见；对信达，院外依从性第一次可以追踪。我们从信必乐和玛仕度肽出发，接入患者援助项目，走向信达全线慢病药。只做生活方式干预，不做临床诊断。</td>
+      <td>慢病 LTV · 信达的物理图腾 · 绝对合规<span class="src">PPT P6 录屏</span></td></tr>
+
+    <tr class="sec"><td colspan="5">收尾</td></tr>
+    <tr><td class="t">2:07–2:15</td><td class="pg">P7 致谢</td>
+      <td>回到清晨客厅，相框里是奶奶的笑脸，小信挥手。蓝色渐变落版。</td>
+      <td class="vo">不替医生看病，不替子女监控。小信 CareLink，让慢病管理，有人情味一点。</td>
+      <td><b>让慢病管理，有人情味一点。</b><br>小信 CareLink<span class="src">PPT P7 / 小信 3D 主形象</span></td></tr>
+  </table></div>
+
+  <h2><em>60 秒剪辑版</em>从主版本里取镜头</h2>
+  <div class="tw"><table>
+    <tr><th>时间</th><th>取自主版本</th><th>旁白（精简）</th></tr>
+    <tr><td class="t">0:00–0:05</td><td>开场 · 相框 + 小信</td><td class="vo">这是小信，住在慢病患者家里的相框里。</td></tr>
+    <tr><td class="t">0:05–0:15</td><td>数据 6.8% / 20–50%</td><td class="vo">血脂达标率仅 6.8%，GLP-1 类药物一年停药率 20% 到 50%。药效再好，也怕院外断药。</td></tr>
+    <tr><td class="t">0:15–0:20</td><td>三端动画</td><td class="vo">小信 CareLink，家庭慢病管理中枢：相框、云端、手机三端协同。</td></tr>
+    <tr><td class="t">0:20–0:35</td><td>早 8 点用药闭环</td><td class="vo">相框亮灯，奶奶按绿键听叮嘱，按红键说「吃过了，有点头晕」，女儿手机马上收到回执和提醒。</td></tr>
+    <tr><td class="t">0:35–0:45</td><td>白话建议 + 护栏</td><td class="vo">建议只讲白话、给能照做的办法；问到减药，护栏直接挡回，交给医生。</td></tr>
+    <tr><td class="t">0:45–0:53</td><td>到家套装 + 价值关键词</td><td class="vo">随患者援助项目送到家，成为信达慢病药在院外的标准陪伴入口。</td></tr>
+    <tr><td class="t">0:53–1:00</td><td>收尾落版</td><td class="vo">不替医生看病，不替子女监控。小信 CareLink，让慢病管理，有人情味一点。</td></tr>
+  </table></div>
+
+  <div class="box">
+    <h3>拍摄 / 录屏要点</h3>
+    <ul>
+      <li><b>原型录屏</b>：用桌面原型 HTML，浏览器全屏 1920×1080；顶部剧本按钮直接选 ① ⑩ ⑬ ⑮，先点「重置」再录，速度保持 1×。</li>
+      <li><b>小信说话的镜头</b>保留「AI 数字人 · 合成内容」角标，和产品合规口径一致。</li>
+      <li><b>PPT 动画镜头</b>（P3 三端连线、P6 箭头路径）直接录 HTML 版，光点流动是现成的动效。</li>
+      <li><b>配乐</b>：前 40 秒偏克制（问题段），进入方案段转温暖明亮，收尾留 2 秒静音再落字。</li>
+      <li><b>语速</b>：主版本旁白约 560 字，按每秒 4 字左右读，正好 2 分 15 秒。</li>
+    </ul>
+  </div>
+  <div class="box warn">
+    <h3>需要确认的两处</h3>
+    <ul>
+      <li>6.8% 和 20–50% 两个数字来自团队口稿，出处待核实；视频里建议加角标写明出处。</li>
+      <li>口稿中「拉平 6.8% 的达标鸿沟、降低 50% 的停药率」属于效果承诺，目前只有原型、没有实测，脚本里改为「院外依从性第一次可以追踪」。</li>
+    </ul>
+  </div>
+</div>
+</body>
+</html>

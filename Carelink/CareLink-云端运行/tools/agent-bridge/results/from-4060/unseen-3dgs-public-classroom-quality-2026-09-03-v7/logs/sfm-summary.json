@@ -1,0 +1,45 @@
+{
+  "status": "PASS",
+  "sceneRevisionId": "pexels-classroom-5735358-r001",
+  "deterministicExtraction": {
+    "frames": 105,
+    "uniqueFrames": 105,
+    "durationSeconds": 17.884533,
+    "maxWidth": 1280,
+    "jpegQscale": 2,
+    "fullTimeCoverage": true
+  },
+  "model": {
+    "count": 1,
+    "registered": 105,
+    "total": 105,
+    "points": 8187,
+    "observations": 156692,
+    "meanTrackLength": 19.139123,
+    "meanReprojectionErrorPx": 1.035019
+  },
+  "camera": {
+    "count": 1,
+    "model": "SIMPLE_RADIAL",
+    "width": 1280,
+    "height": 720,
+    "focal": 1070.8608670887181,
+    "cx": 640.0,
+    "cy": 360.0,
+    "k": -0.033994727762602386,
+    "focalRatio": 0.8366100524130611,
+    "principalOffsetXRatio": 0.0,
+    "principalOffsetYRatio": 0.0
+  },
+  "trajectory": {
+    "zeroAdjacentSteps": 0,
+    "medianAdjacentStep": 0.11309945553111352,
+    "maxAdjacentStep": 0.17086797414165517,
+    "maxToMedianRatio": 1.5107762750869265
+  },
+  "requiredAnchorsPresent": true,
+  "nerfstudioFrames": 105,
+  "trainFrames": 95,
+  "heldOutFrames": 10
+}
+

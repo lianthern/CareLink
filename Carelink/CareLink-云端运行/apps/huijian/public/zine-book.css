@@ -1,0 +1,227 @@
+.zine-book {
+  --zine-paper: #fff9ea;
+  --zine-ink: #26333d;
+  --zine-muted: #65717a;
+  --zine-accent: #b64942;
+  inline-size: min(100%, 34rem);
+  margin-inline: auto;
+  touch-action: pan-y;
+}
+
+.zine-book[data-style="black-fragments"] {
+  --zine-paper: #0c0c0c;
+  --zine-ink: #fff9ea;
+  --zine-muted: #aab5bc;
+  --zine-accent: #f2c55c;
+}
+
+.zine-book[data-style="quiet-white"] {
+  --zine-paper: #fdfdfb;
+  --zine-ink: #26333d;
+  --zine-muted: #758089;
+  --zine-accent: #8bc4de;
+}
+
+.zine-page {
+  position: relative;
+  display: grid;
+  box-sizing: border-box;
+  aspect-ratio: var(--zine-page-aspect, 3 / 4);
+  container-type: inline-size;
+  overflow: hidden;
+  color: var(--zine-ink);
+  background: var(--zine-paper);
+  box-shadow: 0 1.2rem 3rem rgb(0 0 0 / 24%);
+}
+
+.zine-page[hidden] {
+  display: none;
+}
+
+.zine-photo {
+  min-inline-size: 0;
+  min-block-size: 0;
+  margin: 0;
+}
+
+.zine-photo img {
+  display: block;
+  inline-size: 100%;
+  block-size: 100%;
+  object-fit: cover;
+}
+
+.zine-photo__caption {
+  padding-block-start: .7rem;
+  color: var(--zine-muted);
+  font-size: clamp(.72rem, 2.4vw, .9rem);
+  line-height: 1.65;
+  overflow-wrap: anywhere;
+}
+
+.zine-page--cover .zine-photo--cover {
+  grid-area: 1 / 1;
+}
+
+.zine-page--cover::after {
+  content: "";
+  z-index: 1;
+  grid-area: 1 / 1;
+  background: rgb(16 24 32 / 42%);
+}
+
+.zine-cover-copy {
+  z-index: 2;
+  grid-area: 1 / 1;
+  align-self: end;
+  padding: 8%;
+  color: #fff9ea;
+}
+
+.zine-cover-title {
+  margin: 0;
+  font: 700 clamp(3.6rem, 18vw, 6rem) / .95 KaiTi, STKaiti, serif;
+}
+
+.zine-cover-meta {
+  margin: 1.2rem 0 0;
+  font-size: .8rem;
+  letter-spacing: .12em;
+}
+
+.zine-gallery {
+  display: grid;
+  box-sizing: border-box;
+  gap: clamp(.65rem, 2vw, 1rem);
+  inline-size: 100%;
+  block-size: 100%;
+  padding: 7%;
+}
+
+.zine-gallery--full-photo {
+  grid-template-columns: 1fr;
+}
+
+.zine-gallery--duo {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.zine-gallery--grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-auto-rows: minmax(0, 1fr);
+}
+
+.zine-gallery--full-photo .zine-photo,
+.zine-gallery--duo .zine-photo,
+.zine-gallery--grid .zine-photo {
+  display: grid;
+  grid-template-rows: minmax(0, 1fr) auto;
+}
+
+.zine-page--text-break,
+.zine-page--closing {
+  align-content: center;
+  padding: 11%;
+}
+
+.zine-page--text-break::before {
+  content: "";
+  inline-size: 4.5rem;
+  block-size: .25rem;
+  margin-block-end: 1rem;
+  background: var(--zine-accent);
+}
+
+.zine-text-question,
+.zine-text-source {
+  color: var(--zine-muted);
+  font-size: clamp(.72rem, 2.3vw, .9rem);
+  line-height: 1.75;
+}
+
+.zine-text-answer {
+  margin: .75rem 0;
+  white-space: pre-wrap;
+  font: 500 clamp(.7rem, 4cqw, 2rem) / 1.58 "PingFang SC", "Microsoft YaHei", sans-serif;
+  overflow-wrap: anywhere;
+}
+
+.zine-closing-copy {
+  margin: 0;
+  text-align: center;
+  font: 500 clamp(1.35rem, 5vw, 2rem) / 1.8 KaiTi, STKaiti, serif;
+}
+
+.zine-closing-seal {
+  display: grid;
+  inline-size: 4.5rem;
+  aspect-ratio: 1;
+  margin: 3rem auto 0;
+  place-items: center;
+  color: var(--zine-accent);
+  border: .2rem solid currentcolor;
+  font: 700 2.4rem / 1 KaiTi, STKaiti, serif;
+}
+
+/* Shorter formats receive shorter narrative chunks from the same page model as PNG/print. */
+.zine-page[data-page-aspect="square"] .zine-text-answer {
+  font-size: clamp(.8rem, 4.2cqw, 1.8rem);
+}
+.zine-page[data-page-aspect="landscape"] .zine-text-answer {
+  margin-block: .4rem;
+  font-size: clamp(.7rem, 3.5cqw, 1.6rem);
+  line-height: 1.5;
+}
+.zine-page[data-page-aspect="landscape"].zine-page--text-break,
+.zine-page[data-page-aspect="landscape"].zine-page--closing {
+  padding: 6% 8%;
+}
+.zine-page[data-page-aspect="landscape"].zine-page--text-break::before {
+  margin-block-end: .5rem;
+  block-size: .15rem;
+}
+.zine-page[data-page-aspect="landscape"] .zine-text-question,
+.zine-page[data-page-aspect="landscape"] .zine-text-source {
+  margin-block: .35rem;
+  font-size: clamp(.6rem, 2.5cqw, .8rem);
+  line-height: 1.4;
+}
+.zine-page[data-page-aspect="landscape"] .zine-cover-title {
+  font-size: var(--zine-cover-title-size, clamp(2rem, 12cqw, 5rem));
+}
+.zine-cover-title { overflow-wrap: anywhere; font-size: var(--zine-cover-title-size, clamp(3.6rem, 18vw, 6rem)); }
+@page zine-portrait { size: 120mm 160mm; margin: 0; }
+@page zine-square { size: 150mm 150mm; margin: 0; }
+@page zine-landscape { size: 180mm 135mm; margin: 0; }
+
+@media print {
+  .zine-pager {
+    display: none !important;
+  }
+
+  .zine-book {
+    inline-size: auto;
+  }
+
+  .zine-page,
+  .zine-page[hidden] {
+    display: grid;
+    break-after: page;
+    break-inside: avoid;
+    box-shadow: none;
+  }
+}
+
+@media print {
+  #app-print-output .zine-page { display: grid !important; }
+  .zine-page[data-page-aspect="portrait"] { page: zine-portrait; inline-size: 120mm; block-size: 160mm; }
+  .zine-page[data-page-aspect="square"] { page: zine-square; inline-size: 150mm; block-size: 150mm; }
+  .zine-page[data-page-aspect="landscape"] { page: zine-landscape; inline-size: 180mm; block-size: 135mm; }
+  .zine-text-answer { max-block-size: none; overflow: visible; }
+}
+
+.zine-page[data-page-aspect="square"].zine-page--text-break { padding: 8%; }
+.zine-page[data-page-aspect="square"].zine-page--text-break::before { margin-block-end: .7rem; }
+.zine-page[data-page-aspect="square"] .zine-text-answer { margin-block: .6rem; }
+.zine-page[data-page-aspect="square"] .zine-text-question,
+.zine-page[data-page-aspect="square"] .zine-text-source { margin-block: .35rem; }

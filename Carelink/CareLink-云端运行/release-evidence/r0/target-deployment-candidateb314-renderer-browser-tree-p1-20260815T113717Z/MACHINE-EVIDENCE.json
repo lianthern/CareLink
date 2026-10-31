@@ -1,0 +1,215 @@
+{
+  "schema": "unseen-target-deployment-renderer-rejection-evidence/1",
+  "kind": "TARGET_CORE_DEPLOYMENT_PASS_RENDERER_MEASUREMENT_REJECTED_NONSECRET_EVIDENCE",
+  "observedAt": "2026-08-15T11:38:57Z",
+  "sourceRepositoryHeadBeforeEvidence": "11a5820a3971bfa18c5ffd45e76eb114c2846ac0",
+  "candidate": {
+    "commit": "b3145804b4356b1e823783d3f0e9d0b0399bf0ee",
+    "tree": "6a9be92b1615605aca40ec1848bb357bd10760ec",
+    "packageName": "production-b3145804b435",
+    "manifestSha256": "568ba3e1f9852f7fba44975bbe49ede107711710b3675e8e7e83e62d15259c03",
+    "bundleSha256": "2124249c6224ebc786933f20921660e1647579c819f809bff33a2c5e1c8187cb"
+  },
+  "phaseA": {
+    "status": "PASS",
+    "rollbackBaselineCommit": "48a3841c91d0f74fa6d51c1e292a27e1d3a2aab6",
+    "rollbackBaselineTree": "b81b7216f621c9af37733102921be6d74dafac0b",
+    "sealedBackupPath": "/var/backups/unseen/private-beta/deployb314-20260815T113055Z",
+    "snapshotPath": "/var/backups/unseen/private-beta/deployb314-20260815T113055Z/snapshot",
+    "alternateRestorePath": "/var/lib/unseen/private-beta/restore-tests/deployb314-20260815T113055Z",
+    "alternateRestore": {
+      "databaseBytesEqual": true,
+      "quickCheck": "ok",
+      "migrationCount": 10,
+      "mediaFileCount": 0
+    },
+    "transport": {
+      "remotePackageFileCount": 11,
+      "manifestAndBundleHashesExact": true,
+      "standaloneVerify": "PASS",
+      "releaseClaim": "NO_GO"
+    },
+    "activeBinding": {
+      "apiUnitWorkingDirectoryExact": true,
+      "webUnitWorkingDirectoryExact": true,
+      "apiMainPidInControlGroup": true,
+      "webMainPidInControlGroup": true,
+      "apiProcessCwdExact": true,
+      "webProcessCwdExact": true,
+      "repositoryHeadExact": true,
+      "repositoryTreeExact": true,
+      "repositoryClean": true,
+      "apiNRestarts": 0,
+      "webNRestarts": 0
+    },
+    "database": {
+      "quickCheck": "ok",
+      "migrationCount": 10,
+      "accounts": 0,
+      "photos": 0,
+      "privateAiJobs": 0
+    },
+    "caddy": {
+      "configurationSha256": "c5691b38229753bcc2bbdcd8cc8b32f691433ab5924b9c3130c3436b8ea787db",
+      "mainPid": 24470,
+      "bytesChanged": false,
+      "reloaded": false,
+      "basicAuthChanged": false
+    },
+    "publicUi": {
+      "httpRedirect": 308,
+      "missingBasicStatus": 401,
+      "wrongBasicStatus": 401,
+      "authorizedStatus": 200,
+      "realWebUiBytes": 1928,
+      "titleExact": true,
+      "temporaryInviteBannerSourcePresent": true,
+      "fixtureAttributeCount": 0,
+      "sameOriginInitialDependencies": 3,
+      "dependencyFailures": 0,
+      "externalDependencies": 0,
+      "svgFaviconStatus": 200,
+      "svgFaviconMimeCorrect": true,
+      "healthStatus": 503,
+      "otpDeliveryReady": false
+    },
+    "flags": {
+      "otpDeliveryProvider": "disabled",
+      "bookEnabled": false,
+      "privateAiWorkerEnabled": false,
+      "fixtureOrFallbackEnabledByThisDeployment": false
+    },
+    "rootAtWwwMutationPerformed": false
+  },
+  "rendererTarget": {
+    "status": "REJECTED_BEFORE_ACCEPTANCE_RECEIPT_AND_RENDER",
+    "claim": "NOT_DEDICATED_RENDERER_ACCEPTED_DEFAULT_OFF",
+    "acceptedInput": {
+      "codeCommit": "2e7a2276f233b973fa17e4c05120772d17381c93",
+      "evidenceCommit": "d1acca2fdd5965db5cd611baa7377b138734119c",
+      "evidencePath": "release-evidence/renderer/dedicated-service/snapd-cache-hardlink-topology/machine-summary.json",
+      "evidenceSha256": "83638c095ac7737edc53303416cb3b0d36f9f8ea0defca27fb47ada504f13e77",
+      "focusedCases": 44
+    },
+    "measurement": {
+      "started": true,
+      "exitCode": 1,
+      "stableError": "renderer_target_browser_tree_invalid",
+      "stderrBytes": 1606,
+      "stderrSha256": "28a43868260e06cb3b2adb0dcf8a6163b023beb796155704227c3d365cb25fe4",
+      "stderrRecorded": false,
+      "receiptBytes": 0,
+      "receiptInstalled": false,
+      "archiveTopologyGatePassedBeforeFailure": true
+    },
+    "canonicalSnapArchive": {
+      "revision": 3507,
+      "version": "151.0.7922.108",
+      "owner": "root",
+      "group": "root",
+      "mode": "0600",
+      "linkCount": 2,
+      "bytes": 202833920,
+      "sha256": "cf10676bdf7a3b4d14201fd6004ec5c8c137ee7365779133cba7c1d39263fae0",
+      "snapChangesDoingBefore": 0,
+      "snapChangesDoingAfter": 0,
+      "cacheMutationAuthorized": false,
+      "cacheMutationPerformed": false,
+      "beforeAfterExact": true
+    },
+    "staticNarrowing": {
+      "executionClass": "METADATA_ONLY_NO_BROWSER_NODE_BWRAP_OR_LOADER_EXECUTION",
+      "treeEntries": 683,
+      "regularFiles": 591,
+      "directories": 65,
+      "symlinks": 27,
+      "uidMismatchCount": 0,
+      "regularFileLinkMismatchCount": 0,
+      "writableFileCount": 0,
+      "writableDirectoryCount": 0,
+      "specialFileCount": 0,
+      "unresolvedExternalSymlinkCount": 2,
+      "unresolvedSymlinks": [
+        {
+          "pathSha256": "dee8007a503c1a1e1c71825dbf95f69a1291fa9212b811e1a1d4a65b1bae8c5e",
+          "targetSha256": "79738e9a5637b0b9bddd9f476650c24bf76c21bb07e3724f1b496b5f1b7eb2df",
+          "targetClass": "ABSOLUTE",
+          "resolution": "UNRESOLVED"
+        },
+        {
+          "pathSha256": "742444591fad324f5bd10d20935f0f8f15f41d4b559275e7c85bcdfe8b03dd85",
+          "targetSha256": "731ff7aea7c4d7460cce046e077c0a41718d6fabdfd4ecb47dc3d7bf781f85f4",
+          "targetClass": "RELATIVE_PARENT",
+          "resolution": "UNRESOLVED"
+        }
+      ],
+      "finding": "TARGET_VERIFIER_REQUIRES_EVERY_SNAP_SYMLINK_TO_REALPATH_INSIDE_NUMERIC_ROOT_BUT_CANONICAL_PINNED_REVISION_CONTAINS_TWO_UNRESOLVED_SYMLINKS",
+      "targetArtifactDriftProven": false
+    },
+    "execution": {
+      "rendererServiceStarts": 0,
+      "rendererSocketStarts": 0,
+      "rendererRequests": 0,
+      "s35AdapterInvocation": "NOT_RUN",
+      "s4SyntheticRender": "NOT_RUN",
+      "determinismRenders": 0,
+      "restartCrashCancelGcMatrix": "NOT_RUN",
+      "networkFilesystemResourceMatrix": "NOT_RUN"
+    },
+    "cleanup": {
+      "status": "PASS",
+      "quarantinePath": "/var/lib/unseen/renderer-quarantine/renderer-b314-20260815T113717Z",
+      "quarantineMode": "0700_ROOT_ONLY",
+      "rendererService": "NOT_FOUND_INACTIVE",
+      "rendererSocket": "NOT_FOUND_INACTIVE",
+      "rendererProcesses": 0,
+      "rendererSocketPresent": false,
+      "appArmorProfileLoaded": false,
+      "activeSpoolPresent": false,
+      "acceptanceReceiptPresent": false,
+      "acceptancePinPresent": false,
+      "nodeRuntimePinPresent": false,
+      "cupsPort631Listeners": 0,
+      "bookEnabled": false
+    }
+  },
+  "postCleanupLiveInvariants": {
+    "activeCommit": "b3145804b4356b1e823783d3f0e9d0b0399bf0ee",
+    "activeTree": "6a9be92b1615605aca40ec1848bb357bd10760ec",
+    "activeRepositoryClean": true,
+    "apiActive": true,
+    "webActive": true,
+    "apiLoopbackPort": 4282,
+    "webLoopbackPort": 4173,
+    "databaseQuickCheck": "ok",
+    "migrationCount": 10,
+    "accounts": 0,
+    "photos": 0,
+    "privateAiJobs": 0,
+    "caddyConfigurationUnchanged": true,
+    "caddyPidUnchanged": true,
+    "publicUiAuthorizedStatus": 200,
+    "publicHealthStatus": 503,
+    "otpDeliveryReady": false,
+    "bookEnabled": false,
+    "privateAiWorkerEnabled": false
+  },
+  "releaseDecision": "NO_GO",
+  "productionReady": false,
+  "openFindings": {
+    "p0": [],
+    "p1": [
+      "renderer_target_tree_policy_rejects_two_unresolved_symlinks_in_the_exact_pinned_chromium_snap_revision"
+    ],
+    "p2": []
+  },
+  "sensitiveDataRecorded": false,
+  "nonClaims": [
+    "no dedicated renderer target acceptance",
+    "no Book enablement",
+    "no renderer request or render",
+    "no snapd cache mutation",
+    "no OTP or private AI enablement",
+    "no production release authorization"
+  ]
+}

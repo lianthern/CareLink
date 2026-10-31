@@ -1,0 +1,13 @@
+{
+  "schemaVersion": "1.0",
+  "jobId": "unseen-3dgs-360roam-base-2026-09-03-v10",
+  "state": "RECEIVED_VERIFIED",
+  "createdAt": "2026-09-03T10:35:35.0630107Z",
+  "agent": "4060 Agent",
+  "machine": "DESKTOP-NIBL3D4",
+  "message": "v10 real moving 360 panorama canary received and all six frozen inputs verified by bytes/SHA256; production off; author scene.ply forbidden; no source redistribution.",
+  "evidence": [
+    "jobs/to-4060/unseen-3dgs-360roam-base-2026-09-03-v10/TASK.json",
+    "jobs/to-4060/unseen-3dgs-360roam-base-2026-09-03-v10/ACCEPTANCE.md"
+  ]
+}

@@ -1,0 +1,47 @@
+{
+  "schemaVersion": "1.0",
+  "step": 6999,
+  "checkpoint": {
+    "bytes": 149848210,
+    "sha256": "d958b0f933e7b589749fbd3cd5548c07d4eef51098c725e75f3c60c8dc8db7c8"
+  },
+  "anchors": [
+    {
+      "frame": "frame_00000",
+      "trainIndex": 0,
+      "psnr": 24.585826873779297,
+      "ssim": 0.8767615556716919,
+      "lpips": 0.16455486416816711,
+      "cachedSourceMatchesDiskExactly": true
+    },
+    {
+      "frame": "frame_00050",
+      "trainIndex": 45,
+      "psnr": 22.740272521972656,
+      "ssim": 0.8544325828552246,
+      "lpips": 0.1973145604133606,
+      "cachedSourceMatchesDiskExactly": true
+    },
+    {
+      "frame": "frame_00099",
+      "trainIndex": 89,
+      "psnr": 23.92992401123047,
+      "ssim": 0.8225798010826111,
+      "lpips": 0.15850043296813965,
+      "cachedSourceMatchesDiskExactly": true
+    }
+  ],
+  "means": {
+    "psnr": 23.752007802327473,
+    "ssim": 0.8512579798698425,
+    "lpips": 0.17345661918322244
+  },
+  "gate": {
+    "thresholds": {
+      "psnrMin": 18.0,
+      "ssimMin": 0.7,
+      "lpipsMax": 0.4
+    },
+    "pass": true
+  }
+}

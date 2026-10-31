@@ -1,0 +1,30 @@
+[Unit]
+Description=UNSEEN private beta Core API (non-AI, loopback only)
+After=network.target
+
+[Service]
+Type=simple
+User=unseen
+Group=unseen
+WorkingDirectory=/opt/unseen/releases/REQUIRED_IMMUTABLE_RELEASE_COMMIT
+EnvironmentFile=/etc/unseen/private-beta-api.env
+ExecStart=/usr/local/bin/node infra/integration/book-lab/deployment-entrypoint.mjs
+Restart=on-failure
+RestartSec=5s
+TimeoutStopSec=30s
+UMask=0077
+NoNewPrivileges=true
+PrivateTmp=true
+PrivateDevices=true
+ProtectHome=true
+ProtectSystem=strict
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectControlGroups=true
+RestrictSUIDSGID=true
+IPAddressDeny=any
+IPAddressAllow=localhost
+ReadWritePaths=/var/lib/unseen/private-beta /var/backups/unseen/private-beta
+
+[Install]
+WantedBy=multi-user.target

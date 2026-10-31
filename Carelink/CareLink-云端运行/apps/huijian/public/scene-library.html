@@ -1,0 +1,12 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>场景管理 · UNSEEN</title><link rel="stylesheet" href="/scene-library.css"><script type="module" src="/scene-library.js"></script></head>
+<body><header><a href="/app-v2">UNSEEN</a><span>本机作品 · 云端收藏</span><a href="/app-v2#spaces">返回我的空间 ↗</a></header>
+<main><div class="intro"><p class="eyebrow">场景管理</p><h1>挑选想留下的现场。</h1><p>先在本机看一看，满意的版本再上传。已保存的场景可以在这里远程打开。</p></div>
+<p id="notice" role="status" aria-live="polite"></p>
+<form id="login" hidden><h2>登录你的 UNSEEN 账号</h2><label>账号<input name="username" autocomplete="username" required></label><label>密码<input name="password" type="password" autocomplete="current-password" required></label><button>登录</button></form>
+<section id="workspace" hidden><div class="bar"><h2>上传选中的版本</h2><button id="refresh" class="quiet" type="button">刷新</button></div>
+<form id="upload"><label>保存到哪个空间<select id="spaces" required></select></label><p class="hint">没有合适的空间？先到<a href="/app-v2#new">我的空间中创建</a>，再回来刷新。</p>
+<label class="file-pick">选择本机导出的场景文件夹（每次上传一个场景）<input id="folder" type="file" webkitdirectory multiple required></label>
+<div id="selection"></div><button id="submit" disabled>上传选中的场景</button><progress id="progress" max="100" value="0" hidden></progress></form>
+<div class="bar collection"><h2>已保存的版本</h2><span id="count"></span></div><div id="results"></div></section></main>
+</body></html>

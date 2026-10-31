@@ -1,0 +1,17 @@
+{
+  "schemaVersion": "1.0",
+  "jobId": "unseen-3dgs-360roam-posefix-2026-09-04-v11",
+  "state": "RUNNING",
+  "createdAt": "2026-09-04T01:19:16.2598982Z",
+  "agent": "4060 Agent",
+  "machine": "DESKTOP-NIBL3D4",
+  "message": "Phase A PASS (49 evaluable / 46 passing pairs, median 0.251px, 6465 source-derived seed points); starting the single authorized fresh 7k v11 lineage.",
+  "evidence": [
+    "wsl:data/360roam-base-v11/pose-image-gate.json",
+    "evaluablePairs:49",
+    "passingPairs:46",
+    "medianPassingInlierEpipolarPx:0.2507646712734464",
+    "seedPoints:6465",
+    "gpuAttemptsBeforeStart:0"
+  ]
+}

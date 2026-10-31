@@ -1,0 +1,115 @@
+{
+  "schema": "unseen-renderer-snap-canonical-dangling-symlinks-evidence/1",
+  "generatedAt": "2026-08-15T12:00:52Z",
+  "status": "CODE_GATES_PASS_TARGET_RETRY_REQUIRED",
+  "baseCommit": "11b869b9cfb41c5fedbaafda9533974b7873b3b9",
+  "baseTree": "625e832b43e1cfe0575a2ec974d24ea278da469a",
+  "codeCommit": "21b34bf141f5fafb48d8cc08eaa89850f6931bd3",
+  "codeTree": "ff48fe9fc1812ffa9fc59e01d4292490325daff3",
+  "targetFailureInput": {
+    "commit": "11b869b9cfb41c5fedbaafda9533974b7873b3b9",
+    "path": "release-evidence/r0/target-deployment-candidateb314-renderer-browser-tree-p1-20260815T113717Z/MACHINE-EVIDENCE.json",
+    "sha256": "abd5c42940378b2799f4af12933982492435164c70bfe0fa29d90affed38953a"
+  },
+  "fixedAuthority": {
+    "source": "OFFICIAL_SNAP_STORE_CHROMIUM_AMD64_REVISION_3507_READ_ONLY_ARCHIVE_ENUMERATION",
+    "archiveBytes": 202833920,
+    "archiveSha256": "cf10676bdf7a3b4d14201fd6004ec5c8c137ee7365779133cba7c1d39263fae0",
+    "archiveSha3384": "77155504d7c5fdfa516545da086bd3f31fa6f6283901e93885cbb39366ae55bea834c4042bebfc870a0330904df04c07",
+    "treeEntries": 683,
+    "regularFiles": 591,
+    "symlinks": 27,
+    "canonicalDanglingLinks": [
+      {
+        "relative": "usr/bin/xdg-email",
+        "target": "/usr/bin/xdg-open",
+        "pathSha256": "dee8007a503c1a1e1c71825dbf95f69a1291fa9212b811e1a1d4a65b1bae8c5e",
+        "targetSha256": "79738e9a5637b0b9bddd9f476650c24bf76c21bb07e3724f1b496b5f1b7eb2df"
+      },
+      {
+        "relative": "usr/share/groff/site-tmac",
+        "target": "../../../etc/groff",
+        "pathSha256": "742444591fad324f5bd10d20935f0f8f15f41d4b559275e7c85bcdfe8b03dd85",
+        "targetSha256": "731ff7aea7c4d7460cce046e077c0a41718d6fabdfd4ecb47dc3d7bf781f85f4"
+      }
+    ],
+    "unresolvedHashMatchesTargetEvidence": true
+  },
+  "policy": {
+    "schema": "unseen-chromium-snap-canonical-dangling-symlinks/1",
+    "sha256": "431c43131b3017428b6303e5499d3e60184c0057ed072594818fae230ce17e8e",
+    "count": 2,
+    "resolution": "EXACT_ENOENT_ONLY",
+    "parentDac": "ROOT_OWNED_NONSYMLINK_NO_GROUP_WORLD_WRITE",
+    "stability": "LSTAT_READLINK_BEFORE_AFTER_REOPEN_SAME_INODE",
+    "runtimeReachability": "ABSENT_NOT_IN_ARGV_RESOURCE_OR_LOADER_CLOSURE",
+    "measurementRecheck": true,
+    "preSpawnRecheck": true,
+    "arbitraryDanglingSymlinksAccepted": false,
+    "resolvedAllowlistedTargetAccepted": false
+  },
+  "buildBinding": {
+    "rendererImplementationSha256": "55b0ff07b1cee222ec24b79eb444460931f00aa25a3629df80c361d5ab69d446",
+    "targetVerifierSha256": "c16394e747eac0c39cfb4a0ac02e4ccefd64c4c727644a28716d0076ea9ade99",
+    "rendererProtocolSha256": "ac0720f070590e403df4809b810ab134a63a726c74b14c11bd60e7c650129cec",
+    "linuxSandboxSha256": "669309ca1b8c30c60eb46e40e4b7663dfac1dd72d5e664c2cfbb977e440f1a72",
+    "productionPackageSha256": "4fde67abcf6809045f4c6bf5acf42dc0c3d6bc3ac03a11ed15af80ba996183d4"
+  },
+  "negativeCoverage": [
+    "PATH_MUTATION",
+    "TARGET_MUTATION",
+    "MISSING_ALLOWLISTED_LINK",
+    "THIRD_DANGLING_LINK",
+    "ABSOLUTE_TARGET_RESOLVES",
+    "RELATIVE_TARGET_RESOLVES",
+    "TARGET_SYMLINK_LOOP",
+    "UNSAFE_PARENT_DAC",
+    "SOURCE_INODE_REPLACED_DURING_CHECK",
+    "TREE_MANIFEST_DRIFT",
+    "RECEIPT_COUNT_POLICY_HASH_AND_REACHABILITY_DRIFT"
+  ],
+  "machineChecks": {
+    "dedicatedRenderer": {
+      "total": 45,
+      "passed": 45
+    },
+    "apiWorkspace": {
+      "total": 129,
+      "passed": 129
+    },
+    "bookRendererIntegration": {
+      "total": 4,
+      "passed": 4
+    },
+    "deploymentLifecycleAndRendererWorker": {
+      "total": 6,
+      "passed": 6
+    },
+    "productionPackage": {
+      "total": 1,
+      "passed": 1,
+      "acceptanceNegativeCases": 32,
+      "portableBundleVerified": true,
+      "standaloneNonGitCwdVerified": true,
+      "detachedHeadVerified": true,
+      "freshCloneVerified": true
+    },
+    "contracts": "CONTRACT_GENERATION_CLEAN",
+    "format": "FORMAT_OK",
+    "secretScan": "SECRET_SCAN_CLEAN"
+  },
+  "executionBoundary": {
+    "targetRetry": "NOT_RUN",
+    "liveTargetChanged": false,
+    "snapTreeChanged": false,
+    "snapdCacheChanged": false,
+    "publicDtoChanged": false,
+    "publicRouteChanged": false,
+    "bookDefaultOff": true,
+    "productionEnabled": false
+  },
+  "openCodeP0": 0,
+  "openCodeP1": 0,
+  "remainingGate": "TARGET_RENDERER_ACCEPTANCE_RETRY_REQUIRED",
+  "releaseDecision": "NO_GO"
+}

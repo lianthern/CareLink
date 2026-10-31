@@ -1,0 +1,18 @@
+{
+  "schemaVersion": "unseen.locator.predictions.v1",
+  "releaseId": "locator-synthetic-tooling-v0",
+  "predictions": [
+    { "sampleId": "syn-space-i1-id", "classification": "ambiguous" },
+    { "sampleId": "syn-space-i1-ood", "classification": "ood" },
+    { "sampleId": "syn-space-i2-id", "classification": "high", "predictedSameScene": true, "yawDeg": 62 },
+    { "sampleId": "syn-space-i2-ood", "classification": "ood" },
+    { "sampleId": "syn-space-i3-id", "classification": "high", "predictedSameScene": true, "yawDeg": 112 },
+    { "sampleId": "syn-space-i3-ood", "classification": "abstained" },
+    { "sampleId": "syn-space-o1-id", "classification": "ambiguous" },
+    { "sampleId": "syn-space-o1-ood", "classification": "ood" },
+    { "sampleId": "syn-space-o2-id", "classification": "high", "predictedSameScene": true, "yawDeg": -128 },
+    { "sampleId": "syn-space-o2-ood", "classification": "ood" },
+    { "sampleId": "syn-space-o3-id", "classification": "high", "predictedSameScene": true, "yawDeg": -78 },
+    { "sampleId": "syn-space-o3-ood", "classification": "abstained" }
+  ]
+}

@@ -1,0 +1,259 @@
+{
+  "schema": "unseen-viewer-spatial-context/1",
+  "jobId": "unseen-3dgs-photo-return-goal-2026-09-04-v14",
+  "purpose": "evidence-only spatial context demonstration requested after direct Max visual rejection",
+  "status": "RUNNING / MAC_TECHNICAL_ACCEPTED_5_OF_5 / MAX_VISUAL_REJECTED_CONTEXT_EVIDENCE_REQUESTED",
+  "request": {
+    "issue": 15,
+    "latestContractComment": "https://github.com/maxi-max-dev/max-agent-bridge/issues/15#issuecomment-5537182020",
+    "singleRepresentativeRun": "final-01"
+  },
+  "sourceBindings": {
+    "sceneRevisionId": "360roam-base-posefix-v14-fixed-photo-r001",
+    "sceneAsset": "assets/v11/360roam-base-v11.scene.sog",
+    "sceneAssetSizeBytes": 14148061,
+    "sceneAssetSha256": "00c9e28b4285b7b05c870f91220ae01e348c141c36ed0dce5d6bc9b603f71680",
+    "manifest": "360roam-base-v14-fixed-photo.scene.json",
+    "manifestSha256": "0aebf762799689bc0049e693c77d4856c2ed629f09ba52113066800f9c4e8993",
+    "viewerPoseChain": "VIEWER-POSE-CHAIN.json",
+    "viewerPoseChainSha256": "eb551574a5501b70c4108d8359b99b5c19fb94f4a6a825befe361652e1e0611d"
+  },
+  "estimatedAnchor": {
+    "id": "fixed-photo-final-01",
+    "source": "accepted final-01 estimated anchor in frozen v14 manifest",
+    "position": [
+      -0.467295866,
+      -0.017147555,
+      0.512612978
+    ],
+    "quaternion": [
+      -0.006512024,
+      0.975060129,
+      0.002419723,
+      0.221832108
+    ],
+    "verticalFovDegrees": 100
+  },
+  "startPose": {
+    "manifestFreeWalkStartPose": {
+      "position": [
+        0.01412527,
+        0.003481727,
+        0.00517449
+      ],
+      "quaternion": [
+        0,
+        0,
+        0,
+        1
+      ],
+      "fov": 70
+    },
+    "evidenceWideContextPose": {
+      "position": [
+        0.014125269837677479,
+        0.0034817270934581757,
+        0.0051744901575148106
+      ],
+      "quaternion": [
+        0,
+        0.23768591688370333,
+        0,
+        0.9713420638040716
+      ],
+      "euler": [
+        0,
+        27.50000289711089,
+        0
+      ],
+      "fov": 100,
+      "navigationMode": "walk"
+    },
+    "note": "The actual evidence start is the same free-walk position with a small horizontal look rotation and Viewer default 100 degree FOV so the original room is recognizable."
+  },
+  "events": [
+    {
+      "event": "original_room_wide_start",
+      "timestampSeconds": 0.0,
+      "label": "原空间 / free walk"
+    },
+    {
+      "event": "return_action_callout",
+      "timestampSeconds": 2.5,
+      "control": "Return to source frame"
+    },
+    {
+      "event": "return_action_triggered",
+      "timestampSeconds": 3.035,
+      "targetId": "fixed-photo-final-01"
+    },
+    {
+      "event": "estimated_pose_arrival",
+      "timestampSeconds": 3.94,
+      "estimatedPose": true
+    },
+    {
+      "event": "context_reveal_start",
+      "timestampSeconds": 6.42,
+      "estimatedPose": false,
+      "label": "context reveal / 非估计位姿"
+    },
+    {
+      "event": "context_reveal_room_visible",
+      "timestampSeconds": 8.06,
+      "estimatedPose": false
+    },
+    {
+      "event": "evidence_end",
+      "timestampSeconds": 11.041667,
+      "estimatedPose": false
+    }
+  ],
+  "arrival": {
+    "pose": {
+      "position": [
+        -0.4672958552837372,
+        -0.017147554084658623,
+        0.5126129984855652
+      ],
+      "quaternion": [
+        -0.006512023978270902,
+        0.9750601281604239,
+        0.0024197230104017497,
+        0.22183210983993537
+      ],
+      "euler": [
+        179.8837270292057,
+        25.63463362435878,
+        -179.2611551986077
+      ],
+      "fov": 100,
+      "navigationMode": "photo-anchor"
+    },
+    "targetId": "fixed-photo-final-01",
+    "positionMaxAbsError": 2.0485565133121497e-08,
+    "quaternionMaxAbsErrorSignInvariant": 1.8399353707287958e-09,
+    "fovAbsErrorDegrees": 0,
+    "queryInset": {
+      "kind": "authorized derived display inset",
+      "standaloneIncludedInPackage": false,
+      "sha256": "7684afeb26cf73eabf7ac5b547a8039c52f7cf8640988cfdc640ff699bb8a680",
+      "sizeBytes": 4723
+    }
+  },
+  "postArrivalContextReveal": {
+    "label": "context reveal / 非估计位姿",
+    "movement": "small horizontal orbit, then keyboard backward movement",
+    "viewerInputs": [
+      "canvas pointer drag +120 px",
+      "S key held about 1.05 seconds"
+    ],
+    "startsFromEstimatedAnchor": true,
+    "presentedAsEstimatedPose": false,
+    "resultPose": {
+      "position": [
+        0.14035828411579132,
+        0.0034817270934581757,
+        -0.24230867624282837
+      ],
+      "quaternion": [
+        0,
+        0.9431315369176922,
+        0,
+        0.33241977087903735
+      ],
+      "euler": [
+        180,
+        38.83142341517329,
+        180
+      ],
+      "fov": 100,
+      "navigationMode": "walk"
+    },
+    "visibleRoomRelations": [
+      "ceiling",
+      "columns",
+      "poster wall",
+      "tables and chairs",
+      "walkway"
+    ]
+  },
+  "media": {
+    "video": {
+      "path": "fixed-photo-spatial-context.mp4",
+      "sizeBytes": 785942,
+      "sha256": "b8941a08293f4b8cc6c0a500851be11d26400a92acaf45bd4e1e2a6fa0cfca74",
+      "widthPixels": 1280,
+      "heightPixels": 720,
+      "frameRate": "24/1",
+      "durationSeconds": 11.041667,
+      "codec": "h264",
+      "continuous": true
+    },
+    "contactSheet": {
+      "path": "fixed-photo-spatial-context-contact-sheet.jpg",
+      "sizeBytes": 219160,
+      "sha256": "f58d9735dfed2ae63ddb92cabc5e7b8b9662fc443e668670dbe37169f9240d91",
+      "sourceVideoSha256": "b8941a08293f4b8cc6c0a500851be11d26400a92acaf45bd4e1e2a6fa0cfca74",
+      "frameCount": 7,
+      "frames": [
+        {
+          "frame": 1,
+          "timestampSeconds": 0.65,
+          "label": "01 原空间 / free walk"
+        },
+        {
+          "frame": 2,
+          "timestampSeconds": 2.6,
+          "label": "02 Return action"
+        },
+        {
+          "frame": 3,
+          "timestampSeconds": 3.35,
+          "label": "03 transition → final-01"
+        },
+        {
+          "frame": 4,
+          "timestampSeconds": 4.35,
+          "label": "04 估计位姿 + query inset"
+        },
+        {
+          "frame": 5,
+          "timestampSeconds": 6.55,
+          "label": "05 context reveal / 非估计位姿"
+        },
+        {
+          "frame": 6,
+          "timestampSeconds": 8.35,
+          "label": "06 后退后：房间关系显现"
+        },
+        {
+          "frame": 7,
+          "timestampSeconds": 10.55,
+          "label": "07 同室：天花 / 立柱 / 桌椅 / 海报"
+        }
+      ]
+    }
+  },
+  "attestations": {
+    "loopbackOnly": true,
+    "viewerUrlOrigin": "http://127.0.0.1:8126",
+    "queryGroundTruthRead": false,
+    "queryGroundTruthUsed": false,
+    "localizationInferenceRunsAdded": 0,
+    "viewerMechanicsGateRunsAdded": 0,
+    "gpuTrainingRunsAdded": 0,
+    "fiveViewerRunsRepeated": false,
+    "manifestModified": false,
+    "estimatedAnchorModified": false,
+    "v11SceneModified": false,
+    "rawBrowserCaptureIncluded": false,
+    "acceptanceClaimed": false
+  },
+  "knownLimitations": [
+    "The frozen v11 7k-preview SOG remains blurry; this supplement demonstrates spatial context and does not claim a reconstruction-quality improvement.",
+    "The exact final-01 arrival is a wall close-up; room context is exposed only after the video changes to the explicitly non-estimated context-reveal stage."
+  ],
+  "browserErrors": [],
+  "generatedAt": "2026-09-04T07:47:28.130502+00:00"
+}

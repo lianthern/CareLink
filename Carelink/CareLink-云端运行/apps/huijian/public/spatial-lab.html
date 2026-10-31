@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="color-scheme" content="dark">
+  <title>回见 · 和 AI 聊照片</title>
+  <meta name="description" content="AI 看见清晰原图，从真实细节开始和你聊；说到哪里，照片就在哪里变清晰。">
+  <link rel="manifest" href="/manifest.json">
+  <link rel="icon" href="/icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/spatial-lab.css">
+</head>
+<body>
+  <main class="lab-shell">
+    <header class="lab-header">
+      <a class="brand" href="/" aria-label="回到回见">回见</a>
+      <nav class="lab-nav" aria-label="实验入口">
+        <a href="/world">WORLD LAB ↗</a>
+        <div class="lab-id"><span>回见主体验</span><i></i><span>PHOTO DIALOGUE</span></div>
+      </nav>
+    </header>
+
+    <section class="experience" aria-labelledby="lab-title">
+      <div class="stage-copy">
+        <p class="eyebrow">AI 已读取原图 · 说到哪里，哪里变清晰</p>
+        <h1 id="lab-title">它看见整张照片。<br><span>你只需要讲你记得的。</span></h1>
+      </div>
+
+      <section class="viewer" id="viewer" aria-label="持续流动的照片粒子场">
+        <div class="field-aura" aria-hidden="true"></div>
+        <button class="orbit-control" id="flip-photo" type="button" aria-label="把照片转到背面">
+          <span aria-hidden="true">↻</span>
+          <b id="orbit-label">转到背面</b>
+          <output id="orbit-angle">0°</output>
+        </button>
+        <div class="photo-portal" id="photo-frame">
+          <canvas id="spatial-canvas" aria-label="照片生成的动态粒子场"></canvas>
+          <img id="fallback-image" src="/photos/photo1_cheers.jpg" alt="两个人在夕阳中碰杯" hidden>
+          <div class="portal-vignette" aria-hidden="true"></div>
+        </div>
+
+        <div class="phase-readout" aria-live="polite">
+          <span class="phase-dot" id="phase-dot"></span>
+          <div><b id="phase-title">原照片</b><small id="phase-copy">先看清照片，再开始粒子化</small></div>
+        </div>
+
+        <p class="pointer-hint" id="pointer-hint">拖动照片旋转 360° · 移动指针拨开粒子</p>
+      </section>
+
+      <aside class="lab-rail" aria-label="照片对话与参数调整">
+        <section class="dialogue-panel" aria-labelledby="dialogue-title">
+          <header class="dialogue-head">
+            <div><span>PHOTO DIALOGUE</span><b id="dialogue-title">聊聊照片里的细节</b></div>
+            <output id="dialogue-progress">0 / 3</output>
+          </header>
+
+          <div class="rebuild-meter" id="rebuild-meter" aria-label="照片对话进度">
+            <i></i><i></i><i></i>
+          </div>
+
+          <div class="dialogue-log" id="dialogue-log" aria-live="polite">
+            <article class="dialogue-message dialogue-message--ai">
+              <span>阿见</span>
+              <p>我会直接看清晰原图，再从画面里一个确实存在的细节和你聊起。</p>
+            </article>
+          </div>
+
+          <button class="start-dialogue" id="start-dialogue" type="button" disabled>正在读取原图…</button>
+          <form class="dialogue-form" id="dialogue-form" hidden>
+            <label for="dialogue-answer">说说你记得的事</label>
+            <textarea id="dialogue-answer" rows="3" maxlength="500" placeholder="比如：我记得两只酒杯碰在一起时……"></textarea>
+            <button id="send-dialogue" type="submit">说给它听 <span aria-hidden="true">↗</span></button>
+          </form>
+          <p class="dialogue-status" id="dialogue-status">AI 看的是原图；粒子只呈现对话进度。</p>
+        </section>
+
+        <details class="tuning-disclosure">
+          <summary>调整粒子参数 <span>9 项</span></summary>
+          <div class="tuning" aria-label="流场调整">
+            <div class="tuning-head">
+              <div><span>LIVE PARAMETERS</span><b>实时参数</b></div>
+              <output id="particle-count">—</output>
+            </div>
+
+            <label class="field-control field-control--signature">
+              <span>终态照片保留 <output id="surface-opacity-value">0.18</output></span>
+              <input id="surface-opacity" type="range" min="0" max="0.6" step="0.01" value="0.18">
+            </label>
+            <label class="field-control field-control--signature">
+              <span>边缘离散 <output id="scatter-value">0.28</output></span>
+              <input id="scatter" type="range" min="0" max="0.8" step="0.01" value="0.28">
+            </label>
+            <label class="field-control">
+              <span>粒子密度 <output id="density-value">0.64</output></span>
+              <input id="density" type="range" min="0.24" max="1" step="0.01" value="0.64">
+            </label>
+            <label class="field-control">
+              <span>流动速度 <output id="flow-speed-value">0.24</output></span>
+              <input id="flow-speed" type="range" min="0.06" max="0.62" step="0.01" value="0.24">
+            </label>
+            <label class="field-control">
+              <span>呼吸幅度 <output id="flow-amplitude-value">0.16</output></span>
+              <input id="flow-amplitude" type="range" min="0.02" max="0.48" step="0.01" value="0.16">
+            </label>
+            <label class="field-control">
+              <span>结构保持 <output id="attraction-value">0.052</output></span>
+              <input id="attraction" type="range" min="0.018" max="0.085" step="0.001" value="0.052">
+            </label>
+            <label class="field-control">
+              <span>微粒大小 <output id="particle-size-value">1.15</output></span>
+              <input id="particle-size" type="range" min="0.65" max="2" step="0.05" value="1.15">
+            </label>
+            <label class="field-control">
+              <span>空间位移 <output id="depth-strength-value">0.26</output></span>
+              <input id="depth-strength" type="range" min="0" max="0.62" step="0.01" value="0.26">
+            </label>
+            <label class="field-control">
+              <span>声音力度 <output id="audio-gain-value">1.40</output></span>
+              <input id="audio-gain" type="range" min="0.4" max="3" step="0.1" value="1.4">
+            </label>
+
+            <p class="tuning-note">照片只进入一层可辨认的粒子雾；这些参数不会改变 AI 读取的清晰原图。</p>
+          </div>
+        </details>
+      </aside>
+    </section>
+
+    <section class="control-dock" aria-label="照片粒子场控制">
+      <button class="primary-action" id="replay" type="button">
+        <span aria-hidden="true">↻</span> 重新粒子化
+      </button>
+      <button class="audio-action" id="audio-toggle" type="button" aria-pressed="false">
+        <span class="audio-glyph" aria-hidden="true"><i></i><i></i><i></i></span>
+        <span id="audio-label">声音反应</span>
+      </button>
+      <button class="compare-action" id="compare" type="button" aria-pressed="false">按住看原图</button>
+      <label class="upload-action">
+        换一张照片
+        <input id="upload" type="file" accept="image/jpeg,image/png,image/webp">
+      </label>
+    </section>
+
+    <footer class="method-note">
+      <span id="method-status">AI 读取清晰原图；照片只在本次对话中使用，声音只在本机分析。</span>
+      <span>AI 读取原图 → 引导细节 → 局部显影 → 全图展开</span>
+    </footer>
+
+    <canvas id="depth-map" width="240" height="160" hidden></canvas>
+  </main>
+
+  <script type="module" src="/spatial-lab.js"></script>
+</body>
+</html>

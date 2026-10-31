@@ -1,0 +1,49 @@
+<view class="page-shell vision-page" style="padding-top:{{navBarTop}}px">
+  <view class="native-nav vision-nav" style="height:{{navBarHeight}}px">
+    <view class="nav-back" bindtap="onBack" aria-role="button" aria-label="返回">‹</view>
+    <text class="nav-title">理想成品</text>
+    <view class="nav-spacer"></view>
+  </view>
+
+  <view class="vision-cover">
+    <image src="/assets/panos/s4-n1.jpg" mode="aspectFill" />
+    <view class="vision-cover-shade"></view>
+    <text class="vision-badge">IDEAL PRODUCT DEMO</text>
+    <view class="vision-cover-copy"><text>2026.10.06 · Brisbane</text><text class="vision-cover-title">我们的婚礼</text><text>由 12 位朋友一起补全</text></view>
+  </view>
+
+  <view class="vision-tabs">
+    <view class="vision-tab {{activeTab === item.id ? 'vision-tab--active' : ''}}" wx:for="{{tabs}}" wx:key="id" data-tab="{{item.id}}" bindtap="onTab">{{item.label}}</view>
+  </view>
+
+  <view class="vision-panel" wx:if="{{activeTab === 'overview'}}">
+    <view class="vision-head"><view><text class="vision-kicker">SHARED MEMORY</text><text class="vision-heading">一个可以共同补全的地方。</text></view><text class="vision-status">演示数据</text></view>
+    <view class="vision-stats"><view><text>12</text><text>位朋友</text></view><view><text>86</text><text>张照片</text></view><view><text>3</text><text>个全景</text></view></view>
+    <view class="vision-live"><text class="vision-avatar">明</text><text class="vision-avatar vision-avatar--pink">红</text><text class="vision-avatar vision-avatar--gold">伟</text><view><text>刚刚又补进 6 张照片</text><text>这个空间仍在长大</text></view></view>
+    <view class="memory-list"><view class="memory-card"><image src="/assets/demo/photo-1.jpg" mode="aspectFill" /><view><text>17:42 · 入场</text><text>从三个人的镜头重新看见</text></view></view><view class="memory-card"><image src="/assets/demo/photo-4.jpg" mode="aspectFill" /><view><text>18:21 · 举杯</text><text>右后方的视角等待补全</text></view></view></view>
+    <view class="vision-next" data-tab="timeline" bindtap="onTab"><view><text>沿时间线重新走一遍</text><text>从抵达到最后一张合影</text></view><text>→</text></view>
+  </view>
+
+  <view class="vision-panel" wx:if="{{activeTab === 'timeline'}}">
+    <view class="vision-head"><view><text class="vision-kicker">TIMELINE</text><text class="vision-heading">这一天，按时间重新发生。</text></view><text class="vision-status">86 张照片</text></view>
+    <view class="timeline-grid"><view class="timeline-card" wx:for="{{timeline}}" wx:key="time"><image src="{{item.image}}" mode="aspectFill" /><view><text>{{item.time}}</text><text>{{item.title}}</text></view></view></view>
+  </view>
+
+  <view class="vision-panel" wx:if="{{activeTab === 'pano'}}">
+    <view class="vision-head"><view><text class="vision-kicker">PANORAMA</text><text class="vision-heading">横向拖动，回到宴会厅中央。</text></view><text class="vision-status">2:1 全景</text></view>
+    <scroll-view class="pano-scroll" scroll-x enhanced scroll-left="{{panoScrollLeft}}" scroll-with-animation><image src="/assets/panos/s4-n1.jpg" mode="heightFix" /></scroll-view>
+    <text class="pano-label">{{panoDirection}}</text>
+    <view class="direction-row"><button class="{{panoScrollLeft === index * 420 ? 'active' : ''}}" wx:for="{{['正前','右侧','后方','左侧']}}" wx:key="*this" data-index="{{index}}" bindtap="onDirection">{{item}}</button></view>
+    <view class="vision-note"><text>理想交互</text><text>平面 2D 全景始终可见；支持 WebGL 时再由用户主动进入沉浸模式，失败也会自动回到这里。</text></view>
+  </view>
+
+  <view class="vision-panel" wx:if="{{activeTab === 'pov'}}">
+    <view class="vision-head"><view><text class="vision-kicker">POINT OF VIEW</text><text class="vision-heading">回到 TA 当时朝着的方向。</text></view><text class="vision-status">4 个视角</text></view>
+    <view class="pov-stage"><image src="{{activePov.image}}" mode="aspectFill" /><view class="pov-shade"></view><view class="pov-radar"><view></view><view></view><view></view><view></view><text>你</text></view><text class="pov-label">{{activePov.label}}</text></view>
+    <view class="direction-row"><button class="{{activePovIndex === index ? 'active' : ''}}" wx:for="{{povs}}" wx:key="label" data-index="{{index}}" bindtap="onPov">{{item.name}}</button></view>
+    <view class="pov-copy"><text>{{activePov.title}}</text><text>{{activePov.copy}}</text></view>
+    <view class="vision-note"><text>能力边界</text><text>这个 Demo 表达目标体验。正式能力仍需可靠的相机位姿与图像配准，不能把粗略方向分类冒充真实拍摄位置。</text></view>
+  </view>
+
+  <view class="vision-footer"><text bindtap="onStory">看六幕产品故事</text><text>·</text><text bindtap="onBack">返回全部演示</text></view>
+</view>

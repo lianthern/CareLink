@@ -1,0 +1,128 @@
+[
+  {
+    "repository": "https://github.com/maxi-max-dev/qinqin-family-frame-demo",
+    "commit": "902d75683816a662f671bc763596d05f64569dcd",
+    "files": [
+      {
+        "path": "demos/qinqin-family-frame/.gitignore",
+        "sha256": "d0eabb06929dfa1c1b1e1aaca9c696480108e50033f48d9420b800162150e9bb"
+      },
+      {
+        "path": "demos/qinqin-family-frame/.nojekyll",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "path": "demos/qinqin-family-frame/README.md",
+        "sha256": "19824881f315f96729b38bd35c5dc9d5134d94c6bb391a399a374ee408c2e7d7"
+      },
+      {
+        "path": "demos/qinqin-family-frame/app.js",
+        "sha256": "05ec3b2b9e21db6a7687d19a9e00c9451cb2019240a3ebdf309b3ad6471eee6a"
+      },
+      {
+        "path": "demos/qinqin-family-frame/assets/avatar-daughter.jpg",
+        "sha256": "93e86477e1154ee46d8cbff73fb8429d9f5df1b4301ddb85c09c7e265f3ff021"
+      },
+      {
+        "path": "demos/qinqin-family-frame/assets/avatar-granddaughter.jpg",
+        "sha256": "f3d9a3ff12cd3cab7bfc641abf9564c98646de785943f48c9a19254a8edce4fb"
+      },
+      {
+        "path": "demos/qinqin-family-frame/assets/avatar-grandson.jpg",
+        "sha256": "ef3fe0ffc2adcd4dd575e07117db3bc638827bdddf51f87a4d97fbed67326f2f"
+      },
+      {
+        "path": "demos/qinqin-family-frame/assets/child-garden.jpg",
+        "sha256": "3acc3e4a5b15b3b6afabbebdded357213cb5e2a1a3cf464b2012b7b08ece0fcc"
+      },
+      {
+        "path": "demos/qinqin-family-frame/assets/family-living.jpg",
+        "sha256": "2422eb22b87f4aa73174ebdb383c567b02640dfffb27e39e0175f0380cc1eba3"
+      },
+      {
+        "path": "demos/qinqin-family-frame/assets/family-table.jpg",
+        "sha256": "fda91e2825ed6662728544b2699428e8c59bb9fe76414dbefc3fbc0ad0864956"
+      },
+      {
+        "path": "demos/qinqin-family-frame/assets/favicon.svg",
+        "sha256": "916b57c4073d1b952cd70abbebf35a1011d359d29d49869fd9d009a992bd6427"
+      },
+      {
+        "path": "demos/qinqin-family-frame/assets/flowers.jpg",
+        "sha256": "db8b78d9fca91edc868cb70c7b81c14569798e8adad469ff71c3d9e31e72d03e"
+      },
+      {
+        "path": "demos/qinqin-family-frame/index.html",
+        "sha256": "696f52d91ac35fc0d2c02dce5bd48ffe2074c0003501bece572e4cf6a996cb8f"
+      },
+      {
+        "path": "demos/qinqin-family-frame/styles.css",
+        "sha256": "1f5c8c98e7b7abe0f1a5112d65f70c3f65c5eea0af5ea713f76d609b19d4361f"
+      }
+    ]
+  },
+  {
+    "repository": "https://github.com/maxi-max-dev/max-agent-bridge",
+    "baseCommit": "d34518b3ad0f482575832856c7deb5a5acebfe42",
+    "commit": "8527eb6e6de0d067375b0cfa6925ae4a8c1dabd0",
+    "files": [
+      {
+        "path": "tools/agent-bridge/jobs/to-4060/unseen-companion-one-2026-09-21-v1/ACCEPTANCE.md",
+        "sha256": "5c89dfba214c479ca086ee7942f4f60b21f6c46cac25af36454742d2974c3261"
+      },
+      {
+        "path": "tools/agent-bridge/jobs/to-4060/unseen-companion-one-2026-09-21-v1/CONTEXT.md",
+        "sha256": "48bd6c6827657f7c74180aac47aa0ace8400ff01444ef0263c796bbdce8b1026"
+      },
+      {
+        "path": "tools/agent-bridge/jobs/to-4060/unseen-companion-one-2026-09-21-v1/MANIFEST.json",
+        "sha256": "14247aca3daa5d20939e59eade800f52ee25f80cd45d32c8956af86041b1bb43"
+      },
+      {
+        "path": "tools/agent-bridge/jobs/to-4060/unseen-companion-one-2026-09-21-v1/Prepare-Runtime.ps1",
+        "sha256": "b91381746ecc140c4d87db9f830c277e3acf9240a4cc0ab3086ea0a195a6afec"
+      },
+      {
+        "path": "tools/agent-bridge/jobs/to-4060/unseen-companion-one-2026-09-21-v1/RUNTIME-PACKAGE.json",
+        "sha256": "c40fb411efdf8946ed49bd07128c30e1e4985ebf9a900e917d3cd7085bc46e75"
+      },
+      {
+        "path": "tools/agent-bridge/jobs/to-4060/unseen-companion-one-2026-09-21-v1/START-HERE.md",
+        "sha256": "10a20df5d78a1e7041693e3d460a88a09a5bc912916669365728df826a86598b"
+      },
+      {
+        "path": "tools/agent-bridge/jobs/to-4060/unseen-companion-one-2026-09-21-v1/TASK.json",
+        "sha256": "50fecf0942f5f69665249488d418b28f6ee766217720add1f52aa7221f439f59"
+      },
+      {
+        "path": "tools/agent-bridge/jobs/to-4060/unseen-companion-one-2026-09-21-v1/inputs/DESIGN.md",
+        "sha256": "7ab10e99188dcb860809fd3948002ca3b1a06a7c7998ee57e639f96d916d8f36"
+      },
+      {
+        "path": "tools/agent-bridge/jobs/to-4060/unseen-companion-one-2026-09-21-v1/inputs/DEVICE-RESEARCH.md",
+        "sha256": "589f309cbfad141622dc047b4cdbaa725534a31f6036e5152b6024a8550f930f"
+      },
+      {
+        "path": "tools/agent-bridge/jobs/to-4060/unseen-companion-one-2026-09-21-v1/inputs/LAB-README.md",
+        "sha256": "130a58a75fdb21bf88dbb209ef33c34e813f7633ea163dbc9624d7d8cd45160d"
+      },
+      {
+        "path": "tools/agent-bridge/jobs/to-4060/unseen-companion-one-2026-09-21-v1/inputs/MAC-VALIDATION.md",
+        "sha256": "a23e079b7e12a1f35be1f63952586170dbf0c0254af525e090e0b6f330399236"
+      },
+      {
+        "path": "tools/agent-bridge/jobs/to-4060/unseen-companion-one-2026-09-21-v1/inputs/NOTICE.md",
+        "sha256": "29fd28381c54f12d8e44256dfffc7d20ef1a8123155164e8bfa84f8aa8703a1f"
+      },
+      {
+        "path": "tools/agent-bridge/receipts/from-4060/unseen-companion-one-2026-09-21-v1/20260921T100046Z-received_verified-aadc7d2f.json",
+        "sha256": "1e88a7d128f7018c59f150023255cd03389e20fbb4c5bd8c9e06ffafd4173b93"
+      },
+      {
+        "path": "tools/agent-bridge/receipts/from-4060/unseen-companion-one-2026-09-21-v1/20260921T100343Z-running-a9167419.json",
+        "sha256": "e40a9db64921ee59d0c47c65cd21b0a20239c7c1a9e3b42da0b94e4fc2d80ab3"
+      }
+    ],
+    "scope": "new UNSEEN C1 task documents and receipts only; existing bridge snapshot preserved"
+  }
+]

@@ -1,0 +1,90 @@
+{
+  "schema": "unseen-ui-v2-action-closure-checks/1",
+  "status": "PASS",
+  "capturedAt": "2026-08-14T09:38:42Z",
+  "capturedAtAest": "2026-08-14T19:38:42+10:00",
+  "baseCommit": "1e924c586489327da0ec47c238ebfef993a806b1",
+  "codeCommit": "49efe3ec6a407eb0a75f5be6d8c404d4c8acef17",
+  "origin": "http://127.0.0.1:4289",
+  "fixture": true,
+  "fixtureNotice": "本地确定性样本 / 非真实 AI / 不代表正式发布",
+  "sampleBoundary": {
+    "core": "向晚婚礼",
+    "book": "AdventureX 2026",
+    "continuousData": false
+  },
+  "actionClosure": {
+    "normalToFailure": true,
+    "failureRoute": "/labs/memories/photos/photo-01",
+    "retryAction": "MEMORY.START_QUESTION",
+    "retryDestination": "/labs/memories/memory-01",
+    "skipAction": "MEMORY.SKIP",
+    "skipSuccess": "已跳过，之后仍可回来",
+    "desktopKeyboardRetry": true,
+    "desktopKeyboardSkip": true,
+    "mobileRetry": true,
+    "mobileSkip": true,
+    "failClosed": true
+  },
+  "browser": {
+    "chromeViewports": [
+      "1440x1000",
+      "390x844",
+      "720x900 (1440 at 200% equivalent)"
+    ],
+    "screenshots": 15,
+    "consoleIssues": 0,
+    "httpFailures": 0,
+    "externalRequests": 0,
+    "externalResources": 0,
+    "horizontalOverflow": false,
+    "reducedMotion": true,
+    "keyboardFocusVisible": true
+  },
+  "tests": {
+    "bookWeb": {
+      "command": "npm test (packages/book-lab-web)",
+      "passed": 32,
+      "failed": 0
+    },
+    "web": {
+      "command": "npm test (apps/web)",
+      "passed": 43,
+      "failed": 0
+    },
+    "chrome": {
+      "command": "UNSEEN_UI_ORIGIN=http://127.0.0.1:4289 UNSEEN_UI_CHROME_DEBUG_PORT=9390 node tests/e2e/ui-productization-v2/ui-v2.verify.mjs",
+      "status": "PASS"
+    },
+    "format": "FORMAT_OK",
+    "secretScan": "SECRET_SCAN_CLEAN",
+    "diffCheck": "PASS",
+    "scopeCheck": "PASS"
+  },
+  "staging": {
+    "4282": {
+      "status": "ok",
+      "externalExposure": false,
+      "cloudWrites": 0,
+      "modified": false
+    },
+    "4283": {
+      "httpStatus": 200,
+      "modified": false
+    },
+    "4289": {
+      "status": "ok",
+      "listener": "loopback_only",
+      "externalExposure": false
+    }
+  },
+  "scope": [
+    "packages/book-lab-web/src/app.mjs",
+    "packages/book-lab-web/src/styles.css",
+    "tests/e2e/ui-productization-v2/ui-v2.verify.mjs",
+    "release-evidence/local-operable/ui-v2-action-closure/**"
+  ],
+  "claudeReview": "N/A — cancelled by Max for this cycle",
+  "remainingP0": [],
+  "remainingP1": []
+}

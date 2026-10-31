@@ -1,0 +1,18 @@
+{
+  "schemaVersion": "1.0",
+  "jobId": "unseen-3dgs-sceneworker-2026-09-02-v1",
+  "state": "UPLOADING",
+  "createdAt": "2026-09-02T03:03:30.2720346Z",
+  "agent": "4060 Agent",
+  "machine": "DESKTOP-NIBL3D4",
+  "message": "Preview canary passed its gate and the allowlisted report bundle is being committed. Worker=ready, benchmark=COMPLETE, CUDA training=PASS, COLMAP=72/72, steps=7000, OOM=0, scene.sog=4,665,339 bytes (artifact remains local and is not uploaded).",
+  "evidence": [
+    "worker:ready",
+    "benchmark:COMPLETE",
+    "cuda_training:PASS",
+    "colmap:72/72",
+    "train_steps:7000",
+    "sog_sha256:901d501dd41d254ed047322198cb283bdf2f146a92aeab94a16e1efecad5c223",
+    "return_bundle:14_files_1589040_bytes_no_forbidden_artifacts"
+  ]
+}

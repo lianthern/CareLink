@@ -1,0 +1,17 @@
+{
+  "schemaVersion": "1.0",
+  "jobId": "unseen-3dgs-sceneworker-2026-09-02-v1",
+  "state": "RUNNING",
+  "createdAt": "2026-09-02T02:30:04.2834603Z",
+  "agent": "4060 Agent",
+  "machine": "DESKTOP-NIBL3D4",
+  "message": "Preview is running on RTX 4060. Fixed three package defects in the local execution copy: missing python3.10-dev for native Python extensions; WSL doctor did not activate the project venv; PyPI gsplat 1.4.0 is a source-only CUDA wheel at runtime, so it was replaced with the official precompiled gsplat 1.4.0+pt21cu121 wheel. 7000-step CUDA training completed without OOM; CPU SOG compression is in progress after the designed no-Vulkan fallback.",
+  "evidence": [
+    "python_header:/usr/include/python3.10/Python.h",
+    "gpu:NVIDIA_GeForce_RTX_4060_Laptop_GPU",
+    "torch:2.1.2+cu121",
+    "gsplat:1.4.0+pt21cu121",
+    "train_steps:7000_complete",
+    "sog_compression:cpu_fallback_running"
+  ]
+}

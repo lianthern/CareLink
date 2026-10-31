@@ -1,0 +1,119 @@
+{
+  "tool": "@playcanvas/splat-transform@3.3.3",
+  "maxSplats": 75000,
+  "previewSHBands": 0,
+  "scenes": [
+    {
+      "id": "scene-0b7786edeeb9",
+      "path": "previews/scene-0b7786edeeb9.sog",
+      "bytes": 931918,
+      "sha256": "1ac9cfb1f28eb0360d014c773558d42f02e95036d5fb7eec51fd103d3b0b1bcd",
+      "sourceSha256": "8e0a1a9d16d1c2232f429d09b03735ee63456d3358e7263e7a5e179405d3f2fe",
+      "sourceBytes": 15833811
+    },
+    {
+      "id": "scene-1476900a956b",
+      "path": "previews/scene-1476900a956b.sog",
+      "bytes": 925750,
+      "sha256": "031c0ab5696fbc9c26232f6970efb99bd042a891e1094f94fee809b12ca8f372",
+      "sourceSha256": "0e20f5476171175062ba857a1afec023c4ff7341ec01cdd4395f0261e21b8c2a",
+      "sourceBytes": 11249395
+    },
+    {
+      "id": "scene-3aafc6cc274a",
+      "path": "previews/scene-3aafc6cc274a.sog",
+      "bytes": 952695,
+      "sha256": "02b5d7752c4564295062bed861da63a859fbfca4174b587a6f716caea648b634",
+      "sourceSha256": "f8f60e4354673c554f5fb849f1747c714d1c74eec2587300bea60de6a9f9973a",
+      "sourceBytes": 15413720
+    },
+    {
+      "id": "scene-488f3e3387e5",
+      "path": "previews/scene-488f3e3387e5.sog",
+      "bytes": 937571,
+      "sha256": "65c185fab398380b38ba8b6c27d65457ea622f0a1a2157b754f7337b7db5ca89",
+      "sourceSha256": "4194753e155a04374b3e00218b3cffb2be8da4ae8f9e131447e7991eba3d6420",
+      "sourceBytes": 14023902
+    },
+    {
+      "id": "scene-4e8b9dc3817c",
+      "path": "previews/scene-4e8b9dc3817c.sog",
+      "bytes": 946314,
+      "sha256": "afa1b6a4fa9a31d82a1fa1b2e38852c03fc57a1ea91272a8492b346adbbffc56",
+      "sourceSha256": "9fc0267a3c792b75e5a522c9351e4b6b3dd21ddca017ccf53986b066e3cb3e3c",
+      "sourceBytes": 16167469
+    },
+    {
+      "id": "scene-56f69da9c7ce",
+      "path": "previews/scene-56f69da9c7ce.sog",
+      "bytes": 935953,
+      "sha256": "6f02a036ee86f734bb4925233f91eb22991072a08c754ed7877a6939ab6c972e",
+      "sourceSha256": "429c1fbb3c45c9963c0cdcfbd3f1f88e99b7eeb7c078a8a313a7d9ae9935eda5",
+      "sourceBytes": 19429922
+    },
+    {
+      "id": "scene-6ee02c665e13",
+      "path": "previews/scene-6ee02c665e13.sog",
+      "bytes": 926822,
+      "sha256": "32db35bf1fd11951867f44303f4f919952adea04ec463ae703531e513f0d2df9",
+      "sourceSha256": "7be6d46480ca679357442a49bb184a9fe491a992dd49e53d6632b37852c25361",
+      "sourceBytes": 18269457
+    },
+    {
+      "id": "scene-8a853eed7147",
+      "path": "previews/scene-8a853eed7147.sog",
+      "bytes": 973845,
+      "sha256": "b35c3ef56dbca32bb307ae6128f2fd5dd5c2bc686c7085f2c00b9023abec7534",
+      "sourceSha256": "77a54492b02f14ff4bed76a54c3d5ac38f921d40ca8d26edd1c3cf283bd51929",
+      "sourceBytes": 8026873
+    },
+    {
+      "id": "scene-8af1691afe40",
+      "path": "previews/scene-8af1691afe40.sog",
+      "bytes": 942644,
+      "sha256": "ed8a4556bac0351650d2c462017c7581dd5b074404f69e2472c5f8fe2eebd36d",
+      "sourceSha256": "f7d1668794215e10c70693a4a1e22a8cd30185a6168b5fea2667a2456b3c9b9e",
+      "sourceBytes": 12605951
+    },
+    {
+      "id": "scene-aaff992ddb8c",
+      "path": "previews/scene-aaff992ddb8c.sog",
+      "bytes": 955965,
+      "sha256": "3b0144caea91f5468de9a5684ceadbdf708dce5d04676873160aa09990a1b332",
+      "sourceSha256": "b240dc6c9b7df5bdddcc7f4712edd3121390ef8c4a0a6c9bcfbfa952a97a8474",
+      "sourceBytes": 8845230
+    },
+    {
+      "id": "scene-b328a0367ded",
+      "path": "previews/scene-b328a0367ded.sog",
+      "bytes": 922907,
+      "sha256": "05c9805f8b8a5f7b3ed67f1cea24442a233985217439f86da5e641fdced659cf",
+      "sourceSha256": "a80081b173b8e36e6e13021e9543d804e06eb465370fe269fc4cd43abdf93300",
+      "sourceBytes": 10397568
+    },
+    {
+      "id": "scene-c96084e2a386",
+      "path": "previews/scene-c96084e2a386.sog",
+      "bytes": 934528,
+      "sha256": "bdd287271017e0f91cab14665666b83052a033e592b7ec74626209e66e2ba2a5",
+      "sourceSha256": "de722fec3fce15f2352119e19491d7a6caac528c6e9a57b4fcd7cbafa6e79d20",
+      "sourceBytes": 10622834
+    },
+    {
+      "id": "scene-cc24fa7308ef",
+      "path": "previews/scene-cc24fa7308ef.sog",
+      "bytes": 952695,
+      "sha256": "721360848f0354c2bb37eb0109ae72db458b92277b19c1b46f1c696320b58ca2",
+      "sourceSha256": "f8f60e4354673c554f5fb849f1747c714d1c74eec2587300bea60de6a9f9973a",
+      "sourceBytes": 15413720
+    },
+    {
+      "id": "scene-d006f3967250",
+      "path": "previews/scene-d006f3967250.sog",
+      "bytes": 932923,
+      "sha256": "8920077a45ce28081f1a76b8ab24cac06af6a692278ff754a7126f9487bcbcbe",
+      "sourceSha256": "f740dd924fe6f1de13fdc212a702c0ba022546c5ad1eb5cabc525ffdb2f42df0",
+      "sourceBytes": 11980344
+    }
+  ]
+}

@@ -1,0 +1,6 @@
+{
+  "observed": "Full decode passed. Visual sheet shows dance continues from bride back-facing to side-facing and settles. View moves during shot; first frame remains similar to W06 ending, so this does not establish a distinct second recorder at the cut. Retain as continuous dance coverage candidate only. Reference-to-video with VAE-conditioned reference image successfully executed; not pure text generation and not a locked-first-frame mode. Fine hand continuity and partner identity still need close review.",
+  "attempt": 1,
+  "shot": "W07",
+  "verdict": "usable_with_limitations"
+}

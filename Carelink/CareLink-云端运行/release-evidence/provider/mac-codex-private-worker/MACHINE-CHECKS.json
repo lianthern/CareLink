@@ -1,0 +1,33 @@
+{
+  "base": "d3365f3e079c494a02f6dcd38fd0f30266189c97",
+  "scope": [
+    "infra/integration/mac-codex-private-worker/**",
+    "tests/e2e/mac-codex-private-worker/**",
+    "release-evidence/provider/mac-codex-private-worker/**"
+  ],
+  "productBytesChanged": false,
+  "rootLockChanged": false,
+  "contractsChanged": false,
+  "stage5Changed": false,
+  "livePortsTouched": false,
+  "cloudWrites": 0,
+  "productionEnabled": false,
+  "checks": {
+    "privateWorker": { "passed": 7, "failed": 0 },
+    "bookLab": { "passed": 73, "failed": 0 },
+    "format": "FORMAT_OK",
+    "secretScan": "SECRET_SCAN_CLEAN",
+    "diffCheck": "CLEAN",
+    "liveSubscriptionCases": { "passed": 2, "failed": 0 },
+    "runtimePreflightBeforeImage": true,
+    "absoluteNativeBinary": true,
+    "pathLookup": false,
+    "runtimeDriftRejectedBeforeResolver": ["sha256", "symlink", "version", "strictDryRunToolEvent"]
+  },
+  "remainingP0": [],
+  "remainingP1": [
+    "No authenticated private server-to-Mac pull transport exists.",
+    "This fixed Book provider contract does not extract new visible facts from an image."
+  ],
+  "decision": "PRIVATE_TEST_PROOF_NO_GO_DEFAULT_OFF"
+}

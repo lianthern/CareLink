@@ -1,0 +1,14 @@
+{
+  "schemaVersion": "1.0",
+  "jobId": "unseen-3dgs-full-room-hf-lite-2026-09-03-v9",
+  "state": "FAILED",
+  "createdAt": "2026-09-03T06:43:40.4890122Z",
+  "agent": "4060 Agent",
+  "machine": "DESKTOP-NIBL3D4",
+  "message": "Source and all pre-GPU gates passed, but the single allowed ns-train invocation exited at CLI parsing (code 2, 7.352s, zero optimization steps): images/colmap path flags require the colmap subcommand, not nerfstudio-data. No second invocation, checkpoint, PLY, SOG, or v9 Viewer was produced. Corrected local code and evidence are in result commit d5c9f58; a new authorization is required to run it.",
+  "evidence": [
+    "results/from-4060/unseen-3dgs-full-room-hf-lite-2026-09-03-v9/V9-REPORT.md",
+    "results/from-4060/unseen-3dgs-full-room-hf-lite-2026-09-03-v9/V9-RESULT.json",
+    "result commit d5c9f58"
+  ]
+}

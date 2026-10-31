@@ -1,0 +1,1088 @@
+{
+  "$schema": "./FREEZE-MANIFEST.schema.json",
+  "schemaVersion": "unseen-c4-freeze-manifest/2",
+  "status": "c4_effective_revision_freeze_complete",
+  "c4FreezeComplete": true,
+  "c4FreezeCompleteOwner": "controller_only",
+  "canonicalContractWriter": "none-after-effective-revision-freeze",
+  "completionGates": {
+    "coreLocalOperable": {
+      "evidenceRoot": "release-evidence/local-operable/",
+      "goNoGoOwner": "controller_only",
+      "passDefinition": "track5_stage_l_real_local_api_web_viewer_with_explicit_locator_fixture",
+      "releaseMeaning": "local_operable_not_integration_rc_r0_or_production",
+      "affectsOverall": false
+    },
+    "coreR0": {
+      "evidenceRoot": "release-evidence/r0/",
+      "goNoGoOwner": "controller_only",
+      "passDefinition": "core_module_integration_release_and_final_independent_reviews",
+      "track7ConsumesOnlyThisBooleanGate": true
+    },
+    "bookLabMve": {
+      "evidenceRoot": "release-evidence/book-lab/",
+      "goNoGoOwner": "controller_only",
+      "passDefinition": "track8_mve_and_final_independent_review",
+      "featureFlagDefault": "off"
+    },
+    "overall": {
+      "expression": "coreR0 == PASS && bookLabMve == PASS",
+      "claim": "full_round_complete"
+    }
+  },
+  "historicalBootstrap": {
+    "commit": "a790b3a2d152701e75171cb4dfdeeda52e7bfbd5",
+    "tree": "36716b1cb5c9e1b9132551c7c9a4bcc7c6967f87",
+    "meaning": "original Track 0L bootstrap and actual starting commit for the original 13 tracks",
+    "mainReadOnlyAfterCommit": true
+  },
+  "effectiveContractRevision": {
+    "token": "SELF",
+    "kind": "runtime_erratum_plus_l3_book_lab",
+    "parentCommit": "f09f0ce9b622a6fcad0c05614bbe06b229ffb572",
+    "resolvedFullCommitCommand": "git log -1 --format=%H -- FREEZE-MANIFEST.json",
+    "requiredBeforeAffectedTrackResume": true
+  },
+  "acceptance": {
+    "historical": {
+      "C2": {
+        "status": "PASS",
+        "p0": 0,
+        "p1": 0,
+        "p2": 0,
+        "sha256": "6da3e6085369812f46b27b1ae8b352bfc1d061c54d655b92b94d2c47b24fe5ac",
+        "authoritativeCopy": "contracts/source/C2-CODEX-ACCEPTANCE.md"
+      },
+      "C3-contract": {
+        "status": "PASS",
+        "p0": 0,
+        "p1": 0,
+        "p2": 0,
+        "sha256": "cd7f4e078a815316ebdba13cdae964cc6836880b951b3aa7e17636b396c4e40e",
+        "authoritativeCopy": "contracts/source/C3-CLAUDE-DESKTOP-ACCEPTANCE.md",
+        "finalGate": "ERRORS=0"
+      }
+    },
+    "revision": {
+      "Codex-C2": {
+        "status": "PASS",
+        "p0": 0,
+        "p1": 0,
+        "p2": 0,
+        "sha256": "f4c6f8e0fcf29882dce0d1981cb7e570497a5b92d0f7fc09d6ace1125c062bd5",
+        "authoritativeCopy": "contracts/source/C3-CONTRACT-REVISION-ACCEPTANCE.md"
+      },
+      "Claude-Desktop-C3": {
+        "status": "PASS",
+        "p0": 0,
+        "p1": 0,
+        "p2": 3,
+        "sha256": "f4c6f8e0fcf29882dce0d1981cb7e570497a5b92d0f7fc09d6ace1125c062bd5",
+        "authoritativeCopy": "contracts/source/C3-CONTRACT-REVISION-ACCEPTANCE.md",
+        "finalGate": "ERRORS=0"
+      },
+      "authoritativeCopy": "contracts/source/C3-CONTRACT-REVISION-ACCEPTANCE.md"
+    },
+    "unresolvedSeverity": {
+      "p0": 0,
+      "p1": 0,
+      "p2": 3,
+      "postLocalDebt": [
+        {
+          "id": "C3-P2-1-source-snapshot-metadata",
+          "summary": "ACTION-API-COVERAGE sourceSnapshot mtime and descriptive observed-state/finality prose are stale; load-bearing bytes and sha256 remain correct.",
+          "classification": "non_blocking_governance_or_quality",
+          "disposition": "post_local_operable",
+          "doesNotAffect": [
+            "authorization",
+            "privacy",
+            "data_consistency",
+            "real_integration_seam"
+          ]
+        },
+        {
+          "id": "C3-P2-2-book-contract-label-and-hash",
+          "summary": "BOOK-LAB-CONTRACT retains a superseded core registry hash and a DRAFT/未合并 label; live set-intersection gates remain correct.",
+          "classification": "non_blocking_governance_or_quality",
+          "disposition": "post_local_operable",
+          "doesNotAffect": [
+            "authorization",
+            "privacy",
+            "data_consistency",
+            "real_integration_seam"
+          ]
+        },
+        {
+          "id": "C3-P2-3-stop-list-and-indentation",
+          "summary": "IMPLEMENTATION-ORCHESTRATION section 6.1 omits Track 8B from one stop-list sentence, while section 2 remains authoritative; one noticePurpose block also has cosmetic indentation drift.",
+          "classification": "non_blocking_governance_or_quality",
+          "disposition": "post_local_operable",
+          "doesNotAffect": [
+            "authorization",
+            "privacy",
+            "data_consistency",
+            "real_integration_seam"
+          ]
+        }
+      ]
+    }
+  },
+  "controllerDeclarations": {
+    "controllerDeclaredC4FreezeComplete": true,
+    "controllerIndependentReadback": "PASS",
+    "candidateStatus": "accepted_by_controller",
+    "candidateDoesNotSelfDeclareC4Complete": true,
+    "noDeployPublishCloudWrite": true
+  },
+  "contractMetrics": {
+    "core": {
+      "actions": 90,
+      "actionSourceReferenceChecks": 360,
+      "stringPhasePairs": 810,
+      "canonicalHttpMutationUniqueEndpoints": 59,
+      "coverageMutationUniqueEndpoints": 59,
+      "versionCasDictionaryFields": 47,
+      "technicalOperationEntries": 8,
+      "internalOperationEntries": 2
+    },
+    "bookLab": {
+      "actions": 20,
+      "actionSourceReferenceChecks": 80,
+      "stringPhasePairs": 180,
+      "canonicalHttpMutationUniqueEndpoints": 15,
+      "coverageMutationUniqueEndpoints": 15,
+      "versionCasDictionaryFields": 8,
+      "technicalOperationEntries": 0,
+      "internalOperationEntries": 2,
+      "stateMachineEntries": 5
+    },
+    "aggregate": {
+      "actions": 110,
+      "actionSourceReferenceChecks": 440,
+      "stringPhasePairs": 990,
+      "canonicalHttpMutationUniqueEndpoints": 74,
+      "coverageMutationUniqueEndpoints": 74,
+      "versionCasDictionaryFields": 55,
+      "technicalOperationEntries": 8,
+      "internalOperationEntries": 4
+    },
+    "generatedContractIndex": {
+      "relativePath": "packages/contracts/generated/contract-index.json",
+      "sha256": "80fdea8681461b08f6cab2d0c42db1c2a4b8d16bd29428f6b8c9366f10125483"
+    }
+  },
+  "frozenContracts": [
+    {
+      "relativePath": "IMPLEMENTATION-ORCHESTRATION.md",
+      "sourceAbsolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX/work/unseen-product-reboot-2026-08-12/IMPLEMENTATION-ORCHESTRATION.md",
+      "sourceSha256": "242a65a7ea21df36fa3736c3df98d639d2a0b7916c4c62f5da4807e266fb6a03",
+      "authoritativeCopy": "contracts/source/IMPLEMENTATION-ORCHESTRATION.md",
+      "copySha256": "242a65a7ea21df36fa3736c3df98d639d2a0b7916c4c62f5da4807e266fb6a03",
+      "bytes": 32885,
+      "mode": "-rw-r--r--",
+      "authorityRole": "frozen_orchestration_contract",
+      "status": "byte_exact_authoritative_copy"
+    },
+    {
+      "relativePath": "l3-book-lab/ACTION-API-COVERAGE.book-lab.json",
+      "sourceAbsolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX/work/unseen-product-reboot-2026-08-12/l3-book-lab/ACTION-API-COVERAGE.book-lab.json",
+      "sourceSha256": "d1ca7d5d4f926f2ff3c04a46871c4d8e3f4b6ce966fcc38960d01950d5a866a2",
+      "authoritativeCopy": "contracts/source/l3-book-lab/ACTION-API-COVERAGE.book-lab.json",
+      "copySha256": "d1ca7d5d4f926f2ff3c04a46871c4d8e3f4b6ce966fcc38960d01950d5a866a2",
+      "bytes": 87577,
+      "mode": "-rw-r--r--",
+      "authorityRole": "frozen_semantic_contract",
+      "status": "byte_exact_authoritative_copy"
+    },
+    {
+      "relativePath": "l3-book-lab/ACTION-REGISTRY.book-lab.json",
+      "sourceAbsolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX/work/unseen-product-reboot-2026-08-12/l3-book-lab/ACTION-REGISTRY.book-lab.json",
+      "sourceSha256": "cba3f1e984cbcaa03f8fdf301581d1fb94bd69a5bffe1797f550b3619df484cf",
+      "authoritativeCopy": "contracts/source/l3-book-lab/ACTION-REGISTRY.book-lab.json",
+      "copySha256": "cba3f1e984cbcaa03f8fdf301581d1fb94bd69a5bffe1797f550b3619df484cf",
+      "bytes": 7684,
+      "mode": "-rw-r--r--",
+      "authorityRole": "frozen_semantic_contract",
+      "status": "byte_exact_authoritative_copy"
+    },
+    {
+      "relativePath": "l3-book-lab/BOOK-LAB-CONTRACT.md",
+      "sourceAbsolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX/work/unseen-product-reboot-2026-08-12/l3-book-lab/BOOK-LAB-CONTRACT.md",
+      "sourceSha256": "a93c6eb54d5d5d949ef0561c414e61e335370bc2ae3012aeb62c6f9572afd249",
+      "authoritativeCopy": "contracts/source/l3-book-lab/BOOK-LAB-CONTRACT.md",
+      "copySha256": "a93c6eb54d5d5d949ef0561c414e61e335370bc2ae3012aeb62c6f9572afd249",
+      "bytes": 31023,
+      "mode": "-rw-r--r--",
+      "authorityRole": "frozen_semantic_contract",
+      "status": "byte_exact_authoritative_copy"
+    },
+    {
+      "relativePath": "l3-book-lab/STATE-MACHINES.book-lab.json",
+      "sourceAbsolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX/work/unseen-product-reboot-2026-08-12/l3-book-lab/STATE-MACHINES.book-lab.json",
+      "sourceSha256": "5f47b1a5bc4d7ed972a82a2dc4629bdb888dd167bbf04df03b9a59e059a08026",
+      "authoritativeCopy": "contracts/source/l3-book-lab/STATE-MACHINES.book-lab.json",
+      "copySha256": "5f47b1a5bc4d7ed972a82a2dc4629bdb888dd167bbf04df03b9a59e059a08026",
+      "bytes": 24486,
+      "mode": "-rw-r--r--",
+      "authorityRole": "frozen_semantic_contract",
+      "status": "byte_exact_authoritative_copy"
+    },
+    {
+      "relativePath": "l3-book-lab/STRING-CATALOG.book-lab.zh-CN.json",
+      "sourceAbsolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX/work/unseen-product-reboot-2026-08-12/l3-book-lab/STRING-CATALOG.book-lab.zh-CN.json",
+      "sourceSha256": "5dd024745d8b91b3fb751a0c10be16093b09a5d0442c4049c05673cb5e8900a1",
+      "authoritativeCopy": "contracts/source/l3-book-lab/STRING-CATALOG.book-lab.zh-CN.json",
+      "copySha256": "5dd024745d8b91b3fb751a0c10be16093b09a5d0442c4049c05673cb5e8900a1",
+      "bytes": 14321,
+      "mode": "-rw-r--r--",
+      "authorityRole": "frozen_semantic_contract",
+      "status": "byte_exact_authoritative_copy"
+    },
+    {
+      "relativePath": "product-ui/ACTION-REGISTRY.json",
+      "sourceAbsolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX/work/unseen-product-reboot-2026-08-12/product-ui/ACTION-REGISTRY.json",
+      "sourceSha256": "8a89b12759ae3b3fa124e71743a8197bbcf577b487c2126b74f9b42f59f5e711",
+      "authoritativeCopy": "contracts/source/product-ui/ACTION-REGISTRY.json",
+      "copySha256": "8a89b12759ae3b3fa124e71743a8197bbcf577b487c2126b74f9b42f59f5e711",
+      "bytes": 18879,
+      "mode": "-rw-r--r--",
+      "authorityRole": "frozen_semantic_contract",
+      "status": "byte_exact_authoritative_copy"
+    },
+    {
+      "relativePath": "product-ui/DESIGN-TOKENS.json",
+      "sourceAbsolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX/work/unseen-product-reboot-2026-08-12/product-ui/DESIGN-TOKENS.json",
+      "sourceSha256": "445c5301812cd5e620d04d6cfdea81b1211822150bf8aa80925058f4e3897096",
+      "authoritativeCopy": "contracts/source/product-ui/DESIGN-TOKENS.json",
+      "copySha256": "445c5301812cd5e620d04d6cfdea81b1211822150bf8aa80925058f4e3897096",
+      "bytes": 5552,
+      "mode": "-rw-r--r--",
+      "authorityRole": "frozen_semantic_contract",
+      "status": "byte_exact_authoritative_copy"
+    },
+    {
+      "relativePath": "product-ui/STRING-CATALOG.zh-CN.json",
+      "sourceAbsolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX/work/unseen-product-reboot-2026-08-12/product-ui/STRING-CATALOG.zh-CN.json",
+      "sourceSha256": "748bc5689c86139790d77030fd0ebd22bad59a03f6dbe2dbf6e0d343617f8e15",
+      "authoritativeCopy": "contracts/source/product-ui/STRING-CATALOG.zh-CN.json",
+      "copySha256": "748bc5689c86139790d77030fd0ebd22bad59a03f6dbe2dbf6e0d343617f8e15",
+      "bytes": 38503,
+      "mode": "-rw-r--r--",
+      "authorityRole": "frozen_semantic_contract",
+      "status": "byte_exact_authoritative_copy"
+    },
+    {
+      "relativePath": "technical/ACTION-API-COVERAGE.json",
+      "sourceAbsolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX/work/unseen-product-reboot-2026-08-12/technical/ACTION-API-COVERAGE.json",
+      "sourceSha256": "32e433feb25df38384637305b8920e3483d4e19de8adf74ce30e4d8602ecac63",
+      "authoritativeCopy": "contracts/source/technical/ACTION-API-COVERAGE.json",
+      "copySha256": "32e433feb25df38384637305b8920e3483d4e19de8adf74ce30e4d8602ecac63",
+      "bytes": 164041,
+      "mode": "-rw-------",
+      "authorityRole": "frozen_semantic_contract",
+      "status": "byte_exact_authoritative_copy"
+    },
+    {
+      "relativePath": "technical/CANONICAL-STATE-AND-API.md",
+      "sourceAbsolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX/work/unseen-product-reboot-2026-08-12/technical/CANONICAL-STATE-AND-API.md",
+      "sourceSha256": "6d91751d9e0034ac7b629b3e5c4efd6ba9d42e6e268d7e60994de683ece8c125",
+      "authoritativeCopy": "contracts/source/technical/CANONICAL-STATE-AND-API.md",
+      "copySha256": "6d91751d9e0034ac7b629b3e5c4efd6ba9d42e6e268d7e60994de683ece8c125",
+      "bytes": 130954,
+      "mode": "-rw-r--r--",
+      "authorityRole": "frozen_semantic_contract",
+      "status": "byte_exact_authoritative_copy"
+    },
+    {
+      "relativePath": "technical/CORE-FLOW-CONTRACT.md",
+      "sourceAbsolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX/work/unseen-product-reboot-2026-08-12/technical/CORE-FLOW-CONTRACT.md",
+      "sourceSha256": "c3f0a6aa00d9d543c34217717f3027dd783869aa2769900d7c22c15a080a8664",
+      "authoritativeCopy": "contracts/source/technical/CORE-FLOW-CONTRACT.md",
+      "copySha256": "c3f0a6aa00d9d543c34217717f3027dd783869aa2769900d7c22c15a080a8664",
+      "bytes": 24161,
+      "mode": "-rw-r--r--",
+      "authorityRole": "frozen_semantic_contract",
+      "status": "byte_exact_authoritative_copy"
+    },
+    {
+      "relativePath": "technical/RELEASE-READINESS-CONTRACT.md",
+      "sourceAbsolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX/work/unseen-product-reboot-2026-08-12/technical/RELEASE-READINESS-CONTRACT.md",
+      "sourceSha256": "0e80f0654674fa63f5666aa70921f376f730628e3357264f4b1572b4e9e09777",
+      "authoritativeCopy": "contracts/source/technical/RELEASE-READINESS-CONTRACT.md",
+      "copySha256": "0e80f0654674fa63f5666aa70921f376f730628e3357264f4b1572b4e9e09777",
+      "bytes": 29336,
+      "mode": "-rw-r--r--",
+      "authorityRole": "frozen_semantic_contract",
+      "status": "byte_exact_authoritative_copy"
+    }
+  ],
+  "authorityEvidenceCopies": [
+    {
+      "relativePath": "C2-CODEX-ACCEPTANCE.md",
+      "sourceAbsolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX/work/unseen-product-reboot-2026-08-12/C2-CODEX-ACCEPTANCE.md",
+      "sourceSha256": "6da3e6085369812f46b27b1ae8b352bfc1d061c54d655b92b94d2c47b24fe5ac",
+      "authoritativeCopy": "contracts/source/C2-CODEX-ACCEPTANCE.md",
+      "copySha256": "6da3e6085369812f46b27b1ae8b352bfc1d061c54d655b92b94d2c47b24fe5ac",
+      "bytes": 2124,
+      "mode": "-rw-r--r--",
+      "authorityRole": "c2_acceptance_evidence",
+      "status": "byte_exact_authoritative_copy"
+    },
+    {
+      "relativePath": "C3-CLAUDE-DESKTOP-ACCEPTANCE.md",
+      "sourceAbsolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX/work/unseen-product-reboot-2026-08-12/C3-CLAUDE-DESKTOP-ACCEPTANCE.md",
+      "sourceSha256": "cd7f4e078a815316ebdba13cdae964cc6836880b951b3aa7e17636b396c4e40e",
+      "authoritativeCopy": "contracts/source/C3-CLAUDE-DESKTOP-ACCEPTANCE.md",
+      "copySha256": "cd7f4e078a815316ebdba13cdae964cc6836880b951b3aa7e17636b396c4e40e",
+      "bytes": 3130,
+      "mode": "-rw-r--r--",
+      "authorityRole": "c3_acceptance_evidence",
+      "status": "byte_exact_authoritative_copy"
+    },
+    {
+      "relativePath": "C3-CONTRACT-ERRATUM-ACCEPTANCE.md",
+      "sourceAbsolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX/work/unseen-product-reboot-2026-08-12/C3-CONTRACT-ERRATUM-ACCEPTANCE.md",
+      "sourceSha256": "cd177a3d1a013a51dbe31c234821ac526cb9b90e66e0901a599f8fd8f6bc2176",
+      "authoritativeCopy": "contracts/source/C3-CONTRACT-ERRATUM-ACCEPTANCE.md",
+      "copySha256": "cd177a3d1a013a51dbe31c234821ac526cb9b90e66e0901a599f8fd8f6bc2176",
+      "bytes": 4064,
+      "mode": "-rw-r--r--",
+      "authorityRole": "c3_erratum_acceptance_evidence",
+      "status": "byte_exact_authoritative_copy"
+    },
+    {
+      "relativePath": "C3-CONTRACT-REVISION-ACCEPTANCE.md",
+      "sourceAbsolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX/work/unseen-product-reboot-2026-08-12/C3-CONTRACT-REVISION-ACCEPTANCE.md",
+      "sourceSha256": "f4c6f8e0fcf29882dce0d1981cb7e570497a5b92d0f7fc09d6ace1125c062bd5",
+      "authoritativeCopy": "contracts/source/C3-CONTRACT-REVISION-ACCEPTANCE.md",
+      "copySha256": "f4c6f8e0fcf29882dce0d1981cb7e570497a5b92d0f7fc09d6ace1125c062bd5",
+      "bytes": 9105,
+      "mode": "-rw-r--r--",
+      "authorityRole": "c3_contract_revision_acceptance_evidence",
+      "status": "byte_exact_authoritative_copy"
+    },
+    {
+      "relativePath": "C4-SOURCE-PROVENANCE-SUPPLEMENT.md",
+      "sourceAbsolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX/work/unseen-product-reboot-2026-08-12/C4-SOURCE-PROVENANCE-SUPPLEMENT.md",
+      "sourceSha256": "e7a9f7308bd30e0a1f0f52e23ef0168c2fc6c34d7b78a95e2dda7eb99692b8cc",
+      "authoritativeCopy": "contracts/source/C4-SOURCE-PROVENANCE-SUPPLEMENT.md",
+      "copySha256": "e7a9f7308bd30e0a1f0f52e23ef0168c2fc6c34d7b78a95e2dda7eb99692b8cc",
+      "bytes": 8242,
+      "mode": "-rw-r--r--",
+      "authorityRole": "c4_source_provenance_authority",
+      "status": "byte_exact_authoritative_copy"
+    },
+    {
+      "relativePath": "STATE.md",
+      "sourceAbsolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX/work/unseen-product-reboot-2026-08-12/STATE.md",
+      "sourceSha256": "350bb492ebe0e78ec12f227f2f5e88109f6cdfb392b964009432b7b6e48db4db",
+      "authoritativeCopy": "contracts/source/STATE.md",
+      "copySha256": "350bb492ebe0e78ec12f227f2f5e88109f6cdfb392b964009432b7b6e48db4db",
+      "bytes": 9003,
+      "mode": "-rw-r--r--",
+      "authorityRole": "freeze_authority_state",
+      "status": "byte_exact_authoritative_copy"
+    },
+    {
+      "relativePath": "product-ui/SOURCE-OF-TRUTH.md",
+      "sourceAbsolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX/work/unseen-product-reboot-2026-08-12/product-ui/SOURCE-OF-TRUTH.md",
+      "sourceSha256": "71220964c13acbd844f071cf1672db67b9041918a7dc77ad48cb3f55d911e2e5",
+      "authoritativeCopy": "contracts/source/product-ui/SOURCE-OF-TRUTH.md",
+      "copySha256": "71220964c13acbd844f071cf1672db67b9041918a7dc77ad48cb3f55d911e2e5",
+      "bytes": 20437,
+      "mode": "-rw-r--r--",
+      "authorityRole": "product_source_of_truth_index",
+      "status": "byte_exact_authoritative_copy"
+    },
+    {
+      "relativePath": "product-ui/evidence/SHA256SUMS",
+      "sourceAbsolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX/work/unseen-product-reboot-2026-08-12/product-ui/evidence/SHA256SUMS",
+      "sourceSha256": "071e5146c03cca2d3ec0e2b51bcf966637dc51f043bf125b16e9344f723a5a88",
+      "authoritativeCopy": "contracts/source/product-ui/evidence/SHA256SUMS",
+      "copySha256": "071e5146c03cca2d3ec0e2b51bcf966637dc51f043bf125b16e9344f723a5a88",
+      "bytes": 554,
+      "mode": "-rw-r--r--",
+      "authorityRole": "product_source_hash_index",
+      "status": "byte_exact_authoritative_copy"
+    },
+    {
+      "relativePath": "technical/EVIDENCE/01-INVENTORY-CLOUD.md",
+      "sourceAbsolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX/work/unseen-product-reboot-2026-08-12/technical/EVIDENCE/01-INVENTORY-CLOUD.md",
+      "sourceSha256": "67a11ebaa7dda3a10d5513b4e717dc5b89897af0aff07293f71636e96cd9a0ea",
+      "authoritativeCopy": "contracts/source/technical/EVIDENCE/01-INVENTORY-CLOUD.md",
+      "copySha256": "67a11ebaa7dda3a10d5513b4e717dc5b89897af0aff07293f71636e96cd9a0ea",
+      "bytes": 32487,
+      "mode": "-rw-r--r--",
+      "authorityRole": "historical_source_inventory_evidence",
+      "status": "byte_exact_authoritative_copy"
+    },
+    {
+      "relativePath": "technical/EVIDENCE/c3_contract_gate.py",
+      "sourceAbsolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX/work/unseen-product-reboot-2026-08-12/technical/EVIDENCE/c3_contract_gate.py",
+      "sourceSha256": "f2a0e2bcc48fa34d77b7bbd0541f894e050a74567a76d54bb4172f37deeab0b0",
+      "authoritativeCopy": "contracts/source/technical/EVIDENCE/c3_contract_gate.py",
+      "copySha256": "f2a0e2bcc48fa34d77b7bbd0541f894e050a74567a76d54bb4172f37deeab0b0",
+      "bytes": 25532,
+      "mode": "-rw-r--r--",
+      "authorityRole": "c3_contract_read_only_gate",
+      "status": "byte_exact_authoritative_copy"
+    },
+    {
+      "relativePath": "technical/EVIDENCE/c4-source-manifest-baseline.json",
+      "sourceAbsolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX/work/unseen-product-reboot-2026-08-12/technical/EVIDENCE/c4-source-manifest-baseline.json",
+      "sourceSha256": "0ce863dd54ca485bea2c5acdf3a1cdaa2a1dd8b6376f1cb182a70f54f7b93d05",
+      "authoritativeCopy": "contracts/source/technical/EVIDENCE/c4-source-manifest-baseline.json",
+      "copySha256": "0ce863dd54ca485bea2c5acdf3a1cdaa2a1dd8b6376f1cb182a70f54f7b93d05",
+      "bytes": 96608,
+      "mode": "-rw-r--r--",
+      "authorityRole": "source_manifest_machine_baseline",
+      "status": "byte_exact_authoritative_copy"
+    },
+    {
+      "relativePath": "technical/EVIDENCE/verify_c4_source_manifest.py",
+      "sourceAbsolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX/work/unseen-product-reboot-2026-08-12/technical/EVIDENCE/verify_c4_source_manifest.py",
+      "sourceSha256": "cc05a051f126606ffc62803fac2dd559994c085438b9b25318302ebad81754f4",
+      "authoritativeCopy": "contracts/source/technical/EVIDENCE/verify_c4_source_manifest.py",
+      "copySha256": "cc05a051f126606ffc62803fac2dd559994c085438b9b25318302ebad81754f4",
+      "bytes": 2973,
+      "mode": "-rw-r--r--",
+      "authorityRole": "source_manifest_read_only_verifier",
+      "status": "byte_exact_authoritative_copy"
+    }
+  ],
+  "visualEvidenceCopies": [
+    {
+      "relativePath": "product-ui/evidence/contact-sheet-labeled.png",
+      "sourceAbsolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX/work/unseen-product-reboot-2026-08-12/product-ui/evidence/contact-sheet-labeled.png",
+      "sourceSha256": "3c71961209e7d71145b1ddb6adfb1d8109e607ba84274ac1020e993cffc9d9cf",
+      "authoritativeCopy": "contracts/source/product-ui/evidence/contact-sheet-labeled.png",
+      "copySha256": "3c71961209e7d71145b1ddb6adfb1d8109e607ba84274ac1020e993cffc9d9cf",
+      "bytes": 4024698,
+      "mode": "-rw-r--r--",
+      "authorityRole": "product_visual_contact_sheet_derived",
+      "status": "byte_exact_authoritative_copy"
+    },
+    {
+      "relativePath": "product-ui/evidence/ref-1.webp",
+      "sourceAbsolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX/work/unseen-product-reboot-2026-08-12/product-ui/evidence/ref-1.webp",
+      "sourceSha256": "bdb33edbd148578f22f56d23a3b3aa6b90617303c19605339078119aa4cf45df",
+      "authoritativeCopy": "contracts/source/product-ui/evidence/ref-1.webp",
+      "copySha256": "bdb33edbd148578f22f56d23a3b3aa6b90617303c19605339078119aa4cf45df",
+      "bytes": 93604,
+      "mode": "-rw-r--r--",
+      "authorityRole": "product_visual_authority_original",
+      "status": "byte_exact_authoritative_copy"
+    },
+    {
+      "relativePath": "product-ui/evidence/ref-2.webp",
+      "sourceAbsolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX/work/unseen-product-reboot-2026-08-12/product-ui/evidence/ref-2.webp",
+      "sourceSha256": "56fe68ea1d7465f92d87b3f5e53a30368ee503d5c97ed43c480ff7cf2073c59d",
+      "authoritativeCopy": "contracts/source/product-ui/evidence/ref-2.webp",
+      "copySha256": "56fe68ea1d7465f92d87b3f5e53a30368ee503d5c97ed43c480ff7cf2073c59d",
+      "bytes": 147386,
+      "mode": "-rw-r--r--",
+      "authorityRole": "product_visual_authority_original",
+      "status": "byte_exact_authoritative_copy"
+    },
+    {
+      "relativePath": "product-ui/evidence/ref-3.webp",
+      "sourceAbsolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX/work/unseen-product-reboot-2026-08-12/product-ui/evidence/ref-3.webp",
+      "sourceSha256": "7e4685acfad73f12cdabff676ec5ee668420fe9a529937a66d5e2d4408816055",
+      "authoritativeCopy": "contracts/source/product-ui/evidence/ref-3.webp",
+      "copySha256": "7e4685acfad73f12cdabff676ec5ee668420fe9a529937a66d5e2d4408816055",
+      "bytes": 185396,
+      "mode": "-rw-r--r--",
+      "authorityRole": "product_visual_authority_original",
+      "status": "byte_exact_authoritative_copy"
+    },
+    {
+      "relativePath": "product-ui/evidence/ref-4.webp",
+      "sourceAbsolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX/work/unseen-product-reboot-2026-08-12/product-ui/evidence/ref-4.webp",
+      "sourceSha256": "d8e83572553ef0e54c515ed85af9ff29f68421fa6e9d5ff631eb1c6da4f82a77",
+      "authoritativeCopy": "contracts/source/product-ui/evidence/ref-4.webp",
+      "copySha256": "d8e83572553ef0e54c515ed85af9ff29f68421fa6e9d5ff631eb1c6da4f82a77",
+      "bytes": 139598,
+      "mode": "-rw-r--r--",
+      "authorityRole": "product_visual_authority_original",
+      "status": "byte_exact_authoritative_copy"
+    },
+    {
+      "relativePath": "product-ui/evidence/ref-5.webp",
+      "sourceAbsolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX/work/unseen-product-reboot-2026-08-12/product-ui/evidence/ref-5.webp",
+      "sourceSha256": "497b5c2cb21b3f7734369047a949456efaa4b0ad83ca3de817e48d2e4c8802c1",
+      "authoritativeCopy": "contracts/source/product-ui/evidence/ref-5.webp",
+      "copySha256": "497b5c2cb21b3f7734369047a949456efaa4b0ad83ca3de817e48d2e4c8802c1",
+      "bytes": 134534,
+      "mode": "-rw-r--r--",
+      "authorityRole": "product_visual_authority_original",
+      "status": "byte_exact_authoritative_copy"
+    },
+    {
+      "relativePath": "product-ui/evidence/ref-6.webp",
+      "sourceAbsolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX/work/unseen-product-reboot-2026-08-12/product-ui/evidence/ref-6.webp",
+      "sourceSha256": "6b3a43279307142f3c1f92dd1304744fd7fb10d348c1229e15edc03f77d91226",
+      "authoritativeCopy": "contracts/source/product-ui/evidence/ref-6.webp",
+      "copySha256": "6b3a43279307142f3c1f92dd1304744fd7fb10d348c1229e15edc03f77d91226",
+      "bytes": 36676,
+      "mode": "-rw-r--r--",
+      "authorityRole": "product_visual_authority_original",
+      "status": "byte_exact_authoritative_copy"
+    }
+  ],
+  "rootLockfile": {
+    "relativePath": "package-lock.json",
+    "sha256": "75f8cd0f8f3b9284fe24cf9d8d07229afb2c5ddfded77b898e8d6201d6eb33ca"
+  },
+  "sourceManifests": {
+    "contractSourceManifest": {
+      "relativePath": "provenance/contract-source-manifest.json",
+      "sha256": "8d204b3886568c685a04bb0988124b192826bfec9c999967ce274b9668b19636",
+      "fileCount": 32,
+      "frozenSemanticContractCount": 13,
+      "authorityEvidenceCount": 12,
+      "visualEvidenceCount": 7
+    },
+    "historicalFingerprintBaseline": {
+      "relativePath": "contracts/source/technical/EVIDENCE/c4-source-manifest-baseline.json",
+      "sha256": "0ce863dd54ca485bea2c5acdf3a1cdaa2a1dd8b6376f1cb182a70f54f7b93d05",
+      "scopes": [
+        {
+          "id": "formal_web",
+          "expectedCount": 130,
+          "expectedAggregateSha256": "2542c7b71425bd7946a707d353cdfd3f2be31a17079df6aa151513d24fbe2b50"
+        },
+        {
+          "id": "recovered_source",
+          "expectedCount": 174,
+          "expectedAggregateSha256": "a8d1901e45d39fc1eaa4f28905887a2ab451dafdab7d3b64f475537d0976e915"
+        },
+        {
+          "id": "recovered_backend",
+          "expectedCount": 13,
+          "expectedAggregateSha256": "9b1c489ad18ea6278d1c6c770610e5e0500315c63c8a24858d1e7dfcd783934e"
+        }
+      ]
+    },
+    "safeImportInventory": {
+      "relativePath": "provenance/safe-import-inventory.json",
+      "sha256": "2a591fc28e26f88a09af41004a5569657a6883fb0d2f6822c25222348a2aec40",
+      "summary": {
+        "included": 357,
+        "excluded": 178,
+        "total": 535
+      }
+    },
+    "verifier": {
+      "relativePath": "contracts/source/technical/EVIDENCE/verify_c4_source_manifest.py",
+      "sha256": "cc05a051f126606ffc62803fac2dd559994c085438b9b25318302ebad81754f4",
+      "requiredTerminator": "C4_SOURCE_MANIFEST_OK"
+    }
+  },
+  "tracks": [
+    {
+      "id": "0L",
+      "branch": "main",
+      "worktreeAbsolutePath": "/Users/max/code/unseen",
+      "lifecycle": "existing",
+      "base": {
+        "kind": "historical_bootstrap",
+        "commit": "a790b3a2d152701e75171cb4dfdeeda52e7bfbd5"
+      },
+      "requiredEffectiveRevision": "SELF",
+      "startGate": "historical_bootstrap_complete_main_read_only",
+      "readOnlyDependencies": [
+        "authority-contract-root",
+        "formal-web-source-root",
+        "recovered-backend-source-root"
+      ],
+      "writePaths": [],
+      "conditionalWritePaths": [],
+      "evidencePaths": [
+        "C4-PROGRESS.md",
+        "C4-BLOCKED.md",
+        "C4-EVIDENCE.md",
+        "provenance/**"
+      ],
+      "handoffCondition": "historical_bootstrap_and_matrix_readback_complete",
+      "writeRestrictions": "closed_historical_track_main_read_only"
+    },
+    {
+      "id": "1A",
+      "branch": "track/1a-api",
+      "worktreeAbsolutePath": "/Users/max/code/unseen-worktrees/1a-api",
+      "lifecycle": "existing",
+      "base": {
+        "kind": "historical_bootstrap",
+        "commit": "a790b3a2d152701e75171cb4dfdeeda52e7bfbd5"
+      },
+      "requiredEffectiveRevision": "SELF",
+      "startGate": "effective_revision_frozen_controller_resumes_1a",
+      "readOnlyDependencies": [
+        "FREEZE-MANIFEST.json",
+        "contracts/source/**",
+        "packages/contracts/generated/**",
+        "imports/recovered-backend/**"
+      ],
+      "writePaths": [
+        "services/api/src/**",
+        "services/api/db/migrations/**",
+        "services/api/tests/**",
+        "services/api/package.json",
+        "services/jobs/dispatch/**",
+        "services/jobs/tests/**"
+      ],
+      "conditionalWritePaths": [],
+      "evidencePaths": [
+        "services/api/tests/**",
+        "services/jobs/tests/**"
+      ],
+      "handoffCondition": "clean_module_commit_with_runtime_a_d_and_api_evidence",
+      "writeRestrictions": "no_web_viewer_locator_release_paths"
+    },
+    {
+      "id": "2",
+      "branch": "track/2-web",
+      "worktreeAbsolutePath": "/Users/max/code/unseen-worktrees/2-web",
+      "lifecycle": "existing",
+      "base": {
+        "kind": "historical_bootstrap",
+        "commit": "a790b3a2d152701e75171cb4dfdeeda52e7bfbd5"
+      },
+      "requiredEffectiveRevision": "SELF",
+      "startGate": "effective_revision_frozen_controller_resumes_2",
+      "readOnlyDependencies": [
+        "FREEZE-MANIFEST.json",
+        "contracts/source/**",
+        "packages/contracts/generated/**",
+        "imports/legacy-web/**",
+        "packages/viewer/src/public/**"
+      ],
+      "writePaths": [
+        "apps/web/**"
+      ],
+      "conditionalWritePaths": [],
+      "evidencePaths": [
+        "apps/web/**/tests/**",
+        "apps/web/**/screenshots/**"
+      ],
+      "handoffCondition": "clean_module_commit_with_production_adapter_and_visual_evidence",
+      "writeRestrictions": "viewer_kernel_forbidden"
+    },
+    {
+      "id": "3A",
+      "branch": "track/3a-locator-offline",
+      "worktreeAbsolutePath": "/Users/max/code/unseen-worktrees/3a-locator-offline",
+      "lifecycle": "existing",
+      "base": {
+        "kind": "historical_bootstrap",
+        "commit": "a790b3a2d152701e75171cb4dfdeeda52e7bfbd5"
+      },
+      "requiredEffectiveRevision": "SELF",
+      "startGate": "effective_revision_frozen_controller_opens_locator_offline",
+      "readOnlyDependencies": [
+        "FREEZE-MANIFEST.json",
+        "contracts/source/**",
+        "packages/contracts/generated/**",
+        "imports/**"
+      ],
+      "writePaths": [
+        "services/locator/**",
+        "datasets/manifests/offline/**",
+        "eval/offline/**",
+        "release-evidence/locator-offline/**"
+      ],
+      "conditionalWritePaths": [],
+      "evidencePaths": [
+        "eval/offline/**",
+        "release-evidence/locator-offline/**"
+      ],
+      "handoffCondition": "clean_offline_locator_commit_with_dataset_model_threshold_hashes",
+      "writeRestrictions": "model_metadata_only_services_locator_releases"
+    },
+    {
+      "id": "4",
+      "branch": "track/4-viewer",
+      "worktreeAbsolutePath": "/Users/max/code/unseen-worktrees/4-viewer",
+      "lifecycle": "existing",
+      "base": {
+        "kind": "historical_bootstrap",
+        "commit": "a790b3a2d152701e75171cb4dfdeeda52e7bfbd5"
+      },
+      "requiredEffectiveRevision": "SELF",
+      "startGate": "historical_track4_pass_commit_read_only",
+      "readOnlyDependencies": [
+        "FREEZE-MANIFEST.json",
+        "contracts/source/**",
+        "packages/contracts/generated/**",
+        "imports/legacy-web/**"
+      ],
+      "writePaths": [
+        "packages/viewer/**"
+      ],
+      "conditionalWritePaths": [],
+      "evidencePaths": [
+        "packages/viewer/**/tests/**",
+        "packages/viewer/**/fixtures/**"
+      ],
+      "handoffCondition": "accepted_commit_5e068e3d04263adc2f480ac9db5a3bc1f18157d7",
+      "writeRestrictions": "read_only_unless_controller_reopens_for_exact_seam_rfc"
+    },
+    {
+      "id": "6A",
+      "branch": "track/6a-trust-ops",
+      "worktreeAbsolutePath": "/Users/max/code/unseen-worktrees/6a-trust-ops",
+      "lifecycle": "existing",
+      "base": {
+        "kind": "historical_bootstrap",
+        "commit": "a790b3a2d152701e75171cb4dfdeeda52e7bfbd5"
+      },
+      "requiredEffectiveRevision": "SELF",
+      "startGate": "effective_revision_frozen_controller_opens_trust_ops",
+      "readOnlyDependencies": [
+        "FREEZE-MANIFEST.json",
+        "contracts/source/**",
+        "packages/contracts/generated/**",
+        "services/api/**",
+        "apps/web/**"
+      ],
+      "writePaths": [
+        "policy-inputs/**",
+        "ops/security/**",
+        "ops/observability/**",
+        "runbooks/drafts/**",
+        "tests/security-contract/**"
+      ],
+      "conditionalWritePaths": [],
+      "evidencePaths": [
+        "tests/security-contract/**",
+        "ops/security/**",
+        "ops/observability/**"
+      ],
+      "handoffCondition": "clean_policy_security_ops_input_commit_no_business_backwrite",
+      "writeRestrictions": "services_and_apps_read_only"
+    },
+    {
+      "id": "1B",
+      "branch": "track/1b-cloud-sandbox",
+      "worktreeAbsolutePath": "/Users/max/code/unseen-worktrees/1b-cloud-sandbox",
+      "lifecycle": "existing",
+      "base": {
+        "kind": "historical_bootstrap",
+        "commit": "a790b3a2d152701e75171cb4dfdeeda52e7bfbd5"
+      },
+      "requiredEffectiveRevision": "SELF",
+      "startGate": "approved_1a_plus_explicit_deletable_sandbox_authorization",
+      "readOnlyDependencies": [
+        "FREEZE-MANIFEST.json",
+        "contracts/source/**",
+        "packages/contracts/generated/**",
+        "services/api/src/ports/**"
+      ],
+      "writePaths": [
+        "adapters/cloud/cloudbase/**",
+        "infra/sandbox/**",
+        "tests/cloud-sandbox/**",
+        "release-evidence/cloud-sandbox/**"
+      ],
+      "conditionalWritePaths": [],
+      "evidencePaths": [
+        "tests/cloud-sandbox/**",
+        "release-evidence/cloud-sandbox/**"
+      ],
+      "handoffCondition": "clean_adapter_commit_with_request_ids_hashes_cleanup_cost",
+      "writeRestrictions": "no_production_cloud_write"
+    },
+    {
+      "id": "3B",
+      "branch": "track/3b-locator-shadow",
+      "worktreeAbsolutePath": "/Users/max/code/unseen-worktrees/3b-locator-shadow",
+      "lifecycle": "existing",
+      "base": {
+        "kind": "historical_bootstrap",
+        "commit": "a790b3a2d152701e75171cb4dfdeeda52e7bfbd5"
+      },
+      "requiredEffectiveRevision": "SELF",
+      "startGate": "approved_3a_plus_written_real_data_authorization",
+      "readOnlyDependencies": [
+        "FREEZE-MANIFEST.json",
+        "contracts/source/**",
+        "packages/contracts/generated/**",
+        "services/locator/**"
+      ],
+      "writePaths": [
+        "datasets/authorized/**",
+        "eval/shadow/**",
+        "release-evidence/locator-shadow/**"
+      ],
+      "conditionalWritePaths": [],
+      "evidencePaths": [
+        "eval/shadow/**",
+        "release-evidence/locator-shadow/**"
+      ],
+      "handoffCondition": "versioned_dataset_shadow_counterexample_destruction_evidence",
+      "writeRestrictions": "production_policy_db_ui_forbidden"
+    },
+    {
+      "id": "5",
+      "branch": "integration/r0",
+      "worktreeAbsolutePath": "/Users/max/code/unseen-worktrees/5-integration",
+      "lifecycle": "existing",
+      "base": {
+        "kind": "historical_bootstrap",
+        "commit": "a790b3a2d152701e75171cb4dfdeeda52e7bfbd5"
+      },
+      "requiredEffectiveRevision": "SELF",
+      "startGate": "stage_l_after_1a_2_4_stop_then_stage_rc_after_all_approved_inputs",
+      "readOnlyDependencies": [
+        "FREEZE-MANIFEST.json",
+        "contracts/source/**",
+        "packages/contracts/generated/**",
+        "approved-module-commits"
+      ],
+      "writePaths": [
+        "tests/e2e/**",
+        "infra/integration/**",
+        "config/rc/**",
+        "release-evidence/local-operable/**"
+      ],
+      "conditionalWritePaths": [
+        {
+          "path": "package-lock.json",
+          "condition": "all_other_writers_stopped"
+        }
+      ],
+      "evidencePaths": [
+        "tests/e2e/**",
+        "infra/integration/**",
+        "config/rc/**",
+        "release-evidence/local-operable/**"
+      ],
+      "handoffCondition": "stage_l_local_operable_then_fixed_core_rc",
+      "writeRestrictions": "no_apps_services_viewer_business_writes"
+    },
+    {
+      "id": "6B",
+      "branch": "track/6b-release",
+      "worktreeAbsolutePath": "/Users/max/code/unseen-worktrees/6b-release",
+      "lifecycle": "existing",
+      "base": {
+        "kind": "historical_bootstrap",
+        "commit": "a790b3a2d152701e75171cb4dfdeeda52e7bfbd5"
+      },
+      "requiredEffectiveRevision": "SELF",
+      "startGate": "fixed_core_rc",
+      "readOnlyDependencies": [
+        "FREEZE-MANIFEST.json",
+        "contracts/source/**",
+        "packages/contracts/generated/**",
+        "fixed-track5-core-rc",
+        "release-evidence/cloud-sandbox/**",
+        "release-evidence/locator-shadow/**",
+        "release-evidence/locator-offline/**"
+      ],
+      "writePaths": [
+        "release-evidence/r0/**",
+        "ops/release/**",
+        "runbooks/release/**"
+      ],
+      "conditionalWritePaths": [],
+      "evidencePaths": [
+        "release-evidence/r0/**",
+        "ops/release/**",
+        "runbooks/release/**"
+      ],
+      "handoffCondition": "release_evidence_commit_for_controller_core_r0",
+      "writeRestrictions": "no_product_module_backwrite"
+    },
+    {
+      "id": "7",
+      "branch": "track/7-miniapp",
+      "worktreeAbsolutePath": "/Users/max/code/unseen-worktrees/7-miniapp",
+      "lifecycle": "existing",
+      "base": {
+        "kind": "historical_bootstrap",
+        "commit": "a790b3a2d152701e75171cb4dfdeeda52e7bfbd5"
+      },
+      "requiredEffectiveRevision": "SELF",
+      "startGate": "controller_declares_core_r0_pass",
+      "readOnlyDependencies": [
+        "FREEZE-MANIFEST.json",
+        "contracts/source/**",
+        "packages/contracts/generated/**",
+        "canonical-api-read-only",
+        "release-evidence/r0/**"
+      ],
+      "writePaths": [
+        "apps/miniapp/**"
+      ],
+      "conditionalWritePaths": [],
+      "evidencePaths": [
+        "apps/miniapp/**/tests/**"
+      ],
+      "handoffCondition": "thin_client_commit_same_ids_api_state",
+      "writeRestrictions": "no_second_backend"
+    },
+    {
+      "id": "R-C",
+      "branch": "research/depth-parallax",
+      "worktreeAbsolutePath": "/Users/max/code/unseen-worktrees/r-c-depth",
+      "lifecycle": "existing",
+      "base": {
+        "kind": "historical_bootstrap",
+        "commit": "a790b3a2d152701e75171cb4dfdeeda52e7bfbd5"
+      },
+      "requiredEffectiveRevision": "SELF",
+      "startGate": "controller_registered_research_baseline_plus_model_gpu_data_authorization",
+      "readOnlyDependencies": [
+        "FREEZE-MANIFEST.json",
+        "contracts/source/**",
+        "packages/contracts/generated/**",
+        "formal-product-api-viewer-read-only"
+      ],
+      "writePaths": [
+        "research/depth-parallax/**",
+        "release-evidence/research/depth-parallax/**"
+      ],
+      "conditionalWritePaths": [],
+      "evidencePaths": [
+        "release-evidence/research/depth-parallax/**"
+      ],
+      "handoffCondition": "research_commit_license_manifests_benchmark_go_no_go",
+      "writeRestrictions": "integration_only_by_future_rfc"
+    },
+    {
+      "id": "R-D",
+      "branch": "research/walkable3d",
+      "worktreeAbsolutePath": "/Users/max/code/unseen-worktrees/r-d-walkable3d",
+      "lifecycle": "existing",
+      "base": {
+        "kind": "historical_bootstrap",
+        "commit": "a790b3a2d152701e75171cb4dfdeeda52e7bfbd5"
+      },
+      "requiredEffectiveRevision": "SELF",
+      "startGate": "controller_approved_fixture_and_research_baseline",
+      "readOnlyDependencies": [
+        "FREEZE-MANIFEST.json",
+        "contracts/source/**",
+        "packages/contracts/generated/**",
+        "formal-product-canonical-production-read-only"
+      ],
+      "writePaths": [
+        "research/walkable3d/**",
+        "release-evidence/research/walkable3d/**"
+      ],
+      "conditionalWritePaths": [],
+      "evidencePaths": [
+        "release-evidence/research/walkable3d/**"
+      ],
+      "handoffCondition": "poc_commit_license_destruction_benchmark_go_no_go",
+      "writeRestrictions": "integration_only_by_future_rfc"
+    },
+    {
+      "id": "8A",
+      "branch": "track/8a-book-api",
+      "worktreeAbsolutePath": "/Users/max/code/unseen-worktrees/8a-book-api",
+      "lifecycle": "existing",
+      "base": {
+        "kind": "effective_revision_gate",
+        "requiredGate": "effective_revision_frozen"
+      },
+      "requiredEffectiveRevision": "SELF",
+      "startGate": "effective_revision_frozen_fixture_only_until_fixed_core_rc",
+      "readOnlyDependencies": [
+        "FREEZE-MANIFEST.json",
+        "contracts/source/**",
+        "packages/contracts/generated/**",
+        "frozen-book-fixtures"
+      ],
+      "writePaths": [
+        "services/book-lab/**"
+      ],
+      "conditionalWritePaths": [
+        {
+          "path": "services/api/src/extensions/book-lab.mjs",
+          "condition": "fixed_core_rc_and_prior_owner_stopped"
+        }
+      ],
+      "evidencePaths": [
+        "services/book-lab/**/tests/**"
+      ],
+      "handoffCondition": "clean_fixture_backed_book_api_domain_commit_then_exact_seam_commit",
+      "writeRestrictions": "core90_and_core_services_forbidden_except_registered_seam"
+    },
+    {
+      "id": "8B",
+      "branch": "track/8b-book-web",
+      "worktreeAbsolutePath": "/Users/max/code/unseen-worktrees/8b-book-web",
+      "lifecycle": "existing",
+      "base": {
+        "kind": "effective_revision_gate",
+        "requiredGate": "effective_revision_frozen"
+      },
+      "requiredEffectiveRevision": "SELF",
+      "startGate": "effective_revision_frozen_fixture_only_until_fixed_core_rc",
+      "readOnlyDependencies": [
+        "FREEZE-MANIFEST.json",
+        "contracts/source/**",
+        "packages/contracts/generated/**",
+        "frozen-book-fixtures",
+        "product-ui/evidence/**"
+      ],
+      "writePaths": [
+        "packages/book-lab-web/**",
+        "packages/book-renderer/**"
+      ],
+      "conditionalWritePaths": [
+        {
+          "path": "apps/web/src/extensions/book-lab.js",
+          "condition": "fixed_core_rc_and_prior_owner_stopped"
+        }
+      ],
+      "evidencePaths": [
+        "packages/book-lab-web/**/tests/**",
+        "packages/book-renderer/**/tests/**"
+      ],
+      "handoffCondition": "clean_fixture_backed_book_web_renderer_commit_then_exact_seam_commit",
+      "writeRestrictions": "core_web_routes_ia_viewer_forbidden_except_registered_seam"
+    },
+    {
+      "id": "8C",
+      "branch": "integration/book-lab",
+      "worktreeAbsolutePath": "/Users/max/code/unseen-worktrees/8c-book-integration",
+      "lifecycle": "planned_not_created",
+      "base": {
+        "kind": "future_fixed_gate",
+        "sourceTrack": "5",
+        "requiredGate": "fixed_core_rc"
+      },
+      "requiredEffectiveRevision": "SELF",
+      "startGate": "8a_8b_stopped_and_approved_on_same_fixed_core_rc",
+      "readOnlyDependencies": [
+        "FREEZE-MANIFEST.json",
+        "contracts/source/**",
+        "packages/contracts/generated/**",
+        "fixed-track5-core-rc",
+        "approved-8a-commit",
+        "approved-8b-commit"
+      ],
+      "writePaths": [
+        "tests/e2e/book-lab/**",
+        "infra/integration/book-lab/**",
+        "config/book-lab-rc/**",
+        "release-evidence/book-lab/**"
+      ],
+      "conditionalWritePaths": [
+        {
+          "path": "package-lock.json",
+          "condition": "all_other_writers_stopped"
+        }
+      ],
+      "evidencePaths": [
+        "tests/e2e/book-lab/**",
+        "release-evidence/book-lab/**"
+      ],
+      "handoffCondition": "book_mve_candidate_with_12_16_page_html_pdf_and_core_regression",
+      "writeRestrictions": "business_seam_failures_return_to_8a_or_8b"
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+证据索引 —— 位置编辑器「疑似待复核」照片 360 预览缺口修复
+================================================================
+
+复现与验证方式：本地起 infra/integration/local-operable.mjs（真实 apps/web 前端代码 +
+真实 services/api 后端 + 确定性定位 fixture），用真实浏览器（Claude_Browser 工具）登录、
+建空间、启用收集与全自动链路、上传 apps/web/assets/photos/photo-2.jpg 和 photo-4.jpg
+（config/rc/local-operable.json 里标定为 classification=uncertain，即 needs_confirmation）、
+作为 manager 打开位置编辑器、拖动 360 预览、保存、确认结果变为 confirmed。全程通过
+mcp__Claude_Browser 工具的 screenshot / read_page / javascript_tool / read_network_requests
+在会话中实时截图核对——这些截图作为本轮对话的一部分，Max 在会话记录里可以直接看到。
+
+已知限制（如实说明，不是偷懒）：
+本环境的 Claude_Browser 工具（screenshot/zoom 等 action）只把截图作为多模态内容内联返回给
+Claude 在对话里查看，没有暴露"存到磁盘某路径"的机制；WebGL 画布因为 packages/viewer（冻结、
+未改动）创建 context 时 preserveDrawingBuffer:false，用 canvas.toDataURL() 在独立的 JS 执行
+里读取会拿到空白/黑色缓冲区（浏览器允许 UA 在合成后清空未 preserve 的缓冲区，这是标准行为，
+不是这次改动引入的）；系统级 screencapture 会截到 Max 的整个真实共享桌面（其他窗口、私人消息、
+文件等），出于隐私边界排除在外，尝试后已立即删除产生的文件。所以这个目录里存的是可靠的
+文字/JSON 证据（真实的请求/响应 payload、真实的测试输出），而不是 PNG 截图文件——但对应的
+真实浏览器截图已经在本轮会话过程中逐步生成并展示给了 Max。
+
+文件说明：
+- 01-before-editor-editview-response.json
+    队列 -> 打开编辑器：GET /v1/photos/{pid}/placement-edit 的真实响应，
+    sceneContext.photoId 与目标照片一致、placement 正确为 null。
+- 02-safety-boundary-viewer-route-still-404.json
+    安全边界证明：公开的、仅供已确认照片使用的 /v1/viewer/.../scene-context 路由
+    对同一张未确认照片依然 404，即使调用者是空间主人本人。
+- 03-after-save-confirmed.json
+    真实拖动 + 保存后的状态：placementState 变为 confirmed，队列清空，
+    公开的 scene 视图正常渲染已保存的照片。两张不同照片各走了一遍完整链路。
+- 04-local-operable-shim-bug-found-and-fixed.json
+    过程中额外发现并修复的一个 bug：local-operable.mjs（仅本地测试用的响应投影层，
+    不随生产部署）里早于本次修复就存在的"anchor 借景"兜底逻辑，此前会无条件覆盖
+    editView() 自己返回的 sceneContext——这很可能就是两个前批代理报告矛盾的直接成因。
+- 05-final-test-run.txt
+    修复落地后的完整测试结果：api 213/213、web 169+1skip/170、locator 28/28、
+    viewer 13/13、book-lab 98/98，全绿，含新增的 10 个测试（6 个 API + 4 个 web）。

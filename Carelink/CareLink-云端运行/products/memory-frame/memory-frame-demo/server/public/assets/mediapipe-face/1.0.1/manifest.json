@@ -1,0 +1,22 @@
+{
+  "LICENSE": {
+    "bytes": 12331,
+    "sha256": "8707eef0533987efc5b155d64761eeb6e20793f50b9bd1a68dad1cf4719d0ed8"
+  },
+  "blaze_face_short_range.tflite": {
+    "bytes": 229746,
+    "sha256": "b4578f35940bf5a1a655214a1cce5cab13eba73c1297cd78e1a04c2380b0152f"
+  },
+  "vision_bundle.js": {
+    "bytes": 155465,
+    "sha256": "98db72469ffb176f5e9f2687be0f70783893aca681f7789c34b872b0a764371a"
+  },
+  "vision_wasm_nosimd_internal.js": {
+    "bytes": 323180,
+    "sha256": "e81d715a3d42cc3373602eb2f7aff795d164934db680e32496b65dab537f9658"
+  },
+  "vision_wasm_nosimd_internal.wasm.gz": {
+    "bytes": 3313067,
+    "sha256": "23a7645c7029c11457601b5cacb1eaaafbecc00a34c5e28651954bf6e31509ad"
+  }
+}

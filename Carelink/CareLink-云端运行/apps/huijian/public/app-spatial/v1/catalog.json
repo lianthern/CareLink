@@ -1,0 +1,1468 @@
+{
+  "schemaVersion": 1,
+  "publication": "2026-09-05-v3",
+  "author": {
+    "username": "unseen_demo",
+    "name": "UNSEEN 示例"
+  },
+  "cases": [
+    {
+      "id": "dap-ballroom",
+      "title": "宴会厅",
+      "category": "space",
+      "type": "dap",
+      "label": "实景全景 · DAP",
+      "cover": "/app-spatial/v1/ballroom.jpg",
+      "intro": "转身看看，再轻轻探身。",
+      "source": "Sergej Majboroda / Poly Haven · CC0；DAP © Insta360 Research · CC BY-NC 4.0。",
+      "notice": "单目深度的受限视差，不是精确几何；下方视角图裁自同一全景。",
+      "space": {
+        "kind": "dap",
+        "panorama": "/app-spatial/v1/ballroom.jpg",
+        "depth": "/app-spatial/v1/ballroom-depth.png",
+        "depthMetaSrc": "/app-spatial/v1/ballroom-depth.json",
+        "initialYaw": 0,
+        "initialPitch": -14
+      },
+      "photos": [
+        {
+          "src": "/app-spatial/v1/ballroom_p1.jpg",
+          "yaw": 35,
+          "pitch": -3,
+          "title": "全景视角 1"
+        },
+        {
+          "src": "/app-spatial/v1/ballroom_p2.jpg",
+          "yaw": 150,
+          "pitch": 2,
+          "title": "全景视角 2"
+        },
+        {
+          "src": "/app-spatial/v1/ballroom_p3.jpg",
+          "yaw": 265,
+          "pitch": 0,
+          "title": "全景视角 3"
+        }
+      ]
+    },
+    {
+      "id": "dap-chapel_day",
+      "title": "教堂",
+      "category": "space",
+      "type": "dap",
+      "label": "实景全景 · DAP",
+      "cover": "/app-spatial/v1/chapel_day.jpg",
+      "intro": "转身看看，再轻轻探身。",
+      "source": "Dimitrios Savva, Jarod Guest / Poly Haven · CC0；DAP © Insta360 Research · CC BY-NC 4.0。",
+      "notice": "单目深度的受限视差，不是精确几何；下方视角图裁自同一全景。",
+      "space": {
+        "kind": "dap",
+        "panorama": "/app-spatial/v1/chapel_day.jpg",
+        "depth": "/app-spatial/v1/chapel_day-depth.png",
+        "depthMetaSrc": "/app-spatial/v1/chapel_day-depth.json",
+        "initialYaw": 0,
+        "initialPitch": -14
+      },
+      "photos": [
+        {
+          "src": "/app-spatial/v1/chapel_day_p1.jpg",
+          "yaw": 20,
+          "pitch": 0,
+          "title": "全景视角 1"
+        },
+        {
+          "src": "/app-spatial/v1/chapel_day_p2.jpg",
+          "yaw": 140,
+          "pitch": 3,
+          "title": "全景视角 2"
+        },
+        {
+          "src": "/app-spatial/v1/chapel_day_p3.jpg",
+          "yaw": 250,
+          "pitch": -2,
+          "title": "全景视角 3"
+        }
+      ]
+    },
+    {
+      "id": "dap-comfy_cafe",
+      "title": "咖啡馆",
+      "category": "space",
+      "type": "dap",
+      "label": "实景全景 · DAP",
+      "cover": "/app-spatial/v1/comfy_cafe.jpg",
+      "intro": "转身看看，再轻轻探身。",
+      "source": "Sergej Majboroda / Poly Haven · CC0；DAP © Insta360 Research · CC BY-NC 4.0。",
+      "notice": "单目深度的受限视差，不是精确几何；下方视角图裁自同一全景。",
+      "space": {
+        "kind": "dap",
+        "panorama": "/app-spatial/v1/comfy_cafe.jpg",
+        "depth": "/app-spatial/v1/comfy_cafe-depth.png",
+        "depthMetaSrc": "/app-spatial/v1/comfy_cafe-depth.json",
+        "initialYaw": 0,
+        "initialPitch": -14
+      },
+      "photos": [
+        {
+          "src": "/app-spatial/v1/comfy_cafe_p1.jpg",
+          "yaw": 30,
+          "pitch": 0,
+          "title": "全景视角 1"
+        },
+        {
+          "src": "/app-spatial/v1/comfy_cafe_p2.jpg",
+          "yaw": 160,
+          "pitch": -3,
+          "title": "全景视角 2"
+        },
+        {
+          "src": "/app-spatial/v1/comfy_cafe_p3.jpg",
+          "yaw": 275,
+          "pitch": 4,
+          "title": "全景视角 3"
+        }
+      ]
+    },
+    {
+      "id": "dap-entrance_hall",
+      "title": "大厅",
+      "category": "space",
+      "type": "dap",
+      "label": "实景全景 · DAP",
+      "cover": "/app-spatial/v1/entrance_hall.jpg",
+      "intro": "转身看看，再轻轻探身。",
+      "source": "Sergej Majboroda / Poly Haven · CC0；DAP © Insta360 Research · CC BY-NC 4.0。",
+      "notice": "单目深度的受限视差，不是精确几何；下方视角图裁自同一全景。",
+      "space": {
+        "kind": "dap",
+        "panorama": "/app-spatial/v1/entrance_hall.jpg",
+        "depth": "/app-spatial/v1/entrance_hall-depth.png",
+        "depthMetaSrc": "/app-spatial/v1/entrance_hall-depth.json",
+        "initialYaw": 180,
+        "initialPitch": -4
+      },
+      "photos": [
+        {
+          "src": "/app-spatial/v1/entrance_hall_p1.jpg",
+          "yaw": 25,
+          "pitch": 2,
+          "title": "全景视角 1"
+        },
+        {
+          "src": "/app-spatial/v1/entrance_hall_p2.jpg",
+          "yaw": 145,
+          "pitch": 0,
+          "title": "全景视角 2"
+        },
+        {
+          "src": "/app-spatial/v1/entrance_hall_p3.jpg",
+          "yaw": 255,
+          "pitch": -3,
+          "title": "全景视角 3"
+        }
+      ]
+    },
+    {
+      "id": "dap-demo-pano",
+      "title": "车间",
+      "category": "space",
+      "type": "dap",
+      "label": "实景全景 · DAP",
+      "cover": "/app-spatial/v1/demo-pano.jpg",
+      "intro": "转身看看，再轻轻探身。",
+      "source": "Oliksiy Yakovlyev / Poly Haven · CC0；DAP © Insta360 Research · CC BY-NC 4.0。",
+      "notice": "单目深度的受限视差，不是精确几何；下方视角图裁自同一全景。",
+      "space": {
+        "kind": "dap",
+        "panorama": "/app-spatial/v1/demo-pano.jpg",
+        "depth": "/app-spatial/v1/demo-pano-depth.png",
+        "depthMetaSrc": "/app-spatial/v1/demo-pano-depth.json",
+        "initialYaw": 0,
+        "initialPitch": -14
+      },
+      "photos": []
+    },
+    {
+      "id": "tingjian",
+      "title": "庭间 · 一场未曾拍摄的婚礼",
+      "type": "chapters",
+      "category": "space",
+      "label": "AI 婚礼模板 · 四个章节",
+      "cover": "/app-spatial/v1/tingjian/nodes/n1/pano.png",
+      "intro": "本体验使用 AI 生成的婚礼场景与演示照片，用于展示空间回顾流程，不对应真实人物或真实婚礼记录。",
+      "source": "UNSEEN 既有公开 AI 婚礼 s900001；原 manifest 编写的方位，不是实测定位。",
+      "notice": "本体验使用 AI 生成的婚礼场景与演示照片，用于展示空间回顾流程，不对应真实人物或真实婚礼记录。",
+      "chapters": [
+        {
+          "id": "n1",
+          "title": "初见",
+          "intro": "午后的光穿过枝叶，香槟与笑声在庭院里轻轻相遇。宾客循着花香而来，故事从这一刻开始。",
+          "space": {
+            "kind": "360",
+            "panorama": "/app-spatial/v1/tingjian/nodes/n1/pano.png",
+            "initialYaw": 188.594367,
+            "initialPitch": 0
+          },
+          "photos": [
+            {
+              "src": "/app-spatial/v1/tingjian/photos/p1.jpg",
+              "yaw": 138,
+              "pitch": 0,
+              "title": "花门下的第一眼"
+            },
+            {
+              "src": "/app-spatial/v1/tingjian/photos/p2.jpg",
+              "yaw": 208,
+              "pitch": -3,
+              "title": "香槟初响"
+            }
+          ]
+        },
+        {
+          "id": "n2",
+          "title": "誓言",
+          "intro": "树影收拢了喧闹，只留下相望的两个人。每一句承诺，都被风和在场的人温柔收藏。",
+          "space": {
+            "kind": "360",
+            "panorama": "/app-spatial/v1/tingjian/nodes/n2/pano.png",
+            "initialYaw": 174.270422,
+            "initialPitch": 0
+          },
+          "photos": [
+            {
+              "src": "/app-spatial/v1/tingjian/photos/p3.jpg",
+              "yaw": 180,
+              "pitch": 0,
+              "title": "誓言被风听见"
+            },
+            {
+              "src": "/app-spatial/v1/tingjian/photos/p4.jpg",
+              "yaw": 264,
+              "pitch": -4,
+              "title": "家人的笑意"
+            }
+          ]
+        },
+        {
+          "id": "n3",
+          "title": "共宴",
+          "intro": "烛火沿长桌次第亮起，祝福藏进每一次碰杯。熟悉的人围坐一起，让时间走得慢一些。",
+          "space": {
+            "kind": "360",
+            "panorama": "/app-spatial/v1/tingjian/nodes/n3/pano.png",
+            "initialYaw": 182.864789,
+            "initialPitch": 0
+          },
+          "photos": [
+            {
+              "src": "/app-spatial/v1/tingjian/photos/p5.jpg",
+              "yaw": 180,
+              "pitch": 0,
+              "title": "举杯，为我们"
+            },
+            {
+              "src": "/app-spatial/v1/tingjian/photos/p6.jpg",
+              "yaw": 88,
+              "pitch": -2,
+              "title": "长桌另一端的祝福"
+            }
+          ]
+        },
+        {
+          "id": "n4",
+          "title": "尽兴",
+          "intro": "音乐越过午夜，灯光与裙摆交换颜色。所有克制都暂时退场，只为庆祝这一场盛大的相逢。",
+          "space": {
+            "kind": "360",
+            "panorama": "/app-spatial/v1/tingjian/nodes/n4/pano.png",
+            "initialYaw": 167.394929,
+            "initialPitch": 0
+          },
+          "photos": [
+            {
+              "src": "/app-spatial/v1/tingjian/photos/p7.jpg",
+              "yaw": 180,
+              "pitch": -3,
+              "title": "星光下的第一支舞"
+            },
+            {
+              "src": "/app-spatial/v1/tingjian/photos/p8.jpg",
+              "yaw": 252,
+              "pitch": -2,
+              "title": "朋友们的午夜合影"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "wedding-journey",
+      "title": "婚礼旅程 · 早期流程示意",
+      "type": "chapters",
+      "category": "history",
+      "label": "历史概念 · 合成图案",
+      "cover": "/app-spatial/v1/journey/jieqin.jpg",
+      "intro": "沿接亲、出发、仪式、宴席四个章节，回看最初的空间旅程。",
+      "source": "tools/fixtures.py 生成的图案全景与裁切视角；不是实景、真人婚礼或生成式 AI 照片。",
+      "notice": "原地图与章节保留；历史深度文件已归档，不将图案深度作为真实几何。",
+      "map": "/app-spatial/v1/journey/map.jpg",
+      "chapters": [
+        {
+          "id": "jieqin",
+          "title": "接亲",
+          "space": {
+            "kind": "360",
+            "panorama": "/app-spatial/v1/journey/jieqin.jpg"
+          },
+          "photos": [
+            {
+              "src": "/app-spatial/v1/journey/w001.jpg",
+              "yaw": 51,
+              "pitch": 7,
+              "title": "流程视角 1"
+            },
+            {
+              "src": "/app-spatial/v1/journey/w002.jpg",
+              "yaw": 81,
+              "pitch": 4,
+              "title": "流程视角 2"
+            },
+            {
+              "src": "/app-spatial/v1/journey/w003.jpg",
+              "yaw": 113,
+              "pitch": 8,
+              "title": "流程视角 3"
+            },
+            {
+              "src": "/app-spatial/v1/journey/w004.jpg",
+              "yaw": 133,
+              "pitch": -5,
+              "title": "流程视角 4"
+            },
+            {
+              "src": "/app-spatial/v1/journey/w005.jpg",
+              "yaw": 173,
+              "pitch": 5,
+              "title": "流程视角 5"
+            },
+            {
+              "src": "/app-spatial/v1/journey/w006.jpg",
+              "yaw": 222,
+              "pitch": -7,
+              "title": "流程视角 6"
+            },
+            {
+              "src": "/app-spatial/v1/journey/w007.jpg",
+              "yaw": 261,
+              "pitch": -1,
+              "title": "流程视角 7"
+            },
+            {
+              "src": "/app-spatial/v1/journey/w008.jpg",
+              "yaw": 281,
+              "pitch": -8,
+              "title": "流程视角 8"
+            },
+            {
+              "src": "/app-spatial/v1/journey/w009.jpg",
+              "yaw": 308,
+              "pitch": 9,
+              "title": "流程视角 9"
+            },
+            {
+              "src": "/app-spatial/v1/journey/w010.jpg",
+              "yaw": 349,
+              "pitch": 4,
+              "title": "流程视角 10"
+            }
+          ]
+        },
+        {
+          "id": "chufa",
+          "title": "出发",
+          "space": {
+            "kind": "360",
+            "panorama": "/app-spatial/v1/journey/chufa.jpg"
+          },
+          "photos": [
+            {
+              "src": "/app-spatial/v1/journey/w011.jpg",
+              "yaw": 12,
+              "pitch": 9,
+              "title": "流程视角 11"
+            },
+            {
+              "src": "/app-spatial/v1/journey/w012.jpg",
+              "yaw": 37,
+              "pitch": 6,
+              "title": "流程视角 12"
+            },
+            {
+              "src": "/app-spatial/v1/journey/w013.jpg",
+              "yaw": 69,
+              "pitch": -9,
+              "title": "流程视角 13"
+            },
+            {
+              "src": "/app-spatial/v1/journey/w014.jpg",
+              "yaw": 98,
+              "pitch": -4,
+              "title": "流程视角 14"
+            },
+            {
+              "src": "/app-spatial/v1/journey/w015.jpg",
+              "yaw": 134,
+              "pitch": 9,
+              "title": "流程视角 15"
+            },
+            {
+              "src": "/app-spatial/v1/journey/w016.jpg",
+              "yaw": 187,
+              "pitch": 4,
+              "title": "流程视角 16"
+            },
+            {
+              "src": "/app-spatial/v1/journey/w017.jpg",
+              "yaw": 227,
+              "pitch": 4,
+              "title": "流程视角 17"
+            },
+            {
+              "src": "/app-spatial/v1/journey/w018.jpg",
+              "yaw": 253,
+              "pitch": 6,
+              "title": "流程视角 18"
+            },
+            {
+              "src": "/app-spatial/v1/journey/w019.jpg",
+              "yaw": 284,
+              "pitch": 10,
+              "title": "流程视角 19"
+            },
+            {
+              "src": "/app-spatial/v1/journey/w020.jpg",
+              "yaw": 316,
+              "pitch": 5,
+              "title": "流程视角 20"
+            }
+          ]
+        },
+        {
+          "id": "yishi",
+          "title": "仪式",
+          "space": {
+            "kind": "360",
+            "panorama": "/app-spatial/v1/journey/yishi.jpg"
+          },
+          "photos": [
+            {
+              "src": "/app-spatial/v1/journey/w021.jpg",
+              "yaw": 7,
+              "pitch": -8,
+              "title": "流程视角 21"
+            },
+            {
+              "src": "/app-spatial/v1/journey/w022.jpg",
+              "yaw": 51,
+              "pitch": 10,
+              "title": "流程视角 22"
+            },
+            {
+              "src": "/app-spatial/v1/journey/w023.jpg",
+              "yaw": 75,
+              "pitch": 3,
+              "title": "流程视角 23"
+            },
+            {
+              "src": "/app-spatial/v1/journey/w024.jpg",
+              "yaw": 99,
+              "pitch": -2,
+              "title": "流程视角 24"
+            },
+            {
+              "src": "/app-spatial/v1/journey/w025.jpg",
+              "yaw": 167,
+              "pitch": -3,
+              "title": "流程视角 25"
+            },
+            {
+              "src": "/app-spatial/v1/journey/w026.jpg",
+              "yaw": 203,
+              "pitch": -1,
+              "title": "流程视角 26"
+            },
+            {
+              "src": "/app-spatial/v1/journey/w027.jpg",
+              "yaw": 217,
+              "pitch": -8,
+              "title": "流程视角 27"
+            },
+            {
+              "src": "/app-spatial/v1/journey/w028.jpg",
+              "yaw": 250,
+              "pitch": 2,
+              "title": "流程视角 28"
+            },
+            {
+              "src": "/app-spatial/v1/journey/w029.jpg",
+              "yaw": 280,
+              "pitch": -1,
+              "title": "流程视角 29"
+            },
+            {
+              "src": "/app-spatial/v1/journey/w030.jpg",
+              "yaw": 349,
+              "pitch": -8,
+              "title": "流程视角 30"
+            }
+          ]
+        },
+        {
+          "id": "yanxi",
+          "title": "宴席",
+          "space": {
+            "kind": "360",
+            "panorama": "/app-spatial/v1/journey/yanxi.jpg"
+          },
+          "photos": [
+            {
+              "src": "/app-spatial/v1/journey/w031.jpg",
+              "yaw": 7,
+              "pitch": -10,
+              "title": "流程视角 31"
+            },
+            {
+              "src": "/app-spatial/v1/journey/w032.jpg",
+              "yaw": 43,
+              "pitch": -4,
+              "title": "流程视角 32"
+            },
+            {
+              "src": "/app-spatial/v1/journey/w033.jpg",
+              "yaw": 68,
+              "pitch": 5,
+              "title": "流程视角 33"
+            },
+            {
+              "src": "/app-spatial/v1/journey/w034.jpg",
+              "yaw": 139,
+              "pitch": 2,
+              "title": "流程视角 34"
+            },
+            {
+              "src": "/app-spatial/v1/journey/w035.jpg",
+              "yaw": 170,
+              "pitch": -8,
+              "title": "流程视角 35"
+            },
+            {
+              "src": "/app-spatial/v1/journey/w036.jpg",
+              "yaw": 193,
+              "pitch": -2,
+              "title": "流程视角 36"
+            },
+            {
+              "src": "/app-spatial/v1/journey/w037.jpg",
+              "yaw": 227,
+              "pitch": -8,
+              "title": "流程视角 37"
+            },
+            {
+              "src": "/app-spatial/v1/journey/w038.jpg",
+              "yaw": 256,
+              "pitch": 0,
+              "title": "流程视角 38"
+            },
+            {
+              "src": "/app-spatial/v1/journey/w039.jpg",
+              "yaw": 307,
+              "pitch": 3,
+              "title": "流程视角 39"
+            },
+            {
+              "src": "/app-spatial/v1/journey/w040.jpg",
+              "yaw": 340,
+              "pitch": -6,
+              "title": "流程视角 40"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "memory-film",
+      "title": "空间记忆 · 婚礼旅程短片",
+      "type": "video",
+      "category": "book",
+      "label": "历史成片 · 合成流程示例",
+      "cover": "/app-spatial/v1/journey/yanxi.jpg",
+      "intro": "沿四个章节播放既有短片，再回到空间里慢慢看。",
+      "source": "2026-07-25 film/out/memory-film-web.mp4；film/assets/shots.json，32 镜、79.445 秒（原文件实测）。",
+      "notice": "合成示例和演示剪辑，不是真实婚礼。此处播放已有成片。",
+      "video": "/app-spatial/v1/memory-film.mp4"
+    },
+    {
+      "id": "judge-story",
+      "title": "六幕评委 Demo",
+      "type": "article",
+      "category": "history",
+      "label": "项目历程 · 历史概念页",
+      "cover": "/app-spatial/v1/ballroom.jpg",
+      "intro": "回看当时怎样解释照片、空间和共同记忆。",
+      "source": "UNSEEN 早期公开展示 web/demo.html；静态正文整理，未运行原页脚本。",
+      "notice": "根据早期公开原稿整理的历史叙事。数字、能力与状态仅代表原稿时点；可体验的已有成果见文末入口。",
+      "sections": [
+        {
+          "heading": true,
+          "text": "第一幕 · 错过的五分钟"
+        },
+        {
+          "heading": false,
+          "text": "那五分钟，也许被别人拍下来了。婚礼那天，她错过了大厅里最好笑的五分钟。许多人都举着手机，那五分钟也许留在了不同画面里，却还散在各自的手机里。"
+        },
+        {
+          "heading": true,
+          "text": "第二幕 · 宾客"
+        },
+        {
+          "heading": false,
+          "text": "扫码，传一张，看着它回到当时朝着的方向。原演示用归位动画说明照片上传、候选方向与待确认位置。"
+        },
+        {
+          "heading": true,
+          "text": "第三幕 · 空间"
+        },
+        {
+          "heading": false,
+          "text": "照片挂在它当时朝着的方向上。转一圈，看同一现场的不同画面。"
+        },
+        {
+          "heading": true,
+          "text": "第四幕 · 三个方向"
+        },
+        {
+          "heading": false,
+          "text": "回到他当时朝着的方向，换一双眼睛。"
+        },
+        {
+          "heading": true,
+          "text": "第五幕 · 新人后台"
+        },
+        {
+          "heading": false,
+          "text": "机器拿不准的，才推给你。原稿用「盲区通缉令」与待审照片解释主办方判断；动态归位数量在原 HTML 中为「未测」，此处不补造数值。"
+        },
+        {
+          "heading": true,
+          "text": "第六幕 · 成片与愿景"
+        },
+        {
+          "heading": false,
+          "text": "原稿提出「一键把这一天剪成一段片子」，并播放一份已有短片。下面可观看原成片；不表示当前 App 开放新的视频生成。"
+        },
+        {
+          "heading": false,
+          "text": "一个人的记忆，一台相机就够了。一群人的记忆，需要一个共同的空间。婚礼，毕业，还有今天这个会场。"
+        }
+      ],
+      "sourceHash": "31ade007ecc2dd7c7ba3e60c709ca431eb03a526bea4dc870dd71ac0f9782a61",
+      "related": [
+        {
+          "id": "wedding-journey",
+          "title": "走过原婚礼流程示意"
+        },
+        {
+          "id": "memory-film",
+          "title": "观看已有短片"
+        },
+        {
+          "id": "tingjian",
+          "title": "走进 AI 婚礼模板"
+        }
+      ]
+    },
+    {
+      "id": "roadshow",
+      "title": "路演现场",
+      "type": "article",
+      "category": "history",
+      "label": "项目历程 · 历史概念页",
+      "cover": "/app-spatial/v1/ballroom.jpg",
+      "intro": "回看当时怎样解释照片、空间和共同记忆。",
+      "source": "UNSEEN 早期公开展示 roadshow.html；静态正文整理，未运行原页脚本。",
+      "notice": "根据早期公开原稿整理的历史叙事。数字、能力与状态仅代表原稿时点；可体验的已有成果见文末入口。",
+      "sections": [
+        {
+          "heading": true,
+          "text": "相册记住了照片，却忘了照片发生在哪里。"
+        },
+        {
+          "heading": false,
+          "text": "让散落的视角回到同一个现场。"
+        },
+        {
+          "heading": true,
+          "text": "当时的现场入口"
+        },
+        {
+          "heading": false,
+          "text": "原路演页提供「上传一张现场照片」和「进入共同空间」两个入口。上传入口先核对空间、投稿状态与剩余名额，再决定是否开放；读取失败时保持关闭。"
+        },
+        {
+          "heading": true,
+          "text": "原稿的技术说明"
+        },
+        {
+          "heading": false,
+          "text": "演示由本机 CLIP 在 12 个方向候选中完成匹配，没有调用外接多模态视觉大模型。"
+        },
+        {
+          "heading": false,
+          "text": "这里保留路演叙事与技术说明；原页的实时名额和加载提示不作为当前活动状态。"
+        }
+      ],
+      "sourceHash": "4fb30ce5923ddde0ee793633029d2d1e200ae36ba41f879514b5e551543516f6",
+      "related": [
+        {
+          "id": "adventurex",
+          "title": "查看现有活动相册"
+        },
+        {
+          "id": "portal",
+          "title": "继续读产品历程"
+        }
+      ]
+    },
+    {
+      "id": "workspace",
+      "title": "空间工作台",
+      "type": "article",
+      "category": "history",
+      "label": "项目历程 · 历史概念页",
+      "cover": "/app-spatial/v1/ballroom.jpg",
+      "intro": "回看当时怎样解释照片、空间和共同记忆。",
+      "source": "UNSEEN 早期公开展示 workspace.html；静态正文整理，未运行原页脚本。",
+      "notice": "根据早期公开原稿整理的历史叙事。数字、能力与状态仅代表原稿时点；可体验的已有成果见文末入口。",
+      "sections": [
+        {
+          "heading": true,
+          "text": "空间工作台 · 让照片回到它当时朝着的方向"
+        },
+        {
+          "heading": false,
+          "text": "早期工作台把场景、自己的空间和演示放在同一页，路演入口位于前面。"
+        },
+        {
+          "heading": true,
+          "text": "适用场景 · 同一套系统"
+        },
+        {
+          "heading": false,
+          "text": "婚礼、活动、旅程。原代码明确说明：这些是产品适用范围，不是三套不同模板。"
+        },
+        {
+          "heading": true,
+          "text": "给评委和队友看的"
+        },
+        {
+          "heading": false,
+          "text": "六幕演示：三分钟从头走到尾，不用人解说。"
+        },
+        {
+          "heading": false,
+          "text": "只读展览：主办方选择内容，观众只负责观看。"
+        },
+        {
+          "heading": false,
+          "text": "AI 全景回顾：4 个全景场景、8 张照片，完整走一遍展示流程。"
+        },
+        {
+          "heading": false,
+          "text": "历史页的「我的空间」需要当前使用者身份。此处仅保留公开说明，不复制私人空间列表。"
+        }
+      ],
+      "sourceHash": "1e69cff496061249cf25e3c79930a0b52f4455dc3c6742ebf54a30970981af34",
+      "related": [
+        {
+          "id": "judge-story",
+          "title": "阅读六幕叙事"
+        },
+        {
+          "id": "tingjian",
+          "title": "进入四章节 AI 婚礼"
+        },
+        {
+          "id": "roadshow",
+          "title": "阅读路演现场"
+        }
+      ]
+    },
+    {
+      "id": "pov-research",
+      "title": "回到 TA 的视角",
+      "type": "article",
+      "category": "history",
+      "label": "项目历程 · 历史概念页",
+      "cover": "/app-spatial/v1/ballroom.jpg",
+      "intro": "回看当时怎样解释照片、空间和共同记忆。",
+      "source": "UNSEEN 早期公开展示 web/pov.html",
+      "notice": "以下为历史原稿，数字、能力与状态仅代表原稿时点，不代表当前 App 承诺。",
+      "sections": [
+        {
+          "heading": true,
+          "text": "回到 TA 的视角"
+        },
+        {
+          "heading": true,
+          "text": "相册知道照片是什么时候拍的，不知道它当时朝着哪。"
+        },
+        {
+          "heading": false,
+          "text": "「回到 TA 的视角」答的是后半截：那一刻，那个地方，每个人分别朝着哪个方向在看，还有哪个方向一个人都没拍到。"
+        },
+        {
+          "heading": false,
+          "text": "它不是把照片放大。放大的照片会跟着你的屏幕走，这里的照片钉在空间里，你转头它留在原地。"
+        },
+        {
+          "heading": false,
+          "text": "进去以后点空间里的相框就进视角。手机拖动环视，桌面点一下锁定鼠标。"
+        },
+        {
+          "heading": true,
+          "text": "三步长什么样"
+        },
+        {
+          "heading": true,
+          "text": "相机自己转过去"
+        },
+        {
+          "heading": false,
+          "text": "点中相框以后，相机用 1.15 秒转向那个方向，同时沿这个方向推近 0.45 米。这一秒里环视和走动都会被吃掉，免得你和动画抢方向盘。"
+        },
+        {
+          "heading": false,
+          "text": "飞行中间帧，方位还在扫，照片还没长出来"
+        },
+        {
+          "heading": true,
+          "text": "贴在那个方向上，不是贴在屏幕上"
+        },
+        {
+          "heading": false,
+          "text": "到位后照片铺开盖住那一块，四边羽化，留 5% 不透明度让底下的全景透出来，提示这是叠加不是替换。落地方位 35 度，正好等于这张照片的角度。"
+        },
+        {
+          "heading": false,
+          "text": "标签：他拍的就是这个方向 · 空间方位 35°"
+        },
+        {
+          "heading": true,
+          "text": "谁拍过，谁没拍过"
+        },
+        {
+          "heading": false,
+          "text": "照片钉在世界里不跟着转。实测在 5 个不同朝向读这张照片平面的坐标，恒等于 [1.57, 1.28, -2.24]，一位都没变。转到有人拍过的方向标签会报张数，转到空的方向压一层冷色暗角。"
+        },
+        {
+          "heading": false,
+          "text": "左：150° 也有人拍到 · 右：100° 没有人拍到"
+        },
+        {
+          "heading": true,
+          "text": "老实话：这一版哪里还不行"
+        },
+        {
+          "heading": true,
+          "text": "它会当着你的脸说错话，这是最硬的一条"
+        },
+        {
+          "heading": false,
+          "text": "照片按假设的 70 度视场铺开，但「这个方向有没有人拍过」只按扇区中点前后 20 度算，合 40 度宽。盖住的宽度是判定宽度的将近两倍，中间那段差值就是说错话的地方。"
+        },
+        {
+          "heading": false,
+          "text": "示例空间 s4，进入小明那张照片当时朝着的方向，再转到方位 30 度"
+        },
+        {
+          "heading": true,
+          "text": "70 度是假设值，不是量出来的"
+        },
+        {
+          "heading": false,
+          "text": "没有从 EXIF 反推焦段，不知道拍的人当时用的什么设备什么镜头，代码里就写死了一个 70 度。改这个数只会让照片铺得更宽或更窄，不参与任何判定，但它确实是个假设。"
+        },
+        {
+          "heading": false,
+          "text": "方向本身也只有 30 度一格、一共 12 格，这是系统现在的天花板。照片钉在扇区正中间，所以「误差半格」是结构上必然的，不是精度好。"
+        },
+        {
+          "heading": true,
+          "text": "「也有人拍到 N 张」会把你脚下这张算进去"
+        },
+        {
+          "heading": false,
+          "text": "演示空间一共 3 张照片，角度是 35、150、265。站在 35 度那张的视角里转到 10 度，标签写「也有人拍到 · 1 张」，那 1 张就是你正站着的这张，旁边并没有别人。"
+        },
+        {
+          "heading": false,
+          "text": "原因是「你自己那格」和「有没有人拍过」两处用了不一样的归格方式。真实空间的照片角度都落在格子正中，暂时不会撞上，所以演示时别去点顶部那排切场景的按钮。"
+        },
+        {
+          "heading": true,
+          "text": "演示素材是从同一张全景里切出来的，手机上几乎看不出发生了什么"
+        },
+        {
+          "heading": false,
+          "text": "照片盖上去以后，内容和它底下的背景本来就一样，只是亮一点、边上多一圈白框。手机竖屏更吃亏：相机横向视场只有 39 度（390×844 实测），照片却铺了 70 度，横向整个溢出屏幕，你只看得见照片中间那一块。桌面 1280×860 横向视场 97.6 度，白框的边能露出来，同一个功能在两种屏上是两种观感。"
+        },
+        {
+          "heading": false,
+          "text": "桌面上白框读得出来，这才是「他拍到的那一块」该有的样子"
+        },
+        {
+          "heading": true,
+          "text": "文案有两处还没改到位"
+        },
+        {
+          "heading": false,
+          "text": "截图里那句「你正站在 X 的视角里」，「站」字用过了。系统不知道 TA 站在哪，落点是从你当前位置沿那个方向推 0.45 米，跟 TA 的真实机位没有关系。看到请当成「朝着 TA 当时朝的方向」。"
+        },
+        {
+          "heading": false,
+          "text": "另外功能名叫「回到 TA 的视角」，正文里却一律是「他」，女性贡献者也是「他」。两处都还没改。"
+        },
+        {
+          "heading": false,
+          "text": "还有一处顺带说破：上面第 01 步那张飞行中间帧里，顶上已经写着「你正站在这张照片的视角里」，其实这一刻相机还在半路上。这行字是进入的瞬间就挂上去的，没等落地。"
+        },
+        {
+          "heading": true,
+          "text": "手机上摇杆画出来那个圈本身点不动"
+        },
+        {
+          "heading": false,
+          "text": "实测：手指按在圈正中往上拖，相机 [0, 1.4, 0] 一动不动；按在圈右边 70 像素处（已经在圈外，但还在感应范围内）往上拖，相机走到 [0.855, 1.4, -0.675]。真正管用的是圈外面一圈看不见的范围。"
+        },
+        {
+          "heading": false,
+          "text": "这是加 POV 之前就有的老毛病，不是这次改出来的，但手机上演示会踩到，想走动就把手指落在圈边上一点。"
+        },
+        {
+          "heading": false,
+          "text": "退出视角有三条路：点画面空白处、右上「退出视角」、桌面按 ESC。"
+        },
+        {
+          "heading": false,
+          "text": "页面里所有截图都是无头浏览器 390×844 和 1280×800 下的实拍，没有示意图，没有手绘。 扇区、方位、坐标、张数这些数字是现场读自 window.__psmWalk 调试出口的， 1.15 秒和 0.45 米这两个来自 viewer/walk.html 里的常量。 全景素材 Poly Haven CC0，深度 DAP © Insta360 Research CC BY-NC 4.0。"
+        }
+      ],
+      "sourceHash": "c117a02124daf0deb05f12ef1746be58427c29ecbc4453b297bb04d890b4edf6"
+    },
+    {
+      "id": "portal",
+      "title": "产品 Showcase",
+      "type": "article",
+      "category": "history",
+      "label": "项目历程 · 历史概念页",
+      "cover": "/app-spatial/v1/ballroom.jpg",
+      "intro": "回看当时怎样解释照片、空间和共同记忆。",
+      "source": "UNSEEN 早期公开展示 portal.html",
+      "notice": "以下为历史原稿，数字、能力与状态仅代表原稿时点，不代表当前 App 承诺。",
+      "sections": [
+        {
+          "heading": true,
+          "text": "让每张照片，回到它的方向。"
+        },
+        {
+          "heading": false,
+          "text": "UNSEEN 把散落在宾客手机里的照片，重新放回它被拍下的空间。一套系统连接宾客上传、主办方处理与可分享的记忆展览。"
+        },
+        {
+          "heading": true,
+          "text": "一个系统，三个使用界面"
+        },
+        {
+          "heading": false,
+          "text": "每个角色只看到自己需要的动作。进入下一页以后都能按原路返回，不需要在多个标签页之间寻找。"
+        },
+        {
+          "heading": true,
+          "text": "宾客上传端"
+        },
+        {
+          "heading": false,
+          "text": "宾客不需要注册。看任务、选择照片、上传，并查看每一张照片的真实处理结果。"
+        },
+        {
+          "heading": true,
+          "text": "主办方 Studio"
+        },
+        {
+          "heading": false,
+          "text": "收集、审核、策展、发布的主办方界面。目前只有演示登录页，后面的工作台还在建设中。"
+        },
+        {
+          "heading": true,
+          "text": "只读记忆展览"
+        },
+        {
+          "heading": false,
+          "text": "分享给宾客、观众和现场大屏。只展示主办方发布的内容，不出现后台操作。"
+        },
+        {
+          "heading": true,
+          "text": "作品演示"
+        },
+        {
+          "heading": false,
+          "text": "这一节全部是演示内容：固定素材、固定空间、为讲清楚产品做的叙事页。它们不是你自己的空间，也不代表当前可交付的功能。产品入口在上面一节。"
+        },
+        {
+          "heading": true,
+          "text": "那五分钟，也许被别人拍下来了"
+        },
+        {
+          "heading": false,
+          "text": "从散落的宾客照片开始，依次看到方向识别、空间钉点、缺口任务和可以走进去的记忆展览。用的是预先准备好的固定素材。"
+        },
+        {
+          "heading": true,
+          "text": "路演现场"
+        },
+        {
+          "heading": false,
+          "text": "活动现场用的固定空间（写死 s900003），大屏每五秒刷新一次收集状态。"
+        },
+        {
+          "heading": true,
+          "text": "AI 全景回顾 · 已上传"
+        },
+        {
+          "heading": false,
+          "text": "4 个全景场景和 8 张演示照片，按“已上传 → 已定位 → 可展示”进入同一条主系统流程。"
+        },
+        {
+          "heading": true,
+          "text": "回到 TA 的视角"
+        },
+        {
+          "heading": false,
+          "text": "解释照片如何世界锚定，以及能力边界。"
+        },
+        {
+          "heading": true,
+          "text": "3D 空间漫游"
+        },
+        {
+          "heading": false,
+          "text": "进入稳定演示空间，点击照片查看拍摄方向。"
+        },
+        {
+          "heading": true,
+          "text": "六幕评委 Demo"
+        },
+        {
+          "heading": false,
+          "text": "用完整叙事讲清问题、技术路径和最终结果。"
+        },
+        {
+          "heading": true,
+          "text": "空间工作台"
+        },
+        {
+          "heading": false,
+          "text": "演示型的空间卡片和说明，不是可操作的主办空间列表。"
+        },
+        {
+          "heading": true,
+          "text": "三步完成同一条闭环"
+        },
+        {
+          "heading": false,
+          "text": "不是三套独立网站，而是同一份空间数据在三个权限界面中的不同呈现。"
+        },
+        {
+          "heading": false,
+          "text": "照片先被云端接收，再等待处理电脑识别。"
+        },
+        {
+          "heading": false,
+          "text": "机器处理确定项，人工只确认拿不准的内容。"
+        },
+        {
+          "heading": false,
+          "text": "公开页只读取已经发布的只读展览快照。"
+        }
+      ],
+      "sourceHash": "e08495343310a7fe81d0a4e2c0a0fca59d6180f7cbfe83f7e4fa93e7eaea126f"
+    },
+    {
+      "id": "legacy-album-timeline",
+      "title": "记忆相册与时光轴",
+      "type": "album",
+      "category": "history",
+      "label": "历史展示 · 合成流程示例",
+      "cover": "/app-spatial/v1/journey/w001.jpg",
+      "intro": "沿着章节翻看早期流程照片，切换相册与时光轴。",
+      "source": "assets/photos/ground_truth.json 与原婚礼旅程裁切素材。",
+      "notice": "合成测试图案，不是真人照片；时间顺序仅表示章节先后。",
+      "photos": [
+        {
+          "src": "/app-spatial/v1/journey/w001.jpg",
+          "yaw": 51,
+          "pitch": 7,
+          "title": "流程视角 1",
+          "chapter": "接亲"
+        },
+        {
+          "src": "/app-spatial/v1/journey/w002.jpg",
+          "yaw": 81,
+          "pitch": 4,
+          "title": "流程视角 2",
+          "chapter": "接亲"
+        },
+        {
+          "src": "/app-spatial/v1/journey/w003.jpg",
+          "yaw": 113,
+          "pitch": 8,
+          "title": "流程视角 3",
+          "chapter": "接亲"
+        },
+        {
+          "src": "/app-spatial/v1/journey/w004.jpg",
+          "yaw": 133,
+          "pitch": -5,
+          "title": "流程视角 4",
+          "chapter": "接亲"
+        },
+        {
+          "src": "/app-spatial/v1/journey/w005.jpg",
+          "yaw": 173,
+          "pitch": 5,
+          "title": "流程视角 5",
+          "chapter": "接亲"
+        },
+        {
+          "src": "/app-spatial/v1/journey/w006.jpg",
+          "yaw": 222,
+          "pitch": -7,
+          "title": "流程视角 6",
+          "chapter": "接亲"
+        },
+        {
+          "src": "/app-spatial/v1/journey/w007.jpg",
+          "yaw": 261,
+          "pitch": -1,
+          "title": "流程视角 7",
+          "chapter": "接亲"
+        },
+        {
+          "src": "/app-spatial/v1/journey/w008.jpg",
+          "yaw": 281,
+          "pitch": -8,
+          "title": "流程视角 8",
+          "chapter": "接亲"
+        },
+        {
+          "src": "/app-spatial/v1/journey/w009.jpg",
+          "yaw": 308,
+          "pitch": 9,
+          "title": "流程视角 9",
+          "chapter": "接亲"
+        },
+        {
+          "src": "/app-spatial/v1/journey/w010.jpg",
+          "yaw": 349,
+          "pitch": 4,
+          "title": "流程视角 10",
+          "chapter": "接亲"
+        },
+        {
+          "src": "/app-spatial/v1/journey/w011.jpg",
+          "yaw": 12,
+          "pitch": 9,
+          "title": "流程视角 11",
+          "chapter": "出发"
+        },
+        {
+          "src": "/app-spatial/v1/journey/w012.jpg",
+          "yaw": 37,
+          "pitch": 6,
+          "title": "流程视角 12",
+          "chapter": "出发"
+        },
+        {
+          "src": "/app-spatial/v1/journey/w013.jpg",
+          "yaw": 69,
+          "pitch": -9,
+          "title": "流程视角 13",
+          "chapter": "出发"
+        },
+        {
+          "src": "/app-spatial/v1/journey/w014.jpg",
+          "yaw": 98,
+          "pitch": -4,
+          "title": "流程视角 14",
+          "chapter": "出发"
+        },
+        {
+          "src": "/app-spatial/v1/journey/w015.jpg",
+          "yaw": 134,
+          "pitch": 9,
+          "title": "流程视角 15",
+          "chapter": "出发"
+        },
+        {
+          "src": "/app-spatial/v1/journey/w016.jpg",
+          "yaw": 187,
+          "pitch": 4,
+          "title": "流程视角 16",
+          "chapter": "出发"
+        },
+        {
+          "src": "/app-spatial/v1/journey/w017.jpg",
+          "yaw": 227,
+          "pitch": 4,
+          "title": "流程视角 17",
+          "chapter": "出发"
+        },
+        {
+          "src": "/app-spatial/v1/journey/w018.jpg",
+          "yaw": 253,
+          "pitch": 6,
+          "title": "流程视角 18",
+          "chapter": "出发"
+        },
+        {
+          "src": "/app-spatial/v1/journey/w019.jpg",
+          "yaw": 284,
+          "pitch": 10,
+          "title": "流程视角 19",
+          "chapter": "出发"
+        },
+        {
+          "src": "/app-spatial/v1/journey/w020.jpg",
+          "yaw": 316,
+          "pitch": 5,
+          "title": "流程视角 20",
+          "chapter": "出发"
+        },
+        {
+          "src": "/app-spatial/v1/journey/w021.jpg",
+          "yaw": 7,
+          "pitch": -8,
+          "title": "流程视角 21",
+          "chapter": "仪式"
+        },
+        {
+          "src": "/app-spatial/v1/journey/w022.jpg",
+          "yaw": 51,
+          "pitch": 10,
+          "title": "流程视角 22",
+          "chapter": "仪式"
+        },
+        {
+          "src": "/app-spatial/v1/journey/w023.jpg",
+          "yaw": 75,
+          "pitch": 3,
+          "title": "流程视角 23",
+          "chapter": "仪式"
+        },
+        {
+          "src": "/app-spatial/v1/journey/w024.jpg",
+          "yaw": 99,
+          "pitch": -2,
+          "title": "流程视角 24",
+          "chapter": "仪式"
+        },
+        {
+          "src": "/app-spatial/v1/journey/w025.jpg",
+          "yaw": 167,
+          "pitch": -3,
+          "title": "流程视角 25",
+          "chapter": "仪式"
+        },
+        {
+          "src": "/app-spatial/v1/journey/w026.jpg",
+          "yaw": 203,
+          "pitch": -1,
+          "title": "流程视角 26",
+          "chapter": "仪式"
+        },
+        {
+          "src": "/app-spatial/v1/journey/w027.jpg",
+          "yaw": 217,
+          "pitch": -8,
+          "title": "流程视角 27",
+          "chapter": "仪式"
+        },
+        {
+          "src": "/app-spatial/v1/journey/w028.jpg",
+          "yaw": 250,
+          "pitch": 2,
+          "title": "流程视角 28",
+          "chapter": "仪式"
+        },
+        {
+          "src": "/app-spatial/v1/journey/w029.jpg",
+          "yaw": 280,
+          "pitch": -1,
+          "title": "流程视角 29",
+          "chapter": "仪式"
+        },
+        {
+          "src": "/app-spatial/v1/journey/w030.jpg",
+          "yaw": 349,
+          "pitch": -8,
+          "title": "流程视角 30",
+          "chapter": "仪式"
+        },
+        {
+          "src": "/app-spatial/v1/journey/w031.jpg",
+          "yaw": 7,
+          "pitch": -10,
+          "title": "流程视角 31",
+          "chapter": "宴席"
+        },
+        {
+          "src": "/app-spatial/v1/journey/w032.jpg",
+          "yaw": 43,
+          "pitch": -4,
+          "title": "流程视角 32",
+          "chapter": "宴席"
+        },
+        {
+          "src": "/app-spatial/v1/journey/w033.jpg",
+          "yaw": 68,
+          "pitch": 5,
+          "title": "流程视角 33",
+          "chapter": "宴席"
+        },
+        {
+          "src": "/app-spatial/v1/journey/w034.jpg",
+          "yaw": 139,
+          "pitch": 2,
+          "title": "流程视角 34",
+          "chapter": "宴席"
+        },
+        {
+          "src": "/app-spatial/v1/journey/w035.jpg",
+          "yaw": 170,
+          "pitch": -8,
+          "title": "流程视角 35",
+          "chapter": "宴席"
+        },
+        {
+          "src": "/app-spatial/v1/journey/w036.jpg",
+          "yaw": 193,
+          "pitch": -2,
+          "title": "流程视角 36",
+          "chapter": "宴席"
+        },
+        {
+          "src": "/app-spatial/v1/journey/w037.jpg",
+          "yaw": 227,
+          "pitch": -8,
+          "title": "流程视角 37",
+          "chapter": "宴席"
+        },
+        {
+          "src": "/app-spatial/v1/journey/w038.jpg",
+          "yaw": 256,
+          "pitch": 0,
+          "title": "流程视角 38",
+          "chapter": "宴席"
+        },
+        {
+          "src": "/app-spatial/v1/journey/w039.jpg",
+          "yaw": 307,
+          "pitch": 3,
+          "title": "流程视角 39",
+          "chapter": "宴席"
+        },
+        {
+          "src": "/app-spatial/v1/journey/w040.jpg",
+          "yaw": 340,
+          "pitch": -6,
+          "title": "流程视角 40",
+          "chapter": "宴席"
+        }
+      ]
+    },
+    {
+      "id": "world-single",
+      "title": "单图城堡",
+      "label": "World · AI 生成",
+      "cover": "https://cdn.marble.worldlabs.ai/a6755a78-656b-4e3e-b78b-7eca5b903864/b4fd5ebd-1152-47f0-b466-dab2126d0401_sand_mpi/thumbnail.webp",
+      "category": "space",
+      "intro": "打开已经完成的 3D 世界，转身或向前走近。",
+      "notice": "AI 生成完成品 · 单图含画外补全，多图也不是精确复原。",
+      "source": "2026-09-03 已有 World Labs 公开完成品；2026-09-05 只读取回官方结果缩略图和 SPZ，不重复生成。无真实尺度标定。",
+      "space": {
+        "kind": "world",
+        "world": {
+          "id": "a6755a78-656b-4e3e-b78b-7eca5b903864",
+          "name": "UNSEEN Château de Sceaux single-image canary 2026-09-03",
+          "marbleUrl": "https://marble.worldlabs.ai/world/a6755a78-656b-4e3e-b78b-7eca5b903864",
+          "thumbnailUrl": "https://cdn.marble.worldlabs.ai/a6755a78-656b-4e3e-b78b-7eca5b903864/b4fd5ebd-1152-47f0-b466-dab2126d0401_sand_mpi/thumbnail.webp",
+          "panoramaUrl": "https://cdn.marble.worldlabs.ai/a6755a78-656b-4e3e-b78b-7eca5b903864/752d09b4-78fb-4b17-8b3a-0b13a88067c3_pano/rgb_0.png",
+          "colliderUrl": "https://cdn.marble.worldlabs.ai/a6755a78-656b-4e3e-b78b-7eca5b903864/b024ec52.glb",
+          "splats": {
+            "preview": "https://cdn.marble.worldlabs.ai/a6755a78-656b-4e3e-b78b-7eca5b903864/85d35e8c-731f-4030-9940-1da1519a7f37_sand_100k.spz",
+            "standard": "https://cdn.marble.worldlabs.ai/a6755a78-656b-4e3e-b78b-7eca5b903864/6efcaad5-0186-4541-8004-646eecccb5a6_sand_500k.spz",
+            "full": "https://cdn.marble.worldlabs.ai/a6755a78-656b-4e3e-b78b-7eca5b903864/3bbdb0ba-6762-4632-94bf-e4d27caf40b5_sand.spz"
+          },
+          "semantics": {
+            "metricScaleFactor": null,
+            "groundPlaneOffset": null
+          }
+        },
+        "panorama": "https://cdn.marble.worldlabs.ai/a6755a78-656b-4e3e-b78b-7eca5b903864/752d09b4-78fb-4b17-8b3a-0b13a88067c3_pano/rgb_0.png"
+      },
+      "photos": []
+    },
+    {
+      "id": "world-multi",
+      "title": "多图城堡",
+      "label": "World · AI 生成",
+      "cover": "https://cdn.marble.worldlabs.ai/585ed6bd-7c49-4460-aac0-104f878af2f1/bc115a3e-47a5-48ab-8211-d2fbb8c93735_sand_mpi/thumbnail.webp",
+      "category": "space",
+      "intro": "打开已经完成的 3D 世界，转身或向前走近。",
+      "notice": "AI 生成完成品 · 单图含画外补全，多图也不是精确复原。",
+      "source": "2026-09-03 已有 World Labs 公开完成品；2026-09-05 只读取回官方结果缩略图和 SPZ，不重复生成。无真实尺度标定。",
+      "space": {
+        "kind": "world",
+        "world": {
+          "id": "585ed6bd-7c49-4460-aac0-104f878af2f1",
+          "name": "UNSEEN Château de Sceaux multi-image canary 2026-09-03",
+          "marbleUrl": "https://marble.worldlabs.ai/world/585ed6bd-7c49-4460-aac0-104f878af2f1",
+          "thumbnailUrl": "https://cdn.marble.worldlabs.ai/585ed6bd-7c49-4460-aac0-104f878af2f1/bc115a3e-47a5-48ab-8211-d2fbb8c93735_sand_mpi/thumbnail.webp",
+          "panoramaUrl": "https://cdn.marble.worldlabs.ai/585ed6bd-7c49-4460-aac0-104f878af2f1/c7cb0b8d-c004-4a6b-938c-7a4480ecfaab_pano/rgb_0.png",
+          "colliderUrl": "https://cdn.marble.worldlabs.ai/585ed6bd-7c49-4460-aac0-104f878af2f1/8806b0f9.glb",
+          "splats": {
+            "preview": "https://cdn.marble.worldlabs.ai/585ed6bd-7c49-4460-aac0-104f878af2f1/df16e4b7-64cf-44e6-a3bd-a8c7e23926af_sand_100k.spz",
+            "standard": "https://cdn.marble.worldlabs.ai/585ed6bd-7c49-4460-aac0-104f878af2f1/f308a552-6c02-4b4b-9c16-a40f14a032a3_sand_500k.spz",
+            "full": "https://cdn.marble.worldlabs.ai/585ed6bd-7c49-4460-aac0-104f878af2f1/14499667-eb13-42a2-b4bc-b42d1727e188_sand.spz"
+          },
+          "semantics": {
+            "metricScaleFactor": null,
+            "groundPlaneOffset": null
+          }
+        },
+        "panorama": "https://cdn.marble.worldlabs.ai/585ed6bd-7c49-4460-aac0-104f878af2f1/c7cb0b8d-c004-4a6b-938c-7a4480ecfaab_pano/rgb_0.png"
+      },
+      "photos": []
+    },
+    {
+      "id": "memory-particles",
+      "title": "照片，慢慢清晰",
+      "category": "photo",
+      "type": "particles",
+      "cover": "/photos/photo1_cheers.jpg",
+      "label": "照片粒子 · 视觉效果",
+      "intro": "把颗粒拨开，回到同一张照片。",
+      "notice": "AI 模板照片的即时粒子效果，不是深度重建或 3D 场景。"
+    }
+  ]
+}

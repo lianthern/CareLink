@@ -1,0 +1,73 @@
+{
+  "schemaVersion": "1.0",
+  "jobId": "unseen-3dgs-full-room-meetingroom-2026-09-03-v8",
+  "generatedAt": "2026-09-03T05:12:00Z",
+  "selfExcluded": true,
+  "fileCount": 12,
+  "totalBytes": 1584125,
+  "forbiddenFileCount": 0,
+  "safeScreenshotCount": 2,
+  "files": [
+    {
+      "path": "fixes\\unseen-v8-viewer-phase-a.patch",
+      "bytes": 46603,
+      "sha256": "41a6a5d6ae1d9272ef965e1f5ba75ea6285231a185252d729f3aa69a7b48379f"
+    },
+    {
+      "path": "logs\\download-blocked-resume.json",
+      "bytes": 637,
+      "sha256": "ca2acf44d58be9578983c90a7092b25ea9db0e371c7b0f902d8c25f108259c2d"
+    },
+    {
+      "path": "logs\\download-blocked.log",
+      "bytes": 642,
+      "sha256": "b72d67fbb5de44958481856dbdd17f22f7abb2e46616ebb339d8214d81aad960"
+    },
+    {
+      "path": "logs\\final-service-health.json",
+      "bytes": 456,
+      "sha256": "801d6be0abd44c0fcb1977877997a9eaa846e883c42571e2fe25863281072a14"
+    },
+    {
+      "path": "logs\\final-tests.log",
+      "bytes": 872,
+      "sha256": "1977f869701a1b89d24a2d5f395d5a33078b79d6ae52a44fe7c957a830d583c7"
+    },
+    {
+      "path": "logs\\security-audit.json",
+      "bytes": 586,
+      "sha256": "1e00aaabf1db22b874f9a67e00ecf361c7a75adb881d14a02f05a2489a1d6c57"
+    },
+    {
+      "path": "logs\\viewer-v7-legacy-e2e.json",
+      "bytes": 5686,
+      "sha256": "d8b7131f49f4c323147e82fba0b97d5f96a2d0027f77a08cb967b5d5f4feadb0"
+    },
+    {
+      "path": "logs\\viewer-v7-regression.json",
+      "bytes": 9610,
+      "sha256": "9eb7e89d28c60acf1dc5ed3d5d97d789539b4a46037f16ce4625260f704fb8e2"
+    },
+    {
+      "path": "v7-viewer-before-after.jpg",
+      "bytes": 199981,
+      "sha256": "72a66abb9b61efde0f0dece1f9e895f7fc8cdc0dc125755c4f763ae7617b3079"
+    },
+    {
+      "path": "V8-REPORT.md",
+      "bytes": 4750,
+      "sha256": "0d4551731c976bcb95502f99674c1b4e3eef4122bb5655010a6ef94ab89a3ad7"
+    },
+    {
+      "path": "V8-RESULT.json",
+      "bytes": 3025,
+      "sha256": "a51fab845b3e6a8a294107ebe6c35c495f03dfe7377df0012baf09b7acb78a73"
+    },
+    {
+      "path": "viewer-overview.png",
+      "bytes": 1311277,
+      "sha256": "9b57118227e38e8bb61424ce2f8569b1be6e420dff75d7d09752d9438db5f720"
+    }
+  ]
+}
+

@@ -1,0 +1,271 @@
+[
+  {
+    "case": "no_lock",
+    "passed": true,
+    "result": {
+      "guardCommand": [
+        "C:\\Users\\15pro\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+        "-c",
+        "print('NO');"
+      ],
+      "childCommand": [
+        "C:\\Users\\15pro\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+        "-c",
+        "import subprocess,sys,time; subprocess.Popen([sys.executable,'-c','import time; time.sleep(120)']); time.sleep(120)"
+      ],
+      "startedAt": 1789344624.875602,
+      "childLaunched": false,
+      "guardIdentity": {
+        "pid": 13520,
+        "createdAt": 1789344624.8779173
+      },
+      "reason": "no_lock",
+      "guardExitCode": 0,
+      "identities": [],
+      "survivors": [],
+      "endedAt": 1789344624.9136024
+    }
+  },
+  {
+    "case": "normal",
+    "passed": true,
+    "result": {
+      "guardCommand": [
+        "C:\\Users\\15pro\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+        "-c",
+        "import sys; print('LOCKED',flush=True); sys.stdin.read()"
+      ],
+      "childCommand": [
+        "C:\\Users\\15pro\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+        "-c",
+        "import time; time.sleep(1)"
+      ],
+      "startedAt": 1789344624.9156091,
+      "childLaunched": true,
+      "guardIdentity": {
+        "pid": 28280,
+        "createdAt": 1789344624.9186256
+      },
+      "childIdentity": {
+        "pid": 276,
+        "createdAt": 1789344624.9454827,
+        "command": [
+          "C:\\Users\\15pro\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+          "-c",
+          "import time; time.sleep(1)"
+        ]
+      },
+      "childExitCode": 0,
+      "reason": "child_exit",
+      "guardExitCode": 0,
+      "identities": [
+        {
+          "pid": 276,
+          "createdAt": 1789344624.9454827,
+          "command": [
+            "C:\\Users\\15pro\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+            "-c",
+            "import time; time.sleep(1)"
+          ]
+        }
+      ],
+      "survivors": [],
+      "endedAt": 1789344626.0304756
+    }
+  },
+  {
+    "case": "guard_zero",
+    "passed": true,
+    "result": {
+      "guardCommand": [
+        "C:\\Users\\15pro\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+        "-c",
+        "import time; print('LOCKED',flush=True); time.sleep(2)"
+      ],
+      "childCommand": [
+        "C:\\Users\\15pro\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+        "-c",
+        "import subprocess,sys,time; subprocess.Popen([sys.executable,'-c','import time; time.sleep(120)']); time.sleep(120)"
+      ],
+      "startedAt": 1789344626.0324745,
+      "childLaunched": true,
+      "guardIdentity": {
+        "pid": 21240,
+        "createdAt": 1789344626.0340044
+      },
+      "childIdentity": {
+        "pid": 17740,
+        "createdAt": 1789344626.060622,
+        "command": [
+          "C:\\Users\\15pro\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+          "-c",
+          "import subprocess,sys,time; subprocess.Popen([sys.executable,'-c','import time; time.sleep(120)']); time.sleep(120)"
+        ]
+      },
+      "childExitCode": 1,
+      "reason": "guard_exit",
+      "guardExitCode": 0,
+      "identities": [
+        {
+          "pid": 17740,
+          "createdAt": 1789344626.060622,
+          "command": [
+            "C:\\Users\\15pro\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+            "-c",
+            "import subprocess,sys,time; subprocess.Popen([sys.executable,'-c','import time; time.sleep(120)']); time.sleep(120)"
+          ]
+        },
+        {
+          "pid": 30972,
+          "createdAt": 1789344626.103168,
+          "command": [
+            "C:\\Users\\15pro\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+            "-c",
+            "import time; time.sleep(120)"
+          ]
+        }
+      ],
+      "survivors": [],
+      "endedAt": 1789344628.1115875
+    }
+  },
+  {
+    "case": "guard_nonzero",
+    "passed": true,
+    "result": {
+      "guardCommand": [
+        "C:\\Users\\15pro\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+        "-c",
+        "import time,sys; print('LOCKED',flush=True); time.sleep(2); sys.exit(7)"
+      ],
+      "childCommand": [
+        "C:\\Users\\15pro\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+        "-c",
+        "import subprocess,sys,time; subprocess.Popen([sys.executable,'-c','import time; time.sleep(120)']); time.sleep(120)"
+      ],
+      "startedAt": 1789344628.112602,
+      "childLaunched": true,
+      "guardIdentity": {
+        "pid": 21184,
+        "createdAt": 1789344628.1142669
+      },
+      "childIdentity": {
+        "pid": 18144,
+        "createdAt": 1789344628.1370192,
+        "command": [
+          "C:\\Users\\15pro\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+          "-c",
+          "import subprocess,sys,time; subprocess.Popen([sys.executable,'-c','import time; time.sleep(120)']); time.sleep(120)"
+        ]
+      },
+      "childExitCode": 1,
+      "reason": "guard_exit",
+      "guardExitCode": 7,
+      "identities": [
+        {
+          "pid": 18144,
+          "createdAt": 1789344628.1370192,
+          "command": [
+            "C:\\Users\\15pro\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+            "-c",
+            "import subprocess,sys,time; subprocess.Popen([sys.executable,'-c','import time; time.sleep(120)']); time.sleep(120)"
+          ]
+        },
+        {
+          "pid": 7532,
+          "createdAt": 1789344628.182865,
+          "command": [
+            "C:\\Users\\15pro\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+            "-c",
+            "import time; time.sleep(120)"
+          ]
+        }
+      ],
+      "survivors": [],
+      "endedAt": 1789344630.1910877
+    }
+  },
+  {
+    "case": "guard_eof",
+    "passed": true,
+    "result": {
+      "guardCommand": [
+        "C:\\Users\\15pro\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+        "-c",
+        "import os,time; print('LOCKED',flush=True); time.sleep(2); os.close(1); time.sleep(120)"
+      ],
+      "childCommand": [
+        "C:\\Users\\15pro\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+        "-c",
+        "import subprocess,sys,time; subprocess.Popen([sys.executable,'-c','import time; time.sleep(120)']); time.sleep(120)"
+      ],
+      "startedAt": 1789344630.1930876,
+      "childLaunched": true,
+      "guardIdentity": {
+        "pid": 19760,
+        "createdAt": 1789344630.195042
+      },
+      "childIdentity": {
+        "pid": 8220,
+        "createdAt": 1789344630.2188427,
+        "command": [
+          "C:\\Users\\15pro\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+          "-c",
+          "import subprocess,sys,time; subprocess.Popen([sys.executable,'-c','import time; time.sleep(120)']); time.sleep(120)"
+        ]
+      },
+      "childExitCode": 1,
+      "reason": "guard_eof",
+      "guardExitCode": 1,
+      "identities": [
+        {
+          "pid": 8220,
+          "createdAt": 1789344630.2188427,
+          "command": [
+            "C:\\Users\\15pro\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+            "-c",
+            "import subprocess,sys,time; subprocess.Popen([sys.executable,'-c','import time; time.sleep(120)']); time.sleep(120)"
+          ]
+        },
+        {
+          "pid": 4432,
+          "createdAt": 1789344630.264263,
+          "command": [
+            "C:\\Users\\15pro\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+            "-c",
+            "import time; time.sleep(120)"
+          ]
+        }
+      ],
+      "survivors": [],
+      "endedAt": 1789344637.2858324
+    }
+  },
+  {
+    "case": "startup_timeout",
+    "passed": true,
+    "result": {
+      "guardCommand": [
+        "C:\\Users\\15pro\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+        "-c",
+        "import time; time.sleep(120)"
+      ],
+      "childCommand": [
+        "C:\\Users\\15pro\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+        "-c",
+        "import subprocess,sys,time; subprocess.Popen([sys.executable,'-c','import time; time.sleep(120)']); time.sleep(120)"
+      ],
+      "startedAt": 1789344637.2878323,
+      "childLaunched": false,
+      "guardIdentity": {
+        "pid": 17308,
+        "createdAt": 1789344637.2896588
+      },
+      "reason": "startup_timeout",
+      "guardExitCode": 1,
+      "identities": [],
+      "survivors": [],
+      "endedAt": 1789344645.3114204
+    }
+  }
+]

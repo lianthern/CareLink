@@ -1,0 +1,51 @@
+{
+  "schema": "unseen-private-ai-queue-evidence/1",
+  "capturedAt": "2026-08-15T02:59:05+10:00",
+  "baseSha": "23152d1ab22b79c450f82c35fc0871db20805ad6",
+  "initialCodeSha": "6e87713802e44a7db726e521fe4433ceea511b64",
+  "codeSha": "4209d552fd79f679ed821fcacb741f5095945fcb",
+  "branch": "provider/private-ai-queue-server",
+  "state": {
+    "enabled": false,
+    "deployed": false,
+    "releaseClaim": "NO_GO_DEFAULT_OFF",
+    "publicContractChanged": false,
+    "credentialCreated": false,
+    "networkRequestsInFocusedTests": 0
+  },
+  "tests": {
+    "focused": { "passed": 8, "failed": 0 },
+    "apiWorkspace": { "passed": 124, "failed": 0 },
+    "backendBaseline": { "passed": 10, "failed": 0, "networkGuard": true },
+    "sqliteQuickCheck": "ok",
+    "contracts": "CONTRACT_GENERATION_CLEAN",
+    "provenance": "PROVENANCE_OK",
+    "format": "FORMAT_OK",
+    "secretScan": "SECRET_SCAN_CLEAN",
+    "diffCheck": "clean"
+  },
+  "p1Closure": {
+    "authorizationTombstoneRace": "closed",
+    "explicitAuthorizationRequired": true,
+    "concurrentEnqueueRevokeMediaReads": 0,
+    "outboxStoredPayloadRevalidated": true,
+    "poisonStatus": "quarantined",
+    "healthySuccessorDelivered": true
+  },
+  "inheritedGate": {
+    "command": "npm run freeze:check",
+    "code": "FREEZE_TRACK8_REGISTRATION",
+    "reproducedAtCleanBase": true,
+    "baseWorktree": "/Users/max/code/unseen-worktrees/5-stage-rc-next"
+  },
+  "binding": {
+    "protocol": "unseen-private-ai-pull/1",
+    "taskType": "photo_visible_facts_question_v1",
+    "promptHash": "67a580e7617893004c7edb1e0f7578cd40a28509dd5ac756ae914ed201479d73",
+    "policyHash": "75ea90bfd53213ce15adf81973de5e26db4f091c3ca853aa991033ee37d46e5d",
+    "model": "gpt-5.6-sol",
+    "modelVersion": "codex-cli 0.147.0/gpt-5.6-sol",
+    "macWorkerCodeSha": "3114a1f89c6542550f3fe19b51fee3a04aadea61",
+    "bookFactsCodeSha": "deaf767777144c38b045e8265fb7f6e5a4f8de69"
+  }
+}

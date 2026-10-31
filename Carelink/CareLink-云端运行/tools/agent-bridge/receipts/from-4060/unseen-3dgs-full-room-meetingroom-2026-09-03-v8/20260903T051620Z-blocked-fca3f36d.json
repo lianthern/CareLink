@@ -1,0 +1,13 @@
+{
+  "schemaVersion": "1.0",
+  "jobId": "unseen-3dgs-full-room-meetingroom-2026-09-03-v8",
+  "state": "BLOCKED",
+  "createdAt": "2026-09-03T05:16:20.2772133Z",
+  "agent": "4060 Agent",
+  "machine": "DESKTOP-NIBL3D4",
+  "message": "Resume attempted after network restoration. The official endpoint is reachable through the existing local proxy (range probe HTTP 206), but the frozen full request returned a 2,009-byte Google Drive HTML page instead of the required 4,271,432,079-byte video. Byte gate stopped the run; no upload, SfM, or GPU training occurred.",
+  "evidence": [
+    "results/from-4060/unseen-3dgs-full-room-meetingroom-2026-09-03-v8/V8-REPORT.md",
+    "results/from-4060/unseen-3dgs-full-room-meetingroom-2026-09-03-v8/logs/download-blocked-resume.json"
+  ]
+}

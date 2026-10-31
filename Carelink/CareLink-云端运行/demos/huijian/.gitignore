@@ -1,0 +1,13 @@
+node_modules/
+.DS_Store
+
+# Local configuration and credentials. Keep only the documented template.
+.env
+.env.*
+!.env.example
+*.key
+*.pem
+*.p12
+*.pfx
+*.log
+npm-debug.log*

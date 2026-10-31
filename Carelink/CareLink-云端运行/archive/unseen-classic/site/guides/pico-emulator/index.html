@@ -1,0 +1,1040 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="PICO Emulator Mac 安装、UNSEEN PICO Spatial 启动与展会演示完整指南。"
+    />
+    <meta name="robots" content="noindex,nofollow" />
+    <meta name="theme-color" content="#101816" />
+    <title>PICO Emulator Mac 安装与展会演示指南</title>
+    <style>
+      :root {
+        color-scheme: dark;
+        --bg: #0b100f;
+        --surface: #111917;
+        --surface-2: #18221f;
+        --line: rgba(224, 239, 232, 0.14);
+        --text: #f1f7f3;
+        --muted: #a5b4ad;
+        --accent: #b7f36b;
+        --accent-strong: #d6ff9e;
+        --accent-ink: #17200c;
+        --warm: #ffcf8b;
+        --danger: #ffab98;
+        --shadow: 0 24px 80px rgba(0, 0, 0, 0.28);
+        --radius: 22px;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        background:
+          radial-gradient(circle at 15% -5%, rgba(183, 243, 107, 0.13), transparent 31rem),
+          radial-gradient(circle at 100% 18%, rgba(95, 174, 143, 0.11), transparent 30rem),
+          var(--bg);
+        color: var(--text);
+        font-family:
+          Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+          "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei",
+          sans-serif;
+        line-height: 1.7;
+      }
+
+      a {
+        color: var(--accent-strong);
+        text-underline-offset: 0.2em;
+      }
+
+      button,
+      a.button {
+        appearance: none;
+        border: 0;
+        border-radius: 999px;
+        cursor: pointer;
+        font: inherit;
+        font-weight: 750;
+        text-decoration: none;
+        transition:
+          transform 160ms ease,
+          background 160ms ease,
+          border-color 160ms ease;
+      }
+
+      button:hover,
+      a.button:hover {
+        transform: translateY(-1px);
+      }
+
+      button:focus-visible,
+      a:focus-visible {
+        outline: 3px solid rgba(183, 243, 107, 0.45);
+        outline-offset: 3px;
+      }
+
+      .shell {
+        width: min(1120px, calc(100% - 32px));
+        margin: 0 auto;
+      }
+
+      .topbar {
+        position: sticky;
+        z-index: 20;
+        top: 0;
+        border-bottom: 1px solid var(--line);
+        background: rgba(11, 16, 15, 0.86);
+        backdrop-filter: blur(18px);
+      }
+
+      .topbar-inner {
+        min-height: 64px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+      }
+
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 11px;
+        font-size: 0.84rem;
+        font-weight: 800;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .brand-mark {
+        width: 13px;
+        height: 13px;
+        border-radius: 50%;
+        background: var(--accent);
+        box-shadow: 0 0 24px rgba(183, 243, 107, 0.75);
+      }
+
+      .top-actions {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .quiet-button {
+        padding: 9px 14px;
+        border: 1px solid var(--line);
+        background: rgba(255, 255, 255, 0.035);
+        color: var(--text);
+      }
+
+      .hero {
+        padding: 76px 0 40px;
+      }
+
+      .eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        margin: 0 0 18px;
+        padding: 7px 11px;
+        border: 1px solid rgba(183, 243, 107, 0.28);
+        border-radius: 999px;
+        background: rgba(183, 243, 107, 0.075);
+        color: var(--accent-strong);
+        font-size: 0.8rem;
+        font-weight: 800;
+        letter-spacing: 0.05em;
+      }
+
+      h1,
+      h2,
+      h3 {
+        line-height: 1.16;
+        text-wrap: balance;
+      }
+
+      h1 {
+        max-width: 900px;
+        margin: 0;
+        font-size: clamp(2.6rem, 7vw, 5.6rem);
+        letter-spacing: -0.055em;
+      }
+
+      .hero-copy {
+        max-width: 760px;
+        margin: 24px 0 0;
+        color: var(--muted);
+        font-size: clamp(1.03rem, 2.1vw, 1.25rem);
+      }
+
+      .hero-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-top: 30px;
+      }
+
+      .primary-button {
+        padding: 13px 20px;
+        background: var(--accent);
+        color: var(--accent-ink);
+        box-shadow: 0 10px 32px rgba(183, 243, 107, 0.16);
+      }
+
+      .secondary-button {
+        padding: 12px 19px;
+        border: 1px solid var(--line);
+        background: rgba(255, 255, 255, 0.04);
+        color: var(--text);
+      }
+
+      .notice {
+        margin-top: 36px;
+        padding: 18px 20px;
+        border: 1px solid rgba(255, 207, 139, 0.26);
+        border-radius: 16px;
+        background: rgba(255, 207, 139, 0.075);
+        color: #ffe6c0;
+      }
+
+      .layout {
+        display: grid;
+        grid-template-columns: 230px minmax(0, 1fr);
+        gap: 34px;
+        align-items: start;
+        padding-bottom: 100px;
+      }
+
+      .toc {
+        position: sticky;
+        top: 92px;
+        padding: 18px;
+        border: 1px solid var(--line);
+        border-radius: 18px;
+        background: rgba(17, 25, 23, 0.88);
+      }
+
+      .toc strong {
+        display: block;
+        margin-bottom: 10px;
+        font-size: 0.82rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .toc a {
+        display: block;
+        padding: 6px 0;
+        color: var(--muted);
+        font-size: 0.88rem;
+        text-decoration: none;
+      }
+
+      .toc a:hover {
+        color: var(--text);
+      }
+
+      .content {
+        min-width: 0;
+      }
+
+      .section {
+        scroll-margin-top: 90px;
+        margin-bottom: 22px;
+        padding: clamp(24px, 5vw, 42px);
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        background: linear-gradient(145deg, rgba(24, 34, 31, 0.97), rgba(15, 22, 20, 0.97));
+        box-shadow: var(--shadow);
+      }
+
+      .section-number {
+        color: var(--accent);
+        font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+        font-size: 0.8rem;
+        font-weight: 800;
+        letter-spacing: 0.09em;
+      }
+
+      h2 {
+        margin: 8px 0 18px;
+        font-size: clamp(1.65rem, 3.6vw, 2.35rem);
+        letter-spacing: -0.035em;
+      }
+
+      h3 {
+        margin: 28px 0 10px;
+        font-size: 1.05rem;
+      }
+
+      p {
+        margin: 12px 0;
+      }
+
+      .muted {
+        color: var(--muted);
+      }
+
+      ul,
+      ol {
+        padding-left: 1.35rem;
+      }
+
+      li + li {
+        margin-top: 8px;
+      }
+
+      .requirements,
+      .downloads,
+      .troubleshooting {
+        display: grid;
+        gap: 12px;
+      }
+
+      .requirements {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .requirement {
+        padding: 16px;
+        border: 1px solid var(--line);
+        border-radius: 14px;
+        background: rgba(255, 255, 255, 0.025);
+      }
+
+      .requirement small {
+        display: block;
+        margin-bottom: 4px;
+        color: var(--muted);
+      }
+
+      .requirement strong {
+        font-size: 1.02rem;
+      }
+
+      .download-card {
+        display: grid;
+        grid-template-columns: 1fr auto;
+        gap: 16px;
+        align-items: center;
+        padding: 19px;
+        border: 1px solid var(--line);
+        border-radius: 16px;
+        background: rgba(255, 255, 255, 0.028);
+      }
+
+      .download-card p {
+        margin: 5px 0 0;
+        color: var(--muted);
+        font-size: 0.9rem;
+      }
+
+      .download-card .button {
+        white-space: nowrap;
+      }
+
+      .steps {
+        margin: 20px 0 0;
+        padding: 0;
+        list-style: none;
+        counter-reset: guide-step;
+      }
+
+      .steps > li {
+        position: relative;
+        min-height: 44px;
+        padding: 0 0 22px 58px;
+        counter-increment: guide-step;
+      }
+
+      .steps > li::before {
+        content: counter(guide-step);
+        position: absolute;
+        top: -3px;
+        left: 0;
+        width: 38px;
+        height: 38px;
+        display: grid;
+        place-items: center;
+        border: 1px solid rgba(183, 243, 107, 0.25);
+        border-radius: 12px;
+        background: rgba(183, 243, 107, 0.09);
+        color: var(--accent);
+        font-weight: 850;
+      }
+
+      .steps > li:not(:last-child)::after {
+        content: "";
+        position: absolute;
+        top: 41px;
+        bottom: 0;
+        left: 19px;
+        width: 1px;
+        background: var(--line);
+      }
+
+      code,
+      .path {
+        font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      }
+
+      code {
+        padding: 0.16em 0.42em;
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 7px;
+        background: rgba(0, 0, 0, 0.2);
+        color: #e6ffd0;
+        font-size: 0.88em;
+      }
+
+      .copy-block {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) auto;
+        gap: 12px;
+        align-items: center;
+        margin: 14px 0;
+        padding: 14px 14px 14px 16px;
+        border: 1px solid var(--line);
+        border-radius: 14px;
+        background: #0a0f0e;
+      }
+
+      .copy-block pre {
+        min-width: 0;
+        overflow-x: auto;
+        margin: 0;
+        color: #d8e8df;
+        font: 0.84rem/1.55 ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+        white-space: pre-wrap;
+        overflow-wrap: anywhere;
+      }
+
+      .copy-button {
+        padding: 8px 12px;
+        background: rgba(183, 243, 107, 0.1);
+        color: var(--accent-strong);
+      }
+
+      .table-wrap {
+        overflow-x: auto;
+        margin-top: 18px;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 0.92rem;
+      }
+
+      th,
+      td {
+        padding: 13px 14px;
+        border-bottom: 1px solid var(--line);
+        text-align: left;
+        vertical-align: top;
+      }
+
+      th {
+        color: var(--muted);
+        font-size: 0.78rem;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+      }
+
+      details {
+        border: 1px solid var(--line);
+        border-radius: 14px;
+        background: rgba(255, 255, 255, 0.025);
+      }
+
+      details + details {
+        margin-top: 10px;
+      }
+
+      summary {
+        padding: 16px 18px;
+        cursor: pointer;
+        font-weight: 760;
+      }
+
+      details > div {
+        padding: 0 18px 17px;
+        color: var(--muted);
+      }
+
+      .checklist {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
+        margin-top: 20px;
+      }
+
+      .check {
+        display: flex;
+        align-items: flex-start;
+        gap: 10px;
+        padding: 13px 14px;
+        border: 1px solid var(--line);
+        border-radius: 13px;
+        color: var(--muted);
+      }
+
+      .check::before {
+        content: "✓";
+        color: var(--accent);
+        font-weight: 900;
+      }
+
+      .quick-start {
+        padding: 22px;
+        border: 1px solid rgba(183, 243, 107, 0.23);
+        border-radius: 17px;
+        background: rgba(183, 243, 107, 0.07);
+      }
+
+      .quick-start ol {
+        margin-bottom: 0;
+      }
+
+      footer {
+        padding: 10px 0 70px;
+        color: var(--muted);
+        font-size: 0.84rem;
+      }
+
+      .toast {
+        position: fixed;
+        z-index: 30;
+        right: 20px;
+        bottom: 20px;
+        padding: 11px 15px;
+        border: 1px solid rgba(183, 243, 107, 0.3);
+        border-radius: 12px;
+        background: #1b2823;
+        color: var(--accent-strong);
+        box-shadow: var(--shadow);
+        opacity: 0;
+        transform: translateY(10px);
+        pointer-events: none;
+        transition:
+          opacity 180ms ease,
+          transform 180ms ease;
+      }
+
+      .toast.show {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      @media (max-width: 850px) {
+        .layout {
+          grid-template-columns: 1fr;
+        }
+
+        .toc {
+          display: none;
+        }
+      }
+
+      @media (max-width: 620px) {
+        .shell {
+          width: min(100% - 22px, 1120px);
+        }
+
+        .hero {
+          padding-top: 54px;
+        }
+
+        .requirements,
+        .checklist {
+          grid-template-columns: 1fr;
+        }
+
+        .download-card,
+        .copy-block {
+          grid-template-columns: 1fr;
+        }
+
+        .download-card .button,
+        .copy-button {
+          justify-self: start;
+        }
+
+        .top-actions .quiet-button:first-child {
+          display: none;
+        }
+      }
+
+      @media print {
+        :root {
+          color-scheme: light;
+        }
+
+        body {
+          background: #fff;
+          color: #111;
+        }
+
+        .topbar,
+        .toc,
+        .hero-actions,
+        .copy-button,
+        .toast {
+          display: none !important;
+        }
+
+        .hero {
+          padding-top: 30px;
+        }
+
+        .layout {
+          display: block;
+        }
+
+        .section {
+          break-inside: avoid;
+          border-color: #ddd;
+          background: #fff;
+          box-shadow: none;
+        }
+
+        .muted,
+        .download-card p,
+        details > div {
+          color: #444;
+        }
+
+        a {
+          color: #111;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="shell topbar-inner">
+        <div class="brand">
+          <span class="brand-mark" aria-hidden="true"></span>
+          UNSEEN × PICO
+        </div>
+        <div class="top-actions">
+          <a class="quiet-button button" href="#downloads">下载入口</a>
+          <button class="quiet-button" type="button" onclick="window.print()">
+            打印 / 存为 PDF
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main class="shell">
+      <section class="hero">
+        <p class="eyebrow">PICO OS 6 · MAC 安装指南</p>
+        <h1>PICO Emulator 安装与展会演示</h1>
+        <p class="hero-copy">
+          从下载 Android Studio，到安装 PICO Emulator，再到打开 UNSEEN PICO Spatial
+          网页，一页完成。适用于 Apple 芯片 Mac。
+        </p>
+        <div class="hero-actions">
+          <a
+            class="primary-button button"
+            href="https://redirector.gvt1.com/edgedl/android/studio/install/2025.1.1.13/android-studio-2025.1.1.13-mac_arm.dmg"
+          >
+            下载 Mac 安装包
+          </a>
+          <a
+            class="secondary-button button"
+            href="https://unseen-locator-lab.maxorila.chatgpt.site/experiences/pico-spatial"
+            target="_blank"
+            rel="noreferrer"
+          >
+            打开 UNSEEN PICO
+          </a>
+        </div>
+        <div class="notice">
+          <strong>重要：</strong>PICO Emulator 没有独立的 Mac DMG。先安装
+          Android Studio 2025.1.x，再从 PICO Spatial Tools 内下载 Emulator。新的
+          Emulator 目前模拟 Project Swan / PICO OS 6，不是 PICO 4。
+        </div>
+      </section>
+
+      <div class="layout">
+        <nav class="toc" aria-label="页面目录">
+          <strong>目录</strong>
+          <a href="#requirements">电脑要求</a>
+          <a href="#downloads">下载入口</a>
+          <a href="#android-studio">安装 Android Studio</a>
+          <a href="#sdk">安装 SDK 35</a>
+          <a href="#plugin">安装 PICO 插件</a>
+          <a href="#emulator">下载 Emulator</a>
+          <a href="#launch">启动并打开网页</a>
+          <a href="#controls">操作方式</a>
+          <a href="#exhibition">展会设置</a>
+          <a href="#problems">常见问题</a>
+        </nav>
+
+        <div class="content">
+          <section class="section" id="requirements">
+            <span class="section-number">01 · REQUIREMENTS</span>
+            <h2>先确认电脑符合要求</h2>
+            <p class="muted">以下是 PICO 官方当前给出的 Mac 最低要求。</p>
+            <div class="requirements">
+              <div class="requirement">
+                <small>操作系统</small>
+                <strong>macOS 14.0 或以上</strong>
+              </div>
+              <div class="requirement">
+                <small>芯片</small>
+                <strong>Apple M1 Pro 或更高</strong>
+              </div>
+              <div class="requirement">
+                <small>内存</small>
+                <strong>16GB 或以上</strong>
+              </div>
+              <div class="requirement">
+                <small>可用空间</small>
+                <strong>至少 40GB</strong>
+              </div>
+            </div>
+            <p>
+              Intel Mac 不支持。开始下载前，可点击苹果菜单 →“关于本机”查看芯片和内存，
+              在“系统设置 → 通用 → 存储空间”检查可用空间。
+            </p>
+          </section>
+
+          <section class="section" id="downloads">
+            <span class="section-number">02 · DOWNLOADS</span>
+            <h2>需要的下载入口</h2>
+            <div class="downloads">
+              <div class="download-card">
+                <div>
+                  <strong>Android Studio 2025.1.1 · Mac ARM</strong>
+                  <p>约 1.52GB，适用于 Apple 芯片 Mac。PICO 当前要求 2025.1.x。</p>
+                </div>
+                <a
+                  class="primary-button button"
+                  href="https://redirector.gvt1.com/edgedl/android/studio/install/2025.1.1.13/android-studio-2025.1.1.13-mac_arm.dmg"
+                >
+                  直接下载
+                </a>
+              </div>
+              <div class="download-card">
+                <div>
+                  <strong>PICO Spatial 全球资源页</strong>
+                  <p>插件离线 ZIP、PICO Spatial SDK、官方文档与示例。</p>
+                </div>
+                <a
+                  class="secondary-button button"
+                  href="https://developer.picoxr.com/resources/?platform=spatial"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  打开官网
+                </a>
+              </div>
+              <div class="download-card">
+                <div>
+                  <strong>Android Studio 历史版本</strong>
+                  <p>如果直接下载失败，从官方历史版本页寻找 2025.1.x。</p>
+                </div>
+                <a
+                  class="secondary-button button"
+                  href="https://developer.android.com/studio/archive.html"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  历史版本
+                </a>
+              </div>
+            </div>
+            <h3>安装包校验值</h3>
+            <div class="copy-block">
+              <pre id="checksum">0c537a043760de612fd011e39afdecd5f2839987dd6111703ca50ebb8e9d007b</pre>
+              <button class="copy-button" type="button" data-copy="checksum">复制</button>
+            </div>
+          </section>
+
+          <section class="section" id="android-studio">
+            <span class="section-number">03 · ANDROID STUDIO</span>
+            <h2>安装 Android Studio 2025.1.1</h2>
+            <ol class="steps">
+              <li>双击下载的 <code>android-studio-2025.1.1.13-mac_arm.dmg</code>。</li>
+              <li>把 Android Studio 拖进“应用程序”文件夹。</li>
+              <li>打开 Android Studio，按首次启动向导完成基础设置。</li>
+              <li>如果系统提示是否导入旧设置，可以选择不导入，保持一个干净环境。</li>
+            </ol>
+            <div class="notice">
+              必须使用 <strong>Android Studio 2025.1.x</strong>。不要用当前最新的
+              2026.x 安装 PICO Emulator。如果电脑已有新版 Android Studio，可以保留两个版本。
+            </div>
+          </section>
+
+          <section class="section" id="sdk">
+            <span class="section-number">04 · ANDROID SDK</span>
+            <h2>安装 Android 15 / SDK 35</h2>
+            <ol class="steps">
+              <li>
+                打开
+                <code>Android Studio → Settings → Languages &amp; Frameworks → Android SDK</code>。
+              </li>
+              <li>进入 <code>SDK Platforms</code>，勾选右下角 <code>Show Package Details</code>。</li>
+              <li>展开 <code>Android 15.0 (VanillaIceCream)</code>。</li>
+              <li>
+                勾选 <code>Android SDK Platform 35</code> 和
+                <code>Sources for Android 35</code>。
+              </li>
+              <li>点击 <code>Apply</code> 或 <code>OK</code>，等待下载完成。</li>
+            </ol>
+          </section>
+
+          <section class="section" id="plugin">
+            <span class="section-number">05 · PICO PLUGIN</span>
+            <h2>安装 PICO Spatial Plugin</h2>
+            <ol class="steps">
+              <li>
+                打开
+                <code>Android Studio → Settings → Plugins → Marketplace</code>。
+              </li>
+              <li>搜索 <code>PICO Spatial</code>。</li>
+              <li>澳大利亚和其他海外地区选择 <code>PICO Spatial (Global)</code>。</li>
+              <li>安装完成后点击 <code>Restart IDE</code>。</li>
+            </ol>
+            <h3>Marketplace 无法下载时</h3>
+            <ol>
+              <li>
+                打开
+                <a
+                  href="https://developer.picoxr.com/resources/?platform=spatial"
+                  target="_blank"
+                  rel="noreferrer"
+                >PICO Spatial 全球资源页</a>，下载插件 ZIP，不要解压。
+              </li>
+              <li>
+                在 Android Studio 中选择
+                <code>Settings → Plugins → 齿轮图标 → Install Plugin from Disk</code>。
+              </li>
+              <li>选择 ZIP，安装后重启 Android Studio。</li>
+            </ol>
+          </section>
+
+          <section class="section" id="emulator">
+            <span class="section-number">06 · EMULATOR</span>
+            <h2>在 Android Studio 中下载 Emulator</h2>
+            <ol class="steps">
+              <li>
+                打开
+                <code>Settings → Languages &amp; Frameworks → PICO Spatial Tools</code>。
+              </li>
+              <li>勾选右下角 <code>Show Package Details</code>。</li>
+              <li>勾选 <code>PICO Emulator</code>。</li>
+              <li>建议同时勾选 <code>Spatial Editor</code>，但网页演示并不强制需要。</li>
+              <li>点击 <code>Apply</code> 或 <code>OK</code>，等待组件全部下载完成。</li>
+            </ol>
+          </section>
+
+          <section class="section" id="launch">
+            <span class="section-number">07 · LAUNCH</span>
+            <h2>启动 Emulator 并打开 UNSEEN</h2>
+            <ol class="steps">
+              <li>从 Android Studio 的 PICO Emulator 工具入口或 Device Manager 打开虚拟设备。</li>
+              <li>如果没有 PICO 虚拟设备，按界面提示创建一个，然后点击播放按钮。</li>
+              <li>等待 PICO OS 6 桌面完全启动。</li>
+              <li>在 Emulator 中打开 PICO Browser。</li>
+              <li>如果无法输入文字，点击左侧工具栏的 <code>Enable Keyboard Mode</code>。</li>
+              <li>打开下面的 UNSEEN PICO 地址。</li>
+              <li>点击浏览器地址栏里的“安装”，然后回到应用库打开 <code>UNSEEN PICO</code>。</li>
+            </ol>
+            <div class="copy-block">
+              <pre id="unseen-url">https://unseen-locator-lab.maxorila.chatgpt.site/experiences/pico-spatial</pre>
+              <button class="copy-button" type="button" data-copy="unseen-url">复制地址</button>
+            </div>
+            <p class="muted">
+              如果只停留在浏览器标签页中，空间效果可能不会完整启用。应先安装，再从 PICO
+              应用库启动。
+            </p>
+          </section>
+
+          <section class="section" id="controls">
+            <span class="section-number">08 · CONTROLS</span>
+            <h2>Emulator 基本操作</h2>
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>操作</th>
+                    <th>效果</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr><td>鼠标左键</td><td>点击/确认，模拟捏合确认</td></tr>
+                  <tr><td>鼠标右键拖动</td><td>旋转视角</td></tr>
+                  <tr><td>鼠标滚轮</td><td>前后移动</td></tr>
+                  <tr><td>W / A / S / D</td><td>前后左右移动</td></tr>
+                  <tr><td>Q / E</td><td>向下 / 向上移动</td></tr>
+                  <tr><td>Command + R</td><td>重置视角</td></tr>
+                  <tr><td>Enable Keyboard Mode</td><td>切换到文字输入</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+          <section class="section" id="exhibition">
+            <span class="section-number">09 · EXHIBITION</span>
+            <h2>展会前检查</h2>
+            <div class="checklist">
+              <div class="check">至少提前一天完成所有下载</div>
+              <div class="check">提前安装好 UNSEEN PICO Web App</div>
+              <div class="check">关闭系统通知与自动更新</div>
+              <div class="check">关闭休眠和屏幕保护程序</div>
+              <div class="check">Mac 全程连接电源</div>
+              <div class="check">确认展示屏分辨率和全屏状态</div>
+              <div class="check">测试 360° 视频和全景照片</div>
+              <div class="check">提前录制一份 MP4 作为断网备用</div>
+            </div>
+            <h3>建议展位标题</h3>
+            <div class="copy-block">
+              <pre id="booth-title">UNSEEN Spatial Experience
+PICO OS 6 Emulator Preview</pre>
+              <button class="copy-button" type="button" data-copy="booth-title">复制标题</button>
+            </div>
+          </section>
+
+          <section class="section" id="problems">
+            <span class="section-number">10 · TROUBLESHOOTING</span>
+            <h2>常见问题</h2>
+            <div class="troubleshooting">
+              <details>
+                <summary>找不到 PICO Spatial Tools</summary>
+                <div>
+                  确认已经安装 <code>PICO Spatial (Global)</code> 并重启 Android Studio；
+                  同时确认 Android Studio 是 2025.1.x，而不是 2026.x。
+                </div>
+              </details>
+              <details>
+                <summary>Emulator 下载失败</summary>
+                <div>
+                  确认可用空间不少于 40GB，并更换稳定网络后重试。如果访问 Google 或
+                  PICO 资源异常，可以尝试关闭 VPN 或更换网络。
+                </div>
+              </details>
+              <details>
+                <summary>Emulator 黑屏或运行很慢</summary>
+                <div>
+                  确认是 Apple 芯片 Mac、内存至少 16GB；关闭占用内存较大的软件。
+                  第一次启动通常比之后更慢。
+                </div>
+              </details>
+              <details>
+                <summary>网页显示成普通平面网页</summary>
+                <div>
+                  确保运行 PICO OS 6 Emulator，在 PICO Browser 地址栏点击“安装”，
+                  然后从应用库里的 <code>UNSEEN PICO</code> 图标启动。
+                </div>
+              </details>
+              <details>
+                <summary>展会现场没有网络</summary>
+                <div>
+                  优先播放提前录制的 MP4。若必须离线交互，需要把网站项目和依赖也复制到
+                  展会电脑，并在本机启动开发服务器。Emulator 访问 Mac 本机时使用：
+                  <div class="copy-block">
+                    <pre id="local-url">http://10.0.2.2:5173/experiences/pico-spatial</pre>
+                    <button class="copy-button" type="button" data-copy="local-url">复制</button>
+                  </div>
+                </div>
+              </details>
+            </div>
+          </section>
+
+          <section class="section">
+            <span class="section-number">11 · SHOWTIME</span>
+            <h2>现场最短启动流程</h2>
+            <div class="quick-start">
+              <ol>
+                <li>打开 Android Studio 2025.1.1。</li>
+                <li>启动 PICO Emulator。</li>
+                <li>等待 PICO OS 6 桌面出现。</li>
+                <li>从应用库打开 <strong>UNSEEN PICO</strong>。</li>
+                <li>将 Emulator 放到展示屏并全屏。</li>
+              </ol>
+            </div>
+          </section>
+        </div>
+      </div>
+    </main>
+
+    <footer class="shell">
+      <p>
+        官方参考：
+        <a
+          href="https://developer.picoxr.com/zh/document/spatial-sdk/set-up-development-environment/"
+          target="_blank"
+          rel="noreferrer"
+        >PICO 开发环境</a>
+        ·
+        <a
+          href="https://developer.picoxr.com/document/spatial-toolkit/pico-emulator-ui/"
+          target="_blank"
+          rel="noreferrer"
+        >PICO Emulator 操作说明</a>
+        ·
+        <a
+          href="https://developer.android.com/studio/archive.html"
+          target="_blank"
+          rel="noreferrer"
+        >Android Studio 历史版本</a>
+      </p>
+      <p>页面仅作为安装与展会演示指南，不收集个人信息。</p>
+    </footer>
+
+    <div class="toast" id="toast" role="status" aria-live="polite">已复制</div>
+
+    <script>
+      const toast = document.getElementById("toast");
+      let toastTimer;
+
+      function showToast(message) {
+        toast.textContent = message;
+        toast.classList.add("show");
+        window.clearTimeout(toastTimer);
+        toastTimer = window.setTimeout(() => toast.classList.remove("show"), 1800);
+      }
+
+      async function copyText(text) {
+        if (navigator.clipboard && window.isSecureContext) {
+          await navigator.clipboard.writeText(text);
+          return;
+        }
+
+        const area = document.createElement("textarea");
+        area.value = text;
+        area.setAttribute("readonly", "");
+        area.style.position = "fixed";
+        area.style.opacity = "0";
+        document.body.appendChild(area);
+        area.select();
+        document.execCommand("copy");
+        area.remove();
+      }
+
+      document.querySelectorAll("[data-copy]").forEach((button) => {
+        button.addEventListener("click", async () => {
+          const source = document.getElementById(button.dataset.copy);
+          if (!source) return;
+
+          try {
+            await copyText(source.textContent.trim());
+            showToast("已复制到剪贴板");
+          } catch {
+            showToast("复制失败，请手动选择文字");
+          }
+        });
+      });
+    </script>
+  </body>
+</html>

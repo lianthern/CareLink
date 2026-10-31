@@ -1,0 +1,59 @@
+/* Preserved original UNSEEN decoration from moment-v2-reference.css. */
+.deco{position:absolute;inset:0;pointer-events:none;z-index:0;overflow:hidden}
+.deco .blob{position:absolute;border-radius:50%;filter:blur(30px);opacity:.75}
+.deco .vig{position:absolute;inset:0;background:radial-gradient(78% 58% at 50% 42%,rgba(255,255,255,0) 40%,rgba(120,104,160,.16) 100%)}
+/* 装饰小物 */
+.orn{position:absolute;pointer-events:none;z-index:1;animation:sway 7s ease-in-out infinite}
+@keyframes sway{0%,100%{transform:translateY(0) rotate(-3deg)}50%{transform:translateY(-12px) rotate(3deg)}}
+.bal{width:36px;height:45px;border-radius:50% 50% 46% 46%;position:relative;
+  box-shadow:0 8px 18px rgba(120,100,160,.22),inset -4px -6px 12px rgba(120,90,140,.18)}
+.bal::before{content:"";position:absolute;left:50%;top:99%;margin-left:-3px;border-left:3px solid transparent;
+  border-right:3px solid transparent;border-top:6px solid rgba(255,255,255,.55)}
+.bal::after{content:"";position:absolute;left:50%;top:104%;width:1px;height:46px;
+  background:linear-gradient(180deg,rgba(255,255,255,.85),rgba(255,255,255,0))}
+.bal i{position:absolute;left:20%;top:14%;width:30%;height:24%;border-radius:50%;background:rgba(255,255,255,.8);filter:blur(1.5px)}
+.bal.pink{background:linear-gradient(150deg,#FFD9E6,#F3A2C0 62%,#E285A8)}
+.bal.silver{background:linear-gradient(150deg,#FBFCFF,#D5DAEA 58%,#B4BCD4)}
+.bal.gold{background:linear-gradient(150deg,#FDF1D6,#E9C88C 58%,#CFA75F)}
+.bow{position:relative;width:40px;height:22px}
+.bow i{position:absolute;top:0;width:17px;height:22px;border-radius:60% 40% 55% 45%;
+  background:linear-gradient(150deg,#FFE0EB,#F0A2C0);box-shadow:0 4px 10px rgba(200,140,175,.3)}
+.bow i:first-child{left:0;transform:rotate(-16deg)}
+.bow i:nth-child(2){right:0;transform:rotate(16deg) scaleX(-1)}
+.bow b{position:absolute;left:50%;top:6px;margin-left:-5px;width:10px;height:10px;border-radius:50%;
+  background:linear-gradient(150deg,#FFF0F5,#EC9CBC)}
+.petal{position:absolute;width:12px;height:12px;border-radius:60% 0 60% 0;pointer-events:none;
+  background:linear-gradient(150deg,rgba(255,225,238,.95),rgba(244,175,205,.75));animation:fall linear infinite}
+@keyframes fall{0%{transform:translateY(-30px) rotate(0);opacity:0}
+  15%{opacity:.9}85%{opacity:.7}100%{transform:translateY(760px) rotate(320deg);opacity:0}}
+.pband{position:absolute;left:-10%;right:-10%;top:-40px;height:270px;filter:blur(34px);opacity:.4;
+  background:linear-gradient(180deg,#F7C4D8 0%,#D9C7F0 46%,rgba(255,255,255,0) 100%)}
+.spk{position:absolute;width:var(--s,10px);height:var(--s,10px);pointer-events:none;
+  background:#fff;clip-path:polygon(50% 0,58% 42%,100% 50%,58% 58%,50% 100%,42% 58%,0 50%,42% 42%);
+  animation:tw 3.2s ease-in-out infinite;filter:drop-shadow(0 0 4px rgba(255,240,200,.9))}
+@keyframes tw{0%,100%{transform:scale(.5) rotate(0);opacity:.25}50%{transform:scale(1) rotate(24deg);opacity:.95}}
+
+
+/* 3D 走廊 */
+.scene{position:absolute;inset:0;overflow:hidden;perspective:780px;perspective-origin:50% 46%;cursor:grab;
+  background:radial-gradient(70% 54% at 50% 43%,#FFF4DE 0%,#EED2AE 16%,#C2A9C8 40%,#7A6D9E 66%,#3A3159 100%)}
+.scene:active{cursor:grabbing}
+.corr{position:absolute;inset:0;transform-style:preserve-3d;transition:transform .1s linear}
+.ring{position:absolute;left:50%;top:50%;width:306px;height:530px;margin:-266px 0 0 -153px;
+  border:2px solid rgba(255,244,220,.55);border-radius:153px 153px 12px 12px;
+  box-shadow:0 0 60px rgba(255,232,190,.4),inset 0 0 80px rgba(255,228,185,.3);
+  background:linear-gradient(180deg,rgba(255,246,226,.08),rgba(120,105,160,.06))}
+.gf{position:absolute;left:50%;top:50%;width:132px;height:166px;margin:-92px 0 0 -66px;border-radius:8px;
+  border:5px solid rgba(255,240,208,.95);transform-style:preserve-3d;cursor:pointer;transition:filter .2s;
+  box-shadow:0 14px 40px rgba(40,30,60,.55),0 0 26px rgba(255,226,180,.45);filter:saturate(1.2) contrast(1.06)}
+.gf:hover{filter:brightness(1.15)}
+.gf .ph{position:absolute;inset:0}
+.floor{position:absolute;left:0;right:0;bottom:0;height:36%;pointer-events:none;
+  background:linear-gradient(180deg,rgba(255,240,215,.16),rgba(120,100,150,.1) 40%,rgba(46,38,72,.36));
+  mask-image:linear-gradient(180deg,rgba(0,0,0,0),#000 60%)}
+.fog{position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(44% 32% at 50% 46%,rgba(255,246,226,.34),rgba(255,246,226,0) 64%),
+             linear-gradient(180deg,rgba(40,32,64,.3) 0%,rgba(40,32,64,0) 22%,rgba(40,32,64,0) 64%,rgba(40,32,64,.52) 100%)}
+.dust{position:absolute;inset:0;pointer-events:none;overflow:hidden}
+.dust i{position:absolute;width:4px;height:4px;border-radius:50%;background:rgba(255,244,215,.9);
+  filter:blur(1px);animation:dustf linear infinite}

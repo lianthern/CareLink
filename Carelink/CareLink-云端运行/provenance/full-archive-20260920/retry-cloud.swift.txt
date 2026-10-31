@@ -1,0 +1,12 @@
+import Foundation
+let paths = try JSONSerialization.jsonObject(with: Data(contentsOf: URL(fileURLWithPath: "/tmp/unseen-archive-20260920/cloud-retry-paths.json"))) as! [String]
+var requested = 0
+var errors = 0
+for path in paths {
+ do { try FileManager.default.startDownloadingUbiquitousItem(at: URL(fileURLWithPath: path)); requested += 1 }
+ catch { errors += 1 }
+ RunLoop.current.run(until: Date(timeIntervalSinceNow: 0.05))
+ if requested % 100 == 0 { print("requested=\(requested) errors=\(errors)") }
+}
+RunLoop.current.run(until: Date(timeIntervalSinceNow: 2))
+print("download_requests=\(requested) errors=\(errors)")

@@ -1,0 +1,35 @@
+{
+  "schemaVersion": "1.0",
+  "jobId": "unseen-3dgs-360-photo-relocalization-multiview-2026-09-04-v13",
+  "publisherState": "PUBLISHED",
+  "githubIssue": "https://github.com/maxi-max-dev/max-agent-bridge/issues/14",
+  "parentJobId": "unseen-3dgs-360-photo-relocalization-2026-09-04-v12",
+  "sceneRevisionId": "360roam-base-posefix-r001",
+  "v11Disposition": "ACCEPTED_7K_FROZEN_DO_NOT_RETRAIN_OR_OVERWRITE",
+  "v12Baseline": "PHOTO_RELOCALIZATION_PARTIAL_2_OF_3",
+  "windowsPowerShell": "PENDING_WINDOWS",
+  "descriptorBank": {
+    "status": "PENDING_4060",
+    "trainingImagesProcessed": null,
+    "descriptorEntries": null,
+    "multiViewLandmarks": null,
+    "meanDescriptorsPerLandmark": null,
+    "usesHeldOutImages": false
+  },
+  "photoRelocalization": {
+    "status": "PENDING_4060",
+    "querySetIdenticalToV12": true,
+    "passThresholdsIdenticalToV12": true,
+    "queriesExpected": 3,
+    "queriesPassed": null,
+    "positionErrors": [null, null, null],
+    "rotationErrorsDegrees": [null, null, null],
+    "medianReprojectionPixels": [null, null, null],
+    "pnpInliers": [null, null, null],
+    "groundTruthUsedForEstimate": false
+  },
+  "viewerIntegration": "PENDING_4060_AFTER_3_OF_3",
+  "gpuOptimizationRunsAllowed": 0,
+  "quality30000": "NOT_AUTHORIZED_V13",
+  "productionConnection": "DISABLED"
+}

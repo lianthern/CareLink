@@ -1,0 +1,53 @@
+{
+  "date": "2026-09-12",
+  "scope": "static spaces gallery",
+  "deployment": {
+    "time": "2026-09-12T12:34:23.613137+00:00",
+    "release": "/var/www/unseen-spaces/releases/20260912-mainland-v2",
+    "previous": "/var/www/unseen-spaces/releases/20260912-speed-v1",
+    "verifiedRuntimeFiles": 164,
+    "retainedLegacyScriptFiles": 42,
+    "caddySha256": "108e6ecf3d214ddf3b47b5bcc98fd4913e920628825bfc2fc2adaa324d140be4",
+    "caddyReloaded": false,
+    "services": "MainPID=24470\nId=caddy.service\nActiveEnterTimestamp=Fri 2026-08-14 22:56:57 CST\n\nMainPID=1597748\nId=huijian.service\nActiveEnterTimestamp=Sat 2026-09-12 18:07:53 CST\n\nMainPID=1597662\nId=unseen-operable.service\nActiveEnterTimestamp=Sat 2026-09-12 18:07:32 CST\n"
+  },
+  "sourceMediaFilesVerified": 32,
+  "previewFiles": 14,
+  "previewBytes": {
+    "min": 922907,
+    "max": 973845
+  },
+  "controlledBenchmark": [
+    {
+      "version": "20260912-speed-v1",
+      "downloadMbps": 2,
+      "latencyMs": 150,
+      "cache": "disabled",
+      "firstVisibleMs": 64864.39999997616,
+      "firstQuality": "full",
+      "fullReadyMs": 65217,
+      "errors": []
+    },
+    {
+      "version": "20260912-mainland-v2",
+      "downloadMbps": 2,
+      "latencyMs": 150,
+      "cache": "disabled",
+      "firstVisibleMs": 6917.699999928474,
+      "firstQuality": "preview",
+      "fullReadyMs": 68588,
+      "errors": []
+    }
+  ],
+  "liveAcceptance": {
+    "passed": true,
+    "scenes": 14,
+    "photoScenarios": 6,
+    "errors": []
+  },
+  "limitations": [
+    "Simulated network, not a mainland residential browser measurement.",
+    "Overseas CDN; first cache fills experienced transient failures before successful recheck.",
+    "Original full-quality payload is unchanged; preview adds about 1 MB for an uncached complete visit."
+  ]
+}

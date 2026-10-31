@@ -1,0 +1,14 @@
+{
+  "schemaVersion": "1.0",
+  "jobId": "unseen-3dgs-360roam-base-2026-09-03-v10",
+  "state": "COMPLETED",
+  "createdAt": "2026-09-03T13:49:14.3053856Z",
+  "agent": "4060 Agent",
+  "machine": "DESKTOP-NIBL3D4",
+  "message": "v10 completed: TECHNICAL_PASS_USER_GATE_FAIL; the 7k technical pipeline and Viewer E2E passed, but the rendered room failed the six-direction and stable-occlusion user visual gate; 30k was correctly not run. Result commit c738f98.",
+  "evidence": [
+    "results/from-4060/unseen-3dgs-360roam-base-2026-09-03-v10/V10-REPORT.md",
+    "results/from-4060/unseen-3dgs-360roam-base-2026-09-03-v10/V10-RESULT.json",
+    "results/from-4060/unseen-3dgs-360roam-base-2026-09-03-v10/viewer-walkthrough-v10.mp4"
+  ]
+}

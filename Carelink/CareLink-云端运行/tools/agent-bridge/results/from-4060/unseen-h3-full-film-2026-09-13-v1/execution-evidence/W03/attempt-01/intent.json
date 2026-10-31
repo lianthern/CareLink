@@ -1,0 +1,39 @@
+{
+  "key": "unseen-h3-full-film-2026-09-13-v1/W03/attempt-01",
+  "startedAt": "2026-09-14T04:36:34.777920+00:00",
+  "reference": "D:\\H3-runtime\\projects\\unseen-full-v1\\media-inputs\\reference-delta-03\\W03-wedding-side-angle-v1.png",
+  "inputSha256": "287bea2ce5f27aba36c559b4050a52d548efc5b8fdc7d93a694c56a2f6a0e33f",
+  "seed": 2026091587,
+  "shot": {
+    "id": "W03",
+    "title": "\u5a5a\u793c\u524d\uff1a\u6276\u6b63\u80f8\u82b1\uff0c\u76f8\u89c6\u4e00\u7b11",
+    "type": "h3_generated_action",
+    "edit_seconds": 4,
+    "generate_seconds_nominal": 4.458333333333333,
+    "frame_count_starting_point": 107,
+    "fps": 24,
+    "recorder": "\u670b\u53cb\u4e59",
+    "references": [
+      "16-wedding-guest-C.png",
+      "02-character-age-reference.png"
+    ],
+    "start_end_and_action": "A closer smartphone view from another friend within the same wedding arcade, still on the same side of the couple's axis. Continue the bride's raised right hand from the previous shot. She gently straightens the small boutonniere on the groom's left lapel, withdraws her hand, and looks into his eyes. The same groom smiles back softly. Keep their established adult faces, dark suit, white dress, low hair bun and warm dusk lighting. Frame from mid-torso upward so the flower, hand and two faces remain visible. Nearly locked camera. End after their small shared smile, with the flower remaining straight.",
+    "prompt": "Naturalistic personal-memory footage with believable human movement and gently handheld smartphone perspective. Keep the approved faces, clothes, lighting and room geometry. One continuous shot, no internal cuts, no age change, no photo cards, no text, no camera flying outside, no slow motion, no duplicated people, no DV camcorder. A closer smartphone view from another friend within the same wedding arcade, still on the same side of the couple's axis. Continue the bride's raised right hand from the previous shot. She gently straightens the small boutonniere on the groom's left lapel, withdraws her hand, and looks into his eyes. The same groom smiles back softly. Keep their established adult faces, dark suit, white dress, low hair bun and warm dusk lighting. Frame from mid-torso upward so the flower, hand and two faces remain visible. Nearly locked camera. End after their small shared smile, with the flower remaining straight.",
+    "cut_continuity": "\u5355\u6b21\u6276\u6b63\uff0c\u4e0d\u591a\u6b21\u6478\u82b1\uff1b\u4e0b\u4e00\u6bb5\u901a\u8fc7\u7a7a\u95f4\u53bb\u821e\u6c60\u3002",
+    "pass_criteria": [
+      "\u80f8\u82b1\u5de6\u53f3\u6b63\u786e",
+      "\u540c\u4e00\u4f34\u4fa3",
+      "\u955c\u5c3e\u7559\u53cd\u5e94"
+    ],
+    "audio": "Natural scene sound only; no generated music, UI text or unscripted dialogue.",
+    "status": "planned",
+    "output": null,
+    "timeline_start_seconds": 90.0,
+    "timeline_end_seconds": 94.0
+  },
+  "outputPrefix": "unseen-full-v1/W03/attempt-01",
+  "apiSha256": "bd71137ecec2c14e744f5c4b92f82904dd33144d640162c478f5e344d6fc3b52",
+  "conditioningMode": "first-frame",
+  "templatePrompt": "Naturalistic personal-memory footage with believable human movement and gently handheld smartphone perspective. Keep the approved faces, clothes, lighting and room geometry. One continuous shot, no internal cuts, no age change, no photo cards, no text, no camera flying outside, no slow motion, no duplicated people, no DV camcorder. A closer smartphone view from another friend within the same wedding arcade, still on the same side of the couple's axis. Continue the bride's raised right hand from the previous shot. She gently straightens the small boutonniere on the groom's left lapel, withdraws her hand, and looks into his eyes. The same groom smiles back softly. Keep their established adult faces, dark suit, white dress, low hair bun and warm dusk lighting. Frame from mid-torso upward so the flower, hand and two faces remain visible. Nearly locked camera. End after their small shared smile, with the flower remaining straight.",
+  "executedPrompt": "Continue this exact side-angle wedding preparation view with the same couple and courtyard. Her fingertips already rest on the flower, which was mostly straightened in the preceding shot. She makes only one tiny final settling touch, then lowers her right hand to rest softly on his forearm. Do not pull away and reach back; do not repeat the whole flower adjustment. He looks up from her hand and meets her eyes. They share a quiet smile and stay still for the final half-second. Keep dark suit, white shirt, same single boutonniere, white dress, low bun, timber pillars and string lights stable. Stationary friend-held camera, no new viewpoint movement, no cuts, no text. Natural quiet fabric and courtyard ambience, no music or intelligible speech.\n"
+}

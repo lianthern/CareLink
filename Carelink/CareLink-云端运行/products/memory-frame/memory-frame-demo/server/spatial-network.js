@@ -1,0 +1,166 @@
+'use strict';
+const https = require('node:https');
+const dns = require('node:dns/promises');
+const net = require('node:net');
+const fs = require('node:fs');
+const { Transform } = require('node:stream');
+const { pipeline } = require('node:stream/promises');
+const crypto = require('node:crypto');
+const { parseShare } = require('./public/spatial-link');
+
+// Both exact hosts were observed in user-authorized Insta360 share pages.
+// A provider CDN is still subject to every redirect, DNS and file-type check.
+const ASSET_HOSTS = new Set(['insta360-app-hz.oss-cn-hangzhou.aliyuncs.com', 'p1-app.insta360.com']);
+class SpatialError extends Error { constructor(message, status = 400, code = '') { super(message); this.status = status; this.code = code; } }
+const reject = (message, code) => { throw new SpatialError(message, 400, code); };
+function checkedURL(input) {
+  if (typeof input !== 'string' || input.length > 8192 || /[\s\\]/.test(input)) reject('空间链接格式不正确');
+  let url; try { url = new URL(input); } catch { reject('空间链接格式不正确'); }
+  if (url.protocol !== 'https:' || url.username || url.password || url.port || url.hash) reject('空间链接必须使用安全的 HTTPS 地址');
+  return url;
+}
+function shareURL(input) {
+  const share = parseShare(input);
+  if (!share) reject('请使用影石时光舱作品的网页分享链接（不是视频或模型文件地址）', 'unsupported_link');
+  return share;
+}
+function assetURL(input, extension = 'sog') {
+  const url = checkedURL(input);
+  if (!ASSET_HOSTS.has(url.hostname)) reject('作品使用了尚未支持的资源域名，请保留作品分享链接以便核实；可先查看影石来源', 'unsupported_asset_host');
+  if (!['sog', 'json'].includes(extension) || !url.pathname.toLowerCase().endsWith('.' + extension)) reject('作品的模型资源格式不受支持，请确认来源中有可观看的空间', 'unsupported_asset_format');
+  return url;
+}
+const blocked = new net.BlockList();
+for (const [ip, bits] of [['0.0.0.0',8],['10.0.0.0',8],['100.64.0.0',10],['127.0.0.0',8],['169.254.0.0',16],['172.16.0.0',12],['192.0.0.0',24],['192.0.2.0',24],['192.88.99.0',24],['192.168.0.0',16],['198.18.0.0',15],['198.51.100.0',24],['203.0.113.0',24],['224.0.0.0',4],['240.0.0.0',4]]) blocked.addSubnet(ip, bits, 'ipv4');
+const global6 = new net.BlockList(); global6.addSubnet('2000::', 3, 'ipv6');
+for (const [ip, bits] of [['2001::',23], ['2001:db8::',32], ['2002::',16], ['3fff::',20]]) blocked.addSubnet(ip, bits, 'ipv6');
+function publicAddress(address) {
+  const family = net.isIP(address);
+  return family === 4 ? !blocked.check(address, 'ipv4') : family === 6 && global6.check(address, 'ipv6') && !blocked.check(address, 'ipv6');
+}
+async function resolvePublic(hostname, lookup = dns.lookup, signal) {
+  signal?.throwIfAborted();
+  let timer, abort;
+  const timeout = new Promise((_, rejectPromise) => {
+    timer = setTimeout(() => rejectPromise(new SpatialError('模型地址解析超时，请重试', 400, 'dns_timeout')), 8000);
+    abort = () => rejectPromise(signal.reason); signal?.addEventListener('abort', abort, { once: true });
+  });
+  let addresses;
+  try { addresses = await Promise.race([lookup(hostname, { all: true, verbatim: true }), timeout]); }
+  catch (error) {
+    signal?.throwIfAborted();
+    if (error instanceof SpatialError) throw error;
+    reject('资源域名解析失败，请稍后重试；也可先打开影石来源检查作品是否可访问', 'dns_failed');
+  }
+  finally { clearTimeout(timer); signal?.removeEventListener('abort', abort); }
+  if (!Array.isArray(addresses) || !addresses.length || addresses.some(x => !publicAddress(x.address))) reject('模型资源地址未通过安全检查，请保留作品分享链接以便核实', 'unsafe_dns');
+  return addresses.find(x => x.family === 4) || addresses[0];
+}
+function pinnedLookup(selected) {
+  return (_hostname, options, callback) => options?.all ? callback(null, [selected]) : callback(null, selected.address, selected.family);
+}
+function requestResponse(url, { signal, selected, method = 'GET', headers = {}, request = https.request }) {
+  return new Promise((resolve, rejectPromise) => {
+    const req = request(url, { method, signal, agent: false, lookup: pinnedLookup(selected), family: selected.family,
+      headers: { 'User-Agent': 'MemoryFrame/0.1', 'Accept-Encoding': 'identity', ...headers } }, resolve);
+    req.on('error', rejectPromise);
+    req.setTimeout(15000, () => req.destroy(new SpatialError('模型下载超时，请重试')));
+    req.end();
+  });
+}
+function createNetwork({ lookup, request } = {}) {
+  async function open(input, kind, signal) {
+    let url = input;
+    for (let hop = 0; hop <= 3; hop++) {
+      const parsed = kind === 'share' ? new URL(shareURL(url).url) : assetURL(url, kind === 'camera' ? 'json' : 'sog');
+      // Validate every hop and pin the checked DNS result to this TLS connection.
+      const selected = await resolvePublic(parsed.hostname, lookup, signal);
+      const response = await requestResponse(parsed, { signal, selected, request });
+      if ([301,302,303,307,308].includes(response.statusCode)) {
+        const location = response.headers.location; response.destroy();
+        if (!location || hop === 3) reject('模型地址跳转过多或无效，请重新复制作品网页链接', 'redirect_invalid');
+        try { url = new URL(location, parsed).href; }
+        catch { reject('模型地址跳转无效，请重新复制作品网页链接', 'redirect_invalid'); }
+        continue;
+      }
+      if (response.statusCode !== 200) {
+        response.destroy();
+        reject(kind === 'share' ? '影石作品暂不可访问，请打开来源确认作品已生成且允许网页分享，再重试' : '影石模型暂不可下载或地址已过期，请重试以重新获取作品资源', kind === 'share' ? 'share_unavailable' : 'asset_unavailable');
+      }
+      const encoding = response.headers['content-encoding'];
+      if (encoding && encoding !== 'identity') { response.destroy(); reject('模型下载压缩方式不受支持'); }
+      return response;
+    }
+  }
+  async function transfer(input, kind, limit, signal, destination) {
+    const response = await open(input, kind, signal);
+    const length = response.headers['content-length'];
+    if (length !== undefined && (!/^\d+$/.test(String(length)) || !Number.isSafeInteger(Number(length)) || Number(length) > limit)) {
+      response.destroy(); reject('模型文件超过大小限制');
+    }
+    let bytes = 0; const digest = crypto.createHash('sha256'), chunks = [];
+    const measure = new Transform({ transform(chunk, _encoding, done) {
+      bytes += chunk.length;
+      if (bytes > limit) return done(new SpatialError('模型文件超过大小限制'));
+      digest.update(chunk); done(null, chunk);
+    }});
+    try {
+      if (destination) await pipeline(response, measure, fs.createWriteStream(destination, { flags: 'wx', mode: 0o600 }), { signal });
+      else { await pipeline(response, measure, async function* (source) { for await (const chunk of source) { chunks.push(chunk); } }, { signal }); }
+    } catch (e) { response.destroy(); throw e; }
+    if (!bytes || (length !== undefined && bytes !== Number(length))) reject('模型下载不完整，请重试');
+    return { bytes, digest: digest.digest('hex'), ...(destination ? {} : { buffer: Buffer.concat(chunks) }) };
+  }
+  return {
+    page: async (url, signal) => (await transfer(url, 'share', 2 * 1024 * 1024, signal)).buffer.toString('utf8'),
+    camera: async (url, signal) => (await transfer(url, 'camera', 1024 * 1024, signal)).buffer.toString('utf8'),
+    download: (url, destination, limit, signal) => transfer(url, 'asset', limit, signal, destination)
+  };
+}
+function parsePage(html, scene) {
+  const match = /<script\b[^>]*\bid\s*=\s*["']__NEXT_DATA__["'][^>]*>([\s\S]*?)<\/script\s*>/i.exec(html);
+  let detail; try { detail = JSON.parse(match?.[1]).props.pageProps.taskDetail; } catch { reject('影石分享页面已变化或不可用，请打开来源链接', 'share_page_changed'); }
+  if (!detail || detail.taskOrderNo !== scene) reject('影石分享不可用或场景信息不匹配，请重新复制作品的网页分享链接', 'scene_mismatch');
+  if (detail.isPrivate !== 0) reject('作品未开放网页分享，请在影石中检查分享权限后重试', 'share_private');
+  if (!Array.isArray(detail.outputs)) reject('作品尚无可用模型，请等待影石生成完成后重试', 'model_missing');
+  const models = detail.outputs.filter(x => x?.type === 'model' && x.fileFormat === 'sog');
+  if (models.length !== 1) reject('分享中没有唯一可用的 SOG 空间模型；视频和其他 ZIP 不能代替，请确认作品已生成完成', 'model_missing');
+  const url = assetURL(models[0].url).href;
+  const title = typeof detail.title === 'string' ? detail.title.replace(/[\u0000-\u001f\u007f]/g, '').slice(0, 120) : 'Insta360 空间';
+  const cameras = detail.outputs.filter(x => x?.type === 'model' && x.fileFormat === 'json');
+  let cameraURL;
+  if (cameras.length === 1) { try { cameraURL = assetURL(cameras[0].url, 'json').href; } catch { /* Optional camera data never broadens the resource allowlist. */ } }
+  return { url, title, cameraURL };
+}
+function parseCamera(input) {
+  let cameras; try { cameras = JSON.parse(input); } catch { return undefined; }
+  if (!Array.isArray(cameras) || cameras.length > 5000) return undefined;
+  const vector = (value, limit) => Array.isArray(value) && value.length === 3 && value.every(x => typeof x === 'number' && Number.isFinite(x) && Math.abs(x) <= limit);
+  const dot = (a, b) => a.reduce((sum, v, i) => sum + v * b[i], 0);
+  const valid = [];
+  for (const camera of cameras) {
+    if (!camera || !vector(camera.position, 100000) || !Array.isArray(camera.rotation) || camera.rotation.length !== 3 || !camera.rotation.every(row => vector(row, 1.001))) continue;
+    if (![camera.width, camera.height].every(x => Number.isInteger(x) && x > 0 && x <= 8192) || ![camera.fx, camera.fy].every(x => Number.isFinite(x) && x >= 1 && x <= 20000)) continue;
+    const r = camera.rotation;
+    if (r.some((a, i) => r.some((b, j) => Math.abs(dot(a, b) - Number(i === j)) > 0.01))) continue;
+    // A reflection is orthogonal too, but is not a valid camera rotation.
+    const determinant = r[0][0] * (r[1][1] * r[2][2] - r[1][2] * r[2][1]) - r[0][1] * (r[1][0] * r[2][2] - r[1][2] * r[2][0]) + r[0][2] * (r[1][0] * r[2][1] - r[1][1] * r[2][0]);
+    if (determinant <= 0) continue;
+    const fov = 2 * Math.atan(camera.height / (2 * camera.fy)) * 180 / Math.PI;
+    if (fov < 20 || fov > 140) continue;
+    const name = typeof camera.img_name === 'string' ? /^(.*)_cam1_(center|up)$/.exec(camera.img_name) : null;
+    valid.push({ frame: name?.[1], direction: name?.[2], view: {
+      position: camera.position, forward: r.map(row => row[2]), up: r.map(row => -row[1]), fov: Math.max(35, Math.min(75, fov))
+    } });
+  }
+  // Keep the first usable capture position. Within that capture, choose the
+  // front center/up view nearest the horizon in the provider's Y-down space.
+  // This retains tilted-camera scenes without forcing upright scenes skyward.
+  const first = valid.find(candidate => candidate.frame !== undefined);
+  if (!first) return valid[0]?.view;
+  const candidates = valid.filter(candidate => candidate.frame === first.frame);
+  candidates.sort((a, b) => Math.abs(a.view.forward[1]) - Math.abs(b.view.forward[1]) || Number(a.direction === 'up') - Number(b.direction === 'up'));
+  return candidates[0].view;
+}
+
+module.exports = { SpatialError, shareURL, assetURL, publicAddress, resolvePublic, pinnedLookup, createNetwork, parsePage, parseCamera };

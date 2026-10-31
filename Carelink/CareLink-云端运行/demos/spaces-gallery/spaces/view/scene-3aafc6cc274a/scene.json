@@ -1,0 +1,148 @@
+{
+  "sceneRevisionId": "scene-3aafc6cc274a-r001",
+  "name": "香港科技大学 · 360Roam Base · 7k 预览",
+  "sceneAsset": {
+    "url": "./assets/scene.sog",
+    "format": "sog",
+    "required": true,
+    "position": [
+      0,
+      0,
+      0
+    ],
+    "rotationEuler": [
+      -90,
+      0,
+      0
+    ],
+    "scale": 1
+  },
+  "backgroundColor": [
+    0.12,
+    0.12,
+    0.12
+  ],
+  "defaultPhotoAnchorId": "photo-4f44d83196c8",
+  "navigation": {
+    "eyeHeight": 0.0018448061657535524,
+    "moveSpeed": 0.25,
+    "lookSensitivity": 0.11,
+    "defaultFov": 70,
+    "fovRangeDegrees": [
+      30,
+      110
+    ],
+    "sprintMultiplier": 3,
+    "startMode": "walk",
+    "boundaryType": "camera-bounds",
+    "boundaryXZ": [
+      [
+        -1.2500000791598724,
+        -0.8091833340335466
+      ],
+      [
+        1.0688139306969635,
+        -0.8091833340335466
+      ],
+      [
+        1.0688139306969635,
+        0.8494551493193423
+      ],
+      [
+        -1.2500000791598724,
+        0.8494551493193423
+      ]
+    ],
+    "startPose": {
+      "id": "start",
+      "label": "Initial scene camera",
+      "sceneRevisionId": "scene-3aafc6cc274a-r001",
+      "position": [
+        -0.7435234422991421,
+        -0.008914665770652983,
+        0.1651486414392815
+      ],
+      "quaternion": [
+        0.4228932436866244,
+        -0.527034330708959,
+        0.3469929866674874,
+        0.65037834058488
+      ],
+      "fov": 100.00000000000006
+    }
+  },
+  "photoAnchors": [
+    {
+      "id": "photo-4f44d83196c8",
+      "label": "照片 1",
+      "sceneRevisionId": "scene-3aafc6cc274a-r001",
+      "position": [
+        0.37102993190870776,
+        0.010033464941035497,
+        -0.39067156855276897
+      ],
+      "quaternion": [
+        0.0023720003766484667,
+        0.7701159027101807,
+        0.009303280705721902,
+        0.6378317324931453
+      ],
+      "fov": 100.05899708477523,
+      "photoId": "photo-4f44d83196c8",
+      "thumbnail": "./photos/photo-4f44d83196c8.thumb.jpg",
+      "originalUrl": "./photos/photo-4f44d83196c8.jpg",
+      "imageWidth": 1024,
+      "imageHeight": 1024,
+      "fovAxis": "vertical",
+      "status": "ready"
+    },
+    {
+      "id": "photo-d1913b2f33ce",
+      "label": "照片 2",
+      "sceneRevisionId": "scene-3aafc6cc274a-r001",
+      "position": [
+        0.7347717364078401,
+        0.009492571533880683,
+        0.21357293334691627
+      ],
+      "quaternion": [
+        -0.007288336188647032,
+        0.5868567245701264,
+        0.005292078864966587,
+        0.8096406973983651
+      ],
+      "fov": 99.05634099171499,
+      "photoId": "photo-d1913b2f33ce",
+      "thumbnail": "./photos/photo-d1913b2f33ce.thumb.jpg",
+      "originalUrl": "./photos/photo-d1913b2f33ce.jpg",
+      "imageWidth": 1024,
+      "imageHeight": 1024,
+      "fovAxis": "vertical",
+      "status": "ready"
+    },
+    {
+      "id": "photo-bb79b3d99311",
+      "label": "照片 3",
+      "sceneRevisionId": "scene-3aafc6cc274a-r001",
+      "position": [
+        -0.167001770684496,
+        -0.0034889459744622464,
+        0.07617255247189862
+      ],
+      "quaternion": [
+        0.013159399715401166,
+        -0.5691202221493039,
+        0.0029621322621728994,
+        0.822143678873905
+      ],
+      "fov": 98.96731272679848,
+      "photoId": "photo-bb79b3d99311",
+      "thumbnail": "./photos/photo-bb79b3d99311.thumb.jpg",
+      "originalUrl": "./photos/photo-bb79b3d99311.jpg",
+      "imageWidth": 1024,
+      "imageHeight": 1024,
+      "fovAxis": "vertical",
+      "status": "ready"
+    }
+  ]
+}

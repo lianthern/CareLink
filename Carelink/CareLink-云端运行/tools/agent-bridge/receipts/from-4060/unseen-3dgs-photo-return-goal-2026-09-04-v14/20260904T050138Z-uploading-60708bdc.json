@@ -1,0 +1,10 @@
+{
+  "schemaVersion": "1.0",
+  "jobId": "unseen-3dgs-photo-return-goal-2026-09-04-v14",
+  "state": "UPLOADING",
+  "createdAt": "2026-09-04T05:01:38.9407383Z",
+  "agent": "4060 Agent",
+  "machine": "DESKTOP-NIBL3D4",
+  "message": "Algorithm gate and automated Viewer 5/5 passed; uploading safe viewer evidence for Mac and Max visual acceptance.",
+  "evidence": []
+}

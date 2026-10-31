@@ -1,0 +1,30 @@
+[Unit]
+Description=UNSEEN private beta Web (loopback only)
+After=network.target unseen-private-beta-api.service
+Wants=unseen-private-beta-api.service
+
+[Service]
+Type=simple
+User=unseen
+Group=unseen
+WorkingDirectory=/opt/unseen/releases/REQUIRED_IMMUTABLE_RELEASE_COMMIT/apps/web
+EnvironmentFile=/etc/unseen/private-beta-web.env
+ExecStart=/usr/local/bin/node server.mjs
+Restart=on-failure
+RestartSec=5s
+TimeoutStopSec=15s
+UMask=0077
+NoNewPrivileges=true
+PrivateTmp=true
+PrivateDevices=true
+ProtectHome=true
+ProtectSystem=strict
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectControlGroups=true
+RestrictSUIDSGID=true
+IPAddressDeny=any
+IPAddressAllow=localhost
+
+[Install]
+WantedBy=multi-user.target

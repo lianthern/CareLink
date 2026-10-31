@@ -1,0 +1,16 @@
+{
+  "status": "PASS",
+  "stage": 7000,
+  "checkpointStep": 6999,
+  "checkpointSha256": "97a6fb24a8bb9dd566ebda1c33d167ce658ab0b91ff37d41f73e6eb090783baa",
+  "anchors": [
+    {"frame": "frame_00001", "psnr": 38.251808166503906, "ssim": 0.9820992946624756, "lpips": 0.05999059975147247, "pass": true},
+    {"frame": "frame_00053", "psnr": 41.0479736328125, "ssim": 0.9862803220748901, "lpips": 0.04668667167425156, "pass": true},
+    {"frame": "frame_00105", "psnr": 37.51972961425781, "ssim": 0.9783329963684082, "lpips": 0.08002334833145142, "pass": true}
+  ],
+  "anchorMeans": {"psnr": 38.93983713785807, "ssim": 0.9822375377019247, "lpips": 0.06223353991905848},
+  "heldOutCount": 10,
+  "heldOutMeans": {"psnr": 40.53189468383789, "ssim": 0.9852787852287292, "lpips": 0.05295963920652867},
+  "hardGatePass": true
+}
+

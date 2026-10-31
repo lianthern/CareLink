@@ -1,0 +1,96 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://unseen.local/schemas/local-product-queue-state-v1.json",
+  "title": "UNSEEN durable local queue record",
+  "type": "object",
+  "required": [
+    "id",
+    "kind",
+    "idempotency_key",
+    "scene_id",
+    "input_path",
+    "input_sha256",
+    "state",
+    "stage",
+    "progress",
+    "lease_owner",
+    "lease_expires",
+    "heartbeat_at",
+    "attempts",
+    "max_attempts",
+    "result",
+    "error",
+    "created_at",
+    "updated_at"
+  ],
+  "properties": {
+    "id": {"type": "string", "pattern": "^job-[0-9a-f]{12}$"},
+    "kind": {"enum": ["scene_preview", "photo_localize"]},
+    "idempotency_key": {"$ref": "#/$defs/sha256"},
+    "scene_id": {"type": "string", "pattern": "^scene-[0-9a-f]{12}$"},
+    "input_path": {"type": "string", "pattern": "^/", "minLength": 2},
+    "input_sha256": {"$ref": "#/$defs/sha256"},
+    "state": {"enum": ["queued", "leased", "running", "uploading", "ready", "failed"]},
+    "stage": {"type": "string", "minLength": 1},
+    "progress": {"type": "number", "minimum": 0, "maximum": 1},
+    "lease_owner": {"type": ["string", "null"]},
+    "lease_expires": {"type": ["number", "null"]},
+    "heartbeat_at": {"type": ["string", "null"]},
+    "attempts": {"type": "integer", "minimum": 0},
+    "max_attempts": {"type": "integer", "minimum": 1},
+    "result": {"type": ["object", "null"]},
+    "error": {"type": ["string", "null"]},
+    "created_at": {"type": "string", "minLength": 10},
+    "updated_at": {"type": "string", "minLength": 10}
+  },
+  "allOf": [
+    {
+      "if": {"properties": {"state": {"enum": ["leased", "running", "uploading"]}}, "required": ["state"]},
+      "then": {
+        "properties": {
+          "lease_owner": {"type": "string", "minLength": 1},
+          "lease_expires": {"type": "number"},
+          "heartbeat_at": {"type": "string", "minLength": 1},
+          "result": {"type": "null"},
+          "error": {"type": "null"}
+        }
+      }
+    },
+    {
+      "if": {"properties": {"state": {"const": "queued"}}, "required": ["state"]},
+      "then": {
+        "properties": {
+          "lease_owner": {"type": "null"},
+          "lease_expires": {"type": "null"},
+          "result": {"type": "null"},
+          "error": {"type": "null"}
+        }
+      }
+    },
+    {
+      "if": {"properties": {"state": {"const": "ready"}}, "required": ["state"]},
+      "then": {
+        "properties": {
+          "lease_expires": {"type": "null"},
+          "result": {"type": "object"},
+          "error": {"type": "null"},
+          "progress": {"const": 1}
+        }
+      }
+    },
+    {
+      "if": {"properties": {"state": {"const": "failed"}}, "required": ["state"]},
+      "then": {
+        "properties": {
+          "lease_expires": {"type": "null"},
+          "result": {"type": "null"},
+          "error": {"type": "string", "minLength": 1}
+        }
+      }
+    }
+  ],
+  "$defs": {
+    "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+  },
+  "additionalProperties": false
+}

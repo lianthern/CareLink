@@ -1,0 +1,166 @@
+{
+  "id": "live-events",
+  "path": "demos/live-events",
+  "repository": null,
+  "commit": null,
+  "snapshotDate": "2026-09-20",
+  "sourceKind": "local-working-files",
+  "includedFiles": 26,
+  "includedBytes": 2628478,
+  "inventory": [
+    {
+      "path": "desktop/index.html",
+      "bytes": 7560,
+      "sha256": "1b7fef7c47b1ff8c8a04504200e7ccbe171f061d84f0b8cb431f714392f8032b"
+    },
+    {
+      "path": "fonts/font-0.woff2",
+      "bytes": 12768,
+      "sha256": "57c3b4b76f64912e0657b8a1a47a511226cee093f250206b12eb942299bcc514"
+    },
+    {
+      "path": "fonts/font-1.woff2",
+      "bytes": 12904,
+      "sha256": "50fde5f7718b93dae290b694c22199de44b0ef87d30857e0bb81352976f40c75"
+    },
+    {
+      "path": "fonts/font-2.woff2",
+      "bytes": 12336,
+      "sha256": "7f10d665aea0bd92a441b56033a8203168825595951de76609b225afe3c07119"
+    },
+    {
+      "path": "fonts/font-3.woff2",
+      "bytes": 12712,
+      "sha256": "7ad33fb050dd9b62e1c233a598d1efd6c921f428a93f3487eaa474402617e3ef"
+    },
+    {
+      "path": "fonts/font-4.woff2",
+      "bytes": 28784,
+      "sha256": "575dc419c9a8ee93fb50b857d0f71e4e9e4006fe21c121cf2d834bdbb879894d"
+    },
+    {
+      "path": "fonts/font-5.woff2",
+      "bytes": 28844,
+      "sha256": "0d34eee4da1d9e4cfe26f177483d12636bfed816c1cc121159b919957add0c30"
+    },
+    {
+      "path": "fonts/font-6.woff2",
+      "bytes": 29112,
+      "sha256": "abbca7c61d9fece9cb7ead3136454b22b6ce63b3714837eee621fb1a20138c72"
+    },
+    {
+      "path": "fonts/fonts.css",
+      "bytes": 1021,
+      "sha256": "f2d9aab84df91854e578caa00edea158c96036ed072957d3561149a8a9b3f516"
+    },
+    {
+      "path": "index.html",
+      "bytes": 768,
+      "sha256": "70b1e0735d490d8775faf2031342c5d7596b10c3a6ca10fe547f7d3b7bf0c03b"
+    },
+    {
+      "path": "landscape/assets/scene.sog",
+      "bytes": 16652449,
+      "sha256": "8479980b3e10e5a117cdde1045a573f12ce7f5dbe48f090cfe652d2863577fc3",
+      "excluded": "optional-large-asset"
+    },
+    {
+      "path": "landscape/assets/scene.voxel.bin",
+      "bytes": 14386784,
+      "sha256": "1f540fae338c2772f43718727b9b9428890e6e9a1f3901cb81496b9c126a7ea0",
+      "excluded": "optional-large-asset"
+    },
+    {
+      "path": "landscape/assets/scene.voxel.json",
+      "bytes": 635,
+      "sha256": "9e1c5c6f9adb3423c557ad0b44ae7f6c97287b459d8c88215de3e225e04f06a2"
+    },
+    {
+      "path": "landscape/scene-lite.json",
+      "bytes": 1562,
+      "sha256": "bc724be1a33141fc5427a8ffb0efa0d2489399afae6a37d219105dcbdbad15cd"
+    },
+    {
+      "path": "landscape/scene.json",
+      "bytes": 1663,
+      "sha256": "44228a3a20d8bade81f0c0d2763abb61d1118953c0a95cb0bd20038e4a0f5f33"
+    },
+    {
+      "path": "m/index.html",
+      "bytes": 3610,
+      "sha256": "30a08f482548f6ecdd7959586e147066905ffaeceb056698dd2614ef2e5504d7"
+    },
+    {
+      "path": "portrait/assets/scene.sog",
+      "bytes": 16442297,
+      "sha256": "b9126c4b4f3169f1cb66e728f3e20b26f1b4719b0dec0d2bfbf172306512825a",
+      "excluded": "optional-large-asset"
+    },
+    {
+      "path": "portrait/assets/scene.voxel.bin",
+      "bytes": 1733192,
+      "sha256": "0fd2d2d9b70e35bd5175e14dbfe26c507fef80ee86b7a9dbaa27299f3329464a",
+      "excluded": "optional-large-asset"
+    },
+    {
+      "path": "portrait/assets/scene.voxel.json",
+      "bytes": 655,
+      "sha256": "6d7e7291f261c2a823115e9c9ae1cb8c5e884524d06839642335332914986796"
+    },
+    {
+      "path": "portrait/scene.json",
+      "bytes": 1690,
+      "sha256": "77a313cc202f99d125d1bad562511c80f9b117054479fe7c81dc76a71aa90071"
+    },
+    {
+      "path": "qr.png",
+      "bytes": 732,
+      "sha256": "0ec947566d662317d34a9d1748160d99fceb6f3c3af311a5ff4be22f8c35f1c3"
+    },
+    {
+      "path": "viewer/app.js",
+      "bytes": 54300,
+      "sha256": "2e08006c2456924ea78c065a7045bbcb859b5f27ff13d89d84cfa3e8e718cdc9"
+    },
+    {
+      "path": "viewer/collision.mjs",
+      "bytes": 4498,
+      "sha256": "c2bb21598c0da7ee0e3f576d55a0ae234f053c8becd150ec90e043ab4726aa6e"
+    },
+    {
+      "path": "viewer/index.html",
+      "bytes": 8951,
+      "sha256": "f13e5840ed50fdeef4d7083aced5b1a059ff0d0d699e76449fc25d0730a2aecb"
+    },
+    {
+      "path": "viewer/presentation.css",
+      "bytes": 1113,
+      "sha256": "0185aadda2d38cadb5226500f9e3ca3ba3732b959f327ee3eafb097cc97fbacb"
+    },
+    {
+      "path": "viewer/scene.schema.json",
+      "bytes": 4476,
+      "sha256": "dbc872ca260b088b279f5582aede6a6a0531af7aca4553ea8c7fd81830276011"
+    },
+    {
+      "path": "viewer/styles.css",
+      "bytes": 21920,
+      "sha256": "403a3cc4dd58a58798579794b7b56c65a3a7b6e3402598807a889a8207ae77d0"
+    },
+    {
+      "path": "viewer/vendor/PLAYCANVAS-LICENSE.txt",
+      "bytes": 1064,
+      "sha256": "42fa51ddd556be151a29f381fb97ee975825dcc454e805ea3ea9c079cca04d34"
+    },
+    {
+      "path": "viewer/vendor/playcanvas.min.mjs",
+      "bytes": 2370756,
+      "sha256": "9e67185a76a737e981d4edc1d713701281819e1dcc573a1bca54783649c7e09d"
+    },
+    {
+      "path": "viewer/voxel.mjs",
+      "bytes": 4044,
+      "sha256": "261d1c658cd6ad164c09b84f21d601ec1284ecc4b16fbbe05cee0669ca908430"
+    }
+  ]
+}

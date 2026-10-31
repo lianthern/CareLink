@@ -1,0 +1,15 @@
+{
+    "schemaVersion":  "1.0",
+    "jobId":  "unseen-h3-full-film-2026-09-13-v1",
+    "state":  "RUNNING",
+    "createdAt":  "2026-09-14T00:17:38.8929742Z",
+    "agent":  "4060 Agent",
+    "machine":  "DESKTOP-NIBL3D4",
+    "message":  "All 56 private inputs verified on Windows. GPU guard exit/EOF supervision repaired with owned Windows Job Object and six isolated dummy-process tests passed. Existing shared lock acquired and queue checked. Actual H01 first-frame conditioned generation submitted with cookie-a reference; prompt ffc0049a-318c-4800-95ac-e400ad3bf50f. Full 36-segment production continues, H01/H02 are internal checks.",
+    "evidence":  [
+                     "INPUTS-VERIFIED:results/from-4060/unseen-h3-full-film-2026-09-13-v1/INPUTS-VERIFIED.json",
+                     "guard_tests:results/from-4060/unseen-h3-full-film-2026-09-13-v1/GUARD-TESTS.json",
+                     "execution_thread:01a098ec-6a73-7070-a239-b0d73104c896",
+                     "prompt_id:ffc0049a-318c-4800-95ac-e400ad3bf50f"
+                 ]
+}

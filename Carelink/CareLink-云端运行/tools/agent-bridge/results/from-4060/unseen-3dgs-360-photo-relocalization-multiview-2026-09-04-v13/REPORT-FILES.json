@@ -1,0 +1,33 @@
+{
+  "schemaVersion": "1.0",
+  "jobId": "unseen-3dgs-360-photo-relocalization-multiview-2026-09-04-v13",
+  "generatedAt": "2026-09-04T02:55:58Z",
+  "selfExcluded": true,
+  "fileCount": 4,
+  "totalBytes": 12857,
+  "forbiddenFileCount": 0,
+  "safeScreenshotCount": 0,
+  "files": [
+    {
+      "path": "logs/photo-relocalization-multiview.json",
+      "bytes": 4975,
+      "sha256": "9b727e097f8d0681570569a350f8034c26ef88389b69f1bcfa7f55a03fdc0ec1"
+    },
+    {
+      "path": "logs/viewer-e2e.json",
+      "bytes": 574,
+      "sha256": "8bfc7f636453f7d2787f747d1c676473d4069f364d48503da46c0e6ddf017058"
+    },
+    {
+      "path": "V13-REPORT.md",
+      "bytes": 3185,
+      "sha256": "bda18f51e770e8b5f1c6ca1d7b1aa1380275d4765eb7944b901603a463216481"
+    },
+    {
+      "path": "V13-RESULT.json",
+      "bytes": 4123,
+      "sha256": "4317557d5a64069e877803c3ae8b832fcba3e07aaab78d5be9a0a468264e86e5"
+    }
+  ]
+}
+

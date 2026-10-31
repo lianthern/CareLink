@@ -1,0 +1,14 @@
+# Paths are repo-relative and payload artifacts are intentionally omitted.
+python scripts/repair_sfm_v3.py --candidate SIMPLE_RADIAL_AUTO
+ns-process-data images --data <baseline-images> --output-dir <isolated-repaired-data> --skip-colmap --colmap-model-path colmap/sparse/0 --num-downscales 0 --sfm-tool colmap --matching-method exhaustive --no-use-sfm-depth
+bash scripts/run_repair_v3_train.sh
+python scripts/evaluate_repair_v3.py --config <v3-config> --original-root <baseline-images> --output <anchor-report>
+ns-export gaussian-splat --load-config <v3-config> --output-dir <v3-export>
+splat-transform -g cpu -i 2 <raw-ply> <scene-sog> -H 1
+splat-transform <scene-sog> <roundtrip-ply>
+python scripts/validate_repair_v3_artifacts.py --config <v3-config> --raw-ply <raw-ply> --sog-roundtrip-ply <roundtrip-ply>
+python scripts/generate_repair_v3_viewer.py --transforms <repaired-transforms> --dataparser-transforms <dataparser-transforms> --manifest-output <viewer-manifest> --validation-output <transform-validation>
+python scripts/test_generate_repair_v3_viewer.py -v
+python scripts/validate_repair_v3_viewer_anchors.py --config <v3-config> --manifest <viewer-manifest> --output <anchor-validation>
+node --check viewer/app.js
+node viewer_repair_v3_e2e.js http://127.0.0.1:8765/index.html?scene=./repair-v3.scene.json <viewer-validation> <viewer-screenshot>

@@ -1,0 +1,156 @@
+[
+  {
+    "pair": [
+      "H10",
+      "H11"
+    ],
+    "sourceEdits": [
+      {
+        "id": "H10",
+        "type": "h3_generated_action",
+        "nominalSeconds": 4,
+        "state": "candidate",
+        "requiredCriteria": [
+          "母亲与奶奶是两人",
+          "书包颜色和校门段一致",
+          "不使用旧图把奶奶当母亲"
+        ],
+        "source": "D:\\H3-runtime\\projects\\unseen-full-v1\\generated\\unseen-full-v1\\H10\\attempt-02_00001_.mp4",
+        "sha256": "67b36d9dde388feabe0260893a49903bce59df2492f211c1aff759475c0744da",
+        "frames": [
+          0,
+          107
+        ],
+        "crop": [
+          608,
+          342,
+          0,
+          5
+        ],
+        "review": {
+          "shot": "H10",
+          "attempt": 2,
+          "verdict": "usable_pending_H11_cut",
+          "observed": "A distinct younger ivory-bloused mother enters from left and kneels in front of boy, adjusting shoulder strap. Grey-haired pink-cardigan grandmother remains at right; both faces stay distinct and boy stands throughout. Static room and backpack remain coherent. Mother's loose black hair differs from childhood reference tied-back hair; carry as identity-continuity limitation. Cookie packet handoff not yet complete.",
+          "next": "Continue H11 from actual last frame to preserve all three people."
+        },
+        "seconds": 4.458333333333333
+      },
+      {
+        "id": "H11",
+        "type": "h3_generated_action",
+        "nominalSeconds": 4,
+        "state": "candidate",
+        "requiredCriteria": [
+          "饼干包进同一侧袋",
+          "同日衣着一致",
+          "不是传送到学校"
+        ],
+        "source": "D:\\H3-runtime\\projects\\unseen-full-v1\\generated\\unseen-full-v1\\H11\\attempt-01_00001_.mp4",
+        "sha256": "68448440734673c794e2c25ae1c6c96bad0efb46a00391567fb44c7f3ab695a8",
+        "frames": [
+          78,
+          107
+        ],
+        "crop": [
+          480,
+          270,
+          90,
+          65
+        ],
+        "review": {
+          "shot": "H11",
+          "attempt": 1,
+          "verdict": "usable_with_limitations",
+          "observed": "Grandmother visibly inserts a snack packet into backpack side pocket, withdraws hand, boy turns and begins outward movement. Mother remains distinct at left; boy stays standing. Packet has bright red top unlike original transparent packet reference; keep continuity limitation, not exact prop pass. Camera push-in exceeds requested small pan but action remains readable.",
+          "next": "Continue S02 in established school reference, retain H11 final backpack/clothing comparison."
+        },
+        "seconds": 1.2083333333333333,
+        "cropReview": "Frames 78 and 103 reviewed; 480x270 crop retains pocket insertion/hand withdrawal, no second packet. Whole retained interval review follows in cut candidate."
+      }
+    ],
+    "output": "D:\\H3-runtime\\projects\\unseen-full-v1\\composition\\cuts\\H10-H11-cut-candidate.mp4",
+    "sha256": "17386c97ef56e1a26956293623a9eaf91e1c3e822cf204a8dad0a5784a789323",
+    "bytes": 1587412,
+    "decodeExit": 0,
+    "visualReview": "Reviewed 2-fps sheet across full cut. H10/H11 distinct mother and grandmother, pocket crop retains insertion/withdrawal without second packet. S02/S03 retains one wave and continuous forward progression, cropped foreground camera absent. Upsampling softness remains. Audio not listened.",
+    "audioReview": "not_listened",
+    "finalFilm": false
+  },
+  {
+    "pair": [
+      "S02",
+      "S03"
+    ],
+    "sourceEdits": [
+      {
+        "id": "S02",
+        "type": "h3_generated_action",
+        "nominalSeconds": 4,
+        "state": "candidate",
+        "requiredCriteria": [
+          "同出门前衣着和包",
+          "门柱/楼/树方位一致",
+          "挥手只有一次"
+        ],
+        "source": "D:\\H3-runtime\\projects\\unseen-full-v1\\generated\\unseen-full-v1\\S02\\attempt-01_00001_.mp4",
+        "sha256": "6f16bc0c396280d53eb69fc9e53f152c8e2620505476d2c5396df61127799890",
+        "frames": [
+          0,
+          107
+        ],
+        "crop": [
+          384,
+          216,
+          224,
+          136
+        ],
+        "review": {
+          "shot": "S02",
+          "attempt": 1,
+          "verdict": "usable_with_limitations",
+          "observed": "Boy looks back, raises one hand briefly, lowers it and turns toward school, then walks forward. School layout and uniform/backpack are coherent with reference. Foreground photographer camera inherited from reference remains visible; shot cannot be claimed as a clean unobstructed mother's smartphone viewpoint. Cookie packet from H11 not distinguishable at this distance.",
+          "next": "S03 should continue actual ending without another wave."
+        },
+        "seconds": 4.458333333333333
+      },
+      {
+        "id": "S03",
+        "type": "h3_generated_action",
+        "nominalSeconds": 4,
+        "state": "candidate",
+        "requiredCriteria": [
+          "不二次挥手",
+          "同一校门内侧",
+          "另一来源带来完整事件后半段"
+        ],
+        "source": "D:\\H3-runtime\\projects\\unseen-full-v1\\generated\\unseen-full-v1\\S03\\attempt-03_00001_.mp4",
+        "sha256": "39cbcde86f00209bda7bf6ad33096e4debcfd9c7fe843182e21b4aa75e100131",
+        "frames": [
+          17,
+          107
+        ],
+        "crop": [
+          608,
+          342,
+          0,
+          5
+        ],
+        "review": {
+          "shot": "S03",
+          "attempt": 3,
+          "verdict": "usable_with_limitations",
+          "observed": "Boy turns to face camera and walks toward foreground into the school-side interior; parent figures remain behind outside gate. Teacher and another child stay distinct, no second wave. Direction now correct. Companion follows behind rather than walking fully side-by-side. This is a simpler action coverage candidate, not exact original staging. No further attempts permitted under current shot budget."
+        },
+        "seconds": 3.75
+      }
+    ],
+    "output": "D:\\H3-runtime\\projects\\unseen-full-v1\\composition\\cuts\\S02-S03-cut-candidate.mp4",
+    "sha256": "3ea3d90edf3533ccb0067ad2a87b1a449b94a507568380f427535de7d3bb0dbf",
+    "bytes": 3482319,
+    "decodeExit": 0,
+    "visualReview": "Reviewed 2-fps sheet across full cut. H10/H11 distinct mother and grandmother, pocket crop retains insertion/withdrawal without second packet. S02/S03 retains one wave and continuous forward progression, cropped foreground camera absent. Upsampling softness remains. Audio not listened.",
+    "audioReview": "not_listened",
+    "finalFilm": false
+  }
+]

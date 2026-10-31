@@ -1,0 +1,75 @@
+{
+  "checkedAt": "2026-09-20",
+  "platform": "macOS arm64",
+  "node": "v22.23.1",
+  "npm": "10.9.8",
+  "fullRootCheck": "passed",
+  "appTests": 639,
+  "apiTests": 447,
+  "bridgeTests": 15,
+  "processorTests": 87,
+  "bridgeTaskContracts": 16,
+  "optionalAssetsDownloadedAndVerified": 6,
+  "gpuTrainingRun": false,
+  "productionDeployment": false,
+  "rawLogFingerprints": [
+    {
+      "log": "npm-ci.log",
+      "bytes": 143,
+      "sha256": "9bea2a92ab3ad277347f86b9814836682813e74953c76de12355ed0d005c2396"
+    },
+    {
+      "log": "full-check.log",
+      "bytes": 354040,
+      "sha256": "9e933ffd97604de931740a921ed363442990d542c4bf1ed66c4c77f057de671a"
+    },
+    {
+      "log": "bridge-verify.log",
+      "bytes": 57,
+      "sha256": "b8320a41867ab0155d8ce458b9de4f77f3318b4082137d581d214501e7007f3b"
+    },
+    {
+      "log": "bridge-tests.log",
+      "bytes": 114,
+      "sha256": "f2e1a8d47b66fb2c9095976a2825baf3bcaafa00437c253308d3864fc4d39aa9"
+    },
+    {
+      "log": "processor-tests.log",
+      "bytes": 28099,
+      "sha256": "f8dda74fc6b3f0ee3d8e7f0caa22e9c83e8e5c33a56eeac1ebec5555fdf72a0c"
+    },
+    {
+      "log": "assets-fetch.log",
+      "bytes": 547,
+      "sha256": "9f7b1f8a9419f31313d427af45498d077e3cef6aac796fae82bbe0f9fd7ab561"
+    },
+    {
+      "log": "clean-clone.log",
+      "bytes": 2550,
+      "sha256": "1ea861c25449ac14ab88c3ed6becf813979037a7fb0747e0f95080d06a0702bd"
+    },
+    {
+      "log": "clean-install.log",
+      "bytes": 143,
+      "sha256": "9e7fc3c79f0abcda3cc234f538b60d2ae1e9fb99ff74146d8ed30f5fd8d591b0"
+    },
+    {
+      "log": "clean-app-check.log",
+      "bytes": 152936,
+      "sha256": "fb889cc0ecfd6724246ec78624817c5a051ae86198dd58a54158ffda314a357a"
+    },
+    {
+      "log": "clean-team-check.log",
+      "bytes": 415,
+      "sha256": "96206ece474955277f74d1d88c2b239f7b1d3d6fc62aabe7449baacf40676efa"
+    }
+  ],
+  "cleanClone": {
+    "sourceCommit": "dc1a9edf1f07b7bda0ebd5705f57a7df240de0ea",
+    "npmCi": "passed",
+    "appTests": 639,
+    "teamIntegration": "passed",
+    "workingTreeCleanAfterChecks": true,
+    "gitPackMiB": 164
+  }
+}

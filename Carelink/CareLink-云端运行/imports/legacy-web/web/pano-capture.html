@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
+  <meta name="theme-color" content="#050405">
+  <title>UNSEEN · 720° 球面全景 Demo</title>
+  <link rel="stylesheet" href="../app/theme.css">
+  <link rel="stylesheet" href="pano-capture.css?v=20260731-20">
+</head>
+<body>
+  <main class="capture-app" id="captureApp">
+    <section class="capture-stage" id="captureStage" aria-label="全景拍摄">
+      <canvas class="world-preview" id="worldCanvas" aria-label="拍摄预览，未校正"></canvas>
+      <div class="preview-label">
+        <span>720° 球面全景 · 实时照片层</span>
+        <b id="capabilityBadge">检测设备中</b>
+      </div>
+
+      <header class="capture-head">
+        <a class="round-control" href="./index.html#/demo" aria-label="返回演示中心">‹</a>
+        <div class="capture-count">
+          <b id="captureCount">0 / 28</b>
+          <span id="coverageText">未拍区域保持黑色</span>
+        </div>
+        <button class="round-control" id="helpButton" type="button" aria-label="拍摄说明">?</button>
+      </header>
+
+      <div class="target-dot is-hidden" id="targetDot" aria-hidden="true">
+        <i></i>
+      </div>
+      <div class="fixed-reticle" aria-hidden="true"></div>
+
+      <div class="live-window" id="liveWindow">
+        <video id="cameraVideo" autoplay muted playsinline></video>
+        <div class="live-empty" id="liveEmpty">后摄画面会显示在这里</div>
+        <div class="capture-flash" id="captureFlash"></div>
+      </div>
+
+      <div class="capture-guide" id="captureGuide">
+        <b id="guideTitle">把下一颗白点移进中央圆环</b>
+        <span id="guideDetail">第一张由你确认，之后停稳会自动拍摄</span>
+      </div>
+
+      <footer class="capture-actions">
+        <button class="ghost-button" id="undoButton" type="button" disabled>撤销</button>
+        <button class="primary-button" id="startButton" type="button">开启相机</button>
+        <button class="ghost-button" id="finishButton" type="button" disabled>完成</button>
+      </footer>
+    </section>
+
+    <section class="process-stage" id="processStage" hidden>
+      <div class="process-card">
+        <div class="spinner" aria-hidden="true"></div>
+        <h1>正在生成 720° 球面全景</h1>
+        <p id="processText">逐张解码与拼接，不会同时把所有照片塞进内存。</p>
+        <div class="progress-track"><i id="progressBar"></i></div>
+        <b class="progress-number" id="progressNumber">0%</b>
+      </div>
+    </section>
+
+    <section class="result-stage" id="resultStage" hidden>
+      <header class="result-head">
+        <button class="round-control" id="backToCapture" type="button" aria-label="返回拍摄">‹</button>
+        <div>
+          <b>720° 球面全景已生成</b>
+          <span id="resultMeta">默认显示稳定的 2D 结果</span>
+        </div>
+      </header>
+      <div class="result-frame">
+        <canvas id="resultCanvas" aria-label="2D 等距柱状全景结果"></canvas>
+        <canvas id="viewerCanvas" aria-label="360度全景查看" hidden></canvas>
+        <div class="viewer-message" id="viewerMessage" hidden></div>
+      </div>
+      <div class="result-copy">
+        <b id="resultMode">2D 等距柱状结果</b>
+        <span>360° 查看是可选增强；启动失败会自动回到这张 2D 图。</span>
+      </div>
+      <div class="result-actions">
+        <button class="ghost-button" id="toggle360Button" type="button">开启 360° 查看</button>
+        <a class="primary-button" id="downloadButton" download="unseen-panorama.jpg">保存全景</a>
+      </div>
+    </section>
+
+    <dialog id="helpDialog">
+      <button class="dialog-close" id="helpClose" type="button" aria-label="关闭">×</button>
+      <h2>拍满 360° 水平 × 180° 垂直</h2>
+      <p>竖直握住手机，让中央圆环依次对准唯一的白点。每拍一张，真实照片会立即固定在对应方向，黑色就是还没拍到的区域。</p>
+      <p>第一张必须点击确认；之后停稳约半秒会自动拍摄。兼容浏览器也会自动拍摄，只会使用更保守的帧时间估计。</p>
+    </dialog>
+
+    <pre id="testReport" hidden></pre>
+    <pre class="diagnostic-panel" id="diagnosticPanel" hidden></pre>
+  </main>
+
+  <script src="../miniapp/utils/pano-core.js?v=20260731-24"></script>
+  <script src="pano-capture-runtime.js?v=20260731-20"></script>
+  <script src="pano-capture.js?v=20260731-24"></script>
+</body>
+</html>

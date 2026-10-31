@@ -1,0 +1,27 @@
+{
+  "schemaVersion": "1.0",
+  "jobId": "unseen-3dgs-full-room-meetingroom-2026-09-03-v8",
+  "status": "PASS",
+  "productionConnections": 0,
+  "paidApiCalls": 0,
+  "firewallOrPortproxyChanges": 0,
+  "lanOrPublicListeners": 0,
+  "privateMediaUploads": 0,
+  "trainingInvocations": 0,
+  "unknownMirrorsUsed": 0,
+  "officialMediaDownloaded": false,
+  "preparedMediaCreated": false,
+  "forbiddenFilesInResult": 0,
+  "forbiddenPatternsChecked": [
+    ".env",
+    "token",
+    "source.mp4",
+    "Meetingroom.mp4",
+    "checkpoint",
+    ".ckpt",
+    ".ply",
+    ".sog",
+    "database.db"
+  ]
+}
+

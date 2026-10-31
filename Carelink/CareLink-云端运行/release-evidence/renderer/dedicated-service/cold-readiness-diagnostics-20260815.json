@@ -1,0 +1,142 @@
+{
+  "schema": "unseen-book-renderer-cold-readiness-diagnostics-evidence/1",
+  "generatedAt": "2026-08-15T06:36:38Z",
+  "status": "CODE_GATES_PASS_TARGET_RETEST_AND_INDEPENDENT_REVIEW_REQUIRED",
+  "profile": "unseen-book-renderer-dedicated-service/v1",
+  "baseCommit": "dd3a7fac439ad67abaa6292eaf0e7a0b71db460c",
+  "baseTree": "ac354c3a86d3a2e6d12cdb3a01bc4190efb2b414",
+  "targetFailureEvidenceCommit": "dd3a7fac439ad67abaa6292eaf0e7a0b71db460c",
+  "targetFailureEvidencePath": "release-evidence/r0/target-deployment-candidate9c-renderer-failure-20260815T061208Z/MACHINE-EVIDENCE.json",
+  "codeCommit": "72a7a96a0279e3a1ec922ff777175ad4d63edc45",
+  "codeTree": "203e1bad1da6a8df65fa40c3b50b5dc599e50dd7",
+  "publicContractChanged": false,
+  "liveTargetChanged": false,
+  "bookDefaultOff": true,
+  "targetProbeRunAfterFailure": false,
+  "openCodeP0": 0,
+  "openCodeP1": 0,
+  "failureFacts": {
+    "coldSocketActivationTimeoutMs": 5000,
+    "serviceReadyMsFromInbox": 3911,
+    "acceptanceMarkerMsFromInbox": 7270,
+    "terminalFailedResultMsFromInbox": 8747,
+    "cancelPersisted": false,
+    "diagnosticPhaseAvailable": false,
+    "stableError": "render_failed"
+  },
+  "closures": [
+    "receipt_hash_bound_ready_handshake_has_a_separate_hard_120_second_cold_start_budget",
+    "ready_is_accepted_only_after_receipt_runtime_sandbox_verification_and_listener_registration",
+    "ready_failure_creates_no_inbox_cancel_ack_control_marker_result_or_artifact",
+    "render_control_remains_bounded_to_five_seconds_after_readiness",
+    "render_control_failure_and_whole_timeout_persist_and_fsync_cancellation_before_returning",
+    "server_rechecks_cancel_before_and_after_acceptance_marker_commit_and_before_child_spawn",
+    "lost_ack_reuses_request_hash_and_never_automatically_renders_twice",
+    "failed_internal_manifest_and_journal_use_exact_privacy_safe_phase_diagnostics",
+    "client_and_book_visible_failed_result_remains_exact_status_and_stable_error_only"
+  ],
+  "diagnosticSchema": {
+    "schema": "unseen-book-renderer-failure-diagnostic/1",
+    "keys": [
+      "schema",
+      "phase",
+      "code",
+      "exitCode",
+      "signalled",
+      "stderrBytes"
+    ],
+    "phases": [
+      "sandbox_setup",
+      "request_stage",
+      "child_spawn",
+      "child_exit",
+      "output_manifest",
+      "html_validation",
+      "pdf_validation",
+      "receipt_validation",
+      "unclassified"
+    ],
+    "forbiddenContent": [
+      "requestId",
+      "requestBody",
+      "path",
+      "stdout",
+      "stderr",
+      "html",
+      "pdf",
+      "credential"
+    ]
+  },
+  "machineChecks": {
+    "focusedDedicatedRenderer": {
+      "command": "node tests/e2e/book-lab/dedicated-renderer.verify.mjs",
+      "total": 41,
+      "passed": 41,
+      "failed": 0,
+      "coldReadyDelayMs": 5100,
+      "readyPreInboxCount": 0,
+      "postMarkerCancelChildSpawnCount": 0
+    },
+    "apiRendererIntegration": {
+      "command": "node --test services/api/tests/book-renderer-integration.test.mjs",
+      "total": 4,
+      "passed": 4,
+      "failed": 0
+    },
+    "apiFull": {
+      "command": "npm test -w services/api",
+      "total": 129,
+      "passed": 129,
+      "failed": 0
+    },
+    "deploymentLifecycle": {
+      "command": "node tests/e2e/book-lab/deployment-lifecycle.verify.mjs",
+      "total": 3,
+      "passed": 3,
+      "failed": 0
+    },
+    "rendererWorker": {
+      "command": "node tests/e2e/book-lab/renderer-worker.verify.mjs",
+      "total": 3,
+      "passed": 3,
+      "failed": 0
+    },
+    "productionPackage": {
+      "command": "node tests/e2e/production-package.verify.mjs",
+      "status": "PASS",
+      "candidateCommit": "72a7a96a0279e3a1ec922ff777175ad4d63edc45",
+      "portableBundleVerified": true,
+      "standaloneNonGitCwdVerified": true,
+      "byteTamperRejected": true,
+      "acceptanceNegativeCases": 32,
+      "externalNetworkRequests": 0
+    },
+    "revisionContract": {
+      "command": "npm run revision:check",
+      "errors": 0,
+      "aggregateActions": 110,
+      "aggregateSourceRefs": 440,
+      "aggregatePhases": 990,
+      "aggregateMutations": 74,
+      "aggregateCas": 55
+    },
+    "generatedContracts": "CONTRACT_GENERATION_CLEAN",
+    "format": "FORMAT_OK",
+    "secretScan": "SECRET_SCAN_CLEAN",
+    "freeze": {
+      "status": "PREEXISTING_BASELINE_FAILURE",
+      "code": "FREEZE_TRACK8_REGISTRATION",
+      "causedByThisChange": false
+    }
+  },
+  "remainingGates": [
+    "independent_read_only_review_of_code_commit_and_evidence_commit",
+    "build_a_new_immutable_package_from_the_independently_accepted_commit",
+    "rerun_target_cold_socket_activation_with_synthetic_nonprivate_input_once",
+    "capture_exact_privacy_safe_failure_phase_if_target_render_still_fails",
+    "keep_book_disabled_until_target_determinism_restart_cancel_and_pin_drift_acceptance_pass"
+  ],
+  "evidenceContainsUserContent": false,
+  "evidenceContainsCredentials": false,
+  "evidenceContainsArtifactBodies": false
+}

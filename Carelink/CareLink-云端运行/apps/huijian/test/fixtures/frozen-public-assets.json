@@ -1,0 +1,9 @@
+{
+  "sourceRepository": "maxi-max-dev/huijian",
+  "sourceCommit": "061032855d557bcb377e92f8392911288c6a526a",
+  "sha256": {
+    "public/unseen-app-spatial.js": "0069d5127e250e1ab299e8ca20d022a9376cc87a1a0119dfb3a4dba1534668d5",
+    "public/spatial-contract/import.js": "1336991c7dea53a022f10cda216ae09fe33f64d68bdc99f998bdb09bedefd2ef",
+    "public/app-spatial/v1/catalog.json": "bbe69cbaaf146978fc2264e76acb103236f97d6ab9319b619cc11cac02e03f81"
+  }
+}

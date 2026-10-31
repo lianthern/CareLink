@@ -1,0 +1,53 @@
+{
+  "schemaVersion": "1.0",
+  "jobId": "unseen-3dgs-360roam-posefix-2026-09-04-v11",
+  "publisherState": "PUBLISHED",
+  "githubIssue": "https://github.com/maxi-max-dev/max-agent-bridge/issues/12",
+  "supersedes": "unseen-3dgs-360roam-base-2026-09-03-v10",
+  "v10Disposition": "REJECTED_POSE_CONVENTION_BUG_DO_NOT_RESUME",
+  "source": {
+    "selected": "360Roam/base frozen v10 subset",
+    "reuseExistingDownload": true,
+    "redownloadRequired": false,
+    "selectedPanoramas": 60,
+    "selectedBytes": 674276821
+  },
+  "adapter": {
+    "version": "equirectangular-to-overlapping-pinhole-v2-opencv-posefix",
+    "sourcePoseConvention": "opencv-c2w-x-right-y-down-z-forward",
+    "outputPoseConvention": "opengl-c2w-x-right-y-up-z-back",
+    "dynamicNadirExcluded": true,
+    "virtualViews": 540,
+    "trainViews": 450,
+    "validationViews": 90,
+    "usesAuthorScenePly": false,
+    "macContractTests": "PASS",
+    "realImagePoseGate": "PENDING_4060",
+    "sourceDerivedSparseSeed": "PENDING_4060"
+  },
+  "windowsPowerShell": "PENDING_WINDOWS",
+  "preview7000": {
+    "state": "GATED_BY_REAL_IMAGE_POSE_CHECK",
+    "wallSeconds": null,
+    "peakVramMiB": null,
+    "psnr": null,
+    "ssim": null,
+    "lpips": null,
+    "gaussians": null,
+    "sogBytes": null,
+    "browserFps": null
+  },
+  "quality30000": {
+    "state": "NOT_AUTHORIZED_V11",
+    "wallSeconds": null,
+    "peakVramMiB": null,
+    "psnr": null,
+    "ssim": null,
+    "lpips": null,
+    "gaussians": null,
+    "sogBytes": null,
+    "browserFps": null
+  },
+  "productionConnection": "DISABLED",
+  "photoRelocalization": "OUT_OF_SCOPE_V11"
+}

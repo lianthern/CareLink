@@ -1,0 +1,16 @@
+{
+  "schemaVersion": "1.0",
+  "jobId": "unseen-3dgs-public-classroom-quality-2026-09-03-v7",
+  "state": "COMPLETED",
+  "createdAt": "2026-09-03T03:42:10.7936700+00:00",
+  "agent": "4060 Agent",
+  "machine": "DESKTOP-NIBL3D4",
+  "message": "v7 completed with best stage 7000: 105/105 SfM, all 7k quality gates, SH2 SOG roundtrip, and three-photo Viewer E2E passed. The sole 15k resume failed non-OOM in gsplat densification; 30k was gated off. Viewer and intake remain loopback-only and running.",
+  "evidence": [
+    "result commit 92a8d332309b4dd10b2ce7a60b04fbbafcd9cf93",
+    "report results/from-4060/unseen-3dgs-public-classroom-quality-2026-09-03-v7/V7-REPORT.md",
+    "best stage 7000, checkpoint step 6999",
+    "viewer http://127.0.0.1:8765/?scene=./pexels-classroom-v7.scene.json",
+    "forbidden result files 0"
+  ]
+}

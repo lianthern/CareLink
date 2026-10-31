@@ -1,0 +1,264 @@
+{
+  "schemaVersion": "unseen-canonical-enums-generated/1",
+  "allowedValues": {
+    "transport": [
+      "API",
+      "navigation",
+      "static",
+      "workflow"
+    ],
+    "method": [
+      "GET",
+      "POST",
+      "PATCH",
+      "DELETE",
+      "NAVIGATE",
+      "CLIPBOARD_WRITE",
+      "LOCAL_RENDER",
+      "WORKFLOW",
+      "INTERNAL_TRANSACTION"
+    ],
+    "releaseLane": [
+      "v1",
+      "L2"
+    ]
+  },
+  "canonicalEnums": {
+    "spaceLifecycle": [
+      "active",
+      "archived"
+    ],
+    "collectionState": [
+      "open",
+      "paused"
+    ],
+    "sharingState": [
+      "private",
+      "shared"
+    ],
+    "photoContentState": [
+      "pending",
+      "visible",
+      "hidden",
+      "rejected"
+    ],
+    "placementState": [
+      "unavailable",
+      "processing",
+      "needs_confirmation",
+      "confirmed",
+      "outside_scene",
+      "stale",
+      "failed"
+    ],
+    "confirmationMode": [
+      "auto",
+      "manual"
+    ],
+    "sceneReadiness": [
+      "unavailable",
+      "processing",
+      "ready",
+      "failed"
+    ],
+    "sceneMode": [
+      "rotation360",
+      "depth_limited_parallax",
+      "walkable3d"
+    ],
+    "membershipTasks": [
+      "view",
+      "upload"
+    ],
+    "managementScopes": [
+      "canReview",
+      "canEditPlacement",
+      "canManageScene",
+      "canInvite",
+      "canPublish"
+    ],
+    "externalCampaignTaskMode": [
+      "view",
+      "upload",
+      "combo"
+    ],
+    "externalCampaignStatus": [
+      "active",
+      "paused",
+      "revoked",
+      "expired",
+      "exhausted"
+    ],
+    "authKind": [
+      "service_job",
+      "membership",
+      "receipt_session",
+      "space_owner"
+    ],
+    "reauthPurpose": [
+      "logout_all",
+      "space_archive",
+      "space_restore",
+      "space_delete",
+      "account_delete",
+      "owner_transfer_create",
+      "owner_transfer_accept",
+      "photo_delete"
+    ],
+    "caseActorRelationKind": [
+      "account",
+      "viewer",
+      "receipt",
+      "case_access"
+    ],
+    "noticePurpose": [
+      "photo_upload",
+      "panorama_upload",
+      "receipt_account_binding",
+      "object_report",
+      "appeal",
+      "space_create",
+      "scene_note_l2",
+      "memory_interview_l3",
+      "book_contribution_l3"
+    ],
+    "idempotencyReplayClass": [
+      "ordinary_dto",
+      "credential_reissue",
+      "secret_once_envelope",
+      "completed_state",
+      "not_applicable"
+    ],
+    "contentTransitionReasonCode": [
+      "manual_approved",
+      "manual_hidden",
+      "manual_rejected",
+      "manual_restored",
+      "manual_reopened"
+    ],
+    "contentDecisionReasonCode": [
+      "safety_hold",
+      "privacy_request",
+      "rights_concern",
+      "quality_or_duplicate",
+      "abusive_or_illegal",
+      "rights_violation",
+      "unrelated_content",
+      "repeated_violation",
+      "appeal_upheld",
+      "review_corrected",
+      "issue_resolved",
+      "new_evidence",
+      "uploader_appeal",
+      "reviewer_correction",
+      "other"
+    ]
+  },
+  "canonicalMappings": {
+    "placementNeedsConfirmation": [
+      "uncertain",
+      "ood",
+      "ambiguous",
+      "abstained",
+      "no_active_policy"
+    ],
+    "placementFailed": [
+      "job_failed",
+      "timed_out",
+      "decoder_failure",
+      "retry_exhausted"
+    ],
+    "externalInvitationUnavailable": [
+      "invalid",
+      "expired",
+      "revoked",
+      "exhausted",
+      "wrong_secret",
+      "space_inactive",
+      "view_not_shared",
+      "upload_not_open"
+    ],
+    "externalCampaignUnavailable": [
+      "missing",
+      "paused",
+      "revoked",
+      "expired",
+      "exhausted",
+      "rate_limited",
+      "abuse_blocked",
+      "pending_cap_reached",
+      "cross_campaign_challenge",
+      "nonce_mismatch",
+      "space_inactive",
+      "view_not_shared",
+      "upload_not_open"
+    ],
+    "contentTransitionContracts": {
+      "CONTENT.APPROVE": {
+        "transitionReasonCode": "manual_approved",
+        "decisionReasonCode": null,
+        "allowedDecisionReasonCodes": [],
+        "noteRequiredWhenDecisionReasonCode": []
+      },
+      "CONTENT.HIDE": {
+        "transitionReasonCode": "manual_hidden",
+        "decisionReasonCode": "required_selection",
+        "allowedDecisionReasonCodes": [
+          "safety_hold",
+          "privacy_request",
+          "rights_concern",
+          "quality_or_duplicate",
+          "abusive_or_illegal",
+          "rights_violation",
+          "other"
+        ],
+        "noteRequiredWhenDecisionReasonCode": [
+          "other"
+        ]
+      },
+      "CONTENT.REJECT": {
+        "transitionReasonCode": "manual_rejected",
+        "decisionReasonCode": "required_selection",
+        "allowedDecisionReasonCodes": [
+          "abusive_or_illegal",
+          "rights_violation",
+          "unrelated_content",
+          "repeated_violation",
+          "rights_concern",
+          "quality_or_duplicate",
+          "other"
+        ],
+        "noteRequiredWhenDecisionReasonCode": [
+          "other"
+        ]
+      },
+      "CONTENT.RESTORE": {
+        "transitionReasonCode": "manual_restored",
+        "decisionReasonCode": "required_selection",
+        "allowedDecisionReasonCodes": [
+          "appeal_upheld",
+          "review_corrected",
+          "issue_resolved",
+          "new_evidence",
+          "other"
+        ],
+        "noteRequiredWhenDecisionReasonCode": [
+          "other"
+        ]
+      },
+      "CONTENT.REOPEN": {
+        "transitionReasonCode": "manual_reopened",
+        "decisionReasonCode": "required_selection",
+        "allowedDecisionReasonCodes": [
+          "uploader_appeal",
+          "reviewer_correction",
+          "new_evidence",
+          "other"
+        ],
+        "noteRequiredWhenDecisionReasonCode": [
+          "other"
+        ]
+      }
+    }
+  }
+}

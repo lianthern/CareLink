@@ -1,0 +1,221 @@
+{
+  "schemaVersion": "1.0",
+  "jobId": "unseen-3dgs-room-and-local-upload-2026-09-02-v6",
+  "state": "COMPLETED",
+  "completedAt": "2026-09-03T01:17:05Z",
+  "mode": "FRESH_ONE_SHOT_AFTER_EXPLICIT_USER_AUTHORIZATION",
+  "authorization": {
+    "userConfirmedFreshExecution": true,
+    "supersedesSyncOnlyInstruction": true,
+    "issueComment": "https://github.com/maxi-max-dev/max-agent-bridge/issues/6#issuecomment-5509070845",
+    "priorFailedAuditPreserved": "logs/sync-only-audit.json"
+  },
+  "frozenInputs": {
+    "installedCopiesMatchTask": true,
+    "files": [
+      {
+        "path": "scripts/local_video_intake.py",
+        "bytes": 19714,
+        "sha256": "5b63e233ae96d7ded9476d4e6ebf1883e63b4ff620d39eea4b769740e37456ca"
+      },
+      {
+        "path": "tests/test_local_video_intake.py",
+        "bytes": 4475,
+        "sha256": "6144c49085456cf25992ad63facbe494b5002d0dc84fd1ff50e8f82dfdb38915"
+      },
+      {
+        "path": "scripts/windows/Start-Local-VideoIntake.ps1",
+        "bytes": 3700,
+        "sha256": "bff92159060fdc8a8601c0af88422b20d98f922df4db4f08ecb1832e531de68a"
+      },
+      {
+        "path": "scripts/windows/Stop-Local-VideoIntake.ps1",
+        "bytes": 1732,
+        "sha256": "ab9abc51768c71379b389081c1568a2209c5c1a0a4f01fc32cb22fb778ae17b3"
+      }
+    ]
+  },
+  "localIntake": {
+    "installed": true,
+    "url": "http://127.0.0.1:8780/",
+    "bindAddress": "127.0.0.1",
+    "port": 8780,
+    "wslPid": 563,
+    "windowsLauncherPid": 3088,
+    "windowsListenerOwnerPid": 19252,
+    "windowsHttpStatus": 200,
+    "wslHttpStatus": 200,
+    "browserOpened": true,
+    "serverStillRunning": true,
+    "trainingStartsAutomatically": false,
+    "intakeRoot": "/home/max/src/unseen-3dgs-sceneworker/data/local-intake",
+    "allowedExtensions": [".mp4", ".mov"],
+    "pythonCompile": "PASS",
+    "unitTests": {
+      "status": "PASS",
+      "passed": 5,
+      "total": 5
+    },
+    "powerShellParserErrors": {
+      "Start-Local-VideoIntake.ps1": 0,
+      "Stop-Local-VideoIntake.ps1": 0
+    },
+    "forbiddenExecutableTokenHits": 0,
+    "ffprobePresent": true,
+    "browserE2e": "PASS",
+    "consoleErrors": 0,
+    "privateVideoSelectedOrUploaded": false
+  },
+  "roomFixture": {
+    "dataset": "TUM RGB-D freiburg1/room",
+    "attribution": "Technical University of Munich RGB-D benchmark",
+    "license": "CC BY 4.0",
+    "officialUrl": "https://cvg.cit.tum.de/rgbd/dataset/freiburg1/rgbd_dataset_freiburg1_room.tgz",
+    "officialFinalUrl": "https://webshare.cvg.cit.tum.de/g/rgbd/dataset/freiburg1/rgbd_dataset_freiburg1_room.tgz",
+    "archiveBytes": 782381450,
+    "archiveSha256": "5ace47a1d2e53696bc939a84999293a04a7226958e848a609666691fd3cc38da",
+    "sha256IsObservedNotPinned": true,
+    "etag": "\"2ea2318a-4ae2a19f21e80\"",
+    "downloadConnections": 16,
+    "downloadWallSeconds": 5052.018023252487,
+    "safeExtraction": {
+      "status": "PASS",
+      "memberCount": 2729,
+      "regularFileCount": 2726,
+      "declaredRegularBytes": 837765933,
+      "requiredIndexesPresent": ["rgb.txt", "depth.txt", "groundtruth.txt"]
+    },
+    "declaredTrajectorySeconds": 48.9,
+    "observedGroundTruthDurationSeconds": 48.8991,
+    "validRgbDepthPoseOverlapSeconds": 45.34799098968506
+  },
+  "adapter": {
+    "status": "PASS",
+    "sampleHz": 2.5,
+    "maxFrames": 120,
+    "seed": 20260902,
+    "selectedFrames": 120,
+    "uniqueRgbFrames": 120,
+    "trainFrames": 108,
+    "evalFrames": 12,
+    "selectedDurationSeconds": 45.33966302871704,
+    "validOverlapCoverageRatio": 0.9998163543569127,
+    "targetRgbMaxDeltaSeconds": 0.017569541931152344,
+    "rgbDepthMaxDeltaSeconds": 0.018445968627929688,
+    "rgbPoseMaxDeltaSeconds": 0.004904031753540039,
+    "boundedColoredSeedPoints": 191183,
+    "anchors": ["frame_00000.png", "frame_00060.png", "frame_00119.png"],
+    "allChecksPass": true,
+    "preGpuCorrectionAttempts": 2,
+    "preGpuCorrectionReason": "Initial cap used shorter sensor overlap and selected 114 frames; incomplete adapter-only outputs were removed before any training marker or GPU output."
+  },
+  "training": {
+    "trainer": "nerfstudio-splatfacto",
+    "profile": "standard-known-pose-scale-regularized",
+    "iterations": 7000,
+    "startedAt": "2026-09-02T13:51:19Z",
+    "finishedAt": "2026-09-02T13:55:49Z",
+    "wallSeconds": 270,
+    "exitCode": 0,
+    "oomDetected": false,
+    "peakVramMiB": 4843,
+    "checkpointStep": 6999,
+    "checkpointBytes": 627229714,
+    "randomInit": false,
+    "load3DPoints": true,
+    "cameraOptimizer": "off",
+    "preview7000RunCount": 1,
+    "quality30000RunCount": 0
+  },
+  "checkpointMetrics": {
+    "thresholds": {
+      "psnrMin": 18.0,
+      "ssimMin": 0.7,
+      "lpipsMax": 0.4
+    },
+    "anchors": [
+      {"frame": "frame_00000", "psnr": 20.723583221435547, "ssim": 0.768964409828186, "lpips": 0.25897449254989624, "pass": true},
+      {"frame": "frame_00060", "psnr": 23.19602394104004, "ssim": 0.7826756238937378, "lpips": 0.25366315245628357, "pass": true},
+      {"frame": "frame_00119", "psnr": 21.50459098815918, "ssim": 0.7539701461791992, "lpips": 0.22727251052856445, "pass": true}
+    ],
+    "means": {
+      "psnr": 21.80806605021159,
+      "ssim": 0.7685367266337076,
+      "lpips": 0.24663671851158142
+    },
+    "gatePass": true
+  },
+  "artifacts": {
+    "rawPly": {
+      "gaussians": 871919,
+      "shDegree": 3,
+      "bytes": 216237505,
+      "sha256": "f89f5ff293379b90821608bfc9ab2fa94bbaef2425c8dd75890cc7261d3e815b",
+      "includedInGitHub": false
+    },
+    "sog": {
+      "gaussians": 871919,
+      "shDegree": 1,
+      "bytes": 12907517,
+      "sha256": "acd1734cfc4efe4e016ae41372d7186947e67524c30be6967a2978e1a11de2bd",
+      "includedInGitHub": false
+    },
+    "validationStatus": "PASS",
+    "rawPlyMatchesCheckpoint": true,
+    "sogIntroducesNoStructuralRegression": true
+  },
+  "roomViewer": {
+    "sceneRevisionId": "tum-freiburg1-room-v6-r001",
+    "manifest": "viewer/tum-room-v6.scene.json",
+    "url": "http://127.0.0.1:8765/?scene=./tum-room-v6.scene.json",
+    "bindAddress": "127.0.0.1",
+    "port": 8765,
+    "wslPid": 517,
+    "windowsLauncherPid": 29792,
+    "manifestHttpStatus": 200,
+    "sogHttpStatus": 200,
+    "browserOpened": true,
+    "serverStillRunning": true,
+    "e2e": "PASS",
+    "sceneState": "SOG ready",
+    "sampleFpsNotBenchmark": 234,
+    "movementDistanceMeters": 0.10685798335104697,
+    "consoleErrors": 0,
+    "threeAnchors": true,
+    "boundedWalk": true,
+    "fullPoseAndFovRestore": true,
+    "visualAssessment": "Recognizable and navigable larger-room preview; visible blur and floating/merged details remain at 7k with SH1 SOG."
+  },
+  "regression": {
+    "pythonCompile": "PASS",
+    "intakeTests": "5/5 PASS",
+    "adapterTests": "6/6 PASS",
+    "viewerTransformTests": "2/2 PASS",
+    "safeExtractionTests": "3/3 PASS",
+    "bashSyntax": "PASS",
+    "shellcheck011": "PASS",
+    "nodeSyntax": "PASS",
+    "v4DefaultViewerByteCompatible": true
+  },
+  "counts": {
+    "preview7000Runs": 1,
+    "quality30000Runs": 0,
+    "privateUserVideoUploads": 0,
+    "productionConnections": 0,
+    "prohibitedFilesInGitHubResult": 0
+  },
+  "uploadPolicy": {
+    "tumArchiveIncluded": false,
+    "rgbOrDepthIncluded": false,
+    "sourceFramesIncluded": false,
+    "privateMediaIncluded": false,
+    "sogIncluded": false,
+    "plyIncluded": false,
+    "checkpointIncluded": false,
+    "workDirectoryIncluded": false,
+    "environmentOrTokenIncluded": false,
+    "viewerScreenshotCount": 1,
+    "intakeScreenshotCount": 1
+  },
+  "allRequiredGatesPass": true
+}

@@ -1,0 +1,408 @@
+{
+  "schema": "unseen-production-package-profile-evidence/1",
+  "status": "CANDIDATE_NO_GO",
+  "integrationCommit": "0464a3e39d1a2847a58ca2dd41491e9c69cf2d79",
+  "accepted8CCommit": "a16f7fdda14759429fd22054506f198980805e9d",
+  "candidateBinding": {
+    "strategy": "PACKAGE-MANIFEST.json binds the exact clean HEAD at build time",
+    "productTreeInputCommit": "0464a3e39d1a2847a58ca2dd41491e9c69cf2d79",
+    "productionPackageImplementation": "CURRENT_CANDIDATE_COMMIT_FROM_PACKAGE_MANIFEST"
+  },
+  "acceptedEvidence": {
+    "uiV2": {
+      "commit": "d049a85d63abad0db06c96d3cd5671bd56567dc6",
+      "status": "ACCEPTED"
+    },
+    "uiActionClosure": {
+      "commit": "3478ae390445d83bb9230c26c4c8b8ffe50e6e62",
+      "codeCommit": "49efe3ec6a407eb0a75f5be6d8c404d4c8acef17",
+      "status": "ACCEPTED_FIXTURE_ONLY",
+      "productionInput": false,
+      "machineChecksSha256": "932883680392a5fabfe185363914acfe4f86a0347dd6ceb70942944d9629beef",
+      "browserEvidenceSha256": "d93ddb0ddeb94c9000d0e7b9e87149d24341431673379accc7b7e913a5e19f88"
+    },
+    "uiCopyActionClosure": {
+      "commit": "c071018bf450ab347056931f98264a0c2e2176d4",
+      "codeCommit": "74adfba49cb15eba3be3db91b10545a16c76db43",
+      "baseCandidate": "4028310f02feb3e0d992c8ea56403cf4764d86c8",
+      "status": "ACCEPTED_FIXTURE_ONLY",
+      "productionInput": false,
+      "visibleControlsDirectlyExercised": 44,
+      "coreEmptyErrorBranches": "DETERMINISTIC_FIXTURE_BROWSER_EVIDENCE",
+      "machineChecksSha256": "fb7acf13fd61d3172f22be0c11d16bcb5ce75f76ab37b59f8a4ca88d1bf23e43",
+      "browserEvidenceSha256": "7d7b331c506302e4692bd34ec16c7c8fe7f3ad5605bc7328587b6375491063d1"
+    },
+    "uiCoreStates": {
+      "commit": "951363b6031ec3d9e1f29785c8e22d3939b7302d",
+      "testCommit": "2f85856eb5d2753c2ef7d68175ecafa45f001ee0",
+      "baseCandidate": "e16dd93eaacce4ad8fe1fd25930277638e795f96",
+      "status": "ACCEPTED_TEST_ONLY_FIXTURE_EVIDENCE",
+      "marker": "TEST_ONLY_FIXTURE_FAULTS",
+      "testOnlyCases": 12,
+      "productionFaultCoverage": false,
+      "productionInput": false,
+      "productBytesChanged": false,
+      "machineChecksSha256": "e70fc97b7cfa4d38c41fe196fa8e4a282ab857f214556b6bea78bd6e9cc64651",
+      "browserEvidenceSha256": "9d973b8beebeff32884ff4c664c39571c957af6afcaae7d720b090273c6e1157"
+    },
+    "publicFoundation": {
+      "commit": "fb2f2b947a6e80d1a0a02b0c6f4e0d2f964c7c4a",
+      "status": "ACCEPTED_TARGET_OBSERVATION",
+      "productionInput": false,
+      "evidenceSha256": "12de9e106a1fff701b4d84e4e1c010ad45ab87abf4fa256bb84a8b6d1b793fa2"
+    },
+    "smtpOtp": {
+      "commit": "ba9a049ac9ce328c8bac23b88a3fbaadd48ea9ec",
+      "codeCommit": "81f2c42abb2cfd5731eaeac2df5573db67d88e07",
+      "status": "ACCEPTED_DEFAULT_OFF",
+      "defaultEnabled": false,
+      "deployableUnderCurrentPrivateBetaUnit": false,
+      "evidenceSha256": "0968a423ca7ab3adf4e83e456e0084f7a03c7777b8c9233bd37714adcdf646e3"
+    },
+    "questionProviderOffline": {
+      "commit": "fdfa68e68f1931179122c111cf483c83f7a060d4",
+      "capabilityCommit": "c76ee298e7a9566506252e291e3dfe050c4a3a9f",
+      "uiCommit": "69ae472e79715851226e0025bd49035479b837b4",
+      "status": "ACCEPTED",
+      "productFixtureAdded": false,
+      "browserEvidenceProductionInput": false,
+      "machineChecksSha256": "df991331802f836cb69ff78ac3fed789933f791c5ae5581d87a2f573a7184103",
+      "browserEvidenceSha256": "dea387eb99536e1f1d47fd879ce09da8e523c43dd10ef56a8cabb3c09f9ef73b"
+    },
+    "macCodexPrivateWorker": {
+      "commit": "94f778095567332711401be10b56074065732466",
+      "codeCommit": "6652bc406f90038bdc83ab8777898c7e711991ad",
+      "evidenceClass": "PRIVATE_TEST_PROOF",
+      "productionEnabled": false,
+      "productionTransport": false,
+      "factsExtraction": false,
+      "productionInput": false,
+      "machineChecksSha256": "4a1a3d9b133ed211ab4b326cda7b464997077217047fe5d0b982d1ec595ed26c",
+      "runtimeBindingSha256": "99a538d59d37ee561398bca5f20ef02b9aaa64b574838cc46a7bf483b67bc5d0",
+      "liveProofSha256": "31c150bf531703351dd2636e68ba40109bcc6a62936708a3683a64ef9be02396"
+    },
+    "privateAiQueue": {
+      "commit": "73a7c9df7ed11136d2fe9bf776d058d8e88e1237",
+      "codeCommit": "4209d552fd79f679ed821fcacb741f5095945fcb",
+      "status": "ACCEPTED_DEFAULT_OFF",
+      "productionEnabled": false,
+      "productionTransport": false,
+      "evidenceSha256": "cd710fff72014c3096fedb4cdf82844cb0bce1e7e8588a2caa21a746a6c5f5c3"
+    },
+    "privateAiTransport": {
+      "commit": "1ad67378f169057b506987eee96f51b2699a5a22",
+      "codeCommit": "3114a1f89c6542550f3fe19b51fee3a04aadea61",
+      "fixCommit": "3c9a1cca8289d82b660928f9e1a14ea94270ef71",
+      "fixCodeCommit": "497de1c239d5d4686ca7d048b1e8a575d7cf4526",
+      "status": "ACCEPTED_DEFAULT_OFF_NOT_DEPLOYED",
+      "evidenceClass": "PRIVATE_BETA_TRANSPORT_IMPLEMENTATION",
+      "liveProofClass": "PRIVATE_TEST_PROOF",
+      "subscriptionBoundary": "CHATGPT_SUBSCRIPTION_PRIVATE_TEST_NOT_OPENAI_API",
+      "commercialSla": false,
+      "productionEnabled": false,
+      "productionTransport": false,
+      "factsExtraction": false,
+      "productionInput": false,
+      "transportSha256": "c93d3945eb9daea831d02885735a4e65a6a163191fbd7402a7b490bf8a49a59c",
+      "liveProofSha256": "308968fd3b27b992d8a91f3e0342d6a52d12ed11651cfe889f2e5e4b99232bc6",
+      "retirementSha256": "6425448d61ab1fcff096eec7111b909a710765484fc30a89dca439e6c5fc6255"
+    },
+    "bookPrivateFacts": {
+      "commit": "5ea82de266b1ec07122ed34bf5219069bfa3b18d",
+      "codeCommit": "deaf767777144c38b045e8265fb7f6e5a4f8de69",
+      "status": "ACCEPTED_PRIVATE_BOOK_FACTS",
+      "defaultOff": true,
+      "coreMutation": false,
+      "publicFacts": false,
+      "autoBook": false,
+      "productionInput": false,
+      "evidenceSha256": "0922b9b6bd143704102e717d33bb8337c70a5041466479722dc58b8a6377557d"
+    },
+    "privateAiComposition": {
+      "commit": "437de71f569027dd9639bad462988ece80d635f9",
+      "codeCommit": "8329b5c3be36a5691be457e64d50eb2387180335",
+      "status": "ACCEPTED_DEFAULT_OFF",
+      "productionEnabled": false,
+      "productionTransport": false,
+      "credentialCreated": false,
+      "productionInput": false,
+      "evidenceSha256": "7134a2f1d1cdf10365904df17508d5037462aee8eae9c2ef85c57c700c41efcf"
+    },
+    "privateAiQueuedUi": {
+      "commit": "7348da9c20b34e587df0f1f008632861b633699f",
+      "codeCommit": "df127bf313559fec1054bf2fed85a086c32a1c78",
+      "status": "ACCEPTED_DETERMINISTIC_BROWSER_EVIDENCE",
+      "productionInput": false,
+      "productFixtureAdded": false,
+      "browserCases": 4,
+      "machineChecksSha256": "3c53469b811ddfe375ed1977d588a6a185bc19dde14a3f3592b373069aec9d52",
+      "browserEvidenceSha256": "8c9f4bf216bc39206b37e8bcdecac9e07e129b461f565476e9c3d422a24d1719"
+    },
+    "privateAiCaddyBodyCap": {
+      "commit": "14bda3b447137cdd83b614ca01ee633c91467c09",
+      "codeCommit": "a3c47c8500207bd6dbd2440ad9a10f5430e1b3b9",
+      "status": "ACCEPTED_CODE_ONLY_NOT_DEPLOYED",
+      "productionDeployed": false,
+      "productionInput": false,
+      "exactRequestBytes": 32768,
+      "missingContentLengthOrChunkedStatus": 413,
+      "oversizeStatus": 413,
+      "protocolHeader": "unseen-private-ai-pull/1",
+      "cacheControl": "private, no-store, max-age=0",
+      "contentType": "application/json",
+      "upstreamRequestsForRejectedBodies": 0,
+      "evidenceSha256": "74556232519622a59663126d6fbec46c01259ec447086de87501210aa7c76e8f",
+      "historicalRejectedCommit": "721382f5d1b677595117a266b5ee889644e923a1",
+      "historicalRejectedStatus": "HISTORICAL_REJECTED_SUPERSEDED_BY_ACCEPTED_CODE_FIX",
+      "historicalRejectedEvidenceSha256": "c8e4018e122740606e4e6becd01634852e076f86a976cf45e23ad6a3e7159dcd"
+    },
+    "deploymentContract": {
+      "commit": "a4faa79f64aaaf29fe17265c0717aaf8cbc0b806",
+      "codeCommit": "9db936bdf7e1f56ec10f57bc9627be91b32ff603",
+      "status": "ACCEPTED_CODE_ONLY_NOT_DEPLOYED",
+      "acceptedChain": "ALREADY_LINEAR_ON_STAGE5",
+      "productionDeployed": false,
+      "productionInput": false,
+      "activeAuthority": "LOADED_UNIT_PROCESS_CWD_DETACHED_HEAD_TREE_CLEAN",
+      "unitRenderMarker": "REQUIRED_IMMUTABLE_RELEASE_COMMIT",
+      "candidateValueMarker": "REQUIRED_CANDIDATE_COMMIT_FROM_PACKAGE_MANIFEST",
+      "renderMarkersNonOverlapping": true,
+      "caddyPermissions": {
+        "sealedBackup": "root:root:0600",
+        "liveInstall": "root:caddy:0640",
+        "liveRollback": "root:caddy:0640"
+      },
+      "orderedMigrations": 10,
+      "productionCaddy": {
+        "outerAuth": "ABSENT_APPLICATION_OWNED",
+        "globalCsp": "ABSENT_APPLICATION_OWNED",
+        "cookieAndBearerForwarded": true,
+        "upstreamCspAndContentPreserved": true,
+        "acceptedBodyCapCommit": "14bda3b447137cdd83b614ca01ee633c91467c09"
+      },
+      "evidenceSha256": "37c886c9a5cc5f6370049953add51ac7e4d1a17c5fd6735138ed1528220d6afb",
+      "historicalRejectedEvidenceCommits": [
+        "7d73fb980ed74d49de1cb27f92a4d61af2f97615",
+        "6d0cb2f1342bcc88383dfff3371d567d704b579f"
+      ],
+      "historicalRejectedStatus": "HISTORICAL_REJECTED_SUPERSEDED",
+      "historicalDeploymentFailure": {
+        "commit": "022c464d624e9aeeaa9623439e1495b2c7f4bd3f",
+        "status": "HISTORICAL_ROLLED_BACK_P1_FIXED_CODE_ONLY_NOT_DEPLOYED",
+        "productionDeployed": false,
+        "evidenceSha256": "2dce11bd3ffc934e3cd9dc8137076f355a9b57c2bd7af0dc05aebba62a34c318"
+      }
+    },
+    "dedicatedRenderer": {
+      "commit": "2286c3fbbd9c71d1d384edfbb078e785e1b52354",
+      "codeCommit": "30dca550ac73301457e9bff087a56ab112be7e61",
+      "status": "CODE_GATES_PASS_TARGET_ACCEPTANCE_REQUIRED",
+      "defaultOff": true,
+      "productionEnabled": false,
+      "targetAcceptance": "REQUIRED_NOT_INCLUDED",
+      "focusedCases": 29,
+      "evidenceSha256": "1a7fd73e7ce74012c813263a3bf2e429f04a05c98658b7ae15b00631643cc8d6"
+    },
+    "rendererSystemd255Fix": {
+      "commit": "259832e96c5e0edad9c1a5c5f5c6c092c56e7ae4",
+      "codeCommit": "5ed65ec33eee0228c8d814bdf207674ddb4b5cbc",
+      "status": "CODE_GATES_PASS_TARGET_RETRY_REQUIRED",
+      "defaultOff": true,
+      "targetRetryRequired": true,
+      "focusedCases": 29,
+      "evidenceSha256": "40f3ed9ccc5dd6350a636768d46279d6d004b20775d0770e9168ab7b54633e18"
+    },
+    "rendererSystemd255IpDenyFix": {
+      "commit": "8fb24ce1eb900307a4b1aa5b355f3f7eb45ba185",
+      "evidenceCommit": "f596bb760115943e73c68fcb06d35c3f396240dd",
+      "codeCommit": "8d894e8f96600e19206b0246cb4f95861200720b",
+      "status": "CODE_GATES_PASS_TARGET_RETRY_REQUIRED",
+      "defaultOff": true,
+      "targetRetryRequired": true,
+      "focusedCases": 29,
+      "evidenceSha256": "33f84b714baed915a287eef36b86f270faab0b8791b976fb28464ccd7f70967b"
+    },
+    "rendererDurableControl": {
+      "commit": "66eaa54edc00dada194867d649deb8e80ce45cfa",
+      "codeCommit": "72a7a96a0279e3a1ec922ff777175ad4d63edc45",
+      "status": "CODE_GATES_PASS_TARGET_RETRY_REQUIRED",
+      "defaultOff": true,
+      "targetRetryRequired": true,
+      "focusedCases": 41,
+      "evidenceSha256": "75b251afd69d5660807d44e05a37e7eeb0b84721137fc42bd0c453337da0ac00",
+      "historicalTargetFailure": {
+        "commit": "dd3a7fac439ad67abaa6292eaf0e7a0b71db460c",
+        "status": "HISTORICAL_TARGET_REJECTED_SUPERSEDED_BY_ACCEPTED_COLD_READINESS_FIX",
+        "evidenceSha256": "56d357c4dc50fdf4e69e6ff44c9f20c038ef280beb27f52f82ad35fad5d2ba36"
+      }
+    },
+    "rendererSnapAdapter": {
+      "commit": "28964fd946037cd8a2c9f65e6fa896edafca4b92",
+      "codeCommit": "c181a0a92c3907e8db87e235adfc78b0fe2d3896",
+      "status": "CODE_GATES_PASS_TARGET_EXECUTION_NOT_RUN",
+      "defaultOff": true,
+      "targetAcceptanceRequired": true,
+      "focusedCases": 43,
+      "environmentEntryCount": 14,
+      "treeManifestSha256": "7e3c4a35732680526d72c725face4b2fd09fa984524d5b37a2e4f4a940705913",
+      "resourceManifestSha256": "f557978f70848227c01dfd4484110c1e24492d82f5e6becb61aa4b8b6c6285a5",
+      "canonicalDanglingSymlinkPolicySha256": "3c3f99c6d62feffb90a873bc245930045a1e42bdc0c3b1e5c2a763208586b128",
+      "runtimeReachability": "ABSENT_NOT_IN_ARGV_RESOURCE_OR_LOADER_CLOSURE",
+      "canonicalDanglingSymlinkFix": {
+        "commit": "f9eaa6a2cc54ce80f8f234f6c468525e7ffd850d",
+        "codeCommit": "004b05f6549540c93044a5b8f16ae8d939afeb44",
+        "status": "CODE_GATES_PASS_TARGET_RETRY_REQUIRED",
+        "defaultOff": true,
+        "targetRetryRequired": true,
+        "focusedCases": 45,
+        "evidenceSha256": "22b9dc0ce87571dda3cb0b40699c16e2086d307b7963ae00e74cb83d0b3495ee",
+        "historicalRejectedCommits": [
+          "21b34bf141f5fafb48d8cc08eaa89850f6931bd3",
+          "e46723f91157ac80a5dcd8c91206ea8272a98cc8"
+        ],
+        "historicalTargetFailureCommit": "11b869b9cfb41c5fedbaafda9533974b7873b3b9",
+        "historicalTargetFailureSha256": "abd5c42940378b2799f4af12933982492435164c70bfe0fa29d90affed38953a"
+      },
+      "evidenceSha256": "2f7bdbe7a4793ac75467979b4111ec37077c2423cbc20e5eb0823fd2ca26b3e0",
+      "staticInputCommit": "4ca1eb309320a3a3a16331f2a013c6c08d254488",
+      "staticInputSha256": "883f36b86b89b8f68534eb3e9f58f7a00ed35e2baee026c454c8552e593a9411",
+      "targetDiagnosticCommits": [
+        "7a7b3fa7a9b354020f59212efb8e9805bde4f1ea",
+        "2e2f11491a0b89c00327c58a04c5c006a7899611",
+        "af9e73eb0da622c3c75bebcf1bf29b8121c8ead7"
+      ],
+      "externalReleaseGates": [
+        "CHROMIUM_ASSERTION_SIGNATURE_NOT_INDEPENDENTLY_VERIFIED",
+        "CHROMIUM_LICENSE_DECLARATION_UNAPPROVED",
+        "CHROMIUM_SECURITY_REVIEW_REQUIRED",
+        "TARGET_SYNTHETIC_RENDER_AND_NETWORK_ACCEPTANCE_NOT_RUN"
+      ]
+    },
+    "rendererSnapCacheHardlink": {
+      "commit": "d1acca2fdd5965db5cd611baa7377b138734119c",
+      "codeCommit": "2e7a2276f233b973fa17e4c05120772d17381c93",
+      "status": "CODE_GATES_PASS_TARGET_RETRY_REQUIRED",
+      "defaultOff": true,
+      "targetRetryRequired": true,
+      "focusedCases": 44,
+      "cacheMutationPerformed": false,
+      "evidenceSha256": "83638c095ac7737edc53303416cb3b0d36f9f8ea0defca27fb47ada504f13e77",
+      "historicalTargetFailureCommit": "87687c956770a409f040ec15c5bbbf9f93aa70a9",
+      "historicalTargetFailureSha256": "96a6372d2f4eb61609920f936feb6346edb565ba2c653d462ec0b96e1c27f380"
+    },
+    "temporaryAccessUi": {
+      "commit": "488923cfebb995f50c0eab73a31da74cd6b03493",
+      "codeCommit": "4e5fd762d4bc53bc1713b675eaa4027e6f787105",
+      "status": "ACCEPTED_TEMPORARY_ACCESS_DISCLOSURE",
+      "productionInput": false,
+      "temporaryAccessBanner": true,
+      "faviconAsset": true,
+      "machineChecksSha256": "522aa5dab02cd4243a4be9e6c4d9f62c7c50520859cb03c9ff97d2e734b787b3",
+      "browserEvidenceSha256": "f89fc7eba0356fe38625ea47ff47613b25b81c3bdf75a090d68ebc35482f6d07"
+    },
+    "publicCoreUi": {
+      "commit": "09ce09c170bbd4b5992a3a1b016e814be2013486",
+      "status": "PASS_PUBLIC_CORE_UI_TARGET_MILESTONE_NOT_CORE_OPERABLE_BETA",
+      "observedCandidateCommit": "45380ecd77315fcc95f3e445353f8abdc6c77603",
+      "finalCandidateDeployed": false,
+      "publicCoreUiServed": true,
+      "otpEnabled": false,
+      "bookEnabled": false,
+      "privateAiEnabled": false,
+      "evidenceSha256": "c4546702d135a6ccdaba66dd0c200a04778c776b6765a1d00cc1cbe713a5db82"
+    },
+    "browserA11y": {
+      "commit": "97ae5ba600a5cd5e6102e5064206a64988c9f45c",
+      "testedInputCommit": "09076727051411eeb9274a26663f6ccd168378c3",
+      "checksumManifestSha256": "7ff3a90af426e184ce7676803182a1cd69d4dee932edbe8354bffd1b26ad6668",
+      "currentCandidateCoverage": false,
+      "coverageScope": "STALE_APPLICABLE_PRODUCT_TREE",
+      "coverageReason": "Accepted private AI queue and composition changes services/api after testedInputCommit; retained browser evidence is historical and not current-candidate coverage.",
+      "postEvidenceCandidateBrowserExecuted": false,
+      "formalPerformanceVerdict": "INDETERMINATE_PROFILE_UNDERSPECIFIED_FAIL_CLOSED",
+      "releaseBoundary": "NAMED_MACOS_PATHS_ONLY_NEEDS_REVIEW"
+    },
+    "inventory": {
+      "commit": "7f1f2396133235b38e9f2beaee5df588d17f9b0d",
+      "testedInputCommit": "1cc1615cd9c05ed515711dcd50f5aff62b4238db",
+      "inventorySha256": "e94ae7afabffd9bde8a88539d56bdaeac56f22ea7e7958b6e9c20dd4c64869f8",
+      "currentCandidateCoverage": false,
+      "coverageScope": "STALE_APPLICABLE_PRODUCT_TREE",
+      "coverageReason": "Accepted private AI queue, Book-private facts, composition, and queued UI change applicable product paths after testedInputCommit; retained inventory is historical and remains needs_review.",
+      "fullRepositoryCandidateCoverage": false,
+      "formalReleaseSignoffs": "needs_review"
+    }
+  },
+  "productionProfile": {
+    "id": "integrated_book_lab_8c",
+    "featureFlagDefault": false,
+    "fixtureFallback": false,
+    "smtpOtpDefaultEnabled": false,
+    "smtpOtpDeployableUnderCurrentPrivateBetaUnit": false,
+    "questionProviderCapabilityExposed": true,
+    "questionProviderConfigured": false,
+    "visibleFactsApproved": false,
+    "factsProviderAcceptanceEnabled": false,
+    "factsProviderAcceptanceSchema": "unseen-core-facts-question-provider-acceptance/1",
+    "macCodexPrivateWorkerEvidenceClass": "PRIVATE_TEST_PROOF",
+    "macCodexPrivateWorkerProductionTransport": false,
+    "macCodexPrivateWorkerFactsExtraction": false,
+    "privateAiQueueDefaultEnabled": false,
+    "privateAiCompositionDefaultEnabled": false,
+    "privateAiTransportDeployed": false,
+    "privateAiCaddyBodyCapBytes": 32768,
+    "privateAiCaddyBodyCapStatus": "ACCEPTED_CODE_ONLY_NOT_DEPLOYED",
+    "deploymentContractStatus": "ACCEPTED_CODE_ONLY_NOT_DEPLOYED",
+    "activeReleaseAuthority": "LOADED_UNIT_PROCESS_CWD_DETACHED_HEAD_TREE_CLEAN",
+    "caddyPermissionContract": "SEALED_0600_LIVE_AND_ROLLBACK_0640",
+    "orderedMigrations": 10,
+    "productionCaddyApplicationAuthAndCsp": true,
+    "bookPrivateFactsBoundary": "BOOK_PRIVATE_NOT_CORE_PUBLIC_OR_AUTO_BOOK",
+    "privateAiQueuedUiEvidence": "DETERMINISTIC_BROWSER_EVIDENCE_NOT_PRODUCTION_INPUT",
+    "decoderRuntimeAuthenticity": "HASH_BOUND_TARGET_ACCEPTANCE_REQUIRED",
+    "rendererDedicatedService": "unseen-book-renderer-dedicated-service/v1",
+    "rendererDedicatedServiceDefaultEnabled": false,
+    "rendererNetworkNamespace": "SYSTEMD_PRIVATE_NETWORK",
+    "rendererIpc": "FILESYSTEM_AF_UNIX_AND_PRIVATE_SPOOL",
+    "rendererTargetAcceptance": "REQUIRED_NOT_INCLUDED",
+    "rendererBrowserAdapter": "candidate-owned-fixed-headless-snap-3507/v1",
+    "rendererBrowserDistributionEmbedded": false,
+    "rendererBrowserReleaseDecision": "NO_GO_LICENSE_AND_SECURITY_REVIEW_REQUIRED",
+    "rendererBrowserAdapterAcceptedCommit": "28964fd946037cd8a2c9f65e6fa896edafca4b92",
+    "rendererBrowserAdapterFocusedCases": 43,
+    "rendererBrowserAdapterEnvironmentEntryCount": 14,
+    "rendererBrowserTreeManifestSha256": "7e3c4a35732680526d72c725face4b2fd09fa984524d5b37a2e4f4a940705913",
+    "rendererBrowserResourceManifestSha256": "f557978f70848227c01dfd4484110c1e24492d82f5e6becb61aa4b8b6c6285a5",
+    "rendererCanonicalDanglingSymlinkAcceptedCommit": "f9eaa6a2cc54ce80f8f234f6c468525e7ffd850d",
+    "rendererCanonicalDanglingSymlinkFocusedCases": 45,
+    "rendererSnapCacheHardlinkAcceptedCommit": "d1acca2fdd5965db5cd611baa7377b138734119c",
+    "rendererSnapCacheHardlinkFocusedCases": 44,
+    "dedicatedRendererAcceptedCommit": "2286c3fbbd9c71d1d384edfbb078e785e1b52354",
+    "rendererSystemd255FixAcceptedCommit": "259832e96c5e0edad9c1a5c5f5c6c092c56e7ae4",
+    "rendererSystemd255IpDenyFixAcceptedCommit": "8fb24ce1eb900307a4b1aa5b355f3f7eb45ba185",
+    "rendererDurableControlAcceptedCommit": "66eaa54edc00dada194867d649deb8e80ce45cfa",
+    "temporaryAccessUiAcceptedCommit": "488923cfebb995f50c0eab73a31da74cd6b03493",
+    "publicCoreUiEvidenceCommit": "09ce09c170bbd4b5992a3a1b016e814be2013486",
+    "publicCoreUiObservedCandidateCommit": "45380ecd77315fcc95f3e445353f8abdc6c77603",
+    "publicCoreUiFinalCandidateDeployed": false,
+    "rendererProfile": "production",
+    "lifecycleEntrypoint": "infra/integration/book-lab/deployment-entrypoint.mjs"
+  },
+  "stagingProfile": {
+    "id": "local_staging_fixture",
+    "coreProductCommit": "2cfb25f7da1cbdab901a1f731326c8dfaad6a765",
+    "bookFixtureCommit": "7d3590d3329252f4226adb2a751ffe9a2384d390",
+    "featureFlagBookLab": false,
+    "fixtureOnly": true,
+    "productionInput": false,
+    "liveRuntimeChanged": false
+  },
+  "releaseClaim": "NO_GO",
+  "productionReady": false,
+  "releaseBlockers": [
+    "core_visible_facts_and_question_provider_not_authorized",
+    "legal_privacy_notice_approvals_missing",
+    "final_candidate_deployment_secret_decoder_operator_and_provider_acceptance_missing"
+  ],
+  "claudeReview": "cancelled_by_Max_not_applicable_this_round"
+}

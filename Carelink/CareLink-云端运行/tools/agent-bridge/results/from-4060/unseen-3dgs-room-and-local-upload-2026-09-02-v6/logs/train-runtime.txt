@@ -1,0 +1,6 @@
+start_epoch=1788357079
+end_epoch=1788357349
+wall_seconds=270
+train_exit_code=0
+oom_detected=false
+peak_vram_mib=4843

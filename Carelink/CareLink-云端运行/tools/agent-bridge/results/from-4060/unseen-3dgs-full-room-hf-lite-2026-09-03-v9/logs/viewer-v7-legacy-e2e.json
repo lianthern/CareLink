@@ -1,0 +1,230 @@
+{
+  "status": "PASS",
+  "url": "http://127.0.0.1:8765/?scene=./pexels-classroom-v7.scene.json",
+  "sceneState": "SOG ready",
+  "fpsSample": 240,
+  "manifestSceneRevisionId": "pexels-classroom-5735358-r001",
+  "buttonCount": 3,
+  "thumbnails": [
+    {
+      "src": "http://127.0.0.1:8765/assets/v7/thumb-frame_0001.jpg",
+      "complete": true,
+      "width": 320,
+      "height": 180
+    },
+    {
+      "src": "http://127.0.0.1:8765/assets/v7/thumb-frame_0053.jpg",
+      "complete": true,
+      "width": 320,
+      "height": 180
+    },
+    {
+      "src": "http://127.0.0.1:8765/assets/v7/thumb-frame_0105.jpg",
+      "complete": true,
+      "width": 320,
+      "height": 180
+    }
+  ],
+  "anchorChecks": [
+    {
+      "id": "frame_0001",
+      "expected": {
+        "id": "frame_0001",
+        "label": "照片 1 · 首帧",
+        "sceneRevisionId": "pexels-classroom-5735358-r001",
+        "position": [
+          -0.176478013,
+          0.495581388,
+          -1
+        ],
+        "quaternion": [
+          -0.001259148,
+          -0.01917781,
+          -0.008498084,
+          0.99977918
+        ],
+        "fov": 37.248913214,
+        "sourceFrame": "frame_00001.jpg",
+        "thumbnail": "./assets/v7/thumb-frame_0001.jpg"
+      },
+      "actual": {
+        "position": [
+          -0.17647801339626312,
+          0.49558138847351074,
+          -1
+        ],
+        "quaternion": [
+          -0.001259147972528177,
+          -0.01917780932142961,
+          -0.008498084056161734,
+          0.9997791799909562
+        ],
+        "fov": 37.248913214,
+        "mode": "photo-anchor",
+        "walkY": -0.072239027
+      },
+      "errors": {
+        "positionMaxAbs": 4.735107306252928e-10,
+        "quaternionMaxAbs": 6.785703908496199e-10,
+        "fovAbs": 0
+      },
+      "pass": true
+    },
+    {
+      "id": "frame_0053",
+      "expected": {
+        "id": "frame_0053",
+        "label": "照片 2 · 中段",
+        "sceneRevisionId": "pexels-classroom-5735358-r001",
+        "position": [
+          -0.009838293,
+          -0.022483097,
+          -0.006787586
+        ],
+        "quaternion": [
+          0.000344729,
+          -0.002249287,
+          0.001155213,
+          0.999996744
+        ],
+        "fov": 37.248913214,
+        "sourceFrame": "frame_00053.jpg",
+        "thumbnail": "./assets/v7/thumb-frame_0053.jpg"
+      },
+      "actual": {
+        "position": [
+          -0.009838293306529522,
+          -0.0224830973893404,
+          -0.006787586025893688
+        ],
+        "quaternion": [
+          0.0003447289998165556,
+          -0.0022492870135716364,
+          0.001155212989318385,
+          0.9999967436710965
+        ],
+        "fov": 37.248913214,
+        "mode": "photo-anchor",
+        "walkY": -0.072239027
+      },
+      "errors": {
+        "positionMaxAbs": 3.8934040019755756e-10,
+        "quaternionMaxAbs": 3.289035710452026e-10,
+        "fovAbs": 0
+      },
+      "pass": true
+    },
+    {
+      "id": "frame_0105",
+      "expected": {
+        "id": "frame_0105",
+        "label": "照片 3 · 末帧",
+        "sceneRevisionId": "pexels-classroom-5735358-r001",
+        "position": [
+          0.145506963,
+          -0.472238332,
+          0.887598932
+        ],
+        "quaternion": [
+          -0.001559019,
+          0.010463118,
+          0.007985886,
+          0.999912155
+        ],
+        "fov": 37.248913214,
+        "sourceFrame": "frame_00105.jpg",
+        "thumbnail": "./assets/v7/thumb-frame_0105.jpg"
+      },
+      "actual": {
+        "position": [
+          0.14550696313381195,
+          -0.47223833203315735,
+          0.8875989317893982
+        ],
+        "quaternion": [
+          -0.0015590189412782128,
+          0.010463117897560952,
+          0.007985885758945823,
+          0.9999121552678752
+        ],
+        "fov": 37.248913214,
+        "mode": "photo-anchor",
+        "walkY": -0.072239027
+      },
+      "errors": {
+        "positionMaxAbs": 2.1060175825482474e-10,
+        "quaternionMaxAbs": 2.6787527751537255e-10,
+        "fovAbs": 0
+      },
+      "pass": true
+    }
+  ],
+  "walk": {
+    "beforeWalk": {
+      "position": [
+        -0.009838293306529522,
+        -0.0224830973893404,
+        -0.006787586025893688
+      ],
+      "quaternion": [
+        0.0003447289998165556,
+        -0.0022492870135716364,
+        0.001155212989318385,
+        0.9999967436710965
+      ],
+      "fov": 37.248913214,
+      "mode": "photo-anchor",
+      "walkY": -0.072239027
+    },
+    "walked": {
+      "position": [
+        -0.009137359447777271,
+        -0.07223902642726898,
+        -0.16263405978679657
+      ],
+      "quaternion": [
+        0,
+        -0.0022488875772961542,
+        0,
+        0.999997471249135
+      ],
+      "fov": 37.248913214,
+      "mode": "walk",
+      "walkY": -0.072239027
+    },
+    "movementDistance": 0.15584805001020105,
+    "returned": {
+      "position": [
+        -0.009838293306529522,
+        -0.0224830973893404,
+        -0.006787586025893688
+      ],
+      "quaternion": [
+        0.0003447289998165556,
+        -0.0022492870135716364,
+        0.001155212989318385,
+        0.9999967436710965
+      ],
+      "fov": 37.248913214,
+      "mode": "photo-anchor",
+      "walkY": -0.072239027
+    },
+    "returnErrors": {
+      "positionMaxAbs": 3.8934040019755756e-10,
+      "quaternionMaxAbs": 3.289035710452026e-10,
+      "fovAbs": 0
+    }
+  },
+  "consoleErrors": [],
+  "checks": {
+    "sogReady": true,
+    "threePhotoButtons": true,
+    "threeSafeThumbnails": true,
+    "allAnchorsRestoreWithinGate": true,
+    "boundedWalkMoved": true,
+    "boundedWalkInside": true,
+    "walkModeActivated": true,
+    "middleReturnedAfterWalk": true,
+    "noConsoleErrors": true
+  }
+}

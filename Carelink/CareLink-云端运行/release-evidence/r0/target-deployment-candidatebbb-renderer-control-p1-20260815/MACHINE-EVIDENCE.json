@@ -1,0 +1,189 @@
+{
+  "schema": "unseen-target-deployment-and-renderer-evidence/1",
+  "kind": "TARGET_CORE_DEPLOYMENT_PASS_RENDERER_ACCEPTANCE_REJECTED_NONSECRET_EVIDENCE",
+  "observedDate": "2026-08-15",
+  "sourceRepositoryHeadBeforeEvidence": "aca9b5523380b9f91f07a4b8b5f04848ba45bc2d",
+  "productionReady": false,
+  "releaseDecision": "NO_GO",
+  "candidate": {
+    "commit": "bbb4383ae02a49170ea7f70e5e3856247795d8b4",
+    "tree": "4400777773115754bc51113bc0352cd5484ab8da",
+    "packageName": "production-bbb4383ae02a",
+    "manifestSha256": "def6f91ed4aee6664dfe9b6b2d67de0b88e53f685142607501f15b818626e986",
+    "bundleSha256": "9a53ce63afa7da0cce6c5e97ccd2ff744a68e5d0bf865c70eb4902b4851676c9",
+    "remoteStandaloneVerify": "PASS",
+    "immutableDetachedClean": true
+  },
+  "phaseA": {
+    "status": "PASS",
+    "rollbackBaselineCommit": "7051c0e4fb3c59de4a18295b719d6dafe0e80914",
+    "sealedBackupPath": "/var/backups/unseen/private-beta/deploybbb-20260815T040000Z",
+    "snapshotPath": "/var/backups/unseen/private-beta/snapshots/pre-bbb-deploybbb-20260815T040000Z",
+    "alternateRestorePath": "/var/lib/unseen/private-beta/restore-tests/deploybbb-20260815T040000Z",
+    "backupManifestSha256": "e001dd86fda5b12709cbaf648d675db2e8fdd5e718d4a2c435646f5d01c85b67",
+    "alternateRestore": {
+      "databaseBytesEqual": true,
+      "quickCheck": "ok",
+      "migrationCount": 10
+    },
+    "transportNormalization": {
+      "initialVerify": "REJECTED",
+      "reason": "12_MACOS_APPLEDOUBLE_SIDECARS_CREATED_BY_LOCAL_TAR_STREAM",
+      "manifestAndBundleHashesAlreadyExact": true,
+      "action": "REMOVED_ONLY_EXACT_NEW_TRANSPORT_SIDECARS_AND_RERAN_VERIFY",
+      "finalVerify": "PASS"
+    },
+    "switch": {
+      "firstAttemptRolledBack": "LOCAL_HEALTH_ASSERTION_USED_WRONG_JSON_FIELD",
+      "secondAttemptRolledBack": "TYPE_SIMPLE_LISTENER_READINESS_RACE",
+      "thirdAttemptUsedBoundedHealthPoll": true,
+      "activeCommit": "bbb4383ae02a49170ea7f70e5e3856247795d8b4",
+      "activeTree": "4400777773115754bc51113bc0352cd5484ab8da",
+      "apiMainPidAtAcceptance": 242020,
+      "webMainPidAtAcceptance": 242022,
+      "apiWorkingDirectoryExact": true,
+      "webWorkingDirectoryExact": true,
+      "processCandidateBindingExact": true,
+      "repositoryClean": true
+    },
+    "database": {
+      "quickCheck": "ok",
+      "migrationCount": 10,
+      "accounts": 0,
+      "photos": 0,
+      "privateAiJobs": 0
+    },
+    "publicUi": {
+      "url": "https://unseen.maxxam.xyz",
+      "missingBasicStatus": 401,
+      "wrongBasicStatus": 401,
+      "authorizedStatus": 200,
+      "realWebUi": true,
+      "temporaryInviteBannerVisible": true,
+      "sameOriginResources": 3,
+      "resourceFailures": 0,
+      "externalResources": 0,
+      "svgFaviconMimeCorrect": true,
+      "healthStatus": 503,
+      "healthReason": "OTP_UNCONFIGURED",
+      "dataAccepted": false
+    },
+    "caddy": {
+      "configurationSha256": "c5691b38229753bcc2bbdcd8cc8b32f691433ab5924b9c3130c3436b8ea787db",
+      "mainPid": 24470,
+      "bytesChanged": false,
+      "reloaded": false,
+      "basicAuthChanged": false
+    },
+    "flags": {
+      "otpConfigured": false,
+      "bookEnabled": false,
+      "privateAiEnabled": false,
+      "fixtureEnabled": false
+    }
+  },
+  "rendererTarget": {
+    "status": "REJECTED",
+    "claim": "NOT_DEDICATED_RENDERER_ACCEPTED_DEFAULT_OFF",
+    "inputClass": "SYNTHETIC_NONPRIVATE_TARGET_ACCEPTANCE_INPUT_NOT_LIVE_BOOK",
+    "targetMeasurementReceipt": "PASS",
+    "runtimeTargetVerification": "PASS",
+    "nodeRuntime": {
+      "version": "v22.23.2",
+      "executableSha256": "3517c2df0b2f8cd7f422b4b8450ef81c6889f08eb03e281d6de9079b15e6a327",
+      "officialSignedArchiveReverified": true
+    },
+    "chromium": {
+      "version": "151.0.7922.108",
+      "snapRevision": 3507,
+      "refreshDoingBeforeAndAfter": 0
+    },
+    "targetPins": {
+      "serviceSourceSha256": "c2fad80ab554683f9e0bea0e78974a3c5f0bd48a98ab38f52126508ef58f1cc5",
+      "socketSourceSha256": "ef98f668dbf9711e76e560e7e0fc061bdbe628ede15b234858bf7e2ba0258476",
+      "appArmorProfileSha256": "6e641e3e8a5036c8f02443eb0b235e8e357957fa03a00e0c51fc88998575162d",
+      "acceptanceReceiptSha256": "cdfaa24399a3b71474b778236cd309b30088a6d219d9fdb2cea1c29471078f2c",
+      "nodeRuntimePinSha256": "4d10d4ff53172dfaffdf6ba6e9ccc18d8d6d1e56b2d5633dacc9e1bb7711e92d"
+    },
+    "servicePreFailure": {
+      "serviceActive": true,
+      "socketActive": true,
+      "mainPid": 244883,
+      "privateNetworkNamespaceDistinctFromHost": true,
+      "appArmorDenials": 0,
+      "cupsServiceAndSocket": "NOT_FOUND_INACTIVE",
+      "cupsPort631Listeners": 0,
+      "nRestarts": 0,
+      "memoryPeakBytes": 776667136,
+      "tasksCurrent": 11
+    },
+    "singleRenderAttempt": {
+      "attempts": 1,
+      "clientError": "renderer_control_timeout",
+      "serviceTerminalStatus": "failed",
+      "serviceStableError": "render_failed",
+      "requestCount": 1,
+      "terminalCleanupMarkerCount": 1,
+      "htmlArtifactCount": 0,
+      "pdfArtifactCount": 0,
+      "contentRecorded": false,
+      "networkCanaryExecuted": false,
+      "secondDeterminismRenderExecuted": false,
+      "retry": false
+    },
+    "rootCause": {
+      "severity": "P1",
+      "code": "CONTROL_CONNECTION_SUCCESS_PATH_NEVER_CLOSES",
+      "serverSource": "infra/integration/book-lab/renderer-service.mjs",
+      "clientSource": "infra/integration/book-lab/renderer-client.mjs",
+      "fact": "The server schedules a valid control message after the socket end event but does not close its side; the client waits for close and reaches its control timeout.",
+      "environmentOrPinFailure": false
+    },
+    "cleanup": {
+      "status": "PASS",
+      "quarantinePath": "/var/lib/unseen/renderer-quarantine/rendererbbb-20260815T042000Z",
+      "quarantineSummarySha256": "a9d752c310808ce6b7f24fd274b96eaec24d4739d3ec4de8e1c0e77515a25dec",
+      "quarantineMode": "0700_ROOT_ONLY",
+      "rendererUnits": "NOT_FOUND_INACTIVE",
+      "rendererProcesses": 0,
+      "rendererSocketPresent": false,
+      "appArmorProfileLoaded": false,
+      "activeSpoolFiles": 0,
+      "bookEnabled": false
+    }
+  },
+  "postCleanupLiveInvariants": {
+    "activeCommit": "bbb4383ae02a49170ea7f70e5e3856247795d8b4",
+    "activeTree": "4400777773115754bc51113bc0352cd5484ab8da",
+    "activeRepositoryClean": true,
+    "apiActive": true,
+    "webActive": true,
+    "databaseQuickCheck": "ok",
+    "migrationCount": 10,
+    "accounts": 0,
+    "photos": 0,
+    "privateAiJobs": 0,
+    "caddyConfigurationUnchanged": true,
+    "caddyPidUnchanged": true,
+    "cupsPort631Listeners": 0,
+    "bookEnabled": false,
+    "privateAiEnabled": false,
+    "otpConfigured": false
+  },
+  "openFindings": {
+    "p0": [],
+    "p1": [
+      "renderer_control_connection_success_path_never_closes"
+    ],
+    "p2": []
+  },
+  "nonClaims": [
+    "not renderer target acceptance",
+    "not Book enabled",
+    "not production GO",
+    "not live user data",
+    "not a completed deterministic render",
+    "not a network-canary pass"
+  ],
+  "sensitiveDataRecorded": false
+}

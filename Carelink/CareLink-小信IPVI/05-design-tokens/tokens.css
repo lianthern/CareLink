@@ -1,0 +1,18 @@
+:root{
+  --carelink-blue:#4BA8EC;
+  --carelink-navy:#0B2856;
+  --carelink-white:#FFFEFA;
+  --carelink-mist:#EAF5FF;
+  --carelink-muted:#52677F;
+  --carelink-line:#CBDDEB;
+  --carelink-action:#1465B8;
+  --carelink-warm:#E7A83E;
+  --carelink-success:#23785A;
+  --carelink-danger:#B63D4A;
+  --carelink-font:"Noto Sans CJK SC","Microsoft YaHei","PingFang SC",sans-serif;
+  --carelink-radius-card:24px;
+  --carelink-radius-button:16px;
+  --carelink-space-unit:4px;
+  --carelink-touch-min:48px;
+  --carelink-elder-target:64px;
+}

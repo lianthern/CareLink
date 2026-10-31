@@ -1,0 +1,101 @@
+{
+  "schema": "unseen-source-map/1",
+  "snapshotDate": "2026-09-20",
+  "coreCommit": "4594de9a153d3c191ce3fe86796c2384326b3f7f",
+  "deployedCoreCommitAtAudit": "c89e112b4536d830c8e88324e94c74e012fbc649",
+  "importMode": "source snapshots; original histories retained at source repositories",
+  "modules": [
+    {
+      "id": "huijian",
+      "path": "apps/huijian",
+      "repository": "https://github.com/maxi-max-dev/huijian",
+      "commit": "8c4905420dc11d356f60f00951b3a352de664791",
+      "includedFiles": 533,
+      "includedBytes": 125018075
+    },
+    {
+      "id": "agent-bridge",
+      "path": "tools/agent-bridge",
+      "repository": "https://github.com/maxi-max-dev/max-agent-bridge",
+      "commit": "d34518b3ad0f482575832856c7deb5a5acebfe42",
+      "includedFiles": 600,
+      "includedBytes": 25585456
+    },
+    {
+      "id": "spaces-gallery",
+      "path": "demos/spaces-gallery",
+      "repository": "https://github.com/maxi-max-dev/unseen-ui-preview",
+      "commit": "19f79d3ad7b7ede0eff0a9099f1d0f882dd318a9",
+      "includedFiles": 248,
+      "includedBytes": 24061122
+    },
+    {
+      "id": "classic",
+      "path": "archive/unseen-classic",
+      "repository": "https://github.com/maxi-max-dev/unseen-classic",
+      "commit": "0f11a926d1969fc5386bc0111fd745714bcce143",
+      "includedFiles": 315,
+      "includedBytes": 63318631
+    },
+    {
+      "id": "film",
+      "path": "demos/film",
+      "repository": "https://github.com/maxi-max-dev/unseen-film",
+      "commit": "a473929c56326d67c07c8b4835ef0acbb92fd776",
+      "includedFiles": 4,
+      "includedBytes": 106363
+    },
+    {
+      "id": "photo-jelly",
+      "path": "demos/photo-jelly",
+      "repository": "https://github.com/maxi-max-dev/unseen-photo-jelly",
+      "commit": "55c6ecfb54308f97b52db89c8d53f5463d5d6958",
+      "includedFiles": 6,
+      "includedBytes": 309906
+    },
+    {
+      "id": "huijian-demo",
+      "path": "demos/huijian",
+      "repository": "https://github.com/maxi-max-dev/huijian-demo",
+      "commit": "7c967beb6f6be65ad01001c5bf96ed83bd22bf37",
+      "includedFiles": 22,
+      "includedBytes": 503456
+    },
+    {
+      "id": "unseen-demo",
+      "path": "archive/unseen-demo",
+      "repository": "https://github.com/maxi-max-dev/unseen-demo",
+      "commit": "572956343baadaacdcbbbd2298d026af843b88a4",
+      "includedFiles": 318,
+      "includedBytes": 47003322
+    },
+    {
+      "id": "modelscope",
+      "path": "demos/modelscope",
+      "repository": "https://www.modelscope.cn/studios/maximax/Unseen",
+      "commit": "573bd7750a6df96a7f94e2f4c62a45ce1425ebe1",
+      "includedFiles": 3,
+      "includedBytes": 4546
+    },
+    {
+      "id": "routes",
+      "path": "demos/routes",
+      "repository": null,
+      "commit": null,
+      "snapshotDate": "2026-09-20",
+      "sourceKind": "local-working-files",
+      "includedFiles": 23,
+      "includedBytes": 12489226
+    },
+    {
+      "id": "live-events",
+      "path": "demos/live-events",
+      "repository": null,
+      "commit": null,
+      "snapshotDate": "2026-09-20",
+      "sourceKind": "local-working-files",
+      "includedFiles": 26,
+      "includedBytes": 2628478
+    }
+  ]
+}

@@ -1,0 +1,142 @@
+{
+  "schemaVersion": "1.0",
+  "id": "room-motion-real-v1",
+  "version": "0.2.0",
+  "mode": "prebuilt-demo",
+  "locale": "zh-CN",
+  "title": "实景 · 真实 360° 室内连续移动验证",
+  "projection": "equirectangular-mono",
+  "angleUnit": "deg",
+  "disclosure": "画面来自真实 360° 相机，不是 AI 生成。原作：IGOR BANKET《Stadler 360》，CC BY 3.0。本演示截取原片 00:03–00:23，静音，将 YouTube EAC 纯几何重投影为标准 2:1 全景、水平转向并转码；没有生成或替换画面。",
+  "inputSimulation": {
+    "displayedClipCount": 1,
+    "state": "preuploaded",
+    "processingState": "complete",
+    "sourceType": "real-360-camera-video",
+    "movementType": "physical-camera-translation",
+    "aiGenerated": false
+  },
+  "video": {
+    "src": "/experiences/room-motion-real/train-carriage-walkthrough.mp4",
+    "hosting": "local-self-hosted",
+    "poster": "/experiences/room-motion-real/poster.jpg",
+    "durationSec": 20.033333,
+    "width": 1920,
+    "height": 960,
+    "fps": 30,
+    "codec": "h264",
+    "profile": "High",
+    "pixelFormat": "yuv420p",
+    "container": "mp4",
+    "deliveryMode": "blob-buffered-for-seek",
+    "muted": true,
+    "loop": true,
+    "fastStart": true,
+    "sha256": "6e8e909bf82a1afe71e75811cd42fff7143ef18e82f780ef609351775ad769a1"
+  },
+  "provenance": {
+    "kind": "real-360-camera-capture",
+    "aiGenerated": false,
+    "captureMotion": "physical-translation",
+    "camera": "360-degree camera; model not stated by the source",
+    "location": "Stadler EPm interregional train, Minsk–Gomel",
+    "sourceTitle": "EPm interior.webm / Штадлер 360. Минск - Гомель. Stadler 360",
+    "sourcePageUrl": "https://commons.wikimedia.org/wiki/File:EPm_interior.webm",
+    "directMediaUrl": "https://upload.wikimedia.org/wikipedia/commons/5/5d/EPm_interior.webm",
+    "creator": "IGOR BANKET",
+    "creatorHandle": "banketosik",
+    "originalDate": "2018-11-14",
+    "retrievedAt": "2026-07-26",
+    "license": {
+      "name": "Creative Commons Attribution 3.0 Unported",
+      "spdx": "CC-BY-3.0",
+      "url": "https://creativecommons.org/licenses/by/3.0/",
+      "requirements": [
+        "credit the creator",
+        "link the license",
+        "identify the source",
+        "indicate modifications"
+      ]
+    },
+    "licenseStatus": "Wikimedia Commons confirms the source was available under CC BY 3.0 and license-reviewed on 2020-06-07",
+    "productionStatus": "license-clear for reuse under CC BY 3.0 attribution and change-notice requirements",
+    "attributionText": "EPm interior / Stadler 360 — IGOR BANKET (banketosik), CC BY 3.0; trimmed, muted, reprojected from EAC to equirectangular, yaw-rotated, resized and transcoded by UNSEEN demo"
+  },
+  "sourceMedia": {
+    "durationSec": 118.174,
+    "width": 3840,
+    "height": 1920,
+    "fps": 30,
+    "codec": "vp9",
+    "audioCodec": "opus",
+    "container": "webm",
+    "projection": "youtube-eac-cubemap",
+    "sourceIntervalSec": {
+      "start": 3,
+      "end": 23
+    }
+  },
+  "transformations": {
+    "generativeAI": false,
+    "visualContentGenerated": false,
+    "visualContentReplaced": false,
+    "operations": [
+      "trim source interval 00:03–00:23",
+      "remove audio for silent autoplay",
+      "geometrically reproject YouTube EAC cubemap to 2:1 equirectangular",
+      "rotate panorama yaw by 180 degrees to center the forward aisle",
+      "resize from 3840x1920 to 1920x960",
+      "transcode VP9 WebM to H.264 High yuv420p fast-start MP4"
+    ]
+  },
+  "captures": [
+    {
+      "id": "enter-first-carriage",
+      "timestampSec": 2,
+      "src": "/experiences/room-motion-real/frame-01.jpg",
+      "title": "穿过第一节车厢",
+      "anchor": {
+        "yawDeg": 0,
+        "pitchDeg": 0,
+        "fovDeg": 65
+      },
+      "sha256": "bc49c490271cb32f00fd21446c58dae2a24008065b3973ce411329c7a696d6eb"
+    },
+    {
+      "id": "look-at-window-seats",
+      "timestampSec": 7,
+      "src": "/experiences/room-motion-real/frame-02.jpg",
+      "title": "转头看向窗边座席",
+      "anchor": {
+        "yawDeg": 55,
+        "pitchDeg": 0,
+        "fovDeg": 65
+      },
+      "sha256": "dfb22621f743996cd05963fe4f5ef7a0d8f65914214908b10590d3fff9f47a22"
+    },
+    {
+      "id": "approach-connector",
+      "timestampSec": 12,
+      "src": "/experiences/room-motion-real/frame-03.jpg",
+      "title": "接近车厢连接门",
+      "anchor": {
+        "yawDeg": 0,
+        "pitchDeg": 0,
+        "fovDeg": 65
+      },
+      "sha256": "8f2b6919384a77e936db75d9c8d64eaa926e81678f5716e323d31e9b155b3a2b"
+    },
+    {
+      "id": "enter-next-carriage",
+      "timestampSec": 17,
+      "src": "/experiences/room-motion-real/frame-04.jpg",
+      "title": "进入下一节车厢",
+      "anchor": {
+        "yawDeg": 0,
+        "pitchDeg": 0,
+        "fovDeg": 65
+      },
+      "sha256": "a35a7e1271f76103811d1b3e88749414bcc6955ea11d41aae7899e0cf692ae9f"
+    }
+  ]
+}

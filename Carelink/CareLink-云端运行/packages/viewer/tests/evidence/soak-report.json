@@ -1,0 +1,3630 @@
+{
+  "schemaVersion": "unseen-viewer-soak-evidence/1",
+  "runId": "soak-bb57dca6-ca3b-45f6-aadf-614119707848",
+  "qualification": "acceptance",
+  "acceptanceEligible": true,
+  "requestedDurationMs": 1800000,
+  "acceptanceDurationMs": 1800000,
+  "elapsedMs": 1800115,
+  "startedAt": "2026-08-13T07:27:18.372Z",
+  "completedAt": "2026-08-13T07:57:18.487Z",
+  "cycles": 8701,
+  "coverage": {
+    "orbitMoveResize": 8701,
+    "sceneReloadPairs": 791,
+    "contextLossDefaultRetries": 379,
+    "disposeMountUpdate": 236,
+    "disposeMountWithScene": 165
+  },
+  "browser": "Chrome/151.0.7922.109",
+  "metrics": {
+    "heapBytes": {
+      "baseline": 943670,
+      "peak": 22126218,
+      "steadyFinal": 21538037,
+      "final": 21494164
+    },
+    "domNodes": {
+      "baseline": 41,
+      "peak": 41,
+      "steadyFinal": 41,
+      "final": 15
+    },
+    "canvases": {
+      "baseline": 1,
+      "peak": 1,
+      "steadyFinal": 1,
+      "final": 0
+    },
+    "webglContexts": {
+      "baseline": 1,
+      "peak": 1,
+      "steadyFinal": 1,
+      "final": 0
+    },
+    "objectUrls": {
+      "baseline": 2,
+      "peak": 2,
+      "steadyFinal": 2,
+      "final": 0
+    },
+    "animationFrames": {
+      "baseline": 0,
+      "peak": 1,
+      "steadyFinal": 0,
+      "final": 0
+    },
+    "listeners": {
+      "baseline": 25,
+      "peak": 25,
+      "steadyFinal": 25,
+      "final": 7
+    },
+    "resizeObservers": {
+      "baseline": 1,
+      "peak": 1,
+      "steadyFinal": 1,
+      "final": 0
+    }
+  },
+  "resourceCounters": {
+    "baseline": {
+      "objectUrlsCreated": 2,
+      "objectUrlsRevoked": 0,
+      "peakObjectUrls": 2,
+      "animationFramesRequested": 0,
+      "peakAnimationFrames": 0,
+      "observersCreated": 1,
+      "activeObservers": 1,
+      "peakObservers": 1,
+      "webglContextsCreated": 1,
+      "peakWebglContexts": 1,
+      "listenersAdded": 35,
+      "activeListeners": 25,
+      "peakListeners": 25,
+      "activeObjectUrls": 2,
+      "activeAnimationFrames": 0,
+      "activeWebglContexts": 1,
+      "domNodes": 41,
+      "canvases": 1,
+      "heapBytes": 943670
+    },
+    "peak": {
+      "objectUrlsCreated": 3935,
+      "objectUrlsRevoked": 3933,
+      "peakObjectUrls": 2,
+      "animationFramesRequested": 39613,
+      "peakAnimationFrames": 1,
+      "observersCreated": 402,
+      "activeObservers": 1,
+      "peakObservers": 1,
+      "webglContextsCreated": 2363,
+      "peakWebglContexts": 1,
+      "listenersAdded": 44567,
+      "activeListeners": 25,
+      "peakListeners": 25,
+      "activeObjectUrls": 2,
+      "activeAnimationFrames": 0,
+      "activeWebglContexts": 1,
+      "domNodes": 41,
+      "canvases": 1,
+      "heapBytes": 22126218
+    },
+    "steadyFinal": {
+      "objectUrlsCreated": 3935,
+      "objectUrlsRevoked": 3933,
+      "peakObjectUrls": 2,
+      "animationFramesRequested": 39613,
+      "peakAnimationFrames": 1,
+      "observersCreated": 402,
+      "activeObservers": 1,
+      "peakObservers": 1,
+      "webglContextsCreated": 2363,
+      "peakWebglContexts": 1,
+      "listenersAdded": 44567,
+      "activeListeners": 25,
+      "peakListeners": 25,
+      "activeObjectUrls": 2,
+      "activeAnimationFrames": 0,
+      "activeWebglContexts": 1,
+      "domNodes": 41,
+      "canvases": 1,
+      "heapBytes": 21538037
+    },
+    "postDispose": {
+      "objectUrlsCreated": 3935,
+      "objectUrlsRevoked": 3935,
+      "peakObjectUrls": 2,
+      "animationFramesRequested": 39613,
+      "peakAnimationFrames": 1,
+      "observersCreated": 402,
+      "activeObservers": 0,
+      "peakObservers": 1,
+      "webglContextsCreated": 2363,
+      "peakWebglContexts": 1,
+      "listenersAdded": 44567,
+      "activeListeners": 7,
+      "peakListeners": 25,
+      "activeObjectUrls": 0,
+      "activeAnimationFrames": 0,
+      "activeWebglContexts": 0,
+      "domNodes": 15,
+      "canvases": 0,
+      "heapBytes": 21494164
+    }
+  },
+  "ownedProcesses": {
+    "baseline": 10,
+    "peak": 10,
+    "final": 0
+  },
+  "ownedServices": {
+    "loopbackServer": {
+      "baseline": 1,
+      "peak": 1,
+      "final": 0
+    }
+  },
+  "boundedChecks": {
+    "durationReached": true,
+    "officialDurationReached": true,
+    "heapPeakBounded": true,
+    "heapFinalBounded": true,
+    "domBounded": true,
+    "canvasBounded": true,
+    "webglBounded": true,
+    "objectUrlsBounded": true,
+    "animationFramesBounded": true,
+    "listenersBounded": true,
+    "observersBounded": true,
+    "consoleAndNetworkClean": true
+  },
+  "assertions": [
+    {
+      "name": "durationReached",
+      "status": "PASS",
+      "detail": {
+        "requestedDurationMs": 1800000,
+        "elapsedMs": 1800115,
+        "acceptanceDurationMs": 1800000
+      }
+    },
+    {
+      "name": "officialDurationReached",
+      "status": "PASS",
+      "detail": {
+        "requestedDurationMs": 1800000,
+        "elapsedMs": 1800115,
+        "acceptanceDurationMs": 1800000
+      }
+    },
+    {
+      "name": "heapPeakBounded",
+      "status": "PASS",
+      "detail": {
+        "heapBytes": {
+          "baseline": 943670,
+          "peak": 22126218,
+          "steadyFinal": 21538037,
+          "final": 21494164
+        },
+        "domNodes": {
+          "baseline": 41,
+          "peak": 41,
+          "steadyFinal": 41,
+          "final": 15
+        },
+        "canvases": {
+          "baseline": 1,
+          "peak": 1,
+          "steadyFinal": 1,
+          "final": 0
+        },
+        "webglContexts": {
+          "baseline": 1,
+          "peak": 1,
+          "steadyFinal": 1,
+          "final": 0
+        },
+        "objectUrls": {
+          "baseline": 2,
+          "peak": 2,
+          "steadyFinal": 2,
+          "final": 0
+        },
+        "animationFrames": {
+          "baseline": 0,
+          "peak": 1,
+          "steadyFinal": 0,
+          "final": 0
+        },
+        "listeners": {
+          "baseline": 25,
+          "peak": 25,
+          "steadyFinal": 25,
+          "final": 7
+        },
+        "resizeObservers": {
+          "baseline": 1,
+          "peak": 1,
+          "steadyFinal": 1,
+          "final": 0
+        }
+      }
+    },
+    {
+      "name": "heapFinalBounded",
+      "status": "PASS",
+      "detail": {
+        "heapBytes": {
+          "baseline": 943670,
+          "peak": 22126218,
+          "steadyFinal": 21538037,
+          "final": 21494164
+        },
+        "domNodes": {
+          "baseline": 41,
+          "peak": 41,
+          "steadyFinal": 41,
+          "final": 15
+        },
+        "canvases": {
+          "baseline": 1,
+          "peak": 1,
+          "steadyFinal": 1,
+          "final": 0
+        },
+        "webglContexts": {
+          "baseline": 1,
+          "peak": 1,
+          "steadyFinal": 1,
+          "final": 0
+        },
+        "objectUrls": {
+          "baseline": 2,
+          "peak": 2,
+          "steadyFinal": 2,
+          "final": 0
+        },
+        "animationFrames": {
+          "baseline": 0,
+          "peak": 1,
+          "steadyFinal": 0,
+          "final": 0
+        },
+        "listeners": {
+          "baseline": 25,
+          "peak": 25,
+          "steadyFinal": 25,
+          "final": 7
+        },
+        "resizeObservers": {
+          "baseline": 1,
+          "peak": 1,
+          "steadyFinal": 1,
+          "final": 0
+        }
+      }
+    },
+    {
+      "name": "domBounded",
+      "status": "PASS",
+      "detail": {
+        "heapBytes": {
+          "baseline": 943670,
+          "peak": 22126218,
+          "steadyFinal": 21538037,
+          "final": 21494164
+        },
+        "domNodes": {
+          "baseline": 41,
+          "peak": 41,
+          "steadyFinal": 41,
+          "final": 15
+        },
+        "canvases": {
+          "baseline": 1,
+          "peak": 1,
+          "steadyFinal": 1,
+          "final": 0
+        },
+        "webglContexts": {
+          "baseline": 1,
+          "peak": 1,
+          "steadyFinal": 1,
+          "final": 0
+        },
+        "objectUrls": {
+          "baseline": 2,
+          "peak": 2,
+          "steadyFinal": 2,
+          "final": 0
+        },
+        "animationFrames": {
+          "baseline": 0,
+          "peak": 1,
+          "steadyFinal": 0,
+          "final": 0
+        },
+        "listeners": {
+          "baseline": 25,
+          "peak": 25,
+          "steadyFinal": 25,
+          "final": 7
+        },
+        "resizeObservers": {
+          "baseline": 1,
+          "peak": 1,
+          "steadyFinal": 1,
+          "final": 0
+        }
+      }
+    },
+    {
+      "name": "canvasBounded",
+      "status": "PASS",
+      "detail": {
+        "heapBytes": {
+          "baseline": 943670,
+          "peak": 22126218,
+          "steadyFinal": 21538037,
+          "final": 21494164
+        },
+        "domNodes": {
+          "baseline": 41,
+          "peak": 41,
+          "steadyFinal": 41,
+          "final": 15
+        },
+        "canvases": {
+          "baseline": 1,
+          "peak": 1,
+          "steadyFinal": 1,
+          "final": 0
+        },
+        "webglContexts": {
+          "baseline": 1,
+          "peak": 1,
+          "steadyFinal": 1,
+          "final": 0
+        },
+        "objectUrls": {
+          "baseline": 2,
+          "peak": 2,
+          "steadyFinal": 2,
+          "final": 0
+        },
+        "animationFrames": {
+          "baseline": 0,
+          "peak": 1,
+          "steadyFinal": 0,
+          "final": 0
+        },
+        "listeners": {
+          "baseline": 25,
+          "peak": 25,
+          "steadyFinal": 25,
+          "final": 7
+        },
+        "resizeObservers": {
+          "baseline": 1,
+          "peak": 1,
+          "steadyFinal": 1,
+          "final": 0
+        }
+      }
+    },
+    {
+      "name": "webglBounded",
+      "status": "PASS",
+      "detail": {
+        "heapBytes": {
+          "baseline": 943670,
+          "peak": 22126218,
+          "steadyFinal": 21538037,
+          "final": 21494164
+        },
+        "domNodes": {
+          "baseline": 41,
+          "peak": 41,
+          "steadyFinal": 41,
+          "final": 15
+        },
+        "canvases": {
+          "baseline": 1,
+          "peak": 1,
+          "steadyFinal": 1,
+          "final": 0
+        },
+        "webglContexts": {
+          "baseline": 1,
+          "peak": 1,
+          "steadyFinal": 1,
+          "final": 0
+        },
+        "objectUrls": {
+          "baseline": 2,
+          "peak": 2,
+          "steadyFinal": 2,
+          "final": 0
+        },
+        "animationFrames": {
+          "baseline": 0,
+          "peak": 1,
+          "steadyFinal": 0,
+          "final": 0
+        },
+        "listeners": {
+          "baseline": 25,
+          "peak": 25,
+          "steadyFinal": 25,
+          "final": 7
+        },
+        "resizeObservers": {
+          "baseline": 1,
+          "peak": 1,
+          "steadyFinal": 1,
+          "final": 0
+        }
+      }
+    },
+    {
+      "name": "objectUrlsBounded",
+      "status": "PASS",
+      "detail": {
+        "heapBytes": {
+          "baseline": 943670,
+          "peak": 22126218,
+          "steadyFinal": 21538037,
+          "final": 21494164
+        },
+        "domNodes": {
+          "baseline": 41,
+          "peak": 41,
+          "steadyFinal": 41,
+          "final": 15
+        },
+        "canvases": {
+          "baseline": 1,
+          "peak": 1,
+          "steadyFinal": 1,
+          "final": 0
+        },
+        "webglContexts": {
+          "baseline": 1,
+          "peak": 1,
+          "steadyFinal": 1,
+          "final": 0
+        },
+        "objectUrls": {
+          "baseline": 2,
+          "peak": 2,
+          "steadyFinal": 2,
+          "final": 0
+        },
+        "animationFrames": {
+          "baseline": 0,
+          "peak": 1,
+          "steadyFinal": 0,
+          "final": 0
+        },
+        "listeners": {
+          "baseline": 25,
+          "peak": 25,
+          "steadyFinal": 25,
+          "final": 7
+        },
+        "resizeObservers": {
+          "baseline": 1,
+          "peak": 1,
+          "steadyFinal": 1,
+          "final": 0
+        }
+      }
+    },
+    {
+      "name": "animationFramesBounded",
+      "status": "PASS",
+      "detail": {
+        "heapBytes": {
+          "baseline": 943670,
+          "peak": 22126218,
+          "steadyFinal": 21538037,
+          "final": 21494164
+        },
+        "domNodes": {
+          "baseline": 41,
+          "peak": 41,
+          "steadyFinal": 41,
+          "final": 15
+        },
+        "canvases": {
+          "baseline": 1,
+          "peak": 1,
+          "steadyFinal": 1,
+          "final": 0
+        },
+        "webglContexts": {
+          "baseline": 1,
+          "peak": 1,
+          "steadyFinal": 1,
+          "final": 0
+        },
+        "objectUrls": {
+          "baseline": 2,
+          "peak": 2,
+          "steadyFinal": 2,
+          "final": 0
+        },
+        "animationFrames": {
+          "baseline": 0,
+          "peak": 1,
+          "steadyFinal": 0,
+          "final": 0
+        },
+        "listeners": {
+          "baseline": 25,
+          "peak": 25,
+          "steadyFinal": 25,
+          "final": 7
+        },
+        "resizeObservers": {
+          "baseline": 1,
+          "peak": 1,
+          "steadyFinal": 1,
+          "final": 0
+        }
+      }
+    },
+    {
+      "name": "listenersBounded",
+      "status": "PASS",
+      "detail": {
+        "heapBytes": {
+          "baseline": 943670,
+          "peak": 22126218,
+          "steadyFinal": 21538037,
+          "final": 21494164
+        },
+        "domNodes": {
+          "baseline": 41,
+          "peak": 41,
+          "steadyFinal": 41,
+          "final": 15
+        },
+        "canvases": {
+          "baseline": 1,
+          "peak": 1,
+          "steadyFinal": 1,
+          "final": 0
+        },
+        "webglContexts": {
+          "baseline": 1,
+          "peak": 1,
+          "steadyFinal": 1,
+          "final": 0
+        },
+        "objectUrls": {
+          "baseline": 2,
+          "peak": 2,
+          "steadyFinal": 2,
+          "final": 0
+        },
+        "animationFrames": {
+          "baseline": 0,
+          "peak": 1,
+          "steadyFinal": 0,
+          "final": 0
+        },
+        "listeners": {
+          "baseline": 25,
+          "peak": 25,
+          "steadyFinal": 25,
+          "final": 7
+        },
+        "resizeObservers": {
+          "baseline": 1,
+          "peak": 1,
+          "steadyFinal": 1,
+          "final": 0
+        }
+      }
+    },
+    {
+      "name": "observersBounded",
+      "status": "PASS",
+      "detail": {
+        "heapBytes": {
+          "baseline": 943670,
+          "peak": 22126218,
+          "steadyFinal": 21538037,
+          "final": 21494164
+        },
+        "domNodes": {
+          "baseline": 41,
+          "peak": 41,
+          "steadyFinal": 41,
+          "final": 15
+        },
+        "canvases": {
+          "baseline": 1,
+          "peak": 1,
+          "steadyFinal": 1,
+          "final": 0
+        },
+        "webglContexts": {
+          "baseline": 1,
+          "peak": 1,
+          "steadyFinal": 1,
+          "final": 0
+        },
+        "objectUrls": {
+          "baseline": 2,
+          "peak": 2,
+          "steadyFinal": 2,
+          "final": 0
+        },
+        "animationFrames": {
+          "baseline": 0,
+          "peak": 1,
+          "steadyFinal": 0,
+          "final": 0
+        },
+        "listeners": {
+          "baseline": 25,
+          "peak": 25,
+          "steadyFinal": 25,
+          "final": 7
+        },
+        "resizeObservers": {
+          "baseline": 1,
+          "peak": 1,
+          "steadyFinal": 1,
+          "final": 0
+        }
+      }
+    },
+    {
+      "name": "consoleAndNetworkClean",
+      "status": "PASS",
+      "detail": {
+        "heapBytes": {
+          "baseline": 943670,
+          "peak": 22126218,
+          "steadyFinal": 21538037,
+          "final": 21494164
+        },
+        "domNodes": {
+          "baseline": 41,
+          "peak": 41,
+          "steadyFinal": 41,
+          "final": 15
+        },
+        "canvases": {
+          "baseline": 1,
+          "peak": 1,
+          "steadyFinal": 1,
+          "final": 0
+        },
+        "webglContexts": {
+          "baseline": 1,
+          "peak": 1,
+          "steadyFinal": 1,
+          "final": 0
+        },
+        "objectUrls": {
+          "baseline": 2,
+          "peak": 2,
+          "steadyFinal": 2,
+          "final": 0
+        },
+        "animationFrames": {
+          "baseline": 0,
+          "peak": 1,
+          "steadyFinal": 0,
+          "final": 0
+        },
+        "listeners": {
+          "baseline": 25,
+          "peak": 25,
+          "steadyFinal": 25,
+          "final": 7
+        },
+        "resizeObservers": {
+          "baseline": 1,
+          "peak": 1,
+          "steadyFinal": 1,
+          "final": 0
+        }
+      }
+    },
+    {
+      "name": "cycles-completed",
+      "status": "PASS",
+      "detail": {
+        "cycles": 8701
+      }
+    }
+  ],
+  "samples": [
+    {
+      "elapsedMs": 0,
+      "cycle": 0,
+      "resources": {
+        "objectUrlsCreated": 2,
+        "objectUrlsRevoked": 0,
+        "peakObjectUrls": 2,
+        "animationFramesRequested": 0,
+        "peakAnimationFrames": 0,
+        "observersCreated": 1,
+        "activeObservers": 1,
+        "peakObservers": 1,
+        "webglContextsCreated": 1,
+        "peakWebglContexts": 1,
+        "listenersAdded": 35,
+        "activeListeners": 25,
+        "peakListeners": 25,
+        "activeObjectUrls": 2,
+        "activeAnimationFrames": 0,
+        "activeWebglContexts": 1,
+        "domNodes": 41,
+        "canvases": 1,
+        "heapBytes": 943670
+      },
+      "ownedProcesses": 10
+    },
+    {
+      "elapsedMs": 30230,
+      "cycle": 59,
+      "resources": {
+        "objectUrlsCreated": 34,
+        "objectUrlsRevoked": 32,
+        "peakObjectUrls": 2,
+        "animationFramesRequested": 237,
+        "peakAnimationFrames": 1,
+        "observersCreated": 5,
+        "activeObservers": 1,
+        "peakObservers": 1,
+        "webglContextsCreated": 20,
+        "peakWebglContexts": 1,
+        "listenersAdded": 402,
+        "activeListeners": 25,
+        "peakListeners": 25,
+        "activeObjectUrls": 2,
+        "activeAnimationFrames": 0,
+        "activeWebglContexts": 1,
+        "domNodes": 41,
+        "canvases": 1,
+        "heapBytes": 1454428
+      },
+      "ownedProcesses": 8
+    },
+    {
+      "elapsedMs": 60110,
+      "cycle": 180,
+      "resources": {
+        "objectUrlsCreated": 87,
+        "objectUrlsRevoked": 85,
+        "peakObjectUrls": 2,
+        "animationFramesRequested": 761,
+        "peakAnimationFrames": 1,
+        "observersCreated": 10,
+        "activeObservers": 1,
+        "peakObservers": 1,
+        "webglContextsCreated": 52,
+        "peakWebglContexts": 1,
+        "listenersAdded": 1000,
+        "activeListeners": 25,
+        "peakListeners": 25,
+        "activeObjectUrls": 2,
+        "activeAnimationFrames": 0,
+        "activeWebglContexts": 1,
+        "domNodes": 41,
+        "canvases": 1,
+        "heapBytes": 1845692
+      },
+      "ownedProcesses": 8
+    },
+    {
+      "elapsedMs": 90070,
+      "cycle": 301,
+      "resources": {
+        "objectUrlsCreated": 144,
+        "objectUrlsRevoked": 142,
+        "peakObjectUrls": 2,
+        "animationFramesRequested": 1299,
+        "peakAnimationFrames": 1,
+        "observersCreated": 16,
+        "activeObservers": 1,
+        "peakObservers": 1,
+        "webglContextsCreated": 86,
+        "peakWebglContexts": 1,
+        "listenersAdded": 1645,
+        "activeListeners": 25,
+        "peakListeners": 25,
+        "activeObjectUrls": 2,
+        "activeAnimationFrames": 0,
+        "activeWebglContexts": 1,
+        "domNodes": 41,
+        "canvases": 1,
+        "heapBytes": 2307249
+      },
+      "ownedProcesses": 8
+    },
+    {
+      "elapsedMs": 120259,
+      "cycle": 452,
+      "resources": {
+        "objectUrlsCreated": 212,
+        "objectUrlsRevoked": 210,
+        "peakObjectUrls": 2,
+        "animationFramesRequested": 2003,
+        "peakAnimationFrames": 1,
+        "observersCreated": 23,
+        "activeObservers": 1,
+        "peakObservers": 1,
+        "webglContextsCreated": 127,
+        "peakWebglContexts": 1,
+        "listenersAdded": 2417,
+        "activeListeners": 25,
+        "peakListeners": 25,
+        "activeObjectUrls": 2,
+        "activeAnimationFrames": 0,
+        "activeWebglContexts": 1,
+        "domNodes": 41,
+        "canvases": 1,
+        "heapBytes": 3186226
+      },
+      "ownedProcesses": 8
+    },
+    {
+      "elapsedMs": 150061,
+      "cycle": 589,
+      "resources": {
+        "objectUrlsCreated": 272,
+        "objectUrlsRevoked": 270,
+        "peakObjectUrls": 2,
+        "animationFramesRequested": 2631,
+        "peakAnimationFrames": 1,
+        "observersCreated": 29,
+        "activeObservers": 1,
+        "peakObservers": 1,
+        "webglContextsCreated": 163,
+        "peakWebglContexts": 1,
+        "listenersAdded": 3095,
+        "activeListeners": 25,
+        "peakListeners": 25,
+        "activeObjectUrls": 2,
+        "activeAnimationFrames": 0,
+        "activeWebglContexts": 1,
+        "domNodes": 41,
+        "canvases": 1,
+        "heapBytes": 3237434
+      },
+      "ownedProcesses": 8
+    },
+    {
+      "elapsedMs": 180140,
+      "cycle": 734,
+      "resources": {
+        "objectUrlsCreated": 335,
+        "objectUrlsRevoked": 333,
+        "peakObjectUrls": 2,
+        "animationFramesRequested": 3286,
+        "peakAnimationFrames": 1,
+        "observersCreated": 35,
+        "activeObservers": 1,
+        "peakObservers": 1,
+        "webglContextsCreated": 201,
+        "peakWebglContexts": 1,
+        "listenersAdded": 3806,
+        "activeListeners": 25,
+        "peakListeners": 25,
+        "activeObjectUrls": 2,
+        "activeAnimationFrames": 0,
+        "activeWebglContexts": 1,
+        "domNodes": 41,
+        "canvases": 1,
+        "heapBytes": 3850889
+      },
+      "ownedProcesses": 8
+    },
+    {
+      "elapsedMs": 210076,
+      "cycle": 884,
+      "resources": {
+        "objectUrlsCreated": 405,
+        "objectUrlsRevoked": 403,
+        "peakObjectUrls": 2,
+        "animationFramesRequested": 3960,
+        "peakAnimationFrames": 1,
+        "observersCreated": 42,
+        "activeObservers": 1,
+        "peakObservers": 1,
+        "webglContextsCreated": 243,
+        "peakWebglContexts": 1,
+        "listenersAdded": 4597,
+        "activeListeners": 25,
+        "peakListeners": 25,
+        "activeObjectUrls": 2,
+        "activeAnimationFrames": 0,
+        "activeWebglContexts": 1,
+        "domNodes": 41,
+        "canvases": 1,
+        "heapBytes": 4175985
+      },
+      "ownedProcesses": 8
+    },
+    {
+      "elapsedMs": 240062,
+      "cycle": 1032,
+      "resources": {
+        "objectUrlsCreated": 470,
+        "objectUrlsRevoked": 468,
+        "peakObjectUrls": 2,
+        "animationFramesRequested": 4637,
+        "peakAnimationFrames": 1,
+        "observersCreated": 49,
+        "activeObservers": 1,
+        "peakObservers": 1,
+        "webglContextsCreated": 282,
+        "peakWebglContexts": 1,
+        "listenersAdded": 5336,
+        "activeListeners": 25,
+        "peakListeners": 25,
+        "activeObjectUrls": 2,
+        "activeAnimationFrames": 0,
+        "activeWebglContexts": 1,
+        "domNodes": 41,
+        "canvases": 1,
+        "heapBytes": 4324102
+      },
+      "ownedProcesses": 8
+    },
+    {
+      "elapsedMs": 270178,
+      "cycle": 1185,
+      "resources": {
+        "objectUrlsCreated": 542,
+        "objectUrlsRevoked": 540,
+        "peakObjectUrls": 2,
+        "animationFramesRequested": 5331,
+        "peakAnimationFrames": 1,
+        "observersCreated": 57,
+        "activeObservers": 1,
+        "peakObservers": 1,
+        "webglContextsCreated": 325,
+        "peakWebglContexts": 1,
+        "listenersAdded": 6155,
+        "activeListeners": 25,
+        "peakListeners": 25,
+        "activeObjectUrls": 2,
+        "activeAnimationFrames": 0,
+        "activeWebglContexts": 1,
+        "domNodes": 41,
+        "canvases": 1,
+        "heapBytes": 5040566
+      },
+      "ownedProcesses": 8
+    },
+    {
+      "elapsedMs": 300079,
+      "cycle": 1328,
+      "resources": {
+        "objectUrlsCreated": 605,
+        "objectUrlsRevoked": 603,
+        "peakObjectUrls": 2,
+        "animationFramesRequested": 5988,
+        "peakAnimationFrames": 1,
+        "observersCreated": 63,
+        "activeObservers": 1,
+        "peakObservers": 1,
+        "webglContextsCreated": 363,
+        "peakWebglContexts": 1,
+        "listenersAdded": 6866,
+        "activeListeners": 25,
+        "peakListeners": 25,
+        "activeObjectUrls": 2,
+        "activeAnimationFrames": 0,
+        "activeWebglContexts": 1,
+        "domNodes": 41,
+        "canvases": 1,
+        "heapBytes": 5469695
+      },
+      "ownedProcesses": 8
+    },
+    {
+      "elapsedMs": 330185,
+      "cycle": 1477,
+      "resources": {
+        "objectUrlsCreated": 673,
+        "objectUrlsRevoked": 671,
+        "peakObjectUrls": 2,
+        "animationFramesRequested": 6668,
+        "peakAnimationFrames": 1,
+        "observersCreated": 69,
+        "activeObservers": 1,
+        "peakObservers": 1,
+        "webglContextsCreated": 404,
+        "peakWebglContexts": 1,
+        "listenersAdded": 7629,
+        "activeListeners": 25,
+        "peakListeners": 25,
+        "activeObjectUrls": 2,
+        "activeAnimationFrames": 0,
+        "activeWebglContexts": 1,
+        "domNodes": 41,
+        "canvases": 1,
+        "heapBytes": 5986823
+      },
+      "ownedProcesses": 8
+    },
+    {
+      "elapsedMs": 360079,
+      "cycle": 1624,
+      "resources": {
+        "objectUrlsCreated": 738,
+        "objectUrlsRevoked": 736,
+        "peakObjectUrls": 2,
+        "animationFramesRequested": 7347,
+        "peakAnimationFrames": 1,
+        "observersCreated": 76,
+        "activeObservers": 1,
+        "peakObservers": 1,
+        "webglContextsCreated": 443,
+        "peakWebglContexts": 1,
+        "listenersAdded": 8368,
+        "activeListeners": 25,
+        "peakListeners": 25,
+        "activeObjectUrls": 2,
+        "activeAnimationFrames": 0,
+        "activeWebglContexts": 1,
+        "domNodes": 41,
+        "canvases": 1,
+        "heapBytes": 6046011
+      },
+      "ownedProcesses": 8
+    },
+    {
+      "elapsedMs": 390075,
+      "cycle": 1767,
+      "resources": {
+        "objectUrlsCreated": 803,
+        "objectUrlsRevoked": 801,
+        "peakObjectUrls": 2,
+        "animationFramesRequested": 8007,
+        "peakAnimationFrames": 1,
+        "observersCreated": 83,
+        "activeObservers": 1,
+        "peakObservers": 1,
+        "webglContextsCreated": 482,
+        "peakWebglContexts": 1,
+        "listenersAdded": 9107,
+        "activeListeners": 25,
+        "peakListeners": 25,
+        "activeObjectUrls": 2,
+        "activeAnimationFrames": 0,
+        "activeWebglContexts": 1,
+        "domNodes": 41,
+        "canvases": 1,
+        "heapBytes": 6207227
+      },
+      "ownedProcesses": 8
+    },
+    {
+      "elapsedMs": 420128,
+      "cycle": 1914,
+      "resources": {
+        "objectUrlsCreated": 870,
+        "objectUrlsRevoked": 868,
+        "peakObjectUrls": 2,
+        "animationFramesRequested": 8680,
+        "peakAnimationFrames": 1,
+        "observersCreated": 90,
+        "activeObservers": 1,
+        "peakObservers": 1,
+        "webglContextsCreated": 522,
+        "peakWebglContexts": 1,
+        "listenersAdded": 9865,
+        "activeListeners": 25,
+        "peakListeners": 25,
+        "activeObjectUrls": 2,
+        "activeAnimationFrames": 0,
+        "activeWebglContexts": 1,
+        "domNodes": 41,
+        "canvases": 1,
+        "heapBytes": 7532368
+      },
+      "ownedProcesses": 8
+    },
+    {
+      "elapsedMs": 450143,
+      "cycle": 2055,
+      "resources": {
+        "objectUrlsCreated": 933,
+        "objectUrlsRevoked": 931,
+        "peakObjectUrls": 2,
+        "animationFramesRequested": 9322,
+        "peakAnimationFrames": 1,
+        "observersCreated": 96,
+        "activeObservers": 1,
+        "peakObservers": 1,
+        "webglContextsCreated": 560,
+        "peakWebglContexts": 1,
+        "listenersAdded": 10576,
+        "activeListeners": 25,
+        "peakListeners": 25,
+        "activeObjectUrls": 2,
+        "activeAnimationFrames": 0,
+        "activeWebglContexts": 1,
+        "domNodes": 41,
+        "canvases": 1,
+        "heapBytes": 7583452
+      },
+      "ownedProcesses": 8
+    },
+    {
+      "elapsedMs": 480284,
+      "cycle": 2201,
+      "resources": {
+        "objectUrlsCreated": 1001,
+        "objectUrlsRevoked": 999,
+        "peakObjectUrls": 2,
+        "animationFramesRequested": 9983,
+        "peakAnimationFrames": 1,
+        "observersCreated": 103,
+        "activeObservers": 1,
+        "peakObservers": 1,
+        "webglContextsCreated": 601,
+        "peakWebglContexts": 1,
+        "listenersAdded": 11348,
+        "activeListeners": 25,
+        "peakListeners": 25,
+        "activeObjectUrls": 2,
+        "activeAnimationFrames": 0,
+        "activeWebglContexts": 1,
+        "domNodes": 41,
+        "canvases": 1,
+        "heapBytes": 7746881
+      },
+      "ownedProcesses": 8
+    },
+    {
+      "elapsedMs": 510114,
+      "cycle": 2353,
+      "resources": {
+        "objectUrlsCreated": 1068,
+        "objectUrlsRevoked": 1066,
+        "peakObjectUrls": 2,
+        "animationFramesRequested": 10665,
+        "peakAnimationFrames": 1,
+        "observersCreated": 110,
+        "activeObservers": 1,
+        "peakObservers": 1,
+        "webglContextsCreated": 641,
+        "peakWebglContexts": 1,
+        "listenersAdded": 12106,
+        "activeListeners": 25,
+        "peakListeners": 25,
+        "activeObjectUrls": 2,
+        "activeAnimationFrames": 0,
+        "activeWebglContexts": 1,
+        "domNodes": 41,
+        "canvases": 1,
+        "heapBytes": 8926395
+      },
+      "ownedProcesses": 8
+    },
+    {
+      "elapsedMs": 540145,
+      "cycle": 2489,
+      "resources": {
+        "objectUrlsCreated": 1131,
+        "objectUrlsRevoked": 1129,
+        "peakObjectUrls": 2,
+        "animationFramesRequested": 11271,
+        "peakAnimationFrames": 1,
+        "observersCreated": 116,
+        "activeObservers": 1,
+        "peakObservers": 1,
+        "webglContextsCreated": 679,
+        "peakWebglContexts": 1,
+        "listenersAdded": 12817,
+        "activeListeners": 25,
+        "peakListeners": 25,
+        "activeObjectUrls": 2,
+        "activeAnimationFrames": 0,
+        "activeWebglContexts": 1,
+        "domNodes": 41,
+        "canvases": 1,
+        "heapBytes": 8456128
+      },
+      "ownedProcesses": 8
+    },
+    {
+      "elapsedMs": 570030,
+      "cycle": 2636,
+      "resources": {
+        "objectUrlsCreated": 1196,
+        "objectUrlsRevoked": 1194,
+        "peakObjectUrls": 2,
+        "animationFramesRequested": 11927,
+        "peakAnimationFrames": 1,
+        "observersCreated": 123,
+        "activeObservers": 1,
+        "peakObservers": 1,
+        "webglContextsCreated": 718,
+        "peakWebglContexts": 1,
+        "listenersAdded": 13556,
+        "activeListeners": 25,
+        "peakListeners": 25,
+        "activeObjectUrls": 2,
+        "activeAnimationFrames": 0,
+        "activeWebglContexts": 1,
+        "domNodes": 41,
+        "canvases": 1,
+        "heapBytes": 9632020
+      },
+      "ownedProcesses": 8
+    },
+    {
+      "elapsedMs": 600093,
+      "cycle": 2752,
+      "resources": {
+        "objectUrlsCreated": 1249,
+        "objectUrlsRevoked": 1247,
+        "peakObjectUrls": 2,
+        "animationFramesRequested": 12436,
+        "peakAnimationFrames": 1,
+        "observersCreated": 128,
+        "activeObservers": 1,
+        "peakObservers": 1,
+        "webglContextsCreated": 750,
+        "peakWebglContexts": 1,
+        "listenersAdded": 14154,
+        "activeListeners": 25,
+        "peakListeners": 25,
+        "activeObjectUrls": 2,
+        "activeAnimationFrames": 0,
+        "activeWebglContexts": 1,
+        "domNodes": 41,
+        "canvases": 1,
+        "heapBytes": 9142689
+      },
+      "ownedProcesses": 8
+    },
+    {
+      "elapsedMs": 630063,
+      "cycle": 2886,
+      "resources": {
+        "objectUrlsCreated": 1309,
+        "objectUrlsRevoked": 1307,
+        "peakObjectUrls": 2,
+        "animationFramesRequested": 13035,
+        "peakAnimationFrames": 1,
+        "observersCreated": 134,
+        "activeObservers": 1,
+        "peakObservers": 1,
+        "webglContextsCreated": 786,
+        "peakWebglContexts": 1,
+        "listenersAdded": 14832,
+        "activeListeners": 25,
+        "peakListeners": 25,
+        "activeObjectUrls": 2,
+        "activeAnimationFrames": 0,
+        "activeWebglContexts": 1,
+        "domNodes": 41,
+        "canvases": 1,
+        "heapBytes": 9160112
+      },
+      "ownedProcesses": 8
+    },
+    {
+      "elapsedMs": 660037,
+      "cycle": 3029,
+      "resources": {
+        "objectUrlsCreated": 1374,
+        "objectUrlsRevoked": 1372,
+        "peakObjectUrls": 2,
+        "animationFramesRequested": 13684,
+        "peakAnimationFrames": 1,
+        "observersCreated": 141,
+        "activeObservers": 1,
+        "peakObservers": 1,
+        "webglContextsCreated": 825,
+        "peakWebglContexts": 1,
+        "listenersAdded": 15571,
+        "activeListeners": 25,
+        "peakListeners": 25,
+        "activeObjectUrls": 2,
+        "activeAnimationFrames": 0,
+        "activeWebglContexts": 1,
+        "domNodes": 41,
+        "canvases": 1,
+        "heapBytes": 8850409
+      },
+      "ownedProcesses": 8
+    },
+    {
+      "elapsedMs": 690129,
+      "cycle": 3178,
+      "resources": {
+        "objectUrlsCreated": 1439,
+        "objectUrlsRevoked": 1437,
+        "peakObjectUrls": 2,
+        "animationFramesRequested": 14355,
+        "peakAnimationFrames": 1,
+        "observersCreated": 147,
+        "activeObservers": 1,
+        "peakObservers": 1,
+        "webglContextsCreated": 864,
+        "peakWebglContexts": 1,
+        "listenersAdded": 16301,
+        "activeListeners": 25,
+        "peakListeners": 25,
+        "activeObjectUrls": 2,
+        "activeAnimationFrames": 0,
+        "activeWebglContexts": 1,
+        "domNodes": 41,
+        "canvases": 1,
+        "heapBytes": 9181541
+      },
+      "ownedProcesses": 8
+    },
+    {
+      "elapsedMs": 720022,
+      "cycle": 3318,
+      "resources": {
+        "objectUrlsCreated": 1504,
+        "objectUrlsRevoked": 1502,
+        "peakObjectUrls": 2,
+        "animationFramesRequested": 14987,
+        "peakAnimationFrames": 1,
+        "observersCreated": 154,
+        "activeObservers": 1,
+        "peakObservers": 1,
+        "webglContextsCreated": 903,
+        "peakWebglContexts": 1,
+        "listenersAdded": 17040,
+        "activeListeners": 25,
+        "peakListeners": 25,
+        "activeObjectUrls": 2,
+        "activeAnimationFrames": 0,
+        "activeWebglContexts": 1,
+        "domNodes": 41,
+        "canvases": 1,
+        "heapBytes": 9516211
+      },
+      "ownedProcesses": 8
+    },
+    {
+      "elapsedMs": 750146,
+      "cycle": 3472,
+      "resources": {
+        "objectUrlsCreated": 1572,
+        "objectUrlsRevoked": 1570,
+        "peakObjectUrls": 2,
+        "animationFramesRequested": 15680,
+        "peakAnimationFrames": 1,
+        "observersCreated": 161,
+        "activeObservers": 1,
+        "peakObservers": 1,
+        "webglContextsCreated": 944,
+        "peakWebglContexts": 1,
+        "listenersAdded": 17812,
+        "activeListeners": 25,
+        "peakListeners": 25,
+        "activeObjectUrls": 2,
+        "activeAnimationFrames": 0,
+        "activeWebglContexts": 1,
+        "domNodes": 41,
+        "canvases": 1,
+        "heapBytes": 9925529
+      },
+      "ownedProcesses": 8
+    },
+    {
+      "elapsedMs": 780171,
+      "cycle": 3621,
+      "resources": {
+        "objectUrlsCreated": 1642,
+        "objectUrlsRevoked": 1640,
+        "peakObjectUrls": 2,
+        "animationFramesRequested": 16354,
+        "peakAnimationFrames": 1,
+        "observersCreated": 168,
+        "activeObservers": 1,
+        "peakObservers": 1,
+        "webglContextsCreated": 986,
+        "peakWebglContexts": 1,
+        "listenersAdded": 18603,
+        "activeListeners": 25,
+        "peakListeners": 25,
+        "activeObjectUrls": 2,
+        "activeAnimationFrames": 0,
+        "activeWebglContexts": 1,
+        "domNodes": 41,
+        "canvases": 1,
+        "heapBytes": 10152640
+      },
+      "ownedProcesses": 8
+    },
+    {
+      "elapsedMs": 810044,
+      "cycle": 3773,
+      "resources": {
+        "objectUrlsCreated": 1709,
+        "objectUrlsRevoked": 1707,
+        "peakObjectUrls": 2,
+        "animationFramesRequested": 17050,
+        "peakAnimationFrames": 1,
+        "observersCreated": 175,
+        "activeObservers": 1,
+        "peakObservers": 1,
+        "webglContextsCreated": 1026,
+        "peakWebglContexts": 1,
+        "listenersAdded": 19361,
+        "activeListeners": 25,
+        "peakListeners": 25,
+        "activeObjectUrls": 2,
+        "activeAnimationFrames": 0,
+        "activeWebglContexts": 1,
+        "domNodes": 41,
+        "canvases": 1,
+        "heapBytes": 10743093
+      },
+      "ownedProcesses": 8
+    },
+    {
+      "elapsedMs": 840021,
+      "cycle": 3917,
+      "resources": {
+        "objectUrlsCreated": 1775,
+        "objectUrlsRevoked": 1773,
+        "peakObjectUrls": 2,
+        "animationFramesRequested": 17713,
+        "peakAnimationFrames": 1,
+        "observersCreated": 181,
+        "activeObservers": 1,
+        "peakObservers": 1,
+        "webglContextsCreated": 1066,
+        "peakWebglContexts": 1,
+        "listenersAdded": 20105,
+        "activeListeners": 25,
+        "peakListeners": 25,
+        "activeObjectUrls": 2,
+        "activeAnimationFrames": 0,
+        "activeWebglContexts": 1,
+        "domNodes": 41,
+        "canvases": 1,
+        "heapBytes": 10940862
+      },
+      "ownedProcesses": 8
+    },
+    {
+      "elapsedMs": 870140,
+      "cycle": 4062,
+      "resources": {
+        "objectUrlsCreated": 1840,
+        "objectUrlsRevoked": 1838,
+        "peakObjectUrls": 2,
+        "animationFramesRequested": 18370,
+        "peakAnimationFrames": 1,
+        "observersCreated": 188,
+        "activeObservers": 1,
+        "peakObservers": 1,
+        "webglContextsCreated": 1105,
+        "peakWebglContexts": 1,
+        "listenersAdded": 20844,
+        "activeListeners": 25,
+        "peakListeners": 25,
+        "activeObjectUrls": 2,
+        "activeAnimationFrames": 0,
+        "activeWebglContexts": 1,
+        "domNodes": 41,
+        "canvases": 1,
+        "heapBytes": 11252560
+      },
+      "ownedProcesses": 8
+    },
+    {
+      "elapsedMs": 900161,
+      "cycle": 4202,
+      "resources": {
+        "objectUrlsCreated": 1902,
+        "objectUrlsRevoked": 1900,
+        "peakObjectUrls": 2,
+        "animationFramesRequested": 18990,
+        "peakAnimationFrames": 1,
+        "observersCreated": 195,
+        "activeObservers": 1,
+        "peakObservers": 1,
+        "webglContextsCreated": 1142,
+        "peakWebglContexts": 1,
+        "listenersAdded": 21550,
+        "activeListeners": 25,
+        "peakListeners": 25,
+        "activeObjectUrls": 2,
+        "activeAnimationFrames": 0,
+        "activeWebglContexts": 1,
+        "domNodes": 41,
+        "canvases": 1,
+        "heapBytes": 11664241
+      },
+      "ownedProcesses": 8
+    },
+    {
+      "elapsedMs": 930171,
+      "cycle": 4338,
+      "resources": {
+        "objectUrlsCreated": 1965,
+        "objectUrlsRevoked": 1963,
+        "peakObjectUrls": 2,
+        "animationFramesRequested": 19610,
+        "peakAnimationFrames": 1,
+        "observersCreated": 201,
+        "activeObservers": 1,
+        "peakObservers": 1,
+        "webglContextsCreated": 1180,
+        "peakWebglContexts": 1,
+        "listenersAdded": 22261,
+        "activeListeners": 25,
+        "peakListeners": 25,
+        "activeObjectUrls": 2,
+        "activeAnimationFrames": 0,
+        "activeWebglContexts": 1,
+        "domNodes": 41,
+        "canvases": 1,
+        "heapBytes": 11861211
+      },
+      "ownedProcesses": 8
+    },
+    {
+      "elapsedMs": 960161,
+      "cycle": 4482,
+      "resources": {
+        "objectUrlsCreated": 2030,
+        "objectUrlsRevoked": 2028,
+        "peakObjectUrls": 2,
+        "animationFramesRequested": 20271,
+        "peakAnimationFrames": 1,
+        "observersCreated": 208,
+        "activeObservers": 1,
+        "peakObservers": 1,
+        "webglContextsCreated": 1219,
+        "peakWebglContexts": 1,
+        "listenersAdded": 23000,
+        "activeListeners": 25,
+        "peakListeners": 25,
+        "activeObjectUrls": 2,
+        "activeAnimationFrames": 0,
+        "activeWebglContexts": 1,
+        "domNodes": 41,
+        "canvases": 1,
+        "heapBytes": 12244289
+      },
+      "ownedProcesses": 8
+    },
+    {
+      "elapsedMs": 990162,
+      "cycle": 4619,
+      "resources": {
+        "objectUrlsCreated": 2090,
+        "objectUrlsRevoked": 2088,
+        "peakObjectUrls": 2,
+        "animationFramesRequested": 20888,
+        "peakAnimationFrames": 1,
+        "observersCreated": 214,
+        "activeObservers": 1,
+        "peakObservers": 1,
+        "webglContextsCreated": 1255,
+        "peakWebglContexts": 1,
+        "listenersAdded": 23678,
+        "activeListeners": 25,
+        "peakListeners": 25,
+        "activeObjectUrls": 2,
+        "activeAnimationFrames": 0,
+        "activeWebglContexts": 1,
+        "domNodes": 41,
+        "canvases": 1,
+        "heapBytes": 12612117
+      },
+      "ownedProcesses": 8
+    },
+    {
+      "elapsedMs": 1020009,
+      "cycle": 4748,
+      "resources": {
+        "objectUrlsCreated": 2150,
+        "objectUrlsRevoked": 2148,
+        "peakObjectUrls": 2,
+        "animationFramesRequested": 21463,
+        "peakAnimationFrames": 1,
+        "observersCreated": 220,
+        "activeObservers": 1,
+        "peakObservers": 1,
+        "webglContextsCreated": 1291,
+        "peakWebglContexts": 1,
+        "listenersAdded": 24356,
+        "activeListeners": 25,
+        "peakListeners": 25,
+        "activeObjectUrls": 2,
+        "activeAnimationFrames": 0,
+        "activeWebglContexts": 1,
+        "domNodes": 41,
+        "canvases": 1,
+        "heapBytes": 12868648
+      },
+      "ownedProcesses": 8
+    },
+    {
+      "elapsedMs": 1050055,
+      "cycle": 4900,
+      "resources": {
+        "objectUrlsCreated": 2220,
+        "objectUrlsRevoked": 2218,
+        "peakObjectUrls": 2,
+        "animationFramesRequested": 22147,
+        "peakAnimationFrames": 1,
+        "observersCreated": 227,
+        "activeObservers": 1,
+        "peakObservers": 1,
+        "webglContextsCreated": 1333,
+        "peakWebglContexts": 1,
+        "listenersAdded": 25147,
+        "activeListeners": 25,
+        "peakListeners": 25,
+        "activeObjectUrls": 2,
+        "activeAnimationFrames": 0,
+        "activeWebglContexts": 1,
+        "domNodes": 41,
+        "canvases": 1,
+        "heapBytes": 13246713
+      },
+      "ownedProcesses": 8
+    },
+    {
+      "elapsedMs": 1080169,
+      "cycle": 5044,
+      "resources": {
+        "objectUrlsCreated": 2285,
+        "objectUrlsRevoked": 2283,
+        "peakObjectUrls": 2,
+        "animationFramesRequested": 22801,
+        "peakAnimationFrames": 1,
+        "observersCreated": 234,
+        "activeObservers": 1,
+        "peakObservers": 1,
+        "webglContextsCreated": 1372,
+        "peakWebglContexts": 1,
+        "listenersAdded": 25886,
+        "activeListeners": 25,
+        "peakListeners": 25,
+        "activeObjectUrls": 2,
+        "activeAnimationFrames": 0,
+        "activeWebglContexts": 1,
+        "domNodes": 41,
+        "canvases": 1,
+        "heapBytes": 13573758
+      },
+      "ownedProcesses": 8
+    },
+    {
+      "elapsedMs": 1110006,
+      "cycle": 5202,
+      "resources": {
+        "objectUrlsCreated": 2355,
+        "objectUrlsRevoked": 2353,
+        "peakObjectUrls": 2,
+        "animationFramesRequested": 23514,
+        "peakAnimationFrames": 1,
+        "observersCreated": 241,
+        "activeObservers": 1,
+        "peakObservers": 1,
+        "webglContextsCreated": 1414,
+        "peakWebglContexts": 1,
+        "listenersAdded": 26677,
+        "activeListeners": 25,
+        "peakListeners": 25,
+        "activeObjectUrls": 2,
+        "activeAnimationFrames": 0,
+        "activeWebglContexts": 1,
+        "domNodes": 41,
+        "canvases": 1,
+        "heapBytes": 13893331
+      },
+      "ownedProcesses": 8
+    },
+    {
+      "elapsedMs": 1140123,
+      "cycle": 5356,
+      "resources": {
+        "objectUrlsCreated": 2423,
+        "objectUrlsRevoked": 2421,
+        "peakObjectUrls": 2,
+        "animationFramesRequested": 24225,
+        "peakAnimationFrames": 1,
+        "observersCreated": 248,
+        "activeObservers": 1,
+        "peakObservers": 1,
+        "webglContextsCreated": 1455,
+        "peakWebglContexts": 1,
+        "listenersAdded": 27449,
+        "activeListeners": 25,
+        "peakListeners": 25,
+        "activeObjectUrls": 2,
+        "activeAnimationFrames": 0,
+        "activeWebglContexts": 1,
+        "domNodes": 41,
+        "canvases": 1,
+        "heapBytes": 14223450
+      },
+      "ownedProcesses": 8
+    },
+    {
+      "elapsedMs": 1170064,
+      "cycle": 5516,
+      "resources": {
+        "objectUrlsCreated": 2498,
+        "objectUrlsRevoked": 2496,
+        "peakObjectUrls": 2,
+        "animationFramesRequested": 24954,
+        "peakAnimationFrames": 1,
+        "observersCreated": 256,
+        "activeObservers": 1,
+        "peakObservers": 1,
+        "webglContextsCreated": 1500,
+        "peakWebglContexts": 1,
+        "listenersAdded": 28301,
+        "activeListeners": 25,
+        "peakListeners": 25,
+        "activeObjectUrls": 2,
+        "activeAnimationFrames": 0,
+        "activeWebglContexts": 1,
+        "domNodes": 41,
+        "canvases": 1,
+        "heapBytes": 14613940
+      },
+      "ownedProcesses": 8
+    },
+    {
+      "elapsedMs": 1200148,
+      "cycle": 5675,
+      "resources": {
+        "objectUrlsCreated": 2568,
+        "objectUrlsRevoked": 2566,
+        "peakObjectUrls": 2,
+        "animationFramesRequested": 25688,
+        "peakAnimationFrames": 1,
+        "observersCreated": 263,
+        "activeObservers": 1,
+        "peakObservers": 1,
+        "webglContextsCreated": 1542,
+        "peakWebglContexts": 1,
+        "listenersAdded": 29092,
+        "activeListeners": 25,
+        "peakListeners": 25,
+        "activeObjectUrls": 2,
+        "activeAnimationFrames": 0,
+        "activeWebglContexts": 1,
+        "domNodes": 41,
+        "canvases": 1,
+        "heapBytes": 15010028
+      },
+      "ownedProcesses": 8
+    },
+    {
+      "elapsedMs": 1230023,
+      "cycle": 5821,
+      "resources": {
+        "objectUrlsCreated": 2636,
+        "objectUrlsRevoked": 2634,
+        "peakObjectUrls": 2,
+        "animationFramesRequested": 26335,
+        "peakAnimationFrames": 1,
+        "observersCreated": 269,
+        "activeObservers": 1,
+        "peakObservers": 1,
+        "webglContextsCreated": 1583,
+        "peakWebglContexts": 1,
+        "listenersAdded": 29855,
+        "activeListeners": 25,
+        "peakListeners": 25,
+        "activeObjectUrls": 2,
+        "activeAnimationFrames": 0,
+        "activeWebglContexts": 1,
+        "domNodes": 41,
+        "canvases": 1,
+        "heapBytes": 15313418
+      },
+      "ownedProcesses": 8
+    },
+    {
+      "elapsedMs": 1260167,
+      "cycle": 5975,
+      "resources": {
+        "objectUrlsCreated": 2704,
+        "objectUrlsRevoked": 2702,
+        "peakObjectUrls": 2,
+        "animationFramesRequested": 27035,
+        "peakAnimationFrames": 1,
+        "observersCreated": 276,
+        "activeObservers": 1,
+        "peakObservers": 1,
+        "webglContextsCreated": 1624,
+        "peakWebglContexts": 1,
+        "listenersAdded": 30627,
+        "activeListeners": 25,
+        "peakListeners": 25,
+        "activeObjectUrls": 2,
+        "activeAnimationFrames": 0,
+        "activeWebglContexts": 1,
+        "domNodes": 41,
+        "canvases": 1,
+        "heapBytes": 15665773
+      },
+      "ownedProcesses": 8
+    },
+    {
+      "elapsedMs": 1290092,
+      "cycle": 6129,
+      "resources": {
+        "objectUrlsCreated": 2774,
+        "objectUrlsRevoked": 2772,
+        "peakObjectUrls": 2,
+        "animationFramesRequested": 27741,
+        "peakAnimationFrames": 1,
+        "observersCreated": 283,
+        "activeObservers": 1,
+        "peakObservers": 1,
+        "webglContextsCreated": 1666,
+        "peakWebglContexts": 1,
+        "listenersAdded": 31418,
+        "activeListeners": 25,
+        "peakListeners": 25,
+        "activeObjectUrls": 2,
+        "activeAnimationFrames": 0,
+        "activeWebglContexts": 1,
+        "domNodes": 41,
+        "canvases": 1,
+        "heapBytes": 16014736
+      },
+      "ownedProcesses": 8
+    },
+    {
+      "elapsedMs": 1320162,
+      "cycle": 6277,
+      "resources": {
+        "objectUrlsCreated": 2839,
+        "objectUrlsRevoked": 2837,
+        "peakObjectUrls": 2,
+        "animationFramesRequested": 28414,
+        "peakAnimationFrames": 1,
+        "observersCreated": 290,
+        "activeObservers": 1,
+        "peakObservers": 1,
+        "webglContextsCreated": 1705,
+        "peakWebglContexts": 1,
+        "listenersAdded": 32157,
+        "activeListeners": 25,
+        "peakListeners": 25,
+        "activeObjectUrls": 2,
+        "activeAnimationFrames": 0,
+        "activeWebglContexts": 1,
+        "domNodes": 41,
+        "canvases": 1,
+        "heapBytes": 16450656
+      },
+      "ownedProcesses": 8
+    },
+    {
+      "elapsedMs": 1350083,
+      "cycle": 6415,
+      "resources": {
+        "objectUrlsCreated": 2904,
+        "objectUrlsRevoked": 2902,
+        "peakObjectUrls": 2,
+        "animationFramesRequested": 29041,
+        "peakAnimationFrames": 1,
+        "observersCreated": 297,
+        "activeObservers": 1,
+        "peakObservers": 1,
+        "webglContextsCreated": 1744,
+        "peakWebglContexts": 1,
+        "listenersAdded": 32896,
+        "activeListeners": 25,
+        "peakListeners": 25,
+        "activeObjectUrls": 2,
+        "activeAnimationFrames": 0,
+        "activeWebglContexts": 1,
+        "domNodes": 41,
+        "canvases": 1,
+        "heapBytes": 16668725
+      },
+      "ownedProcesses": 8
+    },
+    {
+      "elapsedMs": 1380175,
+      "cycle": 6568,
+      "resources": {
+        "objectUrlsCreated": 2972,
+        "objectUrlsRevoked": 2970,
+        "peakObjectUrls": 2,
+        "animationFramesRequested": 29758,
+        "peakAnimationFrames": 1,
+        "observersCreated": 303,
+        "activeObservers": 1,
+        "peakObservers": 1,
+        "webglContextsCreated": 1785,
+        "peakWebglContexts": 1,
+        "listenersAdded": 33659,
+        "activeListeners": 25,
+        "peakListeners": 25,
+        "activeObjectUrls": 2,
+        "activeAnimationFrames": 0,
+        "activeWebglContexts": 1,
+        "domNodes": 41,
+        "canvases": 1,
+        "heapBytes": 17023988
+      },
+      "ownedProcesses": 8
+    },
+    {
+      "elapsedMs": 1410009,
+      "cycle": 6722,
+      "resources": {
+        "objectUrlsCreated": 3042,
+        "objectUrlsRevoked": 3040,
+        "peakObjectUrls": 2,
+        "animationFramesRequested": 30466,
+        "peakAnimationFrames": 1,
+        "observersCreated": 310,
+        "activeObservers": 1,
+        "peakObservers": 1,
+        "webglContextsCreated": 1827,
+        "peakWebglContexts": 1,
+        "listenersAdded": 34450,
+        "activeListeners": 25,
+        "peakListeners": 25,
+        "activeObjectUrls": 2,
+        "activeAnimationFrames": 0,
+        "activeWebglContexts": 1,
+        "domNodes": 41,
+        "canvases": 1,
+        "heapBytes": 17431500
+      },
+      "ownedProcesses": 8
+    },
+    {
+      "elapsedMs": 1440153,
+      "cycle": 6876,
+      "resources": {
+        "objectUrlsCreated": 3110,
+        "objectUrlsRevoked": 3108,
+        "peakObjectUrls": 2,
+        "animationFramesRequested": 31181,
+        "peakAnimationFrames": 1,
+        "observersCreated": 317,
+        "activeObservers": 1,
+        "peakObservers": 1,
+        "webglContextsCreated": 1868,
+        "peakWebglContexts": 1,
+        "listenersAdded": 35222,
+        "activeListeners": 25,
+        "peakListeners": 25,
+        "activeObjectUrls": 2,
+        "activeAnimationFrames": 0,
+        "activeWebglContexts": 1,
+        "domNodes": 41,
+        "canvases": 1,
+        "heapBytes": 18043068
+      },
+      "ownedProcesses": 8
+    },
+    {
+      "elapsedMs": 1470163,
+      "cycle": 7021,
+      "resources": {
+        "objectUrlsCreated": 3177,
+        "objectUrlsRevoked": 3175,
+        "peakObjectUrls": 2,
+        "animationFramesRequested": 31845,
+        "peakAnimationFrames": 1,
+        "observersCreated": 324,
+        "activeObservers": 1,
+        "peakObservers": 1,
+        "webglContextsCreated": 1908,
+        "peakWebglContexts": 1,
+        "listenersAdded": 35980,
+        "activeListeners": 25,
+        "peakListeners": 25,
+        "activeObjectUrls": 2,
+        "activeAnimationFrames": 0,
+        "activeWebglContexts": 1,
+        "domNodes": 41,
+        "canvases": 1,
+        "heapBytes": 18138350
+      },
+      "ownedProcesses": 8
+    },
+    {
+      "elapsedMs": 1500058,
+      "cycle": 7175,
+      "resources": {
+        "objectUrlsCreated": 3245,
+        "objectUrlsRevoked": 3243,
+        "peakObjectUrls": 2,
+        "animationFramesRequested": 32552,
+        "peakAnimationFrames": 1,
+        "observersCreated": 331,
+        "activeObservers": 1,
+        "peakObservers": 1,
+        "webglContextsCreated": 1949,
+        "peakWebglContexts": 1,
+        "listenersAdded": 36752,
+        "activeListeners": 25,
+        "peakListeners": 25,
+        "activeObjectUrls": 2,
+        "activeAnimationFrames": 0,
+        "activeWebglContexts": 1,
+        "domNodes": 41,
+        "canvases": 1,
+        "heapBytes": 18479821
+      },
+      "ownedProcesses": 8
+    },
+    {
+      "elapsedMs": 1530135,
+      "cycle": 7330,
+      "resources": {
+        "objectUrlsCreated": 3317,
+        "objectUrlsRevoked": 3315,
+        "peakObjectUrls": 2,
+        "animationFramesRequested": 33264,
+        "peakAnimationFrames": 1,
+        "observersCreated": 339,
+        "activeObservers": 1,
+        "peakObservers": 1,
+        "webglContextsCreated": 1992,
+        "peakWebglContexts": 1,
+        "listenersAdded": 37571,
+        "activeListeners": 25,
+        "peakListeners": 25,
+        "activeObjectUrls": 2,
+        "activeAnimationFrames": 0,
+        "activeWebglContexts": 1,
+        "domNodes": 41,
+        "canvases": 1,
+        "heapBytes": 18881591
+      },
+      "ownedProcesses": 8
+    },
+    {
+      "elapsedMs": 1560036,
+      "cycle": 7481,
+      "resources": {
+        "objectUrlsCreated": 3387,
+        "objectUrlsRevoked": 3385,
+        "peakObjectUrls": 2,
+        "animationFramesRequested": 33950,
+        "peakAnimationFrames": 1,
+        "observersCreated": 346,
+        "activeObservers": 1,
+        "peakObservers": 1,
+        "webglContextsCreated": 2034,
+        "peakWebglContexts": 1,
+        "listenersAdded": 38362,
+        "activeListeners": 25,
+        "peakListeners": 25,
+        "activeObjectUrls": 2,
+        "activeAnimationFrames": 0,
+        "activeWebglContexts": 1,
+        "domNodes": 41,
+        "canvases": 1,
+        "heapBytes": 19194450
+      },
+      "ownedProcesses": 8
+    },
+    {
+      "elapsedMs": 1590022,
+      "cycle": 7635,
+      "resources": {
+        "objectUrlsCreated": 3455,
+        "objectUrlsRevoked": 3453,
+        "peakObjectUrls": 2,
+        "animationFramesRequested": 34665,
+        "peakAnimationFrames": 1,
+        "observersCreated": 353,
+        "activeObservers": 1,
+        "peakObservers": 1,
+        "webglContextsCreated": 2075,
+        "peakWebglContexts": 1,
+        "listenersAdded": 39134,
+        "activeListeners": 25,
+        "peakListeners": 25,
+        "activeObjectUrls": 2,
+        "activeAnimationFrames": 0,
+        "activeWebglContexts": 1,
+        "domNodes": 41,
+        "canvases": 1,
+        "heapBytes": 19543665
+      },
+      "ownedProcesses": 8
+    },
+    {
+      "elapsedMs": 1620090,
+      "cycle": 7785,
+      "resources": {
+        "objectUrlsCreated": 3520,
+        "objectUrlsRevoked": 3518,
+        "peakObjectUrls": 2,
+        "animationFramesRequested": 35370,
+        "peakAnimationFrames": 1,
+        "observersCreated": 359,
+        "activeObservers": 1,
+        "peakObservers": 1,
+        "webglContextsCreated": 2114,
+        "peakWebglContexts": 1,
+        "listenersAdded": 39864,
+        "activeListeners": 25,
+        "peakListeners": 25,
+        "activeObjectUrls": 2,
+        "activeAnimationFrames": 0,
+        "activeWebglContexts": 1,
+        "domNodes": 41,
+        "canvases": 1,
+        "heapBytes": 19978335
+      },
+      "ownedProcesses": 8
+    },
+    {
+      "elapsedMs": 1650120,
+      "cycle": 7940,
+      "resources": {
+        "objectUrlsCreated": 3590,
+        "objectUrlsRevoked": 3588,
+        "peakObjectUrls": 2,
+        "animationFramesRequested": 36077,
+        "peakAnimationFrames": 1,
+        "observersCreated": 366,
+        "activeObservers": 1,
+        "peakObservers": 1,
+        "webglContextsCreated": 2156,
+        "peakWebglContexts": 1,
+        "listenersAdded": 40655,
+        "activeListeners": 25,
+        "peakListeners": 25,
+        "activeObjectUrls": 2,
+        "activeAnimationFrames": 0,
+        "activeWebglContexts": 1,
+        "domNodes": 41,
+        "canvases": 1,
+        "heapBytes": 20293088
+      },
+      "ownedProcesses": 8
+    },
+    {
+      "elapsedMs": 1680100,
+      "cycle": 8090,
+      "resources": {
+        "objectUrlsCreated": 3658,
+        "objectUrlsRevoked": 3656,
+        "peakObjectUrls": 2,
+        "animationFramesRequested": 36769,
+        "peakAnimationFrames": 1,
+        "observersCreated": 373,
+        "activeObservers": 1,
+        "peakObservers": 1,
+        "webglContextsCreated": 2197,
+        "peakWebglContexts": 1,
+        "listenersAdded": 41427,
+        "activeListeners": 25,
+        "peakListeners": 25,
+        "activeObjectUrls": 2,
+        "activeAnimationFrames": 0,
+        "activeWebglContexts": 1,
+        "domNodes": 41,
+        "canvases": 1,
+        "heapBytes": 20627934
+      },
+      "ownedProcesses": 8
+    },
+    {
+      "elapsedMs": 1710137,
+      "cycle": 8245,
+      "resources": {
+        "objectUrlsCreated": 3728,
+        "objectUrlsRevoked": 3726,
+        "peakObjectUrls": 2,
+        "animationFramesRequested": 37492,
+        "peakAnimationFrames": 1,
+        "observersCreated": 380,
+        "activeObservers": 1,
+        "peakObservers": 1,
+        "webglContextsCreated": 2239,
+        "peakWebglContexts": 1,
+        "listenersAdded": 42218,
+        "activeListeners": 25,
+        "peakListeners": 25,
+        "activeObjectUrls": 2,
+        "activeAnimationFrames": 0,
+        "activeWebglContexts": 1,
+        "domNodes": 41,
+        "canvases": 1,
+        "heapBytes": 21006946
+      },
+      "ownedProcesses": 8
+    },
+    {
+      "elapsedMs": 1740077,
+      "cycle": 8403,
+      "resources": {
+        "objectUrlsCreated": 3800,
+        "objectUrlsRevoked": 3798,
+        "peakObjectUrls": 2,
+        "animationFramesRequested": 38231,
+        "peakAnimationFrames": 1,
+        "observersCreated": 388,
+        "activeObservers": 1,
+        "peakObservers": 1,
+        "webglContextsCreated": 2282,
+        "peakWebglContexts": 1,
+        "listenersAdded": 43037,
+        "activeListeners": 25,
+        "peakListeners": 25,
+        "activeObjectUrls": 2,
+        "activeAnimationFrames": 0,
+        "activeWebglContexts": 1,
+        "domNodes": 41,
+        "canvases": 1,
+        "heapBytes": 21339500
+      },
+      "ownedProcesses": 8
+    },
+    {
+      "elapsedMs": 1770151,
+      "cycle": 8547,
+      "resources": {
+        "objectUrlsCreated": 3863,
+        "objectUrlsRevoked": 3861,
+        "peakObjectUrls": 2,
+        "animationFramesRequested": 38897,
+        "peakAnimationFrames": 1,
+        "observersCreated": 394,
+        "activeObservers": 1,
+        "peakObservers": 1,
+        "webglContextsCreated": 2320,
+        "peakWebglContexts": 1,
+        "listenersAdded": 43748,
+        "activeListeners": 25,
+        "peakListeners": 25,
+        "activeObjectUrls": 2,
+        "activeAnimationFrames": 0,
+        "activeWebglContexts": 1,
+        "domNodes": 41,
+        "canvases": 1,
+        "heapBytes": 21795453
+      },
+      "ownedProcesses": 8
+    },
+    {
+      "elapsedMs": 1800088,
+      "cycle": 8701,
+      "resources": {
+        "objectUrlsCreated": 3935,
+        "objectUrlsRevoked": 3933,
+        "peakObjectUrls": 2,
+        "animationFramesRequested": 39613,
+        "peakAnimationFrames": 1,
+        "observersCreated": 402,
+        "activeObservers": 1,
+        "peakObservers": 1,
+        "webglContextsCreated": 2363,
+        "peakWebglContexts": 1,
+        "listenersAdded": 44567,
+        "activeListeners": 25,
+        "peakListeners": 25,
+        "activeObjectUrls": 2,
+        "activeAnimationFrames": 0,
+        "activeWebglContexts": 1,
+        "domNodes": 41,
+        "canvases": 1,
+        "heapBytes": 22054330
+      },
+      "ownedProcesses": 8
+    }
+  ],
+  "consoleErrors": 0,
+  "runtimeExceptions": 0,
+  "networkFailures": 0,
+  "networkHttpErrors": [],
+  "externalRequests": [],
+  "screenshot": "screenshots/viewer-soak-final.png",
+  "stages": [
+    {
+      "kind": "STAGE_START",
+      "name": "server-start",
+      "at": "2026-08-13T07:27:13.671Z",
+      "detail": {
+        "timeoutMs": 15000
+      }
+    },
+    {
+      "kind": "STAGE_PASS",
+      "name": "server-start",
+      "at": "2026-08-13T07:27:13.679Z",
+      "detail": null
+    },
+    {
+      "kind": "STAGE_START",
+      "name": "browser-launch",
+      "at": "2026-08-13T07:27:13.679Z",
+      "detail": {
+        "timeoutMs": 25000
+      }
+    },
+    {
+      "kind": "STAGE_PASS",
+      "name": "browser-launch",
+      "at": "2026-08-13T07:27:16.036Z",
+      "detail": null
+    },
+    {
+      "kind": "STAGE_START",
+      "name": "scene-ready",
+      "at": "2026-08-13T07:27:16.037Z",
+      "detail": {
+        "timeoutMs": 25000
+      }
+    },
+    {
+      "kind": "STAGE_PASS",
+      "name": "scene-ready",
+      "at": "2026-08-13T07:27:18.372Z",
+      "detail": null
+    },
+    {
+      "kind": "STAGE_START",
+      "name": "parameterized-interaction-loop",
+      "at": "2026-08-13T07:27:18.372Z",
+      "detail": {
+        "timeoutMs": 1860000
+      }
+    },
+    {
+      "kind": "SOAK_PROGRESS",
+      "name": "30s",
+      "at": "2026-08-13T07:27:48.654Z",
+      "detail": {
+        "cycles": 59,
+        "heapBytes": 1454428,
+        "activeObjectUrls": 2
+      }
+    },
+    {
+      "kind": "SOAK_PROGRESS",
+      "name": "60s",
+      "at": "2026-08-13T07:28:18.543Z",
+      "detail": {
+        "cycles": 180,
+        "heapBytes": 1845692,
+        "activeObjectUrls": 2
+      }
+    },
+    {
+      "kind": "SOAK_PROGRESS",
+      "name": "90s",
+      "at": "2026-08-13T07:28:48.474Z",
+      "detail": {
+        "cycles": 301,
+        "heapBytes": 2307249,
+        "activeObjectUrls": 2
+      }
+    },
+    {
+      "kind": "SOAK_PROGRESS",
+      "name": "120s",
+      "at": "2026-08-13T07:29:18.668Z",
+      "detail": {
+        "cycles": 452,
+        "heapBytes": 3186226,
+        "activeObjectUrls": 2
+      }
+    },
+    {
+      "kind": "SOAK_PROGRESS",
+      "name": "150s",
+      "at": "2026-08-13T07:29:48.470Z",
+      "detail": {
+        "cycles": 589,
+        "heapBytes": 3237434,
+        "activeObjectUrls": 2
+      }
+    },
+    {
+      "kind": "SOAK_PROGRESS",
+      "name": "180s",
+      "at": "2026-08-13T07:30:18.542Z",
+      "detail": {
+        "cycles": 734,
+        "heapBytes": 3850889,
+        "activeObjectUrls": 2
+      }
+    },
+    {
+      "kind": "SOAK_PROGRESS",
+      "name": "210s",
+      "at": "2026-08-13T07:30:48.482Z",
+      "detail": {
+        "cycles": 884,
+        "heapBytes": 4175985,
+        "activeObjectUrls": 2
+      }
+    },
+    {
+      "kind": "SOAK_PROGRESS",
+      "name": "240s",
+      "at": "2026-08-13T07:31:18.473Z",
+      "detail": {
+        "cycles": 1032,
+        "heapBytes": 4324102,
+        "activeObjectUrls": 2
+      }
+    },
+    {
+      "kind": "SOAK_PROGRESS",
+      "name": "270s",
+      "at": "2026-08-13T07:31:48.588Z",
+      "detail": {
+        "cycles": 1185,
+        "heapBytes": 5040566,
+        "activeObjectUrls": 2
+      }
+    },
+    {
+      "kind": "SOAK_PROGRESS",
+      "name": "300s",
+      "at": "2026-08-13T07:32:18.489Z",
+      "detail": {
+        "cycles": 1328,
+        "heapBytes": 5469695,
+        "activeObjectUrls": 2
+      }
+    },
+    {
+      "kind": "SOAK_PROGRESS",
+      "name": "330s",
+      "at": "2026-08-13T07:32:48.588Z",
+      "detail": {
+        "cycles": 1477,
+        "heapBytes": 5986823,
+        "activeObjectUrls": 2
+      }
+    },
+    {
+      "kind": "SOAK_PROGRESS",
+      "name": "360s",
+      "at": "2026-08-13T07:33:18.489Z",
+      "detail": {
+        "cycles": 1624,
+        "heapBytes": 6046011,
+        "activeObjectUrls": 2
+      }
+    },
+    {
+      "kind": "SOAK_PROGRESS",
+      "name": "390s",
+      "at": "2026-08-13T07:33:48.476Z",
+      "detail": {
+        "cycles": 1767,
+        "heapBytes": 6207227,
+        "activeObjectUrls": 2
+      }
+    },
+    {
+      "kind": "SOAK_PROGRESS",
+      "name": "420s",
+      "at": "2026-08-13T07:34:18.535Z",
+      "detail": {
+        "cycles": 1914,
+        "heapBytes": 7532368,
+        "activeObjectUrls": 2
+      }
+    },
+    {
+      "kind": "SOAK_PROGRESS",
+      "name": "450s",
+      "at": "2026-08-13T07:34:48.549Z",
+      "detail": {
+        "cycles": 2055,
+        "heapBytes": 7583452,
+        "activeObjectUrls": 2
+      }
+    },
+    {
+      "kind": "SOAK_PROGRESS",
+      "name": "480s",
+      "at": "2026-08-13T07:35:18.706Z",
+      "detail": {
+        "cycles": 2201,
+        "heapBytes": 7746881,
+        "activeObjectUrls": 2
+      }
+    },
+    {
+      "kind": "SOAK_PROGRESS",
+      "name": "510s",
+      "at": "2026-08-13T07:35:48.525Z",
+      "detail": {
+        "cycles": 2353,
+        "heapBytes": 8926395,
+        "activeObjectUrls": 2
+      }
+    },
+    {
+      "kind": "SOAK_PROGRESS",
+      "name": "540s",
+      "at": "2026-08-13T07:36:18.555Z",
+      "detail": {
+        "cycles": 2489,
+        "heapBytes": 8456128,
+        "activeObjectUrls": 2
+      }
+    },
+    {
+      "kind": "SOAK_PROGRESS",
+      "name": "570s",
+      "at": "2026-08-13T07:36:48.437Z",
+      "detail": {
+        "cycles": 2636,
+        "heapBytes": 9632020,
+        "activeObjectUrls": 2
+      }
+    },
+    {
+      "kind": "SOAK_PROGRESS",
+      "name": "600s",
+      "at": "2026-08-13T07:37:18.523Z",
+      "detail": {
+        "cycles": 2752,
+        "heapBytes": 9142689,
+        "activeObjectUrls": 2
+      }
+    },
+    {
+      "kind": "SOAK_PROGRESS",
+      "name": "630s",
+      "at": "2026-08-13T07:37:48.472Z",
+      "detail": {
+        "cycles": 2886,
+        "heapBytes": 9160112,
+        "activeObjectUrls": 2
+      }
+    },
+    {
+      "kind": "SOAK_PROGRESS",
+      "name": "660s",
+      "at": "2026-08-13T07:38:18.439Z",
+      "detail": {
+        "cycles": 3029,
+        "heapBytes": 8850409,
+        "activeObjectUrls": 2
+      }
+    },
+    {
+      "kind": "SOAK_PROGRESS",
+      "name": "690s",
+      "at": "2026-08-13T07:38:48.532Z",
+      "detail": {
+        "cycles": 3178,
+        "heapBytes": 9181541,
+        "activeObjectUrls": 2
+      }
+    },
+    {
+      "kind": "SOAK_PROGRESS",
+      "name": "720s",
+      "at": "2026-08-13T07:39:18.433Z",
+      "detail": {
+        "cycles": 3318,
+        "heapBytes": 9516211,
+        "activeObjectUrls": 2
+      }
+    },
+    {
+      "kind": "SOAK_PROGRESS",
+      "name": "750s",
+      "at": "2026-08-13T07:39:48.546Z",
+      "detail": {
+        "cycles": 3472,
+        "heapBytes": 9925529,
+        "activeObjectUrls": 2
+      }
+    },
+    {
+      "kind": "SOAK_PROGRESS",
+      "name": "780s",
+      "at": "2026-08-13T07:40:18.571Z",
+      "detail": {
+        "cycles": 3621,
+        "heapBytes": 10152640,
+        "activeObjectUrls": 2
+      }
+    },
+    {
+      "kind": "SOAK_PROGRESS",
+      "name": "810s",
+      "at": "2026-08-13T07:40:48.446Z",
+      "detail": {
+        "cycles": 3773,
+        "heapBytes": 10743093,
+        "activeObjectUrls": 2
+      }
+    },
+    {
+      "kind": "SOAK_PROGRESS",
+      "name": "840s",
+      "at": "2026-08-13T07:41:18.476Z",
+      "detail": {
+        "cycles": 3917,
+        "heapBytes": 10940862,
+        "activeObjectUrls": 2
+      }
+    },
+    {
+      "kind": "SOAK_PROGRESS",
+      "name": "870s",
+      "at": "2026-08-13T07:41:48.546Z",
+      "detail": {
+        "cycles": 4062,
+        "heapBytes": 11252560,
+        "activeObjectUrls": 2
+      }
+    },
+    {
+      "kind": "SOAK_PROGRESS",
+      "name": "900s",
+      "at": "2026-08-13T07:42:18.600Z",
+      "detail": {
+        "cycles": 4202,
+        "heapBytes": 11664241,
+        "activeObjectUrls": 2
+      }
+    },
+    {
+      "kind": "SOAK_PROGRESS",
+      "name": "930s",
+      "at": "2026-08-13T07:42:48.574Z",
+      "detail": {
+        "cycles": 4338,
+        "heapBytes": 11861211,
+        "activeObjectUrls": 2
+      }
+    },
+    {
+      "kind": "SOAK_PROGRESS",
+      "name": "960s",
+      "at": "2026-08-13T07:43:18.566Z",
+      "detail": {
+        "cycles": 4482,
+        "heapBytes": 12244289,
+        "activeObjectUrls": 2
+      }
+    },
+    {
+      "kind": "SOAK_PROGRESS",
+      "name": "990s",
+      "at": "2026-08-13T07:43:48.566Z",
+      "detail": {
+        "cycles": 4619,
+        "heapBytes": 12612117,
+        "activeObjectUrls": 2
+      }
+    },
+    {
+      "kind": "SOAK_PROGRESS",
+      "name": "1020s",
+      "at": "2026-08-13T07:44:18.411Z",
+      "detail": {
+        "cycles": 4748,
+        "heapBytes": 12868648,
+        "activeObjectUrls": 2
+      }
+    },
+    {
+      "kind": "SOAK_PROGRESS",
+      "name": "1050s",
+      "at": "2026-08-13T07:44:48.477Z",
+      "detail": {
+        "cycles": 4900,
+        "heapBytes": 13246713,
+        "activeObjectUrls": 2
+      }
+    },
+    {
+      "kind": "SOAK_PROGRESS",
+      "name": "1080s",
+      "at": "2026-08-13T07:45:18.575Z",
+      "detail": {
+        "cycles": 5044,
+        "heapBytes": 13573758,
+        "activeObjectUrls": 2
+      }
+    },
+    {
+      "kind": "SOAK_PROGRESS",
+      "name": "1110s",
+      "at": "2026-08-13T07:45:48.408Z",
+      "detail": {
+        "cycles": 5202,
+        "heapBytes": 13893331,
+        "activeObjectUrls": 2
+      }
+    },
+    {
+      "kind": "SOAK_PROGRESS",
+      "name": "1140s",
+      "at": "2026-08-13T07:46:18.522Z",
+      "detail": {
+        "cycles": 5356,
+        "heapBytes": 14223450,
+        "activeObjectUrls": 2
+      }
+    },
+    {
+      "kind": "SOAK_PROGRESS",
+      "name": "1170s",
+      "at": "2026-08-13T07:46:48.464Z",
+      "detail": {
+        "cycles": 5516,
+        "heapBytes": 14613940,
+        "activeObjectUrls": 2
+      }
+    },
+    {
+      "kind": "SOAK_PROGRESS",
+      "name": "1200s",
+      "at": "2026-08-13T07:47:18.563Z",
+      "detail": {
+        "cycles": 5675,
+        "heapBytes": 15010028,
+        "activeObjectUrls": 2
+      }
+    },
+    {
+      "kind": "SOAK_PROGRESS",
+      "name": "1230s",
+      "at": "2026-08-13T07:47:48.428Z",
+      "detail": {
+        "cycles": 5821,
+        "heapBytes": 15313418,
+        "activeObjectUrls": 2
+      }
+    },
+    {
+      "kind": "SOAK_PROGRESS",
+      "name": "1260s",
+      "at": "2026-08-13T07:48:18.568Z",
+      "detail": {
+        "cycles": 5975,
+        "heapBytes": 15665773,
+        "activeObjectUrls": 2
+      }
+    },
+    {
+      "kind": "SOAK_PROGRESS",
+      "name": "1290s",
+      "at": "2026-08-13T07:48:48.493Z",
+      "detail": {
+        "cycles": 6129,
+        "heapBytes": 16014736,
+        "activeObjectUrls": 2
+      }
+    },
+    {
+      "kind": "SOAK_PROGRESS",
+      "name": "1320s",
+      "at": "2026-08-13T07:49:18.586Z",
+      "detail": {
+        "cycles": 6277,
+        "heapBytes": 16450656,
+        "activeObjectUrls": 2
+      }
+    },
+    {
+      "kind": "SOAK_PROGRESS",
+      "name": "1350s",
+      "at": "2026-08-13T07:49:48.483Z",
+      "detail": {
+        "cycles": 6415,
+        "heapBytes": 16668725,
+        "activeObjectUrls": 2
+      }
+    },
+    {
+      "kind": "SOAK_PROGRESS",
+      "name": "1380s",
+      "at": "2026-08-13T07:50:18.583Z",
+      "detail": {
+        "cycles": 6568,
+        "heapBytes": 17023988,
+        "activeObjectUrls": 2
+      }
+    },
+    {
+      "kind": "SOAK_PROGRESS",
+      "name": "1410s",
+      "at": "2026-08-13T07:50:48.414Z",
+      "detail": {
+        "cycles": 6722,
+        "heapBytes": 17431500,
+        "activeObjectUrls": 2
+      }
+    },
+    {
+      "kind": "SOAK_PROGRESS",
+      "name": "1440s",
+      "at": "2026-08-13T07:51:18.563Z",
+      "detail": {
+        "cycles": 6876,
+        "heapBytes": 18043068,
+        "activeObjectUrls": 2
+      }
+    },
+    {
+      "kind": "SOAK_PROGRESS",
+      "name": "1470s",
+      "at": "2026-08-13T07:51:48.572Z",
+      "detail": {
+        "cycles": 7021,
+        "heapBytes": 18138350,
+        "activeObjectUrls": 2
+      }
+    },
+    {
+      "kind": "SOAK_PROGRESS",
+      "name": "1500s",
+      "at": "2026-08-13T07:52:18.466Z",
+      "detail": {
+        "cycles": 7175,
+        "heapBytes": 18479821,
+        "activeObjectUrls": 2
+      }
+    },
+    {
+      "kind": "SOAK_PROGRESS",
+      "name": "1530s",
+      "at": "2026-08-13T07:52:48.538Z",
+      "detail": {
+        "cycles": 7330,
+        "heapBytes": 18881591,
+        "activeObjectUrls": 2
+      }
+    },
+    {
+      "kind": "SOAK_PROGRESS",
+      "name": "1560s",
+      "at": "2026-08-13T07:53:18.467Z",
+      "detail": {
+        "cycles": 7481,
+        "heapBytes": 19194450,
+        "activeObjectUrls": 2
+      }
+    },
+    {
+      "kind": "SOAK_PROGRESS",
+      "name": "1590s",
+      "at": "2026-08-13T07:53:48.438Z",
+      "detail": {
+        "cycles": 7635,
+        "heapBytes": 19543665,
+        "activeObjectUrls": 2
+      }
+    },
+    {
+      "kind": "SOAK_PROGRESS",
+      "name": "1620s",
+      "at": "2026-08-13T07:54:18.495Z",
+      "detail": {
+        "cycles": 7785,
+        "heapBytes": 19978335,
+        "activeObjectUrls": 2
+      }
+    },
+    {
+      "kind": "SOAK_PROGRESS",
+      "name": "1650s",
+      "at": "2026-08-13T07:54:48.534Z",
+      "detail": {
+        "cycles": 7940,
+        "heapBytes": 20293088,
+        "activeObjectUrls": 2
+      }
+    },
+    {
+      "kind": "SOAK_PROGRESS",
+      "name": "1680s",
+      "at": "2026-08-13T07:55:18.511Z",
+      "detail": {
+        "cycles": 8090,
+        "heapBytes": 20627934,
+        "activeObjectUrls": 2
+      }
+    },
+    {
+      "kind": "SOAK_PROGRESS",
+      "name": "1710s",
+      "at": "2026-08-13T07:55:48.543Z",
+      "detail": {
+        "cycles": 8245,
+        "heapBytes": 21006946,
+        "activeObjectUrls": 2
+      }
+    },
+    {
+      "kind": "SOAK_PROGRESS",
+      "name": "1740s",
+      "at": "2026-08-13T07:56:18.480Z",
+      "detail": {
+        "cycles": 8403,
+        "heapBytes": 21339500,
+        "activeObjectUrls": 2
+      }
+    },
+    {
+      "kind": "SOAK_PROGRESS",
+      "name": "1770s",
+      "at": "2026-08-13T07:56:48.554Z",
+      "detail": {
+        "cycles": 8547,
+        "heapBytes": 21795453,
+        "activeObjectUrls": 2
+      }
+    },
+    {
+      "kind": "SOAK_PROGRESS",
+      "name": "1800s",
+      "at": "2026-08-13T07:57:18.487Z",
+      "detail": {
+        "cycles": 8701,
+        "heapBytes": 22054330,
+        "activeObjectUrls": 2
+      }
+    },
+    {
+      "kind": "STAGE_PASS",
+      "name": "parameterized-interaction-loop",
+      "at": "2026-08-13T07:57:18.487Z",
+      "detail": null
+    },
+    {
+      "kind": "STAGE_START",
+      "name": "finalize-and-dispose",
+      "at": "2026-08-13T07:57:18.489Z",
+      "detail": {
+        "timeoutMs": 25000
+      }
+    },
+    {
+      "kind": "STAGE_PASS",
+      "name": "finalize-and-dispose",
+      "at": "2026-08-13T07:57:18.834Z",
+      "detail": null
+    },
+    {
+      "kind": "ASSERT_PASS",
+      "name": "durationReached",
+      "at": "2026-08-13T07:57:18.834Z",
+      "detail": {
+        "requestedDurationMs": 1800000,
+        "elapsedMs": 1800115,
+        "acceptanceDurationMs": 1800000
+      }
+    },
+    {
+      "kind": "ASSERT_PASS",
+      "name": "officialDurationReached",
+      "at": "2026-08-13T07:57:18.834Z",
+      "detail": {
+        "requestedDurationMs": 1800000,
+        "elapsedMs": 1800115,
+        "acceptanceDurationMs": 1800000
+      }
+    },
+    {
+      "kind": "ASSERT_PASS",
+      "name": "heapPeakBounded",
+      "at": "2026-08-13T07:57:18.834Z",
+      "detail": {
+        "heapBytes": {
+          "baseline": 943670,
+          "peak": 22126218,
+          "steadyFinal": 21538037,
+          "final": 21494164
+        },
+        "domNodes": {
+          "baseline": 41,
+          "peak": 41,
+          "steadyFinal": 41,
+          "final": 15
+        },
+        "canvases": {
+          "baseline": 1,
+          "peak": 1,
+          "steadyFinal": 1,
+          "final": 0
+        },
+        "webglContexts": {
+          "baseline": 1,
+          "peak": 1,
+          "steadyFinal": 1,
+          "final": 0
+        },
+        "objectUrls": {
+          "baseline": 2,
+          "peak": 2,
+          "steadyFinal": 2,
+          "final": 0
+        },
+        "animationFrames": {
+          "baseline": 0,
+          "peak": 1,
+          "steadyFinal": 0,
+          "final": 0
+        },
+        "listeners": {
+          "baseline": 25,
+          "peak": 25,
+          "steadyFinal": 25,
+          "final": 7
+        },
+        "resizeObservers": {
+          "baseline": 1,
+          "peak": 1,
+          "steadyFinal": 1,
+          "final": 0
+        }
+      }
+    },
+    {
+      "kind": "ASSERT_PASS",
+      "name": "heapFinalBounded",
+      "at": "2026-08-13T07:57:18.834Z",
+      "detail": {
+        "heapBytes": {
+          "baseline": 943670,
+          "peak": 22126218,
+          "steadyFinal": 21538037,
+          "final": 21494164
+        },
+        "domNodes": {
+          "baseline": 41,
+          "peak": 41,
+          "steadyFinal": 41,
+          "final": 15
+        },
+        "canvases": {
+          "baseline": 1,
+          "peak": 1,
+          "steadyFinal": 1,
+          "final": 0
+        },
+        "webglContexts": {
+          "baseline": 1,
+          "peak": 1,
+          "steadyFinal": 1,
+          "final": 0
+        },
+        "objectUrls": {
+          "baseline": 2,
+          "peak": 2,
+          "steadyFinal": 2,
+          "final": 0
+        },
+        "animationFrames": {
+          "baseline": 0,
+          "peak": 1,
+          "steadyFinal": 0,
+          "final": 0
+        },
+        "listeners": {
+          "baseline": 25,
+          "peak": 25,
+          "steadyFinal": 25,
+          "final": 7
+        },
+        "resizeObservers": {
+          "baseline": 1,
+          "peak": 1,
+          "steadyFinal": 1,
+          "final": 0
+        }
+      }
+    },
+    {
+      "kind": "ASSERT_PASS",
+      "name": "domBounded",
+      "at": "2026-08-13T07:57:18.834Z",
+      "detail": {
+        "heapBytes": {
+          "baseline": 943670,
+          "peak": 22126218,
+          "steadyFinal": 21538037,
+          "final": 21494164
+        },
+        "domNodes": {
+          "baseline": 41,
+          "peak": 41,
+          "steadyFinal": 41,
+          "final": 15
+        },
+        "canvases": {
+          "baseline": 1,
+          "peak": 1,
+          "steadyFinal": 1,
+          "final": 0
+        },
+        "webglContexts": {
+          "baseline": 1,
+          "peak": 1,
+          "steadyFinal": 1,
+          "final": 0
+        },
+        "objectUrls": {
+          "baseline": 2,
+          "peak": 2,
+          "steadyFinal": 2,
+          "final": 0
+        },
+        "animationFrames": {
+          "baseline": 0,
+          "peak": 1,
+          "steadyFinal": 0,
+          "final": 0
+        },
+        "listeners": {
+          "baseline": 25,
+          "peak": 25,
+          "steadyFinal": 25,
+          "final": 7
+        },
+        "resizeObservers": {
+          "baseline": 1,
+          "peak": 1,
+          "steadyFinal": 1,
+          "final": 0
+        }
+      }
+    },
+    {
+      "kind": "ASSERT_PASS",
+      "name": "canvasBounded",
+      "at": "2026-08-13T07:57:18.834Z",
+      "detail": {
+        "heapBytes": {
+          "baseline": 943670,
+          "peak": 22126218,
+          "steadyFinal": 21538037,
+          "final": 21494164
+        },
+        "domNodes": {
+          "baseline": 41,
+          "peak": 41,
+          "steadyFinal": 41,
+          "final": 15
+        },
+        "canvases": {
+          "baseline": 1,
+          "peak": 1,
+          "steadyFinal": 1,
+          "final": 0
+        },
+        "webglContexts": {
+          "baseline": 1,
+          "peak": 1,
+          "steadyFinal": 1,
+          "final": 0
+        },
+        "objectUrls": {
+          "baseline": 2,
+          "peak": 2,
+          "steadyFinal": 2,
+          "final": 0
+        },
+        "animationFrames": {
+          "baseline": 0,
+          "peak": 1,
+          "steadyFinal": 0,
+          "final": 0
+        },
+        "listeners": {
+          "baseline": 25,
+          "peak": 25,
+          "steadyFinal": 25,
+          "final": 7
+        },
+        "resizeObservers": {
+          "baseline": 1,
+          "peak": 1,
+          "steadyFinal": 1,
+          "final": 0
+        }
+      }
+    },
+    {
+      "kind": "ASSERT_PASS",
+      "name": "webglBounded",
+      "at": "2026-08-13T07:57:18.834Z",
+      "detail": {
+        "heapBytes": {
+          "baseline": 943670,
+          "peak": 22126218,
+          "steadyFinal": 21538037,
+          "final": 21494164
+        },
+        "domNodes": {
+          "baseline": 41,
+          "peak": 41,
+          "steadyFinal": 41,
+          "final": 15
+        },
+        "canvases": {
+          "baseline": 1,
+          "peak": 1,
+          "steadyFinal": 1,
+          "final": 0
+        },
+        "webglContexts": {
+          "baseline": 1,
+          "peak": 1,
+          "steadyFinal": 1,
+          "final": 0
+        },
+        "objectUrls": {
+          "baseline": 2,
+          "peak": 2,
+          "steadyFinal": 2,
+          "final": 0
+        },
+        "animationFrames": {
+          "baseline": 0,
+          "peak": 1,
+          "steadyFinal": 0,
+          "final": 0
+        },
+        "listeners": {
+          "baseline": 25,
+          "peak": 25,
+          "steadyFinal": 25,
+          "final": 7
+        },
+        "resizeObservers": {
+          "baseline": 1,
+          "peak": 1,
+          "steadyFinal": 1,
+          "final": 0
+        }
+      }
+    },
+    {
+      "kind": "ASSERT_PASS",
+      "name": "objectUrlsBounded",
+      "at": "2026-08-13T07:57:18.834Z",
+      "detail": {
+        "heapBytes": {
+          "baseline": 943670,
+          "peak": 22126218,
+          "steadyFinal": 21538037,
+          "final": 21494164
+        },
+        "domNodes": {
+          "baseline": 41,
+          "peak": 41,
+          "steadyFinal": 41,
+          "final": 15
+        },
+        "canvases": {
+          "baseline": 1,
+          "peak": 1,
+          "steadyFinal": 1,
+          "final": 0
+        },
+        "webglContexts": {
+          "baseline": 1,
+          "peak": 1,
+          "steadyFinal": 1,
+          "final": 0
+        },
+        "objectUrls": {
+          "baseline": 2,
+          "peak": 2,
+          "steadyFinal": 2,
+          "final": 0
+        },
+        "animationFrames": {
+          "baseline": 0,
+          "peak": 1,
+          "steadyFinal": 0,
+          "final": 0
+        },
+        "listeners": {
+          "baseline": 25,
+          "peak": 25,
+          "steadyFinal": 25,
+          "final": 7
+        },
+        "resizeObservers": {
+          "baseline": 1,
+          "peak": 1,
+          "steadyFinal": 1,
+          "final": 0
+        }
+      }
+    },
+    {
+      "kind": "ASSERT_PASS",
+      "name": "animationFramesBounded",
+      "at": "2026-08-13T07:57:18.834Z",
+      "detail": {
+        "heapBytes": {
+          "baseline": 943670,
+          "peak": 22126218,
+          "steadyFinal": 21538037,
+          "final": 21494164
+        },
+        "domNodes": {
+          "baseline": 41,
+          "peak": 41,
+          "steadyFinal": 41,
+          "final": 15
+        },
+        "canvases": {
+          "baseline": 1,
+          "peak": 1,
+          "steadyFinal": 1,
+          "final": 0
+        },
+        "webglContexts": {
+          "baseline": 1,
+          "peak": 1,
+          "steadyFinal": 1,
+          "final": 0
+        },
+        "objectUrls": {
+          "baseline": 2,
+          "peak": 2,
+          "steadyFinal": 2,
+          "final": 0
+        },
+        "animationFrames": {
+          "baseline": 0,
+          "peak": 1,
+          "steadyFinal": 0,
+          "final": 0
+        },
+        "listeners": {
+          "baseline": 25,
+          "peak": 25,
+          "steadyFinal": 25,
+          "final": 7
+        },
+        "resizeObservers": {
+          "baseline": 1,
+          "peak": 1,
+          "steadyFinal": 1,
+          "final": 0
+        }
+      }
+    },
+    {
+      "kind": "ASSERT_PASS",
+      "name": "listenersBounded",
+      "at": "2026-08-13T07:57:18.834Z",
+      "detail": {
+        "heapBytes": {
+          "baseline": 943670,
+          "peak": 22126218,
+          "steadyFinal": 21538037,
+          "final": 21494164
+        },
+        "domNodes": {
+          "baseline": 41,
+          "peak": 41,
+          "steadyFinal": 41,
+          "final": 15
+        },
+        "canvases": {
+          "baseline": 1,
+          "peak": 1,
+          "steadyFinal": 1,
+          "final": 0
+        },
+        "webglContexts": {
+          "baseline": 1,
+          "peak": 1,
+          "steadyFinal": 1,
+          "final": 0
+        },
+        "objectUrls": {
+          "baseline": 2,
+          "peak": 2,
+          "steadyFinal": 2,
+          "final": 0
+        },
+        "animationFrames": {
+          "baseline": 0,
+          "peak": 1,
+          "steadyFinal": 0,
+          "final": 0
+        },
+        "listeners": {
+          "baseline": 25,
+          "peak": 25,
+          "steadyFinal": 25,
+          "final": 7
+        },
+        "resizeObservers": {
+          "baseline": 1,
+          "peak": 1,
+          "steadyFinal": 1,
+          "final": 0
+        }
+      }
+    },
+    {
+      "kind": "ASSERT_PASS",
+      "name": "observersBounded",
+      "at": "2026-08-13T07:57:18.834Z",
+      "detail": {
+        "heapBytes": {
+          "baseline": 943670,
+          "peak": 22126218,
+          "steadyFinal": 21538037,
+          "final": 21494164
+        },
+        "domNodes": {
+          "baseline": 41,
+          "peak": 41,
+          "steadyFinal": 41,
+          "final": 15
+        },
+        "canvases": {
+          "baseline": 1,
+          "peak": 1,
+          "steadyFinal": 1,
+          "final": 0
+        },
+        "webglContexts": {
+          "baseline": 1,
+          "peak": 1,
+          "steadyFinal": 1,
+          "final": 0
+        },
+        "objectUrls": {
+          "baseline": 2,
+          "peak": 2,
+          "steadyFinal": 2,
+          "final": 0
+        },
+        "animationFrames": {
+          "baseline": 0,
+          "peak": 1,
+          "steadyFinal": 0,
+          "final": 0
+        },
+        "listeners": {
+          "baseline": 25,
+          "peak": 25,
+          "steadyFinal": 25,
+          "final": 7
+        },
+        "resizeObservers": {
+          "baseline": 1,
+          "peak": 1,
+          "steadyFinal": 1,
+          "final": 0
+        }
+      }
+    },
+    {
+      "kind": "ASSERT_PASS",
+      "name": "consoleAndNetworkClean",
+      "at": "2026-08-13T07:57:18.834Z",
+      "detail": {
+        "heapBytes": {
+          "baseline": 943670,
+          "peak": 22126218,
+          "steadyFinal": 21538037,
+          "final": 21494164
+        },
+        "domNodes": {
+          "baseline": 41,
+          "peak": 41,
+          "steadyFinal": 41,
+          "final": 15
+        },
+        "canvases": {
+          "baseline": 1,
+          "peak": 1,
+          "steadyFinal": 1,
+          "final": 0
+        },
+        "webglContexts": {
+          "baseline": 1,
+          "peak": 1,
+          "steadyFinal": 1,
+          "final": 0
+        },
+        "objectUrls": {
+          "baseline": 2,
+          "peak": 2,
+          "steadyFinal": 2,
+          "final": 0
+        },
+        "animationFrames": {
+          "baseline": 0,
+          "peak": 1,
+          "steadyFinal": 0,
+          "final": 0
+        },
+        "listeners": {
+          "baseline": 25,
+          "peak": 25,
+          "steadyFinal": 25,
+          "final": 7
+        },
+        "resizeObservers": {
+          "baseline": 1,
+          "peak": 1,
+          "steadyFinal": 1,
+          "final": 0
+        }
+      }
+    },
+    {
+      "kind": "ASSERT_PASS",
+      "name": "cycles-completed",
+      "at": "2026-08-13T07:57:18.834Z",
+      "detail": {
+        "cycles": 8701
+      }
+    },
+    {
+      "kind": "CLEANUP_START",
+      "name": "success",
+      "at": "2026-08-13T07:57:18.834Z",
+      "detail": null
+    },
+    {
+      "kind": "CLEANUP_PASS",
+      "name": "success",
+      "at": "2026-08-13T07:57:19.081Z",
+      "detail": {
+        "reason": "success",
+        "serverClosed": true,
+        "chromeExited": true,
+        "chromeExit": {
+          "code": 0,
+          "signal": null
+        },
+        "usedSigkill": false,
+        "profileRemoved": true,
+        "orphanProcessCount": 0
+      }
+    }
+  ],
+  "pass": true,
+  "failure": null,
+  "cleanup": {
+    "reason": "success",
+    "serverClosed": true,
+    "chromeExited": true,
+    "chromeExit": {
+      "code": 0,
+      "signal": null
+    },
+    "usedSigkill": false,
+    "profileRemoved": true,
+    "orphanProcessCount": 0
+  }
+}

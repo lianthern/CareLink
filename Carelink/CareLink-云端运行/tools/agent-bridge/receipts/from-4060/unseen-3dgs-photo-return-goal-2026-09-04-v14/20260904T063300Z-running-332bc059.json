@@ -1,0 +1,10 @@
+{
+  "schemaVersion": "1.0",
+  "jobId": "unseen-3dgs-photo-return-goal-2026-09-04-v14",
+  "state": "RUNNING",
+  "createdAt": "2026-09-04T06:33:00.7804980Z",
+  "agent": "4060 Agent",
+  "machine": "DESKTOP-NIBL3D4",
+  "message": "Mac-requested Viewer evidence supplement uploaded at 1c68b2d: exact v14 manifest, recomputable pose chain, and 1024x1024 metric-labeled contact sheet. Algorithm and five-browser mechanics remain frozen; awaiting Mac and direct Max acceptance.",
+  "evidence": []
+}

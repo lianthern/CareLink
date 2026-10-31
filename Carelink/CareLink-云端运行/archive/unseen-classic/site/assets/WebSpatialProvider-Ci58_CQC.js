@@ -1,0 +1,1 @@
+import{i as e,n as t}from"./jsx-runtime-BFA9jBFM.js";function n({children:n}){return t(e,{children:n})}export{n as WebSpatialProvider};

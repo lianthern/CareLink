@@ -1,0 +1,10 @@
+{
+  "schemaVersion": "1.0",
+  "jobId": "unseen-3dgs-local-viewer-integration-2026-09-02-v5",
+  "state": "RECEIVED_VERIFIED",
+  "createdAt": "2026-09-02T07:22:40.1255092Z",
+  "agent": "4060 Agent",
+  "machine": "DESKTOP-NIBL3D4",
+  "message": "v5 integration and loopback-only local Viewer task received; no retraining or artifact upload will run.",
+  "evidence": []
+}

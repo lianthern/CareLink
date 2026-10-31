@@ -1,0 +1,212 @@
+{
+  "$schema": "./benchmark.schema.json",
+  "artifacts": {
+    "ply": {
+      "path": "artifacts/export/preview/splat.ply",
+      "sha256": "25b9ccb910c9ab386e6cded49969906c17f6a69b2653ee1e55a3b6a2fe7951b1",
+      "size_bytes": 44159233
+    },
+    "sog": {
+      "path": "viewer/assets/scene.sog",
+      "sha256": "901d501dd41d254ed047322198cb283bdf2f146a92aeab94a16e1efecad5c223",
+      "size_bytes": 4665339
+    },
+    "viewer_screenshot": {
+      "path": null,
+      "sha256": null,
+      "size_bytes": null
+    }
+  },
+  "configuration": {
+    "max_frame_width_px": 1280,
+    "max_input_frames": 72,
+    "oom_fallback_applied": false,
+    "oom_fallback_notes": null,
+    "requested_profiles": [
+      "preview",
+      "quality"
+    ],
+    "train_steps_requested": 7000
+  },
+  "created_at": "2026-09-02",
+  "execution_host": {
+    "browser": null,
+    "colmap_version": "COLMAP 3.7 -- Structure-from-Motion and Multi-View Stereo",
+    "cpu": "x86_64",
+    "cuda_runtime_version": "12.1",
+    "discrete_gpu_mode": null,
+    "ffmpeg_version": "ffmpeg version 4.4.2-0ubuntu0.22.04.1 Copyright (c) 2000-2021 the FFmpeg developers",
+    "gpu": "NVIDIA GeForce RTX 4060 Laptop GPU",
+    "gpu_vram_bytes": 8585740288,
+    "gsplat_version": "1.4.0+pt21cu121",
+    "kernel": "6.6.87.2-microsoft-standard-WSL2",
+    "laptop_power_connected": null,
+    "nerfstudio_version": "1.1.5",
+    "nvidia_driver_version": "596.49",
+    "nvidia_smi_available": true,
+    "os": "Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.35",
+    "ram_bytes": 7950495744,
+    "splat_transform_version": "3.3.3",
+    "status": "OBSERVED",
+    "torch_cuda_version": "12.1",
+    "torch_version": "2.1.2+cu121",
+    "viewport_px": null
+  },
+  "measurementStatus": "PARTIAL",
+  "metrics": {
+    "colmap_registered_frames": 72,
+    "colmap_registration_ratio": 1.0,
+    "colmap_total_frames": 72,
+    "generated_scene_load_time_seconds": null,
+    "input_frames_total": 72,
+    "ply_size_bytes": 44159233,
+    "sog_size_bytes": 4665339,
+    "total_pipeline_wall_time_seconds": 2450.0,
+    "train_steps_completed": 7000,
+    "viewer_fps": null,
+    "viewer_fps_sample_seconds": null
+  },
+  "notes": [
+    "Preparation host was observed to be an Apple M4 Mac without nvidia-smi or nvcc; CUDA training was not attempted there.",
+    "Direct device smoke: PyTorch MPS was available, but a one-Gaussian gsplat render failed before rasterization because gsplat disabled its CUDA backend; see outputs/mac-mps-gsplat-smoke.log.",
+    "Preparation evidence: the fixed download/hash/media probe and bounded frame extraction passed; a CPU-only COLMAP preflight registered 72/72 preview frames in its largest model.",
+    "Viewer evidence: desktop/mobile controls and exact anchor restoration passed in demo mode, and the loader opened an official reference SOG; the scene-specific SOG remains pending CUDA training.",
+    "The first numeric record must come from the RTX 4060 Laptop run. Planning ranges belong in README.md, not in measured fields.",
+    "splat-transform 3.3.3 could not use the RTX GPU through WSL Vulkan and its CPU multi-SH SOG path reproduced upstream issue #238. The stuck attempt was interrupted after about 35 minutes; the successful preview SOG used the documented CPU workaround (-H 1, -i 2). Geometry and the 7000-step CUDA training output were unchanged.",
+    "total_pipeline_wall_time_seconds includes the interrupted multi-SH compression attempt; the successful measured compression stage took 25.262 seconds."
+  ],
+  "oom_events": [],
+  "pipeline_finished_at": "2026-09-02T02:59:09+00:00",
+  "pipeline_started_at": "2026-09-02T02:18:19+00:00",
+  "preparation_host": {
+    "architecture": "arm64",
+    "gpu": "Apple M4, 10-core integrated GPU",
+    "nvcc_available": false,
+    "nvidia_smi_available": false,
+    "observation_date": "2026-09-01",
+    "os": "macOS 15.7.8 (24G824)",
+    "status": "OBSERVED_NO_CUDA"
+  },
+  "profile": "preview",
+  "record_type": "unseen_scenecompiler_benchmark",
+  "run_id": "preview-2026-09-02T021819+0000",
+  "schema_version": "1.0.0",
+  "source": {
+    "download_url": "https://videos.pexels.com/video-files/12956438/12956438-uhd_2560_1440_30fps.mp4",
+    "expected_codec": "H.264",
+    "expected_duration_seconds": 24.933,
+    "expected_fps": 30,
+    "expected_height_px": 1440,
+    "expected_sha256": "b5f74a18354146b647d5f783d119b16c514f64e64b7e6c542046f6ea6bab682f",
+    "expected_width_px": 2560,
+    "license": "Pexels License",
+    "page_url": "https://www.pexels.com/video/a-long-take-video-showing-a-home-interior-design-12956438/",
+    "scene_id": "pexels-12956438-home-interior",
+    "sha256": "b5f74a18354146b647d5f783d119b16c514f64e64b7e6c542046f6ea6bab682f"
+  },
+  "stages": {
+    "colmap": {
+      "attempts": [],
+      "exit_code": 0,
+      "finished_at": "2026-09-02T02:18:23+00:00",
+      "log_path": "/home/max/src/unseen-3dgs-sceneworker/logs/preview-colmap-primary.log",
+      "peak_vram_bytes": null,
+      "started_at": "2026-09-02T02:18:23+00:00",
+      "status": "PASS",
+      "wall_time_seconds": 0.013
+    },
+    "compress_sog": {
+      "attempts": [],
+      "exit_code": 0,
+      "finished_at": "2026-09-02T02:59:09+00:00",
+      "log_path": "logs/preview-compress_sog-primary.log",
+      "peak_vram_bytes": 1842348032,
+      "started_at": "2026-09-02T02:58:43+00:00",
+      "status": "PASS",
+      "wall_time_seconds": 25.262
+    },
+    "doctor": {
+      "attempts": [],
+      "exit_code": 0,
+      "finished_at": "2026-09-02T02:18:23+00:00",
+      "log_path": "/home/max/src/unseen-3dgs-sceneworker/logs/preview-doctor-primary.log",
+      "peak_vram_bytes": 1760559104,
+      "started_at": "2026-09-02T02:18:21+00:00",
+      "status": "PASS",
+      "wall_time_seconds": 1.861
+    },
+    "download": {
+      "attempts": [],
+      "exit_code": 0,
+      "finished_at": "2026-09-02T02:18:23+00:00",
+      "log_path": "/home/max/src/unseen-3dgs-sceneworker/logs/preview-download-primary.log",
+      "peak_vram_bytes": null,
+      "started_at": "2026-09-02T02:18:23+00:00",
+      "status": "PASS",
+      "wall_time_seconds": 0.217
+    },
+    "export_ply": {
+      "attempts": [],
+      "exit_code": 0,
+      "finished_at": "2026-09-02T02:21:40+00:00",
+      "log_path": "/home/max/src/unseen-3dgs-sceneworker/logs/preview-export_ply-primary.log",
+      "peak_vram_bytes": 1958739968,
+      "started_at": "2026-09-02T02:21:22+00:00",
+      "status": "PASS",
+      "wall_time_seconds": 18.949
+    },
+    "extract_frames": {
+      "attempts": [],
+      "exit_code": 0,
+      "finished_at": "2026-09-02T02:18:23+00:00",
+      "log_path": "/home/max/src/unseen-3dgs-sceneworker/logs/preview-extract_frames-primary.log",
+      "peak_vram_bytes": null,
+      "started_at": "2026-09-02T02:18:23+00:00",
+      "status": "PASS",
+      "wall_time_seconds": 0.018
+    },
+    "train": {
+      "attempts": [],
+      "exit_code": 0,
+      "finished_at": "2026-09-02T02:21:22+00:00",
+      "log_path": "/home/max/src/unseen-3dgs-sceneworker/logs/preview-train-primary.log",
+      "peak_vram_bytes": 2876243968,
+      "started_at": "2026-09-02T02:18:23+00:00",
+      "status": "PASS",
+      "wall_time_seconds": 182.536
+    },
+    "viewer_smoke": {
+      "attempts": [],
+      "log_path": null,
+      "peak_vram_bytes": null,
+      "status": "PENDING",
+      "wall_time_seconds": null
+    }
+  },
+  "status": "COMPLETE",
+  "timing_classes": {
+    "generated_scene_loading": {
+      "notes": "Opening an already-generated SOG in the browser; not reconstruction time.",
+      "status": "PENDING",
+      "wall_time_seconds": null
+    },
+    "one_time_development": {
+      "notes": "Environment setup and first end-to-end vertical slice; do not charge this to every scene.",
+      "status": "PENDING",
+      "wall_time_seconds": null
+    },
+    "per_scene_optimization": {
+      "notes": "Frame extraction, pose solve, scene-specific Splatfacto optimization, export, and compression.",
+      "status": "MEASURED",
+      "wall_time_seconds": 2450.0
+    }
+  },
+  "truth_policy": "Numbers are recorded only from command output or measured artifacts. Unmeasured values remain null and render as PENDING.",
+  "validation": {
+    "cuda_training": "PASS",
+    "script_dry_run": "PASS_PREPARATION_HOST",
+    "static_checks": "PASS_PREPARATION_HOST",
+    "viewer_smoke_test": "PASS_DEMO_AND_REFERENCE_SOG"
+  },
+  "variant": "primary"
+}

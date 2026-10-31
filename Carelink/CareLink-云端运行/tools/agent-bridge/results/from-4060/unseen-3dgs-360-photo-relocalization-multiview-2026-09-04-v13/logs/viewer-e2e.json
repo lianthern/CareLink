@@ -1,0 +1,17 @@
+{
+  "schemaVersion": "1.0",
+  "jobId": "unseen-3dgs-360-photo-relocalization-multiview-2026-09-04-v13",
+  "status": "NOT_RUN_ALGORITHM_GATE",
+  "reason": "The single frozen v13 Phase A run passed 2 of 3 queries; the contract permits Viewer integration and browser E2E only after 3 of 3.",
+  "phaseAQueriesExpected": 3,
+  "phaseAQueriesPassed": 2,
+  "newManifestCreated": false,
+  "estimatedPoseButtonsCreated": 0,
+  "sogReady": null,
+  "browserE2eRun": false,
+  "consoleOrPageErrors": null,
+  "bindAddress": null,
+  "listenerCreated": false,
+  "v11ViewerModified": false
+}
+

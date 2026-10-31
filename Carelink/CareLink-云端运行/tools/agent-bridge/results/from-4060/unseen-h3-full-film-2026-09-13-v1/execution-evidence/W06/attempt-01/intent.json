@@ -1,0 +1,37 @@
+{
+  "key": "unseen-h3-full-film-2026-09-13-v1/W06/attempt-01",
+  "startedAt": "2026-09-14T01:37:55.380996+00:00",
+  "reference": "D:\\H3-runtime\\projects\\unseen-full-v1\\media-inputs\\references\\16-wedding-guest-C.png",
+  "inputSha256": "19a7fc1c48f84912655de3ff27f6159437a112e08d321700ff7d5d55db42f7c8",
+  "seed": 2026091590,
+  "shot": {
+    "id": "W06",
+    "title": "\u8df3\u821e\uff1a\u5f00\u59cb\u6162\u6162\u8f6c\u534a\u5708",
+    "type": "h3_generated_action",
+    "edit_seconds": 4,
+    "generate_seconds_nominal": 4.458333333333333,
+    "frame_count_starting_point": 107,
+    "fps": 24,
+    "recorder": "\u670b\u53cb\u7532",
+    "references": [
+      "16-wedding-guest-C.png",
+      "wedding-empty.png",
+      "02-character-age-reference.png"
+    ],
+    "start_end_and_action": "Medium-wide smartphone view from the southwest edge of the courtyard dance floor at dusk. The same bride and groom begin a gentle slow dance. Groom holds her right hand in his left, his right hand resting at her upper back. They take two small coordinated steps and start a modest clockwise half-turn as seen from above. Keep full torsos and feet visible, familiar warm string lights, tree trunk and arcades fixed. Camera stays in place with a small pan following their turn. End during the turn before they face one another in the new direction. Do not spin quickly or lift the bride.",
+    "prompt": "Naturalistic personal-memory footage with believable human movement and gently handheld smartphone perspective. Keep the approved faces, clothes, lighting and room geometry. One continuous shot, no internal cuts, no age change, no photo cards, no text, no camera flying outside, no slow motion, no duplicated people, no DV camcorder. Medium-wide smartphone view from the southwest edge of the courtyard dance floor at dusk. The same bride and groom begin a gentle slow dance. Groom holds her right hand in his left, his right hand resting at her upper back. They take two small coordinated steps and start a modest clockwise half-turn as seen from above. Keep full torsos and feet visible, familiar warm string lights, tree trunk and arcades fixed. Camera stays in place with a small pan following their turn. End during the turn before they face one another in the new direction. Do not spin quickly or lift the bride.",
+    "cut_continuity": "\u8bb0\u5f55\u7ec8\u70b9\u671d\u5411\u7ed9W07\uff0c\u7528\u5b9e\u9645\u672b\u5e27\u68c0\u67e5\u63e1\u624b\u4e0e\u8f6c\u5411\u3002",
+    "pass_criteria": [
+      "\u540c\u4e00\u53cc\u4eba\u4e0d\u6362\u8138",
+      "\u63e1\u624b\u7ed3\u6784\u7a33\u5b9a",
+      "\u8f6c\u5411\u5355\u4e00"
+    ],
+    "audio": "Natural scene sound only; no generated music, UI text or unscripted dialogue.",
+    "status": "planned",
+    "output": null,
+    "timeline_start_seconds": 98.5,
+    "timeline_end_seconds": 102.5
+  },
+  "outputPrefix": "unseen-full-v1/W06/attempt-01",
+  "apiSha256": "0532b3ae324ab75cf13fe68d73aa1954a968147328b833e5323d2401b1e1f94d"
+}

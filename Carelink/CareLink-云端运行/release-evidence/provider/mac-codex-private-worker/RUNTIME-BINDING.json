@@ -1,0 +1,26 @@
+{
+  "evidenceClass": "PRIVATE_TEST_PROOF",
+  "productionEnabled": false,
+  "decision": "NO_GO_DEFAULT_OFF",
+  "precedesImageResolver": true,
+  "pathLookup": false,
+  "executable": {
+    "path": "/opt/homebrew/lib/node_modules/@openai/codex/node_modules/@openai/codex-darwin-arm64/vendor/aarch64-apple-darwin/bin/codex",
+    "regularFile": true,
+    "symlink": false,
+    "uid": 501,
+    "gid": 80,
+    "mode": "0755",
+    "sha256": "19c4f144c5226a9f17c58e6f0fa854843b0f77a6eb420f40e2745a12f10f5d37",
+    "version": "codex-cli 0.147.0"
+  },
+  "preflight": {
+    "imageArgument": false,
+    "strictConfig": true,
+    "schemaExact": true,
+    "eventTypes": ["thread.started", "turn.started", "item.completed", "turn.completed"],
+    "itemTypes": ["agent_message"],
+    "stderrBytes": 0
+  },
+  "deterministicFailuresBeforeResolver": ["sha256", "symlink", "version", "strictDryRunToolEvent"]
+}

@@ -1,0 +1,102 @@
+{
+  "schema": "unseen-renderer-systemd255-property-fix-evidence/1",
+  "generatedAt": "2026-08-15T02:35:46Z",
+  "status": "CODE_GATES_PASS_TARGET_RETRY_REQUIRED",
+  "baseCommit": "432c037b2eb5d7eaf51785c4037495130cdc515f",
+  "baseTree": "28a7f921fbf54cb4bef46f6f74dcc7f5fa4812d6",
+  "failureEvidence": {
+    "path": "release-evidence/r0/target-renderer-candidate7bfa-systemd-property-p1-20260815T0240Z/MACHINE-EVIDENCE.json",
+    "sha256": "6dc5950d4e23def8e87dfa0d1621fa4cae765bb0c9a0dc7e7a37f0c429ebcb9f"
+  },
+  "codeCommit": "5ed65ec33eee0228c8d814bdf207674ddb4b5cbc",
+  "codeTree": "56a2e51a1897680acb7d47a17b6489c5a3d54f03",
+  "fix": {
+    "onlyOmittedDefault": "EnvironmentFiles=",
+    "removedNonexistentRuntimeProperty": "socket.Service",
+    "runtimeActivationBinding": [
+      "service.Id=unseen-book-renderer.service",
+      "service.Names={unseen-book-renderer.service}",
+      "service.TriggeredBy={unseen-book-renderer.socket}",
+      "socket.Id=unseen-book-renderer.socket",
+      "socket.Names={unseen-book-renderer.socket}",
+      "socket.Triggers={unseen-book-renderer.service}",
+      "exact FragmentPath",
+      "empty DropInPaths"
+    ],
+    "unitSourceStillByteExact": true,
+    "socketSourceServiceDirectiveStillExact": true,
+    "otherMissingPropertiesRejected": true,
+    "extraPropertiesRejected": true,
+    "dropInsRejected": true,
+    "publicContractChanged": false,
+    "unitTemplateChanged": false
+  },
+  "codeArtifactSha256": {
+    "infra/integration/book-lab/renderer-target-verifier.mjs": "fe76e5ba5b01a4787af89e951c2ef5da0f710a9d659d1447a41d6e8911350aa0",
+    "tests/e2e/book-lab/dedicated-renderer.verify.mjs": "0d336e3b7f9ba2c348d7fc4a100df3501dad1d52c5386e63361ae143935fe610",
+    "runbooks/release/PRODUCTION-DEPLOYMENT.md": "860bd23de967388c6a66210dfe6e4642f93d350f079873f47bbe04e7116830ab"
+  },
+  "machineChecks": {
+    "focusedRenderer": {
+      "command": "node --test --test-reporter=spec tests/e2e/book-lab/dedicated-renderer.verify.mjs",
+      "total": 29,
+      "passed": 29,
+      "failed": 0
+    },
+    "apiRendererIntegration": {
+      "command": "node --test --test-reporter=spec services/api/tests/book-renderer-integration.test.mjs",
+      "total": 4,
+      "passed": 4,
+      "failed": 0
+    },
+    "deploymentLifecycle": {
+      "command": "node --test --test-reporter=spec tests/e2e/book-lab/deployment-lifecycle.verify.mjs",
+      "total": 3,
+      "passed": 3,
+      "failed": 0
+    },
+    "existingRendererWorker": {
+      "command": "node --test --test-reporter=spec tests/e2e/book-lab/renderer-worker.verify.mjs",
+      "total": 3,
+      "passed": 3,
+      "failed": 0
+    },
+    "productionPackage": {
+      "command": "node tests/e2e/production-package.verify.mjs",
+      "status": "PASS",
+      "candidateCommit": "5ed65ec33eee0228c8d814bdf207674ddb4b5cbc",
+      "portableBundleVerified": true,
+      "standaloneNonGitCwdVerified": true,
+      "byteTamperRejected": true,
+      "acceptanceNegativeCases": 32,
+      "externalNetworkRequests": 0
+    },
+    "revisionContract": {
+      "command": "npm run revision:check",
+      "errors": 0,
+      "aggregateActions": 110,
+      "aggregateSourceRefs": 440,
+      "aggregatePhases": 990,
+      "aggregateMutations": 74,
+      "aggregateCas": 55
+    },
+    "contracts": "CONTRACT_GENERATION_CLEAN",
+    "format": "FORMAT_OK",
+    "secretScan": "SECRET_SCAN_CLEAN"
+  },
+  "defaultOff": true,
+  "liveTargetChanged": false,
+  "targetCommandExecuted": false,
+  "rendererStarted": false,
+  "bookEnabled": false,
+  "openCodeP0": 0,
+  "openCodeP1": 0,
+  "targetAcceptanceStillRequired": [
+    "independent review of this code checkpoint",
+    "rerun renderer target measurement on Ubuntu 24.04/systemd 255",
+    "complete synthetic network and deterministic PDF acceptance before enabling Book"
+  ],
+  "evidenceContainsUserContent": false,
+  "evidenceContainsCredentials": false,
+  "claudeReview": "CANCELLED_BY_MAX_NOT_APPLICABLE"
+}

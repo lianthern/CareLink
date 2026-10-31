@@ -1,0 +1,100 @@
+{
+  "schemaVersion": "1.0",
+  "jobId": "unseen-3dgs-tum-first-usable-scene-2026-09-02-v4",
+  "state": "COMPLETED",
+  "completedAt": "2026-09-02T06:12:14Z",
+  "fixtureScope": "TUM RGB-D freiburg1/desk known-pose fixture; not a claim that arbitrary phone video is solved",
+  "environment": {
+    "gpu": "NVIDIA GeForce RTX 4060 Laptop GPU",
+    "driver": "596.49",
+    "gpuMemoryMiB": 8188,
+    "python": "3.10.12",
+    "torch": "2.1.2+cu121",
+    "cuda": "12.1",
+    "gsplat": "1.4.0+pt21cu121"
+  },
+  "adapter": {
+    "status": "PASS",
+    "selectedFrames": 100,
+    "trainFrames": 90,
+    "evalFrames": 10,
+    "depthSeedPoints": 157520,
+    "depthMaxMeters": 5.0,
+    "anchorProjectionMaxErrorPx": 4.0194366942304643e-13,
+    "unitTests": "3 passed"
+  },
+  "training": {
+    "runs": 1,
+    "configuredIterations": 7000,
+    "finalStep": 6999,
+    "wallSeconds": 148,
+    "peakVramMiB": 3017,
+    "oomCount": 0,
+    "exitCode": 0,
+    "cameraOptimizer": "off"
+  },
+  "artifacts": {
+    "config": {
+      "bytes": 7820,
+      "sha256": "681284ef08615702656a3dcdbe320896ba187913cc8d04020b5bfaeaff813e22"
+    },
+    "checkpoint": {
+      "bytes": 149848210,
+      "sha256": "d958b0f933e7b589749fbd3cd5548c07d4eef51098c725e75f3c60c8dc8db7c8"
+    },
+    "rawPly": {
+      "bytes": 49021273,
+      "sha256": "0f284f3cde1d2b13461a95fa9518d9411e10d0c3c39bf829b3dfbe4033fe81b1",
+      "gaussians": 197660,
+      "shDegree": 3
+    },
+    "sog": {
+      "bytes": 3470880,
+      "sha256": "c352d06348c56c4af4b9f7a91d56db0c26a7e550fb52e0c7547618d5f6f06429",
+      "gaussians": 197660,
+      "shDegree": 1
+    }
+  },
+  "quality": {
+    "checkpointAnchorMean": {
+      "psnr": 23.752007802327473,
+      "ssim": 0.8512579798698425,
+      "lpips": 0.17345661918322244
+    },
+    "checkpointGatePass": true,
+    "rawPlyMatchesCheckpointPixelsExactly": true,
+    "sogVsRawPly": [
+      {"frame": "frame_00000", "psnr": 31.682205200195312, "ssim": 0.9823267459869385, "lpips": 0.028294280171394348},
+      {"frame": "frame_00050", "psnr": 27.464384078979492, "ssim": 0.9805645942687988, "lpips": 0.05301713943481445},
+      {"frame": "frame_00099", "psnr": 26.94143295288086, "ssim": 0.9741761088371277, "lpips": 0.03138289973139763}
+    ],
+    "visualInspection": {
+      "recognizableDeskAndRoom": true,
+      "strongFisheye": false,
+      "radialStreaking": false,
+      "largeWarpedSheets": false
+    }
+  },
+  "viewer": {
+    "status": "PASS",
+    "manifestSchema": "PASS",
+    "generatorTests": "2 passed",
+    "sceneState": "SOG ready",
+    "measuredFps": 203,
+    "walkDistance": 0.10876500406220856,
+    "walkStayedInsideBoundary": true,
+    "startAndAnchorSource": "actual sampled cameras",
+    "photoAnchorExact": true,
+    "confirmationMessageExact": true,
+    "screenshot": "viewer-screenshot.png"
+  },
+  "allRequiredGatesPass": true,
+  "uploadPolicy": {
+    "sourceRgbOrDepthIncluded": false,
+    "archiveIncluded": false,
+    "checkpointIncluded": false,
+    "plyIncluded": false,
+    "sogIncluded": false,
+    "viewerScreenshotCount": 1
+  }
+}

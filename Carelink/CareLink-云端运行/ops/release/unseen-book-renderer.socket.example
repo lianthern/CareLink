@@ -1,0 +1,15 @@
+[Unit]
+Description=UNSEEN dedicated Book renderer IPC
+
+[Socket]
+ListenStream=/run/unseen-renderer/render.sock
+Service=unseen-book-renderer.service
+SocketUser=unseen-renderer
+SocketGroup=unseen-render-ipc
+SocketMode=0660
+DirectoryMode=2750
+RemoveOnStop=true
+Accept=no
+
+[Install]
+WantedBy=sockets.target

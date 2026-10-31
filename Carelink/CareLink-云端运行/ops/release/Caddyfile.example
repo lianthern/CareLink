@@ -1,0 +1,36 @@
+REQUIRED_DOMAIN {
+	encode zstd gzip
+	header {
+		Strict-Transport-Security "max-age=31536000"
+		-Server
+	}
+	@private_ai_body_rejected {
+		path /__internal/private-ai/v1/*
+		method POST
+		expression `{http.request.header.Content-Length} == "" || int({http.request.header.Content-Length}) > 32768`
+	}
+	handle @private_ai_body_rejected {
+		header {
+			Content-Type application/json
+			Cache-Control "private, no-store, max-age=0"
+			X-Unseen-Protocol unseen-private-ai-pull/1
+		}
+		respond "" 413
+	}
+	@private_ai path /__internal/private-ai/v1/*
+	handle @private_ai {
+		request_body {
+			max_size 32KiB
+		}
+		reverse_proxy 127.0.0.1:4282 {
+			header_up Host {host}
+			header_up X-Forwarded-Proto https
+		}
+	}
+	handle {
+		reverse_proxy 127.0.0.1:4282 {
+			header_up Host {host}
+			header_up X-Forwarded-Proto https
+		}
+	}
+}

@@ -1,0 +1,926 @@
+{
+  "schema": "unseen-ui-v2-core-states/1",
+  "status": "PASS",
+  "marker": "TEST_ONLY_FIXTURE_FAULTS",
+  "testOnly": true,
+  "productBytesChanged": false,
+  "productionInput": false,
+  "productionFaultClaim": false,
+  "candidateCommit": "2f85856eb5d2753c2ef7d68175ecafa45f001ee0",
+  "viewports": [
+    {
+      "label": "desktop-1440",
+      "width": 1440,
+      "height": 1000,
+      "mobile": false,
+      "cases": [
+        {
+          "scenario": "empty_album",
+          "heading": "这个空间还没有可查看的照片。",
+          "cta": "上传第一张照片",
+          "href": "/s/space-gongguang/upload",
+          "keyboardActivated": true,
+          "destination": "/s/space-gongguang/upload",
+          "audit": {
+            "name": "desktop-1440-empty-album",
+            "path": "/s/space-gongguang/album",
+            "fixtureBanner": true,
+            "reducedMotion": true,
+            "horizontalOverflow": false,
+            "boxes": [
+              {
+                "selector": ".empty-state h2",
+                "text": "这个空间还没有可查看的照片。",
+                "interactive": false,
+                "width": 335.34375,
+                "height": 32,
+                "left": 552.328125,
+                "right": 887.671875,
+                "inViewport": true
+              },
+              {
+                "selector": ".empty-state a[href=\"/s/space-gongguang/upload\"]",
+                "text": "上传第一张照片",
+                "interactive": true,
+                "width": 156.25,
+                "height": 52,
+                "left": 641.875,
+                "right": 798.125,
+                "inViewport": true
+              }
+            ]
+          }
+        },
+        {
+          "scenario": "scene_unavailable",
+          "heading": "这个空间暂时没有现场",
+          "cta": "查看相册",
+          "href": "/s/space-gongguang/album",
+          "keyboardActivated": true,
+          "destination": "/s/space-gongguang/album",
+          "audit": {
+            "name": "desktop-1440-scene-unavailable",
+            "path": "/s/space-gongguang/scene",
+            "fixtureBanner": true,
+            "reducedMotion": true,
+            "horizontalOverflow": false,
+            "boxes": [
+              {
+                "selector": ".state-panel h2",
+                "text": "这个空间暂时没有现场",
+                "interactive": false,
+                "width": 239.53125,
+                "height": 32,
+                "left": 600.234375,
+                "right": 839.765625,
+                "inViewport": true
+              },
+              {
+                "selector": ".state-panel a[href=\"/s/space-gongguang/album\"]",
+                "text": "查看相册",
+                "interactive": true,
+                "width": 107.28125,
+                "height": 52,
+                "left": 666.359375,
+                "right": 773.640625,
+                "inViewport": true
+              }
+            ]
+          }
+        },
+        {
+          "scenario": "offline_stable_error",
+          "heading": "照片暂时无法加载。",
+          "retry": "重新加载",
+          "path": "/s/space-gongguang/album",
+          "keyboardActivated": true,
+          "retryKeyClicks": 1,
+          "recoveredSameRoute": true,
+          "audit": {
+            "name": "desktop-1440-stable-error",
+            "path": "/s/space-gongguang/album",
+            "fixtureBanner": true,
+            "reducedMotion": true,
+            "horizontalOverflow": false,
+            "boxes": [
+              {
+                "selector": "[data-phase=\"stable_error\"] h2",
+                "text": "照片暂时无法加载。",
+                "interactive": false,
+                "width": 215.578125,
+                "height": 32,
+                "left": 612.203125,
+                "right": 827.78125,
+                "inViewport": true
+              },
+              {
+                "selector": "[data-retry]",
+                "text": "重新加载",
+                "interactive": true,
+                "width": 107.28125,
+                "height": 52,
+                "left": 666.34375,
+                "right": 773.625,
+                "inViewport": true
+              }
+            ]
+          }
+        },
+        {
+          "scenario": "missing_photo",
+          "heading": "这张照片已不可查看。",
+          "retry": false,
+          "media": false,
+          "report": false,
+          "path": "/s/space-gongguang/photos/photo-missing",
+          "audit": {
+            "name": "desktop-1440-missing-photo",
+            "path": "/s/space-gongguang/photos/photo-missing",
+            "fixtureBanner": true,
+            "reducedMotion": true,
+            "horizontalOverflow": false,
+            "boxes": [
+              {
+                "selector": "[data-phase=\"empty\"] h2",
+                "text": "这张照片已不可查看。",
+                "interactive": false,
+                "width": 239.53125,
+                "height": 32,
+                "left": 600.234375,
+                "right": 839.765625,
+                "inViewport": true
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "label": "mobile-390",
+      "width": 390,
+      "height": 844,
+      "mobile": true,
+      "cases": [
+        {
+          "scenario": "empty_album",
+          "heading": "这个空间还没有可查看的照片。",
+          "cta": "上传第一张照片",
+          "href": "/s/space-gongguang/upload",
+          "keyboardActivated": true,
+          "destination": "/s/space-gongguang/upload",
+          "audit": {
+            "name": "mobile-390-empty-album",
+            "path": "/s/space-gongguang/album",
+            "fixtureBanner": true,
+            "reducedMotion": true,
+            "horizontalOverflow": false,
+            "boxes": [
+              {
+                "selector": ".empty-state h2",
+                "text": "这个空间还没有可查看的照片。",
+                "interactive": false,
+                "width": 316,
+                "height": 64,
+                "left": 37,
+                "right": 353,
+                "inViewport": true
+              },
+              {
+                "selector": ".empty-state a[href=\"/s/space-gongguang/upload\"]",
+                "text": "上传第一张照片",
+                "interactive": true,
+                "width": 156.25,
+                "height": 52,
+                "left": 116.875,
+                "right": 273.125,
+                "inViewport": true
+              }
+            ]
+          }
+        },
+        {
+          "scenario": "scene_unavailable",
+          "heading": "这个空间暂时没有现场",
+          "cta": "查看相册",
+          "href": "/s/space-gongguang/album",
+          "keyboardActivated": true,
+          "destination": "/s/space-gongguang/album",
+          "audit": {
+            "name": "mobile-390-scene-unavailable",
+            "path": "/s/space-gongguang/scene",
+            "fixtureBanner": true,
+            "reducedMotion": true,
+            "horizontalOverflow": false,
+            "boxes": [
+              {
+                "selector": ".state-panel h2",
+                "text": "这个空间暂时没有现场",
+                "interactive": false,
+                "width": 239.53125,
+                "height": 32,
+                "left": 75.234375,
+                "right": 314.765625,
+                "inViewport": true
+              },
+              {
+                "selector": ".state-panel a[href=\"/s/space-gongguang/album\"]",
+                "text": "查看相册",
+                "interactive": true,
+                "width": 107.28125,
+                "height": 52,
+                "left": 141.359375,
+                "right": 248.640625,
+                "inViewport": true
+              }
+            ]
+          }
+        },
+        {
+          "scenario": "offline_stable_error",
+          "heading": "照片暂时无法加载。",
+          "retry": "重新加载",
+          "path": "/s/space-gongguang/album",
+          "keyboardActivated": true,
+          "retryKeyClicks": 1,
+          "recoveredSameRoute": true,
+          "audit": {
+            "name": "mobile-390-stable-error",
+            "path": "/s/space-gongguang/album",
+            "fixtureBanner": true,
+            "reducedMotion": true,
+            "horizontalOverflow": false,
+            "boxes": [
+              {
+                "selector": "[data-phase=\"stable_error\"] h2",
+                "text": "照片暂时无法加载。",
+                "interactive": false,
+                "width": 215.578125,
+                "height": 32,
+                "left": 87.203125,
+                "right": 302.78125,
+                "inViewport": true
+              },
+              {
+                "selector": "[data-retry]",
+                "text": "重新加载",
+                "interactive": true,
+                "width": 107.28125,
+                "height": 52,
+                "left": 141.34375,
+                "right": 248.625,
+                "inViewport": true
+              }
+            ]
+          }
+        },
+        {
+          "scenario": "missing_photo",
+          "heading": "这张照片已不可查看。",
+          "retry": false,
+          "media": false,
+          "report": false,
+          "path": "/s/space-gongguang/photos/photo-missing",
+          "audit": {
+            "name": "mobile-390-missing-photo",
+            "path": "/s/space-gongguang/photos/photo-missing",
+            "fixtureBanner": true,
+            "reducedMotion": true,
+            "horizontalOverflow": false,
+            "boxes": [
+              {
+                "selector": "[data-phase=\"empty\"] h2",
+                "text": "这张照片已不可查看。",
+                "interactive": false,
+                "width": 239.53125,
+                "height": 32,
+                "left": 75.234375,
+                "right": 314.765625,
+                "inViewport": true
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "label": "desktop-200-percent",
+      "width": 720,
+      "height": 900,
+      "mobile": false,
+      "cases": [
+        {
+          "scenario": "empty_album",
+          "heading": "这个空间还没有可查看的照片。",
+          "cta": "上传第一张照片",
+          "href": "/s/space-gongguang/upload",
+          "keyboardActivated": true,
+          "destination": "/s/space-gongguang/upload",
+          "audit": {
+            "name": "desktop-200-percent-empty-album",
+            "path": "/s/space-gongguang/album",
+            "fixtureBanner": true,
+            "reducedMotion": true,
+            "horizontalOverflow": false,
+            "boxes": [
+              {
+                "selector": ".empty-state h2",
+                "text": "这个空间还没有可查看的照片。",
+                "interactive": false,
+                "width": 335.34375,
+                "height": 32,
+                "left": 192.328125,
+                "right": 527.671875,
+                "inViewport": true
+              },
+              {
+                "selector": ".empty-state a[href=\"/s/space-gongguang/upload\"]",
+                "text": "上传第一张照片",
+                "interactive": true,
+                "width": 156.25,
+                "height": 52,
+                "left": 281.875,
+                "right": 438.125,
+                "inViewport": true
+              }
+            ]
+          }
+        },
+        {
+          "scenario": "scene_unavailable",
+          "heading": "这个空间暂时没有现场",
+          "cta": "查看相册",
+          "href": "/s/space-gongguang/album",
+          "keyboardActivated": true,
+          "destination": "/s/space-gongguang/album",
+          "audit": {
+            "name": "desktop-200-percent-scene-unavailable",
+            "path": "/s/space-gongguang/scene",
+            "fixtureBanner": true,
+            "reducedMotion": true,
+            "horizontalOverflow": false,
+            "boxes": [
+              {
+                "selector": ".state-panel h2",
+                "text": "这个空间暂时没有现场",
+                "interactive": false,
+                "width": 239.53125,
+                "height": 32,
+                "left": 240.234375,
+                "right": 479.765625,
+                "inViewport": true
+              },
+              {
+                "selector": ".state-panel a[href=\"/s/space-gongguang/album\"]",
+                "text": "查看相册",
+                "interactive": true,
+                "width": 107.28125,
+                "height": 52,
+                "left": 306.359375,
+                "right": 413.640625,
+                "inViewport": true
+              }
+            ]
+          }
+        },
+        {
+          "scenario": "offline_stable_error",
+          "heading": "照片暂时无法加载。",
+          "retry": "重新加载",
+          "path": "/s/space-gongguang/album",
+          "keyboardActivated": true,
+          "retryKeyClicks": 1,
+          "recoveredSameRoute": true,
+          "audit": {
+            "name": "desktop-200-percent-stable-error",
+            "path": "/s/space-gongguang/album",
+            "fixtureBanner": true,
+            "reducedMotion": true,
+            "horizontalOverflow": false,
+            "boxes": [
+              {
+                "selector": "[data-phase=\"stable_error\"] h2",
+                "text": "照片暂时无法加载。",
+                "interactive": false,
+                "width": 215.578125,
+                "height": 32,
+                "left": 252.203125,
+                "right": 467.78125,
+                "inViewport": true
+              },
+              {
+                "selector": "[data-retry]",
+                "text": "重新加载",
+                "interactive": true,
+                "width": 107.28125,
+                "height": 52,
+                "left": 306.34375,
+                "right": 413.625,
+                "inViewport": true
+              }
+            ]
+          }
+        },
+        {
+          "scenario": "missing_photo",
+          "heading": "这张照片已不可查看。",
+          "retry": false,
+          "media": false,
+          "report": false,
+          "path": "/s/space-gongguang/photos/photo-missing",
+          "audit": {
+            "name": "desktop-200-percent-missing-photo",
+            "path": "/s/space-gongguang/photos/photo-missing",
+            "fixtureBanner": true,
+            "reducedMotion": true,
+            "horizontalOverflow": false,
+            "boxes": [
+              {
+                "selector": "[data-phase=\"empty\"] h2",
+                "text": "这张照片已不可查看。",
+                "interactive": false,
+                "width": 239.53125,
+                "height": 32,
+                "left": 240.234375,
+                "right": 479.765625,
+                "inViewport": true
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "cases": [
+    {
+      "viewport": "desktop-1440",
+      "scenario": "empty_album",
+      "heading": "这个空间还没有可查看的照片。",
+      "cta": "上传第一张照片",
+      "href": "/s/space-gongguang/upload",
+      "keyboardActivated": true,
+      "destination": "/s/space-gongguang/upload",
+      "audit": {
+        "name": "desktop-1440-empty-album",
+        "path": "/s/space-gongguang/album",
+        "fixtureBanner": true,
+        "reducedMotion": true,
+        "horizontalOverflow": false,
+        "boxes": [
+          {
+            "selector": ".empty-state h2",
+            "text": "这个空间还没有可查看的照片。",
+            "interactive": false,
+            "width": 335.34375,
+            "height": 32,
+            "left": 552.328125,
+            "right": 887.671875,
+            "inViewport": true
+          },
+          {
+            "selector": ".empty-state a[href=\"/s/space-gongguang/upload\"]",
+            "text": "上传第一张照片",
+            "interactive": true,
+            "width": 156.25,
+            "height": 52,
+            "left": 641.875,
+            "right": 798.125,
+            "inViewport": true
+          }
+        ]
+      }
+    },
+    {
+      "viewport": "desktop-1440",
+      "scenario": "scene_unavailable",
+      "heading": "这个空间暂时没有现场",
+      "cta": "查看相册",
+      "href": "/s/space-gongguang/album",
+      "keyboardActivated": true,
+      "destination": "/s/space-gongguang/album",
+      "audit": {
+        "name": "desktop-1440-scene-unavailable",
+        "path": "/s/space-gongguang/scene",
+        "fixtureBanner": true,
+        "reducedMotion": true,
+        "horizontalOverflow": false,
+        "boxes": [
+          {
+            "selector": ".state-panel h2",
+            "text": "这个空间暂时没有现场",
+            "interactive": false,
+            "width": 239.53125,
+            "height": 32,
+            "left": 600.234375,
+            "right": 839.765625,
+            "inViewport": true
+          },
+          {
+            "selector": ".state-panel a[href=\"/s/space-gongguang/album\"]",
+            "text": "查看相册",
+            "interactive": true,
+            "width": 107.28125,
+            "height": 52,
+            "left": 666.359375,
+            "right": 773.640625,
+            "inViewport": true
+          }
+        ]
+      }
+    },
+    {
+      "viewport": "desktop-1440",
+      "scenario": "offline_stable_error",
+      "heading": "照片暂时无法加载。",
+      "retry": "重新加载",
+      "path": "/s/space-gongguang/album",
+      "keyboardActivated": true,
+      "retryKeyClicks": 1,
+      "recoveredSameRoute": true,
+      "audit": {
+        "name": "desktop-1440-stable-error",
+        "path": "/s/space-gongguang/album",
+        "fixtureBanner": true,
+        "reducedMotion": true,
+        "horizontalOverflow": false,
+        "boxes": [
+          {
+            "selector": "[data-phase=\"stable_error\"] h2",
+            "text": "照片暂时无法加载。",
+            "interactive": false,
+            "width": 215.578125,
+            "height": 32,
+            "left": 612.203125,
+            "right": 827.78125,
+            "inViewport": true
+          },
+          {
+            "selector": "[data-retry]",
+            "text": "重新加载",
+            "interactive": true,
+            "width": 107.28125,
+            "height": 52,
+            "left": 666.34375,
+            "right": 773.625,
+            "inViewport": true
+          }
+        ]
+      }
+    },
+    {
+      "viewport": "desktop-1440",
+      "scenario": "missing_photo",
+      "heading": "这张照片已不可查看。",
+      "retry": false,
+      "media": false,
+      "report": false,
+      "path": "/s/space-gongguang/photos/photo-missing",
+      "audit": {
+        "name": "desktop-1440-missing-photo",
+        "path": "/s/space-gongguang/photos/photo-missing",
+        "fixtureBanner": true,
+        "reducedMotion": true,
+        "horizontalOverflow": false,
+        "boxes": [
+          {
+            "selector": "[data-phase=\"empty\"] h2",
+            "text": "这张照片已不可查看。",
+            "interactive": false,
+            "width": 239.53125,
+            "height": 32,
+            "left": 600.234375,
+            "right": 839.765625,
+            "inViewport": true
+          }
+        ]
+      }
+    },
+    {
+      "viewport": "mobile-390",
+      "scenario": "empty_album",
+      "heading": "这个空间还没有可查看的照片。",
+      "cta": "上传第一张照片",
+      "href": "/s/space-gongguang/upload",
+      "keyboardActivated": true,
+      "destination": "/s/space-gongguang/upload",
+      "audit": {
+        "name": "mobile-390-empty-album",
+        "path": "/s/space-gongguang/album",
+        "fixtureBanner": true,
+        "reducedMotion": true,
+        "horizontalOverflow": false,
+        "boxes": [
+          {
+            "selector": ".empty-state h2",
+            "text": "这个空间还没有可查看的照片。",
+            "interactive": false,
+            "width": 316,
+            "height": 64,
+            "left": 37,
+            "right": 353,
+            "inViewport": true
+          },
+          {
+            "selector": ".empty-state a[href=\"/s/space-gongguang/upload\"]",
+            "text": "上传第一张照片",
+            "interactive": true,
+            "width": 156.25,
+            "height": 52,
+            "left": 116.875,
+            "right": 273.125,
+            "inViewport": true
+          }
+        ]
+      }
+    },
+    {
+      "viewport": "mobile-390",
+      "scenario": "scene_unavailable",
+      "heading": "这个空间暂时没有现场",
+      "cta": "查看相册",
+      "href": "/s/space-gongguang/album",
+      "keyboardActivated": true,
+      "destination": "/s/space-gongguang/album",
+      "audit": {
+        "name": "mobile-390-scene-unavailable",
+        "path": "/s/space-gongguang/scene",
+        "fixtureBanner": true,
+        "reducedMotion": true,
+        "horizontalOverflow": false,
+        "boxes": [
+          {
+            "selector": ".state-panel h2",
+            "text": "这个空间暂时没有现场",
+            "interactive": false,
+            "width": 239.53125,
+            "height": 32,
+            "left": 75.234375,
+            "right": 314.765625,
+            "inViewport": true
+          },
+          {
+            "selector": ".state-panel a[href=\"/s/space-gongguang/album\"]",
+            "text": "查看相册",
+            "interactive": true,
+            "width": 107.28125,
+            "height": 52,
+            "left": 141.359375,
+            "right": 248.640625,
+            "inViewport": true
+          }
+        ]
+      }
+    },
+    {
+      "viewport": "mobile-390",
+      "scenario": "offline_stable_error",
+      "heading": "照片暂时无法加载。",
+      "retry": "重新加载",
+      "path": "/s/space-gongguang/album",
+      "keyboardActivated": true,
+      "retryKeyClicks": 1,
+      "recoveredSameRoute": true,
+      "audit": {
+        "name": "mobile-390-stable-error",
+        "path": "/s/space-gongguang/album",
+        "fixtureBanner": true,
+        "reducedMotion": true,
+        "horizontalOverflow": false,
+        "boxes": [
+          {
+            "selector": "[data-phase=\"stable_error\"] h2",
+            "text": "照片暂时无法加载。",
+            "interactive": false,
+            "width": 215.578125,
+            "height": 32,
+            "left": 87.203125,
+            "right": 302.78125,
+            "inViewport": true
+          },
+          {
+            "selector": "[data-retry]",
+            "text": "重新加载",
+            "interactive": true,
+            "width": 107.28125,
+            "height": 52,
+            "left": 141.34375,
+            "right": 248.625,
+            "inViewport": true
+          }
+        ]
+      }
+    },
+    {
+      "viewport": "mobile-390",
+      "scenario": "missing_photo",
+      "heading": "这张照片已不可查看。",
+      "retry": false,
+      "media": false,
+      "report": false,
+      "path": "/s/space-gongguang/photos/photo-missing",
+      "audit": {
+        "name": "mobile-390-missing-photo",
+        "path": "/s/space-gongguang/photos/photo-missing",
+        "fixtureBanner": true,
+        "reducedMotion": true,
+        "horizontalOverflow": false,
+        "boxes": [
+          {
+            "selector": "[data-phase=\"empty\"] h2",
+            "text": "这张照片已不可查看。",
+            "interactive": false,
+            "width": 239.53125,
+            "height": 32,
+            "left": 75.234375,
+            "right": 314.765625,
+            "inViewport": true
+          }
+        ]
+      }
+    },
+    {
+      "viewport": "desktop-200-percent",
+      "scenario": "empty_album",
+      "heading": "这个空间还没有可查看的照片。",
+      "cta": "上传第一张照片",
+      "href": "/s/space-gongguang/upload",
+      "keyboardActivated": true,
+      "destination": "/s/space-gongguang/upload",
+      "audit": {
+        "name": "desktop-200-percent-empty-album",
+        "path": "/s/space-gongguang/album",
+        "fixtureBanner": true,
+        "reducedMotion": true,
+        "horizontalOverflow": false,
+        "boxes": [
+          {
+            "selector": ".empty-state h2",
+            "text": "这个空间还没有可查看的照片。",
+            "interactive": false,
+            "width": 335.34375,
+            "height": 32,
+            "left": 192.328125,
+            "right": 527.671875,
+            "inViewport": true
+          },
+          {
+            "selector": ".empty-state a[href=\"/s/space-gongguang/upload\"]",
+            "text": "上传第一张照片",
+            "interactive": true,
+            "width": 156.25,
+            "height": 52,
+            "left": 281.875,
+            "right": 438.125,
+            "inViewport": true
+          }
+        ]
+      }
+    },
+    {
+      "viewport": "desktop-200-percent",
+      "scenario": "scene_unavailable",
+      "heading": "这个空间暂时没有现场",
+      "cta": "查看相册",
+      "href": "/s/space-gongguang/album",
+      "keyboardActivated": true,
+      "destination": "/s/space-gongguang/album",
+      "audit": {
+        "name": "desktop-200-percent-scene-unavailable",
+        "path": "/s/space-gongguang/scene",
+        "fixtureBanner": true,
+        "reducedMotion": true,
+        "horizontalOverflow": false,
+        "boxes": [
+          {
+            "selector": ".state-panel h2",
+            "text": "这个空间暂时没有现场",
+            "interactive": false,
+            "width": 239.53125,
+            "height": 32,
+            "left": 240.234375,
+            "right": 479.765625,
+            "inViewport": true
+          },
+          {
+            "selector": ".state-panel a[href=\"/s/space-gongguang/album\"]",
+            "text": "查看相册",
+            "interactive": true,
+            "width": 107.28125,
+            "height": 52,
+            "left": 306.359375,
+            "right": 413.640625,
+            "inViewport": true
+          }
+        ]
+      }
+    },
+    {
+      "viewport": "desktop-200-percent",
+      "scenario": "offline_stable_error",
+      "heading": "照片暂时无法加载。",
+      "retry": "重新加载",
+      "path": "/s/space-gongguang/album",
+      "keyboardActivated": true,
+      "retryKeyClicks": 1,
+      "recoveredSameRoute": true,
+      "audit": {
+        "name": "desktop-200-percent-stable-error",
+        "path": "/s/space-gongguang/album",
+        "fixtureBanner": true,
+        "reducedMotion": true,
+        "horizontalOverflow": false,
+        "boxes": [
+          {
+            "selector": "[data-phase=\"stable_error\"] h2",
+            "text": "照片暂时无法加载。",
+            "interactive": false,
+            "width": 215.578125,
+            "height": 32,
+            "left": 252.203125,
+            "right": 467.78125,
+            "inViewport": true
+          },
+          {
+            "selector": "[data-retry]",
+            "text": "重新加载",
+            "interactive": true,
+            "width": 107.28125,
+            "height": 52,
+            "left": 306.34375,
+            "right": 413.625,
+            "inViewport": true
+          }
+        ]
+      }
+    },
+    {
+      "viewport": "desktop-200-percent",
+      "scenario": "missing_photo",
+      "heading": "这张照片已不可查看。",
+      "retry": false,
+      "media": false,
+      "report": false,
+      "path": "/s/space-gongguang/photos/photo-missing",
+      "audit": {
+        "name": "desktop-200-percent-missing-photo",
+        "path": "/s/space-gongguang/photos/photo-missing",
+        "fixtureBanner": true,
+        "reducedMotion": true,
+        "horizontalOverflow": false,
+        "boxes": [
+          {
+            "selector": "[data-phase=\"empty\"] h2",
+            "text": "这张照片已不可查看。",
+            "interactive": false,
+            "width": 239.53125,
+            "height": 32,
+            "left": 240.234375,
+            "right": 479.765625,
+            "inViewport": true
+          }
+        ]
+      }
+    }
+  ],
+  "diagnostics": {
+    "consoleIssues": [],
+    "exceptions": [],
+    "failedRequests": [],
+    "httpFailures": [],
+    "externalRequests": []
+  },
+  "cleanup": {
+    "ownUiServerStopped": true,
+    "ownChromeStopped": true,
+    "loopbackPortsClosed": true,
+    "freshProfileRemoved": true
+  },
+  "origin": "http://127.0.0.1:57316",
+  "health": {
+    "status": "ok",
+    "origin": "http://127.0.0.1:57316",
+    "listener": "loopback_only",
+    "productPath": [
+      "home",
+      "space",
+      "photo",
+      "memory",
+      "book"
+    ],
+    "fixture": true,
+    "fixtureNotice": "本地确定性样本 / 非真实 AI / 不代表正式发布",
+    "samples": {
+      "core": "向晚婚礼",
+      "book": "AdventureX 2026",
+      "continuousData": false
+    },
+    "externalExposure": false,
+    "cloudWrites": 0,
+    "productionReady": false
+  },
+  "fixtureStorage": {
+    "dynamicallyDiscovered": true,
+    "unique": true,
+    "keySha256Recorded": false
+  },
+  "boundary": "These branches are deterministic UI fixture evidence only. They replace the prior NOT_EXERCISED gap for this fixture surface and make no production fault-injection, provider, API, or release-readiness claim."
+}

@@ -1,0 +1,32 @@
+{
+  "schema": "unseen-local-startup/1",
+  "startedAt": "2026-08-16T05:29:00.552Z",
+  "productLabel": "Core Local Operable",
+  "status": "ready",
+  "origin": "http://127.0.0.1:4390",
+  "listener": "loopback_only",
+  "deploymentMode": "local",
+  "runtimeId": "unseen-stage-l-local-operable-v1",
+  "preferredPort": 4390,
+  "portFallback": false,
+  "node": "v22.23.1",
+  "inputs": {
+    "effectiveRevision": "00c918a7549cdeae37a8f6de81a6e4482bd5a8ee",
+    "track1A": "ba11df7634c60398d3e9ef8a0ba7a3ea3e5d7790",
+    "track2": "13b9f9b04edc1122242fa9a0e264f471dbd5c3ad",
+    "track4": "5e068e3d04263adc2f480ac9db5a3bc1f18157d7",
+    "track3A": "52cfbb5182261c335521b78e2265771acc80304d",
+    "track6A": "52e5393ff3068ba2e3f2c8d001a86cf222e36578"
+  },
+  "inputCommitsFileSha256": "7079dad91c49b6397ce9819b85d50322ba371614701f4d606c8962f330a8c714",
+  "persistence": {
+    "database": ".unseen-local-operable/unseen.sqlite",
+    "media": ".unseen-local-operable/media",
+    "keyset": "present_mode_0600",
+    "otpMailbox": "local_untracked_mode_0600"
+  },
+  "apiAdapter": "createLocalHttpServer",
+  "locatorMode": "deterministic_local_fixture",
+  "cloudWrites": 0,
+  "readyAt": "2026-08-16T05:29:00.554Z"
+}

@@ -1,0 +1,10 @@
+{
+  "schemaVersion": "1.0",
+  "jobId": "unseen-3dgs-360roam-base-2026-09-03-v10",
+  "state": "UPLOADING",
+  "createdAt": "2026-09-03T13:26:17.6079867Z",
+  "agent": "4060 Agent",
+  "machine": "DESKTOP-NIBL3D4",
+  "message": "v10 7k technical pipeline complete: training/evaluation/export/SOG roundtrip/browser controls PASS; user-facing visual gate FAIL due severe blur and unstable geometry, so 30k continuation is prohibited. Uploading reports, small images, redacted logs, patch, and <=15MB walkthrough only.",
+  "evidence": []
+}

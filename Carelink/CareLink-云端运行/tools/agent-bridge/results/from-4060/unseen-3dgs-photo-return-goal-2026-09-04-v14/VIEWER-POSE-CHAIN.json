@@ -1,0 +1,1299 @@
+{
+  "schemaVersion": "1.0",
+  "jobId": "unseen-3dgs-photo-return-goal-2026-09-04-v14",
+  "status": "PASS",
+  "purpose": "safe deterministic estimate -> dataparser -> scene manifest -> browser returned-pose proof",
+  "security": {
+    "queryGroundTruthIncluded": false,
+    "sourceImagesIncluded": false,
+    "standaloneQueryIncluded": false,
+    "sogIncluded": false
+  },
+  "sourceHashes": {
+    "v11DataparserTransformsSha256": "222d93b0bc05f666bd5d94a0097d8de4071cc63343786c1d794bba053486dcaa",
+    "v14SceneManifestSha256": "0aebf762799689bc0049e693c77d4856c2ed629f09ba52113066800f9c4e8993",
+    "acceptedViewerE2eSha256": "3e06232354f4148480926fac7a68b6232f80e95317a08178c74165b209551809",
+    "projectionCaptureLogSha256": "a6ed2b7cd22e42c3eee53bb113ec183b256c02ffb55c59c650127ed3b5223341",
+    "privateFinalGateSha256": "bdf30253e5563f0235686ee83976cd87f8c180eeee922b66d311b207d786dcaf",
+    "truthFreeChallengeManifestSha256": "ccf14ff274a7ff4756ca6414e0bb8c2405b140affc31ba53c2894a432e6fa0b8"
+  },
+  "queryProjection": {
+    "widthPixels": 1024,
+    "heightPixels": 1024,
+    "aspectWidthOverHeight": 1.0,
+    "flYPixels": 429.6190111627674,
+    "verticalFovDegrees": 100.0,
+    "derivation": "degrees(2 * atan(heightPixels / (2 * flYPixels)))"
+  },
+  "v11DataparserNormalization": {
+    "sourceFileSha256": "222d93b0bc05f666bd5d94a0097d8de4071cc63343786c1d794bba053486dcaa",
+    "transform3x4": [
+      [
+        0.5353361368179321,
+        -0.8445731401443481,
+        0.01055041141808033,
+        -0.06810395419597626
+      ],
+      [
+        -0.8445731401443481,
+        -0.5350964069366455,
+        0.019176432862877846,
+        -0.02399967424571514
+      ],
+      [
+        -0.01055041141808033,
+        -0.019176432862877846,
+        -0.9997602701187134,
+        -0.0005489611066877842
+      ]
+    ],
+    "transform4x4": [
+      [
+        0.5353361368179321,
+        -0.8445731401443481,
+        0.01055041141808033,
+        -0.06810395419597626
+      ],
+      [
+        -0.8445731401443481,
+        -0.5350964069366455,
+        0.019176432862877846,
+        -0.02399967424571514
+      ],
+      [
+        -0.01055041141808033,
+        -0.019176432862877846,
+        -0.9997602701187134,
+        -0.0005489611066877842
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    ],
+    "scale": 0.18098333537863337
+  },
+  "coordinateConversion": {
+    "formula": [
+      "T = homogeneous4x4(v11Dataparser.transform3x4)",
+      "normalizedC2w = T @ estimatedC2wOpenGL",
+      "normalizedC2w[0:3,3] = v11Dataparser.scale * normalizedC2w[0:3,3]",
+      "viewerC2w = PLAYCANVAS_FROM_NERFSTUDIO @ normalizedC2w",
+      "viewerPosition = round9(viewerC2w[0:3,3])",
+      "viewerQuaternionXyzw = round9(unitQuaternionXyzw(viewerC2w[0:3,0:3]))",
+      "viewerVerticalFovDegrees = round9(degrees(2 * atan(queryHeight / (2 * queryFlY))))"
+    ],
+    "playcanvasFromNerfstudio4x4": [
+      [
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        1.0,
+        0.0
+      ],
+      [
+        0.0,
+        -1.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    ],
+    "manifestRoundingDecimalPlaces": 9,
+    "browserPoseMatchToleranceMaxAbs": 1e-05
+  },
+  "sceneManifest": {
+    "safeRelativePath": "360roam-base-v14-fixed-photo.scene.json",
+    "sha256": "0aebf762799689bc0049e693c77d4856c2ed629f09ba52113066800f9c4e8993",
+    "sceneRevisionId": "360roam-base-posefix-v14-fixed-photo-r001",
+    "anchorCount": 5,
+    "sceneAssetReused": "v11 accepted SOG (binary not included)"
+  },
+  "runs": [
+    {
+      "finalRunId": "final-01",
+      "viewerRunId": "viewer-01",
+      "anchorId": "fixed-photo-final-01",
+      "sourceEstimate": {
+        "safeRelativePath": "final-gate-lightglue-v1/final-01/estimate.json",
+        "sha256": "046fae057f65d9bf197d66d2f38ef2064788db26040943f981d93720a9eccb47",
+        "groundTruthRead": false,
+        "estimatedC2wOpenGL": [
+          [
+            -0.8478692161394501,
+            -0.016377229275690908,
+            -0.5299524305862989,
+            1.027104064832915
+          ],
+          [
+            0.5301032584538996,
+            -0.0065634557709605135,
+            -0.8479076933398477,
+            3.627714678867376
+          ],
+          [
+            0.010408059359582778,
+            -0.9998443415900271,
+            0.014246574703180248,
+            0.013797947184951703
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "evidenceRelativePath": "evidence/final-estimates/final-01/estimate.json"
+      },
+      "conversionIntermediates": {
+        "dataparserTransformTimesEstimatedC2wBeforeTranslationScale": [
+          [
+            -0.901496194979795,
+            -0.01377277335936568,
+            0.4325676834536605,
+            -2.581982835877568
+          ],
+          [
+            0.4326308068540746,
+            -0.001829598333466678,
+            0.9015691470308134,
+            -2.8323766741820964
+          ],
+          [
+            -0.011625684723885595,
+            0.9999032992003997,
+            0.007607901756428405,
+            -0.09474659794954544
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "normalizedC2wAfterTranslationScale": [
+          [
+            -0.901496194979795,
+            -0.01377277335936568,
+            0.4325676834536605,
+            -0.4672958655275048
+          ],
+          [
+            0.4326308068540746,
+            -0.001829598333466678,
+            0.9015691470308134,
+            -0.5126129775421165
+          ],
+          [
+            -0.011625684723885595,
+            0.9999032992003997,
+            0.007607901756428405,
+            -0.01714755531268712
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "viewerC2wBeforeManifestRounding": [
+          [
+            -0.901496194979795,
+            -0.01377277335936568,
+            0.4325676834536605,
+            -0.4672958655275048
+          ],
+          [
+            -0.011625684723885595,
+            0.9999032992003997,
+            0.007607901756428405,
+            -0.01714755531268712
+          ],
+          [
+            -0.4326308068540746,
+            0.001829598333466678,
+            -0.9015691470308134,
+            0.5126129775421165
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      },
+      "convertedViewerPose": {
+        "positionManifestPrecision": [
+          -0.467295866,
+          -0.017147555,
+          0.512612978
+        ],
+        "quaternionXyzwManifestPrecision": [
+          -0.006512024,
+          0.975060129,
+          0.002419723,
+          0.221832108
+        ],
+        "verticalFovDegrees": 100.0
+      },
+      "sceneManifestAnchor": {
+        "id": "fixed-photo-final-01",
+        "label": "Fixed real photo \u00b7 localized run 1",
+        "sceneRevisionId": "360roam-base-posefix-v14-fixed-photo-r001",
+        "position": [
+          -0.467295866,
+          -0.017147555,
+          0.512612978
+        ],
+        "quaternion": [
+          -0.006512024,
+          0.975060129,
+          0.002419723,
+          0.221832108
+        ],
+        "fov": 100.0,
+        "thumbnail": "./assets/v14/fixed-photo-thumb.jpg"
+      },
+      "acceptedViewerMechanicsEvidence": {
+        "runId": "viewer-01",
+        "browserLaunch": 1,
+        "browserContext": 1,
+        "returned": {
+          "position": [
+            -0.4672958552837372,
+            -0.017147554084658623,
+            0.5126129984855652
+          ],
+          "quaternion": [
+            -0.006512023978270902,
+            0.9750601281604239,
+            0.0024197230104017497,
+            0.22183210983993537
+          ],
+          "fov": 100,
+          "mode": "photo-anchor"
+        },
+        "status": "PASS"
+      },
+      "queryProjectionMatchedCapture": {
+        "logPath": "logs/viewer-projection-capture.json",
+        "screenshot": "projection-matched-final-01.png",
+        "projection": {
+          "width": 1024,
+          "height": 1024,
+          "aspect": 1,
+          "verticalFovDegrees": 100
+        },
+        "browserReturnedPose": {
+          "position": [
+            -0.4672958552837372,
+            -0.017147554084658623,
+            0.5126129984855652
+          ],
+          "quaternion": [
+            -0.006512023978270902,
+            0.9750601281604239,
+            0.0024197230104017497,
+            0.22183210983993537
+          ],
+          "fov": 100,
+          "mode": "photo-anchor"
+        },
+        "status": "PASS"
+      },
+      "privateGateMetrics": {
+        "geometricInliers": 55,
+        "geometricInlierRatio": 0.3125,
+        "medianReprojectionPx": 2.732203245162964,
+        "translationErrorMeters": 0.011863167514966053,
+        "translationErrorSceneFraction": 0.000870871662816173,
+        "rotationErrorDegrees": 0.5481692477334771,
+        "status": "PASS"
+      },
+      "checks": {
+        "estimatedMatrixIs4x4": true,
+        "manifestPositionEqualsConvertedRounded": true,
+        "manifestQuaternionEqualsConvertedRounded": true,
+        "manifestFovEqualsQueryVerticalFov": true,
+        "acceptedBrowserPositionMatchesManifest": true,
+        "acceptedBrowserQuaternionMatchesManifest": true,
+        "acceptedBrowserFovMatchesManifest": true,
+        "projectionCapturePositionMatchesManifest": true,
+        "projectionCaptureQuaternionMatchesManifest": true,
+        "projectionCaptureIsQueryAspectAndFov": true,
+        "evidenceEstimateShaMatchesSourceClaim": true,
+        "evidenceEstimateTruthFreeAttestationsPass": true,
+        "evidenceEstimateMatchesChallengeAndFinalGateIdentity": true,
+        "evidenceEstimateMetricsMatchFinalGate": true,
+        "evidenceEstimateMatrixMatchesEmbeddedChain": true
+      },
+      "status": "PASS"
+    },
+    {
+      "finalRunId": "final-02",
+      "viewerRunId": "viewer-02",
+      "anchorId": "fixed-photo-final-02",
+      "sourceEstimate": {
+        "safeRelativePath": "final-gate-lightglue-v1/final-02/estimate.json",
+        "sha256": "069a359ea1e67d755659919bb5e020f9d97c5a1c0ea1a01ebfd3c8492e74ce15",
+        "groundTruthRead": false,
+        "estimatedC2wOpenGL": [
+          [
+            -0.8476419738811597,
+            -0.010796815485196676,
+            -0.5304587758631485,
+            1.032170292363312
+          ],
+          [
+            0.5305255724829179,
+            -0.004508813930626743,
+            -0.8476569397690381,
+            3.630929138529884
+          ],
+          [
+            0.006760255655197778,
+            -0.9999315473432755,
+            0.00954984665629599,
+            0.013444778375608514
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "evidenceRelativePath": "evidence/final-estimates/final-02/estimate.json"
+      },
+      "conversionIntermediates": {
+        "dataparserTransformTimesEstimatedC2wBeforeTranslationScale": [
+          [
+            -0.9017697049025888,
+            -0.012521591566454432,
+            0.4320352863853413,
+            -2.581989273570475
+          ],
+          [
+            0.43214295356405613,
+            -0.00764376969338594,
+            0.9017725488264463,
+            -2.838382292209742
+          ],
+          [
+            -0.007989251482990664,
+            0.999892207685142,
+            0.012304037449230153,
+            -0.0945086064600108
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "normalizedC2wAfterTranslationScale": [
+          [
+            -0.9017697049025888,
+            -0.012521591566454432,
+            0.4320352863853413,
+            -0.46729703064263917
+          ],
+          [
+            0.43214295356405613,
+            -0.00764376969338594,
+            0.9017725488264463,
+            -0.5136998943237698
+          ],
+          [
+            -0.007989251482990664,
+            0.999892207685142,
+            0.012304037449230153,
+            -0.017104482819119412
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "viewerC2wBeforeManifestRounding": [
+          [
+            -0.9017697049025888,
+            -0.012521591566454432,
+            0.4320352863853413,
+            -0.46729703064263917
+          ],
+          [
+            -0.007989251482990664,
+            0.999892207685142,
+            0.012304037449230153,
+            -0.017104482819119412
+          ],
+          [
+            -0.43214295356405613,
+            0.00764376969338594,
+            -0.9017725488264463,
+            0.5136998943237698
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      },
+      "convertedViewerPose": {
+        "positionManifestPrecision": [
+          -0.467297031,
+          -0.017104483,
+          0.513699894
+        ],
+        "quaternionXyzwManifestPrecision": [
+          -0.005258545,
+          0.975119844,
+          0.005114194,
+          0.221556953
+        ],
+        "verticalFovDegrees": 100.0
+      },
+      "sceneManifestAnchor": {
+        "id": "fixed-photo-final-02",
+        "label": "Fixed real photo \u00b7 localized run 2",
+        "sceneRevisionId": "360roam-base-posefix-v14-fixed-photo-r001",
+        "position": [
+          -0.467297031,
+          -0.017104483,
+          0.513699894
+        ],
+        "quaternion": [
+          -0.005258545,
+          0.975119844,
+          0.005114194,
+          0.221556953
+        ],
+        "fov": 100.0,
+        "thumbnail": "./assets/v14/fixed-photo-thumb.jpg"
+      },
+      "acceptedViewerMechanicsEvidence": {
+        "runId": "viewer-02",
+        "browserLaunch": 2,
+        "browserContext": 2,
+        "returned": {
+          "position": [
+            -0.4672970175743103,
+            -0.017104482278227806,
+            0.5136998891830444
+          ],
+          "quaternion": [
+            -0.00525854496974694,
+            0.9751198443735157,
+            0.0051141938916854065,
+            0.22155694941619394
+          ],
+          "fov": 100,
+          "mode": "photo-anchor"
+        },
+        "status": "PASS"
+      },
+      "queryProjectionMatchedCapture": {
+        "logPath": "logs/viewer-projection-capture.json",
+        "screenshot": "projection-matched-final-02.png",
+        "projection": {
+          "width": 1024,
+          "height": 1024,
+          "aspect": 1,
+          "verticalFovDegrees": 100
+        },
+        "browserReturnedPose": {
+          "position": [
+            -0.4672970175743103,
+            -0.017104482278227806,
+            0.5136998891830444
+          ],
+          "quaternion": [
+            -0.00525854496974694,
+            0.9751198443735157,
+            0.0051141938916854065,
+            0.22155694941619394
+          ],
+          "fov": 100,
+          "mode": "photo-anchor"
+        },
+        "status": "PASS"
+      },
+      "privateGateMetrics": {
+        "geometricInliers": 59,
+        "geometricInlierRatio": 0.34911242603550297,
+        "medianReprojectionPx": 2.533625602722168,
+        "translationErrorMeters": 0.010463134346133815,
+        "translationErrorSceneFraction": 0.0007680956367505733,
+        "rotationErrorDegrees": 0.4659767871407918,
+        "status": "PASS"
+      },
+      "checks": {
+        "estimatedMatrixIs4x4": true,
+        "manifestPositionEqualsConvertedRounded": true,
+        "manifestQuaternionEqualsConvertedRounded": true,
+        "manifestFovEqualsQueryVerticalFov": true,
+        "acceptedBrowserPositionMatchesManifest": true,
+        "acceptedBrowserQuaternionMatchesManifest": true,
+        "acceptedBrowserFovMatchesManifest": true,
+        "projectionCapturePositionMatchesManifest": true,
+        "projectionCaptureQuaternionMatchesManifest": true,
+        "projectionCaptureIsQueryAspectAndFov": true,
+        "evidenceEstimateShaMatchesSourceClaim": true,
+        "evidenceEstimateTruthFreeAttestationsPass": true,
+        "evidenceEstimateMatchesChallengeAndFinalGateIdentity": true,
+        "evidenceEstimateMetricsMatchFinalGate": true,
+        "evidenceEstimateMatrixMatchesEmbeddedChain": true
+      },
+      "status": "PASS"
+    },
+    {
+      "finalRunId": "final-03",
+      "viewerRunId": "viewer-03",
+      "anchorId": "fixed-photo-final-03",
+      "sourceEstimate": {
+        "safeRelativePath": "final-gate-lightglue-v1/final-03/estimate.json",
+        "sha256": "716bceb6d223376726926a0810a82fedbe9a96d2979422041d68b26cb088c77d",
+        "groundTruthRead": false,
+        "estimatedC2wOpenGL": [
+          [
+            -0.8502901337847595,
+            -0.01706713837545837,
+            -0.5260374522559861,
+            1.0284285995743765
+          ],
+          [
+            0.5261977226680993,
+            -0.006536224768192933,
+            -0.8503371298636122,
+            3.6254449525316903
+          ],
+          [
+            0.011074522436739731,
+            -0.999832981329108,
+            0.014538376778221562,
+            0.01344804013993091
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "evidenceRelativePath": "evidence/final-estimates/final-03/estimate.json"
+      },
+      "conversionIntermediates": {
+        "dataparserTransformTimesEstimatedC2wBeforeTranslationScale": [
+          [
+            -0.8994866575973709,
+            -0.01416498534968091,
+            0.43671842829433766,
+            -2.579360506330677
+          ],
+          [
+            0.43677806742240344,
+            -0.0012612730011193082,
+            0.8995682399664322,
+            -2.8322875282099247
+          ],
+          [
+            -0.01219155210797091,
+            0.9998986982942218,
+            0.007321452929378821,
+            -0.0943672239194656
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "normalizedC2wAfterTranslationScale": [
+          [
+            -0.8994866575973709,
+            -0.01416498534968091,
+            0.43671842829433766,
+            -0.4668212675796465
+          ],
+          [
+            0.43677806742240344,
+            -0.0012612730011193082,
+            0.8995682399664322,
+            -0.5125968436067373
+          ],
+          [
+            -0.01219155210797091,
+            0.9998986982942218,
+            0.007321452929378821,
+            -0.017078894935367236
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "viewerC2wBeforeManifestRounding": [
+          [
+            -0.8994866575973709,
+            -0.01416498534968091,
+            0.43671842829433766,
+            -0.4668212675796465
+          ],
+          [
+            -0.01219155210797091,
+            0.9998986982942218,
+            0.007321452929378821,
+            -0.017078894935367236
+          ],
+          [
+            -0.43677806742240344,
+            0.0012612730011193082,
+            -0.8995682399664322,
+            0.5125968436067373
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      },
+      "convertedViewerPose": {
+        "positionManifestPrecision": [
+          -0.466821268,
+          -0.017078895,
+          0.512596844
+        ],
+        "quaternionXyzwManifestPrecision": [
+          -0.006761241,
+          0.974545275,
+          0.002201726,
+          0.224077989
+        ],
+        "verticalFovDegrees": 100.0
+      },
+      "sceneManifestAnchor": {
+        "id": "fixed-photo-final-03",
+        "label": "Fixed real photo \u00b7 localized run 3",
+        "sceneRevisionId": "360roam-base-posefix-v14-fixed-photo-r001",
+        "position": [
+          -0.466821268,
+          -0.017078895,
+          0.512596844
+        ],
+        "quaternion": [
+          -0.006761241,
+          0.974545275,
+          0.002201726,
+          0.224077989
+        ],
+        "fov": 100.0,
+        "thumbnail": "./assets/v14/fixed-photo-thumb.jpg"
+      },
+      "acceptedViewerMechanicsEvidence": {
+        "runId": "viewer-03",
+        "browserLaunch": 3,
+        "browserContext": 3,
+        "returned": {
+          "position": [
+            -0.46682125329971313,
+            -0.01707889512181282,
+            0.512596845626831
+          ],
+          "quaternion": [
+            -0.006761241299237651,
+            0.9745452744892275,
+            0.00220172602963564,
+            0.2240779908632267
+          ],
+          "fov": 100,
+          "mode": "photo-anchor"
+        },
+        "status": "PASS"
+      },
+      "queryProjectionMatchedCapture": {
+        "logPath": "logs/viewer-projection-capture.json",
+        "screenshot": "projection-matched-final-03.png",
+        "projection": {
+          "width": 1024,
+          "height": 1024,
+          "aspect": 1,
+          "verticalFovDegrees": 100
+        },
+        "browserReturnedPose": {
+          "position": [
+            -0.46682125329971313,
+            -0.01707889512181282,
+            0.512596845626831
+          ],
+          "quaternion": [
+            -0.006761241299237651,
+            0.9745452744892275,
+            0.00220172602963564,
+            0.2240779908632267
+          ],
+          "fov": 100,
+          "mode": "photo-anchor"
+        },
+        "status": "PASS"
+      },
+      "privateGateMetrics": {
+        "geometricInliers": 57,
+        "geometricInlierRatio": 0.3392857142857143,
+        "medianReprojectionPx": 2.8320882320404053,
+        "translationErrorMeters": 0.014268157571621668,
+        "translationErrorSceneFraction": 0.0010474212805345257,
+        "rotationErrorDegrees": 0.8045867548404282,
+        "status": "PASS"
+      },
+      "checks": {
+        "estimatedMatrixIs4x4": true,
+        "manifestPositionEqualsConvertedRounded": true,
+        "manifestQuaternionEqualsConvertedRounded": true,
+        "manifestFovEqualsQueryVerticalFov": true,
+        "acceptedBrowserPositionMatchesManifest": true,
+        "acceptedBrowserQuaternionMatchesManifest": true,
+        "acceptedBrowserFovMatchesManifest": true,
+        "projectionCapturePositionMatchesManifest": true,
+        "projectionCaptureQuaternionMatchesManifest": true,
+        "projectionCaptureIsQueryAspectAndFov": true,
+        "evidenceEstimateShaMatchesSourceClaim": true,
+        "evidenceEstimateTruthFreeAttestationsPass": true,
+        "evidenceEstimateMatchesChallengeAndFinalGateIdentity": true,
+        "evidenceEstimateMetricsMatchFinalGate": true,
+        "evidenceEstimateMatrixMatchesEmbeddedChain": true
+      },
+      "status": "PASS"
+    },
+    {
+      "finalRunId": "final-04",
+      "viewerRunId": "viewer-04",
+      "anchorId": "fixed-photo-final-04",
+      "sourceEstimate": {
+        "safeRelativePath": "final-gate-lightglue-v1/final-04/estimate.json",
+        "sha256": "3c147541aa8d4b55a4097d95eeabf9e6de14f78f75df7dd236598b409c1eb4e1",
+        "groundTruthRead": false,
+        "estimatedC2wOpenGL": [
+          [
+            -0.8467774904114099,
+            -0.005505006992778838,
+            -0.5319187688271245,
+            1.029897742993705
+          ],
+          [
+            0.5319356773630477,
+            -0.0021657430780430698,
+            -0.8467819936118357,
+            3.63143685748626
+          ],
+          [
+            0.0035095414045236972,
+            -0.9999825020743758,
+            0.004762212112093822,
+            0.011612978641648307
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "evidenceRelativePath": "evidence/final-estimates/final-04/estimate.json"
+      },
+      "conversionIntermediates": {
+        "dataparserTransformTimesEstimatedC2wBeforeTranslationScale": [
+          [
+            -0.9025321487408413,
+            -0.011668127552267236,
+            0.43046423185461863,
+            -2.5836539834048544
+          ],
+          [
+            0.43059595488706087,
+            -0.013367834933265297,
+            0.9024456293712293,
+            -2.836769764026427
+          ],
+          [
+            -0.004775477963491409,
+            0.9998423877032323,
+            0.01708914943456662,
+            -0.09266300577084627
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "normalizedC2wAfterTranslationScale": [
+          [
+            -0.9025321487408413,
+            -0.011668127552267236,
+            0.43046423185461863,
+            -0.4675983153809028
+          ],
+          [
+            0.43059595488706087,
+            -0.013367834933265297,
+            0.9024456293712293,
+            -0.5134080535947615
+          ],
+          [
+            -0.004775477963491409,
+            0.9998423877032323,
+            0.01708914943456662,
+            -0.01677045985061731
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "viewerC2wBeforeManifestRounding": [
+          [
+            -0.9025321487408413,
+            -0.011668127552267236,
+            0.43046423185461863,
+            -0.4675983153809028
+          ],
+          [
+            -0.004775477963491409,
+            0.9998423877032323,
+            0.01708914943456662,
+            -0.01677045985061731
+          ],
+          [
+            -0.43059595488706087,
+            0.013367834933265297,
+            -0.9024456293712293,
+            0.5134080535947615
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      },
+      "convertedViewerPose": {
+        "positionManifestPrecision": [
+          -0.467598315,
+          -0.01677046,
+          0.513408054
+        ],
+        "quaternionXyzwManifestPrecision": [
+          -0.004215024,
+          0.97529746,
+          0.007807102,
+          0.220717347
+        ],
+        "verticalFovDegrees": 100.0
+      },
+      "sceneManifestAnchor": {
+        "id": "fixed-photo-final-04",
+        "label": "Fixed real photo \u00b7 localized run 4",
+        "sceneRevisionId": "360roam-base-posefix-v14-fixed-photo-r001",
+        "position": [
+          -0.467598315,
+          -0.01677046,
+          0.513408054
+        ],
+        "quaternion": [
+          -0.004215024,
+          0.97529746,
+          0.007807102,
+          0.220717347
+        ],
+        "fov": 100.0,
+        "thumbnail": "./assets/v14/fixed-photo-thumb.jpg"
+      },
+      "acceptedViewerMechanicsEvidence": {
+        "runId": "viewer-04",
+        "browserLaunch": 4,
+        "browserContext": 4,
+        "returned": {
+          "position": [
+            -0.4675983190536499,
+            -0.016770459711551666,
+            0.5134080648422241
+          ],
+          "quaternion": [
+            -0.004215023835153063,
+            0.9752974584558753,
+            0.0078071017940259295,
+            0.2207173537924848
+          ],
+          "fov": 100,
+          "mode": "photo-anchor"
+        },
+        "status": "PASS"
+      },
+      "queryProjectionMatchedCapture": {
+        "logPath": "logs/viewer-projection-capture.json",
+        "screenshot": "projection-matched-final-04.png",
+        "projection": {
+          "width": 1024,
+          "height": 1024,
+          "aspect": 1,
+          "verticalFovDegrees": 100
+        },
+        "browserReturnedPose": {
+          "position": [
+            -0.4675983190536499,
+            -0.016770459711551666,
+            0.5134080648422241
+          ],
+          "quaternion": [
+            -0.004215023835153063,
+            0.9752974584558753,
+            0.0078071017940259295,
+            0.2207173537924848
+          ],
+          "fov": 100,
+          "mode": "photo-anchor"
+        },
+        "status": "PASS"
+      },
+      "privateGateMetrics": {
+        "geometricInliers": 60,
+        "geometricInlierRatio": 0.3314917127071823,
+        "medianReprojectionPx": 2.8152825832366943,
+        "translationErrorMeters": 0.00910045680697737,
+        "translationErrorSceneFraction": 0.0006680618765503305,
+        "rotationErrorDegrees": 0.5552953944386425,
+        "status": "PASS"
+      },
+      "checks": {
+        "estimatedMatrixIs4x4": true,
+        "manifestPositionEqualsConvertedRounded": true,
+        "manifestQuaternionEqualsConvertedRounded": true,
+        "manifestFovEqualsQueryVerticalFov": true,
+        "acceptedBrowserPositionMatchesManifest": true,
+        "acceptedBrowserQuaternionMatchesManifest": true,
+        "acceptedBrowserFovMatchesManifest": true,
+        "projectionCapturePositionMatchesManifest": true,
+        "projectionCaptureQuaternionMatchesManifest": true,
+        "projectionCaptureIsQueryAspectAndFov": true,
+        "evidenceEstimateShaMatchesSourceClaim": true,
+        "evidenceEstimateTruthFreeAttestationsPass": true,
+        "evidenceEstimateMatchesChallengeAndFinalGateIdentity": true,
+        "evidenceEstimateMetricsMatchFinalGate": true,
+        "evidenceEstimateMatrixMatchesEmbeddedChain": true
+      },
+      "status": "PASS"
+    },
+    {
+      "finalRunId": "final-05",
+      "viewerRunId": "viewer-05",
+      "anchorId": "fixed-photo-final-05",
+      "sourceEstimate": {
+        "safeRelativePath": "final-gate-lightglue-v1/final-05/estimate.json",
+        "sha256": "2117a77e7b296d0fee0e2f2db97b726033c5d13e1023f9c7efdd81db0ba3d978",
+        "groundTruthRead": false,
+        "estimatedC2wOpenGL": [
+          [
+            -0.844152717385989,
+            -0.009075469416005066,
+            -0.5360259560737052,
+            1.0304553719445506
+          ],
+          [
+            0.5360580189964559,
+            -0.0013690542152757779,
+            -0.8441800317231809,
+            3.633289981321122
+          ],
+          [
+            0.006927481464846008,
+            -0.9999578798856652,
+            0.0060206689926805,
+            0.011490388167006047
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "evidenceRelativePath": "evidence/final-estimates/final-05/estimate.json"
+      },
+      "conversionIntermediates": {
+        "dataparserTransformTimesEstimatedC2wBeforeTranslationScale": [
+          [
+            -0.9045725712336251,
+            -0.014252127352895248,
+            0.42608123621585126,
+            -2.5849218564727603
+          ],
+          [
+            0.426238835792709,
+            -0.010778151454878197,
+            0.9045462816575109,
+            -2.838234673214128
+          ],
+          [
+            -0.008299342884316982,
+            0.9998401636142246,
+            0.015824430411451495,
+            -0.09258186420445981
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "normalizedC2wAfterTranslationScale": [
+          [
+            -0.9045725712336251,
+            -0.014252127352895248,
+            0.42608123621585126,
+            -0.4678277792775692
+          ],
+          [
+            0.426238835792709,
+            -0.010778151454878197,
+            0.9045462816575109,
+            -0.5136731777455784
+          ],
+          [
+            -0.008299342884316982,
+            0.9998401636142246,
+            0.015824430411451495,
+            -0.016755774579294842
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "viewerC2wBeforeManifestRounding": [
+          [
+            -0.9045725712336251,
+            -0.014252127352895248,
+            0.42608123621585126,
+            -0.4678277792775692
+          ],
+          [
+            -0.008299342884316982,
+            0.9998401636142246,
+            0.015824430411451495,
+            -0.016755774579294842
+          ],
+          [
+            -0.426238835792709,
+            0.010778151454878197,
+            -0.9045462816575109,
+            0.5136731777455784
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      },
+      "convertedViewerPose": {
+        "positionManifestPrecision": [
+          -0.467827779,
+          -0.016755775,
+          0.513673178
+        ],
+        "quaternionXyzwManifestPrecision": [
+          -0.005777524,
+          0.975827776,
+          0.006815389,
+          0.218358243
+        ],
+        "verticalFovDegrees": 100.0
+      },
+      "sceneManifestAnchor": {
+        "id": "fixed-photo-final-05",
+        "label": "Fixed real photo \u00b7 localized run 5",
+        "sceneRevisionId": "360roam-base-posefix-v14-fixed-photo-r001",
+        "position": [
+          -0.467827779,
+          -0.016755775,
+          0.513673178
+        ],
+        "quaternion": [
+          -0.005777524,
+          0.975827776,
+          0.006815389,
+          0.218358243
+        ],
+        "fov": 100.0,
+        "thumbnail": "./assets/v14/fixed-photo-thumb.jpg"
+      },
+      "acceptedViewerMechanicsEvidence": {
+        "runId": "viewer-05",
+        "browserLaunch": 5,
+        "browserContext": 5,
+        "returned": {
+          "position": [
+            -0.46782776713371277,
+            -0.01675577461719513,
+            0.5136731863021851
+          ],
+          "quaternion": [
+            -0.005777524208582503,
+            0.975827775353947,
+            0.006815388977126196,
+            0.21835824585958805
+          ],
+          "fov": 100,
+          "mode": "photo-anchor"
+        },
+        "status": "PASS"
+      },
+      "queryProjectionMatchedCapture": {
+        "logPath": "logs/viewer-projection-capture.json",
+        "screenshot": "projection-matched-final-05.png",
+        "projection": {
+          "width": 1024,
+          "height": 1024,
+          "aspect": 1,
+          "verticalFovDegrees": 100
+        },
+        "browserReturnedPose": {
+          "position": [
+            -0.46782776713371277,
+            -0.01675577461719513,
+            0.5136731863021851
+          ],
+          "quaternion": [
+            -0.005777524208582503,
+            0.975827775353947,
+            0.006815388977126196,
+            0.21835824585958805
+          ],
+          "fov": 100,
+          "mode": "photo-anchor"
+        },
+        "status": "PASS"
+      },
+      "privateGateMetrics": {
+        "geometricInliers": 66,
+        "geometricInlierRatio": 0.3567567567567568,
+        "medianReprojectionPx": 2.5560426712036133,
+        "translationErrorMeters": 0.007816383129951287,
+        "translationErrorSceneFraction": 0.0005737984029140162,
+        "rotationErrorDegrees": 0.2978867990420268,
+        "status": "PASS"
+      },
+      "checks": {
+        "estimatedMatrixIs4x4": true,
+        "manifestPositionEqualsConvertedRounded": true,
+        "manifestQuaternionEqualsConvertedRounded": true,
+        "manifestFovEqualsQueryVerticalFov": true,
+        "acceptedBrowserPositionMatchesManifest": true,
+        "acceptedBrowserQuaternionMatchesManifest": true,
+        "acceptedBrowserFovMatchesManifest": true,
+        "projectionCapturePositionMatchesManifest": true,
+        "projectionCaptureQuaternionMatchesManifest": true,
+        "projectionCaptureIsQueryAspectAndFov": true,
+        "evidenceEstimateShaMatchesSourceClaim": true,
+        "evidenceEstimateTruthFreeAttestationsPass": true,
+        "evidenceEstimateMatchesChallengeAndFinalGateIdentity": true,
+        "evidenceEstimateMetricsMatchFinalGate": true,
+        "evidenceEstimateMatrixMatchesEmbeddedChain": true
+      },
+      "status": "PASS"
+    }
+  ],
+  "sourceByteEvidence": {
+    "status": "LOCAL_PASS_PENDING_MAC_RECOMPUTATION",
+    "challenge": {
+      "path": "evidence/challenge.json",
+      "sha256": "ccf14ff274a7ff4756ca6414e0bb8c2405b140affc31ba53c2894a432e6fa0b8",
+      "queryGroundTruthIncluded": false,
+      "sourceDatasetPathIncluded": false
+    },
+    "finalEstimates": [
+      {
+        "runId": "final-01",
+        "path": "evidence/final-estimates/final-01/estimate.json",
+        "sha256": "046fae057f65d9bf197d66d2f38ef2064788db26040943f981d93720a9eccb47",
+        "querySha256MatchesChallengeAndFinalGate": true,
+        "truthFreeAttestationsPass": true,
+        "metricsAndMatrixMatch": true
+      },
+      {
+        "runId": "final-02",
+        "path": "evidence/final-estimates/final-02/estimate.json",
+        "sha256": "069a359ea1e67d755659919bb5e020f9d97c5a1c0ea1a01ebfd3c8492e74ce15",
+        "querySha256MatchesChallengeAndFinalGate": true,
+        "truthFreeAttestationsPass": true,
+        "metricsAndMatrixMatch": true
+      },
+      {
+        "runId": "final-03",
+        "path": "evidence/final-estimates/final-03/estimate.json",
+        "sha256": "716bceb6d223376726926a0810a82fedbe9a96d2979422041d68b26cb088c77d",
+        "querySha256MatchesChallengeAndFinalGate": true,
+        "truthFreeAttestationsPass": true,
+        "metricsAndMatrixMatch": true
+      },
+      {
+        "runId": "final-04",
+        "path": "evidence/final-estimates/final-04/estimate.json",
+        "sha256": "3c147541aa8d4b55a4097d95eeabf9e6de14f78f75df7dd236598b409c1eb4e1",
+        "querySha256MatchesChallengeAndFinalGate": true,
+        "truthFreeAttestationsPass": true,
+        "metricsAndMatrixMatch": true
+      },
+      {
+        "runId": "final-05",
+        "path": "evidence/final-estimates/final-05/estimate.json",
+        "sha256": "2117a77e7b296d0fee0e2f2db97b726033c5d13e1023f9c7efdd81db0ba3d978",
+        "querySha256MatchesChallengeAndFinalGate": true,
+        "truthFreeAttestationsPass": true,
+        "metricsAndMatrixMatch": true
+      }
+    ],
+    "v11DataparserTransforms": {
+      "path": "evidence/v11-dataparser-transforms.json",
+      "sha256": "222d93b0bc05f666bd5d94a0097d8de4071cc63343786c1d794bba053486dcaa",
+      "transformAndScaleMatchEmbeddedChain": true
+    },
+    "privateAbsolutePathsIncluded": false,
+    "mediaIncluded": false
+  }
+}

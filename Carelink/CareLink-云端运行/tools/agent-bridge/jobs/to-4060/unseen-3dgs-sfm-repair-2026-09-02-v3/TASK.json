@@ -1,0 +1,43 @@
+{
+  "schemaVersion": "1.0",
+  "jobId": "unseen-3dgs-sfm-repair-2026-09-02-v3",
+  "targetAgent": "Max RTX 4060 Laptop Agent",
+  "publishedAt": "2026-09-02T05:05:02Z",
+  "state": "PUBLISHED",
+  "artifact": {
+    "delivery": "github-private-release",
+    "releaseTag": "unseen-3dgs-sceneworker-2026-09-02-v1",
+    "assetName": "02-UNSEEN-3DGS-SINGLE-ZIP-sha256-4187dcb112286bb4581da17eb014c6391211140db458a32f83f7eecadfbbe462.zip",
+    "sha256": "4187dcb112286bb4581da17eb014c6391211140db458a32f83f7eecadfbbe462",
+    "bytes": 1373866,
+    "format": "zip"
+  },
+  "execution": {
+    "mode": "bounded-sfm-repair-and-single-preview",
+    "parentJobId": "unseen-3dgs-visual-diagnosis-2026-09-02-v2",
+    "reuseExistingLocalArtifacts": true,
+    "redownloadRequired": false,
+    "productionConnectionEnabled": false,
+    "quality30000Allowed": false,
+    "maxIsolatedSfmExperiments": 3,
+    "maxNewPreview7000Runs": 1,
+    "firstAction": "Pull main, read this job README, acknowledge RECEIVED_VERIFIED, freeze v1/v2 baseline hashes, and inspect local COLMAP 3.7 plus ns-process-data help before selecting exact flags.",
+    "localProjectPath": "/home/max/src/unseen-3dgs-sceneworker",
+    "instructions": "Repair square-pixel/plausible intrinsics with non-degenerate near-full-frame registration. Train only one passing SfM candidate, then generate the Viewer manifest from real training cameras/dataparser transform."
+  },
+  "receipt": {
+    "repository": "maxi-max-dev/max-agent-bridge",
+    "issueNumber": 3,
+    "directory": "receipts/from-4060/unseen-3dgs-sfm-repair-2026-09-02-v3",
+    "reportPath": "results/from-4060/unseen-3dgs-sfm-repair-2026-09-02-v3/REPAIR-REPORT.md",
+    "requiredStates": ["RECEIVED_VERIFIED", "RUNNING", "COMPLETED"],
+    "githubIsAuthoritative": true,
+    "icloudReportIsBestEffortOnly": true
+  },
+  "security": {
+    "allowedNetwork": "outbound-https-only",
+    "productionApiAllowed": false,
+    "paidApiAllowed": false,
+    "forbiddenUploads": ["raw video", "frames", "private media", "SOG", "PLY", "checkpoint", "work directory", "token", ".env"]
+  }
+}

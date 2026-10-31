@@ -1,0 +1,13 @@
+{
+  "name": "回见",
+  "short_name": "回见",
+  "description": "把一张照片递给阿见，聊几句，留成一页。",
+  "lang": "zh-CN",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#142536",
+  "theme_color": "#142536",
+  "icons": [
+    { "src": "/icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }
+  ]
+}

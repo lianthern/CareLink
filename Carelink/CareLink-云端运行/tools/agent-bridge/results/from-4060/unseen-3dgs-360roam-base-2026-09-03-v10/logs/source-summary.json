@@ -1,0 +1,22 @@
+{
+  "schemaVersion": "1.0",
+  "jobId": "unseen-3dgs-360roam-base-2026-09-03-v10",
+  "provider": "HKUST 360Roam authors public Synology share",
+  "scene": "base",
+  "format": "moving-equirectangular-jpeg-sequence-with-author-poses",
+  "literalMp4": false,
+  "selectedPanoramas": 60,
+  "selectedBytes": 674276821,
+  "allSelectedHashesVerified": true,
+  "imageWidth": 6080,
+  "imageHeight": 3040,
+  "jpegAndTwoToOne": true,
+  "poseBytes": 66048,
+  "poseSha256": "8e46d6ffc867b8544e2066634a6ee3f7f2f0a1e04d5a7a486fc67c98a8d330a2",
+  "authorPoseTrainCount": 148,
+  "authorPoseTestCount": 50,
+  "properRotations": true,
+  "usesAuthorScenePly": false,
+  "sourceOrPoseUploaded": false,
+  "status": "PASS"
+}

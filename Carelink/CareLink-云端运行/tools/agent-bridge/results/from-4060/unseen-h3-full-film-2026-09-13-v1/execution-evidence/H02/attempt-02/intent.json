@@ -1,0 +1,41 @@
+{
+  "key": "unseen-h3-full-film-2026-09-13-v1/H02/attempt-02",
+  "startedAt": "2026-09-14T02:48:18.991067+00:00",
+  "reference": "D:\\H3-runtime\\projects\\unseen-full-v1\\media-inputs\\reference-delta-01\\H02-mother-POV-v1.png",
+  "inputSha256": "b2322346333b4ac4edd76675be168741de0fb5d1a9ba2c6f0fa0dfe7e2cd6f39",
+  "seed": 2026091572,
+  "shot": {
+    "id": "H02",
+    "title": "\u6bcd\u4eb2\u62cd\uff1a\u63a8\u789f\u3001\u62ff\u5230\u3001\u7b11",
+    "type": "h3_generated_action",
+    "edit_seconds": 4,
+    "generate_seconds_nominal": 4.458333333333333,
+    "frame_count_starting_point": 107,
+    "fps": 24,
+    "recorder": "\u5988\u5988",
+    "references": [
+      "09-home-camera-B.png",
+      "cookie-a.png",
+      "02-character-age-reference.png"
+    ],
+    "start_end_and_action": "A closer three-quarter view from the mother seated beside grandmother at the same table, camera height 1.10m, 35mm equivalent field of view. The same boy remains standing on the floor at the south edge of the same wooden table. His empty right hand continues reaching. Grandmother slides the small saucer about fifteen centimeters toward him with her right hand. He takes exactly one cookie with his right hand and looks up at grandmother with a relieved small smile. Hold the smile briefly. Keep the blue-and-white tin stationary. Keep enough lower body and table edge visible to make his standing posture unambiguous. Mother is behind this camera and is not visible. Single steady take.",
+    "prompt": "Naturalistic personal-memory footage with believable human movement and gently handheld smartphone perspective. Keep the approved faces, clothes, lighting and room geometry. One continuous shot, no internal cuts, no age change, no photo cards, no text, no camera flying outside, no slow motion, no duplicated people, no DV camcorder. A closer three-quarter view from the mother seated beside grandmother at the same table, camera height 1.10m, 35mm equivalent field of view. The same boy remains standing on the floor at the south edge of the same wooden table. His empty right hand continues reaching. Grandmother slides the small saucer about fifteen centimeters toward him with her right hand. He takes exactly one cookie with his right hand and looks up at grandmother with a relieved small smile. Hold the smile briefly. Keep the blue-and-white tin stationary. Keep enough lower body and table edge visible to make his standing posture unambiguous. Mother is behind this camera and is not visible. Single steady take.",
+    "cut_continuity": "Match empty right hand and table contact from H01; do not replay the run or use seated cookie-b as first frame.",
+    "pass_criteria": [
+      "\u5168\u7a0b\u7ad9\u7acb",
+      "\u5148\u63a8\u789f\u540e\u62ff\u5230\uff0c\u52a8\u4f5c\u5355\u6b21",
+      "\u4ec5\u4e00\u5757\u997c\u5e72\u5230\u53f3\u624b",
+      "\u4e0d\u7528\u65e7cookie-b\u59ff\u52bf"
+    ],
+    "audio": "Natural scene sound only; no generated music, UI text or unscripted dialogue.",
+    "status": "planned",
+    "output": null,
+    "timeline_start_seconds": 4,
+    "timeline_end_seconds": 8
+  },
+  "outputPrefix": "unseen-full-v1/H02/attempt-02",
+  "apiSha256": "1b31fbf2c1dfa759f3c6c44cea74963a83a1864627e987620167e57cbeeea447",
+  "conditioningMode": "first-frame",
+  "templatePrompt": "Naturalistic personal-memory footage with believable human movement and gently handheld smartphone perspective. Keep the approved faces, clothes, lighting and room geometry. One continuous shot, no internal cuts, no age change, no photo cards, no text, no camera flying outside, no slow motion, no duplicated people, no DV camcorder. A closer three-quarter view from the mother seated beside grandmother at the same table, camera height 1.10m, 35mm equivalent field of view. The same boy remains standing on the floor at the south edge of the same wooden table. His empty right hand continues reaching. Grandmother slides the small saucer about fifteen centimeters toward him with her right hand. He takes exactly one cookie with his right hand and looks up at grandmother with a relieved small smile. Hold the smile briefly. Keep the blue-and-white tin stationary. Keep enough lower body and table edge visible to make his standing posture unambiguous. Mother is behind this camera and is not visible. Single steady take.",
+  "executedPrompt": "Naturalistic personal-memory footage with believable human movement and gently handheld smartphone perspective. Keep the approved faces, clothes, lighting and room geometry. One continuous shot, no internal cuts, no age change, no photo cards, no text, no camera flying outside, no slow motion, no duplicated people, no DV camcorder. A closer three-quarter view from the mother seated beside grandmother at the same table, camera height 1.10m, 35mm equivalent field of view. The same boy remains standing on the floor at the south edge of the same wooden table. His empty right hand continues reaching. Grandmother slides the small saucer about fifteen centimeters toward him with her right hand. He takes exactly one cookie with his right hand and looks up at grandmother with a relieved small smile. Hold the smile briefly. Keep the blue-and-white tin stationary. Keep enough lower body and table edge visible to make his standing posture unambiguous. Mother is behind this camera and is not visible. Single steady take. Natural scene sound only; no generated music, UI text or unscripted dialogue."
+}

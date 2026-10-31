@@ -1,0 +1,22 @@
+{
+  "schemaVersion": "1.0",
+  "capturedAt": "2026-09-03T05:12:00Z",
+  "endpoint": "drive.usercontent.google.com:443",
+  "network": {
+    "directConnection": "TIMEOUT",
+    "existingLocalProxyUsed": true,
+    "rangeProbeHttpStatus": 206
+  },
+  "frozenScriptResult": {
+    "status": "BLOCKED",
+    "receivedBytes": 2009,
+    "expectedBytes": 4271432079,
+    "receivedSha256": "bacca222e69c62ba3ef6d6ec3194d54c114b27dfb37cb9e35f0b085d67aed068",
+    "looksLikeHtml": true,
+    "containsGoogleDriveMarker": true,
+    "officialVideoAccepted": false,
+    "preparedVideoCreated": false,
+    "uploaded": false,
+    "trainingStarted": false
+  }
+}

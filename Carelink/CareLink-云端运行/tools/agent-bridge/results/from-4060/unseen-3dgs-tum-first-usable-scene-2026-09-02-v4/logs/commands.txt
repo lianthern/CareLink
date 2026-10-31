@@ -1,0 +1,12 @@
+# Paths are repo-relative and source payloads are intentionally omitted.
+python scripts/tum_v4_adapter.py --source data/tum-v4/raw/rgbd_dataset_freiburg1_desk --output data/tum-v4/processed/desk-5hz --target-hz 5 --max-frames 120
+python -m pytest -q scripts/test_tum_v4_adapter.py
+bash scripts/run_tum_v4_train.sh
+ns-export gaussian-splat --load-config <v4-config> --output-dir artifacts/export/tum-v4
+splat-transform -g cpu -i 2 <raw-ply> <scene-sog> -H 1
+python scripts/evaluate_tum_v4.py --load-config <v4-config> --output-dir reports/tum-v4/anchors
+python scripts/validate_tum_v4_artifacts.py --load-config <v4-config> --raw-ply <raw-ply> --sog-roundtrip <roundtrip-ply>
+python scripts/generate_tum_v4_viewer.py --transforms <transforms> --dataparser-transforms <dataparser-transforms> --output viewer/tum-v4.scene.json
+python -m pytest -q scripts/test_generate_tum_v4_viewer.py
+node --check viewer/app.js
+node viewer_v4_e2e.js http://127.0.0.1:8765/index.html?scene=./tum-v4.scene.json viewer-validation.json viewer-screenshot.png

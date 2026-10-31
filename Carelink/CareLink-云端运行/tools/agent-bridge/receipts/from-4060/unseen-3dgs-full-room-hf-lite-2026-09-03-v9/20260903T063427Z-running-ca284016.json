@@ -1,0 +1,14 @@
+{
+  "schemaVersion": "1.0",
+  "jobId": "unseen-3dgs-full-room-hf-lite-2026-09-03-v9",
+  "state": "RUNNING",
+  "createdAt": "2026-09-03T06:34:27.4267484Z",
+  "agent": "4060 Agent",
+  "machine": "DESKTOP-NIBL3D4",
+  "message": "v9 source and all pre-GPU gates passed: 169378633 bytes/SHA exact, 376 safe members, 371/371 PINHOLE poses, PCA ratio 0.456661, path/hull 7.531, manual floor 9/12 and upper coverage 12/12. Starting the single permitted from-scratch 7k run.",
+  "evidence": [
+    "Viewer 24/24 tests and legacy/new E2E PASS",
+    "13 held-out frames cover all 12 bins",
+    "no active ns-train/COLMAP/export process"
+  ]
+}

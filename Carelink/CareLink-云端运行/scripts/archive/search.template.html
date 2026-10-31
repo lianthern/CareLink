@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="zh-CN">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>UNSEEN · 总档案</title>
+<style>
+:root{color-scheme:light;--ink:#1c302b;--muted:#6b7771;--line:#d9ddd5;--paper:#f4f3ed;--accent:#24694e}
+*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:15px/1.6 -apple-system,BlinkMacSystemFont,"PingFang SC",sans-serif}main{max-width:1160px;margin:auto;padding:48px 28px}header{border-top:3px solid var(--ink);padding:24px 0 30px}.eyebrow{font-size:12px;letter-spacing:.2em;font-weight:600}h1{font-size:46px;letter-spacing:-.04em;margin:12px 0 8px;font-weight:600}p{margin:8px 0;color:var(--muted)}.stats{display:flex;gap:28px;flex-wrap:wrap;margin:22px 0 8px}.stats strong{font-size:25px;font-variant-numeric:tabular-nums;color:var(--ink)}.stats span{font-size:13px;color:var(--muted)}.controls{position:sticky;top:0;background:var(--paper);padding:16px 0;z-index:1;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}.search{width:100%;font:inherit;font-size:20px;background:white;color:var(--ink);border:1px solid #a2b0a5;border-radius:6px;padding:14px 16px;outline-offset:3px}.filters label{display:flex;gap:6px;align-items:center;max-width:100%;min-width:0}.filters select{min-width:0;max-width:min(420px,75vw)}.filters{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin-top:12px}select,button{font:inherit;border:1px solid var(--line);border-radius:5px;background:#fff;color:var(--ink);padding:7px 12px}button{cursor:pointer}button:hover{border-color:var(--accent)}#count{margin-left:auto;color:var(--muted);font-size:13px}.entry{padding:20px 0;border-bottom:1px solid var(--line);display:grid;grid-template-columns:1fr auto;gap:12px}.name{font-size:17px;font-weight:600;overflow-wrap:anywhere}.path{font:12px/1.7 ui-monospace,Menlo,monospace;color:var(--muted);overflow-wrap:anywhere;margin:5px 0}.title{color:#3f5b4e;font-size:14px}.meta{font-size:12px;color:var(--muted);margin-top:7px}.actions{display:flex;align-items:start;gap:8px;flex-wrap:wrap;max-width:230px}.actions a{color:var(--accent);padding:7px 4px;font-size:13px}.actions button{font-size:13px}details{padding:18px 0;font-size:13px;color:var(--muted)}summary{cursor:pointer;color:var(--ink)}code{font-family:ui-monospace,Menlo,monospace;overflow-wrap:anywhere}#more{margin:22px auto;display:block}#more[hidden]{display:none}#notice{min-height:26px;color:var(--accent);font-size:13px}footer{padding:28px 0;color:var(--muted);font-size:12px}#command{width:100%;padding:12px;margin:8px 0;background:#fff;border:1px solid var(--line);font:12px/1.6 ui-monospace,monospace;display:none}a{color:var(--accent)}@media(max-width:640px){main{padding:24px 16px}h1{font-size:36px}.entry{grid-template-columns:1fr}.actions{max-width:none}.stats{gap:18px}#count{margin-left:0}}
+</style>
+<main>
+  <header>
+    <div class="eyebrow">UNSEEN / ARCHIVE / 2026.09.20</div>
+    <h1>所有来过的想法，都有迹可寻。</h1>
+    <p>从代码、草稿到失败实验，从旧分支到原始素材。在同一个目录里找回它们。</p>
+    <div class="stats" id="stats"></div>
+    <p id="pending"></p>
+  </header>
+  <div class="controls">
+    <label for="query" hidden>搜索总档案</label>
+    <input id="query" class="search" placeholder="搜索名称、文档标题或来源，例如：路演、照片、3dgs…" autofocus type="search">
+    <div class="filters">
+      <label>类型 <select id="category"><option value="">全部内容</option></select></label>
+      <label>来源 <select id="source"><option value="">全部来源</option></select></label>
+      <span id="count" role="status">正在载入目录…</span>
+    </div>
+  </div>
+  <details>
+    <summary>如何取回文件，以及本次归档的范围</summary>
+    <p>搜索在本页本地完成。文件名和文档标题可搜索；原件位于私有 GitHub Release 的加密附件中。点击“复制取回命令”，在 unseen 仓库根目录运行。每份文件都会核对 SHA256，已有文件不会被覆盖。</p>
+    <p>取回加密原件需要 GitHub CLI、age、仓库权限和独立保管的恢复密钥。当前代码中相同的文件可直接取回。符号链接保留记录，不自动恢复链接目标。</p>
+    <p id="scope"></p>
+    <p>这是 2026-09-20 的快照；今后的文件不会自动进入。详见仓库根目录 <code>ARCHIVE.md</code>。</p>
+  </details>
+  <div id="notice" role="status"></div>
+  <textarea id="command" readonly aria-label="取回命令"></textarea>
+  <section id="results" aria-label="搜索结果"></section>
+  <button id="more" hidden>再显示 60 条</button>
+  <footer>文件内容去重保存，来源路径逐条保留。<a href="https://github.com/maxi-max-dev/unseen/releases/tag/unseen-archive-20260920">打开原件附件</a></footer>
+</main>
+<script id="coverage" type="application/json">__COVERAGE_JSON__</script>
+<script id="payload" type="application/octet-stream">__FILES_GZIP_BASE64__</script>
+<script>
+"use strict";
+const coverage=JSON.parse(document.getElementById("coverage").textContent);
+const byId=id=>document.getElementById(id);
+const size=n=>n>=1073741824?(n/1073741824).toFixed(1)+" GiB":n>=1048576?(n/1048576).toFixed(1)+" MiB":n>=1024?(n/1024).toFixed(1)+" KiB":n+" B";
+const quote=s=>"'"+s.replaceAll("'","'\\''")+"'";
+let files=[],matches=[],shown=60;
+for(const [value,label] of [[coverage.catalogEntries.toLocaleString(),"文件记录"],[coverage.sourceLocations||coverage.sourceDirectories,"来源位置"],[size(coverage.originalUniqueBytes),"去重后原件"],[coverage.gitDatabases,"Git 历史"]]){
+  const block=document.createElement("div"),strong=document.createElement("strong"),small=document.createElement("span");strong.textContent=value;small.textContent="　"+label;block.append(strong,small);byId("stats").append(block);
+}
+byId("scope").textContent="尚未纳入："+coverage.notCaptured.join("；")+"。";
+if(coverage.states.pending){byId("pending").textContent="目录中仍有 "+coverage.states.pending.toLocaleString()+" 条待上传或待取回记录，请以各条目状态为准。"}
+function render(){
+  const result=byId("results");result.replaceChildren();
+  byId("count").textContent=matches.length.toLocaleString()+" 条结果 · 显示 "+Math.min(shown,matches.length);
+  for(const row of matches.slice(0,shown)){
+    const card=document.createElement("article");card.className="entry";
+    const body=document.createElement("div"),name=document.createElement("div"),path=document.createElement("div"),meta=document.createElement("div"),actions=document.createElement("div");
+    name.className="name";name.textContent=row.path.split("/").pop();path.className="path";path.textContent=row.source+" / "+row.path;meta.className="meta";
+    meta.textContent=row.category+" · "+size(row.bytes)+" · "+new Date(row.mtime*1000).toLocaleDateString("zh-CN")+" · "+(row.status==="archived"?"原件已归档":row.status==="link-metadata"?"符号链接记录":"待归档");
+    body.append(name,path);
+    if(row.title){const title=document.createElement("div");title.className="title";title.textContent=row.title;body.append(title)}
+    body.append(meta);actions.className="actions";
+    if(row.status==="archived"){
+      const button=document.createElement("button");button.textContent="复制取回命令";
+      button.onclick=async()=>{
+        const filename=(row.path.split("/").pop()||"file").replaceAll("\\","_");
+        const command="python3 scripts/archive/archive.py restore "+quote(row.id)+" --output "+quote(".local/restored/"+row.id+"/"+filename);
+        byId("command").value=command;byId("command").style.display="block";
+        try{await navigator.clipboard.writeText(command);byId("notice").textContent="取回命令已复制。在 unseen 仓库根目录运行即可。"}catch{byId("command").select();byId("notice").textContent="取回命令已显示，可手动复制。"}
+      };actions.append(button);
+    }
+    if(row.repoPath){const link=document.createElement("a");link.textContent="查看代码";link.href="https://github.com/maxi-max-dev/unseen/blob/"+coverage.codeCommit+"/"+row.repoPath.split("/").map(encodeURIComponent).join("/");link.target="_blank";link.rel="noopener";actions.append(link)}
+    card.append(body,actions);result.append(card);
+  }
+  if(!matches.length){const empty=document.createElement("p");empty.textContent="没有匹配记录。试试更短的关键词，或取消类型和来源筛选。";result.append(empty)}
+  byId("more").hidden=shown>=matches.length;
+}
+function search(){
+  const terms=byId("query").value.toLocaleLowerCase().trim().split(/\s+/).filter(Boolean),category=byId("category").value,source=byId("source").value;
+  matches=files.filter(row=>(!category||row.category===category)&&(!source||row.source===source)&&terms.every(t=>row.search.includes(t)));shown=60;render();
+}
+async function start(){
+  const bytes=Uint8Array.from(atob(byId("payload").textContent.trim()),c=>c.charCodeAt(0));
+  const text=await new Response(new Blob([bytes]).stream().pipeThrough(new DecompressionStream("gzip"))).text();
+  files=text.trim().split("\n").map(line=>{const r=JSON.parse(line);r.search=[r.id,r.source,r.path,r.title||"",r.sha256||""].join(" ").toLocaleLowerCase();return r});
+  files.sort((a,b)=>b.mtime-a.mtime);
+  for(const key of ["category","source"]){
+    for(const value of [...new Set(files.map(r=>r[key]))].sort()){const option=document.createElement("option");option.value=value;option.textContent=value;byId(key).append(option)}
+    byId(key).onchange=search;
+  }
+  let timer;byId("query").oninput=()=>{clearTimeout(timer);timer=setTimeout(search,120)};
+  byId("more").onclick=()=>{shown+=60;render()};search();
+}
+start().catch(error=>{byId("count").textContent="目录载入失败";byId("notice").textContent="请用支持 DecompressionStream 的近期 Chrome、Edge 或 Safari 打开本文件。也可使用命令行搜索。";console.error(error)});
+</script>
+</html>

@@ -1,0 +1,95 @@
+{
+  "schema": "unseen-renderer-snap-canonical-dangling-symlinks-fixed-review/1",
+  "generatedAt": "2026-08-15T12:13:07Z",
+  "status": "CODE_GATES_PASS_TARGET_RETRY_REQUIRED",
+  "baseCommit": "e46723f91157ac80a5dcd8c91206ea8272a98cc8",
+  "baseTree": "7262b8ae402609e30d6c6803c72933099865aff3",
+  "codeCommit": "004b05f6549540c93044a5b8f16ae8d939afeb44",
+  "codeTree": "42572ed773be48e5304475e1040a3e53c091de16",
+  "supersededEvidence": {
+    "commit": "e46723f91157ac80a5dcd8c91206ea8272a98cc8",
+    "path": "release-evidence/renderer/dedicated-service/snap-canonical-dangling-symlinks/machine-summary.json",
+    "sha256": "2558be59c9f431047243e02059adabaa0d84d7ed8a110b3b44a7ea49b3c35223",
+    "reviewDecision": "REJECTED_SUPERSEDED_BY_THIS_FOLLOWUP"
+  },
+  "fixedReviewFindings": [
+    {
+      "severity": "P1",
+      "counterexample": "PRESENT_LEAF_SYMLINK_POINTING_TO_MISSING_TARGET",
+      "closure": "EXACT_TARGET_PATH_LSTAT_MUST_RETURN_ENOENT_BEFORE_AFTER_AND_REOPEN"
+    },
+    {
+      "severity": "P1",
+      "counterexample": "SOURCE_SYMLINK_GID_12_ACCEPTED",
+      "closure": "EVERY_SOURCE_OBSERVATION_REQUIRES_UID0_GID0_MODE0777_NLINK1_AND_EXACT_PATH_TARGET_HASHES"
+    },
+    {
+      "severity": "P2",
+      "counterexample": "PACKAGE_POLICY_FIELDS_LACKED_SEMANTIC_MUTATIONS",
+      "closure": "TWO_MANIFEST_FIELD_AND_SEVEN_RUNBOOK_POLICY_WEAKENING_MUTATIONS_REJECTED"
+    }
+  ],
+  "policy": {
+    "schema": "unseen-chromium-snap-canonical-dangling-symlinks/1",
+    "sha256": "3c3f99c6d62feffb90a873bc245930045a1e42bdc0c3b1e5c2a763208586b128",
+    "count": 2,
+    "targetAbsenceProbe": "LSTAT_EXACT_PATH_ENOENT_ONLY",
+    "targetObservations": 3,
+    "sourceUid": 0,
+    "sourceGid": 0,
+    "sourceMode": "0777",
+    "sourceNlink": 1,
+    "sourceObservations": 3,
+    "pathAndTargetSha256BoundAtEveryObservation": true,
+    "runtimeReachability": "ABSENT_NOT_IN_ARGV_RESOURCE_OR_LOADER_CLOSURE"
+  },
+  "buildBinding": {
+    "rendererImplementationSha256": "fcd724ab09fb10828abc0f3e2d688b9bbee26df2fb00424eea92632757bdb86b",
+    "targetVerifierSha256": "a55d9ab2a2f9a5d0ebbd9625248a5ba5131b8c6751e8e4ca2a03a09777eb0b90",
+    "rendererProtocolSha256": "a891f94268ba86f1856295f8b0a948329bf9e07d46f0b0f837e75544ca47f1b8",
+    "productionPackageSha256": "8734c89074307e411be8d6745e564f3538666461b939284ac0c7dd883eb2739b"
+  },
+  "machineChecks": {
+    "dedicatedRenderer": {
+      "total": 45,
+      "passed": 45,
+      "presentDanglingLeafRejected": true,
+      "gid12Rejected": true
+    },
+    "apiWorkspace": {
+      "total": 129,
+      "passed": 129
+    },
+    "bookRendererIntegration": {
+      "total": 4,
+      "passed": 4
+    },
+    "productionPackage": {
+      "total": 1,
+      "passed": 1,
+      "newSemanticMutationCases": 9,
+      "acceptanceNegativeCases": 32,
+      "portableBundleVerified": true,
+      "standaloneNonGitCwdVerified": true,
+      "detachedHeadVerified": true,
+      "freshCloneVerified": true
+    },
+    "contracts": "CONTRACT_GENERATION_CLEAN",
+    "format": "FORMAT_OK",
+    "secretScan": "SECRET_SCAN_CLEAN"
+  },
+  "executionBoundary": {
+    "targetRetry": "NOT_RUN",
+    "liveTargetChanged": false,
+    "snapTreeChanged": false,
+    "snapdCacheChanged": false,
+    "publicDtoChanged": false,
+    "publicRouteChanged": false,
+    "bookDefaultOff": true,
+    "productionEnabled": false
+  },
+  "openCodeP0": 0,
+  "openCodeP1": 0,
+  "remainingGate": "TARGET_RENDERER_ACCEPTANCE_RETRY_REQUIRED",
+  "releaseDecision": "NO_GO"
+}

@@ -1,0 +1,184 @@
+{
+  "time": "2026-09-23T18:03:36.735Z",
+  "baseline": "35c915e",
+  "domainCommit": "3f813ff492fd7419ef142d6e264b6ff74ac55331",
+  "before": [
+    {
+      "camera": "X5",
+      "sceneMatches": true,
+      "isPrivate": 0,
+      "outputs": [
+        {
+          "type": "model",
+          "format": "sog",
+          "host": "insta360-app-hz.oss-cn-hangzhou.aliyuncs.com",
+          "extension": "sog"
+        },
+        {
+          "type": "model",
+          "format": "json",
+          "host": "insta360-app-hz.oss-cn-hangzhou.aliyuncs.com",
+          "extension": "json"
+        },
+        {
+          "type": "model",
+          "format": "zip",
+          "host": "insta360-app-hz.oss-cn-hangzhou.aliyuncs.com",
+          "extension": "zip"
+        },
+        {
+          "type": "video",
+          "format": "mp4",
+          "host": "insta360-app-hz.oss-cn-hangzhou.aliyuncs.com",
+          "extension": "mp4"
+        },
+        {
+          "type": "video",
+          "format": "mp4",
+          "host": "insta360-app-hz.oss-cn-hangzhou.aliyuncs.com",
+          "extension": "mp4"
+        }
+      ],
+      "parse": "accepted",
+      "cameraPresent": true
+    },
+    {
+      "camera": "X6",
+      "sceneMatches": true,
+      "isPrivate": 0,
+      "outputs": [
+        {
+          "type": "model",
+          "format": "sog",
+          "host": "p1-app.insta360.com",
+          "extension": "sog"
+        },
+        {
+          "type": "model",
+          "format": "json",
+          "host": "p1-app.insta360.com",
+          "extension": "json"
+        },
+        {
+          "type": "model",
+          "format": "zip",
+          "host": "p1-app.insta360.com",
+          "extension": "zip"
+        },
+        {
+          "type": "video",
+          "format": "mp4",
+          "host": "p1-app.insta360.com",
+          "extension": "mp4"
+        },
+        {
+          "type": "video",
+          "format": "mp4",
+          "host": "p1-app.insta360.com",
+          "extension": "mp4"
+        }
+      ],
+      "parse": "rejected",
+      "errorCode": "unsupported_asset_host"
+    }
+  ],
+  "regression": {
+    "tests": 77,
+    "passed": 77,
+    "skipped": 0,
+    "logSHA256": "86d73c7948f661329bd4e90b2166547957326ff6d27b91d7e2cbe865fd81623d"
+  },
+  "realBrowser": [
+    {
+      "realProvider": true,
+      "scene": "x5",
+      "localStore": "isolated",
+      "backend": "real HTTP",
+      "viewer": "real PlayCanvas + SwiftShader software rendering; no hardware GPU claim",
+      "bytes": 16324085,
+      "digest": "93224a51c0385145c747f3d7033907678f20ac3f251f30f7c61a61f1ffb0a630",
+      "model": {
+        "version": 2,
+        "count": 1000000,
+        "bands": 3,
+        "expandedBytes": 16323137,
+        "decodedBytes": 27932160
+      },
+      "cameraValidated": true,
+      "cameraCheck": {
+        "previousAbsPitchDegrees": 19.77,
+        "selectedAbsPitchDegrees": 19.77,
+        "sameAsPrevious": true
+      },
+      "familySegments": 4,
+      "cloudWrites": 0
+    },
+    {
+      "realProvider": true,
+      "scene": "x6",
+      "localStore": "isolated",
+      "backend": "real HTTP",
+      "viewer": "real PlayCanvas + SwiftShader software rendering; no hardware GPU claim",
+      "bytes": 16442297,
+      "digest": "b9126c4b4f3169f1cb66e728f3e20b26f1b4719b0dec0d2bfbf172306512825a",
+      "model": {
+        "version": 2,
+        "count": 1000000,
+        "bands": 3,
+        "expandedBytes": 16441349,
+        "decodedBytes": 27932160
+      },
+      "cameraValidated": true,
+      "cameraCheck": {
+        "previousAbsPitchDegrees": 47.75,
+        "selectedAbsPitchDegrees": 2.76,
+        "sameAsPrevious": false
+      },
+      "familySegments": 4,
+      "cloudWrites": 0
+    }
+  ],
+  "screenshots": [
+    {
+      "file": ".tools/spatial-x6/spatial-family-view.png",
+      "sha256": "afef4046726b3c89e8c1714d7158e66ad9673e04bf8ac372be50fb42527ce510"
+    },
+    {
+      "file": ".tools/spatial-x6/spatial-frame-view.png",
+      "sha256": "65a096c737cf2268e9a41c4350d74087bde99572490ae40c38c08d81dd69a24d"
+    },
+    {
+      "file": ".tools/spatial-x6-level/spatial-family-view.png",
+      "sha256": "efd33a21c8d8980c0214dec2f304c4f8470b7c9c1539733413f31c5e196900e5"
+    },
+    {
+      "file": ".tools/spatial-x6-level/spatial-frame-view.png",
+      "sha256": "99ff8a291240a202822be5926b8a6cc9883336b3bb322c67fc6ed305c3d98aa1"
+    },
+    {
+      "file": ".tools/spatial-x5-current/spatial-family-view.png",
+      "sha256": "499689da082063e15540216df05b3058f6d91db57ccf5f03d2fa4391e14e1f85"
+    },
+    {
+      "file": ".tools/spatial-x5-current/spatial-frame-view.png",
+      "sha256": "b5470850f19040c5978df3576407fbb9f44c4838b18a8c0ce738ecc792956dbd"
+    },
+    {
+      "file": ".tools/spatial-x5-level/spatial-family-view.png",
+      "sha256": "d40849584dbc6ca4cb897622feb301642ba7cf46fddb639777760b2e4fd9656f"
+    },
+    {
+      "file": ".tools/spatial-x5-level/spatial-frame-view.png",
+      "sha256": "b5470850f19040c5978df3576407fbb9f44c4838b18a8c0ce738ecc792956dbd"
+    }
+  ],
+  "boundaries": {
+    "localStore": "explicit isolated temporary store",
+    "newCloudFamilies": 0,
+    "cloudImports": 0,
+    "cloudContentWrites": 0,
+    "deployments": 0,
+    "hardwareGPUVerified": false,
+    "realPhoneVerified": false
+  }
+}

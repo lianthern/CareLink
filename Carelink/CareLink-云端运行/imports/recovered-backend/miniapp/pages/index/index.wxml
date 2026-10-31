@@ -1,0 +1,81 @@
+<view class="page-shell home" style="padding-top:{{navBarTop}}px">
+  <view class="app-bar" style="height:{{navBarHeight}}px;padding-right:{{navKeepoutRight}}px">
+    <view class="brand-mark">U</view>
+    <text class="brand-name">UNSEEN</text>
+    <view class="app-demo" bindtap="onDemo" aria-role="button" aria-label="打开演示中心"><text>◇</text> 演示</view>
+  </view>
+
+  <view class="home-main">
+    <view class="hero">
+      <text class="hero-kicker">SHARED MEMORY SPACE</text>
+      <text class="hero-title">把散落在每个人手机里的那一天，放回一起。</text>
+      <text class="hero-copy">创建或加入空间，上传普通照片与已经制作完成的 2:1 全景图。</text>
+      <text class="hero-badge">上传优先 MVP</text>
+    </view>
+
+    <view class="scene-section">
+      <view class="section-head scene-head">
+        <view>
+          <text class="section-title">从哪个场景开始？</text>
+          <text class="section-lead">选择只用于预填创建表单</text>
+        </view>
+      </view>
+      <view class="scene-grid">
+        <button class="scene-card {{selectedSceneIndex === index ? 'scene-card--active' : ''}}" wx:for="{{scenes}}" wx:key="name" data-index="{{index}}" bindtap="onSelectScene">
+          <text class="scene-icon">{{item.icon}}</text>
+          <view class="scene-copy"><text class="scene-name">{{item.name}}</text><text class="scene-sub">{{item.sub}}</text></view>
+        </button>
+      </view>
+    </view>
+
+    <view class="home-actions">
+      <button class="primary-button" bindtap="onCreate">创建一个记忆空间 <text class="button-arrow">→</text></button>
+      <button class="secondary-button" bindtap="onOpenShortcut">通过邀请链接加入</button>
+    </view>
+
+    <view class="demo-banner" bindtap="onDemo" aria-role="button" aria-label="打开演示中心">
+      <text class="demo-banner-icon">◇</text>
+      <view class="demo-banner-copy"><text class="demo-banner-title">演示中心</text><text class="demo-banner-sub">产品故事、全景实验与研究说明都收在这里</text></view>
+      <text class="demo-banner-go">›</text>
+    </view>
+
+    <view class="notice">新建空间默认发布到云端，可直接分享给微信好友；只想自己整理时，可以在创建页选择“仅保存在本机”。</view>
+
+    <view class="section" id="openSection">
+      <view class="section-head">
+        <text class="section-title">打开已有空间</text>
+        <text class="section-sub">输入分享给你的空间编号</text>
+      </view>
+      <view class="open-card card">
+        <input class="code-input" value="{{openCode}}" bindinput="onCodeInput" placeholder="例如 s4" placeholder-class="input-placeholder" disabled="{{opening}}" />
+        <button class="open-button" bindtap="onOpenCode" loading="{{opening}}" disabled="{{opening}}">打开</button>
+      </view>
+      <text class="field-error" wx:if="{{openError}}">{{openError}}</text>
+    </view>
+
+    <view class="section" id="spacesSection">
+      <view class="section-head">
+        <text class="section-title">我的空间</text>
+        <text class="section-sub">{{spaces.length ? '最近编辑' : '还没有创建空间'}}</text>
+      </view>
+      <view wx:if="{{!spaces.length}}" class="card empty-state">创建或打开过的空间会保存在这台手机的历史里。</view>
+      <view wx:else class="space-list">
+        <view class="space-card card" wx:for="{{spaces}}" wx:key="id" data-sid="{{item.id}}" bindtap="onOpenLocal" hover-class="space-card--pressed">
+          <image wx:if="{{item.cover}}" class="space-cover" src="{{item.cover}}" mode="aspectFill" />
+          <view wx:else class="space-cover space-cover--empty"><text>UNSEEN</text></view>
+          <view class="space-copy">
+            <view class="space-title-row"><text class="space-title">{{item.title}}</text><text class="space-kind">{{item.storageLabel}}</text></view>
+            <text class="space-meta">{{item.date}} · {{item.count}} 张照片</text>
+          </view>
+          <button class="space-delete" data-sid="{{item.id}}" data-title="{{item.title}}" catchtap="onDeleteLocal" loading="{{deletingSid === item.id}}" disabled="{{!!deletingSid}}">{{item.localOnly ? '删除' : '移除'}}</button>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class="bottom-nav">
+    <button class="nav-item nav-item--active"><text class="nav-icon">⌂</text><text>首页</text></button>
+    <button class="nav-item" bindtap="onMySpaces"><text class="nav-icon">▦</text><text>空间</text></button>
+    <button class="nav-item" bindtap="onCreate"><text class="nav-icon">＋</text><text>创建</text></button>
+  </view>
+</view>

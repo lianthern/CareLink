@@ -1,0 +1,29 @@
+{
+  "pdf_pages": 25,
+  "pdf_text_extracted": true,
+  "missing_relative_references": [],
+  "transparent_assets": {
+    "01-master-3d-transparent.png": {
+      "size": [
+        1307,
+        1203
+      ],
+      "alpha_range": [
+        0,
+        255
+      ]
+    },
+    "04-master-2d-transparent.png": {
+      "size": [
+        1332,
+        1181
+      ],
+      "alpha_range": [
+        0,
+        255
+      ]
+    }
+  },
+  "files_in_manifest": 48,
+  "visual_review": "PDF contact sheet reviewed; final selected pages re-rendered after icon update."
+}

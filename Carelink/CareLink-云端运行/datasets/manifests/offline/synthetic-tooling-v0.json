@@ -1,0 +1,474 @@
+{
+  "schemaVersion": "unseen.locator.offline-manifest.v1",
+  "datasetId": "locator-synthetic-tooling-v0",
+  "datasetVersion": "0.1.0",
+  "classification": "synthetic_fixture",
+  "releaseEligible": false,
+  "license": {
+    "spdxId": "LicenseRef-UNSEEN-Synthetic-Fixture-Internal",
+    "allowsCommercialUse": false,
+    "allowsRedistribution": false,
+    "scope": "internal_offline_tooling_only",
+    "evidence": "All payload bytes and labels were authored as synthetic text fixtures for Track 3A; no external media was copied and no public or commercial grant is asserted."
+  },
+  "purpose": {
+    "allowedUses": [
+      "offline_tooling_validation"
+    ],
+    "prohibitedUses": [
+      "model_training",
+      "production_release",
+      "shadow_gate"
+    ]
+  },
+  "retention": {
+    "policy": "retain_with_repository",
+    "expiresAt": null,
+    "deletionTrigger": "Delete when this synthetic checkpoint is retired from source control."
+  },
+  "source": {
+    "type": "authored_synthetic_bytes",
+    "containsHistoricalPrivateMedia": false,
+    "containsPersonalData": false,
+    "createdBy": "UNSEEN Track 3A",
+    "createdAt": "2026-08-14"
+  },
+  "splitPolicy": {
+    "unit": "space",
+    "stratifyBy": "spaceStratum",
+    "assignment": "sha256_sorted_round_robin_v1",
+    "seed": "unseen-locator-synthetic-v0",
+    "splitOrder": [
+      "train",
+      "calibration",
+      "test"
+    ]
+  },
+  "samples": [
+    {
+      "sampleId": "syn-space-i1-id",
+      "spaceId": "syn-space-i1",
+      "spaceStratum": "indoor",
+      "panoramaId": "syn-panorama-i1",
+      "clusterId": "syn-cluster-i1-id",
+      "domain": "id",
+      "media": {
+        "encoding": "base64",
+        "payloadBase64": "VU5TRUVOIHN5bnRoZXRpYyBsb2NhdG9yIGZpeHR1cmUgdjAKc3BhY2U9c3luLXNwYWNlLWkxCmRvbWFpbj1pZAo=",
+        "bytes": 65,
+        "sha256": "4242f1db2a7f91044bd8c42b179e7e21ecceb0bf003d722cc8dba629926cf34d"
+      },
+      "annotations": {
+        "independent": [
+          {
+            "annotatorId": "synthetic-labeler-a",
+            "blindedToModel": true,
+            "label": { "sameScene": true, "yawDeg": 10, "evaluable": false, "ambiguous": true, "multiSolution": false }
+          },
+          {
+            "annotatorId": "synthetic-labeler-b",
+            "blindedToModel": true,
+            "label": { "sameScene": true, "yawDeg": 14, "evaluable": false, "ambiguous": true, "multiSolution": false }
+          }
+        ],
+        "disagreement": { "present": true, "fields": ["yawDeg"] },
+        "adjudication": {
+          "status": "resolved",
+          "adjudicatorId": "synthetic-adjudicator-c",
+          "ruleId": "circular_midpoint_v1",
+          "label": { "sameScene": true, "yawDeg": 12, "evaluable": false, "ambiguous": true, "multiSolution": false }
+        }
+      }
+    },
+    {
+      "sampleId": "syn-space-i1-id-copy",
+      "spaceId": "syn-space-i1",
+      "spaceStratum": "indoor",
+      "panoramaId": "syn-panorama-i1",
+      "clusterId": "syn-cluster-i1-id",
+      "domain": "id",
+      "media": {
+        "encoding": "base64",
+        "payloadBase64": "VU5TRUVOIHN5bnRoZXRpYyBsb2NhdG9yIGZpeHR1cmUgdjAKc3BhY2U9c3luLXNwYWNlLWkxCmRvbWFpbj1pZAo=",
+        "bytes": 65,
+        "sha256": "4242f1db2a7f91044bd8c42b179e7e21ecceb0bf003d722cc8dba629926cf34d"
+      },
+      "annotations": {
+        "independent": [
+          {
+            "annotatorId": "synthetic-labeler-a",
+            "blindedToModel": true,
+            "label": { "sameScene": true, "yawDeg": 10, "evaluable": false, "ambiguous": true, "multiSolution": false }
+          },
+          {
+            "annotatorId": "synthetic-labeler-b",
+            "blindedToModel": true,
+            "label": { "sameScene": true, "yawDeg": 14, "evaluable": false, "ambiguous": true, "multiSolution": false }
+          }
+        ],
+        "disagreement": { "present": true, "fields": ["yawDeg"] },
+        "adjudication": {
+          "status": "resolved",
+          "adjudicatorId": "synthetic-adjudicator-c",
+          "ruleId": "circular_midpoint_v1",
+          "label": { "sameScene": true, "yawDeg": 12, "evaluable": false, "ambiguous": true, "multiSolution": false }
+        }
+      }
+    },
+    {
+      "sampleId": "syn-space-i1-ood",
+      "spaceId": "syn-space-i1",
+      "spaceStratum": "indoor",
+      "panoramaId": "syn-panorama-i1",
+      "clusterId": "syn-cluster-i1-ood",
+      "domain": "ood",
+      "media": {
+        "encoding": "base64",
+        "payloadBase64": "VU5TRUVOIHN5bnRoZXRpYyBsb2NhdG9yIGZpeHR1cmUgdjAKc3BhY2U9c3luLXNwYWNlLWkxCmRvbWFpbj1vb2QK",
+        "bytes": 66,
+        "sha256": "b9973c6b5fe2611de989046a976455ad0f15e1fe09196bbf251fecd3eccc3759"
+      },
+      "annotations": {
+        "independent": [
+          {
+            "annotatorId": "synthetic-labeler-a",
+            "blindedToModel": true,
+            "label": { "sameScene": false, "yawDeg": null, "evaluable": false, "ambiguous": false, "multiSolution": false }
+          },
+          {
+            "annotatorId": "synthetic-labeler-b",
+            "blindedToModel": true,
+            "label": { "sameScene": false, "yawDeg": null, "evaluable": false, "ambiguous": false, "multiSolution": false }
+          }
+        ],
+        "disagreement": { "present": false, "fields": [] },
+        "adjudication": { "status": "not_required" }
+      }
+    },
+    {
+      "sampleId": "syn-space-i2-id",
+      "spaceId": "syn-space-i2",
+      "spaceStratum": "indoor",
+      "panoramaId": "syn-panorama-i2",
+      "clusterId": "syn-cluster-i2-id",
+      "domain": "id",
+      "media": {
+        "encoding": "base64",
+        "payloadBase64": "VU5TRUVOIHN5bnRoZXRpYyBsb2NhdG9yIGZpeHR1cmUgdjAKc3BhY2U9c3luLXNwYWNlLWkyCmRvbWFpbj1pZAo=",
+        "bytes": 65,
+        "sha256": "e40d5eba151919ba872a2a8150b0001cdb73ca51373af09b94c836ca2d8622de"
+      },
+      "annotations": {
+        "independent": [
+          {
+            "annotatorId": "synthetic-labeler-a",
+            "blindedToModel": true,
+            "label": { "sameScene": true, "yawDeg": 60, "evaluable": true, "ambiguous": false, "multiSolution": false }
+          },
+          {
+            "annotatorId": "synthetic-labeler-b",
+            "blindedToModel": true,
+            "label": { "sameScene": true, "yawDeg": 64, "evaluable": true, "ambiguous": false, "multiSolution": false }
+          }
+        ],
+        "disagreement": { "present": true, "fields": ["yawDeg"] },
+        "adjudication": {
+          "status": "resolved",
+          "adjudicatorId": "synthetic-adjudicator-c",
+          "ruleId": "circular_midpoint_v1",
+          "label": { "sameScene": true, "yawDeg": 62, "evaluable": true, "ambiguous": false, "multiSolution": false }
+        }
+      }
+    },
+    {
+      "sampleId": "syn-space-i2-ood",
+      "spaceId": "syn-space-i2",
+      "spaceStratum": "indoor",
+      "panoramaId": "syn-panorama-i2",
+      "clusterId": "syn-cluster-i2-ood",
+      "domain": "ood",
+      "media": {
+        "encoding": "base64",
+        "payloadBase64": "VU5TRUVOIHN5bnRoZXRpYyBsb2NhdG9yIGZpeHR1cmUgdjAKc3BhY2U9c3luLXNwYWNlLWkyCmRvbWFpbj1vb2QK",
+        "bytes": 66,
+        "sha256": "9c28e0a04386cc3db4869369e548683c2e80304aa8e750d89490cde6c7735858"
+      },
+      "annotations": {
+        "independent": [
+          {
+            "annotatorId": "synthetic-labeler-a",
+            "blindedToModel": true,
+            "label": { "sameScene": false, "yawDeg": null, "evaluable": false, "ambiguous": false, "multiSolution": false }
+          },
+          {
+            "annotatorId": "synthetic-labeler-b",
+            "blindedToModel": true,
+            "label": { "sameScene": false, "yawDeg": null, "evaluable": false, "ambiguous": false, "multiSolution": false }
+          }
+        ],
+        "disagreement": { "present": false, "fields": [] },
+        "adjudication": { "status": "not_required" }
+      }
+    },
+    {
+      "sampleId": "syn-space-i3-id",
+      "spaceId": "syn-space-i3",
+      "spaceStratum": "indoor",
+      "panoramaId": "syn-panorama-i3",
+      "clusterId": "syn-cluster-i3-id",
+      "domain": "id",
+      "media": {
+        "encoding": "base64",
+        "payloadBase64": "VU5TRUVOIHN5bnRoZXRpYyBsb2NhdG9yIGZpeHR1cmUgdjAKc3BhY2U9c3luLXNwYWNlLWkzCmRvbWFpbj1pZAo=",
+        "bytes": 65,
+        "sha256": "f9619fcb94a4df2d020c985e2a84bf76d134212daa38546c2afcbbd5c6e27d86"
+      },
+      "annotations": {
+        "independent": [
+          {
+            "annotatorId": "synthetic-labeler-a",
+            "blindedToModel": true,
+            "label": { "sameScene": true, "yawDeg": 110, "evaluable": true, "ambiguous": false, "multiSolution": false }
+          },
+          {
+            "annotatorId": "synthetic-labeler-b",
+            "blindedToModel": true,
+            "label": { "sameScene": true, "yawDeg": 114, "evaluable": true, "ambiguous": false, "multiSolution": false }
+          }
+        ],
+        "disagreement": { "present": true, "fields": ["yawDeg"] },
+        "adjudication": {
+          "status": "resolved",
+          "adjudicatorId": "synthetic-adjudicator-c",
+          "ruleId": "circular_midpoint_v1",
+          "label": { "sameScene": true, "yawDeg": 112, "evaluable": true, "ambiguous": false, "multiSolution": false }
+        }
+      }
+    },
+    {
+      "sampleId": "syn-space-i3-ood",
+      "spaceId": "syn-space-i3",
+      "spaceStratum": "indoor",
+      "panoramaId": "syn-panorama-i3",
+      "clusterId": "syn-cluster-i3-ood",
+      "domain": "ood",
+      "media": {
+        "encoding": "base64",
+        "payloadBase64": "VU5TRUVOIHN5bnRoZXRpYyBsb2NhdG9yIGZpeHR1cmUgdjAKc3BhY2U9c3luLXNwYWNlLWkzCmRvbWFpbj1vb2QK",
+        "bytes": 66,
+        "sha256": "8e9467f03a74f7e95e2e551c21d46dae4e237d99e800b6bc5dee3c091a624812"
+      },
+      "annotations": {
+        "independent": [
+          {
+            "annotatorId": "synthetic-labeler-a",
+            "blindedToModel": true,
+            "label": { "sameScene": false, "yawDeg": null, "evaluable": false, "ambiguous": false, "multiSolution": false }
+          },
+          {
+            "annotatorId": "synthetic-labeler-b",
+            "blindedToModel": true,
+            "label": { "sameScene": false, "yawDeg": null, "evaluable": false, "ambiguous": false, "multiSolution": false }
+          }
+        ],
+        "disagreement": { "present": false, "fields": [] },
+        "adjudication": { "status": "not_required" }
+      }
+    },
+    {
+      "sampleId": "syn-space-o1-id",
+      "spaceId": "syn-space-o1",
+      "spaceStratum": "outdoor",
+      "panoramaId": "syn-panorama-o1",
+      "clusterId": "syn-cluster-o1-id",
+      "domain": "id",
+      "media": {
+        "encoding": "base64",
+        "payloadBase64": "VU5TRUVOIHN5bnRoZXRpYyBsb2NhdG9yIGZpeHR1cmUgdjAKc3BhY2U9c3luLXNwYWNlLW8xCmRvbWFpbj1pZAo=",
+        "bytes": 65,
+        "sha256": "5837099ca935f8bf2ad1bcd5b072e1f237992aaf9c3acaba73f8e771abc8e5af"
+      },
+      "annotations": {
+        "independent": [
+          {
+            "annotatorId": "synthetic-labeler-a",
+            "blindedToModel": true,
+            "label": { "sameScene": true, "yawDeg": 160, "evaluable": false, "ambiguous": false, "multiSolution": true }
+          },
+          {
+            "annotatorId": "synthetic-labeler-b",
+            "blindedToModel": true,
+            "label": { "sameScene": true, "yawDeg": 164, "evaluable": false, "ambiguous": false, "multiSolution": true }
+          }
+        ],
+        "disagreement": { "present": true, "fields": ["yawDeg"] },
+        "adjudication": {
+          "status": "resolved",
+          "adjudicatorId": "synthetic-adjudicator-c",
+          "ruleId": "circular_midpoint_v1",
+          "label": { "sameScene": true, "yawDeg": 162, "evaluable": false, "ambiguous": false, "multiSolution": true }
+        }
+      }
+    },
+    {
+      "sampleId": "syn-space-o1-ood",
+      "spaceId": "syn-space-o1",
+      "spaceStratum": "outdoor",
+      "panoramaId": "syn-panorama-o1",
+      "clusterId": "syn-cluster-o1-ood",
+      "domain": "ood",
+      "media": {
+        "encoding": "base64",
+        "payloadBase64": "VU5TRUVOIHN5bnRoZXRpYyBsb2NhdG9yIGZpeHR1cmUgdjAKc3BhY2U9c3luLXNwYWNlLW8xCmRvbWFpbj1vb2QK",
+        "bytes": 66,
+        "sha256": "19a49604ef9f881c1ba6919c8cbb1c332f9f568b9df1de6960e45ff83cf26b22"
+      },
+      "annotations": {
+        "independent": [
+          {
+            "annotatorId": "synthetic-labeler-a",
+            "blindedToModel": true,
+            "label": { "sameScene": false, "yawDeg": null, "evaluable": false, "ambiguous": false, "multiSolution": false }
+          },
+          {
+            "annotatorId": "synthetic-labeler-b",
+            "blindedToModel": true,
+            "label": { "sameScene": false, "yawDeg": null, "evaluable": false, "ambiguous": false, "multiSolution": false }
+          }
+        ],
+        "disagreement": { "present": false, "fields": [] },
+        "adjudication": { "status": "not_required" }
+      }
+    },
+    {
+      "sampleId": "syn-space-o2-id",
+      "spaceId": "syn-space-o2",
+      "spaceStratum": "outdoor",
+      "panoramaId": "syn-panorama-o2",
+      "clusterId": "syn-cluster-o2-id",
+      "domain": "id",
+      "media": {
+        "encoding": "base64",
+        "payloadBase64": "VU5TRUVOIHN5bnRoZXRpYyBsb2NhdG9yIGZpeHR1cmUgdjAKc3BhY2U9c3luLXNwYWNlLW8yCmRvbWFpbj1pZAo=",
+        "bytes": 65,
+        "sha256": "db63f9b0fa3b7c8c3263c2047f3ae4745b9339fb5a5944fb1f7111e488e23937"
+      },
+      "annotations": {
+        "independent": [
+          {
+            "annotatorId": "synthetic-labeler-a",
+            "blindedToModel": true,
+            "label": { "sameScene": true, "yawDeg": -130, "evaluable": true, "ambiguous": false, "multiSolution": false }
+          },
+          {
+            "annotatorId": "synthetic-labeler-b",
+            "blindedToModel": true,
+            "label": { "sameScene": true, "yawDeg": -126, "evaluable": true, "ambiguous": false, "multiSolution": false }
+          }
+        ],
+        "disagreement": { "present": true, "fields": ["yawDeg"] },
+        "adjudication": {
+          "status": "resolved",
+          "adjudicatorId": "synthetic-adjudicator-c",
+          "ruleId": "circular_midpoint_v1",
+          "label": { "sameScene": true, "yawDeg": -128, "evaluable": true, "ambiguous": false, "multiSolution": false }
+        }
+      }
+    },
+    {
+      "sampleId": "syn-space-o2-ood",
+      "spaceId": "syn-space-o2",
+      "spaceStratum": "outdoor",
+      "panoramaId": "syn-panorama-o2",
+      "clusterId": "syn-cluster-o2-ood",
+      "domain": "ood",
+      "media": {
+        "encoding": "base64",
+        "payloadBase64": "VU5TRUVOIHN5bnRoZXRpYyBsb2NhdG9yIGZpeHR1cmUgdjAKc3BhY2U9c3luLXNwYWNlLW8yCmRvbWFpbj1vb2QK",
+        "bytes": 66,
+        "sha256": "71164a29963c397b48dbd4caf45e60ee3fcf229cfb85f152b1da0d8a82647b3b"
+      },
+      "annotations": {
+        "independent": [
+          {
+            "annotatorId": "synthetic-labeler-a",
+            "blindedToModel": true,
+            "label": { "sameScene": false, "yawDeg": null, "evaluable": false, "ambiguous": false, "multiSolution": false }
+          },
+          {
+            "annotatorId": "synthetic-labeler-b",
+            "blindedToModel": true,
+            "label": { "sameScene": false, "yawDeg": null, "evaluable": false, "ambiguous": false, "multiSolution": false }
+          }
+        ],
+        "disagreement": { "present": false, "fields": [] },
+        "adjudication": { "status": "not_required" }
+      }
+    },
+    {
+      "sampleId": "syn-space-o3-id",
+      "spaceId": "syn-space-o3",
+      "spaceStratum": "outdoor",
+      "panoramaId": "syn-panorama-o3",
+      "clusterId": "syn-cluster-o3-id",
+      "domain": "id",
+      "media": {
+        "encoding": "base64",
+        "payloadBase64": "VU5TRUVOIHN5bnRoZXRpYyBsb2NhdG9yIGZpeHR1cmUgdjAKc3BhY2U9c3luLXNwYWNlLW8zCmRvbWFpbj1pZAo=",
+        "bytes": 65,
+        "sha256": "e15a9ba2d84c76c40f0bc5e57afcd221871644db4a004ce6d28d03e04f884beb"
+      },
+      "annotations": {
+        "independent": [
+          {
+            "annotatorId": "synthetic-labeler-a",
+            "blindedToModel": true,
+            "label": { "sameScene": true, "yawDeg": -80, "evaluable": true, "ambiguous": false, "multiSolution": false }
+          },
+          {
+            "annotatorId": "synthetic-labeler-b",
+            "blindedToModel": true,
+            "label": { "sameScene": true, "yawDeg": -76, "evaluable": true, "ambiguous": false, "multiSolution": false }
+          }
+        ],
+        "disagreement": { "present": true, "fields": ["yawDeg"] },
+        "adjudication": {
+          "status": "resolved",
+          "adjudicatorId": "synthetic-adjudicator-c",
+          "ruleId": "circular_midpoint_v1",
+          "label": { "sameScene": true, "yawDeg": -78, "evaluable": true, "ambiguous": false, "multiSolution": false }
+        }
+      }
+    },
+    {
+      "sampleId": "syn-space-o3-ood",
+      "spaceId": "syn-space-o3",
+      "spaceStratum": "outdoor",
+      "panoramaId": "syn-panorama-o3",
+      "clusterId": "syn-cluster-o3-ood",
+      "domain": "ood",
+      "media": {
+        "encoding": "base64",
+        "payloadBase64": "VU5TRUVOIHN5bnRoZXRpYyBsb2NhdG9yIGZpeHR1cmUgdjAKc3BhY2U9c3luLXNwYWNlLW8zCmRvbWFpbj1vb2QK",
+        "bytes": 66,
+        "sha256": "78d44a49b58250ccf6d911e43af3f9461314cf24104f48579d60e8f8b500a496"
+      },
+      "annotations": {
+        "independent": [
+          {
+            "annotatorId": "synthetic-labeler-a",
+            "blindedToModel": true,
+            "label": { "sameScene": false, "yawDeg": null, "evaluable": false, "ambiguous": false, "multiSolution": false }
+          },
+          {
+            "annotatorId": "synthetic-labeler-b",
+            "blindedToModel": true,
+            "label": { "sameScene": false, "yawDeg": null, "evaluable": false, "ambiguous": false, "multiSolution": false }
+          }
+        ],
+        "disagreement": { "present": false, "fields": [] },
+        "adjudication": { "status": "not_required" }
+      }
+    }
+  ]
+}

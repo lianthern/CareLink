@@ -1,0 +1,13 @@
+{
+  "schemaVersion": "1.0",
+  "jobId": "unseen-3dgs-room-and-local-upload-2026-09-02-v6",
+  "state": "FAILED",
+  "createdAt": "2026-09-02T11:11:40.4833265Z",
+  "agent": "4060 Agent",
+  "machine": "DESKTOP-NIBL3D4",
+  "message": "Sync-only audit completed without retraining. No existing local v6 room/intake artifacts or screenshots were found; room manifest is HTTP 404, intake ports 8780-8789 are not listening, and all required execution evidence remains PENDING. Prior v5 Viewer remains running at 127.0.0.1:8765.",
+  "evidence": [
+    "results/from-4060/unseen-3dgs-room-and-local-upload-2026-09-02-v6/V6-REPORT.md",
+    "results/from-4060/unseen-3dgs-room-and-local-upload-2026-09-02-v6/V6-RESULT.json"
+  ]
+}

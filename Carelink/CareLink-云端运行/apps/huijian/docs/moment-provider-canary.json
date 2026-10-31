@@ -1,0 +1,25 @@
+{
+  "scope": "Four total non-sensitive calls against existing MiniMax key and existing public photo4 table fixture; second pair verifies fixes exposed by first pair.",
+  "before": {
+    "at": "2026-09-05T07:06:42.480Z",
+    "scope": "two non-sensitive calls against existing MiniMax key, existing public photo4 table fixture",
+    "provider": "minimax",
+    "model": "MiniMax-M3",
+    "elapsedMs": 14767,
+    "first": "桌上这套带着红绿手绘花纹的盘子挺别致，像是专门为某顿晚饭摆好的。这顿饭是什么时候、和谁一起吃的呀？",
+    "correctionFollowup": "{\"sourceMessageId\":\"a2\",\"photoId\":\"canary-photo\",\"text\":\"谢谢更正，是 2011 年杭州。那你们当时是在聊那盆花的什么——品种、味道，还是别的什么？\"}"
+  },
+  "fixes": [
+    "plain recent role messages with separate attribution",
+    "strict initial premise prompt and guard",
+    "normalize provider text envelopes"
+  ],
+  "after": {
+    "at": "2026-09-05T07:09:05.211Z",
+    "provider": "minimax",
+    "model": "MiniMax-M3",
+    "elapsedMs": 10167,
+    "first": "桌上有几个陶土小花盆，里面插着带小白花的枝条。这场景是哪里拍的？",
+    "correctionFollowup": "谢谢澄清。杭州那次为什么一直在说那盆花？"
+  }
+}

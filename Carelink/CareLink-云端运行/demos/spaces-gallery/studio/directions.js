@@ -1,0 +1,19 @@
+export const designs = {
+  clarity: {name:'晴空', titles:{profile:'我的',library:'回忆库',spaces:'共忆空间'}, english:'Clarity', description:'轻一点，让生活自己发光。', color:'#0068d9'},
+  cinema: {name:'映场', titles:{profile:'我的故事',library:'值得重访的回忆',spaces:'一起，重返那一天。'}, english:'Cinema', description:'把那一瞬间，再看一遍。', color:'#a9ceff'},
+  keepsake: {name:'拾光', titles:{profile:'我珍藏的日子。',library:'慢慢攒下的日子。',spaces:'我们的日子。'}, english:'Keepsake', description:'有些日子，值得好好收着。', color:'#c94b43'}
+};
+export function directionHeading(key){
+  if(key==='cinema')return '<div class="direction-heading cinema-heading"><span>UNSEEN 精选</span><h1>生活，值得重映。</h1></div>';
+  if(key==='keepsake')return '<div class="direction-heading keepsake-heading"><span>照片背后，还有我们。</span><h1>把日子，<em>好好收着。</em></h1></div>';
+  return '<div class="direction-heading clarity-heading"><div><span>每一张照片，都有下文。</span><h1>发现，值得留住的。</h1></div><span class="quiet-pill">UNSEEN 编辑精选 · 示例</span></div>';
+}
+export function directionDiscover(key,{list,pub,spaces,b,a,icon,photoCard,publicationCard,spaceCard}){
+  const storyLink='#story/ex-dinner';
+  const photo='./assets/photo3_group_back.jpg';
+  const primary=b(icon('plus')+' 留下回忆','new-memory','','btn primary');
+  const footer=`<div class="section-title"><h2>照片之外的故事</h2>${b('查看全部 '+icon('arrow'),'discover-tab','stories','text-btn')}</div><div class="cards-grid studio-story-grid">${list.slice(1,4).map(p=>photoCard(p)).join('')}${pub.map(publicationCard).join('')}</div><section class="together-banner"><span class="orb">${icon('spaces')}</span><div><h2>一起记得，更完整。</h2><p>你拍下的那一刻，也有别人眼里的故事。</p></div>${b('创建共忆空间 '+icon('arrow'),'new-space','','btn silver')}</section><div class="section-title"><h2>我们的共同记忆</h2>${b('更多空间 '+icon('arrow'),'discover-tab','spaces','text-btn')}</div><div class="space-grid">${spaces.slice(0,2).map(spaceCard).join('')}</div>`;
+  if(key==='cinema')return `<section class="cinema-feature"><img class="cinema-backdrop" src="${photo}" alt="示例聚会：朋友们在灯下围坐"><div class="cinema-vignette"></div><div class="cinema-feature-copy"><span class="cinema-label">一段共同回忆 <i></i> 6 张照片</span><h1>那晚，<br>谁也没说再见。</h1><p>灯亮了，话还没有说完。</p><div class="cinema-buttons">${a(icon('book')+' 打开这段故事','story/ex-dinner','btn primary')}${primary}</div><span class="cinema-credit">UNSEEN 编辑室 · 体验示例</span></div><a class="cinema-mini" href="#gallery/example-summer"><img src="./assets/photo1_cheers.jpg" alt="碰杯的瞬间"><span>换一种方式重访<strong>走进照片回廊 ${icon('arrow')}</strong></span></a></section>${footer}`;
+  if(key==='keepsake')return `<section class="keepsake-feature"><a class="keepsake-stack" href="${storyLink}" aria-label="读那晚谁也没说再见的故事"><span class="keepsake-under"><img src="./assets/photo1_cheers.jpg" alt="示例照片：碰杯"><span>愿这样的日子，多一点。</span></span><span class="keepsake-print"><img src="${photo}" alt="示例照片：那晚我们围坐在一起"><span>那个不想散场的夏天 <i>UNSEEN</i></span></span><span class="keepsake-seal">共同<br>珍藏</span></a><div class="keepsake-note"><span class="note-tag">一张照片，一段原话。</span><h2>“再坐一会儿吧。”</h2><p>没人急着离开。<br>后来想起来，那就是很好的一个晚上。</p><div class="note-byline"><span class="avatar">U</span><span>UNSEEN 编辑室<small>示例故事 · 8 月 16 日</small></span></div>${a('读读这个故事 '+icon('arrow'),'story/ex-dinner','text-btn')}</div></section><section class="keepsake-prompt"><div><span>留给以后的你</span><h2>今天，有什么舍不得忘？</h2></div>${primary}</section>${footer}`;
+  return `<section class="clarity-feature"><a href="${storyLink}" class="clarity-main-photo"><img src="${photo}" alt="示例聚会：那个不想散场的夏天"><span class="clarity-photo-label">共同回忆 · 示例</span><div><h2>那个不想散场的夏天</h2><p>灯亮了，话还没有说完。 ${icon('arrow')}</p></div></a><div class="clarity-side"><a href="#story/ex-cheers" class="clarity-mini-photo"><img src="./assets/photo1_cheers.jpg" alt="示例照片：为在场的人举杯"><div><span>一个小小的瞬间</span><h3>这一杯，敬在场的人。</h3></div></a><section class="clarity-start"><span class="clarity-start-icon">${icon('plus')}</span><div><h2>你的照片，<br>也值得有个故事。</h2><p>选几张，慢慢说。不必一次说完。</p></div>${primary}</section></div></section>${footer}`;
+}

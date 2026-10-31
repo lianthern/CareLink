@@ -1,0 +1,75 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/maxi-max-dev/max-agent-bridge/schemas/task.schema.json",
+  "title": "Max Agent Bridge Task",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaVersion", "jobId", "state", "artifact", "execution", "receipt", "security"],
+  "anyOf": [
+    {"required": ["targetAgent", "publishedAt"]},
+    {"required": ["createdAt", "title", "priority"]}
+  ],
+  "if": {
+    "properties": {
+      "artifact": {"required": ["payloadManifestPath"]}
+    }
+  },
+  "then": {"required": ["inputs"]},
+  "properties": {
+    "schemaVersion": {"const": "1.0"},
+    "jobId": {"type": "string", "pattern": "^[a-z0-9][a-z0-9-]{5,127}$"},
+    "targetAgent": {"type": "string", "minLength": 1},
+    "publishedAt": {"type": "string", "format": "date-time"},
+    "createdAt": {"type": "string", "format": "date-time"},
+    "title": {"type": "string", "minLength": 1},
+    "priority": {"type": "string", "minLength": 1},
+    "state": {"const": "PUBLISHED"},
+    "artifact": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["delivery", "releaseTag", "assetName", "sha256", "bytes", "format"],
+      "properties": {
+        "delivery": {"const": "github-private-release"},
+        "releaseTag": {"type": "string", "minLength": 1},
+        "assetName": {"type": "string", "pattern": "^[^/\\\\]+\\.zip$"},
+        "sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+        "bytes": {"type": "integer", "minimum": 1},
+        "format": {"const": "zip"},
+        "redownloadRequired": {"type": "boolean"},
+        "commit": {"type": "string", "pattern": "^[a-f0-9]{40}$"},
+        "payloadManifestPath": {
+          "const": "MANIFEST.json"
+        },
+        "payloadManifestSha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+        "payloadFileCount": {"type": "integer", "minimum": 1}
+      },
+      "dependentRequired": {
+        "payloadManifestPath": ["payloadManifestSha256", "payloadFileCount"],
+        "payloadManifestSha256": ["payloadManifestPath", "payloadFileCount"],
+        "payloadFileCount": ["payloadManifestPath", "payloadManifestSha256"]
+      }
+    },
+    "inputs": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["path", "bytes", "sha256"],
+        "properties": {
+          "path": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 240,
+            "pattern": "^(?!/)(?!.*[\\\\<>:\"|?*])(?!.*(?:^|/)\\.\\.?(?:/|$)).+$"
+          },
+          "bytes": {"type": "integer", "minimum": 1},
+          "sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"}
+        }
+      }
+    },
+    "execution": {"type": "object"},
+    "receipt": {"type": "object"},
+    "security": {"type": "object"}
+  }
+}

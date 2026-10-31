@@ -1,0 +1,98 @@
+<view class="sweep-page">
+  <view wx:if="{{phase === 'ready'}}" class="capture-layer">
+    <canvas wx:if="{{cameraOn}}"
+            type="webgl"
+            id="vkSweepCanvas"
+            class="camera-preview"
+            bindrendererror="noop"></canvas>
+    <view wx:else class="camera-placeholder">
+      <text>请竖屏拍摄横向全景</text>
+    </view>
+
+    <view class="shade"></view>
+    <view class="nav"
+          style="padding-top:{{navBarTop}}px;height:{{navBarTop + navBarHeight}}px">
+      <view class="round-btn" bindtap="onBack" aria-role="button" aria-label="返回">‹</view>
+      <view class="title-group">
+        <text class="title">竖屏横向扫拍</text>
+        <text class="subtitle">{{sweptDeg}}° / {{targetSpanDeg}}°</text>
+      </view>
+    </view>
+
+    <view class="horizon {{levelOk ? '' : 'horizon--warn'}}">
+      <view class="horizon-line"></view>
+      <view class="center-tick"></view>
+    </view>
+
+    <view class="direction-guide">
+      <text class="arrow {{direction === 'left' ? 'arrow--active' : ''}}">←</text>
+      <view class="direction-copy">
+        <text class="guide-title">{{guideTitle}}</text>
+        <text class="guide-detail">{{guideDetail}}</text>
+      </view>
+      <text class="arrow {{direction === 'right' ? 'arrow--active' : ''}}">→</text>
+    </view>
+
+    <view class="status-row">
+      <text class="status-pill {{levelOk ? '' : 'status-pill--warn'}}">{{levelText}}</text>
+      <text class="status-pill">{{speedText}}</text>
+    </view>
+
+    <view class="progress-panel">
+      <view class="progress-track">
+        <view class="progress-fill" style="width:{{progress}}%"></view>
+      </view>
+      <text class="diagnostic">{{diagnosticText}}</text>
+    </view>
+
+    <view class="actions">
+      <button class="secondary-btn"
+              bindtap="onFinish"
+              disabled="{{!canFinish || busy}}">完成</button>
+      <button class="primary-btn"
+              bindtap="onPrimary"
+              disabled="{{!supported || busy || (cameraOn && !cameraReady)}}">
+        {{cameraOn ? (scanning ? '扫拍中…' : (cameraReady ? '开始扫拍' : '相机启动中…')) : '开启相机'}}
+      </button>
+    </view>
+  </view>
+
+  <view wx:if="{{phase === 'processing'}}" class="processing-layer">
+    <view class="spinner"></view>
+    <text class="processing-title">正在生成横向全景</text>
+    <text class="processing-copy">关键帧中心条带正在写入普通 2D 画布</text>
+  </view>
+
+  <view wx:if="{{phase === 'result'}}" class="result-layer">
+    <view class="nav"
+          style="padding-top:{{navBarTop}}px;height:{{navBarTop + navBarHeight}}px">
+      <view class="round-btn" bindtap="onRetry" aria-role="button" aria-label="重新拍摄">‹</view>
+      <view class="title-group">
+        <text class="title">横向全景已生成</text>
+        <text class="subtitle">{{resultMeta}}</text>
+      </view>
+    </view>
+    <view class="result-frame">
+      <canvas type="2d" id="sweepResultCanvas" class="result-canvas"></canvas>
+      <image wx:if="{{resultImagePath}}"
+             src="{{resultImagePath}}"
+             mode="aspectFit"
+             class="result-image"></image>
+    </view>
+    <text class="result-note">普通横向图片 · 默认只保存在本机 · 不上传</text>
+    <view class="result-actions">
+      <button class="secondary-btn" bindtap="onRetry">重新扫拍</button>
+      <button class="primary-btn" bindtap="onSave" disabled="{{saving || !resultImagePath}}">
+        {{saving ? '保存中…' : '保存到相册'}}
+      </button>
+    </view>
+  </view>
+
+  <view wx:if="{{!supported}}" class="blocked-layer">
+    <view class="blocked-card">
+      <text class="blocked-title">当前微信暂不支持可靠扫拍</text>
+      <text class="blocked-copy">{{blockedMessage}}</text>
+      <button class="primary-btn" bindtap="onBack">返回</button>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,14 @@
+{
+  "schemaVersion": "1.0",
+  "jobId": "unseen-3dgs-full-room-hf-lite-2026-09-03-v9",
+  "state": "COMPLETED",
+  "createdAt": "2026-09-03T09:14:06.5138784Z",
+  "agent": "4060 Agent",
+  "machine": "DESKTOP-NIBL3D4",
+  "message": "FULL_ROOM_CANARY_ACCEPTED: authorized corrected 7k run completed at step 6999; held-out mean PSNR 23.489/SSIM 0.837/LPIPS 0.238; 404,711-Gaussian SH1 SOG roundtrip passed; v9 Viewer, six directions, 3.098x sprint, and 10.959-second walkthrough passed.",
+  "evidence": [
+    "results/from-4060/unseen-3dgs-full-room-hf-lite-2026-09-03-v9/V9-REPORT.md",
+    "results/from-4060/unseen-3dgs-full-room-hf-lite-2026-09-03-v9/V9-RESULT.json",
+    "results/from-4060/unseen-3dgs-full-room-hf-lite-2026-09-03-v9/viewer-walkthrough-v9.mp4"
+  ]
+}

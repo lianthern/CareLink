@@ -1,0 +1,17 @@
+-- A. "上传自动通过" space-level switch (2026-08-17 施工批次: auto-approve +
+-- return-to-capture transition + v4 parallax-controls regression). When on,
+-- newly committed uploads land photo_content_state='visible' straight away
+-- (upload-service.mjs's commit()) instead of 'pending', skipping the manual
+-- content-review gate; CLIP auto-placement is unaffected either way — it
+-- already runs off placement_state, independent of photo_content_state (see
+-- services/jobs/dispatch/index.mjs's placement()/photoValidation()).
+--
+-- This column stays 0 for every existing space (no silent behavior change
+-- for spaces that already exist): SpaceService#insertSpaceRow (space-service.mjs)
+-- only ever sets it to 1 at *creation* time, for both create() (explicit
+-- "新建空间") and ensurePersonal() (the lazily-created personal default
+-- space, which counts as "新建" too) — never retrofitted onto a space that
+-- already exists. Owners can flip it later via
+-- POST /v1/spaces/{sid}/auto-approve-uploads-transitions (ownerOnly, same
+-- idempotent {to} transition shape as collection/sharing transitions).
+ALTER TABLE spaces ADD COLUMN auto_approve_uploads INTEGER NOT NULL DEFAULT 0 CHECK(auto_approve_uploads IN (0,1));

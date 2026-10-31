@@ -1,0 +1,35 @@
+# Secrets
+.env
+.env.*
+!.env.example
+*token*
+*.pem
+*.key
+
+# Private/raw media and generated 3D assets
+*.mp4
+!results/from-4060/**/viewer-walkthrough-*.mp4
+!results/from-4060/**/fixed-photo-spatial-context.mp4
+*.mov
+*.mkv
+*.avi
+*.webm
+*.sog
+*.ply
+*.ckpt
+*.pt
+*.pth
+frames/
+work/
+checkpoints/
+
+# Local downloads and tool state
+downloads/
+*.zip
+*.tar
+*.tar.gz
+node_modules/
+venv/
+.venv/
+__pycache__/
+.DS_Store

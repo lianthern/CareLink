@@ -1,0 +1,451 @@
+<!doctype html>
+<html lang="zh">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>创建记忆空间 · UNSEEN</title>
+<link rel="stylesheet" href="theme.css">
+<style>
+  /* ── 本页私有:这是个一条路走到底的向导表单,desktop 也收窄成单列,不铺成仪表盘 ── */
+  @media (min-width:900px){ .u-page{ max-width:560px; } }
+
+  #createForm{ margin-top:6px; }
+  .req{ color:var(--pink); }
+
+  @media (min-width:520px){
+    .two-col{ display:grid; grid-template-columns:1fr 1fr; gap:0 14px; }
+  }
+
+  /* ── 封面选择条:横向滑动,选中态描边+勾 ── */
+  .cover-row{ display:flex; gap:10px; overflow-x:auto; padding:2px 2px 10px; -webkit-overflow-scrolling:touch; }
+  .cov{ position:relative; flex:0 0 92px; aspect-ratio:3/4; border-radius:16px; overflow:hidden;
+        display:flex; align-items:flex-end; box-shadow:var(--shadow); cursor:pointer;
+        border:2px solid transparent; background:rgba(255,255,255,.6); }
+  .cov img{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
+  .cov .ovl{ position:absolute; inset:0; background:linear-gradient(180deg,rgba(60,30,40,0) 48%,rgba(60,30,40,.55) 100%); }
+  .cov b{ position:relative; z-index:1; color:var(--u-white); font-size:11.5px; font-weight:700; padding:8px 7px;
+          text-shadow:0 1px 6px rgba(0,0,0,.4); }
+  .cov.sel{ border-color:var(--pink); box-shadow:0 0 0 3px rgba(242,115,155,.22), var(--shadow-lg); }
+  .cov .ck{ position:absolute; top:6px; right:6px; z-index:2; width:20px; height:20px; border-radius:50%;
+            background:var(--grad); color:var(--u-white); font-size:11px; font-weight:700; display:grid; place-items:center;
+            box-shadow:0 2px 6px rgba(0,0,0,.25); }
+  .cov.upload{ border:2px dashed var(--line); box-shadow:none; align-items:center; justify-content:center;
+               flex-direction:column; gap:4px; }
+  .cov.upload.has-img{ align-items:flex-end; border-style:solid; flex-direction:row; }
+  .cov.upload .up-ic{ font-size:21px; color:var(--ink-3); position:relative; z-index:1; }
+  .cov.upload b{ color:var(--ink-2); text-shadow:none; padding:0; }
+  .cov.upload.has-img b{ color:var(--u-white); text-shadow:0 1px 6px rgba(0,0,0,.4); padding:8px 7px; }
+  .cov.upload input{ position:absolute; inset:0; opacity:0; width:100%; height:100%; cursor:pointer; margin:0; }
+
+  /* ── 私密开关行 ── */
+  .priv-row{ display:flex; align-items:center; justify-content:space-between; gap:14px; padding:15px 16px; margin:0 0 18px; }
+  .priv-row .tt{ font-size:14.5px; font-weight:700; margin-bottom:3px; }
+  /* 权限系统还没做,这个开关必须一眼看出来是不能用的,不许装成可用功能 */
+  .priv-row.is-off .tt{ color:var(--ink-2); }
+  .priv-row.is-off .u-switch{ opacity:.45; pointer-events:none; }
+  .priv-row .tag{ display:inline-block; margin-left:6px; padding:1px 7px; border-radius:999px;
+                  border:1px solid var(--line); font-size:11px; font-weight:600; color:var(--ink-3);
+                  vertical-align:1px; white-space:nowrap; }
+
+  /* ── 第 2 步:主办密钥 + 传全景(批次E)── */
+  .key-card{ padding:16px; margin-bottom:16px; border:1.5px solid var(--u-line-strong); }
+  .key-card .tt{ font-size:14.5px; font-weight:700; margin-bottom:4px; }
+  .key-card .warn{ color:var(--u-pink-deep); font-weight:700; }
+  .key-box{ margin:10px 0; padding:12px 13px; border-radius:var(--r-sm); background:rgba(255,255,255,.7);
+            border:1px dashed var(--line); font-family:ui-monospace,Menlo,Consolas,monospace;
+            font-size:13px; word-break:break-all; user-select:all; color:var(--ink); }
+
+  .pano-field input[type=file]{ font:inherit; font-size:13px; color:var(--ink-2); }
+  .pano-row{ display:flex; align-items:center; gap:10px; padding:11px 13px; margin-top:8px; }
+  .pano-row .nm{ flex:1; min-width:0; font-size:12.5px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+  .pano-row .bar-wrap{ width:74px; height:6px; border-radius:99px; background:var(--line); overflow:hidden; flex:none; }
+  .pano-row .bar{ height:100%; width:0%; background:var(--grad); transition:width .2s linear; }
+  .pano-row .st{ flex:none; font-size:11.5px; color:var(--ink-2); white-space:nowrap; }
+  .pano-row.err .st{ color:var(--u-pink-deep); font-weight:700; }
+  .pano-row.ok .st{ color:var(--ok); font-weight:700; }
+
+  .step-actions{ display:flex; flex-direction:column; gap:10px; margin-top:18px; }
+  .step-actions .skip{ text-align:center; font-size:12.5px; color:var(--ink-3); background:none; border:0;
+                        text-decoration:underline; cursor:pointer; padding:6px; }
+</style>
+</head>
+<body class="u-body">
+<div class="u-bokeh"></div>
+<div class="u-page">
+
+  <div class="u-bar">
+    <a class="u-back" href="../workspace.html">‹</a>
+    <h1>创建记忆空间</h1>
+  </div>
+
+  <form id="createForm">
+    <div class="u-field">
+      <label class="lab" for="fName">空间名字 <span class="req">*</span></label>
+      <input type="text" id="fName" required maxlength="40" placeholder="给这个空间起个名字">
+    </div>
+
+    <div class="two-col">
+      <div class="u-field">
+        <label class="lab" for="fDate">日期</label>
+        <input type="date" id="fDate">
+      </div>
+      <div class="u-field">
+        <label class="lab" for="fPlace">地点</label>
+        <input type="text" id="fPlace" maxlength="30" placeholder="比如杭州西溪湿地">
+      </div>
+    </div>
+
+    <div class="u-field">
+      <label class="lab">封面</label>
+      <div class="cover-row" id="coverRow"></div>
+    </div>
+
+    <div class="u-card priv-row is-off">
+      <div>
+        <div class="tt">私密空间<span class="tag">暂未接入</span></div>
+        <div class="u-note">权限系统还没做,现在拿到链接的人都能进来放照片。</div>
+      </div>
+      <label class="u-switch" aria-hidden="true">
+        <input type="checkbox" id="fPrivate" disabled tabindex="-1">
+        <span class="tr"></span><span class="th"></span>
+      </label>
+    </div>
+
+    <button class="u-btn" id="submitBtn" type="submit">继续</button>
+  </form>
+
+  <div id="stepUpload" style="display:none;">
+    <div class="u-card key-card">
+      <div class="tt">主办密钥</div>
+      <div class="u-note">这是这个空间唯一的编辑密钥,已经帮你存在这台设备上;
+        换设备或者清过浏览器数据的话,只能靠它找回编辑权限 ——
+        <span class="warn">弄丢了就没法再编辑这个空间</span>,请先截图或复制保存好。</div>
+      <div class="key-box" id="hostKeyBox"></div>
+      <button class="u-btn sec sm" id="copyHostKeyBtn" type="button">复制密钥</button>
+    </div>
+
+    <div class="u-field pano-field">
+      <label class="lab" for="panoFiles">传全景图(1~4 张,等距柱状 2:1 画幅,jpg)</label>
+      <input type="file" id="panoFiles" accept="image/*" multiple>
+      <div class="u-note" id="panoNote">传完主办电脑上的处理工人会自动切好方向、建好空间,
+        不用等,直接点下面"继续"就行。</div>
+    </div>
+    <div id="panoList"></div>
+
+    <div class="step-actions">
+      <button class="u-btn" id="uploadDoneBtn" type="button">继续</button>
+      <button class="skip" id="uploadSkipBtn" type="button">先不传,以后再补</button>
+    </div>
+  </div>
+
+</div>
+<script src="scenes.js"></script>
+<script>
+(function(){
+  "use strict";
+  var U = window.UNSEEN;
+  var qs = new URLSearchParams(location.search);
+  var tplKey = qs.get("template");
+  // 压测钩子(批次E):?sid=stressXXX 时把这个编号带给后端,落地到"stress"前缀的
+  // 测试空间里,方便测完按前缀整批清理。正常用户从不会带这个参数,不影响任何人。
+  var stressSid = /^stress[A-Za-z0-9_-]*$/.test(qs.get("sid") || "") ? qs.get("sid") : "";
+
+  // 场景对象要存进 localStorage、跨页面(首页在根目录,这里在 app/ 下)反复读取,
+  // 所以封面存的必须是网站根相对路径(前导 "/"),不能用 U.PREFIX 拼出的 "../xxx" ——
+  // 那种路径只在"当前这一层目录"下才对,换个目录深度的页面读出来就是错的死链。
+  function toRootPath(prefixedUrl) {
+    return "/" + prefixedUrl.replace(/^(\.\.\/)+/, "");
+  }
+
+  // 4 选封面:前 3 个直接复用 scenes.js 的 TEMPLATES(和首页三连卡同一份数据源,不会走样),
+  // 第 4 个(纪念日)是美术素材里多出来的一张,单独补上。
+  var COVERS = U.TEMPLATES.map(function (t) { return { key: t.t, name: t.name, url: toRootPath(t.cover) }; });
+  COVERS.push({ key: "anniv", name: "纪念日", url: "/assets/walkdemo/chapel_day_j1.jpg" });
+
+  var fName = document.getElementById("fName");
+  var fDate = document.getElementById("fDate");
+  var fPlace = document.getElementById("fPlace");
+  var fPrivate = document.getElementById("fPrivate");
+  var coverRow = document.getElementById("coverRow");
+  var submitBtn = document.getElementById("submitBtn");
+  var form = document.getElementById("createForm");
+
+  var state = { cover: "", custom: false, customThumb: "" };
+
+  // ?template= 预填:封面真选中,名字只给占位提示,不代填(免得用户以为已经填过了)
+  var tpl = COVERS.filter(function (c) { return c.key === tplKey; })[0];
+  if (tpl) {
+    fName.placeholder = tpl.name;
+    state.cover = tpl.url;
+  }
+
+  function renderCovers() {
+    var html = COVERS.map(function (c, i) {
+      var sel = !state.custom && state.cover === c.url;
+      return '<div class="cov' + (sel ? " sel" : "") + '" data-i="' + i + '">' +
+        '<img src="' + c.url + '" alt="">' +
+        '<span class="ovl"></span>' +
+        (sel ? '<span class="ck">✓</span>' : "") +
+        "<b>" + c.name + "</b></div>";
+    }).join("");
+
+    var upSel = state.custom;
+    var upClass = "cov upload" + (upSel ? " sel" : "") + (state.customThumb ? " has-img" : "");
+    html += '<label class="' + upClass + '">' +
+      (state.customThumb
+        ? '<img src="' + state.customThumb + '" alt=""><span class="ovl"></span>' + (upSel ? '<span class="ck">✓</span>' : "")
+        : '<span class="up-ic">＋</span>') +
+      "<b>自己传</b>" +
+      '<input type="file" accept="image/*" id="fCoverFile">' +
+      "</label>";
+
+    coverRow.innerHTML = html;
+
+    Array.prototype.forEach.call(coverRow.querySelectorAll(".cov:not(.upload)"), function (el) {
+      el.addEventListener("click", function () {
+        var i = +el.getAttribute("data-i");
+        state.cover = COVERS[i].url;
+        state.custom = false;
+        renderCovers();
+      });
+    });
+    var fileInput = document.getElementById("fCoverFile");
+    fileInput.addEventListener("change", function () {
+      var f = fileInput.files && fileInput.files[0];
+      if (!f) return;
+      U.compressToDataURL(f, 640, function (durl) {
+        if (!durl) { U.toast("这张图片读取失败,换一张试试"); return; }
+        state.cover = durl;
+        state.custom = true;
+        state.customThumb = durl;
+        renderCovers();
+      });
+    });
+  }
+  renderCovers();
+
+  function baseFields() {
+    return {
+      title: fName.value.trim(),
+      date: fDate.value || "",
+      place: fPlace.value.trim(),
+      cover: state.cover || "",
+      // 这里不写 private:开关是 disabled 的,权限系统也还没做,存进 localStorage 没有任何一处读它。
+      // (后端那边倒是有这个字段,createBackend 会照实发一份过去,存在服务器上总比只存本地强。)
+      stats: { photos: 0, moments: 0 },
+      createdAt: Date.now()
+    };
+  }
+
+  function finishScene(scene) {
+    U.saveLocalScene(scene);
+    location.href = "invite.html?s=" + encodeURIComponent(scene.id) + "&new=1";
+  }
+
+  function createLocal() {
+    var scene = baseFields();
+    scene.id = "local-" + Date.now();
+    scene.kind = "local";
+    scene.links = {};
+    finishScene(scene);
+  }
+
+  function createBackend() {
+    var scene = baseFields();
+    // 日期/地点/封面一起发给后端。后端 /api/space 本来就收这四个可选字段
+    // (server/space.py 的 _clean_meta),只发 title 的话用户填的东西就只躺在这台设备的
+    // localStorage 里,换台设备打开同一个空间就全丢了。
+    // 封面大小:模板封面是一条几十字节的根相对路径;自己传的那张已经在 compressToDataURL 里
+    // 压到 640 宽 jpeg(0.82),dataURL 实测约 60KB 量级,本机同源 POST 扛得住,所以不截断。
+    // (截断 dataURL 等于把图弄坏,后端注释里也是这么写的;列表接口自己会把 dataURL 挡在外面。)
+    // private:开关现在是 disabled 的,永远读出 false,和后端默认值一致;
+    // 这里照实读取,权限系统真做出来那天不用再回来补一次。
+    fetch(U.API + "/api/space", {
+      method: "POST",
+      mode: "cors",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        title: scene.title,
+        couple: "",
+        date: scene.date,
+        place: scene.place,
+        cover: scene.cover,
+        private: !!(fPrivate && fPrivate.checked),
+        sid: stressSid || undefined
+      })
+    }).then(function (r) { return r.json(); })
+      .then(function (data) {
+        if (!data || !data.ok || !data.spaceId) throw new Error((data && data.error) || "建空间失败");
+        scene.id = data.spaceId;
+        scene.kind = "backend";
+        // published 不写:发没发布是后端说了算的状态(新人在后台点发布才会翻 true),
+        // 建空间这一刻前端根本无从得知,写死一个值就是替后端猜。
+        // 需要判断的页面自己去 GET /api/space/<id> 读 space.published,那才是真的。
+        // 同理:根相对路径,别用 U.PREFIX 拼,免得存进去的链接只在 app/ 这层好使
+        scene.links = {
+          // 主办入口只剩 Studio 登录页:本机版主办台已随断网现场那条线退役(见 archive/)
+          studio: "/web/studio-login.html",
+          // 宾客页也只剩云端这一份。原来这里指本机版宾客页(读本机后端 /api/space/<id>,
+          // 和这个空间同一个来源),那一页已退役;现在建出来的本机空间要让宾客扫得到,
+          // 得先发布到云端,invite.html 会替它去后端问真地址,问不到就诚实说没有。
+          join: "/web/join.html?s=" + encodeURIComponent(data.spaceId),
+          // 走进空间:walk.html 认 ?space=,自己去后端拿节点。
+          // 刚建出来还没有全景,这时它给的是"这个空间还没有全景节点"的诚实错误页(不是白屏),
+          // 而场景页那张卡的开关就是这个字段,不写它就永远是灰的,传了全景也点不亮。
+          walk: "/viewer/walk.html?space=" + encodeURIComponent(data.spaceId)
+        };
+        // 批次E:主办密钥只在这一次建空间的响应里出现,先存本机(scene.html 改标题/
+        // 换封面/删节点要靠它校验),再带主办方去传全景。本地模式(createLocal)
+        // 没有这一步:没有后端就没有全景直传通道,也没有密钥这回事。
+        if (data.hostKey) U.saveHostKey(data.spaceId, data.hostKey);
+        enterUploadStep(scene, data.hostKey || "", data.panoUpload || { enabled: false });
+      })
+      .catch(function (err) {
+        console.error("[create] 后端建空间失败, 退回本地模式", err);
+        U.toast("后端连不上,先用本地模式继续");
+        createLocal();
+      });
+  }
+
+  // ── 第 2 步:展示主办密钥 + 传全景(批次E)──────────────────────────
+  var PANO_MAX_FILES = 4;
+  // 离开这一页(点"继续"/"跳过")会调 location.href 整页跳转,进行中的 XHR
+  // 会被浏览器直接砍断——现场弱网时全景传到一半、用户手一抖点了继续,
+  // 那张图就悄悄传丢了。这个计数器就是挡这件事的:非 0 就先问一句再走。
+  var pendingUploads = 0;
+
+  function shortId() { return Math.random().toString(36).slice(2, 8); }
+  function extOf(file) {
+    var m = /\.[a-zA-Z0-9]+$/.exec((file && file.name) || "");
+    var ext = m ? m[0].toLowerCase() : "";
+    return (ext === ".jpg" || ext === ".jpeg" || ext === ".png" || ext === ".webp") ? ext : ".jpg";
+  }
+
+  // 全景直传 OSS,和 web/join.html 的照片直传是同一套模式(policy 里没有凭据本身,
+  // 只有一次性签好的表单字段;file 必须是表单最后一个字段,这是 OSS 的硬要求)。
+  // 太大/传失败都要在这一行明明白白写出来,不许只在 console 里喊一声就算了。
+  function uploadOnePano(file, policy, listEl) {
+    var row = document.createElement("div");
+    row.className = "u-card pano-row";
+    row.innerHTML = '<span class="nm"></span><span class="bar-wrap"><span class="bar"></span></span><span class="st"></span>';
+    row.querySelector(".nm").textContent = file.name + "(" + (file.size / 1024 / 1024).toFixed(1) + "MB)";
+    listEl.appendChild(row);
+    var bar = row.querySelector(".bar");
+    var st = row.querySelector(".st");
+
+    function fail(msg) {
+      row.classList.add("err");
+      st.textContent = msg;
+      console.error("[create] 全景直传失败:", file.name, msg);
+    }
+
+    var maxSize = policy.maxSize || (32 * 1024 * 1024);
+    if (file.size > maxSize) {
+      fail("这张全景太大(上限 " + Math.round(maxSize / 1024 / 1024) + "MB),请压缩或换一张");
+      return;
+    }
+    if (!/^image\//.test(file.type || "") && !/\.(jpe?g|png|webp)$/i.test(file.name || "")) {
+      fail("这不是图片文件");
+      return;
+    }
+
+    var key = policy.keyPrefix + Date.now() + "_" + shortId() + extOf(file);
+    var fd = new FormData();
+    fd.append("key", key);
+    fd.append("OSSAccessKeyId", policy.accessKeyId || policy.OSSAccessKeyId);
+    fd.append("policy", policy.policy);
+    // post_policy() 里叫 signature,OSS 表单字段叫 Signature,两种写法都认(照抄 join.html)
+    fd.append("Signature", policy.signature || policy.Signature);
+    fd.append("x-oss-object-acl", "private");
+    fd.append("file", file);   // file 必须是最后一个字段,这是 OSS 的硬要求
+
+    var xhr = new XMLHttpRequest();
+    xhr.open("POST", policy.host, true);
+    xhr.timeout = 180000;   // 全景比宾客照片大得多,超时给足,免得弱网现场半路判死
+    xhr.upload.onprogress = function (e) {
+      if (e.lengthComputable) bar.style.width = Math.round((e.loaded / e.total) * 100) + "%";
+    };
+    pendingUploads++;
+    function settle() { pendingUploads = Math.max(0, pendingUploads - 1); }
+    xhr.onload = function () {
+      settle();
+      if (xhr.status >= 200 && xhr.status < 300) {
+        bar.style.width = "100%";
+        row.classList.add("ok");
+        st.textContent = "已传,等处理";
+        return;
+      }
+      fail("上传失败(HTTP " + xhr.status + "),换一张或检查网络后重试");
+    };
+    xhr.onerror = function () { settle(); fail("网络错误,上传没成功,检查网络后重试"); };
+    xhr.ontimeout = function () { settle(); fail("上传超时,网络可能太慢,重试一次"); };
+    st.textContent = "上传中…";
+    xhr.send(fd);
+  }
+
+  // "继续"/"跳过"都要过这一关:有全景还在传,先问清楚再走,不许静默丢传了一半的图。
+  function leaveUploadStep(scene) {
+    if (pendingUploads > 0 &&
+        !confirm("还有 " + pendingUploads + " 张全景没传完,现在离开会中断上传。确定要走吗?")) {
+      return;
+    }
+    finishScene(scene);
+  }
+
+  function enterUploadStep(scene, hostKey, panoUpload) {
+    form.style.display = "none";
+    var step = document.getElementById("stepUpload");
+    step.style.display = "";
+
+    var keyBox = document.getElementById("hostKeyBox");
+    keyBox.textContent = hostKey || "(没拿到密钥,这个空间以后可能没法编辑,建议稍后回本机重建)";
+    document.getElementById("copyHostKeyBtn").addEventListener("click", function () {
+      if (!hostKey) { U.toast("没有密钥可复制"); return; }
+      U.copyText(hostKey,
+        function () { U.toast("密钥已复制"); },
+        function () { U.toast("复制失败,长按上面的密钥手动复制"); });
+    });
+
+    var fileInput = document.getElementById("panoFiles");
+    var panoNote = document.getElementById("panoNote");
+    var listEl = document.getElementById("panoList");
+
+    if (!panoUpload || !panoUpload.enabled) {
+      fileInput.disabled = true;
+      panoNote.textContent = "这台电脑现在传不了全景(云存储没配好),可以先跳过,以后请主办方在本机后台补传。";
+    }
+
+    fileInput.addEventListener("change", function () {
+      var files = Array.prototype.slice.call(fileInput.files || []);
+      fileInput.value = "";   // 清空选择,允许重复选同一批文件重试
+      if (!files.length) return;
+      if (files.length > PANO_MAX_FILES) {
+        U.toast("一次最多传 " + PANO_MAX_FILES + " 张,请分批传");
+        return;
+      }
+      files.forEach(function (f) { uploadOnePano(f, panoUpload, listEl); });
+    });
+
+    document.getElementById("uploadDoneBtn").addEventListener("click", function () { leaveUploadStep(scene); });
+    document.getElementById("uploadSkipBtn").addEventListener("click", function () { leaveUploadStep(scene); });
+    // 浏览器整页跳转外的另一条离开路径:直接关标签页/刷新。beforeunload 只能弹
+    // 系统自带的确认条,文案由浏览器决定,但至少不会毫无预兆地把上传腰斩。
+    window.addEventListener("beforeunload", function (e) {
+      if (pendingUploads > 0) { e.preventDefault(); e.returnValue = ""; }
+    });
+  }
+
+  form.addEventListener("submit", function (ev) {
+    ev.preventDefault();
+    var name = fName.value.trim();
+    if (!name) { fName.focus(); U.toast("先给空间起个名字吧"); return; }
+    submitBtn.disabled = true;
+    submitBtn.textContent = "连接中…";
+    U.probeBackend(function (ok) {
+      if (ok) createBackend(); else createLocal();
+    });
+  });
+})();
+</script>
+</body>
+</html>

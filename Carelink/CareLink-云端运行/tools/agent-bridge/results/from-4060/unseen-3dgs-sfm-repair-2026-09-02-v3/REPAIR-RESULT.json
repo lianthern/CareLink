@@ -1,0 +1,114 @@
+{
+  "schemaVersion": "1.0",
+  "jobId": "unseen-3dgs-sfm-repair-2026-09-02-v3",
+  "parentJobId": "unseen-3dgs-visual-diagnosis-2026-09-02-v2",
+  "state": "COMPLETED",
+  "completedAt": "2026-09-02T06:50:04Z",
+  "selectedCandidate": "SIMPLE_RADIAL_AUTO",
+  "resourceLimits": {
+    "sfmCandidatesRun": 1,
+    "sfmCandidateLimit": 3,
+    "newPreview7kRuns": 1,
+    "newPreview7kLimit": 1,
+    "quality30kRuns": 0
+  },
+  "sfmGate": {
+    "pass": true,
+    "registeredImages": 72,
+    "totalImages": 72,
+    "points": 7382,
+    "observations": 71485,
+    "meanTrackLength": 9.68369,
+    "meanReprojectionErrorPx": 1.037061,
+    "cameraModel": "SIMPLE_RADIAL",
+    "fxOverFy": 1.0
+  },
+  "training": {
+    "configuredIterations": 7000,
+    "finalStep": 6999,
+    "wallSeconds": 168,
+    "peakVramMiB": 3347,
+    "oomCount": 0,
+    "exitCode": 0,
+    "cameraOptimizer": "off",
+    "evalMode": "all"
+  },
+  "artifacts": {
+    "config": {
+      "bytes": 7845,
+      "sha256": "c41f1c97385608710699c0584ed94c9999d74111b41b5428570e32e7df520c83"
+    },
+    "checkpoint": {
+      "bytes": 114521554,
+      "sha256": "240f7ded4dde7261d54a870495212479aefbe8fe4725a122623e2bf485f28ec3"
+    },
+    "rawPly": {
+      "bytes": 36648305,
+      "sha256": "2bb16952ecca930d96de3390a7d8be2584fb046172c24c5070150fd5afbe0d66",
+      "gaussians": 147769,
+      "shDegree": 3
+    },
+    "sog": {
+      "bytes": 2693010,
+      "sha256": "0d417735d1b91573f2e2199b53567c07014a420943dac8c84cb73811a1ec0e01",
+      "gaussians": 147769,
+      "shDegree": 1,
+      "conversionWallSeconds": 41.59
+    }
+  },
+  "checkpointGate": {
+    "pass": true,
+    "anchorMean": {
+      "psnr": 29.032833099365234,
+      "ssim": 0.9545907974243164,
+      "lpips": 0.09682126094897588
+    },
+    "visualInspection": {
+      "coherent": true,
+      "strongFisheye": false,
+      "radialStreaking": false,
+      "largeWarpedSheets": false
+    }
+  },
+  "artifactGate": {
+    "pass": true,
+    "rawPlyMatchesCheckpointPixelsExactly": true,
+    "sogVsRawPly": [
+      {"frame": "frame_00001", "psnr": 35.09980773925781, "ssim": 0.9916195869445801, "lpips": 0.024597205221652985},
+      {"frame": "frame_00036", "psnr": 30.641902923583984, "ssim": 0.9848880767822266, "lpips": 0.03214923292398453},
+      {"frame": "frame_00072", "psnr": 30.111827850341797, "ssim": 0.977932870388031, "lpips": 0.03431176021695137}
+    ]
+  },
+  "viewerGate": {
+    "pass": true,
+    "sceneState": "SOG ready",
+    "measuredFps": 199,
+    "walkDistance": 0.10687574248970157,
+    "walkStayedInsideBoundary": true,
+    "anchorsValidatedAgainstTrainingCameras": 3,
+    "maxAnchorPositionError": 5.069200131879725e-8,
+    "maxAnchorRotationMatrixError": 8.397875050913939e-8,
+    "maxAnchorFovErrorDegrees": 9.064773465183862e-8,
+    "defaultPhotoAnchor": "frame_00036",
+    "photoReturnPositionError": 5.257560720117738e-9,
+    "photoReturnQuaternionError": 7.756686210003139e-9,
+    "photoReturnFovErrorDegrees": 0.0,
+    "confirmationMessage": "已回到这张照片的拍摄视角"
+  },
+  "baselineImmutability": {
+    "pass": true,
+    "configSha256": "caf172bf132828fbb30d4f0d914a03a8c3e6c67121857a39729d2dfaac4834de",
+    "checkpointSha256": "5b1dc3a4d12f878ccad8f2f8679b7af9ea8a9077599b9ba2b5409a5924bbec95",
+    "plySha256": "25b9ccb910c9ab386e6cded49969906c17f6a69b2653ee1e55a3b6a2fe7951b1",
+    "sogSha256": "901d501dd41d254ed047322198cb283bdf2f146a92aeab94a16e1efecad5c223",
+    "transformsSha256": "b9175c7216eef06ba9d1acbf394c0fcf81c59d81da43a9befa38f1841b31f319"
+  },
+  "allRequiredGatesPass": true,
+  "uploadPolicy": {
+    "sourceFramesIncluded": false,
+    "checkpointIncluded": false,
+    "plyIncluded": false,
+    "sogIncluded": false,
+    "viewerScreenshotCount": 1
+  }
+}

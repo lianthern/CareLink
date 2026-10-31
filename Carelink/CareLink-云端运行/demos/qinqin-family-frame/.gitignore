@@ -1,0 +1,6 @@
+.DS_Store
+DEMO-QA.md
+qa/
+screenshots/
+*.har
+*.log

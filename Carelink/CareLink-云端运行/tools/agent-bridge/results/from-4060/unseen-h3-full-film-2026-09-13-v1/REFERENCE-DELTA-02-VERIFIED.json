@@ -1,0 +1,71 @@
+{
+  "verified": true,
+  "zipSha256": "c1a6961559f7668cbf95dffd630fbf09494780d8c20fcb2614f73c7a72e0a318",
+  "manifest": {
+    "job": "unseen-h3-full-film-2026-09-13-v1",
+    "type": "private-additive-reference-delta",
+    "generator": "Codex built-in image_gen; no external paid API, quota purchase or new models",
+    "review": "Producer visually inspected; starting-frame candidates only. v1 tissue parents preserved locally and approved as alternate by parent, v2 phone chosen for original contract.",
+    "files": [
+      {
+        "path": "S10-graduation-couple-v1.png",
+        "bytes": 2521599,
+        "sha256": "db44044657e2fa1bf48f79575c9fa9f7df1880e6cc187a84a59e0bd802375e90",
+        "shots": [
+          "S10",
+          "S11"
+        ],
+        "purpose": "Ground-level campus tree, same boy/girl/uniform as S06, six classmates, gap and friend gesture; S10 half-step together, S11 continues after photo without resetting. S11 needs actual different side angle, no crop relabel."
+      },
+      {
+        "path": "S10-graduation-couple-v1.prompt.txt",
+        "bytes": 1427,
+        "sha256": "7cbd0bcf3cacb9de2957c96a1f199e3376f5dcb8eed247275dc815cc51cdbca2",
+        "shots": [
+          "S10",
+          "S11"
+        ],
+        "purpose": "Exact Codex built-in prompt"
+      },
+      {
+        "path": "W02-wedding-preparation-v1.png",
+        "bytes": 1998804,
+        "sha256": "cd23db50ed974eda870bb9d41d63e50be59d70a473f7d63124f7444b1516e3b1",
+        "shots": [
+          "W02",
+          "W03"
+        ],
+        "purpose": "Same courtyard, same bride/groom, flower already lightly touched; start from current hand pose and finish straightening. W03 must use a genuinely different viewpoint and continuing action; do not withdraw/reapproach or merely push in."
+      },
+      {
+        "path": "W02-wedding-preparation-v1.prompt.txt",
+        "bytes": 1409,
+        "sha256": "13aef349ac9f9929817215107256993a39b7ab46c36695b39cc7c9a3df8be319",
+        "shots": [
+          "W02",
+          "W03"
+        ],
+        "purpose": "Exact Codex built-in prompt"
+      },
+      {
+        "path": "W08-aged-parents-phone-v2.png",
+        "bytes": 1942063,
+        "sha256": "d288be45f4c115f58fcda5d830e2bcc04b345cf7f044ca41ce366162536a224a",
+        "shots": [
+          "W08"
+        ],
+        "purpose": "Same father/mother aged from childhood references, distinct from grandma. Mother actually holds smartphone, father empty hands ready for gentle applause. No tissue or prop materialization. Preserve phone throughout."
+      },
+      {
+        "path": "W08-aged-parents-phone-v2.prompt.txt",
+        "bytes": 927,
+        "sha256": "5235ec3a444f353e91c06cdaabdf84ad9e7e69753ee465b47fb6ae41d59c7f6a",
+        "shots": [
+          "W08"
+        ],
+        "purpose": "Exact Codex built-in prompt"
+      }
+    ],
+    "next": "Continue missing bounded action attempts on existing H3, verify safe ZIP and individual file hashes. Three pictures, not replacement full source package. Parent reviews videos. Producer implements home/wedding space; 4060 continues existing campus geometry with shared source-pose/photo expand/return interaction."
+  }
+}

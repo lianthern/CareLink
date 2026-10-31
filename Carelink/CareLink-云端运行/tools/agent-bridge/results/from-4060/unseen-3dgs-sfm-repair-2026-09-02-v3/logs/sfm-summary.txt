@@ -1,0 +1,16 @@
+candidate=SIMPLE_RADIAL_AUTO
+status=PASS
+camera_model=SIMPLE_RADIAL
+matching=reused byte-identical baseline SIFT features and exhaustive matches
+registered_images=72/72
+points=7382
+observations=71485
+mean_track_length=9.683690
+mean_reprojection_error_px=1.037061
+focal_length_px=1001.9698517904944
+fx_over_fy=1.0
+principal_point_px=645.0661204979563,350.03422825430573
+radial_k1=0.7718741241646763
+anchor_visual_review=PASS
+candidate_2=NOT_RUN_candidate_1_passed
+candidate_3=NOT_RUN_candidate_1_passed

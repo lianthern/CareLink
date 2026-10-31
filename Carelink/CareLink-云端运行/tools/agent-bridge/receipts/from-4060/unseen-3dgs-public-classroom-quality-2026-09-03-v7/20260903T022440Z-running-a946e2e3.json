@@ -1,0 +1,15 @@
+{
+  "schemaVersion": "1.0",
+  "jobId": "unseen-3dgs-public-classroom-quality-2026-09-03-v7",
+  "state": "RUNNING",
+  "createdAt": "2026-09-03T02:24:40.7937451Z",
+  "agent": "4060 Agent",
+  "machine": "DESKTOP-NIBL3D4",
+  "message": "local-20260903T022428Z-ce09410a uploaded and hash-verified; UPLOADED_VALIDATED_AWAITING_EXPLICIT_PREVIEW; training remains off pending v7 processor tests and SfM gate.",
+  "evidence": [
+    "intake jobId local-20260903T022428Z-ce09410a",
+    "bytes 12273501",
+    "sha256 b4dca2e138b475d5168bde72e61fe54beab9820b90aca1b22a4fe3739ea04ce6",
+    "durationSeconds 17.884533"
+  ]
+}

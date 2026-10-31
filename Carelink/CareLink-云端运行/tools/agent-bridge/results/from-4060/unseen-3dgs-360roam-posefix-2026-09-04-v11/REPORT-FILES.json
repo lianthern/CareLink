@@ -1,0 +1,93 @@
+{
+  "schemaVersion": "1.0",
+  "jobId": "unseen-3dgs-360roam-posefix-2026-09-04-v11",
+  "generatedAt": "2026-09-04T01:46:39.9959631Z",
+  "selfExcluded": true,
+  "fileCount": 16,
+  "totalBytes": 4053625,
+  "forbiddenFileCount": 0,
+  "safeScreenshotCount": 9,
+  "safeViewerVideoCount": 1,
+  "files": [
+    {
+      "path": "corrected-view-contact-sheet.jpg",
+      "bytes": 295555,
+      "sha256": "a6244859856efe425324dbd6b490f338603ef3a4d8dda00033757506616f8179"
+    },
+    {
+      "path": "direction-back.jpg",
+      "bytes": 175171,
+      "sha256": "8574df797202ffa7b6c20706b988620315aa3d1decfc44c07cafc5df9dffeeea"
+    },
+    {
+      "path": "direction-down.jpg",
+      "bytes": 124703,
+      "sha256": "16698cd7be80c617cadaf8ed20b046704871d756217a9d7fb5e922d90820ce37"
+    },
+    {
+      "path": "direction-front.jpg",
+      "bytes": 202912,
+      "sha256": "c5500c7af9fddd2e809d4bdcfff7f9439ad129c142e1a7dde8d114decae74143"
+    },
+    {
+      "path": "direction-left.jpg",
+      "bytes": 200746,
+      "sha256": "7ac261afaca3de9f7d95a19841ae83c8c205e5fe05ae5c3933fbb042a2084db8"
+    },
+    {
+      "path": "direction-right.jpg",
+      "bytes": 201846,
+      "sha256": "32f59064d00c164f9f81e7af8d7665da216edacbf6e7add92ac2f5f4a730c0f5"
+    },
+    {
+      "path": "direction-up.jpg",
+      "bytes": 151446,
+      "sha256": "0e710eb1eaebd6ea00a3bc0d9e432f68e56c745b1a8a548a13de584bb0b79279"
+    },
+    {
+      "path": "logs/dataparser-preflight.json",
+      "bytes": 1937,
+      "sha256": "00a858217a2338efd377f56bddf369af1469e1f56541981e570788487c4beacf"
+    },
+    {
+      "path": "logs/evaluation.json",
+      "bytes": 17976,
+      "sha256": "d1f59d1125ede5f7ddc53eb13c11dcadfbe1ea10fa210355eb52cf2d19f421ba"
+    },
+    {
+      "path": "logs/pose-image-gate.json",
+      "bytes": 21819,
+      "sha256": "8981ff4bcc44b098165b389c21680ab9710d4cae64010c37a208057a2737d43e"
+    },
+    {
+      "path": "logs/stage-result.json",
+      "bytes": 1933,
+      "sha256": "016d37e5129668fd898c9dbd26ef4e55d8b8e28be61bf91b286a1dfd13a6acd8"
+    },
+    {
+      "path": "source-contact-sheet.jpg",
+      "bytes": 526044,
+      "sha256": "0709c74ba3c3e82ed9c2fc3be29c58df16c695ab9c2678874e2817bc4425c33a"
+    },
+    {
+      "path": "V11-REPORT.md",
+      "bytes": 4619,
+      "sha256": "b93c4da9ea1bb7c8ad93b03f73a36228c6fc60d3ca071290ea69920791f89f41"
+    },
+    {
+      "path": "V11-RESULT.json",
+      "bytes": 5413,
+      "sha256": "5ddd29ae01fb5883a7bd93ba180564195fd1158bbc34bf8bf004025fda03a8ab"
+    },
+    {
+      "path": "viewer-overview.png",
+      "bytes": 1336816,
+      "sha256": "de3aaf3ff7352ecf65d5624ff4b843ead3c47bd6f3231fcaac001126418f9bd0"
+    },
+    {
+      "path": "viewer-walkthrough-v11.mp4",
+      "bytes": 784689,
+      "sha256": "4191329fbb4a40a496f536f15601a649b99f4866ca826e9b81be91fe0091dac0"
+    }
+  ]
+}

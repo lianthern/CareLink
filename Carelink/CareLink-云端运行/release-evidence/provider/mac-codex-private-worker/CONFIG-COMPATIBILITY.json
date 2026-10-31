@@ -1,0 +1,10 @@
+{
+  "codexVersion": "0.147.0",
+  "strictConfig": true,
+  "probe": "tools.view_image=false",
+  "exitCode": 1,
+  "classification": "UNKNOWN_CONFIGURATION_FIELD",
+  "acceptedFixedSurface": "features.view_image=false",
+  "acceptedSurfaceLiveProof": "LIVE-SUBSCRIPTION-PROOF.json",
+  "decision": "Do not add a key that makes every strict invocation fail; keep the version-pinned feature flag and fail unknown JSONL items closed."
+}

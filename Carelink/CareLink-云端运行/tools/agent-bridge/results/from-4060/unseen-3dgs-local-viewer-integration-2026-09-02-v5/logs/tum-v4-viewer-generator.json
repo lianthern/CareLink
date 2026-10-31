@@ -1,0 +1,93 @@
+{
+  "status": "PASS",
+  "sourceTransforms": "data/tum-v4/processed/desk-5hz/transforms.json",
+  "dataparserTransforms": "artifacts/training/tum-v4/freiburg1-desk-v4/splatfacto/2026-09-02_134448/dataparser_transforms.json",
+  "coordinateConversion": {
+    "savedToNerfstudio": "c2w_ns = dataparser_transform @ c2w_saved; scale c2w_ns translation",
+    "nerfstudioToPlayCanvas": "c2w_pc = Rx(-90deg) @ c2w_ns, mapping NS +Z up to PlayCanvas +Y up",
+    "sceneAssetRotationEulerDegrees": [
+      -90.0,
+      0.0,
+      0.0
+    ]
+  },
+  "fovDegrees": 49.13434264120263,
+  "startSourceFrame": "frame_00000.png",
+  "defaultPhotoAnchorId": "frame_00050",
+  "anchorCount": 3,
+  "anchors": [
+    {
+      "id": "frame_00000",
+      "label": "TUM frame_00000",
+      "sceneRevisionId": "tum-freiburg1-desk-v4-r001",
+      "position": [
+        0.601677657,
+        0.219777293,
+        -0.552723775
+      ],
+      "quaternion": [
+        -0.078006602,
+        0.233680966,
+        0.057933364,
+        0.967446072
+      ],
+      "fov": 49.134342641,
+      "sourceFrame": "images/frame_00000.png"
+    },
+    {
+      "id": "frame_00050",
+      "label": "TUM frame_00050",
+      "sceneRevisionId": "tum-freiburg1-desk-v4-r001",
+      "position": [
+        -0.926030079,
+        0.034531521,
+        0.115393243
+      ],
+      "quaternion": [
+        -0.19562634,
+        -0.181628028,
+        -0.275663074,
+        0.923445431
+      ],
+      "fov": 49.134342641,
+      "sourceFrame": "images/frame_00050.png"
+    },
+    {
+      "id": "frame_00099",
+      "label": "TUM frame_00099",
+      "sceneRevisionId": "tum-freiburg1-desk-v4-r001",
+      "position": [
+        0.247406692,
+        -0.198705933,
+        -0.047093468
+      ],
+      "quaternion": [
+        -0.132342982,
+        0.262917428,
+        0.092017488,
+        0.9512584
+      ],
+      "fov": 49.134342641,
+      "sourceFrame": "images/frame_00099.png"
+    }
+  ],
+  "boundaryXZ": [
+    [
+      -1.149999984,
+      -0.702723775
+    ],
+    [
+      1.001020549,
+      -0.702723775
+    ],
+    [
+      1.001020549,
+      0.63957712
+    ],
+    [
+      -1.149999984,
+      0.63957712
+    ]
+  ],
+  "walkMode": "explicit; first movement switches to navigation.eyeHeight without overwriting photo-anchor Y"
+}

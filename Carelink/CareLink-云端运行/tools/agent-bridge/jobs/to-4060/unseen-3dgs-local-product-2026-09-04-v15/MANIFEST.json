@@ -1,0 +1,255 @@
+{
+  "schemaVersion": "1.0",
+  "jobId": "unseen-3dgs-local-product-2026-09-04-v15",
+  "releaseTag": "unseen-3dgs-local-product-2026-09-04-v15-r3",
+  "scope": "release-payload",
+  "selfExcluded": true,
+  "taskExcluded": true,
+  "files": [
+    {
+      "path": "ACCEPTANCE.md",
+      "bytes": 4891,
+      "sha256": "3911af33724328c559649913589f358e78a528a2a9a61760bf54bcbf72d78a27"
+    },
+    {
+      "path": "PRODUCTION-CONTRACT.md",
+      "bytes": 1623,
+      "sha256": "d87e7f3fff9f3fe957ad000113e09532bab7728b4a2a38bcfdf0ea38fc528168"
+    },
+    {
+      "path": "README.md",
+      "bytes": 5309,
+      "sha256": "ecf1589bd44d0008112554de5be1967081c730d56a7f4276dccacddeaf84f980"
+    },
+    {
+      "path": "REPORT-TEMPLATE.md",
+      "bytes": 1391,
+      "sha256": "124959e8e4caab205e6ea410e8c459888b7850f4980157a7811208049f2f1144"
+    },
+    {
+      "path": "START-HERE.md",
+      "bytes": 16192,
+      "sha256": "3d536965672e95e3073912e17754d9877611a939384a2eaf95e50b1fc9fe187f"
+    },
+    {
+      "path": "STATUS.json",
+      "bytes": 985,
+      "sha256": "eda03cbece59239f566d14376e38229b010c06488a570fc57f5e978942c2a758"
+    },
+    {
+      "path": "inputs/.env.example",
+      "bytes": 262,
+      "sha256": "7f3d507576b09e285ffe7abf9b9408c208b7586cec5b6f5227a3818e5881d615"
+    },
+    {
+      "path": "inputs/dependencies/DEPENDENCIES.md",
+      "bytes": 2752,
+      "sha256": "6f207215bc5dc731f64fefd2aeb3fb8cbe38b01d0b15fb3b5cdebc245cdc5c8a"
+    },
+    {
+      "path": "inputs/dependencies/SHA256SUMS",
+      "bytes": 379,
+      "sha256": "dd7e1c368f6cf42c59e0048b5dd6e50c6d8fef40c1a82bc0a0830965b194e31d"
+    },
+    {
+      "path": "inputs/dependencies/nerfstudio-1.1.5-py3-none-any.whl",
+      "bytes": 580837,
+      "sha256": "ee6d3d360a1e363ad2f1703b602da5a8987485bff812d0ae8aa4a6e672b994c4"
+    },
+    {
+      "path": "inputs/dependencies/python-cu121.lock",
+      "bytes": 15240,
+      "sha256": "7e826bca8c50a929a8e7c97a9108882210dfa219c1c8bb36d098d7f91d4c4dd7"
+    },
+    {
+      "path": "inputs/dependencies/splat-transform/package-lock.json",
+      "bytes": 3864,
+      "sha256": "79f213fdfbde233bb7de25c1ef35b83c49c6e51f2b8581ee48a3e2601e996e1f"
+    },
+    {
+      "path": "inputs/dependencies/splat-transform/package.json",
+      "bytes": 283,
+      "sha256": "3d273a8622be5e238bb4ae8e8aa61467763561e296e9f1e5d980b04949631383"
+    },
+    {
+      "path": "inputs/fixtures/360roam/source-manifest.json",
+      "bytes": 15127,
+      "sha256": "4ba334360609779a12b9d98fbc5d8b05baa6eb318f4027d82b147a4be364449b"
+    },
+    {
+      "path": "inputs/product/fake_runner.py",
+      "bytes": 1430,
+      "sha256": "e036c9525ee032efe403a53ebb5da71e6a99a662919818dfb789fe93e63be861"
+    },
+    {
+      "path": "inputs/product/pipeline_runner.py",
+      "bytes": 88274,
+      "sha256": "6e432b35ce0f54ab58f5c56002c04eba83fcd34dce08c8efa987708afdfaf0ff"
+    },
+    {
+      "path": "inputs/product/production_adapter.py",
+      "bytes": 1094,
+      "sha256": "d2a3e87e913854998bae9f80d5a250ff9f64cb64541994a2041a6d567e443594"
+    },
+    {
+      "path": "inputs/product/unseen_local_product.py",
+      "bytes": 61090,
+      "sha256": "f054732052a948bd6b105a425b56b9477ca2379a046feafdb20ac1ddb8a06bf0"
+    },
+    {
+      "path": "inputs/schemas/job.schema.json",
+      "bytes": 3122,
+      "sha256": "df90886eedf072050f7da72826fc990a68731d3cf47a7908a366d90a2ff22e0b"
+    },
+    {
+      "path": "inputs/schemas/queue-state.schema.json",
+      "bytes": 3036,
+      "sha256": "378675082847a43550609bada2956146f0a5c004b1ab50b84364d2cf5aa0f99f"
+    },
+    {
+      "path": "inputs/schemas/result.schema.json",
+      "bytes": 8116,
+      "sha256": "f822b9fa880640a43185701aa4a89d7afbfe68a27a0431f59c1dd9d127c9561f"
+    },
+    {
+      "path": "inputs/scripts/linux/bootstrap-dependencies.sh",
+      "bytes": 10031,
+      "sha256": "1d51733bf18c152e755a9f43ecd227a6e426833d8b07269a5482ebe836b63d1c"
+    },
+    {
+      "path": "inputs/scripts/linux/cleanup-private-media.sh",
+      "bytes": 1944,
+      "sha256": "308f3b983b0264ee2fff35308075037aa6874e99a43c6314f9088296f8089e2b"
+    },
+    {
+      "path": "inputs/scripts/linux/doctor-local-product.sh",
+      "bytes": 18086,
+      "sha256": "14ef220c57e84c3e038273fad0e38ded4fb70ad87fcef3534d22916d52dc20b3"
+    },
+    {
+      "path": "inputs/scripts/linux/download_360roam_fixture.py",
+      "bytes": 25276,
+      "sha256": "cbe71177558d895e142b6fc5eb0ab13098b5264f9ea7577c43f298bf38dba735"
+    },
+    {
+      "path": "inputs/scripts/linux/dry-run-local-product.sh",
+      "bytes": 3776,
+      "sha256": "f96d0c7c272eedcd664264e8842038dab5a95a2c8464dea292da1f14fd438bc3"
+    },
+    {
+      "path": "inputs/scripts/linux/install-local-product.sh",
+      "bytes": 7445,
+      "sha256": "914cba5a2992589c3182ca987525bafddb4f916795f6887f11d21650fca1d42c"
+    },
+    {
+      "path": "inputs/scripts/linux/run-v15-integration-canary.sh",
+      "bytes": 12807,
+      "sha256": "f3b42a27d426c7782299749032cb39154ca4523fc42388cf645d9ff53cd1f979"
+    },
+    {
+      "path": "inputs/scripts/linux/run_v15_full_canary.py",
+      "bytes": 56983,
+      "sha256": "c059e14a7b6a95fb4df0e1845b35b32f5f996fabead41bbcf7ff065663ea1207"
+    },
+    {
+      "path": "inputs/scripts/linux/start-local-product.sh",
+      "bytes": 12344,
+      "sha256": "f90d9451019a3ae95918e532e4957582864fca083d45a99eed0b9cfa0eaeb305"
+    },
+    {
+      "path": "inputs/scripts/linux/stop-local-product.sh",
+      "bytes": 1579,
+      "sha256": "ae57b9c85234b262bd29cc16d7a0dcd1d74332b2c5fb48172bfd42abe557d400"
+    },
+    {
+      "path": "inputs/scripts/linux/verify_release_payload.py",
+      "bytes": 9829,
+      "sha256": "4099ac699a38e3a4dbf1b8449519a025a3516270028bc6b14ad1dd7e15a4ea1e"
+    },
+    {
+      "path": "inputs/scripts/windows/Install-Disabled-StartupTask.ps1",
+      "bytes": 6969,
+      "sha256": "7ccd702819f1f411871caea1e8585ef29cb0cd042055333071f704d71bd1cdcd"
+    },
+    {
+      "path": "inputs/scripts/windows/Publish-V15-VisualAcceptance.ps1",
+      "bytes": 53026,
+      "sha256": "ed873a00b5a85bfa572113c0c0795d4ca4e9bb5318b4a4595ce9572b9149e0a3"
+    },
+    {
+      "path": "inputs/scripts/windows/Start-UNSEEN-LocalProduct.ps1",
+      "bytes": 24792,
+      "sha256": "d2332299991fc899176c34ab01598b7e8196b590201963ae083938fed9f5a773"
+    },
+    {
+      "path": "inputs/scripts/windows/Stop-UNSEEN-LocalProduct.ps1",
+      "bytes": 238,
+      "sha256": "5b56f0ec13866301bbcaba98afa45519dae7ff7f749d68b40bcbef1cd212cf3d"
+    },
+    {
+      "path": "inputs/templates/systemd/unseen-local-product-server.service",
+      "bytes": 530,
+      "sha256": "14d040a02d9301efeafa421fbf3829086c7ec597c80687577dafab845d8b36d7"
+    },
+    {
+      "path": "inputs/templates/systemd/unseen-local-product-worker.service",
+      "bytes": 900,
+      "sha256": "7c91c23b598a9dfe7cea3aa63044b45a1b624e561d8250f139d046ab8b257123"
+    },
+    {
+      "path": "inputs/tests/test_full_canary_driver.py",
+      "bytes": 30082,
+      "sha256": "8244de16d2920c3da444ca6958a774cf4af1c0442a4db6b84bd4797ae78d0392"
+    },
+    {
+      "path": "inputs/tests/test_local_product.py",
+      "bytes": 29854,
+      "sha256": "5145c3ce9582279376a4d89632484755fa6b872b8427ae56efa5c71103b3ae60"
+    },
+    {
+      "path": "inputs/tests/test_pipeline_runner.py",
+      "bytes": 35557,
+      "sha256": "6bfff38b6e30bdea6551532a8cb17b66d2db83ffe00b59e506a05b91ffe86eb8"
+    },
+    {
+      "path": "inputs/tests/test_release_payload.py",
+      "bytes": 4174,
+      "sha256": "99d056e25c055dbd21332dd0a4fc98102d3d24b668b893509ccd4e699f300e8b"
+    },
+    {
+      "path": "inputs/tests/test_windows_scripts_contract.py",
+      "bytes": 23359,
+      "sha256": "bca23c41dd0964013630f5263248ac38d7b749d4f40a38c3d79b4a9441e916a6"
+    },
+    {
+      "path": "inputs/viewer/app.js",
+      "bytes": 29824,
+      "sha256": "6424560b428f1840479edc16a05de431b9de7d53ee67fc91dfe3b6889d17b668"
+    },
+    {
+      "path": "inputs/viewer/index.html",
+      "bytes": 8126,
+      "sha256": "f2327ca096b0633e7e205e4245e15366cd54e4fdde4d8a9da5126d3448f63b85"
+    },
+    {
+      "path": "inputs/viewer/scene.schema.json",
+      "bytes": 3530,
+      "sha256": "158f5ea5cd7ffabe184b8d506048ac4e72871bacb89a76e8ac1d4bf19384564f"
+    },
+    {
+      "path": "inputs/viewer/styles.css",
+      "bytes": 18036,
+      "sha256": "947a904ae05a94588023f82ddd9e452aba88c940c53613b94887208e40bfb3c7"
+    },
+    {
+      "path": "inputs/viewer/vendor/PLAYCANVAS-LICENSE.txt",
+      "bytes": 1064,
+      "sha256": "42fa51ddd556be151a29f381fb97ee975825dcc454e805ea3ea9c079cca04d34"
+    },
+    {
+      "path": "inputs/viewer/vendor/playcanvas.min.mjs",
+      "bytes": 2370756,
+      "sha256": "9e67185a76a737e981d4edc1d713701281819e1dcc573a1bca54783649c7e09d"
+    }
+  ]
+}

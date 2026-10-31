@@ -1,0 +1,58 @@
+{
+  "base": "95d1151e7be72d5a487384b0fb915c5d90fbfde3",
+  "codeCommit": "df127bf313559fec1054bf2fed85a086c32a1c78",
+  "codeTree": "9cef23a19cfd95c8270b2432b40722341ed4f596",
+  "scope": [
+    "packages/book-lab-web/src/integrated-shell.mjs",
+    "packages/book-lab-web/tests/integrated-shell.test.mjs",
+    "packages/book-lab-web/tests/browser-audit.mjs",
+    "packages/book-lab-web/tests/evidence/browser-audit.json",
+    "release-evidence/local-operable/private-ai-queued-offline/**"
+  ],
+  "productFixtureAdded": false,
+  "productionInput": false,
+  "serviceChanged": false,
+  "apiChanged": false,
+  "contractsChanged": false,
+  "rootLockChanged": false,
+  "livePortsTouched": false,
+  "cloudWrites": 0,
+  "checks": {
+    "bookLabWeb": { "passed": 36, "failed": 0 },
+    "web": { "passed": 43, "failed": 0 },
+    "bookLabService": { "passed": 78, "failed": 0 },
+    "integratedShellFocused": { "passed": 15, "failed": 0 },
+    "chromeExistingCases": { "passed": 23, "failed": 0 },
+    "chromePrivateAiViewports": { "passed": 4, "failed": 0 },
+    "browserDiagnosticCounts": {
+      "consoleErrors": 0,
+      "exceptions": 0,
+      "failedRequests": 0,
+      "httpErrors": 0,
+      "externalResources": 0
+    },
+    "polling": { "minimumMs": 1000, "maximumMs": 30000, "readyStops": true,
+      "routeAndDestroyClear": true },
+    "offlineAdmissionDispatch": "MEMORY.START_QUESTION_EXACT_REQUEST_PASS",
+    "format": "FORMAT_OK",
+    "secretScan": "SECRET_SCAN_CLEAN",
+    "diffCheck": "CLEAN",
+    "scopeCheck": "CLEAN"
+  },
+  "screenshots": {
+    "queued-offline-desktop-1440.png": "87c3923f97608314be38be64f0c5285b1817cc3f6edd38fe15feb1318fcf9d75",
+    "queued-offline-mobile-390.png": "203e493009fc7c2b385f1f4627988aaf9688e4360994a940bbff4e417171c524",
+    "queued-online-desktop-1440.png": "bb6dc71416c63eda5a203966f1fa7747cd8b8f3901980c691120e95a3f8f85d6",
+    "queued-online-mobile-390.png": "4ac72da06aaf39d33afeae2e8f6b0036cdeb370fddc9030b027557c9eb37307d"
+  },
+  "staging4282": {
+    "status": "ok",
+    "listener": "loopback_only",
+    "externalExposure": false,
+    "cloudWrites": 0,
+    "readOnlyCheck": true
+  },
+  "claudeReview": "N/A_BY_MAX",
+  "remainingP0": [],
+  "remainingP1": []
+}

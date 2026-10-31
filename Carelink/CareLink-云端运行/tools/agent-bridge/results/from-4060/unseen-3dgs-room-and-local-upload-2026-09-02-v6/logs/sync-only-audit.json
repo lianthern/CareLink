@@ -1,0 +1,71 @@
+{
+  "schemaVersion": "1.0",
+  "jobId": "unseen-3dgs-room-and-local-upload-2026-09-02-v6",
+  "auditedAt": "2026-09-02T10:59:57Z",
+  "bridgeCommitBeforeResult": "74207aa9258085b42e1e7bf7b9a5c9d6310c3180",
+  "expectedPaths": {
+    "data/tum-room-v6": "MISSING",
+    "data/local-intake": "MISSING",
+    "reports/tum-room-v6": "MISSING",
+    "reports/local-intake": "MISSING",
+    "artifacts/training/tum-room-v6": "MISSING",
+    "artifacts/export/tum-room-v6": "MISSING",
+    "outputs/tum-freiburg1-room-v6": "MISSING",
+    "scripts/local_video_intake.py": "MISSING",
+    "scripts/run_tum_room_v6_train.sh": "MISSING",
+    "viewer/tum-room-v6.scene.json": "MISSING"
+  },
+  "v6NamedPathsFound": 0,
+  "listeners": [
+    {
+      "address": "127.0.0.1",
+      "port": 8765,
+      "purpose": "prior_v5_viewer"
+    }
+  ],
+  "roomManifestHttpStatus": 404,
+  "gpu": {
+    "name": "NVIDIA GeForce RTX 4060 Laptop GPU",
+    "totalMemoryMiB": 8188,
+    "trainingProcessFound": false
+  },
+  "wslExt4": {
+    "filesystem": "/dev/sdd",
+    "availableGiBApprox": 936
+  },
+  "canonicalInputBlobs": [
+    {
+      "path": "inputs/scripts/local_video_intake.py",
+      "bytes": 19714,
+      "sha256": "5b63e233ae96d7ded9476d4e6ebf1883e63b4ff620d39eea4b769740e37456ca",
+      "crBytes": 0,
+      "taskMatch": true
+    },
+    {
+      "path": "inputs/tests/test_local_video_intake.py",
+      "bytes": 4475,
+      "sha256": "6144c49085456cf25992ad63facbe494b5002d0dc84fd1ff50e8f82dfdb38915",
+      "crBytes": 0,
+      "taskMatch": true
+    },
+    {
+      "path": "inputs/scripts/windows/Start-Local-VideoIntake.ps1",
+      "bytes": 3700,
+      "sha256": "bff92159060fdc8a8601c0af88422b20d98f922df4db4f08ecb1832e531de68a",
+      "crBytes": 0,
+      "taskMatch": true
+    },
+    {
+      "path": "inputs/scripts/windows/Stop-Local-VideoIntake.ps1",
+      "bytes": 1732,
+      "sha256": "ab9abc51768c71379b389081c1568a2209c5c1a0a4f01fc32cb22fb778ae17b3",
+      "crBytes": 0,
+      "taskMatch": true
+    }
+  ],
+  "windowsWorktreeInputMatchCount": 0,
+  "windowsWorktreeInputCount": 4,
+  "powershellParserErrors": 0,
+  "bridgeValidator": "PASS_6_TASKS",
+  "forbiddenOperationsStarted": 0
+}

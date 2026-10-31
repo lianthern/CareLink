@@ -1,0 +1,75 @@
+{
+  "checkedAt": "2026-09-23T10:46:26.317Z",
+  "origin": "https://memory-frame-demo-d7djiee0702b6c.service.tcloudbase.com",
+  "expectedVersion": "0.4.5",
+  "checks": [
+    "health-version",
+    {
+      "check": "existing-family-capabilities",
+      "role": "owner",
+      "realtimeEnabled": false,
+      "text": true,
+      "vision": true,
+      "messageCount": 9
+    },
+    {
+      "check": "existing-family-capabilities",
+      "role": "family",
+      "realtimeEnabled": false,
+      "text": true,
+      "vision": true,
+      "messageCount": 9
+    }
+  ],
+  "staticFiles": [
+    {
+      "file": "ai-conversation.css",
+      "bytes": 2747,
+      "sha256": "d714fb60f78593d16636d1a68b9fac9aeb43e4b36fb9bac340f879574b02d4e8"
+    },
+    {
+      "file": "ai-conversation.js",
+      "bytes": 17116,
+      "sha256": "9ffb00dacf0b83098cfa48d786d733d9361a58c943d49509ff9d0efc035a1075"
+    },
+    {
+      "file": "ai-realtime.js",
+      "bytes": 14763,
+      "sha256": "2a6c54197226f1d690c2b35271e8be7723faf4e13040a8ee40c3d7c974ff79bb"
+    },
+    {
+      "file": "app.js",
+      "bytes": 47238,
+      "sha256": "82cbfde4f32c84d2994e97eede6ee532b90a5eda8a51d566e32a35af0dc72109"
+    },
+    {
+      "file": "camera-adapters.mjs",
+      "bytes": 7213,
+      "sha256": "f5fe0db96fd9d58a910e53f50e61cbc3bbb37483aca1fd8c5d400d7a3ce31f77"
+    },
+    {
+      "file": "camera-presence.mjs",
+      "bytes": 7795,
+      "sha256": "616dd00a58c85d1c6ddbaa2244c0adc73f4833b63315067026043f9d1a06f6eb"
+    },
+    {
+      "file": "index.html",
+      "bytes": 1843,
+      "sha256": "98daa763e761013a4b2c3bd03890c3dfe9992ebdb7bad001cfa4ea54c8b96d35"
+    },
+    {
+      "file": "vendor/trtc-5.19.2.mjs",
+      "bytes": 954462,
+      "sha256": "176355e53c7b10b8bf5e435d9f98dd98efd49309430bccc9d6183e447799a59e"
+    }
+  ],
+  "newFamilies": 0,
+  "contentWrites": 0,
+  "modelCalls": 0,
+  "realtimeStarts": 0,
+  "browserClicks": false,
+  "microphoneSpeakerCameraVerified": false,
+  "sessionsRevoked": 2,
+  "version": "0.4.5",
+  "passed": true
+}

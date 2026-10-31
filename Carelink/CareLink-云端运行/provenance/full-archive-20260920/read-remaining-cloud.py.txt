@@ -1,0 +1,28 @@
+import pathlib,json,subprocess,concurrent.futures,collections
+r=pathlib.Path('/tmp/unseen-archive-20260920');rows=[json.loads(x) for x in (r/'files.private.jsonl').read_text().splitlines()];pending=[x for x in rows if x['kind']=='cloud-placeholder']
+program='''import pathlib,hashlib,json,sys
+p=pathlib.Path(sys.argv[1]);a=p.stat()
+with p.open("rb") as f:h=hashlib.file_digest(f,"sha256").hexdigest()
+b=p.stat()
+assert (a.st_size,a.st_mtime_ns)==(b.st_size,b.st_mtime_ns)
+print(json.dumps({"sha256":h,"bytes":b.st_size,"mtime":b.st_mtime,"mode":b.st_mode&0o777}))
+'''
+def read(row):
+ try:
+  x=subprocess.run(['python3','-c',program,row['localPath']],capture_output=True,text=True,timeout=25)
+  if x.returncode==0:return row['id'],json.loads(x.stdout)
+  return row['id'],None
+ except subprocess.TimeoutExpired:return row['id'],None
+results={}
+with concurrent.futures.ThreadPoolExecutor(max_workers=4) as pool:
+ for i,(fid,result) in enumerate(pool.map(read,pending),1):
+  results[fid]=result
+  if i%25==0:print(json.dumps({'read':i,'total':len(pending)}),flush=True)
+for row in rows:
+ value=results.get(row['id'])
+ if value:row.update(**value,kind='file')
+p=r/'files.private.jsonl.new'
+with p.open('w') as out:
+ for row in rows:out.write(json.dumps(row,ensure_ascii=False)+'\n')
+p.replace(r/'files.private.jsonl')
+print(json.dumps({'actualReads':sum(bool(x) for x in results.values()),'unavailableReads':sum(not bool(x) for x in results.values()),'kinds':dict(collections.Counter(x['kind'] for x in rows))}),flush=True)

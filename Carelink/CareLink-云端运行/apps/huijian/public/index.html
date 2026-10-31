@@ -1,0 +1,377 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#050505">
+  <meta name="robots" content="noindex,nofollow">
+  <title>回见 · 阿见</title>
+  <link rel="icon" type="image/svg+xml" href="/icon.svg">
+  <link rel="manifest" href="/manifest.json">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="回见">
+  <link rel="stylesheet" href="/style.css?v=20260901-visual">
+  <link rel="stylesheet" href="/zine-book.css">
+</head>
+<body>
+  <main class="app-shell" id="app">
+    <header class="brand" aria-label="回见">
+      <span class="brand-identity">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <span>回见</span>
+      </span>
+      <button class="library-entry" id="my-memories-entry" type="button">我的回见</button>
+    </header>
+
+    <section class="screen start-screen" id="screen-start">
+      <p class="start-sequence" aria-hidden="true"><span>PHOTO MEMORY</span><span>01—24</span></p>
+      <div class="start-intro">
+        <button class="photo-entry" id="upload-start" type="button" aria-label="选择 1 到 24 张照片">
+          <span class="photo-entry-frame" aria-hidden="true">
+            <span class="photo-entry-reticle photo-entry-reticle--top"></span>
+            <span class="photo-entry-reticle photo-entry-reticle--bottom"></span>
+            <span class="photo-entry-copy">
+              <strong>把照片放进来</strong>
+              <small>JPG · PNG · WEBP</small>
+            </span>
+            <span class="photo-entry-action">选择照片 <span>↗</span></span>
+          </span>
+        </button>
+        <input id="photo-input" type="file" accept="image/jpeg,image/png,image/webp" multiple hidden>
+        <div class="start-copy">
+          <h1>先让照片出现。</h1>
+          <p>阿见会从主照片里看得见的东西开始，陪你把没拍下来的那部分说出来。</p>
+        </div>
+      </div>
+
+      <div class="start-actions">
+        <button class="start-demo" id="demo-start" type="button"><span>还没有合适的照片？</span><strong>用示例走一遍 ↗</strong></button>
+        <p class="upload-choice-note">一张做成一页、海报或立体记忆，多张还可以排成一本 zine。</p>
+      </div>
+
+      <p class="photo-error" id="photo-error" role="alert" hidden></p>
+      <p class="privacy-note">主照片与回答会发送给 MiniMax 生成提问；其余照片不会自动发给模型。未主动保存到本机合集前，刷新会清空本次内容。如使用语音，浏览器的语音服务会把它转成文字；回见只在本机读取声音强弱驱动画面，不录音、不上传音频。</p>
+    </section>
+
+    <section class="screen selection-screen" id="screen-selection" tabindex="-1" hidden>
+      <div class="screen-heading">
+        <button class="back-action" id="selection-back" type="button">返回</button>
+        <span class="archive-label">选择照片</span>
+      </div>
+      <div class="selection-copy">
+        <h1>先排好这次要说的照片</h1>
+        <p>第一张是阿见先看的主照片。其余照片只在做 zine 时使用。</p>
+      </div>
+      <ol class="photo-selection-list" id="photo-selection-list" aria-label="已选择照片，可调整顺序"></ol>
+      <p class="selection-status" id="selection-status" role="status"></p>
+      <div class="selection-actions">
+        <button class="secondary-action" id="selection-add" type="button">继续选照片</button>
+        <button class="primary-action" id="selection-confirm" type="button">从主照片开始聊</button>
+      </div>
+      <p class="local-boundary">最多 24 张 JPG、PNG 或 WebP，每张不超过 30 MB。</p>
+    </section>
+
+    <section class="screen chat-screen" id="screen-chat" tabindex="-1" hidden>
+      <div class="chat-topline">
+        <button class="back-action" id="back-start" type="button">重新选照片</button>
+        <div class="effect-switch" role="group" aria-label="照片显示方式">
+          <span class="effect-label">照片</span>
+          <button id="effect-flat" type="button" aria-pressed="true">原样</button>
+          <button id="effect-spatial" type="button" aria-pressed="false">记忆成型</button>
+        </div>
+      </div>
+      <p class="effect-note" id="effect-note" role="status" hidden></p>
+
+      <figure class="photo-card" id="photo-frame">
+        <div class="photo-cloud-frame">
+          <div class="photo-stage" id="photo-stage">
+            <div class="spatial-photo-face">
+              <canvas id="memory-particles" aria-hidden="true" hidden></canvas>
+              <img id="chat-photo" alt="你刚选择的照片">
+            </div>
+            <span class="spatial-badge" id="spatial-badge" hidden>照片在呼吸</span>
+          </div>
+        </div>
+        <figcaption class="observation-strip">
+          <span class="agent-state-copy seeing" id="chat-agent" aria-label="阿见正在看这张照片">阿见</span>
+          <div class="agent-live" id="agent-live" aria-live="polite">
+            <p class="status-text" id="status-text">阿见正在看这张照片……</p>
+            <p class="observation" id="observation" hidden></p>
+          </div>
+        </figcaption>
+      </figure>
+
+      <button class="secondary-action self-start" id="speak-first" type="button" hidden>先自己说</button>
+
+      <div class="conversation">
+        <button class="history-summary" id="history-summary" type="button" aria-expanded="false" hidden>
+          <span id="history-count">已经写下 1 段</span><span id="history-toggle">展开</span>
+        </button>
+        <div class="thread" id="thread" hidden></div>
+
+        <section class="current-turn" id="current-turn" aria-live="polite">
+          <p class="question" id="question" hidden></p>
+          <p class="degraded-note" id="degraded-note" hidden></p>
+        </section>
+
+        <div class="composer" id="composer">
+          <label class="sr-only" for="answer">回答阿见的问题</label>
+          <span class="composer-main">
+            <textarea id="answer" rows="3" placeholder="想到什么，就说什么。" disabled></textarea>
+            <button class="voice-action" id="voice-toggle" type="button" aria-pressed="false" disabled>
+              <svg aria-hidden="true" viewBox="0 0 24 24" width="18" height="18">
+                <path d="M12 15.5a3.5 3.5 0 0 0 3.5-3.5V6a3.5 3.5 0 1 0-7 0v6a3.5 3.5 0 0 0 3.5 3.5Z"></path>
+                <path d="M5.5 11.5V12a6.5 6.5 0 0 0 13 0v-.5M12 18.5V22M9 22h6"></path>
+              </svg>
+              <span id="voice-label">说</span>
+            </button>
+          </span>
+          <span class="composer-meta">
+            <span class="voice-status" id="voice-status" aria-live="polite"></span>
+            <span class="composer-hint">⌘ / Ctrl + Enter 也可以</span>
+          </span>
+        </div>
+
+        <button class="primary-action" id="commit-answer" type="button" disabled>说好了</button>
+
+        <div class="quiet-actions" id="quiet-actions">
+          <button class="secondary-action" id="new-question" type="button" disabled>换个问法</button>
+          <button class="secondary-action" id="finish-memory" type="button" hidden>就先留这些</button>
+        </div>
+
+        <section class="decision-panel" id="decision-panel" hidden>
+          <p id="decision-copy">这张照片已经有故事了。再补一句，还是就这样留下？</p>
+          <div class="decision-actions">
+            <button class="secondary-action" id="add-one" type="button">再补一句</button>
+            <button class="primary-action" id="decision-finish" type="button">就这样留下</button>
+          </div>
+        </section>
+
+        <section class="decision-panel recovery-panel" id="recovery-panel" hidden>
+          <p>刚才那句话已经留下了。我们就先放成一页吧。</p>
+          <div class="decision-actions">
+            <button class="secondary-action" id="retry-question" type="button">再试一次</button>
+            <button class="primary-action" id="recovery-finish" type="button">看看这一页</button>
+          </div>
+        </section>
+      </div>
+    </section>
+
+    <section class="screen shape-screen" id="screen-shape" tabindex="-1" hidden>
+      <div class="screen-heading">
+        <button class="back-action" id="shape-back" type="button">回去改原话</button>
+        <span class="archive-label">选择成品</span>
+      </div>
+      <div class="shape-layout">
+        <aside class="shape-photo-rail" aria-label="本次照片">
+          <p class="rail-title">本次照片</p>
+          <div id="shape-photo-list"></div>
+        </aside>
+        <div class="shape-preview" id="shape-preview" data-shape="memory-page" data-style="evening-paper" aria-label="当前成品预览">
+          <div class="shape-preview-paper">
+            <img id="shape-preview-photo" data-product-preview-photo alt="">
+            <span class="shape-preview-line shape-preview-line--long" aria-hidden="true"></span>
+            <span class="shape-preview-line shape-preview-line--short" aria-hidden="true"></span>
+            <span class="shape-preview-gutter" aria-hidden="true"></span>
+            <span class="shape-preview-label" id="shape-preview-label">一页回忆</span>
+          </div>
+        </div>
+        <form class="product-controls" id="product-controls">
+          <fieldset class="choice-group shape-choice-group">
+            <legend>想把它做成什么？</legend>
+            <div class="shape-strip" id="shape-strip">
+              <label class="shape-option">
+                <input type="radio" name="result-shape" value="memory-page" checked>
+                <span class="product-thumb shape-thumb" data-preview-shape="memory-page" aria-hidden="true"><img data-product-preview-photo alt=""><i></i><i></i><i></i></span>
+                <span class="shape-option-copy"><strong>一页回忆</strong><small>照片与原话一起留白</small></span>
+              </label>
+              <label class="shape-option">
+                <input type="radio" name="result-shape" value="poster">
+                <span class="product-thumb shape-thumb" data-preview-shape="poster" aria-hidden="true"><img data-product-preview-photo alt=""><i></i><i></i></span>
+                <span class="shape-option-copy"><strong>记忆海报</strong><small>突出原话，适合分享</small></span>
+              </label>
+              <label class="shape-option" id="zine-shape-option">
+                <input id="shape-zine" type="radio" name="result-shape" value="zine">
+                <span class="product-thumb shape-thumb" data-preview-shape="zine" aria-hidden="true"><img data-product-preview-photo alt=""><i></i><i></i><i></i></span>
+                <span class="shape-option-copy"><strong>一本 zine</strong><small id="zine-shape-note">至少需要 2 张照片</small></span>
+              </label>
+              <label class="shape-option">
+                <input type="radio" name="result-shape" value="spatial">
+                <span class="product-thumb shape-thumb" data-preview-shape="spatial" aria-hidden="true"><img data-product-preview-photo alt=""><i></i><i></i></span>
+                <span class="shape-option-copy"><strong>立体记忆</strong><small>轻透视与持续粒子</small></span>
+              </label>
+            </div>
+          </fieldset>
+          <fieldset class="choice-group style-choice-group">
+            <legend>再选一种视觉风格</legend>
+            <div class="style-strip" id="style-strip">
+              <label class="style-option style-option--evening">
+                <input type="radio" name="result-style" value="evening-paper" checked>
+                <span class="product-thumb style-thumb" data-preview-style="evening-paper" aria-hidden="true"><img data-product-preview-photo alt=""><i></i></span>
+                <span><strong>傍晚相纸</strong><small>暖相纸与红色批注</small></span>
+              </label>
+              <label class="style-option style-option--black">
+                <input type="radio" name="result-style" value="black-fragments">
+                <span class="product-thumb style-thumb" data-preview-style="black-fragments" aria-hidden="true"><img data-product-preview-photo alt=""><i></i></span>
+                <span><strong>黑色碎片</strong><small>深黑底与黄色纸片</small></span>
+              </label>
+              <label class="style-option style-option--quiet">
+                <input type="radio" name="result-style" value="quiet-white">
+                <span class="product-thumb style-thumb" data-preview-style="quiet-white" aria-hidden="true"><img data-product-preview-photo alt=""><i></i></span>
+                <span><strong>极简留白</strong><small>冷白纸与克制间距</small></span>
+              </label>
+            </div>
+          </fieldset>
+          <p class="product-status" id="product-status" role="status"></p>
+          <button class="primary-action" id="product-confirm" type="submit">看看成品</button>
+        </form>
+      </div>
+    </section>
+
+    <section class="screen result-screen" id="screen-result" hidden>
+      <div class="closing-note">
+        <p><strong>阿见看到了：</strong>照片和你的原话，已经一起留在这一份里。</p>
+      </div>
+
+      <div class="result-mobile-summary" aria-live="polite">
+        <span id="result-shape-label">一页回忆</span>
+        <span id="result-style-label">傍晚相纸</span>
+      </div>
+
+      <div class="result-workspace">
+        <aside class="result-photo-rail" aria-label="本次照片">
+          <p class="rail-title">本次照片</p>
+          <div id="result-photo-list"></div>
+        </aside>
+
+        <div class="result-stage">
+          <article class="memory-page" id="memory-page">
+            <div class="memory-photo-wrap">
+              <div class="memory-photo-face">
+                <canvas id="result-memory-particles" aria-hidden="true" hidden></canvas>
+                <img id="result-photo" alt="你刚选择的照片">
+              </div>
+            </div>
+            <div class="memory-page-copy">
+              <p class="memory-date" id="memory-date"></p>
+              <h1 id="memory-title" tabindex="-1">这一刻，留在这里</h1>
+              <div id="memory-writing"></div>
+              <p class="memory-signature">回见 · 阿见陪你留下一页</p>
+            </div>
+          </article>
+          <section class="zine-stage-slot" id="zine-stage-slot" tabindex="-1" aria-label="zine 预览" hidden></section>
+        </div>
+
+        <aside class="result-control-rail">
+          <p class="rail-title">留下这份记忆</p>
+          <div class="result-actions">
+            <button class="primary-action" id="save-local-memory" type="button">保存到本机合集</button>
+            <button class="secondary-action" id="download-memory" type="button">保存为图片</button>
+            <button class="secondary-action" id="download-zine-pages" type="button" hidden>生成逐页图片</button>
+            <a class="secondary-action download-fallback" id="download-fallback" hidden>再次下载刚生成的图片</a>
+            <button class="secondary-action" id="print-memory" type="button">打印 / PDF</button>
+            <button class="secondary-action" id="change-product" type="button">更换形态或风格</button>
+            <button class="secondary-action" id="edit-memory" type="button">回去改改原话</button>
+            <button class="secondary-action" id="restart" type="button">再记一组</button>
+          </div>
+          <p class="export-status" id="export-status" role="status" hidden></p>
+          <div class="zine-page-downloads" id="zine-page-downloads" hidden></div>
+          <p class="next-note">下载在当前浏览器生成。只有点“保存到本机合集”，它才会留在这台设备的这个浏览器里。</p>
+        </aside>
+      </div>
+    </section>
+
+    <section class="screen library-screen" id="screen-library" tabindex="-1" hidden>
+      <div class="screen-heading">
+        <button class="back-action" id="library-back" type="button">返回</button>
+        <span class="archive-label">只存在这台设备</span>
+      </div>
+      <div class="library-heading">
+        <div>
+          <h1>我的回见</h1>
+          <p>保存在这台设备的这个浏览器里。清除浏览器数据或换设备后，不会自动出现。</p>
+        </div>
+        <button class="primary-action library-new" id="library-new-memory" type="button">新建一份记忆</button>
+      </div>
+
+      <section class="library-empty" id="library-empty">
+        <p class="empty-kicker">本机合集 · 0</p>
+        <h2>这里还没有留下的记忆</h2>
+        <p>先选一张照片，和阿见说一点。完成后可以保存到默认合集“这一年”。</p>
+        <button class="secondary-action" id="library-empty-start" type="button">去选照片</button>
+      </section>
+
+      <div class="library-list" id="library-list" aria-live="polite" hidden></div>
+      <template id="library-card-template">
+        <button class="library-row" type="button">
+          <span class="library-cover"><img alt=""></span>
+          <span class="library-row-copy">
+            <strong data-field="name"></strong>
+            <small data-field="meta"></small>
+          </span>
+          <span aria-hidden="true">→</span>
+        </button>
+      </template>
+
+      <section class="library-detail" id="library-detail" hidden>
+        <button class="back-action" id="library-detail-back" type="button">全部合集</button>
+        <div class="library-detail-head">
+          <img id="library-detail-cover" alt="合集封面">
+          <div>
+            <p class="empty-kicker" id="library-detail-meta"></p>
+            <h2 id="library-detail-name" tabindex="-1"></h2>
+            <p id="library-detail-style"></p>
+          </div>
+        </div>
+        <div class="library-detail-actions">
+          <button class="primary-action" id="library-open-collection" type="button">重新打开</button>
+          <button class="secondary-action" id="library-add-to-collection" type="button">继续添加</button>
+          <button class="secondary-action" id="library-export-collection" type="button">导出</button>
+          <button class="secondary-action" id="library-rename-collection" type="button">改名</button>
+          <button class="danger-action" id="library-delete-collection" type="button">删除这个合集</button>
+        </div>
+      </section>
+
+      <aside class="unseen-bridge">
+        <p class="empty-kicker">多人空间</p>
+        <h2>想和别人一起留下现场？</h2>
+        <p>UNSEEN 可以创建或进入多人空间。回见里的本机合集不会自动同步过去，只有你在 UNSEEN 主动上传的内容才会进入空间。</p>
+        <a class="secondary-action" href="https://unseen.maxxam.xyz" target="_blank" rel="noopener noreferrer">前往 UNSEEN</a>
+      </aside>
+    </section>
+  </main>
+
+  <dialog class="memory-dialog" id="save-memory-dialog" aria-labelledby="save-dialog-title">
+    <form method="dialog">
+      <p class="empty-kicker">本机保存</p>
+      <h2 id="save-dialog-title">保存到哪个合集？</h2>
+      <label for="save-collection-name">合集名称</label>
+      <input id="save-collection-name" name="collection" value="这一年" maxlength="36">
+      <p class="dialog-boundary">仅保存在这台设备的这个浏览器里，不会自动同步到账号或 UNSEEN。</p>
+      <p class="dialog-status" id="save-dialog-status" role="status"></p>
+      <div class="dialog-actions">
+        <button class="secondary-action" value="cancel">取消</button>
+        <button class="primary-action" id="save-dialog-confirm" value="default">确认保存</button>
+      </div>
+    </form>
+  </dialog>
+
+  <dialog class="memory-dialog" id="delete-collection-dialog" aria-labelledby="delete-dialog-title">
+    <form method="dialog">
+      <p class="empty-kicker">删除确认</p>
+      <h2 id="delete-dialog-title">删除“<span id="delete-collection-name"></span>”？</h2>
+      <p class="dialog-boundary">这个合集和其中保存在本机的记忆会一起删除，删除后无法恢复。</p>
+      <p class="dialog-status" id="delete-dialog-status" role="status"></p>
+      <div class="dialog-actions">
+        <button class="secondary-action" value="cancel">保留</button>
+        <button class="danger-action" id="delete-dialog-confirm" value="default">确认删除</button>
+      </div>
+    </form>
+  </dialog>
+
+  <script src="/app.js" type="module"></script>
+  <script src="/product-shell.js" type="module"></script>
+</body>
+</html>

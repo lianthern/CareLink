@@ -1,0 +1,85 @@
+{
+  "schema": "unseen-current-active-release-observation/1",
+  "kind": "CURRENT_ACTIVE_DEPLOYMENT_OBSERVATION_NOT_FINAL_PACKAGE_ACCEPTANCE",
+  "observedAt": "2026-08-15T02:09:13Z",
+  "result": "PASS_CURRENT_ACTIVE_CANDIDATE_BOUND",
+  "activeRelease": {
+    "candidateCommit": "59da5a9367cedbf168ac2d51b7b34113f51b0a68",
+    "candidateTree": "280f2ee88d52083b30e6c8e1f6731e23c58cf195",
+    "detachedHead": true,
+    "clean": true
+  },
+  "systemd": {
+    "api": {
+      "unit": "unseen-private-beta-api.service",
+      "active": true,
+      "subState": "running",
+      "mainPid": 193139,
+      "controlGroup": "/system.slice/unseen-private-beta-api.service",
+      "workingDirectory": "/opt/unseen/releases/59da5a9367cedbf168ac2d51b7b34113f51b0a68",
+      "procCwdMatchesWorkingDirectory": true,
+      "pidPresentInControlGroup": true,
+      "restarts": 0,
+      "unitSha256": "98406d6b9031f9f3b52598781c21799143dc0cf7477eb60ca0e61cd455a44039"
+    },
+    "web": {
+      "unit": "unseen-private-beta-web.service",
+      "active": true,
+      "subState": "running",
+      "mainPid": 193140,
+      "controlGroup": "/system.slice/unseen-private-beta-web.service",
+      "workingDirectory": "/opt/unseen/releases/59da5a9367cedbf168ac2d51b7b34113f51b0a68/apps/web",
+      "procCwdMatchesWorkingDirectory": true,
+      "pidPresentInControlGroup": true,
+      "restarts": 0,
+      "unitSha256": "1e8c7fd830294a45857d66d03a199c09a0f08141c0fce8bdf32f629f9746e20b"
+    }
+  },
+  "database": {
+    "path": "/var/lib/unseen/private-beta/core-data/unseen.sqlite",
+    "quickCheck": "ok",
+    "orderedMigrations": 10,
+    "accounts": 0,
+    "photos": 0,
+    "privateAiJobs": 0
+  },
+  "runtimeFlags": {
+    "bookEnabled": false,
+    "bookStoreMounted": false,
+    "privateAiWorkerEnabled": false,
+    "rendererUnitPresent": false,
+    "rendererProfileLoaded": false,
+    "rendererSocketPresent": false
+  },
+  "health": {
+    "httpStatus": 503,
+    "status": "degraded",
+    "otpDelivery": {
+      "configured": false,
+      "ready": false,
+      "provider": "unconfigured",
+      "queued": 0,
+      "running": 0
+    }
+  },
+  "caddy": {
+    "active": true,
+    "mainPid": 24470,
+    "restarts": 0,
+    "startTimestampMonotonic": 2416948095,
+    "configSha256": "c5691b38229753bcc2bbdcd8cc8b32f691433ab5924b9c3130c3436b8ea787db",
+    "configBytesChangedByProbe": false,
+    "reloadPerformedByProbe": false
+  },
+  "claimBoundary": {
+    "currentActiveObservationOnly": true,
+    "finalPackageCandidateDeployed": false,
+    "productionReady": false,
+    "releaseClaim": "NO_GO",
+    "credentialReads": 0,
+    "secretReads": 0,
+    "externalNetworkRequests": 0,
+    "persistentServerWrites": 0,
+    "serviceSignals": 0
+  }
+}

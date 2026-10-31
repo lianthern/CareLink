@@ -1,0 +1,337 @@
+{
+  "schemaVersion": "1.0",
+  "purpose": "supplementary query-projection-matched render capture; no localization inference",
+  "status": "PASS",
+  "queryProjection": {
+    "width": 1024,
+    "height": 1024,
+    "aspect": 1,
+    "verticalFovDegrees": 100
+  },
+  "browserLaunchesForSupplement": 1,
+  "browserContextsForSupplement": 1,
+  "originalAcceptedViewerMechanicsRerun": false,
+  "localizationInferenceRuns": 0,
+  "gpuTrainingRuns": 0,
+  "groundTruthRead": false,
+  "groundTruthAnchorUsed": false,
+  "consoleErrors": [],
+  "pageErrors": [],
+  "frames": [
+    {
+      "finalRunId": "final-01",
+      "sourceViewerRunId": "viewer-01",
+      "anchorId": "fixed-photo-final-01",
+      "screenshot": "projection-matched-final-01.png",
+      "projection": {
+        "width": 1024,
+        "height": 1024,
+        "aspect": 1,
+        "verticalFovDegrees": 100
+      },
+      "canvas": {
+        "cssWidth": 1024,
+        "cssHeight": 1024,
+        "backingWidth": 1024,
+        "backingHeight": 1024,
+        "devicePixelRatio": 1
+      },
+      "manifestAnchor": {
+        "id": "fixed-photo-final-01",
+        "label": "Fixed real photo · localized run 1",
+        "sceneRevisionId": "360roam-base-posefix-v14-fixed-photo-r001",
+        "position": [
+          -0.467295866,
+          -0.017147555,
+          0.512612978
+        ],
+        "quaternion": [
+          -0.006512024,
+          0.975060129,
+          0.002419723,
+          0.221832108
+        ],
+        "fov": 100,
+        "thumbnail": "./assets/v14/fixed-photo-thumb.jpg"
+      },
+      "browserReturnedPose": {
+        "position": [
+          -0.4672958552837372,
+          -0.017147554084658623,
+          0.5126129984855652
+        ],
+        "quaternion": [
+          -0.006512023978270902,
+          0.9750601281604239,
+          0.0024197230104017497,
+          0.22183210983993537
+        ],
+        "fov": 100,
+        "mode": "photo-anchor"
+      },
+      "checks": {
+        "cssProjectionIs1024Square": true,
+        "backingProjectionIs1024Square": true,
+        "fovMatchesQueryProjection": true,
+        "photoAnchorMode": true,
+        "positionMatchesManifestAnchor": true,
+        "quaternionMatchesManifestAnchor": true,
+        "noConsoleErrors": true,
+        "noPageErrors": true
+      },
+      "status": "PASS"
+    },
+    {
+      "finalRunId": "final-02",
+      "sourceViewerRunId": "viewer-02",
+      "anchorId": "fixed-photo-final-02",
+      "screenshot": "projection-matched-final-02.png",
+      "projection": {
+        "width": 1024,
+        "height": 1024,
+        "aspect": 1,
+        "verticalFovDegrees": 100
+      },
+      "canvas": {
+        "cssWidth": 1024,
+        "cssHeight": 1024,
+        "backingWidth": 1024,
+        "backingHeight": 1024,
+        "devicePixelRatio": 1
+      },
+      "manifestAnchor": {
+        "id": "fixed-photo-final-02",
+        "label": "Fixed real photo · localized run 2",
+        "sceneRevisionId": "360roam-base-posefix-v14-fixed-photo-r001",
+        "position": [
+          -0.467297031,
+          -0.017104483,
+          0.513699894
+        ],
+        "quaternion": [
+          -0.005258545,
+          0.975119844,
+          0.005114194,
+          0.221556953
+        ],
+        "fov": 100,
+        "thumbnail": "./assets/v14/fixed-photo-thumb.jpg"
+      },
+      "browserReturnedPose": {
+        "position": [
+          -0.4672970175743103,
+          -0.017104482278227806,
+          0.5136998891830444
+        ],
+        "quaternion": [
+          -0.00525854496974694,
+          0.9751198443735157,
+          0.0051141938916854065,
+          0.22155694941619394
+        ],
+        "fov": 100,
+        "mode": "photo-anchor"
+      },
+      "checks": {
+        "cssProjectionIs1024Square": true,
+        "backingProjectionIs1024Square": true,
+        "fovMatchesQueryProjection": true,
+        "photoAnchorMode": true,
+        "positionMatchesManifestAnchor": true,
+        "quaternionMatchesManifestAnchor": true,
+        "noConsoleErrors": true,
+        "noPageErrors": true
+      },
+      "status": "PASS"
+    },
+    {
+      "finalRunId": "final-03",
+      "sourceViewerRunId": "viewer-03",
+      "anchorId": "fixed-photo-final-03",
+      "screenshot": "projection-matched-final-03.png",
+      "projection": {
+        "width": 1024,
+        "height": 1024,
+        "aspect": 1,
+        "verticalFovDegrees": 100
+      },
+      "canvas": {
+        "cssWidth": 1024,
+        "cssHeight": 1024,
+        "backingWidth": 1024,
+        "backingHeight": 1024,
+        "devicePixelRatio": 1
+      },
+      "manifestAnchor": {
+        "id": "fixed-photo-final-03",
+        "label": "Fixed real photo · localized run 3",
+        "sceneRevisionId": "360roam-base-posefix-v14-fixed-photo-r001",
+        "position": [
+          -0.466821268,
+          -0.017078895,
+          0.512596844
+        ],
+        "quaternion": [
+          -0.006761241,
+          0.974545275,
+          0.002201726,
+          0.224077989
+        ],
+        "fov": 100,
+        "thumbnail": "./assets/v14/fixed-photo-thumb.jpg"
+      },
+      "browserReturnedPose": {
+        "position": [
+          -0.46682125329971313,
+          -0.01707889512181282,
+          0.512596845626831
+        ],
+        "quaternion": [
+          -0.006761241299237651,
+          0.9745452744892275,
+          0.00220172602963564,
+          0.2240779908632267
+        ],
+        "fov": 100,
+        "mode": "photo-anchor"
+      },
+      "checks": {
+        "cssProjectionIs1024Square": true,
+        "backingProjectionIs1024Square": true,
+        "fovMatchesQueryProjection": true,
+        "photoAnchorMode": true,
+        "positionMatchesManifestAnchor": true,
+        "quaternionMatchesManifestAnchor": true,
+        "noConsoleErrors": true,
+        "noPageErrors": true
+      },
+      "status": "PASS"
+    },
+    {
+      "finalRunId": "final-04",
+      "sourceViewerRunId": "viewer-04",
+      "anchorId": "fixed-photo-final-04",
+      "screenshot": "projection-matched-final-04.png",
+      "projection": {
+        "width": 1024,
+        "height": 1024,
+        "aspect": 1,
+        "verticalFovDegrees": 100
+      },
+      "canvas": {
+        "cssWidth": 1024,
+        "cssHeight": 1024,
+        "backingWidth": 1024,
+        "backingHeight": 1024,
+        "devicePixelRatio": 1
+      },
+      "manifestAnchor": {
+        "id": "fixed-photo-final-04",
+        "label": "Fixed real photo · localized run 4",
+        "sceneRevisionId": "360roam-base-posefix-v14-fixed-photo-r001",
+        "position": [
+          -0.467598315,
+          -0.01677046,
+          0.513408054
+        ],
+        "quaternion": [
+          -0.004215024,
+          0.97529746,
+          0.007807102,
+          0.220717347
+        ],
+        "fov": 100,
+        "thumbnail": "./assets/v14/fixed-photo-thumb.jpg"
+      },
+      "browserReturnedPose": {
+        "position": [
+          -0.4675983190536499,
+          -0.016770459711551666,
+          0.5134080648422241
+        ],
+        "quaternion": [
+          -0.004215023835153063,
+          0.9752974584558753,
+          0.0078071017940259295,
+          0.2207173537924848
+        ],
+        "fov": 100,
+        "mode": "photo-anchor"
+      },
+      "checks": {
+        "cssProjectionIs1024Square": true,
+        "backingProjectionIs1024Square": true,
+        "fovMatchesQueryProjection": true,
+        "photoAnchorMode": true,
+        "positionMatchesManifestAnchor": true,
+        "quaternionMatchesManifestAnchor": true,
+        "noConsoleErrors": true,
+        "noPageErrors": true
+      },
+      "status": "PASS"
+    },
+    {
+      "finalRunId": "final-05",
+      "sourceViewerRunId": "viewer-05",
+      "anchorId": "fixed-photo-final-05",
+      "screenshot": "projection-matched-final-05.png",
+      "projection": {
+        "width": 1024,
+        "height": 1024,
+        "aspect": 1,
+        "verticalFovDegrees": 100
+      },
+      "canvas": {
+        "cssWidth": 1024,
+        "cssHeight": 1024,
+        "backingWidth": 1024,
+        "backingHeight": 1024,
+        "devicePixelRatio": 1
+      },
+      "manifestAnchor": {
+        "id": "fixed-photo-final-05",
+        "label": "Fixed real photo · localized run 5",
+        "sceneRevisionId": "360roam-base-posefix-v14-fixed-photo-r001",
+        "position": [
+          -0.467827779,
+          -0.016755775,
+          0.513673178
+        ],
+        "quaternion": [
+          -0.005777524,
+          0.975827776,
+          0.006815389,
+          0.218358243
+        ],
+        "fov": 100,
+        "thumbnail": "./assets/v14/fixed-photo-thumb.jpg"
+      },
+      "browserReturnedPose": {
+        "position": [
+          -0.46782776713371277,
+          -0.01675577461719513,
+          0.5136731863021851
+        ],
+        "quaternion": [
+          -0.005777524208582503,
+          0.975827775353947,
+          0.006815388977126196,
+          0.21835824585958805
+        ],
+        "fov": 100,
+        "mode": "photo-anchor"
+      },
+      "checks": {
+        "cssProjectionIs1024Square": true,
+        "backingProjectionIs1024Square": true,
+        "fovMatchesQueryProjection": true,
+        "photoAnchorMode": true,
+        "positionMatchesManifestAnchor": true,
+        "quaternionMatchesManifestAnchor": true,
+        "noConsoleErrors": true,
+        "noPageErrors": true
+      },
+      "status": "PASS"
+    }
+  ]
+}

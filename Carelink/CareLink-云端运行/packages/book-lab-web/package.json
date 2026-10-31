@@ -1,0 +1,12 @@
+{
+  "name": "@unseen/book-lab-web",
+  "version": "0.0.0-fixture",
+  "private": true,
+  "license": "UNLICENSED",
+  "type": "module",
+  "scripts": {
+    "start": "node scripts/dev-server.mjs",
+    "test": "node --test tests/*.test.mjs",
+    "screenshots": "node tests/capture-viewports.mjs"
+  }
+}

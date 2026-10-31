@@ -1,0 +1,7 @@
+{
+  "schemaVersion": "1.0",
+  "schema": "draft-2020-12",
+  "manifest": "viewer/360roam-base-v10.scene.json",
+  "errors": [],
+  "status": "PASS"
+}

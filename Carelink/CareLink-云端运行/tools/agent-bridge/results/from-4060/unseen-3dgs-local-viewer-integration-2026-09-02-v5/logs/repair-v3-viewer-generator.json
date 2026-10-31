@@ -1,0 +1,94 @@
+{
+  "status": "PASS",
+  "sourceTransforms": "reports/repair-v3/processed/SIMPLE_RADIAL_AUTO/transforms.json",
+  "dataparserTransforms": "artifacts/training/repair-v3/pexels-simple-radial-auto-v3/splatfacto/2026-09-02_142353/dataparser_transforms.json",
+  "coordinateConversion": {
+    "savedToNerfstudio": "saved_transform = dataparser_transform @ inverse(applied_transform); c2w_ns = saved_transform @ c2w_saved; scale c2w_ns translation",
+    "nerfstudioToPlayCanvas": "c2w_pc = Rx(-90deg) @ c2w_ns, mapping NS +Z up to PlayCanvas +Y up",
+    "sceneAssetRotationEulerDegrees": [
+      -90.0,
+      0.0,
+      0.0
+    ],
+    "fov": "OpenCV optimal-new-camera projection and ROI crop, identical to Nerfstudio training cache"
+  },
+  "fovDegrees": 31.624637060156797,
+  "startSourceFrame": "frame_00001.jpg",
+  "defaultPhotoAnchorId": "frame_00036",
+  "anchorCount": 3,
+  "anchors": [
+    {
+      "id": "frame_00001",
+      "label": "Repaired source frame_00001",
+      "sceneRevisionId": "pexels-simple-radial-v3-r001",
+      "position": [
+        -0.763564705,
+        -0.010611543,
+        -0.491222084
+      ],
+      "quaternion": [
+        -0.002106638,
+        -0.213727616,
+        0.002004298,
+        0.976888966
+      ],
+      "fov": 31.62463706,
+      "sourceFrame": "images/frame_00001.jpg"
+    },
+    {
+      "id": "frame_00036",
+      "label": "Repaired source frame_00036",
+      "sceneRevisionId": "pexels-simple-radial-v3-r001",
+      "position": [
+        -0.023307132,
+        -0.042443054,
+        0.240196427
+      ],
+      "quaternion": [
+        0.005599306,
+        0.182927355,
+        -0.001802228,
+        0.983108836
+      ],
+      "fov": 31.62463706,
+      "sourceFrame": "images/frame_00036.jpg"
+    },
+    {
+      "id": "frame_00072",
+      "label": "Repaired source frame_00072",
+      "sceneRevisionId": "pexels-simple-radial-v3-r001",
+      "position": [
+        0.999999996,
+        0.114189049,
+        -0.445690909
+      ],
+      "quaternion": [
+        -0.014183183,
+        0.566310653,
+        -0.004234473,
+        0.824058949
+      ],
+      "fov": 31.62463706,
+      "sourceFrame": "images/frame_00072.jpg"
+    }
+  ],
+  "boundaryXZ": [
+    [
+      -1.006446212,
+      -0.641222084
+    ],
+    [
+      1.149999996,
+      -0.641222084
+    ],
+    [
+      1.149999996,
+      0.394524416
+    ],
+    [
+      -1.006446212,
+      0.394524416
+    ]
+  ],
+  "walkMode": "explicit; first movement switches to navigation.eyeHeight without overwriting photo-anchor Y"
+}

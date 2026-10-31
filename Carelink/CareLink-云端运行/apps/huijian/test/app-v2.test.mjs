@@ -1,0 +1,9 @@
+import {test} from 'node:test';
+import assert from 'node:assert/strict';
+import {frameWindow,photoRows,positionKey,escapeHtml,sources} from '../public/app-v2-core.js';
+test('corridor clamps invalid, restored, and edge positions; at most seven frames at 1/6/30 photos',()=>{for(const length of [0,1,6,30])for(const position of [-100,0,1,5,12.6,29,100,NaN]){const w=frameWindow(length,position);assert.ok(w.indices.length<=7);assert.equal(new Set(w.indices).size,w.indices.length);assert.ok(w.indices.every(i=>i>=0&&i<length));if(length)assert.ok(w.indices.includes(w.current));}});
+test('photo references retain IDs, remove duplicate references and omit video media',()=>{const rows=photoRows('space/a',[{id:'p1'},{photoId:'p1'},{id:'p2'},{id:'v',video:{url:'video'}}]);assert.deepEqual(rows.map(x=>x.id),['p1','p2']);assert.equal(rows[0].url,'/v1/viewer/spaces/space%2Fa/photos/p1/album-media');});
+test('browser position is scoped by both account and space without storing photo content',()=>{assert.notEqual(positionKey('a','s'),positionKey('b','s'));assert.notEqual(positionKey('a','s'),positionKey('a','s2'));assert.notEqual(positionKey('a.b','c'),positionKey('a','b.c'));});
+test('untrusted names remain text and all five material states exist',()=>{assert.equal(escapeHtml('<img src="x">'), '&lt;img src=&quot;x&quot;&gt;');assert.deepEqual(sources.map(x=>x[0]),['photos','panorama','phone','panoramic','empty']);});
+import {versionStatus} from '../public/app-v2-core.js';
+test('version state distinguishes unknown, processing, failure and unimported completion',()=>{assert.equal(versionStatus({status:'processing'}),'现场正在生成');assert.equal(versionStatus({status:'failed'}),'现场生成失败');assert.equal(versionStatus({status:'unknown'}),'现场结果待核对');assert.equal(versionStatus({status:'complete'}),'现场已生成，等待确认加入');assert.equal(versionStatus({status:'complete',importedSpaceId:'s'}),'现场版本已保存');assert.equal(versionStatus({status:'novel'}),'现场状态待核对');});

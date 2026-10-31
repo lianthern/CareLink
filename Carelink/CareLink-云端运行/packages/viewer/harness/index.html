@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <title>UNSEEN Viewer deterministic harness</title>
+  <style>
+    html,body{margin:0;width:100%;height:100%;background:#170e12;color:#fff8f5;font-family:system-ui,sans-serif}
+    body{display:grid;grid-template-rows:1fr auto;overflow:hidden}
+    #viewer{min-width:0;min-height:0}
+    #harness-controls{display:flex;gap:8px;align-items:center;min-height:52px;padding:4px 12px;background:#24171d;border-top:1px solid #8c6877;overflow-x:auto}
+    #harness-controls button{min-height:44px;padding:8px 12px;border:1px solid #8c6877;border-radius:8px;background:#302027;color:#fff8f5;white-space:nowrap}
+    #summary{font:12px ui-monospace,monospace;white-space:nowrap}
+  </style>
+</head>
+<body>
+  <div id="viewer"></div>
+  <div id="harness-controls" aria-label="测试控制">
+    <button id="depth">深度场景</button>
+    <button id="look">仅环视</button>
+    <button id="fallback">强制降级</button>
+    <button id="retry">恢复并重试</button>
+    <span id="summary">booting</span>
+  </div>
+  <script type="module" src="./harness.js"></script>
+</body>
+</html>

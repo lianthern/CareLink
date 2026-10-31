@@ -1,0 +1,20 @@
+[Unit]
+Description=UNSEEN single-flight local GPU worker
+After=default.target unseen-local-product-server.service
+
+[Service]
+Type=simple
+WorkingDirectory=/home/max/src/unseen-local-product
+Environment=PYTHONUNBUFFERED=1
+Environment=UNSEEN_VIEWER_SOURCE=/home/max/src/unseen-local-product/viewer
+Environment=PATH=/usr/lib/wsl/lib:/home/max/src/unseen-local-product/.tools/node/bin:/home/max/src/unseen-local-product/.venv/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+ExecStart=/home/max/src/unseen-local-product/.venv/bin/python /home/max/src/unseen-local-product/app/unseen_local_product.py --root /home/max/unseen-local-product worker --runner /home/max/src/unseen-local-product/app/pipeline_runner.py --lease-ttl 180 --poll-seconds 5
+Restart=on-failure
+RestartSec=10
+KillMode=control-group
+TimeoutStopSec=30
+NoNewPrivileges=yes
+PrivateTmp=yes
+
+[Install]
+WantedBy=default.target

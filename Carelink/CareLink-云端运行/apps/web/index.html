@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="theme-color" content="#FFF9F7">
+    <meta name="robots" content="noindex,nofollow">
+    <title>UNSEEN · 共光</title>
+    <link rel="icon" type="image/svg+xml" href="/assets/brand/favicon.svg">
+    <link rel="manifest" href="/manifest.json">
+    <link rel="apple-touch-icon" href="/assets/brand/apple-touch-icon.png">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="UNSEEN">
+    <script nonce="{{NONCE}}">
+      (() => {
+        const path = location.pathname;
+        const key = path === "/uploads/open" ? "receipt" : path === "/open" || path === "/member-invitations/accept" ? "invite" : null;
+        if (!key || !location.hash) return;
+        const match = new RegExp(`^#${key}=([A-Za-z0-9_-]{16,})$`).exec(location.hash);
+        globalThis.__UNSEEN_BOOTSTRAP__ = match ? { key, value: match[1], path } : { key, invalid: true, path };
+        history.replaceState(null, "", location.pathname + location.search);
+      })();
+    </script>
+    <script type="importmap" nonce="{{NONCE}}">{"imports":{"@unseen/viewer":"/__viewer__/src/public/index.js","@unseen/book-lab-web/integrated-shell.mjs":"/__book_lab_web__/src/integrated-shell.mjs"}}</script>
+    <link rel="stylesheet" href="/src/styles.css">
+  </head>
+  <body>
+    <a class="skip-link" href="#main">跳到主要内容</a>
+    <div id="app"></div>
+    <div data-dialog-root></div>
+    <template id="temporary-access-template">
+      <aside class="temporary-access-banner" role="status" aria-labelledby="temporary-access-title">
+        <div class="temporary-access-banner-inner">
+          <strong id="temporary-access-title">临时邀请访问</strong>
+          <span>当前通过邀请门浏览；邮件登录、照片上传、AI 问答和纪念册仍在准备，本次临时访问不会接收这些内容。</span>
+        </div>
+      </aside>
+    </template>
+    <div id="announcer" class="sr-only" aria-live="polite" aria-atomic="true"></div>
+    <script type="module" src="/src/app.js"></script>
+  </body>
+</html>

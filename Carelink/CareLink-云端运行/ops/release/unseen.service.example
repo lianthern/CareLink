@@ -1,0 +1,27 @@
+[Unit]
+Description=UNSEEN production candidate
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=unseen
+Group=unseen
+WorkingDirectory=/opt/unseen/releases/REQUIRED_IMMUTABLE_RELEASE_COMMIT
+EnvironmentFile=/etc/unseen/production.env
+EnvironmentFile=/run/unseen/production.secrets
+UnsetEnvironment=NODE_OPTIONS NODE_PATH PATH LD_PRELOAD LD_LIBRARY_PATH LD_AUDIT LD_DEBUG LD_DEBUG_OUTPUT LD_PROFILE GCONV_PATH BASH_ENV ENV PYTHONPATH PYTHONHOME PERL5OPT RUBYOPT OPENSSL_CONF OPENSSL_MODULES SSLKEYLOGFILE
+ExecStartPre=/usr/local/bin/node infra/integration/production-package.mjs preflight /etc/unseen/production.env
+ExecStart=/usr/local/bin/node infra/integration/book-lab/deployment-entrypoint.mjs
+Restart=on-failure
+RestartSec=5s
+TimeoutStopSec=30s
+UMask=0077
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectHome=true
+ProtectSystem=strict
+ReadWritePaths=/var/lib/unseen/production /var/lib/unseen/renderer-spool /var/backups/unseen/production /run/unseen
+
+[Install]
+WantedBy=multi-user.target

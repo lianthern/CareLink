@@ -1,0 +1,2233 @@
+<!doctype html>
+<html lang="zh">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+<title>空间记忆 · 走进全景</title>
+<style>
+/* UNSEEN 皮的取值就地内联,故意不引 app/theme.css:那份样式表带 body 渐变底,
+   套到这张全屏 WebGL 页上会把 3D 画布糊掉。这里只借它的颜色和圆角给 HUD 小控件。 */
+:root {
+  --u-ink: #46343c;
+  --u-ink-2: #8a7480;
+  --u-pink: #f2739b;
+  --u-grad: linear-gradient(95deg, #ff9fb4 0%, #ffc98f 100%);
+  --u-glass: rgba(255, 255, 255, .86);
+  --u-glass-line: rgba(255, 255, 255, .85);
+  --u-glass-shadow: 0 12px 30px rgba(120, 60, 80, .30);
+}
+* { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+html, body {
+  height: 100%; margin: 0; padding: 0; overflow: hidden;
+  background: #000;
+  font-family: -apple-system, "PingFang SC", system-ui, sans-serif;
+}
+#stage { position: fixed; inset: 0; touch-action: none; cursor: default; }
+#stage canvas { display: block; width: 100%; height: 100%; touch-action: none; }
+#stage.grabbable { cursor: grab; }
+
+/* ---------------- 顶部 HUD：节点名 + 深度状态 ---------------- */
+.hud-top {
+  /* z-index 25 > 居中卡片(20):卡片是全屏透明遮罩,不抬高会把顶部场景 chip 的点击全吃掉
+     (7/24 实测:锁定卡片挡住换场景)。hud-top 自身 pointer-events:none,不会挡卡片按钮。 */
+  position: fixed; top: 0; left: 0; right: 0; z-index: 25;
+  padding: 14px 16px 20px;
+  padding-top: calc(14px + env(safe-area-inset-top, 0px));
+  background: linear-gradient(#000a, transparent);
+  color: #fff; pointer-events: none;
+}
+.hud-top h1 {
+  font-size: 15px; font-weight: 600; letter-spacing: .08em; margin: 0;
+  padding-right: 260px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  text-shadow: 0 1px 6px rgba(0,0,0,.45);
+}
+.hud-top .depth-warn {
+  display: inline-flex; align-items: center; gap: 4px; margin-top: 7px;
+  font-size: 10.5px; font-weight: 600; padding: 4px 12px; border-radius: 999px;
+  background: linear-gradient(95deg, #ffe3ea, #fff0dc); color: #a2603f;
+  border: 1px solid rgba(255,255,255,.7);
+}
+.hud-top .depth-warn.hide { display: none; }
+
+/* ---------------- 场景切换 chip 排(仅 demo/scene 模式显示) ---------------- */
+.scene-chips {
+  display: none; margin-top: 10px; gap: 8px;
+  overflow-x: auto; white-space: nowrap;
+  -webkit-overflow-scrolling: touch;
+  pointer-events: auto; /* hud-top 整体 pointer-events:none,这里单独打开 */
+  scrollbar-width: none;
+}
+.scene-chips::-webkit-scrollbar { display: none; }
+.scene-chips.on { display: flex; }
+.scene-chips .chip {
+  flex: none; display: inline-flex; align-items: center;
+  background: var(--u-glass); color: var(--u-ink); text-decoration: none;
+  border: 1px solid var(--u-glass-line);
+  backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+  font-size: 12px; font-weight: 600; letter-spacing: .02em;
+  padding: 6px 15px; border-radius: 999px;
+  box-shadow: 0 4px 14px rgba(120,60,80,.24);
+  -webkit-tap-highlight-color: transparent;
+}
+.scene-chips .chip:active { transform: scale(.96); }
+.scene-chips .chip.active {
+  background: var(--u-grad); color: #fff; border-color: rgba(255,255,255,.6);
+  box-shadow: 0 6px 18px rgba(242,115,155,.42);
+}
+
+/* ---------------- 右上角来源徽章 ---------------- */
+.hud-badge {
+  position: fixed; z-index: 5; pointer-events: none;
+  top: calc(14px + env(safe-area-inset-top, 0px));
+  right: calc(14px + env(safe-area-inset-right, 0px));
+  display: inline-flex; align-items: center; gap: 5px;
+  background: var(--u-glass); color: var(--u-ink-2);
+  border: 1px solid var(--u-glass-line);
+  backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+  font-size: 10px; font-weight: 600; letter-spacing: .04em;
+  padding: 5px 12px; border-radius: 999px;
+  box-shadow: var(--u-glass-shadow);
+}
+.hud-badge .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--u-pink); flex: none; }
+@media (max-width: 600px) {
+  /* 手机顶部宽度不够同时摆长场景名和来源徽章。完整 DAP 署名在右下角仍然保留。 */
+  .hud-badge { display: none; }
+  .hud-top h1 { padding-right: 0; }
+}
+
+/* ---------------- 左下返回 ---------------- */
+.back-link {
+  position: fixed; z-index: 25; cursor: pointer; /* 同 hud-top:抬到锁定卡片之上,进场景没锁定也能返回 */
+  left: calc(14px + env(safe-area-inset-left, 0px));
+  bottom: calc(14px + env(safe-area-inset-bottom, 0px));
+  display: inline-flex; align-items: center; gap: 6px;
+  background: var(--u-glass); color: var(--u-ink); text-decoration: none;
+  border: 1px solid var(--u-glass-line);
+  backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px);
+  font-size: 12.5px; font-weight: 600; letter-spacing: .04em;
+  padding: 0 17px; height: 44px; border-radius: 999px;
+  box-shadow: var(--u-glass-shadow);
+  transition: transform .18s cubic-bezier(.2,.7,.3,1), box-shadow .18s;
+}
+.back-link:hover { transform: translateY(-1px); box-shadow: 0 16px 38px rgba(120,60,80,.34); }
+.back-link:active { transform: scale(.96); }
+.back-link .chev { color: var(--u-pink); font-weight: 700; font-size: 15px; line-height: 1; }
+
+/* ---------------- 移动端提示 toast ---------------- */
+.mobile-hint {
+  position: fixed; left: 0; right: 0; z-index: 6; pointer-events: none;
+  top: calc(72px + env(safe-area-inset-top, 0px));
+  text-align: center; opacity: 0; transition: opacity .5s ease;
+}
+.mobile-hint.show { opacity: 1; }
+.mobile-hint span {
+  display: inline-block; background: rgba(0,0,0,.55); color: #fff;
+  font-size: 12px; padding: 7px 14px; border-radius: 14px;
+}
+
+/* ---------------- 虚拟摇杆（移动端左下角，行走用） ---------------- */
+.joystick-outer {
+  position: fixed; z-index: 6; display: none;
+  left: calc(22px + env(safe-area-inset-left, 0px));
+  bottom: calc(64px + env(safe-area-inset-bottom, 0px));
+  width: 108px; height: 108px; border-radius: 50%;
+  background: rgba(255,255,255,.14); border: 2px solid rgba(255,255,255,.38);
+  touch-action: none;
+}
+.joystick-outer.on { display: block; }
+.joystick-knob {
+  position: absolute; left: 50%; top: 50%; width: 46px; height: 46px;
+  margin: -23px 0 0 -23px; border-radius: 50%;
+  background: rgba(255,255,255,.88); box-shadow: 0 2px 10px rgba(0,0,0,.3);
+  transition: transform .12s ease-out;
+}
+.joystick-outer.dragging .joystick-knob { transition: none; }
+
+/* ---------------- 居中卡片：加载中 / 点击锁定 / 报错 共用 ---------------- */
+.center-card {
+  position: fixed; inset: 0; z-index: 20; display: none;
+  align-items: center; justify-content: center; padding: 24px;
+  background: rgba(0,0,0,.5);
+}
+.center-card.on { display: flex; }
+.center-card .card-body {
+  background: rgba(255,253,252,.94); border: 1px solid var(--u-glass-line);
+  backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px);
+  border-radius: 24px; padding: 26px 24px;
+  max-width: 300px; width: 100%; text-align: center;
+  box-shadow: 0 20px 60px rgba(0,0,0,.4);
+}
+.center-card .card-body p { margin: 0 0 6px; font-size: 13.5px; color: var(--u-ink); line-height: 1.6; }
+.center-card .card-body p.sub { font-size: 11.5px; color: var(--u-ink-2); margin-bottom: 18px; word-break: break-all; }
+.center-card .card-body .spin {
+  width: 30px; height: 30px; margin: 0 auto 14px;
+  border-radius: 50%; border: 3px solid #ffe3e9; border-top-color: var(--u-pink);
+  animation: spin 0.9s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+.center-card .card-body .go-back {
+  display: inline-flex; align-items: center; gap: 6px; margin-top: 4px;
+  background: var(--u-grad); color: #fff; text-decoration: none;
+  font-size: 12.5px; font-weight: 700; letter-spacing: .04em; padding: 0 20px; height: 44px;
+  border-radius: 999px; box-shadow: 0 10px 24px rgba(242,115,155,.32);
+}
+.center-card .card-body .go-back:active { transform: scale(.96); }
+.center-card .card-body .relock-btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  background: var(--u-grad); color: #fff; border: none; cursor: pointer;
+  font-size: 12.5px; font-weight: 700; letter-spacing: .04em; padding: 0 20px; height: 44px;
+  border-radius: 999px; box-shadow: 0 10px 24px rgba(242,115,155,.32);
+  font-family: inherit;
+}
+.center-card .card-body .relock-btn:active { transform: scale(.96); }
+
+/* ---------------- 桌面十字准星（PointerLock 锁定时显示，瞄准照片时高亮）---------------- */
+.crosshair {
+  position: fixed; z-index: 6; display: none;
+  left: 50%; top: 50%; width: 22px; height: 22px; margin: -11px 0 0 -11px;
+  pointer-events: none;
+}
+.crosshair.on { display: block; }
+.crosshair::before, .crosshair::after {
+  content: ""; position: absolute; background: rgba(255,255,255,.65);
+  transition: background .15s ease, transform .15s ease;
+}
+.crosshair::before { left: 50%; top: 2px; bottom: 2px; width: 1.5px; margin-left: -.75px; }
+.crosshair::after { top: 50%; left: 2px; right: 2px; height: 1.5px; margin-top: -.75px; }
+.crosshair.hit { transform: translate(-50%,-50%) scale(1.4); left: 50%; top: 50%; margin: 0; }
+.crosshair.hit::before, .crosshair.hit::after { background: #ffd54a; }
+
+/* ---------------- 照片灯箱：点中空间里钉的照片后放大看 ---------------- */
+.photo-lightbox {
+  position: fixed; inset: 0; z-index: 40; background: rgba(0,0,0,.88);
+  display: none; align-items: center; justify-content: center; flex-direction: column;
+  padding: 24px;
+}
+.photo-lightbox.on { display: flex; }
+.photo-lightbox img { max-width: 92vw; max-height: 74vh; border-radius: 10px; box-shadow: 0 10px 50px rgba(0,0,0,.6); }
+.photo-lightbox .lbCap { color: #fff; margin-top: 14px; font-size: 13.5px; text-align: center; opacity: .9; max-width: 80vw; }
+.photo-lightbox .close {
+  position: fixed; top: calc(16px + env(safe-area-inset-top, 0px)); right: 16px;
+  color: #fff; font-size: 30px; line-height: 1; z-index: 41; cursor: pointer;
+  width: 44px; height: 44px; display: flex; align-items: center; justify-content: center;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* ---------------- POV「回到 TA 的视角」---------------- */
+/* 沉浸模式:标题/场景 chip/来源徽章/准星/提示 toast 全让位,退出即原样回来。
+   返回胶囊故意留着(back 契约的出口,手机上万一没看见退出按钮也走得掉)。 */
+body.pov-on .hud-top,
+body.pov-on .hud-badge,
+body.pov-on .crosshair,
+body.pov-on .mobile-hint { display: none !important; }
+
+/* 两层屏幕暗角:底层永远在(把注意力收进画面中间),
+   上层只在"这个方向没有人拍到"时淡入一层冷色,不吵但看得见。 */
+.pov-vig, .pov-gapvig {
+  position: fixed; inset: 0; z-index: 4; pointer-events: none;
+  opacity: 0; transition: opacity .55s ease;
+}
+.pov-vig { background: radial-gradient(ellipse at 50% 46%, rgba(0,0,0,0) 40%, rgba(0,0,0,.55) 100%); }
+.pov-gapvig { background: radial-gradient(ellipse at 50% 46%, rgba(24,38,66,0) 26%, rgba(22,36,64,.60) 100%); }
+.pov-vig.on, .pov-gapvig.on { opacity: 1; }
+
+.pov-bar {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 26;
+  display: none; pointer-events: none; color: #fff;
+  padding: 12px 16px 24px;
+  padding-top: calc(12px + env(safe-area-inset-top, 0px));
+  background: linear-gradient(#000b 0%, #0007 52%, transparent 100%);
+}
+.pov-bar.on { display: block; }
+.pov-bar .pov-row { display: flex; align-items: flex-start; gap: 10px; }
+.pov-bar .pov-who {
+  flex: 1 1 auto; min-width: 0;
+  font-size: 14.5px; font-weight: 700; letter-spacing: .04em; line-height: 1.45;
+  text-shadow: 0 1px 6px rgba(0,0,0,.5);
+}
+.pov-bar .pov-acts { flex: none; display: flex; gap: 7px; pointer-events: auto; }
+.pov-bar .pov-btn {
+  font-family: inherit; cursor: pointer; white-space: nowrap;
+  font-size: 11.5px; font-weight: 700; letter-spacing: .03em;
+  height: 32px; padding: 0 13px; border-radius: 999px;
+  background: rgba(255,255,255,.16); color: #fff;
+  border: 1px solid rgba(255,255,255,.34);
+  backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+}
+.pov-bar .pov-btn.primary { background: var(--u-grad); color: #fff; border-color: rgba(255,255,255,.5); }
+.pov-bar .pov-btn:active { transform: scale(.95); }
+@media (pointer:coarse), (max-width:600px) {
+  .pov-bar .pov-btn { min-height:44px; padding:0 15px; }
+}
+.pov-bar .pov-cal {
+  margin-top: 5px; font-size: 10.5px; line-height: 1.5;
+  color: rgba(255,255,255,.62); text-shadow: 0 1px 4px rgba(0,0,0,.5);
+}
+.pov-bar .pov-tags { margin-top: 9px; display: flex; flex-wrap: wrap; gap: 7px; }
+.pov-bar .pov-tag {
+  display: inline-block; font-size: 11.5px; font-weight: 600; letter-spacing: .02em;
+  padding: 5px 12px; border-radius: 999px;
+  background: rgba(255,255,255,.15); color: #fff;
+  border: 1px solid rgba(255,255,255,.28);
+  backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+}
+/* 有人拍过 = 暖色(和照片钉点同一套色);没人拍过 = 冷色,对应上面那层冷暗角 */
+.pov-bar .pov-tag.cov { background: rgba(255,159,180,.26); border-color: rgba(255,190,205,.55); color: #ffe6ec; }
+.pov-bar .pov-tag.cov.gap { background: rgba(150,190,255,.20); border-color: rgba(175,205,255,.55); color: #dcebff; }
+.pov-bar .pov-hint {
+  margin-top: 8px; font-size: 11.5px; color: rgba(255,255,255,.8);
+  text-shadow: 0 1px 5px rgba(0,0,0,.55);
+  transition: opacity .8s ease; opacity: 1;
+}
+.pov-bar .pov-hint.faded { opacity: 0; }
+</style>
+<link rel="stylesheet" href="../app/product-ui.css">
+</head>
+<body>
+
+<div id="stage"></div>
+
+<div class="hud-top">
+  <h1 id="hudTitle">加载中…</h1>
+  <div class="scene-chips" id="sceneChips"></div>
+  <span class="depth-warn hide" id="hudDepthWarn">深度未生成，当前为普通全景</span>
+</div>
+
+<div class="hud-badge u-ai-card u-ai-dark" id="hudBadge" data-ai-state="info">
+  <span class="u-ai-orb"></span><span id="hudBadgeText">AI 深度重建 · DAP</span>
+</div>
+<!-- 署名条。max-width 和 text-align 是必须的:切到真实场景时 JS 会把这行换成很长的
+     一句(全景作者 + Poly Haven + DAP),没有宽度上限时它在手机上会从右边一路顶出屏幕左缘,
+     字被切掉还压在返回按钮上。CC BY-NC 要求署名看得见,所以顺手把对比度也提上来。 -->
+<div id="licLine" style="position:fixed;right:14px;bottom:12px;z-index:5;max-width:min(72vw,520px);text-align:right;line-height:1.35;font-size:10px;color:rgba(255,255,255,.62);text-shadow:0 1px 3px rgba(0,0,0,.75);pointer-events:none">DAP © Insta360 Research · CC BY-NC 4.0</div>
+
+<a class="back-link" id="backLink" href="../portal.html"><span class="chev">‹</span>返回</a>
+
+<div class="mobile-hint" id="mobileHint"><span>拖动环视 · 左下摇杆行走 · 点相框回到 TA 的视角</span></div>
+
+<div class="joystick-outer" id="joystickOuter">
+  <div class="joystick-knob" id="joystickKnob"></div>
+</div>
+
+<!-- 桌面端：PointerLock 锁定时的屏幕中心准星，瞄到照片会高亮 -->
+<div class="crosshair" id="crosshair"></div>
+
+<!-- 空间里钉的照片：点中后放大看（POV 模式上线后降为次要入口，从 POV 条上的「看原图」进） -->
+<div class="photo-lightbox" id="photoLightbox">
+  <span class="close" id="lbClose">×</span>
+  <img id="lbImg" alt="">
+  <div class="lbCap" id="lbCap"></div>
+</div>
+
+<!-- POV「回到 TA 的视角」：暗角两层 + 顶部一条克制的 HUD -->
+<div class="pov-vig" id="povVig"></div>
+<div class="pov-gapvig" id="povGapVig"></div>
+<div class="pov-bar" id="povBar">
+  <div class="pov-row">
+    <div class="pov-who" id="povWho">你正站在这张照片的视角里</div>
+    <div class="pov-acts">
+      <button class="pov-btn" id="povRaw" type="button">看原图</button>
+      <button class="pov-btn primary" id="povExit" type="button">退出视角</button>
+    </div>
+  </div>
+  <div class="pov-cal">大致回到他当时朝着的方向。系统只能定到 30 度扇区，不是精确位置。</div>
+  <div class="pov-tags">
+    <span class="pov-tag" id="povBearing">朝正前方</span>
+    <span class="pov-tag cov" id="povCov">他拍的就是这个方向</span>
+  </div>
+  <div class="pov-hint" id="povHint">左右转头看看，他当时还看到了什么</div>
+</div>
+
+<!-- 加载中 -->
+<div class="center-card on" id="cardLoading">
+  <div class="card-body">
+    <div class="spin"></div>
+    <p>加载全景中…</p>
+  </div>
+</div>
+
+<!-- 报错（WebGL 不支持 / 资源加载失败 / 节点不存在），共用一套结构 -->
+<div class="center-card" id="cardError">
+  <div class="card-body">
+    <p id="errMsg">出错了</p>
+    <p class="sub" id="errSub"></p>
+    <a class="go-back" id="errBack" href="../portal.html"><span>‹</span>返回</a>
+  </div>
+</div>
+
+<!-- 桌面端：进入全景视角 / 已退出提示。浏览器允许时用 Pointer Lock，否则自动按住拖动。 -->
+<div class="center-card" id="cardLock">
+  <div class="card-body">
+    <p id="lockMsg">点击画面开始漫游</p>
+    <p class="sub">WASD 小范围探身 · 鼠标环视 · Shift 加速 · 瞄准相框点击回到 TA 的视角 · ESC 退出</p>
+    <button class="relock-btn" id="lockBtn" type="button">进入全景视角</button>
+  </div>
+</div>
+
+<script src="vendor/three.min.js"></script>
+<script>
+(function () {
+  "use strict";
+
+  // ============================================================
+  // 常量
+  // ============================================================
+  var EYE_HEIGHT = 1.4;          // 相机人眼高度（米）
+  var FOV = 75;
+  var FLAT_RADIUS = 3.0;         // 深度缺失时的降级球体半径（米）
+  var DEPTH_CLAMP_MIN = 1.8;     // DAP 场景距离下限（展示标定单位）
+  var DEPTH_CLAMP_MAX = 6.0;     // DAP 场景距离上限（展示标定单位）
+  var DEPTH_WORLD_SCALE = 100.0; // DAP 的 [0,1] 输出按训练量程换算为稳定世界尺度
+  var DEPTH_VISUAL_STRENGTH = 0.12; // 只保留轻微视差，避免单目深度边缘撕成幕布
+  // 单张全景只有拍摄光心处的可见表面，轻微探身可以提供空间感，但不能冒充完整 6DoF。
+  // 真实 4K 全景把位移限制在 42cm；AI 全景在 startWalk 里回退为原始光心环视。
+  var DEFAULT_MAX_WALK_RADIUS = 0.42;
+  var WALK_DEPTH_FACTOR = 0.55;  // 同时受当前方向深度约束，永远取更小者
+  var BASE_SPEED = 1.6;          // 步行速度 米/秒
+  var SPRINT_MULT = 2.2;         // Shift 加速倍数
+  var MOUSE_SENS = 0.0022;
+  var TOUCH_LOOK_SENS = 0.0034;
+  var JOYSTICK_MAX_PX = 40;      // 摇杆最大可拖拽半径（屏幕像素）
+
+  // 经度偏移（弧度）：把全景图「正前方」对齐到 three 世界坐标 -Z。
+  // 基础公式(不加offset)让"图像水平中点(u=0.5)"对应 -Z，但实测 + 对照
+  // tools/fixtures.py 的注释("yaw_deg 与 tour.js 同一约定：0=全景第0列方向，
+  // 明确不用居中偏移，用过居中偏移实测会正好差 180°")确认本项目全线(tour.js
+  // 热点 yaw、合成测试图的扇区标注)都是"列0=yaw0"，不是"图像中点=yaw0"。
+  // 所以这里要把 -Z 对准列0，即在基础公式上再转 180°。用一张自带角度标注的
+  // 测试全景实测过：offset=0 时 -Z 方向对着标注"180°"的扇区，改成 Math.PI
+  // 后正好对齐到标注"0°/360°"边界，与 fixtures.py 的约定吻合。
+  var YAW_OFFSET = Math.PI;
+
+  // ============================================================
+  // POV「回到 TA 的视角」常量
+  // ============================================================
+  var POV_FLY_MS = 1150;          // 飞进去的时长（任务给的 900~1400 区间取中）
+  var POV_LAND_FADE_MS = 380;     // 落地后照片补足最后一点不透明度的时长
+  var POV_EXIT_MS = 520;          // 退出时缩回钉点的时长
+  var POV_DOLLY = 0.45;           // 飞进去时沿这个方向推近的米数（"走过去站到他那儿"的那一下）
+  var POV_PLANE_OPACITY = 0.95;   // 盖住背景，但留 0.05 让底下全景透出来，提示这是叠加不是替换
+  var POV_FEATHER = 0.085;        // 平面四边羽化宽度占比，别让它是硬邦邦一个矩形贴在墙上
+
+  // ⚠️ 这是假设，不是实测：我们既不知道宾客当时用的什么焦段，也没有从 EXIF 反推过。
+  // 这里假定水平视场 70 度（手机主摄的常见量级），拿它把照片放大到"大概覆盖它当初拍到的那块"。
+  // 距离 d 处的平面宽度 = 2 * d * tan(fov/2)。改这个数只会让覆盖块变大变小，
+  // 不参与任何数据判断，也绝不写回任何文件。
+  var POV_ASSUMED_FOV_DEG = 70;
+
+  // 覆盖指示仍按系统的分类粒度展示：30 度一格，共 12 格。
+  // 每格是否有人拍到，用格子中点去采样后端 find_coverage_gaps 的覆盖尺：
+  // 每张照片覆盖自身方位 ±20 度。这样展示粒度不冒充精确定位，覆盖结论又和任务端同尺。
+  var POV_SECTOR_DEG = 30;
+  var POV_SECTOR_N = 12;
+  var POV_COVERAGE_HALF_DEG = 20;  // 必须与 server/space.py find_coverage_gaps 默认值一致
+
+  function easeInOutCubic(t) {
+    return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+  }
+  function normDeg(d) { d = d % 360; return d < 0 ? d + 360 : d; }
+
+  // ============================================================
+  // demo/scene 模式场景清单(写死)：Poly Haven CC0 真实室内全景 + 原车间 demo
+  // ============================================================
+  // photos: 空间里钉的照片点位(占位素材,tools/fixtures.py 的 equirect_to_perspective
+  // 从对应 walkdemo 全景裁出)。yaw/pitch 与 tour.js 同一约定，真实素材接入时按同结构替换即可。
+  // demo-pano(车间)不给占位照片,保持这条场景干净。
+  var SCENES = [
+    { slug: "ballroom", label: "宴会厅", author: "Sergej Majboroda", photos: [
+      { src: "../assets/walkdemo/ballroom_p1.jpg", yaw: 35, pitch: -3, caption: "现场照片 ①" },
+      { src: "../assets/walkdemo/ballroom_p2.jpg", yaw: 150, pitch: 2, caption: "现场照片 ②" },
+      { src: "../assets/walkdemo/ballroom_p3.jpg", yaw: 265, pitch: 0, caption: "现场照片 ③" }
+    ] },
+    { slug: "chapel_day", label: "教堂", author: "Dimitrios Savva, Jarod Guest", photos: [
+      { src: "../assets/walkdemo/chapel_day_p1.jpg", yaw: 20, pitch: 0, caption: "现场照片 ①" },
+      { src: "../assets/walkdemo/chapel_day_p2.jpg", yaw: 140, pitch: 3, caption: "现场照片 ②" },
+      { src: "../assets/walkdemo/chapel_day_p3.jpg", yaw: 250, pitch: -2, caption: "现场照片 ③" }
+    ] },
+    { slug: "comfy_cafe", label: "咖啡馆", author: "Sergej Majboroda", photos: [
+      { src: "../assets/walkdemo/comfy_cafe_p1.jpg", yaw: 30, pitch: 0, caption: "现场照片 ①" },
+      { src: "../assets/walkdemo/comfy_cafe_p2.jpg", yaw: 160, pitch: -3, caption: "现场照片 ②" },
+      { src: "../assets/walkdemo/comfy_cafe_p3.jpg", yaw: 275, pitch: 4, caption: "现场照片 ③" }
+    ] },
+    { slug: "entrance_hall", label: "大厅", author: "Sergej Majboroda",
+      initialYaw: 180, initialPitch: -4, photos: [
+      { src: "../assets/walkdemo/entrance_hall_p1.jpg", yaw: 25, pitch: 2, caption: "现场照片 ①" },
+      { src: "../assets/walkdemo/entrance_hall_p2.jpg", yaw: 145, pitch: 0, caption: "现场照片 ②" },
+      { src: "../assets/walkdemo/entrance_hall_p3.jpg", yaw: 255, pitch: -3, caption: "现场照片 ③" }
+    ] },
+    { slug: "demo-pano", label: "车间", author: "Oliksiy Yakovlyev" }
+  ];
+
+  // ============================================================
+  // 小工具
+  // ============================================================
+  function qs(name) { return new URLSearchParams(location.search).get(name); }
+  var POV_ENABLED = qs("pov") !== "0";
+
+  // 返回动线契约(全 App 统一):?back=<相对仓库根的路径,已 encodeURIComponent>。
+  // 有 back 就回"我来的地方",没有就用各模式原来的 fallback,行为一个字节都不变。
+  // 只收相对路径:http:// 和 // 开头的一律丢掉,防开放重定向,下面那个正则就是干这个的,别删。
+  // 本页在 viewer/ 这一级子目录下,所以拼 "../" 回到仓库根再接 back。
+  function backTarget(fallback){
+    try{
+      var b = new URLSearchParams(location.search).get("back");
+      if (b && !/^(https?:)?\/\//.test(b)) return "../" + b.replace(/^(\.\.\/)+/,"").replace(/^\//,"");
+    }catch(e){}
+    return fallback;
+  }
+  function frac(x) { return x - Math.floor(x); }
+  function isTouchDevice() {
+    // maxTouchPoints>0 也会出现在带触屏的 Windows 笔记本上；只看它会把有鼠标的
+    // 桌面设备误判成手机，requestLock 随即直接 return。以主指针/悬停能力为准。
+    var coarse = window.matchMedia && window.matchMedia("(pointer: coarse)").matches;
+    var noHover = window.matchMedia && window.matchMedia("(hover: none)").matches;
+    return !!(coarse && noHover);
+  }
+  function $(id) { return document.getElementById(id); }
+
+  function showError(msg, sub, backHref) {
+    $("cardLoading").classList.remove("on");
+    $("cardLock").classList.remove("on");
+    $("hudTitle").textContent = msg || "加载失败";
+    $("sceneChips").style.display = "none";
+    $("hudDepthWarn").classList.add("hide");
+    var badge = document.querySelector(".hud-badge");
+    if (badge) badge.style.display = "none";
+    $("licLine").style.display = "none";
+    $("errMsg").textContent = msg;
+    $("errSub").textContent = sub || "";
+    $("errBack").href = backHref || "../portal.html";
+    // 左下那个返回胶囊在报错卡上面(z-index 25),两个出口指同一个地方,别一个回对一个回错
+    $("backLink").href = backHref || "../portal.html";
+    $("cardError").classList.add("on");
+  }
+
+  // ============================================================
+  // 数据契约解析：?node=<id> 或 ?demo=1（缺省按 demo 处理）
+  // ============================================================
+  function loadTourScript(cb) {
+    var s = document.createElement("script");
+    s.src = "../tour.js";
+    s.onload = function () { cb(window.TOUR || null); };
+    s.onerror = function () { cb(null); };
+    document.head.appendChild(s);
+  }
+
+  function findScene(slug) {
+    for (var i = 0; i < SCENES.length; i++) {
+      if (SCENES[i].slug === slug) return SCENES[i];
+    }
+    return null;
+  }
+
+  // 换场景的 chip 是整页重载,不把 back 带上的话,换一次场景就把"我从哪来"丢了,
+  // 返回按钮会退回产品主页。这里原样透传(同样只收相对路径)。
+  function backParamSuffix() {
+    try {
+      var b = new URLSearchParams(location.search).get("back");
+      if (b && !/^(https?:)?\/\//.test(b)) return "&back=" + encodeURIComponent(b);
+    } catch (e) {}
+    return "";
+  }
+
+  // Demo 素材的场景切换。
+  function renderSceneChips(activeSlug) {
+    var container = $("sceneChips");
+    var html = "";
+    var backQ = backParamSuffix();
+    for (var i = 0; i < SCENES.length; i++) {
+      var s = SCENES[i];
+      var cls = "chip" + (s.slug === activeSlug ? " active" : "");
+      html += '<a class="' + cls + '" href="?scene=' + encodeURIComponent(s.slug) + backQ + '">' + s.label + "</a>";
+    }
+    container.innerHTML = html;
+    container.classList.add("on");
+  }
+
+  // 真实空间有多个全景节点时也必须能在页面里切换。以前数据和识图都支持多节点,
+  // 但查看器永远默认进第一个节点,第二个只能靠手改 &node=n2 才看得到。
+  function renderSpaceNodeChips(sid, nodes, activeId, cloudBase) {
+    var container = $("sceneChips");
+    container.innerHTML = "";
+    if (!nodes || nodes.length < 2) {
+      container.classList.remove("on");
+      return;
+    }
+    var current = new URLSearchParams(location.search);
+    nodes.forEach(function (node, index) {
+      var q = new URLSearchParams();
+      q.set("space", sid);
+      q.set("node", node.id);
+      if (cloudBase) q.set("b", cloudBase);
+      var povParam = current.get("pov");
+      if (povParam !== null) q.set("pov", povParam);
+      var back = current.get("back");
+      if (back && !/^(https?:)?\/\//.test(back)) q.set("back", back);
+      var a = document.createElement("a");
+      a.className = "chip" + (node.id === activeId ? " active" : "");
+      a.href = "?" + q.toString();
+      a.textContent = String(node.name || ("场景 " + (index + 1)));
+      container.appendChild(a);
+    });
+    container.classList.add("on");
+  }
+
+  // compose 模式：?compose=<manifestUrl>，manifestUrl 来自 server/compose_server.py 的
+  // POST /compose 返回值(如 "/sessions/3/manifest.json")。fetch 到 manifest 后，用
+  // manifestUrl 去掉末尾文件名剩下的目录前缀拼出各资源的完整可访问路径——manifestUrl
+  // 本身已经是从站点根算起的绝对路径，所以这里拼出来的 panoUrl/depthPngUrl/photo.src
+  // 也都是绝对路径，不需要像 node/scene 模式那样再手动拼 "../"（那两个模式的 "../" 前缀
+  // 只在 boot() 这两处加，makePhotoSprite/openPhotoLightbox 全程直接用 photo.src 原样加载，
+  // 不会重复加前缀，三种模式互不干扰）。
+  function bootCompose(manifestUrl) {
+    var backHref = backTarget("../web/join.html");
+    fetch(manifestUrl, { cache: "no-store" }).then(function (r) {
+      if (!r.ok) throw new Error("http " + r.status);
+      return r.json();
+    }).then(function (manifest) {
+      var slash = manifestUrl.lastIndexOf("/");
+      var prefix = slash >= 0 ? manifestUrl.slice(0, slash + 1) : "";
+      startWalk({
+        panoUrl: prefix + manifest.panorama,
+        depthPngUrl: prefix + manifest.depth,
+        depthJsonUrl: prefix + manifest.depthJson,
+        title: manifest.title || "我的空间",
+        backHref: backHref,
+        photos: (manifest.photos || []).map(function (p) {
+          return { src: prefix + p.src, yaw: p.yaw, pitch: p.pitch, caption: p.caption };
+        })
+      });
+    }).catch(function (e) {
+      showError("合成结果加载失败", String((e && e.message) || e), backHref);
+    });
+  }
+
+  // space 模式：?space=<sid>&node=<nid>，读闭环产品的空间(server/space.py 的
+  // GET /api/space/<sid>?role=guest)。role=guest 时后端只吐已入选的照片(auto_ok/approved)，
+  // 被拒的/等新人确认的都不会到这里来——宾客走进空间看到的就是"已经进了空间"的那些。
+  // 资源路径写法照抄 bootCompose：拼一个从站点根算起的绝对前缀 /spaces/<sid>/，
+  // 拼完就是绝对路径，不需要像 node/scene 模式那样加 "../"。
+  // 同一个方位常常收到好几张照片(比如很多人都拍了舞台)，而 CLIP 只判 yaw 不判 pitch，
+  // 所有 pitch 都是 0——照片钉点会一张压一张,完全重叠,看着像只有一张。
+  // 这里按真实 yaw 分桶(8° 一档)，在展示层把同桶照片铺成一个以真方位为中心的紧凑网格。
+  // 横向最多偏 10°、纵向最多偏 40°，一个方向可稳定容纳 50 张且坐标不重复。
+  // ⚠️ display yaw/pitch 只为避让，绝不写回 space.json；povYaw/povPitch 始终保留机器真值，
+  //    点进 POV、覆盖统计和方位文案都必须继续使用真值。
+  function fanOutPhotos(photos) {
+    var slots = [];
+    for (var row = -5; row <= 5; row++) {
+      for (var col = -2; col <= 2; col++) {
+        slots.push({
+          dyaw: col * 5,
+          dpitch: row * 8,
+          distance: col * col + row * row
+        });
+      }
+    }
+    slots.sort(function (a, b) {
+      return a.distance - b.distance ||
+        Math.abs(a.dpitch) - Math.abs(b.dpitch) ||
+        Math.abs(a.dyaw) - Math.abs(b.dyaw) ||
+        a.dpitch - b.dpitch || a.dyaw - b.dyaw;
+    });
+    var bucket = {};
+    return photos.map(function (p) {
+      var trueYaw = Number(p.yaw) || 0;
+      var truePitch = Number(p.pitch) || 0;
+      var normalizedYaw = ((trueYaw % 360) + 360) % 360;
+      var key = Math.round(normalizedYaw / 8) % 45;
+      var k = bucket[key] = (bucket[key] === undefined ? 0 : bucket[key] + 1);
+      var slot = slots[Math.min(k, slots.length - 1)];
+      return {
+        src: p.src,
+        thumb: p.thumb,
+        yaw: trueYaw + slot.dyaw,
+        contributor: publicContributor(p.contributor),
+        title: p.title, caption: p.caption,
+        pitch: Math.max(-44, Math.min(44, truePitch + slot.dpitch)),
+        povYaw: trueYaw,
+        povPitch: truePitch
+      };
+    });
+  }
+
+  // 公开演示空间经历过多轮攻击验收。这里只遮住验收账号的显示名，
+  // 不改照片、任务、积分或空间数据，真实宾客名字仍原样展示。
+  function publicContributor(name) {
+    var n = String(name || "").trim();
+    if (!n || /测试|复验|并发|延迟|泛音/.test(n) || n === "你大爷" || n === "阿伟测试") {
+      return "匿名宾客";
+    }
+    return n;
+  }
+
+  function preferredPhotoCaption(photo) {
+    var title = String((photo && photo.title) || "").trim();
+    if (title) return title;
+    var caption = String((photo && photo.caption) || "").trim();
+    if (caption) return caption;
+    var contributor = String((photo && photo.contributor) || "").trim();
+    return contributor ? contributor + " 交的" : "宾客交的";
+  }
+
+  function spaceDisclosure(space) {
+    var values = space ? [space.aiDisclosure, space.demoDisclosure] : [];
+    for (var i = 0; i < values.length; i++) {
+      if (typeof values[i] === "string" && values[i].trim()) return values[i].trim();
+      if (values[i]) return "AI 生成演示素材";
+    }
+    return "";
+  }
+
+  function remoteSpaceBase(raw) {
+    if (!raw) return "";
+    try {
+      var u = new URL(raw);
+      if (u.protocol !== "https:" && u.protocol !== "http:") return "";
+      return String(raw).replace(/\/+$/, "");
+    } catch (e) {
+      return "";
+    }
+  }
+
+  function spaceAssetUrl(path, prefix) {
+    if (!path) return "";
+    if (/^(https?:|data:|blob:)/i.test(path)) return path;
+    return prefix + String(path).replace(/^\/+/, "");
+  }
+
+  function versionedSpaceAssetUrl(path, prefix, version) {
+    var url = spaceAssetUrl(path, prefix);
+    if (!url || !version || !/^https?:/i.test(url)) return url;
+    try {
+      var parsed = new URL(url);
+      parsed.searchParams.set("v", String(version));
+      return parsed.toString();
+    } catch (e) {
+      return url + (url.indexOf("?") >= 0 ? "&" : "?") +
+        "v=" + encodeURIComponent(String(version));
+    }
+  }
+
+  function fetchWithTimeout(url, opts, timeoutMs) {
+    return new Promise(function (resolve, reject) {
+      var done = false;
+      var ctrl = window.AbortController ? new AbortController() : null;
+      var timer = setTimeout(function () {
+        if (done) return;
+        done = true;
+        if (ctrl) ctrl.abort();
+        reject(new Error("请求超时"));
+      }, timeoutMs);
+      var init = Object.assign({}, opts || {});
+      if (ctrl) init.signal = ctrl.signal;
+      fetch(url, init).then(function (value) {
+        if (done) return;
+        done = true;
+        clearTimeout(timer);
+        resolve(value);
+      }, function (err) {
+        if (done) return;
+        done = true;
+        clearTimeout(timer);
+        reject(err);
+      });
+    });
+  }
+
+  function bootSpace(sid, nodeId) {
+    // 公网宾客页会把 OSS 基址放在 b 参数里。以前这里完全忽略 b，仍去请求
+    // 静态托管同源的 /api 不存在。带 b 时直读已发布的裸 space.json；
+    // 不带 b 时保留原本的本机 API，两个入口互不冒充。
+    var cloudBase = remoteSpaceBase(qs("b"));
+    var cloudMode = !!cloudBase;
+    var localBack = "../web/join.html?s=" + encodeURIComponent(sid);
+    var cloudBack = "../web/join.html?s=" + encodeURIComponent(sid) +
+      "&b=" + encodeURIComponent(cloudBase);
+    var backHref = backTarget(cloudMode ? cloudBack : localBack);
+    var prefix = cloudMode
+      ? cloudBase + "/spaces/" + encodeURIComponent(sid) + "/"
+      : "/spaces/" + encodeURIComponent(sid) + "/";
+    var dataUrl = cloudMode
+      ? prefix + "space.json?t=" + Date.now()
+      : "/api/space/" + encodeURIComponent(sid) + "?role=guest";
+
+    fetchWithTimeout(dataUrl, { cache: "no-store" }, 15000)
+      .then(function (r) {
+        if (!r.ok) throw new Error("http " + r.status);
+        return r.json();
+      }).then(function (data) {
+        var space;
+        if (cloudMode) {
+          // OSS 发布的是裸 space；兼容未来若包成 {space: ...} 的格式。
+          space = data && data.space ? data.space : data;
+          if (!space || !space.id) throw new Error("云端空间数据格式不完整");
+        } else {
+          if (!data || !data.ok) throw new Error((data && data.error) || "接口没返回 ok");
+          space = data.space || {};
+        }
+        var nodes = space.nodes || [];
+        if (!nodes.length) throw new Error("这个空间还没有全景节点");
+        var node = null;
+        if (nodeId) {
+          for (var i = 0; i < nodes.length; i++) {
+            if (nodes[i].id === nodeId) { node = nodes[i]; break; }
+          }
+          if (!node) throw new Error("空间里找不到节点 “" + nodeId + "”");
+        }
+        node = node || nodes[0];
+        renderSpaceNodeChips(sid, nodes, node.id, cloudBase);
+
+        // 照片按节点归属过滤；nodeId 为空的(心愿任务交上来的照片可能没绑节点)算进第一个节点，
+        // 免得它们哪个空间都进不去，白交了。
+        var mine = (space.photos || []).filter(function (p) {
+          return p.nodeId ? (p.nodeId === node.id) : (node === nodes[0]);
+        });
+        var title = space.title || "我们的空间";
+        if (node.name) title = node.name + (node.time ? " · " + node.time : "");
+        var disclosure = spaceDisclosure(space);
+        var aiPanorama = !!disclosure;
+        // 刚发布的对象在此前若返回过 403，浏览器或中间缓存可能继续复用失败结果。
+        // 所有云端素材跟随本次发布版本换 URL，既清掉负缓存，也确保重发同名素材后
+        // 宾客立即拿到当前版本。本机 API 保持原路径，方便开发时实时替换文件。
+        var assetVersion = cloudMode
+          ? (space.publishedAt || space.publishRevision || "")
+          : "";
+        function assetUrl(path) {
+          return versionedSpaceAssetUrl(path, prefix, assetVersion);
+        }
+        startWalk({
+          panoUrl: assetUrl(node.panorama),
+          // AI 生成全景本身常有 ERP 几何不连续。它回到原始光心环视，不再让单层
+          // 深度表面承担自由平移；真实全景才开放 42cm 以内的轻微空间视差。
+          depthPngUrl: aiPanorama ? "" : assetUrl(node.depth),
+          depthJsonUrl: aiPanorama ? "" : assetUrl(node.depthJson),
+          title: title,
+          backHref: backHref,
+          initialYaw: node.initialYaw,
+          initialPitch: node.initialPitch,
+          demoDisclosure: disclosure,
+          useDepth: !aiPanorama,
+          allowWalk: !aiPanorama,
+          maxWalkRadius: aiPanorama ? 0 : DEFAULT_MAX_WALK_RADIUS,
+          fov: aiPanorama ? 64 : FOV,
+          pitchLimitDeg: aiPanorama ? 58 : 89,
+          photos: fanOutPhotos(mine).map(function (p) {
+            return {
+              src: assetUrl(p.src), yaw: p.yaw, pitch: p.pitch,
+              thumb: p.thumb ? assetUrl(p.thumb) : "",
+              povYaw: p.povYaw, povPitch: p.povPitch,
+              contributor: p.contributor,   // POV 条上的「你正站在 X 的视角里」用它
+              caption: preferredPhotoCaption(p)
+            };
+          })
+        });
+      }).catch(function (e) {
+        var detail = String((e && e.message) || e);
+        if (detail === "请求超时") detail = "网太慢，15 秒内没读到空间数据";
+        showError("空间加载失败", detail, backHref);
+      });
+  }
+
+  function boot() {
+    // 还在加载/还没进 startWalk 就想退出的人也得走得掉:先把左下返回胶囊按契约指好。
+    // 取的是 HTML 里写死的那个 fallback,所以没有 ?back= 时和以前一模一样。
+    $("backLink").href = backTarget($("backLink").getAttribute("href"));
+
+    var nodeId = qs("node");
+    var composeUrl = qs("compose");
+    var spaceId = qs("space");
+    if (spaceId) {
+      bootSpace(spaceId, nodeId);
+    } else if (nodeId) {
+      loadTourScript(function (tour) {
+        var nodeBack = backTarget("../portal.html");
+        if (!tour || !tour.nodes) {
+          showError("导览数据加载失败", "tour.js 无法读取", nodeBack);
+          return;
+        }
+        var node = null;
+        for (var i = 0; i < tour.nodes.length; i++) {
+          if (tour.nodes[i].id === nodeId) { node = tour.nodes[i]; break; }
+        }
+        if (!node) {
+          showError("找不到节点 “" + nodeId + "”", "", nodeBack);
+          return;
+        }
+        var title = node.chapter || node.name || "";
+        if (node.time) title += " · " + node.time;
+        startWalk({
+          panoUrl: "../" + node.panorama,
+          depthPngUrl: "../assets/depth/" + node.id + ".png",
+          depthJsonUrl: "../assets/depth/" + node.id + ".json",
+          title: title || "空间记忆",
+          backHref: nodeBack,
+          // node.photos 已有 src/yaw/pitch/caption(见 tour.js),原样接进照片钉点,
+          // 真实素材到位只需换 tour.js 里的 photos 数组,这里零改动。
+          photos: (node.photos || []).map(function (p) {
+            return { src: "../" + p.src, yaw: p.yaw, pitch: p.pitch, caption: p.caption };
+          })
+        });
+      });
+    } else if (composeUrl) {
+      bootCompose(composeUrl);
+    } else {
+      // demo/scene 模式：?scene=<slug> 指定场景，?demo=1 或无参数缺省 ballroom。
+      // 场景不在清单里(拼错/旧链接)也静默回落到 SCENES[0]。
+      var scene = findScene(qs("scene")) || SCENES[0];
+      renderSceneChips(scene.slug);
+      $("licLine").textContent = "全景 © " + scene.author + " · Poly Haven CC0 · 深度 DAP © Insta360 Research CC BY-NC 4.0";
+      startWalk({
+        panoUrl: "../assets/walkdemo/" + scene.slug + ".jpg",
+        depthPngUrl: "../assets/depth/" + scene.slug + ".png",
+        depthJsonUrl: "../assets/depth/" + scene.slug + ".json",
+        title: scene.label,
+        backHref: backTarget("../portal.html"),
+        initialYaw: scene.initialYaw,
+        initialPitch: scene.initialPitch,
+        maxWalkRadius: DEFAULT_MAX_WALK_RADIUS,
+        photos: scene.photos
+      });
+    }
+  }
+
+  // ============================================================
+  // 主流程
+  // ============================================================
+  function startWalk(opts) {
+    var allowWalk = opts.allowWalk !== false;
+    var maxWalkRadius = allowWalk && typeof opts.maxWalkRadius === "number" &&
+      isFinite(opts.maxWalkRadius) ? Math.max(0, opts.maxWalkRadius) :
+      (allowWalk ? DEFAULT_MAX_WALK_RADIUS : 0);
+    var cameraFov = typeof opts.fov === "number" && isFinite(opts.fov)
+      ? Math.max(35, Math.min(100, opts.fov)) : FOV;
+    var pitchLimitDeg = typeof opts.pitchLimitDeg === "number" && isFinite(opts.pitchLimitDeg)
+      ? Math.max(30, Math.min(89, opts.pitchLimitDeg)) : 89;
+    var pitchLimit = pitchLimitDeg * Math.PI / 180;
+
+    $("hudTitle").textContent = opts.title;
+    $("backLink").href = opts.backHref;
+    $("errBack").href = opts.backHref;
+    if (opts.demoDisclosure) {
+      $("hudBadgeText").textContent = "AI 全景 · 原始环视模式";
+      $("licLine").textContent = opts.demoDisclosure;
+      $("hudDepthWarn").textContent = "AI 图已回退为普通全景";
+    }
+    var lockSub = document.querySelector("#cardLock .sub");
+    var mobileHint = $("mobileHint");
+    if (!allowWalk) {
+      if (lockSub) lockSub.textContent = "鼠标环视 · 点击相框回到 TA 的视角 · ESC 退出";
+      if (mobileHint) mobileHint.innerHTML = "<span>拖动环视 · 点相框回到 TA 的视角</span>";
+    }
+    if (!POV_ENABLED) {
+      if (lockSub) lockSub.textContent = allowWalk
+        ? "WASD 小范围探身 · 鼠标环视 · Shift 加速 · 瞄准相框点击看原图 · ESC 退出"
+        : "鼠标环视 · 瞄准相框点击看原图 · ESC 退出";
+      if (mobileHint) mobileHint.innerHTML = allowWalk
+        ? "<span>拖动环视 · 左下摇杆小范围探身 · 点相框看原图</span>"
+        : "<span>拖动环视 · 点相框看原图</span>";
+    } else if (allowWalk) {
+      if (lockSub) lockSub.textContent = "WASD 小范围探身 · 鼠标环视 · Shift 加速 · 瞄准相框点击回到 TA 的视角 · ESC 退出";
+      if (mobileHint) mobileHint.innerHTML = "<span>拖动环视 · 左下摇杆小范围探身 · 点相框回到 TA 的视角</span>";
+    }
+
+    if (!detectWebGL()) {
+      showError("当前设备/浏览器不支持 WebGL", "无法进入 3D 行走查看器", opts.backHref);
+      return;
+    }
+
+    var stage = $("stage");
+    var renderer;
+    try {
+      renderer = new THREE.WebGLRenderer({ antialias: true, powerPreference: "high-performance" });
+    } catch (e) {
+      showError("WebGL 初始化失败", String(e && e.message || e), opts.backHref);
+      return;
+    }
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    stage.appendChild(renderer.domElement);
+
+    var scene = new THREE.Scene();
+    var camera = new THREE.PerspectiveCamera(cameraFov, window.innerWidth / window.innerHeight, 0.05, 100);
+    camera.position.set(0, EYE_HEIGHT, 0);
+
+    // space.json 的 initialYaw 使用主系统方位契约：0=全景第 0 列方向。导入端若来自
+    // “图像中心=yaw0”的素材，必须已经在那里完成 +180°；查看器不再做来源转换。
+    // 相机内部 yaw 与空间方位符号相反（见 povCamSpaceYawDeg），所以这里只取负号；
+    // YAW_OFFSET 仍只负责纹理采样对齐，不能再叠加到相机朝向。
+    var initialYawDeg = (typeof opts.initialYaw === "number" && isFinite(opts.initialYaw))
+      ? opts.initialYaw : 0;
+
+    // 新空间显式提供 initialPitch；旧 demo/scene 没有这个字段时继续沿用 -14° 的
+    // 历史构图，避免这次几何修正顺带改变既有演示的进场镜头。
+    // ⚠️单位是弧度,不是度(下面 euler.set(pitch, yaw, 0) 直接吃它)
+    var initialPitchDeg = (typeof opts.initialPitch === "number" && isFinite(opts.initialPitch))
+      ? opts.initialPitch : -14;
+    var yaw = -initialYawDeg * Math.PI / 180;
+    var pitch = Math.max(-pitchLimit, Math.min(pitchLimit, initialPitchDeg * Math.PI / 180));
+
+    // ---------------- 纹理加载：全景 + 深度（深度失败=静默降级）----------------
+    var loader = new THREE.TextureLoader();
+    loader.setCrossOrigin("anonymous");
+    var panoTex = null, depthTex = null, depthCPU = null, depthMeta = null;
+    var hasDepth = false;
+    var panoFailed = false;
+
+    var sceneBuilt = false;
+    function tryBuildScene() {
+      if (!panoTex) return; // 全景还没到
+      if (panoFailed) return;
+      if (sceneBuilt) return;
+      // 深度是否就绪：要么明确 hasDepth=true(纹理+meta 都到)，要么已经确认失败过
+      sceneBuilt = true;
+      buildSphere();
+    }
+
+    var panoTimer = setTimeout(function () {
+      if (panoTex || panoFailed) return;
+      panoFailed = true;
+      showError("全景图加载超时", "网太慢，12 秒内没读到全景图", opts.backHref);
+    }, 12000);
+
+    loader.load(opts.panoUrl, function (tex) {
+      if (panoFailed) {
+        if (tex && tex.dispose) tex.dispose();
+        return;
+      }
+      clearTimeout(panoTimer);
+      panoTex = tex;
+      panoTex.minFilter = THREE.LinearFilter;
+      panoTex.magFilter = THREE.LinearFilter;
+      panoTex.generateMipmaps = false;
+      panoTex.wrapS = THREE.RepeatWrapping; // 片元 UV 不 fract,靠环绕采样让 0/1 接缝滤波连续
+      panoTex.wrapT = THREE.ClampToEdgeWrapping;
+      depthStageMaybeReady();
+    }, undefined, function () {
+      clearTimeout(panoTimer);
+      if (panoFailed) return;
+      panoFailed = true;
+      showError("全景图加载失败", opts.panoUrl, opts.backHref);
+    });
+
+    var depthDone = false;
+    var depthTimer = null;
+    function depthStageMaybeReady() {
+      if (panoTex && depthDone) tryBuildScene();
+    }
+    function finishDepth() {
+      if (depthDone) return false;
+      depthDone = true;
+      clearTimeout(depthTimer);
+      depthStageMaybeReady();
+      return true;
+    }
+    // 深度 JSON + PNG 必须都存在且成功才算「有深度」。标准空间节点没配置其中任一个时，
+    // 立即确认普通球体降级，不等待 8 秒，也绝不拿空字符串去 fetch 当前页面。
+    // tools/depth.py 会把每张图自己的 raw min~max 拉满到 16-bit PNG。若再把
+    // 这个 0~1 PNG 像旧版那样直接铺满 0.4~10 的世界范围，每张图里最小的一点和
+    // 最大的一点都会被强行拉开 9.6 个单位，人物/树梢等遮挡边缘就会变成巨大三角幕布。
+    // 因此 JSON 的 raw min/max 不能丢：先反归一化回 DAP 的原始 [0,1] 输出，
+    // 再乘统一展示尺度并夹紧。它不是经过测量的真实米制，但跨场景尺度稳定，
+    // 不会因为单张图里一个天空 mask 就把整幅几何拉满。
+    if (opts.useDepth === false || !opts.depthJsonUrl || !opts.depthPngUrl) {
+      finishDepth();
+    } else {
+      // 深度是增强项，不该让整页无限转圈。弱网下 8 秒还没拿齐就先进入普通全景；
+      // 全景本身仍按原逻辑加载，失败会明确报错。
+      depthTimer = setTimeout(finishDepth, 8000);
+      fetchJSON(opts.depthJsonUrl, function (meta) {
+        if (!meta || typeof meta.min !== "number" || typeof meta.max !== "number" ||
+            !isFinite(meta.min) || !isFinite(meta.max) || meta.max <= meta.min) {
+          finishDepth(); return;
+        }
+        depthMeta = {
+          min: meta.min,
+          max: meta.max,
+          width: (typeof meta.width === "number" && meta.width > 0) ? meta.width : 1024,
+          height: (typeof meta.height === "number" && meta.height > 0) ? meta.height : 512
+        };
+        loader.load(opts.depthPngUrl, function (tex) {
+          if (depthDone) return;
+          depthTex = tex;
+          depthTex.minFilter = THREE.LinearFilter;
+          depthTex.magFilter = THREE.LinearFilter;
+          depthTex.generateMipmaps = false;
+          depthTex.wrapS = THREE.RepeatWrapping;
+          depthTex.wrapT = THREE.ClampToEdgeWrapping;
+          hasDepth = true;
+          buildDepthCPU(tex.image);
+          finishDepth();
+        }, undefined, function () {
+          finishDepth();
+        });
+      }, function () {
+        finishDepth();
+      });
+    }
+
+    function fetchJSON(url, ok, fail) {
+      try {
+        fetch(url, { cache: "no-store" }).then(function (r) {
+          if (!r.ok) throw new Error("http " + r.status);
+          return r.json();
+        }).then(ok).catch(fail);
+      } catch (e) { fail(); }
+    }
+
+    // 用 canvas 把深度图读成 CPU 可查的像素数组，供行走范围限制实时取样
+    // （8bit 读回会损失 16bit PNG 的部分精度，房间尺度的碰撞限制够用）
+    function buildDepthCPU(img) {
+      try {
+        var w = img.naturalWidth || img.width, h = img.naturalHeight || img.height;
+        var c = document.createElement("canvas");
+        c.width = w; c.height = h;
+        var ctx = c.getContext("2d");
+        ctx.drawImage(img, 0, 0, w, h);
+        var data = ctx.getImageData(0, 0, w, h).data;
+        depthCPU = { width: w, height: h, data: data };
+      } catch (e) {
+        depthCPU = null; // 画布读取失败（极少见）也不影响渲染，只是行走限制退化为固定半径
+      }
+    }
+
+    // PNG 像素先用 JSON min/max 反归一化回 DAP raw 输出，再套统一世界尺度。
+    // 这份距离只用于漫游边界和 POV 落点；视觉表面还会在 shader 里进一步减弱，
+    // 让单目深度提供方向感但不破坏原始全景。
+    function sampleDepthMeters(dir) {
+      if (!depthCPU || !depthMeta) return FLAT_RADIUS;
+      var lon = Math.atan2(dir.x, -dir.z) + YAW_OFFSET;
+      var lat = Math.max(-1, Math.min(1, dir.y));
+      var u = frac(0.5 + lon / (2 * Math.PI));
+      var v = Math.max(0, Math.min(1, 0.5 + Math.asin(lat) / Math.PI));
+      var px = Math.min(depthCPU.width - 1, Math.floor(u * depthCPU.width));
+      var py = Math.min(depthCPU.height - 1, Math.floor(v * depthCPU.height));
+      var idx = (py * depthCPU.width + px) * 4;
+      var t = depthCPU.data[idx] / 255;
+      var raw = depthMeta.min + t * (depthMeta.max - depthMeta.min);
+      var r = raw * DEPTH_WORLD_SCALE;
+      return Math.max(DEPTH_CLAMP_MIN, Math.min(DEPTH_CLAMP_MAX, r));
+    }
+
+    // ---------------- Shader 球体：顶点按深度置换 ----------------
+    // 颜色 UV 不在顶点算:fract() 的 0↔1 跳变会被三角形插值抹成一条竖向彩色接缝
+    // (7/24 验收实拍可见)。改为把方向向量传给片元、片元里逐像素现算 UV,
+    // 配合 panoTex.wrapS=RepeatWrapping,接缝彻底消失。顶点侧只为深度采样保留 equirectUv。
+    var VERT_COMMON =
+      "varying vec3 vDir;\n" +
+      "uniform float yawOffset;\n" +
+      "const float PI = 3.14159265359;\n" +
+      "const float TWO_PI = 6.28318530718;\n" +
+      "vec2 equirectUv(vec3 dir) {\n" +
+      "  float lon = atan(dir.x, -dir.z) + yawOffset;\n" +
+      "  float lat = clamp(dir.y, -1.0, 1.0);\n" +
+      "  float u = fract(0.5 + lon / TWO_PI);\n" +
+      "  float v = clamp(0.5 + asin(lat) / PI, 0.0, 1.0);\n" +
+      "  return vec2(u, v);\n" +
+      "}\n";
+
+    // 顶点侧做两层稳定处理：
+    // 1) 以一个球面顶点间距为半径做 3x3 加权采样，消掉 DAP 在树叶/人物轮廓上的
+    //    单像素跳变；2) 反归一化到 raw 深度后，只把 12% 的深度差作用到显示球面。
+    // 深度仍完整用于行走边界，但颜色表面不会再被相邻顶点拉成 8~10 米长的薄片。
+    var VERT_DEPTH = VERT_COMMON +
+      "uniform sampler2D depthMap;\n" +
+      "uniform vec2 depthTexel;\n" +
+      "uniform float depthRawMin;\n" +
+      "uniform float depthRawMax;\n" +
+      "float smoothDepth(vec2 uv) {\n" +
+      "  vec2 d = depthTexel * 4.0;\n" +
+      "  float t = texture2D(depthMap, uv).r * 0.24;\n" +
+      "  t += texture2D(depthMap, uv + vec2( d.x, 0.0)).r * 0.12;\n" +
+      "  t += texture2D(depthMap, uv + vec2(-d.x, 0.0)).r * 0.12;\n" +
+      "  t += texture2D(depthMap, uv + vec2(0.0,  d.y)).r * 0.12;\n" +
+      "  t += texture2D(depthMap, uv + vec2(0.0, -d.y)).r * 0.12;\n" +
+      "  t += texture2D(depthMap, uv + vec2( d.x,  d.y)).r * 0.07;\n" +
+      "  t += texture2D(depthMap, uv + vec2(-d.x,  d.y)).r * 0.07;\n" +
+      "  t += texture2D(depthMap, uv + vec2( d.x, -d.y)).r * 0.07;\n" +
+      "  t += texture2D(depthMap, uv + vec2(-d.x, -d.y)).r * 0.07;\n" +
+      "  return t;\n" +
+      "}\n" +
+      "void main() {\n" +
+      "  vec3 dir = normalize(position);\n" +
+      "  vDir = dir;\n" +
+      "  float t = smoothDepth(equirectUv(dir));\n" +
+      "  float rawDepth = mix(depthRawMin, depthRawMax, t);\n" +
+      "  float sceneRadius = clamp(rawDepth * " + DEPTH_WORLD_SCALE.toFixed(2) + ", " +
+           DEPTH_CLAMP_MIN.toFixed(2) + ", " + DEPTH_CLAMP_MAX.toFixed(2) + ");\n" +
+      "  float radius = mix(" + FLAT_RADIUS.toFixed(2) + ", sceneRadius, " +
+           DEPTH_VISUAL_STRENGTH.toFixed(2) + ");\n" +
+      "  vec3 displaced = dir * radius;\n" +
+      "  gl_Position = projectionMatrix * modelViewMatrix * vec4(displaced, 1.0);\n" +
+      "}\n";
+
+    var VERT_FLAT = VERT_COMMON +
+      "void main() {\n" +
+      "  vec3 dir = normalize(position);\n" +
+      "  vDir = dir;\n" +
+      "  vec3 displaced = dir * " + FLAT_RADIUS.toFixed(2) + ";\n" +
+      "  gl_Position = projectionMatrix * modelViewMatrix * vec4(displaced, 1.0);\n" +
+      "}\n";
+
+    var FRAG =
+      "uniform sampler2D panoMap;\n" +
+      "varying vec3 vDir;\n" +
+      "uniform float yawOffset;\n" +
+      "const float PI = 3.14159265359;\n" +
+      "const float TWO_PI = 6.28318530718;\n" +
+      "void main() {\n" +
+      "  vec3 dir = normalize(vDir);\n" +
+      "  float lon = atan(dir.x, -dir.z) + yawOffset;\n" +
+      "  float u = 0.5 + lon / TWO_PI;\n" + // 不 fract:交给 RepeatWrapping 环绕,滤波在缝上也连续
+      "  float v = clamp(0.5 + asin(clamp(dir.y, -1.0, 1.0)) / PI, 0.0, 1.0);\n" +
+      "  gl_FragColor = texture2D(panoMap, vec2(u, v));\n" +
+      "}\n";
+
+    // ---------------- 照片钉进 3D 空间：THREE.Sprite + 点击放大 ----------------
+    var photoSprites = [];
+    var raycaster = new THREE.Raycaster();
+    var ndcCenter = new THREE.Vector2(0, 0); // 桌面：屏幕中心固定 NDC 坐标
+    var tapNDC = new THREE.Vector2();        // 移动端：tap 点转的 NDC 坐标，复用避免每次 new
+    var paused = false;      // 灯箱开着时=true，tick 里跳过走动
+    var lightboxOpen = false;
+    var PHOTO_CANVAS_SIZE = 256;
+    var PHOTO_SPRITE_SCALE = 0.32;
+
+    // 圆角矩形路径（照片贴图 + 描边共用）
+    function roundRectPath(ctx, x, y, w, h, r) {
+      ctx.beginPath();
+      ctx.moveTo(x + r, y);
+      ctx.arcTo(x + w, y, x + w, y + h, r);
+      ctx.arcTo(x + w, y + h, x, y + h, r);
+      ctx.arcTo(x, y + h, x, y, r);
+      ctx.arcTo(x, y, x + w, y, r);
+      ctx.closePath();
+    }
+
+    // 加载中 / 加载失败的占位：纯色圆点，不许崩
+    function drawFallbackDot(ctx, size) {
+      ctx.clearRect(0, 0, size, size);
+      var cx = size / 2, cy = size / 2, r = size * 0.34;
+      ctx.beginPath();
+      ctx.arc(cx, cy, r, 0, Math.PI * 2);
+      ctx.fillStyle = "#c0392b";
+      ctx.fill();
+      ctx.lineWidth = size * 0.045;
+      ctx.strokeStyle = "#fff";
+      ctx.stroke();
+    }
+
+    // 缩略图加载成功：画进圆角白边 canvas(cover 裁切填满)
+    function drawPhotoFrame(ctx, size, img) {
+      ctx.clearRect(0, 0, size, size);
+      var pad = size * 0.06;
+      var inner = size - pad * 2;
+      var r = inner * 0.12;
+
+      ctx.save();
+      roundRectPath(ctx, pad, pad, inner, inner, r);
+      ctx.clip();
+      var iw = img.naturalWidth || img.width, ih = img.naturalHeight || img.height;
+      if (iw && ih) {
+        var scale = Math.max(inner / iw, inner / ih);
+        var dw = iw * scale, dh = ih * scale;
+        ctx.drawImage(img, pad + (inner - dw) / 2, pad + (inner - dh) / 2, dw, dh);
+      }
+      ctx.restore();
+
+      ctx.lineWidth = size * 0.045;
+      ctx.strokeStyle = "#fff";
+      roundRectPath(ctx, pad, pad, inner, inner, r);
+      ctx.stroke();
+    }
+
+    // 单张照片 -> 一个 Sprite。世界位置公式照抄任务约定,别自己推导(实测过差 180°)。
+    function makePhotoSprite(photo) {
+      var canvas = document.createElement("canvas");
+      canvas.width = PHOTO_CANVAS_SIZE;
+      canvas.height = PHOTO_CANVAS_SIZE;
+      var ctx = canvas.getContext("2d");
+      drawFallbackDot(ctx, PHOTO_CANVAS_SIZE); // 图片到之前先有个占位,不留空白
+
+      var canvasTex = new THREE.CanvasTexture(canvas);
+      canvasTex.minFilter = THREE.LinearFilter;
+      canvasTex.magFilter = THREE.LinearFilter;
+
+      var mat = new THREE.SpriteMaterial({ map: canvasTex, transparent: true, depthWrite: false });
+      var sprite = new THREE.Sprite(mat);
+      sprite.userData.photo = photo;
+
+      var yr = photo.yaw * Math.PI / 180, pr = photo.pitch * Math.PI / 180;
+      var dir = new THREE.Vector3(
+        Math.sin(yr) * Math.cos(pr),
+        Math.sin(pr),
+        -Math.cos(yr) * Math.cos(pr)
+      );
+      var radius = Math.max(1.0, Math.min(2.5, 0.6 * sampleDepthMeters(dir)));
+      sprite.position.copy(dir).multiplyScalar(radius);
+      // yaw/pitch 是以全景采集光心为原点的射线；球壳现已统一以 EYE_HEIGHT 为光心，
+      // 所有入口（space / scene / compose）的照片钉点也必须加同一个原点偏移。
+      // 否则 pitch=0 的钉点会比视平线低 1.4m，既难看见，也会让 POV 飞向错误高度。
+      sprite.position.y += EYE_HEIGHT;
+      sprite.scale.set(PHOTO_SPRITE_SCALE, PHOTO_SPRITE_SCALE, 1);
+
+      scene.add(sprite);
+      photoSprites.push(sprite);
+
+      // 钉点只加载公开缩略图，50 张时避免首屏并发下载 50 张原图；
+      // 灯箱和 POV 点开后才按需取 photo.src。老模式没有 thumb 时仍兼容原图。
+      var previewSrc = photo.thumb || photo.src;
+      loader.load(previewSrc, function (tex) {
+        if (!photo.thumb || photo.thumb === photo.src) {
+          sprite.userData.img = tex.image;
+        }
+        try {
+          drawPhotoFrame(ctx, PHOTO_CANVAS_SIZE, tex.image);
+          canvasTex.needsUpdate = true;
+        } catch (e) { /* 画布绘制出问题也不影响已有占位圆点 */ }
+      }, undefined, function () { /* 加载失败,占位圆点留着,不崩 */ });
+    }
+
+    function buildPhotoSprites(photos) {
+      for (var i = 0; i < photos.length; i++) {
+        if (photos[i] && photos[i].src) makePhotoSprite(photos[i]);
+      }
+    }
+
+    // 命中测试只 intersect 照片 sprite 数组,不碰位移球(反面 BackSide 且巨大,会误命中),
+    // 也不碰 POV 的覆盖平面和方位标记(它们从来不进 photoSprites)。
+    // ⚠️ 返回的是 sprite 不是 photo:POV 要拿 sprite 上缓存的原图和钉点世界坐标。
+    function raycastPhotoHit(ndc) {
+      if (!photoSprites.length) return null;
+      raycaster.setFromCamera(ndc, camera);
+      var hits = raycaster.intersectObjects(photoSprites);
+      // ⚠️ 这份 three(r128 打包)的 raycaster 不看 visible,隐藏的钉点照样会被命中。
+      //    POV 里当前那张的钉点是主动藏起来的,不过滤掉它准星会在一个看不见的东西上高亮。
+      for (var i = 0; i < hits.length; i++) {
+        if (hits[i].object.visible) return hits[i].object;
+      }
+      return null;
+    }
+
+    function updateCrosshairHover() {
+      var el = $("crosshair");
+      if (!el) return;
+      el.classList.toggle("hit", !!raycastPhotoHit(ndcCenter));
+    }
+
+    function openPhotoLightbox(photo) {
+      $("lbImg").src = photo.src;
+      $("lbCap").textContent = photo.caption || "";
+      $("photoLightbox").classList.add("on");
+      lightboxOpen = true;
+      paused = true;
+      if (locked && document.exitPointerLock) document.exitPointerLock();
+    }
+
+    function closePhotoLightbox() {
+      $("photoLightbox").classList.remove("on");
+      lightboxOpen = false;
+      paused = false;
+      // 桌面端灯箱关掉时人已经不在 pointerlock 里了（打开灯箱时主动 exit 的），
+      // 把「点击锁定」卡片放回来，别卡在一个哪儿都点不动的空画面上。
+      if (!isTouchDevice() && !locked) {
+        $("lockMsg").textContent = "已退出漫游 · 点击画面重新进入";
+        $("cardLock").classList.add("on");
+      }
+    }
+
+    // 移动端 tap 判定:抬指时移动距离 < 8px 才算 tap,交给触摸处理里的 lookDidMove 把关。
+    // 点中钉点 = 进 POV;POV 里点空白 = 退出(手机上这是除退出按钮之外的第二条出路)。
+    function tryMobilePhotoTap(clientX, clientY) {
+      tapNDC.set(
+        (clientX / window.innerWidth) * 2 - 1,
+        -(clientY / window.innerHeight) * 2 + 1
+      );
+      var sprite = photoSprites.length ? raycastPhotoHit(tapNDC) : null;
+      if (sprite) {
+        if (POV_ENABLED) povEnter(sprite);
+        else openPhotoLightbox(sprite.userData.photo);
+        return;
+      }
+      if (pov.state === "active") povExit();
+    }
+
+    // ============================================================
+    // POV「回到 TA 的视角」
+    // ------------------------------------------------------------
+    // 状态机(只有这四个状态,任何时刻 pov.state 都是其中之一):
+    //   idle    普通漫游。点钉点 -> flying
+    //   flying  相机缓动转向 + 略微推近,期间吃掉一切环视输入(鼠标/触摸/WASD),
+    //           照片平面在后半段渐入。到时间 -> active
+    //   active  照片平面世界锚定挂在那儿,环视和漫游全部恢复。
+    //           转头时实时更新方位文字和"这个方向有没有人拍到"。
+    //           ESC / 退出按钮 / 点空白 -> exiting;点另一个钉点 -> 直接换成那张的 POV
+    //   exiting 平面一边缩回钉点一边淡出,相机原地不动(不许瞬移回去)。完事 -> idle
+    // ============================================================
+    var pov = {
+      state: "idle",
+      sprite: null, photo: null,
+      t0: 0, tLand: 0,
+      dir: new THREE.Vector3(0, 0, -1),
+      from: { yaw: 0, pitch: 0, x: 0, z: 0 },
+      to: { yaw: 0, pitch: 0, x: 0, z: 0 },
+      plane: null, planeMat: null, planeTex: null,
+      anchor: new THREE.Vector3(),
+      pinPos: new THREE.Vector3(),
+      markers: [],
+      lastDeg: null, lastSec: null,
+      exitFromOpacity: POV_PLANE_OPACITY,
+      pending: 0                       // 递增令牌,防止异步加载回来时人已经退出了
+    };
+    var povTmp = new THREE.Vector3();
+
+    // ---- 覆盖判定：按你此刻真正朝着的方位连续算,不做扇区量化 ----
+    // ⚠️ 这里踩过一个会当着人脸说假话的坑,别改回去:
+    // 旧写法是把 360 度切成 12 格、拿**格子中点**去打 ±20 度的尺。格子中点离你实际朝向最远差 15 度,
+    // 和 20 度的尺一叠加就出事 —— 真实空间 s4 里,站在小明那张(yaw 15.1)的视角里转到方位 30 度,
+    // 他的照片还占着大半个屏幕、白框三条边都在画面里,标签却已经变成「这个方向没有人拍到」。
+    //
+    // 现在改成:直接拿你当前的方位角去问「有没有哪张照片拍到的那一块盖住了这里」。
+    // 尺子用**照片自己盖住的角宽**(假定 70 度视场的一半,也就是 ±35 度),
+    // 因为这样问出来的答案和你屏幕上看见的东西是同一件事:平面铺了 70 度,
+    // 方位落在这 70 度里,你就确实在看某个人拍到过的那一块。
+    //
+    // 这和后端 server/space.py 的 find_coverage_gaps(每张照片记 ±20 度、空白 >= 40 度才派任务)
+    // 是**两把不同的尺子,回答两个不同的问题**,不是谁抄错了谁:
+    //   后端问的是「这个方向缺得够不够多,值不值得派一条通缉令出去」
+    //   这里问的是「我现在眼前这一块,当时有没有人看着它」
+    // 改这里之前先想清楚你要回答哪一个。
+    var POV_SEEN_HALF_DEG = POV_ASSUMED_FOV_DEG / 2;
+    function povAngDist(a, b) {
+      var d = Math.abs(normDeg(a) - normDeg(b));
+      return d > 180 ? 360 - d : d;
+    }
+    // 返回 {total, others}。others 不含你此刻正站在其视角里的那一张 ——
+    // 旧版会把你脚下这张算进「也有人拍到 · N 张」,于是你身边明明没别人,它说有 1 张。
+    function povShootersAt(bearingDeg, selfPhoto) {
+      var list = opts.photos || [];
+      var total = 0, others = 0;
+      for (var j = 0; j < list.length; j++) {
+        var p = list[j];
+        if (!p || !p.src || typeof p.yaw !== "number") continue;
+        var trueYaw = p.povYaw !== undefined ? p.povYaw : p.yaw;
+        if (povAngDist(trueYaw, bearingDeg) > POV_SEEN_HALF_DEG) continue;
+        total += 1;
+        if (p !== selfPhoto) others += 1;
+      }
+      return { total: total, others: others };
+    }
+
+    function povSectorOf(yawDeg) {
+      return Math.floor(normDeg(yawDeg) / POV_SECTOR_DEG) % POV_SECTOR_N;
+    }
+
+    // 相机 yaw(弧度) -> 空间方位角(度)。
+    // 钉点方向是 (sin(y),0,-cos(y))，相机前向是 (-sin(camYaw),0,-cos(camYaw))，
+    // 两者相等要求 camYaw = -y,所以这里取负号。进 POV 时会当场自检(见 __psmWalk.pov.info)。
+    function povCamSpaceYawDeg() { return normDeg(-yaw * 180 / Math.PI); }
+
+    // 相对进入方向转了多少 -> 文字方位词。故意不画罗盘(全站已拍板删除)。
+    function povBearingWord(relDeg) {
+      var a = normDeg(relDeg);
+      if (a > 180) a -= 360;
+      var s = Math.abs(a);
+      if (s <= 22.5) return "正前方";
+      var side = a > 0 ? "右" : "左";   // 向右转头 = 空间方位角变大,已实测
+      if (s <= 67.5) return side + "前方";
+      if (s <= 112.5) return side + "侧";
+      if (s <= 157.5) return side + "后方";
+      return "正后方";
+    }
+
+    // 把原图画成一张四边羽化的贴图：直接贴个硬边矩形在墙上太假,
+    // 羽化一圈让它和底下的全景咬合。
+    function povFeatherTexture(img) {
+      var iw = img.naturalWidth || img.width || 4;
+      var ih = img.naturalHeight || img.height || 3;
+      var W = 768, H = Math.max(8, Math.round(W * ih / iw));
+      var c = document.createElement("canvas");
+      c.width = W; c.height = H;
+      var g = c.getContext("2d");
+      g.drawImage(img, 0, 0, W, H);
+      var fx = Math.round(W * POV_FEATHER), fy = Math.round(H * POV_FEATHER);
+
+      // 一圈很淡的内描边:demo 素材是从同一张全景切出来的,不给条边人眼根本分不出
+      // 哪块是他拍的、哪块是底下的全景,而"他看到的那一块"到底有多大,正是这个模式要讲的话。
+      // 画在羽化带内侧一点,不会被下面的 destination-out 抹掉。
+      g.save();
+      g.shadowColor = "rgba(255,200,215,.85)";
+      g.shadowBlur = Math.round(W * 0.016);
+      g.strokeStyle = "rgba(255,255,255,.55)";
+      g.lineWidth = Math.max(2, Math.round(W * 0.004));
+      g.strokeRect(fx * 1.15, fy * 1.15, W - fx * 2.3, H - fy * 2.3);
+      g.restore();
+
+      g.globalCompositeOperation = "destination-out";
+      function wipe(x0, y0, x1, y1, w, h) {
+        var grd = g.createLinearGradient(x0, y0, x1, y1);
+        grd.addColorStop(0, "rgba(0,0,0,1)");
+        grd.addColorStop(1, "rgba(0,0,0,0)");
+        g.fillStyle = grd;
+        g.fillRect(Math.min(x0, x1), Math.min(y0, y1), w, h);
+      }
+      wipe(0, 0, fx, 0, fx, H);
+      wipe(W, 0, W - fx, 0, fx, H);
+      wipe(0, 0, 0, fy, W, fy);
+      wipe(0, H, 0, H - fy, W, fy);
+      g.globalCompositeOperation = "source-over";
+      var t = new THREE.CanvasTexture(c);
+      t.minFilter = THREE.LinearFilter;
+      t.magFilter = THREE.LinearFilter;
+      t.generateMipmaps = false;
+      return { tex: t, aspect: ih / iw };
+    }
+
+    // 世界锚定的覆盖平面。锚点 = 落地时的站位(漫游半径被夹在 2.5 米内,所以它就在球心那一带),
+    // 法线指回锚点,等于"贴在那个方向的墙上"。位置一次算死,之后转头/走动它都留在原地,
+    // 这正是"他看到的那一块"和"他没看到的那一块"能被看出来的原因。
+    function povBuildPlane(img) {
+      if (pov.state === "idle" || pov.plane) return;
+      var made = povFeatherTexture(img);
+      // 距离取那个方向的深度打个折,别让平面戳穿房间；再夹到一个手感区间。
+      var d = Math.max(1.6, Math.min(4.0, sampleDepthMeters(pov.dir) * 0.85));
+      var w = 2 * d * Math.tan(POV_ASSUMED_FOV_DEG / 2 * Math.PI / 180);
+      var h = w * made.aspect;
+      var mat = new THREE.MeshBasicMaterial({
+        map: made.tex, transparent: true, opacity: 0,
+        // depthTest 关掉 + renderOrder 抬高:位移球的半径逐像素在变,靠深度比大小
+        // 迟早会出现平面一半被墙吃掉的情况。这里就是要它无条件盖在全景上。
+        depthTest: false, depthWrite: false, side: THREE.FrontSide
+      });
+      var plane = new THREE.Mesh(new THREE.PlaneGeometry(w, h), mat);
+      plane.renderOrder = 10;
+      plane.frustumCulled = false;
+      pov.anchor.set(pov.to.x, EYE_HEIGHT, pov.to.z).addScaledVector(pov.dir, d);
+      plane.position.copy(pov.anchor);
+      plane.lookAt(pov.to.x, EYE_HEIGHT, pov.to.z);
+      scene.add(plane);
+      pov.plane = plane; pov.planeMat = mat; pov.planeTex = made.tex;
+      // 平面只有 0.95 不透明,底下那枚缩略图钉点会在画面正中留一圈鬼影(s4 实拍看得见)。
+      // 平面真的建起来了才藏它:图挂了的话钉点还得留着,否则那张照片彻底消失。
+      // 退出动画正好是"缩回钉点",收尾时 povCleanup 再把它放回来。
+      if (pov.sprite) pov.sprite.visible = false;
+    }
+
+    // 一枚柔和的小标记：地平线附近，意思是"这个方向也有人拍到"。
+    // ⚠️ 别用 AdditiveBlending 的纯发光:宴会厅的墙是亮奶油色,加色混合上去直接白掉,
+    //    实测截图里一枚都看不见。改成"暗色晕 + 暖色圈 + 亮核",亮墙暗墙都读得出来。
+    function povMarkerTexture() {
+      var S = 128, c0 = S / 2;
+      var c = document.createElement("canvas");
+      c.width = S; c.height = S;
+      var g = c.getContext("2d");
+
+      var halo = g.createRadialGradient(c0, c0, S * 0.16, c0, c0, S * 0.5);
+      halo.addColorStop(0, "rgba(24,14,22,.42)");
+      halo.addColorStop(0.55, "rgba(24,14,22,.20)");
+      halo.addColorStop(1, "rgba(24,14,22,0)");
+      g.fillStyle = halo;
+      g.fillRect(0, 0, S, S);
+
+      g.lineWidth = S * 0.055;
+      g.strokeStyle = "rgba(255,168,190,.95)";
+      g.beginPath(); g.arc(c0, c0, S * 0.24, 0, Math.PI * 2); g.stroke();
+
+      g.lineWidth = S * 0.018;
+      g.strokeStyle = "rgba(255,255,255,.85)";
+      g.beginPath(); g.arc(c0, c0, S * 0.24, 0, Math.PI * 2); g.stroke();
+
+      g.fillStyle = "rgba(255,255,255,.92)";
+      g.beginPath(); g.arc(c0, c0, S * 0.085, 0, Math.PI * 2); g.fill();
+
+      var t = new THREE.CanvasTexture(c);
+      t.minFilter = THREE.LinearFilter; t.magFilter = THREE.LinearFilter; t.generateMipmaps = false;
+      return t;
+    }
+
+    // 每个"有人拍过"的扇区，在它正中间挂一枚标记。挂扇区中点而不是照片本身的角度，
+    // 是因为系统本来就只能定到扇区这一格，标记落在格子中间才是老实的画法。
+    function povBuildMarkers() {
+      var tex = povMarkerTexture();
+      var used = false;
+      for (var s = 0; s < POV_SECTOR_N; s++) {
+        // 挂点位置仍取扇区中点(系统只能定到这一格,画在格子中间才老实),
+        // 但"这一格有没有人拍过"用和 HUD 同一套连续判据,免得标记和标签互相打脸
+        var centerDeg = s * POV_SECTOR_DEG + POV_SECTOR_DEG / 2;
+        var hit = povShootersAt(centerDeg, null).total;
+        if (!hit) continue;
+        var yc = centerDeg * Math.PI / 180;
+        var mat = new THREE.SpriteMaterial({
+          map: tex, transparent: true, opacity: 0,
+          depthTest: false, depthWrite: false   // 常规混合,理由见 povMarkerTexture 的注释
+        });
+        var sp = new THREE.Sprite(mat);
+        sp.renderOrder = 9;   // 比覆盖平面(10)低:被照片挡住的标记就该看不见
+        sp.position.set(
+          pov.to.x + Math.sin(yc) * 2.9,
+          EYE_HEIGHT - 0.32,   // 略低于视平线,读作"地平线上的一枚记号"
+          pov.to.z - Math.cos(yc) * 2.9
+        );
+        var k = Math.min(3, hit);
+        sp.scale.set(0.30 + k * 0.05, 0.30 + k * 0.05, 1);
+        scene.add(sp);
+        pov.markers.push(sp);
+        used = true;
+      }
+      if (!used) tex.dispose();
+    }
+
+    function povSetHudName() {
+      var p = pov.photo || {};
+      var who = p.contributor && String(p.contributor).trim();
+      $("povWho").textContent = who
+        ? ("你正站在 " + who + " 的视角里")
+        : ("你正站在这张照片的视角里" + (p.caption ? "（" + p.caption + "）" : ""));
+    }
+
+    // 转头时实时刷新：方位文字 + 这个方向有没有人拍到。整度没变就不碰 DOM。
+    function povUpdateHud() {
+      var deg = Math.round(povCamSpaceYawDeg()) % 360;
+      if (deg === pov.lastDeg) return;
+      pov.lastDeg = deg;
+      var rel = deg - normDeg(pov.photo
+        ? (pov.photo.povYaw !== undefined ? pov.photo.povYaw : pov.photo.yaw)
+        : 0);
+      $("povBearing").textContent = "朝" + povBearingWord(rel) + " · 空间方位 " + deg + "°";
+
+      // 按你此刻真正朝着的方位连续算,不量化到扇区(旧写法拿格子中点判,会当着人脸说假话)
+      var self = pov.photo || null;
+      var seen = povShootersAt(deg, self);
+      var selfYaw = self
+        ? (self.povYaw !== undefined ? self.povYaw : self.yaw)
+        : null;
+      var onSelf = !!(self && typeof selfYaw === "number" &&
+                      povAngDist(selfYaw, deg) <= POV_SEEN_HALF_DEG);
+      var key = (onSelf ? "s" : "") + seen.others;
+      if (key === pov.lastSec) return;
+      pov.lastSec = key;
+      var cov = $("povCov");
+      if (onSelf) {
+        // 措辞只说方向,不说"你正看着他拍的那一块":POV 里可以自由走动,
+        // 走过头之后覆盖平面会被甩在身后,那句话当场就变成假话。方向是永远成立的。
+        cov.textContent = seen.others > 0
+          ? "他拍的就是这个方向 · 还有 " + seen.others + " 个人也拍了"
+          : "他拍的就是这个方向";
+        cov.classList.remove("gap");
+      } else if (seen.others > 0) {
+        cov.textContent = "这个方向也有人拍到 · " + seen.others + " 张";
+        cov.classList.remove("gap");
+      } else {
+        cov.textContent = "这个方向没有人拍到";
+        cov.classList.add("gap");
+      }
+      $("povGapVig").classList.toggle("on", !onSelf && seen.others === 0);
+    }
+
+    function povEnter(sprite) {
+      if (!POV_ENABLED) return;
+      if (!sprite || pov.state === "flying") return;
+      if (lightboxOpen) return;
+      // 已经在这张的 POV 里就别重进;点了另一张(或者刚退出还在收尾)就先收干净再换过去
+      if (pov.state === "active" && pov.sprite === sprite) return;
+      if (pov.state === "active" || pov.state === "exiting") povCleanup();
+      var photo = sprite.userData.photo;
+      if (!photo) return;
+      pov.sprite = sprite; pov.photo = photo;
+      pov.pinPos.copy(sprite.position);
+      pov.state = "flying";
+      pov.t0 = performance.now();
+      pov.lastDeg = null; pov.lastSec = null;
+      pov.pending += 1;
+      var token = pov.pending;
+
+      // 「他当时朝着的方向」：跟 makePhotoSprite 用同一条公式，别自己推导(实测过差 180°)。
+      // yaw/pitch 都用 POV 真值：space 模式的钉点只是在展示层做了二维避让，
+      // 拿避让坐标转相机会回到错误的视角。
+      var trueYaw = photo.povYaw !== undefined ? photo.povYaw : photo.yaw;
+      var yr = trueYaw * Math.PI / 180;
+      var pr = (photo.povPitch !== undefined ? photo.povPitch : (photo.pitch || 0)) * Math.PI / 180;
+      pov.dir.set(Math.sin(yr) * Math.cos(pr), Math.sin(pr), -Math.cos(yr) * Math.cos(pr));
+
+      pov.from.yaw = yaw; pov.from.pitch = pitch;
+      pov.from.x = camera.position.x; pov.from.z = camera.position.z;
+
+      var ty = -yr;                                  // 取最近的一圈，不许绕远路转 350 度
+      while (ty - yaw > Math.PI) ty -= 2 * Math.PI;
+      while (yaw - ty > Math.PI) ty += 2 * Math.PI;
+      pov.to.yaw = ty;
+      pov.to.pitch = Math.max(-pitchLimit, Math.min(pitchLimit, pr));
+
+      // 略微推近：沿这个方向的水平分量走一点点，照样吃行走范围限制，不许穿墙。
+      var hl = Math.hypot(pov.dir.x, pov.dir.z) || 1;
+      var np = clampWalk(
+        camera.position.x + pov.dir.x / hl * POV_DOLLY,
+        camera.position.z + pov.dir.z / hl * POV_DOLLY
+      );
+      pov.to.x = np.x; pov.to.z = np.z;
+
+      povBuildMarkers();
+
+      var img = sprite.userData.img;
+      if (img) povBuildPlane(img);
+      else loader.load(photo.src, function (tex) {
+        // 回来得晚：人已经退出或者换了一张，就别再往场景里塞东西
+        if (token !== pov.pending || pov.state === "idle") return;
+        sprite.userData.img = tex.image;
+        povBuildPlane(tex.image);
+      }, undefined, function () { /* 图挂了也照样能进 POV:方向、转头、覆盖指示都不依赖它 */ });
+
+      document.body.classList.add("pov-on");
+      povSetHudName();
+      $("povHint").classList.remove("faded");
+      $("povBar").classList.add("on");
+      $("povVig").classList.add("on");
+      $("crosshair").classList.remove("hit");
+      povUpdateHud();
+    }
+
+    function povExit() {
+      if (pov.state !== "active" && pov.state !== "flying") return;
+      pov.pending += 1;
+      if (!pov.plane) { povCleanup(); return; }
+      pov.exitFromOpacity = pov.planeMat.opacity;
+      pov.state = "exiting";
+      pov.t0 = performance.now();
+      // 相机一动不动：任务铁律，退出时不许瞬移回去。
+      document.body.classList.remove("pov-on");
+      $("povBar").classList.remove("on");
+      $("povVig").classList.remove("on");
+      $("povGapVig").classList.remove("on");
+      for (var i = 0; i < pov.markers.length; i++) pov.markers[i].material.opacity = 0;
+    }
+
+    function povCleanup() {
+      if (pov.plane) {
+        scene.remove(pov.plane);
+        pov.plane.geometry.dispose();
+        pov.plane.material.dispose();
+        if (pov.planeTex) pov.planeTex.dispose();
+      }
+      for (var i = 0; i < pov.markers.length; i++) {
+        scene.remove(pov.markers[i]);
+        if (pov.markers[i].material.map) pov.markers[i].material.map.dispose();
+        pov.markers[i].material.dispose();
+      }
+      pov.markers.length = 0;
+      pov.plane = null; pov.planeMat = null; pov.planeTex = null;
+      if (pov.sprite) pov.sprite.visible = true;   // 钉点归位,漫游里照样点得到
+      pov.sprite = null; pov.photo = null;
+      pov.state = "idle";
+      pov.lastDeg = null; pov.lastSec = null;
+      document.body.classList.remove("pov-on");
+      $("povBar").classList.remove("on");
+      $("povVig").classList.remove("on");
+      $("povGapVig").classList.remove("on");
+    }
+
+    function povTick(now) {
+      if (pov.state === "idle") return;
+      if (pov.state === "flying") {
+        var t = Math.min(1, (now - pov.t0) / POV_FLY_MS);
+        var e = easeInOutCubic(t);
+        yaw = pov.from.yaw + (pov.to.yaw - pov.from.yaw) * e;
+        pitch = pov.from.pitch + (pov.to.pitch - pov.from.pitch) * e;
+        camera.position.x = pov.from.x + (pov.to.x - pov.from.x) * e;
+        camera.position.z = pov.from.z + (pov.to.z - pov.from.z) * e;
+        // 后半程才让照片渐入：先"飞过去"，再"涨起来盖住"
+        var fin = Math.max(0, Math.min(1, (t - 0.55) / 0.45));
+        if (pov.planeMat) pov.planeMat.opacity = POV_PLANE_OPACITY * 0.75 * fin;
+        for (var i = 0; i < pov.markers.length; i++) pov.markers[i].material.opacity = 0.85 * fin;
+        povUpdateHud();   // 飞的过程中方位数字一路扫过去,顺手把"路过的扇区有没有人拍"也带出来
+        if (t >= 1) {
+          pov.state = "active";
+          pov.tLand = now;
+          // 引导语看几秒就够了,之后淡掉别一直糊在脸上。
+          // 带上 token:退出再进来的话,上一次的定时器不许把这一次的引导语提前抹掉。
+          var tk = pov.pending;
+          setTimeout(function () {
+            if (tk === pov.pending && pov.state === "active") $("povHint").classList.add("faded");
+          }, 5200);
+        }
+      } else if (pov.state === "active") {
+        if (pov.planeMat) {
+          var k = Math.min(1, (now - pov.tLand) / POV_LAND_FADE_MS);
+          var want = POV_PLANE_OPACITY * (0.75 + 0.25 * k);
+          if (pov.planeMat.opacity < want) pov.planeMat.opacity = want;
+        }
+        for (var m = 0; m < pov.markers.length; m++) {
+          if (pov.markers[m].material.opacity < 0.85) pov.markers[m].material.opacity = 0.85;
+        }
+        povUpdateHud();
+      } else if (pov.state === "exiting") {
+        var te = Math.min(1, (now - pov.t0) / POV_EXIT_MS);
+        var ee = easeInOutCubic(te);
+        if (pov.plane) {
+          pov.plane.position.lerpVectors(pov.anchor, pov.pinPos, ee);   // 缩回钉点
+          var s = 1 - 0.94 * ee;
+          pov.plane.scale.set(s, s, 1);
+          pov.planeMat.opacity = pov.exitFromOpacity * (1 - ee);
+        }
+        if (te >= 1) povCleanup();
+      }
+    }
+
+    // 行走范围限制：原来长在 tick 里，POV 的推近也要吃同一套规矩，抽出来两边共用。
+    function clampWalk(nx, nz) {
+      var dist = Math.hypot(nx, nz);
+      if (dist > 1e-6) {
+        povTmp.set(nx / dist, 0, nz / dist);
+        var wallDepth = sampleDepthMeters(povTmp);
+        var maxR = Math.min(maxWalkRadius, WALK_DEPTH_FACTOR * wallDepth);
+        if (dist > maxR) {
+          nx = (nx / dist) * maxR;
+          nz = (nz / dist) * maxR;
+        }
+      }
+      return { x: nx, z: nz };
+    }
+
+    var mesh;
+    function buildSphere() {
+      if (mesh) return; // 只建一次
+      var geo = new THREE.SphereGeometry(1, 256, 128);
+      var uniforms = {
+        panoMap: { value: panoTex },
+        yawOffset: { value: YAW_OFFSET }
+      };
+      var vert;
+      if (hasDepth) {
+        uniforms.depthMap = { value: depthTex };
+        uniforms.depthTexel = { value: new THREE.Vector2(
+          1 / depthMeta.width,
+          1 / depthMeta.height
+        ) };
+        uniforms.depthRawMin = { value: depthMeta.min };
+        uniforms.depthRawMax = { value: depthMeta.max };
+        vert = VERT_DEPTH;
+      } else {
+        vert = VERT_FLAT;
+        $("hudDepthWarn").classList.remove("hide");
+      }
+      var mat = new THREE.ShaderMaterial({
+        uniforms: uniforms,
+        vertexShader: vert,
+        fragmentShader: FRAG,
+        side: THREE.BackSide
+      });
+      mesh = new THREE.Mesh(geo, mat);
+      // 全景和深度都是以拍摄者眼位为球心估计的。相机初始位置在 y=EYE_HEIGHT，
+      // 因此渲染球也必须以同一眼位为中心；留在世界原点会让相机从球心上移 1.4m，
+      // 深度边缘随即被侧看成大面积“幕布/尖刺”。
+      mesh.position.y = EYE_HEIGHT;
+      // 顶点位移发生在 GPU，three 的自动视锥剔除仍只认识原始半径 1 的包围球；
+      // 漫游后相机离开光心时可能误判整个深度球不可见，所以保持关闭自动剔除。
+      mesh.frustumCulled = false;
+      scene.add(mesh);
+
+      buildPhotoSprites(opts.photos || []);
+
+      $("cardLoading").classList.remove("on");
+      if (!isTouchDevice()) $("cardLock").classList.add("on");
+      startInput();
+      renderer.setAnimationLoop(tick);
+      window.__psmWalk = {
+        camera: camera,
+        keys: keys,
+        scene: scene,
+        mesh: mesh,
+        renderMode: hasDepth ? "depth" : "flat",
+        interactionMode: allowWalk ? "limited-parallax" : "rotation-only",
+        maxWalkRadius: maxWalkRadius,
+        fov: cameraFov,
+        pitchLimitDeg: pitchLimitDeg,
+        captureOriginY: EYE_HEIGHT,
+        photoSprites: photoSprites,
+        setYaw: function (deg) { yaw = deg * Math.PI / 180; }, openPhoto: function (i) { if (photoSprites[i]) openPhotoLightbox(photoSprites[i].userData.photo); },
+        // POV 的调试出口:验收时用它驱动状态机、读扇区覆盖、核对方位换算
+        pov: {
+          enabled: POV_ENABLED,
+          state: function () { return pov.state; },
+          enter: function (i) { if (photoSprites[i]) povEnter(photoSprites[i]); },
+          exit: function () { povExit(); },
+          // 空间方位角:直接给相机朝向,不要拿它当"照片位置",系统只到扇区这一格
+          bearing: function () { return povCamSpaceYawDeg(); },
+          lookAt: function (deg, pitchDeg) {
+            yaw = -deg * Math.PI / 180;
+            if (typeof pitchDeg === "number") pitch = Math.max(-pitchLimit, Math.min(pitchLimit, pitchDeg * Math.PI / 180));
+            povUpdateHud();
+          },
+          aimAt: function (i) {   // 把相机瞄到第 i 个钉点上,验收"准星命中 -> 点击进 POV"用
+            var s = photoSprites[i];
+            if (!s) return null;
+            var v = s.position.clone().sub(camera.position);
+            yaw = Math.atan2(-v.x, -v.z);
+            pitch = Math.asin(Math.max(-1, Math.min(1, v.clone().normalize().y)));
+            return [+(normDeg(-yaw * 180 / Math.PI)).toFixed(1), +(pitch * 180 / Math.PI).toFixed(1)];
+          },
+          shootersAt: function (d) { return povShootersAt(d, pov.photo || null); },
+          seenHalfDeg: POV_SEEN_HALF_DEG,
+          sectorDeg: POV_SECTOR_DEG,
+          coverageHalfDeg: POV_COVERAGE_HALF_DEG,
+          assumedFovDeg: POV_ASSUMED_FOV_DEG,
+          info: function () {
+            return {
+              state: pov.state,
+              bearing: +povCamSpaceYawDeg().toFixed(1),
+              photoYaw: pov.photo
+                ? (pov.photo.povYaw !== undefined ? pov.photo.povYaw : pov.photo.yaw)
+                : null,
+              contributor: pov.photo ? (pov.photo.contributor || null) : null,
+              planeOpacity: pov.planeMat ? +pov.planeMat.opacity.toFixed(3) : null,
+              planeSize: pov.plane ? [+pov.plane.geometry.parameters.width.toFixed(2), +pov.plane.geometry.parameters.height.toFixed(2)] : null,
+              planePos: pov.plane ? pov.plane.position.toArray().map(function (v) { return +v.toFixed(2); }) : null,
+              markers: pov.markers.length,
+              camPos: camera.position.toArray().map(function (v) { return +v.toFixed(2); }),
+              cov: $("povCov").textContent,
+              bearingText: $("povBearing").textContent,
+              who: $("povWho").textContent
+            };
+          }
+        } }; // 调试出口(同 __psmViewer 先例,不影响功能)
+    }
+
+    // ---------------- 桌面输入：PointerLock + WASD ----------------
+    var keys = {};
+    var locked = false;
+    var canvasEl = renderer.domElement;
+    var dragLookActive = false;
+    var dragLookDragging = false;
+    var dragLookMoved = false;
+    var dragLookStart = { x: 0, y: 0 };
+    var dragLookLast = { x: 0, y: 0 };
+    var inputHintTimer = null;
+
+    function showInputHint(text) {
+      var hint = $("mobileHint");
+      var label = hint && hint.querySelector("span");
+      if (!hint || !label) return;
+      label.textContent = text;
+      hint.classList.add("show");
+      if (inputHintTimer) clearTimeout(inputHintTimer);
+      inputHintTimer = setTimeout(function () {
+        hint.classList.remove("show");
+        inputHintTimer = null;
+      }, 3600);
+    }
+
+    function activateDragLook(showHint) {
+      dragLookActive = true;
+      dragLookDragging = false;
+      $("cardLock").classList.remove("on");
+      $("crosshair").classList.remove("on");
+      $("crosshair").classList.remove("hit");
+      canvasEl.style.cursor = "grab";
+      if (canvasEl.focus) canvasEl.focus();
+      if (showHint) {
+        showInputHint(allowWalk
+          ? "当前浏览器不支持鼠标锁定 · 按住拖动环视 · WASD 小范围探身"
+          : "当前浏览器不支持鼠标锁定 · 按住拖动画面环视");
+      }
+    }
+
+    function onPointerLockChange() {
+      var wasLocked = locked;
+      locked = (document.pointerLockElement === canvasEl);
+      if (locked) {
+        dragLookActive = false;
+        dragLookDragging = false;
+        canvasEl.style.cursor = "";
+        $("cardLock").classList.remove("on");
+        $("crosshair").classList.add("on");
+      } else {
+        $("crosshair").classList.remove("on");
+        $("crosshair").classList.remove("hit");
+        // 真正从 Pointer Lock 退出时才重新显示进入卡片。若锁定请求被内嵌浏览器
+        // 拒绝，dragLookActive 已经接管输入，不能又把全屏卡片盖回来。
+        if (wasLocked && !isTouchDevice() && !lightboxOpen) {
+          dragLookActive = false;
+          dragLookDragging = false;
+          canvasEl.style.cursor = "";
+          $("lockMsg").textContent = "已退出漫游 · 点击画面重新进入";
+          $("cardLock").classList.add("on");
+        }
+      }
+    }
+
+    function onMouseMove(e) {
+      if (pov.state === "flying") return;   // 飞进去的这一秒钟不接受环视输入，落地就还给用户
+      var mx = 0, my = 0;
+      if (locked) {
+        mx = e.movementX || 0;
+        my = e.movementY || 0;
+      } else {
+        if (!dragLookActive || !dragLookDragging) return;
+        mx = e.clientX - dragLookLast.x;
+        my = e.clientY - dragLookLast.y;
+        dragLookLast.x = e.clientX;
+        dragLookLast.y = e.clientY;
+        if (!dragLookMoved &&
+            Math.hypot(e.clientX - dragLookStart.x, e.clientY - dragLookStart.y) > TAP_MOVE_THRESHOLD) {
+          dragLookMoved = true;
+        }
+      }
+      yaw -= mx * MOUSE_SENS;
+      pitch -= my * MOUSE_SENS;
+      pitch = Math.max(-pitchLimit, Math.min(pitchLimit, pitch));
+    }
+
+    // 桌面：屏幕中心 raycast 命中照片 -> 进 POV（不在此处处理移动端 tap，见 onTouchEnd）。
+    // POV 里点空白 -> 退出，这是任务要求的第三条出路（另两条是 ESC 和退出按钮）。
+    function onDesktopMouseDown(e) {
+      if (!locked) {
+        if (!dragLookActive || e.button !== 0) return;
+        dragLookDragging = true;
+        dragLookMoved = false;
+        dragLookStart.x = dragLookLast.x = e.clientX;
+        dragLookStart.y = dragLookLast.y = e.clientY;
+        canvasEl.style.cursor = "grabbing";
+        e.preventDefault();
+        return;
+      }
+      if (pov.state === "flying") return;
+      var sprite = raycastPhotoHit(ndcCenter);
+      if (sprite) {
+        e.preventDefault();
+        if (POV_ENABLED) povEnter(sprite);
+        else openPhotoLightbox(sprite.userData.photo);
+      } else if (pov.state === "active") {
+        e.preventDefault();
+        povExit();
+      }
+    }
+
+    function onDesktopMouseUp(e) {
+      if (!dragLookActive || locked || !dragLookDragging) return;
+      dragLookDragging = false;
+      canvasEl.style.cursor = "grab";
+      if (dragLookMoved || pov.state === "flying") return;
+      tapNDC.set(
+        (e.clientX / window.innerWidth) * 2 - 1,
+        -(e.clientY / window.innerHeight) * 2 + 1
+      );
+      var sprite = raycastPhotoHit(tapNDC);
+      if (sprite) {
+        if (POV_ENABLED) povEnter(sprite);
+        else openPhotoLightbox(sprite.userData.photo);
+      } else if (pov.state === "active") {
+        povExit();
+      }
+    }
+
+    function onPointerLockError() {
+      if (!isTouchDevice() && !lightboxOpen) activateDragLook(true);
+    }
+
+    function requestLock() {
+      if (isTouchDevice()) return;
+      if (lightboxOpen) return; // 灯箱开着时，退出锁定触发的那次 click 不许把锁又抢回去
+      // 先让页面立刻可用：支持 Pointer Lock 的浏览器随后会升级为锁定环视；
+      // 内嵌 WebView/权限策略拒绝时则保留按住拖动的桌面降级，不再卡在全屏提示层。
+      activateDragLook(false);
+      if (!canvasEl.requestPointerLock) {
+        activateDragLook(true);
+        return;
+      }
+      try {
+        var pendingLock = canvasEl.requestPointerLock();
+        if (pendingLock && typeof pendingLock.catch === "function") {
+          pendingLock.catch(function () {
+            if (!locked) activateDragLook(true);
+          });
+        }
+      } catch (e) {
+        activateDragLook(true);
+      }
+    }
+
+    // ---------------- 移动端：单指转视角 + 左下摇杆行走 ----------------
+    var joyOuter = $("joystickOuter"), joyKnob = $("joystickKnob");
+    var joyTouchId = null, joyCenter = { x: 0, y: 0 };
+    var joyVec = { x: 0, y: 0 }; // -1..1
+    var lookTouchId = null, lookLast = { x: 0, y: 0 };
+    var lookStart = { x: 0, y: 0 }, lookMoved = false; // 抬指时移动 < 8px 才算 tap(照片点击),否则是正常拖动看视角
+    var TAP_MOVE_THRESHOLD = 8;
+
+    function joyHitTest(t) {
+      var r = joyOuter.getBoundingClientRect();
+      var cx = r.left + r.width / 2, cy = r.top + r.height / 2;
+      var dx = t.clientX - cx, dy = t.clientY - cy;
+      return (dx * dx + dy * dy) <= (r.width * 0.75) * (r.width * 0.75);
+    }
+
+    function onTouchStart(e) {
+      for (var i = 0; i < e.changedTouches.length; i++) {
+        var t = e.changedTouches[i];
+        if (allowWalk && joyTouchId === null && joyHitTest(t)) {
+          joyTouchId = t.identifier;
+          var r = joyOuter.getBoundingClientRect();
+          joyCenter.x = r.left + r.width / 2;
+          joyCenter.y = r.top + r.height / 2;
+          joyOuter.classList.add("dragging");
+        } else if (lookTouchId === null) {
+          lookTouchId = t.identifier;
+          lookLast.x = t.clientX; lookLast.y = t.clientY;
+          lookStart.x = t.clientX; lookStart.y = t.clientY;
+          lookMoved = false;
+        }
+      }
+      e.preventDefault();
+    }
+
+    function onTouchMove(e) {
+      for (var i = 0; i < e.changedTouches.length; i++) {
+        var t = e.changedTouches[i];
+        if (t.identifier === joyTouchId) {
+          var dx = t.clientX - joyCenter.x, dy = t.clientY - joyCenter.y;
+          var d = Math.min(JOYSTICK_MAX_PX, Math.hypot(dx, dy));
+          var ang = Math.atan2(dy, dx);
+          var kx = Math.cos(ang) * d, ky = Math.sin(ang) * d;
+          joyKnob.style.transform = "translate(" + kx + "px," + ky + "px)";
+          joyVec.x = kx / JOYSTICK_MAX_PX;
+          joyVec.y = ky / JOYSTICK_MAX_PX;
+        } else if (t.identifier === lookTouchId) {
+          var mx = t.clientX - lookLast.x, my = t.clientY - lookLast.y;
+          lookLast.x = t.clientX; lookLast.y = t.clientY;
+          if (pov.state !== "flying") {   // 飞进去的这一秒钟不接受拖动，落地就还给用户
+            yaw -= mx * TOUCH_LOOK_SENS;
+            pitch -= my * TOUCH_LOOK_SENS;
+            pitch = Math.max(-pitchLimit, Math.min(pitchLimit, pitch));
+          }
+          if (!lookMoved) {
+            var sdx = t.clientX - lookStart.x, sdy = t.clientY - lookStart.y;
+            if (Math.hypot(sdx, sdy) > TAP_MOVE_THRESHOLD) lookMoved = true;
+          }
+        }
+      }
+      e.preventDefault();
+    }
+
+    function onTouchEnd(e) {
+      for (var i = 0; i < e.changedTouches.length; i++) {
+        var t = e.changedTouches[i];
+        if (t.identifier === joyTouchId) {
+          joyTouchId = null;
+          joyVec.x = 0; joyVec.y = 0;
+          joyKnob.style.transform = "translate(0,0)";
+          joyOuter.classList.remove("dragging");
+        } else if (t.identifier === lookTouchId) {
+          if (!lookMoved && !lightboxOpen) tryMobilePhotoTap(t.clientX, t.clientY);
+          lookTouchId = null;
+        }
+      }
+    }
+
+    function startInput() {
+      window.addEventListener("keydown", function (e) {
+        keys[e.code] = true;
+        // ESC 退 POV。浏览器同时也会解开 PointerLock,那是它的默认行为,
+        // 解开之后原来那张「点击画面重新锁定」的卡片照常出来,行为没变。
+        if (e.code === "Escape") povExit();
+      });
+      window.addEventListener("keyup", function (e) { keys[e.code] = false; });
+
+      $("povExit").addEventListener("click", function (e) { e.preventDefault(); povExit(); });
+      // 灯箱降级成次要入口:只从这儿进,原来的开关逻辑一个字没改
+      $("povRaw").addEventListener("click", function (e) {
+        e.preventDefault();
+        if (pov.photo) openPhotoLightbox(pov.photo);
+      });
+
+      document.addEventListener("pointerlockchange", onPointerLockChange);
+      document.addEventListener("pointerlockerror", onPointerLockError);
+      document.addEventListener("mousemove", onMouseMove);
+      // cardLock 是覆盖整个画面的遮罩；把事件绑在整层上，文案“点击画面”才是真的。
+      // 不再同时绑 lockBtn，避免按钮点击冒泡后请求两次 Pointer Lock。
+      $("cardLock").addEventListener("click", requestLock);
+      canvasEl.addEventListener("mousedown", onDesktopMouseDown);
+      document.addEventListener("mouseup", onDesktopMouseUp);
+
+      $("lbClose").addEventListener("click", closePhotoLightbox);
+      $("photoLightbox").addEventListener("click", function (e) {
+        if (e.target.id === "photoLightbox") closePhotoLightbox();
+      });
+
+      if (isTouchDevice()) {
+        if (allowWalk) joyOuter.classList.add("on");
+        canvasEl.addEventListener("touchstart", onTouchStart, { passive: false });
+        canvasEl.addEventListener("touchmove", onTouchMove, { passive: false });
+        canvasEl.addEventListener("touchend", onTouchEnd, { passive: false });
+        canvasEl.addEventListener("touchcancel", onTouchEnd, { passive: false });
+        $("mobileHint").classList.add("show");
+        setTimeout(function () { $("mobileHint").classList.remove("show"); }, 3000);
+      }
+
+      window.addEventListener("resize", onResize);
+      window.addEventListener("orientationchange", onResize);
+    }
+
+    function onResize() {
+      camera.aspect = window.innerWidth / window.innerHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize(window.innerWidth, window.innerHeight);
+    }
+
+    // ---------------- 每帧：移动 + 行走范围限制 + 渲染 ----------------
+    var clock = new THREE.Clock();
+    var euler = new THREE.Euler(0, 0, 0, "YXZ");
+
+    function tick() {
+      var dt = Math.min(0.1, clock.getDelta());
+
+      // POV 的缓动直接改 yaw/pitch/相机位置,必须排在 euler.set 之前,否则这一帧慢一拍
+      povTick(performance.now());
+
+      euler.set(pitch, yaw, 0);
+      camera.quaternion.setFromEuler(euler);
+
+      if (locked) updateCrosshairHover();
+
+      // 灯箱开着(paused=true)时跳过走动,人不动,专心看照片。
+      // POV 飞进去的那一秒也跳过:那一秒相机归缓动管,WASD/摇杆插一脚会打架。
+      // 落地进 active 之后漫游全恢复(队友原话:也可以自由地漫游移动)。
+      if (allowWalk && !paused && pov.state !== "flying") {
+        var moveF = (keys.KeyW ? 1 : 0) - (keys.KeyS ? 1 : 0);
+        var moveR = (keys.KeyD ? 1 : 0) - (keys.KeyA ? 1 : 0);
+        if (isTouchDevice()) {
+          moveF += -joyVec.y;
+          moveR += joyVec.x;
+        }
+        var len = Math.hypot(moveF, moveR);
+        if (len > 1) { moveF /= len; moveR /= len; }
+
+        if (moveF !== 0 || moveR !== 0) {
+          var sprint = keys.ShiftLeft || keys.ShiftRight;
+          var speed = BASE_SPEED * (sprint ? SPRINT_MULT : 1);
+          var fx = -Math.sin(yaw), fz = -Math.cos(yaw);
+          var rx = Math.cos(yaw), rz = -Math.sin(yaw);
+          var dx = (fx * moveF + rx * moveR) * speed * dt;
+          var dz = (fz * moveF + rz * moveR) * speed * dt;
+
+          var np = clampWalk(camera.position.x + dx, camera.position.z + dz);
+          camera.position.x = np.x;
+          camera.position.z = np.z;
+        }
+      }
+
+      renderer.render(scene, camera);
+    }
+  }
+
+  function detectWebGL() {
+    try {
+      var c = document.createElement("canvas");
+      return !!(window.WebGLRenderingContext &&
+        (c.getContext("webgl2") || c.getContext("webgl") || c.getContext("experimental-webgl")));
+    } catch (e) { return false; }
+  }
+
+  boot();
+})();
+</script>
+</body>
+</html>

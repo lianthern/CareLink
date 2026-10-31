@@ -1,0 +1,91 @@
+{
+  "schemaVersion": "1.0",
+  "id": "wedding-motion-v1",
+  "version": "0.1.0",
+  "mode": "prebuilt-demo",
+  "locale": "zh-CN",
+  "title": "庭间 · 空间视频样片",
+  "projection": "equirectangular-mono",
+  "angleUnit": "deg",
+  "disclosure": "本体验使用 AI 生成的婚礼全景场景合成空间视频，并加入引导镜头和走动起伏，用于验证播放、环看和截帧回跳流程；不对应真实人物、真实婚礼或实际上传记录。",
+  "inputSimulation": {
+    "displayedClipCount": 3,
+    "sourcePanoramaCount": 4,
+    "state": "preuploaded",
+    "processingState": "complete",
+    "sourceType": "ai-generated-panoramas",
+    "movementType": "guided-camera-simulation"
+  },
+  "video": {
+    "src": "/experiences/wedding-motion/wedding-spatial-walkthrough.mp4",
+    "poster": "/experiences/wedding-motion/poster.jpg",
+    "durationSec": 16.041667,
+    "width": 1920,
+    "height": 960,
+    "fps": 24,
+    "codec": "h264",
+    "profile": "High",
+    "pixelFormat": "yuv420p",
+    "muted": true,
+    "loop": true,
+    "sha256": "30c0dd41660b25e5630a4a5faf20268d36b2bbc7b53b0689d948f8f4e89d362c"
+  },
+  "captures": [
+    {
+      "id": "arrival",
+      "timestampSec": 1.5,
+      "frameNumber": 36,
+      "src": "/experiences/wedding-motion/frame-01.jpg",
+      "equirectangularSource": "/experiences/wedding-motion/still-01-welcome-1.50s.jpg",
+      "title": "沿花径入场",
+      "anchor": {
+        "yawDeg": -12,
+        "pitchDeg": -1,
+        "fovDeg": 67
+      },
+      "sha256": "f6148e1c9201bf80442606eda29eed6cdff06fb99b2e79d613b742e2ae054753"
+    },
+    {
+      "id": "vows",
+      "timestampSec": 5.25,
+      "frameNumber": 126,
+      "src": "/experiences/wedding-motion/frame-02.jpg",
+      "equirectangularSource": "/experiences/wedding-motion/still-02-ceremony-5.25s.jpg",
+      "title": "走近誓言",
+      "anchor": {
+        "yawDeg": 2,
+        "pitchDeg": 0,
+        "fovDeg": 67
+      },
+      "sha256": "59ccc0a996ccc1594fdaf8e9a04a4885acd1120e0c25aebdd9594115ff1a47bc"
+    },
+    {
+      "id": "dinner",
+      "timestampSec": 9.25,
+      "frameNumber": 222,
+      "src": "/experiences/wedding-motion/frame-03.jpg",
+      "equirectangularSource": "/experiences/wedding-motion/still-03-dinner-9.25s.jpg",
+      "title": "穿过烛光长桌",
+      "anchor": {
+        "yawDeg": -4,
+        "pitchDeg": -1,
+        "fovDeg": 67
+      },
+      "sha256": "4dfdff8ece3f11aa449ad33d3f3090a37b7de0f07b8741e653fcd714a45a2305"
+    },
+    {
+      "id": "afterparty",
+      "timestampSec": 13.5,
+      "frameNumber": 324,
+      "src": "/experiences/wedding-motion/frame-04.jpg",
+      "equirectangularSource": "/experiences/wedding-motion/still-04-afterparty-13.50s.jpg",
+      "title": "抵达星夜派对",
+      "anchor": {
+        "yawDeg": 5,
+        "pitchDeg": -2,
+        "fovDeg": 67
+      },
+      "sha256": "567d7d02f82d0c693eae26cdf35f882ba3d436233b8080ce78b5fc8df2355e7f"
+    }
+  ]
+}

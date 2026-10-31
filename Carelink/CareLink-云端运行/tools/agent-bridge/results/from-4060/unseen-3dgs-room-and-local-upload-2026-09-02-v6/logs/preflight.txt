@@ -1,0 +1,53 @@
+PREVIEW_RUNS_BEFORE=0
+QUALITY_RUNS_BEFORE=0
+NVIDIA GeForce RTX 4060 Laptop GPU, 596.49, 8188, 2007, 20
+Filesystem         1B-blocks        Used     Available Use% Mounted on
+/dev/sdd       1081101176832 23842631680 1002266189824   3% /
+test_csrf_is_required (tests.test_local_video_intake.IntakeTests) ... 127.0.0.1 - - [02/Sep/2026 21:49:01] "/api/upload" 403 -
+ok
+test_extension_is_rejected_before_write (tests.test_local_video_intake.IntakeTests) ... 127.0.0.1 - - [02/Sep/2026 21:49:02] "/api/upload" 415 -
+ok
+test_health_is_loopback_and_no_autostart (tests.test_local_video_intake.IntakeTests) ... 127.0.0.1 - - [02/Sep/2026 21:49:02] "/api/health" 200 -
+ok
+test_public_bind_and_windows_mount_are_refused (tests.test_local_video_intake.IntakeTests) ... ok
+test_streamed_upload_creates_private_local_job (tests.test_local_video_intake.IntakeTests) ... 127.0.0.1 - - [02/Sep/2026 21:49:03] "/api/upload" 201 -
+ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 2.554s
+
+OK
+test_capped_sampling_preserves_full_duration (__main__.AdapterConventionTests) ... ok
+test_nearest_timestamp_is_deterministic (__main__.AdapterConventionTests) ... ok
+test_opencv_to_opengl_camera_axes (__main__.AdapterConventionTests) ... ok
+test_rotation_is_orthonormal (__main__.AdapterConventionTests) ... ok
+test_trajectory_duration_can_trigger_cap_inside_sensor_overlap (__main__.AdapterConventionTests) ... ok
+test_uncapped_sampling_preserves_rate (__main__.AdapterConventionTests) ... ok
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.015s
+
+OK
+test_dataparser_translation_is_scaled_after_transform (__main__.ViewerTransformTests) ... ok
+test_matrix_quaternion_roundtrip (__main__.ViewerTransformTests) ... ok
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.011s
+
+OK
+test_absolute_and_parent_paths_are_rejected (__main__.SafeExtractionTests) ... ok
+test_links_are_rejected (__main__.SafeExtractionTests) ... ok
+test_regular_relative_member_is_allowed (__main__.SafeExtractionTests) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.003s
+
+OK
+5b63e233ae96d7ded9476d4e6ebf1883e63b4ff620d39eea4b769740e37456ca  scripts/local_video_intake.py
+6144c49085456cf25992ad63facbe494b5002d0dc84fd1ff50e8f82dfdb38915  tests/test_local_video_intake.py
+bff92159060fdc8a8601c0af88422b20d98f922df4db4f08ecb1832e531de68a  scripts/windows/Start-Local-VideoIntake.ps1
+ab9abc51768c71379b389081c1568a2209c5c1a0a4f01fc32cb22fb778ae17b3  scripts/windows/Stop-Local-VideoIntake.ps1
+ADAPTER_CONTRACT=PASS
+ANCHORS=frame_00000.png,frame_00060.png,frame_00119.png
+  --max-num-iterations 7000 \
+PREFLIGHT=PASS

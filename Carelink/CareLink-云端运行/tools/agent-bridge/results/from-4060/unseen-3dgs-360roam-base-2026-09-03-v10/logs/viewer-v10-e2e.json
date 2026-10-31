@@ -1,0 +1,515 @@
+{
+  "manifest": {
+    "$schema": "./scene.schema.json",
+    "sceneRevisionId": "360roam-base-r001",
+    "name": "HKUST 360Roam base - v10 moving-panorama canary",
+    "sceneAsset": {
+      "url": "./assets/v10/360roam-base-v10.scene.sog",
+      "format": "sog",
+      "required": true,
+      "position": [
+        0,
+        0,
+        0
+      ],
+      "rotationEuler": [
+        -90,
+        0,
+        0
+      ],
+      "scale": 1
+    },
+    "backgroundColor": [
+      0.15,
+      0.15,
+      0.15
+    ],
+    "defaultPhotoAnchorId": "camera-support-center",
+    "navigation": {
+      "eyeHeight": 0.000627667,
+      "eyeHeightStatistic": "median-oriented-camera-y",
+      "moveSpeed": 0.124608722,
+      "lookSensitivity": 0.11,
+      "defaultFov": 70,
+      "fovRangeDegrees": [
+        30,
+        90
+      ],
+      "sprintMultiplier": 3,
+      "startMode": "walk",
+      "boundaryType": "buffered-camera-convex-hull",
+      "boundaryXZ": [
+        [
+          -0.553289549,
+          -0.519960431
+        ],
+        [
+          0.121491426,
+          -1.035622258
+        ],
+        [
+          0.461600129,
+          -0.895558711
+        ],
+        [
+          0.515169728,
+          -0.774922735
+        ],
+        [
+          0.5483587,
+          0.628709151
+        ],
+        [
+          0.414726267,
+          0.783614843
+        ],
+        [
+          0.289798479,
+          0.861280516
+        ],
+        [
+          0.158861636,
+          0.823712133
+        ],
+        [
+          -0.260044977,
+          0.633085396
+        ],
+        [
+          -0.381915066,
+          0.569734875
+        ],
+        [
+          -0.512626323,
+          0.43438491
+        ]
+      ],
+      "startPose": {
+        "position": [
+          0.010168638,
+          0.000627667,
+          0.007819623
+        ],
+        "quaternion": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "fov": 70
+      }
+    },
+    "photoAnchors": [
+      {
+        "id": "camera-support-center",
+        "label": "Camera support center (photo-return out of scope)",
+        "sceneRevisionId": "360roam-base-r001",
+        "position": [
+          0.010168638,
+          0.000627667,
+          0.007819623
+        ],
+        "quaternion": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "fov": 70
+      }
+    ]
+  },
+  "initial": {
+    "position": [
+      0.010168638080358505,
+      0.0006276670028455555,
+      0.00781962275505066
+    ],
+    "quaternion": [
+      0,
+      0,
+      0,
+      1
+    ],
+    "euler": [
+      0,
+      0,
+      0
+    ],
+    "fov": 70,
+    "mode": "walk",
+    "walkY": 0.000627667,
+    "speedTier": "normal",
+    "moveSpeed": 0.5508241245000001
+  },
+  "anchorObservation": {
+    "expected": {
+      "id": "camera-support-center",
+      "label": "Camera support center (photo-return out of scope)",
+      "sceneRevisionId": "360roam-base-r001",
+      "position": [
+        0.010168638,
+        0.000627667,
+        0.007819623
+      ],
+      "quaternion": [
+        0,
+        0,
+        0,
+        1
+      ],
+      "fov": 70
+    },
+    "actual": {
+      "position": [
+        0.010168638080358505,
+        0.0006276670028455555,
+        0.00781962275505066
+      ],
+      "quaternion": [
+        0,
+        0,
+        0,
+        1
+      ],
+      "euler": [
+        0,
+        0,
+        0
+      ],
+      "fov": 70,
+      "mode": "walk",
+      "walkY": 0.000627667,
+      "speedTier": "normal",
+      "moveSpeed": 0.5508241245000001
+    },
+    "positionError": 2.4494934032504023e-10,
+    "quaternionError": 0,
+    "evaluatedAsGate": false,
+    "reason": "photo return is explicitly out of scope for v10"
+  },
+  "directions": {
+    "front": {
+      "position": [
+        0.010168638080358505,
+        0.0006276670028455555,
+        0.00781962275505066
+      ],
+      "quaternion": [
+        0,
+        0,
+        0,
+        1
+      ],
+      "euler": [
+        0,
+        0,
+        0
+      ],
+      "fov": 70,
+      "mode": "walk",
+      "walkY": 0.000627667,
+      "speedTier": "normal",
+      "moveSpeed": 0.5508241245000001
+    },
+    "back": {
+      "position": [
+        0.010168638080358505,
+        0.0006276670028455555,
+        0.00781962275505066
+      ],
+      "quaternion": [
+        0,
+        0.9999939076579507,
+        0,
+        0.003490651369288835
+      ],
+      "euler": [
+        180,
+        0.3999999947362164,
+        -180
+      ],
+      "fov": 70,
+      "mode": "walk",
+      "walkY": 0.000627667,
+      "speedTier": "normal",
+      "moveSpeed": 0.5508241245000001
+    },
+    "left": {
+      "position": [
+        0.010168638080358505,
+        0.0006276670028455555,
+        0.00781962275505066
+      ],
+      "quaternion": [
+        0,
+        -0.6946583710457205,
+        0,
+        0.7193397997720593
+      ],
+      "euler": [
+        0,
+        -88.00000009346542,
+        0
+      ],
+      "fov": 70,
+      "mode": "walk",
+      "walkY": 0.000627667,
+      "speedTier": "normal",
+      "moveSpeed": 0.5508241245000001
+    },
+    "right": {
+      "position": [
+        0.010168638080358505,
+        0.0006276670028455555,
+        0.00781962275505066
+      ],
+      "quaternion": [
+        0,
+        0.6946583710457205,
+        0,
+        0.7193397997720593
+      ],
+      "euler": [
+        0,
+        88.00000009346542,
+        0
+      ],
+      "fov": 70,
+      "mode": "walk",
+      "walkY": 0.000627667,
+      "speedTier": "normal",
+      "moveSpeed": 0.5508241245000001
+    },
+    "up": {
+      "position": [
+        0.010168638080358505,
+        0.0006276670028455555,
+        0.00781962275505066
+      ],
+      "quaternion": [
+        0.6087614281775361,
+        0,
+        0,
+        0.7933533409290253
+      ],
+      "euler": [
+        74.99999987994416,
+        0,
+        0
+      ],
+      "fov": 70,
+      "mode": "walk",
+      "walkY": 0.000627667,
+      "speedTier": "normal",
+      "moveSpeed": 0.5508241245000001
+    },
+    "down": {
+      "position": [
+        0.010168638080358505,
+        0.0006276670028455555,
+        0.00781962275505066
+      ],
+      "quaternion": [
+        -0.6087614281775361,
+        0,
+        0,
+        0.7933533409290253
+      ],
+      "euler": [
+        -74.99999987994416,
+        0,
+        0
+      ],
+      "fov": 70,
+      "mode": "walk",
+      "walkY": 0.000627667,
+      "speedTier": "normal",
+      "moveSpeed": 0.5508241245000001
+    }
+  },
+  "movement": {
+    "forwardDistance": 0.1216219887137413,
+    "lateralDistance": 0.12845221534371376,
+    "normalDistance": 0.14233295992016792,
+    "sprintDistance": 0.4339393116533756,
+    "sprintRatio": 3.048761944505086,
+    "routeStart": {
+      "position": [
+        0.010168638080358505,
+        0.0006276670028455555,
+        0.00781962275505066
+      ],
+      "quaternion": [
+        0,
+        0,
+        0,
+        1
+      ],
+      "euler": [
+        0,
+        0,
+        0
+      ],
+      "fov": 70,
+      "mode": "walk",
+      "walkY": 0.000627667,
+      "speedTier": "normal",
+      "moveSpeed": 0.5508241245000001
+    },
+    "route": [
+      {
+        "position": [
+          0.010168638080358505,
+          0.0006276670028455555,
+          -0.09771828353404999
+        ],
+        "quaternion": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "euler": [
+          0,
+          0,
+          0
+        ],
+        "fov": 70,
+        "mode": "walk",
+        "walkY": 0.000627667,
+        "speedTier": "normal",
+        "moveSpeed": 0.5508241245000001
+      },
+      {
+        "position": [
+          0.11339308321475983,
+          0.0006276670028455555,
+          -0.09771828353404999
+        ],
+        "quaternion": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "euler": [
+          0,
+          0,
+          0
+        ],
+        "fov": 70,
+        "mode": "walk",
+        "walkY": 0.000627667,
+        "speedTier": "normal",
+        "moveSpeed": 0.5508241245000001
+      },
+      {
+        "position": [
+          0.11339308321475983,
+          0.0006276670028455555,
+          0.010188178159296513
+        ],
+        "quaternion": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "euler": [
+          0,
+          0,
+          0
+        ],
+        "fov": 70,
+        "mode": "walk",
+        "walkY": 0.000627667,
+        "speedTier": "normal",
+        "moveSpeed": 0.5508241245000001
+      },
+      {
+        "position": [
+          0.007855184376239777,
+          0.0006276670028455555,
+          0.010188178159296513
+        ],
+        "quaternion": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "euler": [
+          0,
+          0,
+          0
+        ],
+        "fov": 70,
+        "mode": "walk",
+        "walkY": 0.000627667,
+        "speedTier": "normal",
+        "moveSpeed": 0.5508241245000001
+      }
+    ],
+    "routeEnd": {
+      "position": [
+        0.007855184376239777,
+        0.0006276670028455555,
+        0.010188178159296513
+      ],
+      "quaternion": [
+        0,
+        0,
+        0,
+        1
+      ],
+      "euler": [
+        0,
+        0,
+        0
+      ],
+      "fov": 70,
+      "mode": "walk",
+      "walkY": 0.000627667,
+      "speedTier": "normal",
+      "moveSpeed": 0.5508241245000001
+    },
+    "routeReturnError": 0.003310909655077122
+  },
+  "ui": {
+    "navigationMode": "自由行走",
+    "speedMode": "正常 1×",
+    "fov": "65"
+  },
+  "errors": [],
+  "checks": {
+    "sogReady": true,
+    "startWalkMode": true,
+    "startPitchLevel": true,
+    "startRollLevel": true,
+    "startAtFixedHeight": true,
+    "photoReturnOutOfScope": true,
+    "directionFrontLevel": true,
+    "directionBackRotates": true,
+    "directionLeftRotates": true,
+    "directionRightRotates": true,
+    "directionUpLooksUp": true,
+    "directionDownLooksDown": true,
+    "forwardMotionVisible": true,
+    "lateralMotionVisible": true,
+    "normalWalkVisible": true,
+    "sprintRatioIsThree": true,
+    "movementKeepsFixedY": true,
+    "routeStaysInsideBoundary": true,
+    "twoAxisRouteReturnsNearStart": true,
+    "uiShowsModeSpeedAndFov": true,
+    "noConsoleOrPageErrors": true,
+    "walkthroughDuration": true
+  },
+  "walkthroughCapture": {
+    "framesDir": "D:\\UNSEEN\\v10-evidence-20260903T2118\\walkthrough-frames",
+    "frameCount": 103,
+    "elapsedSeconds": 13.925
+  },
+  "status": "PASS"
+}

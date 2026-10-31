@@ -1,0 +1,27 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/demo/demo",
+    "pages/demo-archive/demo-archive",
+    "pages/demo-ai-pano/demo-ai-pano",
+    "pages/demo-detail/demo-detail",
+    "pages/demo-story/demo-story",
+    "pages/demo-vision/demo-vision",
+    "pages/create/create",
+    "pages/space/space",
+    "pages/photos/photos",
+    "pages/pano/pano",
+    "pages/capture/capture",
+    "pages/sweep/sweep"
+  ],
+  "window": {
+    "navigationStyle": "custom",
+    "backgroundColor": "#FFF9F7",
+    "backgroundTextStyle": "dark",
+    "navigationBarBackgroundColor": "#FFF9F7",
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "UNSEEN 空间记忆"
+  },
+  "sitemapLocation": "sitemap.json",
+  "style": "v2"
+}

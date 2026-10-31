@@ -1,0 +1,1765 @@
+<!doctype html>
+<html lang="zh">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>UNSEEN · 他们请你交一张照片</title>
+<!--
+  本机后端版宾客页。和 web/join.html(云版)的区别只有一个:这一页【全程走本机后端】。
+    读 = GET  /api/space/<sid>?role=guest
+    写 = POST /api/space/<sid>/upload
+  所以这一页在"电脑就在现场、手机和电脑同一个 wifi"的模式下才用得上,
+  二维码由 server/space.py 的 guest_url() 生成,host.html 在空间还没云发布时也回退到这里。
+  云版那一页一个后端接口都不调(只读写 OSS),替代不了这条本机链路,两页得同时留着。
+
+  换肤记录(2026-07-25):米白纸质风 → UNSEEN 粉金玻璃风。只动样式和标记结构,
+  逻辑(接口调用/上传/轮询/本地账本)一行没动。引入 ../app/theme.css 做底色系统,
+  本页自己的 <style> 只保留变量值和 join 专属结构。罗盘 compass() 已删,
+  方向信息改成文字,详见下面 taskDirWidget()。
+-->
+<link rel="stylesheet" href="../app/theme.css">
+<style>
+  /* 旧变量名一个都没改,只把值换成 UNSEEN 色板,这样下面所有选择器不用动就换了皮。 */
+  :root{
+    --cream:#fff4f1; --ink:#46343c; --sub:#8a7480; --red:#e8628c; --gold:#cf8a55;
+    --paper:rgba(255,255,255,.78); --line:rgba(214,142,160,.22);
+    --bar-h:74px;
+  }
+  *{ box-sizing:border-box; -webkit-tap-highlight-color:transparent; }
+  html,body{ margin:0; min-height:100%; }
+  body{
+    font-size:15px;
+    padding:0 0 calc(var(--bar-h) + env(safe-area-inset-bottom,0));
+  }
+  .wrap{ position:relative; z-index:1; width:100%; max-width:460px; margin:0 auto; padding:0 18px; }
+  img{ display:block; max-width:100%; }
+  button{ font-family:inherit; }
+
+  /* 返回键:只在带 ?back= 时才显示,不带就跟以前一模一样 */
+  .backbtn{
+    width:36px; height:36px; border-radius:50%; flex:none; display:none;
+    place-items:center; background:var(--card); border:1px solid var(--card-line);
+    box-shadow:var(--shadow); color:var(--ink); text-decoration:none; font-size:15px;
+  }
+  .backbtn.on{ display:grid; }
+  #wBack{ position:absolute; left:18px; top:calc(18px + env(safe-area-inset-top,0)); }
+
+  /* ============ 开场:填昵称(一屏一件事) ============ */
+  #welcome{
+    position:fixed; inset:0; z-index:60; overflow-y:auto;
+    background:
+      radial-gradient(50% 34% at 18% 8%, rgba(255,214,180,.55) 0%, rgba(255,214,180,0) 100%),
+      radial-gradient(46% 30% at 86% 16%, rgba(255,182,205,.5) 0%, rgba(255,182,205,0) 100%),
+      radial-gradient(60% 40% at 50% 100%, rgba(255,199,214,.42) 0%, rgba(255,199,214,0) 100%),
+      linear-gradient(165deg,var(--bg-1) 0%,var(--bg-2) 46%,var(--bg-3) 100%);
+    display:flex; flex-direction:column; justify-content:center;
+    padding:40px 22px calc(34px + env(safe-area-inset-bottom,0));
+    text-align:center;
+  }
+  #welcome.off{ display:none; }
+  .kicker{ font-size:11px; letter-spacing:.42em; color:var(--pink); font-weight:700; }
+  .kicker span{ opacity:.55; letter-spacing:.2em; color:var(--ink-3); }
+  .names{
+    font-family:"Songti SC","STSong",serif; font-size:34px; font-weight:600; line-height:1.2;
+    letter-spacing:2px; margin:22px 0 6px;
+  }
+  .names .heart{ color:var(--pink); font-size:22px; vertical-align:middle; margin:0 9px; }
+  .subdate{ font-size:12px; letter-spacing:3px; color:var(--ink-3); }
+  .invite-line{
+    font-family:"Songti SC","STSong",serif; font-size:20px; letter-spacing:1px;
+    margin:26px 0 8px; color:var(--ink);
+  }
+  .invite-sub{ font-size:13px; color:var(--ink-2); line-height:1.9; max-width:300px; margin:0 auto; }
+  .proof{
+    display:inline-flex; align-items:center; gap:8px; margin:22px auto 0;
+    background:var(--card); border:1px solid var(--card-line); border-radius:999px;
+    backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px); box-shadow:var(--shadow);
+    padding:8px 16px; font-size:12.5px; color:var(--ink-2);
+  }
+  .proof b{ color:var(--pink); font-size:15px; font-family:"Songti SC",serif; }
+  .faces{ display:flex; }
+  .faces i{
+    width:22px; height:22px; border-radius:50%; margin-left:-7px; border:2px solid #fff;
+    font-style:normal; font-size:10px; font-weight:700; color:#fff; line-height:19px; text-align:center;
+  }
+  .faces i:first-child{ margin-left:0; }
+
+  .nick-box{ margin:30px auto 0; max-width:320px; }
+  .nick-label{ font-size:12px; color:var(--ink-2); margin-bottom:10px; letter-spacing:1px; }
+  input[type=text]{
+    width:100%; height:56px; border-radius:var(--r-sm); border:1.5px solid var(--line);
+    background:rgba(255,255,255,.85); color:var(--ink); font-size:17px; text-align:center;
+    outline:none; font-family:inherit; transition:border-color .15s, box-shadow .15s;
+  }
+  input[type=text]:focus{ border-color:#ff9fb4; box-shadow:0 0 0 4px rgba(255,159,180,.15); }
+  .btn-main{
+    display:flex; align-items:center; justify-content:center; gap:8px; width:100%;
+    background:var(--grad); color:#fff; font-size:16px; font-weight:700; letter-spacing:1px;
+    border:none; height:56px; border-radius:28px; margin-top:14px; cursor:pointer;
+    box-shadow:0 10px 24px rgba(242,115,155,.32);
+    transition:transform .18s cubic-bezier(.2,.7,.3,1), box-shadow .18s, filter .18s, opacity .15s;
+  }
+  .btn-main:hover{ filter:saturate(1.05); }
+  .btn-main:active{ transform:translateY(1px) scale(.985); box-shadow:0 5px 14px rgba(242,115,155,.28); }
+  .btn-main:disabled{ opacity:.45; box-shadow:none; }
+  .tiny{ font-size:11px; color:var(--ink-3); margin-top:16px; letter-spacing:.5px; }
+
+  /* ============ 顶部条 ============ */
+  header{
+    position:sticky; top:0; z-index:20;
+    background:rgba(255,255,255,.72); backdrop-filter:blur(18px); -webkit-backdrop-filter:blur(18px);
+    border-bottom:1px solid var(--card-line);
+  }
+  .head-in{ max-width:460px; margin:0 auto; padding:12px 18px 0; }
+  .head-row{ display:flex; align-items:center; justify-content:space-between; gap:10px; }
+  .head-names{ font-family:"Songti SC","STSong",serif; font-size:17px; font-weight:600; letter-spacing:1px;
+    flex:1; min-width:0; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+  .head-names .heart{ color:var(--pink); font-size:12px; margin:0 5px; }
+  .head-me{
+    display:flex; align-items:center; gap:6px; font-size:12px; color:var(--ink-2);
+    background:rgba(255,255,255,.72); border:1px solid var(--card-line); border-radius:999px; padding:5px 11px;
+    cursor:pointer; flex:none;
+  }
+  .head-me b{ color:var(--ink); font-weight:700; }
+  .tabs{ display:flex; gap:26px; margin-top:12px; }
+  .tab{
+    background:none; border:none; padding:0 0 10px; font-size:14px; font-weight:700;
+    color:var(--ink-3); cursor:pointer; position:relative; letter-spacing:.5px;
+  }
+  .tab.on{ color:var(--ink); }
+  .tab.on::after{
+    content:""; position:absolute; left:0; right:0; bottom:0; height:3px; border-radius:2px;
+    background:var(--grad);
+  }
+  .tab .dot{
+    display:inline-block; min-width:17px; height:17px; line-height:17px; border-radius:9px;
+    background:var(--grad); color:#fff; font-size:10.5px; margin-left:5px; padding:0 5px;
+    box-shadow:0 3px 8px rgba(242,115,155,.3);
+  }
+
+  /* ============ 任务墙 ============ */
+  .sect{ margin:22px 0 12px; }
+  .sect h2{ font-size:15px; font-weight:700; margin:0 0 3px; letter-spacing:.02em; }
+  .sect p{ font-size:12px; color:var(--ink-3); margin:0; }
+
+  .card{
+    background:var(--card); border:1px solid var(--card-line); border-radius:var(--r);
+    overflow:hidden; margin-bottom:16px; position:relative;
+    box-shadow:var(--shadow); backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px);
+  }
+  .card.done{ opacity:.55; }
+
+  /* 空间任务 = 通缉令 */
+  .poster{ position:relative; background:#3a2530; }
+  .poster img{ width:100%; height:180px; object-fit:cover; }
+  .poster::after{
+    content:""; position:absolute; inset:8px; border:1.5px dashed rgba(255,240,245,.45);
+    border-radius:14px; pointer-events:none;
+  }
+  .poster .stamp{
+    position:absolute; right:12px; top:12px; transform:rotate(-9deg);
+    border:2px solid rgba(255,255,255,.9); color:#fff; border-radius:8px;
+    font-size:11px; font-weight:700; letter-spacing:3px; padding:4px 9px 4px 12px;
+    background:linear-gradient(95deg,rgba(255,110,150,.88),rgba(255,170,110,.88));
+  }
+  .poster .yawtag{
+    position:absolute; left:14px; bottom:14px; color:#fff; font-size:11px; letter-spacing:1px;
+    background:rgba(58,37,48,.55); backdrop-filter:blur(6px); -webkit-backdrop-filter:blur(6px);
+    border-radius:999px; padding:4px 10px;
+  }
+  .card-body{ padding:15px 16px 16px; }
+  .badge{
+    display:inline-flex; align-items:center; gap:5px; font-size:11px; font-weight:700;
+    letter-spacing:1px; padding:4px 10px; border-radius:999px; margin-bottom:9px;
+    border:1px solid transparent;
+  }
+  .badge.gap{ background:rgba(255,255,255,.72); color:var(--ink-2); border-color:var(--card-line); }
+  .badge.wish{ background:linear-gradient(95deg,#ffe3ea,#fff0dc); color:#c25a76; border-color:#ffd6e0; }
+  /* 房间药丸:只在多节点空间出现,跟在类型徽章后面,告诉宾客这条任务属于哪个房间 */
+  .badge.node{ background:rgba(58,37,48,.06); color:var(--ink-2); border-color:var(--card-line); margin-left:6px; }
+  .card-title{ font-size:18px; font-weight:700; margin:0 0 6px; letter-spacing:.5px; }
+  .card.wish .card-title{ font-family:"Kaiti SC","STKaiti","Songti SC",serif; font-size:20px; line-height:1.45; }
+  .card-brief{ font-size:13px; color:var(--ink-2); line-height:1.7; margin:0; }
+  .card-foot{ display:flex; align-items:center; gap:12px; margin-top:15px; }
+  .bounty{
+    font-family:"Songti SC",serif; font-size:15px; color:var(--gold); font-weight:700;
+    flex:none; letter-spacing:.5px;
+  }
+  .bounty i{ font-style:normal; font-size:11px; color:var(--ink-3); font-family:inherit; margin-left:2px; }
+  .btn-take{
+    flex:1; height:48px; border-radius:24px; border:none; cursor:pointer;
+    background:var(--grad); color:#fff; font-size:15px; font-weight:700; letter-spacing:1px;
+    box-shadow:0 8px 18px rgba(242,115,155,.3);
+    transition:transform .18s cubic-bezier(.2,.7,.3,1), box-shadow .18s, filter .18s;
+  }
+  .btn-take:hover{ transform:translateY(-1px); filter:saturate(1.05); }
+  .btn-take:active{ transform:translateY(1px) scale(.985); }
+  .claimed{
+    flex:1; height:48px; border-radius:24px; background:rgba(255,255,255,.6); color:var(--ink-2);
+    border:1px solid var(--card-line);
+    font-size:13.5px; display:flex; align-items:center; justify-content:center; gap:6px;
+  }
+  /* 系统关掉的任务多一行原因,独占一行竖排,别把那颗药丸挤成三行(不用 :has,老手机浏览器不认) */
+  .card.sysclosed-card .card-foot{ flex-wrap:wrap; }
+  .claimed.sysclosed{
+    flex:1 0 100%; flex-direction:column; gap:2px; height:auto; min-height:44px;
+    padding:9px 14px; line-height:1.35;
+  }
+  .closed-why{ font-size:11.5px; color:var(--ink-3, var(--ink-2)); opacity:.75; text-align:center; }
+
+  /* 心愿任务 = 暖色手写卡 */
+  .card.wish{
+    background:linear-gradient(160deg, rgba(255,240,244,.88) 0%, rgba(255,236,220,.88) 100%);
+    border-color:#ffd9e2;
+  }
+  .card.wish .card-body{ padding:18px 18px 18px; }
+  .wish-quote{ font-size:26px; color:#f0a9bd; font-family:"Songti SC",serif; line-height:.6; }
+  .wish-from{ font-size:11.5px; color:#b3808f; margin-top:12px; letter-spacing:1px; }
+
+  /* 罗盘删了(Max 拍板),原来那个位置换成一句方向文字。度数和八方位口语一个都没少。 */
+  .dir-pill{
+    flex:none; font-size:12px; font-weight:600; color:var(--ink-2);
+    background:rgba(255,255,255,.72); border:1px solid var(--card-line);
+    border-radius:999px; padding:5px 11px; letter-spacing:.4px;
+  }
+
+  /* 自由投稿入口:虚线描边,跟实心的任务卡拉开层级,不抢任务墙的主角位 */
+  .btn-free{
+    display:flex; align-items:center; gap:12px; width:100%; text-align:left;
+    margin:0 0 16px; padding:14px 15px; cursor:pointer;
+    background:rgba(255,255,255,.6); border:1.5px dashed #f3bccb; border-radius:var(--r);
+    color:var(--ink); font-size:15px;
+    transition:transform .18s cubic-bezier(.2,.7,.3,1), box-shadow .18s, background .18s;
+  }
+  .btn-free:hover{ transform:translateY(-1px); box-shadow:var(--shadow); background:rgba(255,255,255,.78); }
+  .btn-free:active{ transform:translateY(1px) scale(.99); }
+  .btn-free .bf-i{ font-size:20px; flex:none; }
+  .btn-free .bf-t{ flex:1; min-width:0; font-weight:700; letter-spacing:.3px; }
+  .btn-free .bf-t i{
+    display:block; font-style:normal; font-weight:400; font-size:11.5px;
+    color:var(--ink-3); margin-top:3px; letter-spacing:0;
+  }
+  .btn-free .bf-a{ flex:none; color:var(--pink); font-size:15px; }
+
+  .empty{
+    text-align:center; color:var(--ink-2); font-size:13px; line-height:2;
+    padding:46px 20px; border:1.5px dashed var(--line); border-radius:var(--r);
+    background:rgba(255,255,255,.45);
+  }
+  .empty .big{ font-size:30px; display:block; margin-bottom:10px; opacity:.65; }
+
+  /* ============ 我的贡献 ============ */
+  .stats{
+    display:flex; background:var(--card); border:1px solid var(--card-line); border-radius:var(--r);
+    padding:18px 0; margin:22px 0 18px; box-shadow:var(--shadow);
+    backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px);
+  }
+  .stat{ flex:1; text-align:center; border-right:1px solid var(--line); }
+  .stat:last-child{ border-right:none; }
+  .stat b{ display:block; font-family:"Songti SC",serif; font-size:26px; font-weight:600; line-height:1.1; }
+  .stat span{ font-size:11px; color:var(--ink-3); letter-spacing:1px; }
+  .stat.hi b{ color:var(--pink); }
+
+  /* 待审那几张的说明:紧跟在三个数字下面,解释为什么它们没被算进去 */
+  .mine-note{
+    font-size:12px; color:var(--ink-2); line-height:1.8; margin:-8px 0 16px;
+    background:rgba(255,255,255,.55); border:1px solid var(--card-line);
+    border-radius:var(--r-sm); padding:10px 13px;
+  }
+  .mine-row{
+    display:flex; gap:12px; align-items:center; background:var(--card);
+    border:1px solid var(--card-line); border-radius:var(--r-sm); padding:10px; margin-bottom:10px;
+    box-shadow:var(--shadow); backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px);
+  }
+  .mine-row img{ width:60px; height:60px; border-radius:12px; object-fit:cover; flex:none; background:#f6e7ec; }
+  .mine-meta{ flex:1; min-width:0; }
+  .mine-dir{ font-size:14.5px; font-weight:700; }
+  /* 机器给的理由可能很长,一行截断就够了,别把卡片撑成两行 */
+  .mine-sub{ font-size:11.5px; color:var(--ink-3); margin-top:3px;
+    white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+  .pill{
+    display:inline-block; font-size:10.5px; font-weight:700; padding:3px 9px; border-radius:999px;
+    letter-spacing:.5px; border:1px solid transparent;
+  }
+  .pill.ok{ background:#e7f7ee; color:#2e8a5f; border-color:#cdeeda; }
+  .pill.wait{ background:linear-gradient(95deg,#ffe3ea,#fff0dc); color:#c25a76; border-color:#ffd6e0; }
+  .pill.no{ background:#f4edf0; color:#96798a; border-color:#e8dce2; }
+
+  /* ============ 上传抽屉 ============ */
+  .mask{
+    position:fixed; inset:0; z-index:40; background:rgba(70,52,60,.44);
+    backdrop-filter:blur(3px); -webkit-backdrop-filter:blur(3px);
+    opacity:0; pointer-events:none; transition:opacity .25s ease;
+  }
+  .mask.on{ opacity:1; pointer-events:auto; }
+  .sheet{
+    position:fixed; left:0; right:0; bottom:0; z-index:50;
+    background:linear-gradient(170deg,#fff8f5 0%,#ffeff0 100%);
+    border-radius:28px 28px 0 0; border-top:1px solid var(--card-line);
+    padding:8px 18px calc(24px + env(safe-area-inset-bottom,0));
+    max-height:88vh; overflow-y:auto;
+    transform:translateY(102%); transition:transform .3s cubic-bezier(.2,.8,.3,1);
+    box-shadow:0 -14px 44px rgba(190,110,130,.24);
+  }
+  .sheet.on{ transform:translateY(0); }
+  .sheet-in{ max-width:460px; margin:0 auto; }
+  .grab{ width:38px; height:4px; border-radius:2px; background:#f0cdd8; margin:6px auto 16px; }
+  .sheet h3{ font-size:18px; margin:0 0 5px; letter-spacing:.5px; }
+  .sheet .sh-sub{ font-size:12.5px; color:var(--ink-2); margin:0 0 18px; line-height:1.7; }
+
+  .picker{
+    position:relative; border:1.5px dashed #f3bccb; border-radius:var(--r-sm);
+    background:rgba(255,255,255,.72);
+    padding:26px 16px; text-align:center; cursor:pointer;
+  }
+  .picker input[type=file]{ position:absolute; inset:0; opacity:0; width:100%; height:100%; }
+  .picker .pi{ font-size:26px; margin-bottom:8px; }
+  .picker .pt{ font-size:14px; font-weight:700; }
+  .picker .ps{ font-size:11.5px; color:var(--ink-3); margin-top:4px; }
+  .picks{ display:flex; flex-wrap:wrap; gap:8px; margin-top:12px; }
+  .picks img{ width:64px; height:64px; border-radius:12px; object-fit:cover; }
+
+  .prog-wrap{ padding:26px 0 8px; text-align:center; }
+  .bar{ height:6px; border-radius:3px; background:#ffe3e9; overflow:hidden; margin:16px 0 10px; }
+  .bar i{ display:block; height:100%; width:0%; background:var(--grad); border-radius:3px; transition:width .25s ease; }
+  .prog-txt{ font-size:13px; color:var(--ink-2); }
+
+  .res{
+    display:flex; gap:12px; align-items:center;
+    background:rgba(255,255,255,.78); border:1px solid var(--card-line);
+    border-radius:var(--r-sm); padding:11px; margin-bottom:10px;
+    opacity:0; transform:translateY(10px); transition:opacity .4s ease, transform .4s ease;
+  }
+  .res.in{ opacity:1; transform:none; }
+  .res img{ width:56px; height:56px; border-radius:12px; object-fit:cover; flex:none; background:#f6e7ec; }
+  .res-main{ flex:1; min-width:0; }
+  .res-t{ font-size:14px; line-height:1.5; }
+  .res-t b{ color:var(--pink); font-weight:700; }
+  .res-s{ font-size:11.5px; color:var(--ink-3); margin-top:4px; }
+  .res-sum{
+    text-align:center; font-size:13.5px; color:var(--ink-2); margin:16px 0 4px;
+    opacity:0; transition:opacity .4s ease;
+  }
+  .res-sum.in{ opacity:1; }
+  .res-sum b{ font-family:"Songti SC",serif; font-size:19px; color:var(--gold); }
+  /* 分数那一行:数字要么是后端给的真值,要么是一句"没拉到",所以单独一行小字放着 */
+  .res-sum .res-pts{ font-size:12px; color:var(--ink-3); margin-top:7px; line-height:1.7; }
+  .btn-ghost{
+    width:100%; height:50px; border-radius:25px; background:rgba(255,255,255,.6);
+    border:1px solid var(--card-line);
+    color:var(--ink-2); font-size:14px; font-weight:600; margin-top:10px; cursor:pointer;
+  }
+
+  /* ============ 底部常驻 ============ */
+  .bottom{
+    position:fixed; left:0; right:0; bottom:0; z-index:30; height:calc(var(--bar-h) + env(safe-area-inset-bottom,0));
+    padding:0 18px env(safe-area-inset-bottom,0);
+    background:rgba(255,255,255,.78); backdrop-filter:blur(18px); -webkit-backdrop-filter:blur(18px);
+    border-top:1px solid var(--card-line);
+    display:flex; align-items:center;
+  }
+  .bottom a{
+    max-width:424px; margin:0 auto; width:100%; height:50px; border-radius:25px;
+    background:var(--card); color:var(--ink); text-decoration:none; font-size:15px; font-weight:700;
+    border:1px solid var(--card-line); box-shadow:var(--shadow);
+    letter-spacing:1px; display:flex; align-items:center; justify-content:center; gap:8px;
+    transition:transform .18s cubic-bezier(.2,.7,.3,1), box-shadow .18s;
+  }
+  .bottom a:hover{ transform:translateY(-1px); box-shadow:var(--shadow-lg); }
+  .bottom a:active{ transform:translateY(0) scale(.99); }
+
+  .toast{
+    position:fixed; left:50%; bottom:calc(var(--bar-h) + 22px); transform:translate(-50%,10px);
+    z-index:70; background:rgba(70,52,60,.92); color:#fff; font-size:13px;
+    padding:11px 18px; border-radius:999px; opacity:0; pointer-events:none;
+    transition:opacity .25s ease, transform .25s ease; max-width:86vw; text-align:center;
+  }
+  .toast.on{ opacity:1; transform:translate(-50%,0); }
+
+  footer{ text-align:center; font-size:10.5px; color:var(--ink-3); padding:26px 0 6px; letter-spacing:.5px; }
+
+  @media (max-width:340px){
+    .names{ font-size:28px; } .card-title{ font-size:16.5px; }
+  }
+</style>
+</head>
+<body class="u-body">
+<div class="u-bokeh"></div>
+
+<!-- ==================== 开场:一屏只干一件事,填个昵称 ==================== -->
+<div id="welcome" class="off">
+  <a class="backbtn" id="wBack" href="#" aria-label="返回">←</a>
+  <div style="max-width:400px;margin:0 auto;width:100%">
+    <div class="kicker">UNSEEN <span>· 空间记忆</span></div>
+    <h1 class="names" id="wNames"></h1>
+    <div class="subdate" id="wDate">&nbsp;</div>
+
+    <div class="invite-line" id="wInvite">请你交一张照片</div>
+    <!-- 口径:系统只认得出 30 度扇区,不是精确位置。全站统一说"方向",这一页跟上。 -->
+    <p class="invite-sub" id="wInviteSub">现场散在每个人手机里。<br>你交的这张,会回到它当时朝着的方向。</p>
+
+    <div class="proof" id="wProof" style="display:none">
+      <span class="faces" id="wFaces"></span>
+      <span>已有 <b id="wPeople">0</b> 位宾客的 <b id="wPhotos">0</b> 张照片放进了空间</span>
+    </div>
+
+    <div class="nick-box">
+      <div class="nick-label">照片上写谁的名字?</div>
+      <input type="text" id="nickInput" maxlength="12" placeholder="比如:新郎表弟 小明" autocomplete="off">
+      <button class="btn-main" id="nickGo" disabled>好了,带我去看看 →</button>
+      <div class="tiny">不用注册、不用装 app,名字只存在你这台手机里</div>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== 主体 ==================== -->
+<header>
+  <div class="head-in">
+    <div class="head-row">
+      <a class="backbtn" id="hBack" href="#" aria-label="返回">←</a>
+      <div class="head-names" id="hNames"></div>
+      <div class="head-me" id="hMe"><span>你好,</span><b id="hNick"></b></div>
+    </div>
+    <div class="tabs">
+      <button class="tab on" data-view="tasks" id="tabTasks">任务墙<span class="dot" id="tabCount">0</span></button>
+      <button class="tab" data-view="mine" id="tabMine">我的贡献</button>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+  <div id="viewTasks">
+    <div class="sect">
+      <h2 id="wallTitle">还缺这些</h2>
+      <p id="wallSub">挑一个去拍,或者从相册里翻一张出来</p>
+    </div>
+    <!-- 自由投稿入口:不绑任何任务。任务全被认领完 / 空间还没发任务时,
+         这是宾客唯一的上传入口,所以它常驻在任务墙顶上,不跟着任务数消失。 -->
+    <button class="btn-free" id="btnFree" type="button">
+      <span class="bf-i">📷</span>
+      <span class="bf-t">不挑任务,随便传一张<i>系统会自己认这是哪个方位,再放回去</i></span>
+      <span class="bf-a">→</span>
+    </button>
+    <div id="taskList"></div>
+  </div>
+
+  <div id="viewMine" style="display:none">
+    <!-- 三个数字【全部】来自后端榜单口径(只算已进空间的照片),页面不再自己攒一套。
+         等新人过目的那几张不计分,单独用 #mineNote 说一句,免得跟上面的数字打架。 -->
+    <div class="stats">
+      <div class="stat"><b id="stPhotos">0</b><span>张已进空间</span></div>
+      <div class="stat hi"><b id="stPoints">0</b><span>分</span></div>
+      <div class="stat"><b id="stDirs">0</b><span>个方位</span></div>
+    </div>
+    <div class="mine-note" id="mineNote" style="display:none"></div>
+    <div id="mineList"></div>
+  </div>
+
+  <footer>本地合成 · 断网可用 · AdventureX 2026</footer>
+</main>
+
+<div class="bottom"><a id="btnWalk" href="#">🚶 进空间看看 <span style="font-size:12px">→</span></a></div>
+
+<div class="mask" id="mask"></div>
+<div class="sheet" id="sheet"><div class="sheet-in" id="sheetIn"></div></div>
+<div class="toast" id="toast"></div>
+
+<script>
+(function () {
+  "use strict";
+
+  // ------------------------------------------------------------------ 基础
+  var Q = new URLSearchParams(location.search);
+  var MOCK = Q.get("mock") === "1";
+  // 不带 ?space= 的时候【不许】随便挑一个真空间塞给来的人 —— 以前默认落到 s1,
+  // 于是一条残缺链接会把宾客领到一个不相干的婚礼上传照片。现在直接给诚实空态。
+  // 只有 ?mock=1 的演示模式还用得上那个兜底 id(整页假数据,不碰任何真空间)。
+  var RAW_SID = (Q.get("space") || "").trim();
+  var HAS_SID = RAW_SID !== "";
+  var LINK_OK = HAS_SID || MOCK;      // ?mock=1 是演示模式,不算残缺链接
+  var SID = RAW_SID || "s1";
+  var FORCE = Q.get("screen") || "";      // 截图/演示用:强制停在某个界面
+  var NICK_KEY = "psm_nick";
+  // 假数据模式单独存一份,别把演示记录混进真实空间的账本里
+  var MINE_KEY = "psm_mine_" + SID + (MOCK ? "_mock" : "");
+
+  // 返回动线:?back=<相对仓库根的路径,已 encodeURIComponent>。全站统一口径,一个字都不许改。
+  // 只认站内相对路径,http:// 和 // 开头一律不认(防开放重定向),下面那个正则就是干这个的。
+  function backTarget(fallback){
+    try{
+      var b = new URLSearchParams(location.search).get("back");
+      if (b && !/^(https?:)?\/\//.test(b)) return "../" + b.replace(/^(\.\.\/)+/,"").replace(/^\//,"");
+    }catch(e){}
+    return fallback;
+  }
+  // 这一页是扫码落地页,没有 back 参数时本来就没有"上一页"可回,所以按钮直接不显示,
+  // 行为跟改造前一模一样。带了 back 才冒出来。
+  var BACK = backTarget("");
+
+  function $(id) { return document.getElementById(id); }
+  function esc(s) {
+    return String(s == null ? "" : s).replace(/[&<>"]/g, function (c) {
+      return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c];
+    });
+  }
+
+  var state = { space: null, nick: "", task: null, files: [], view: "tasks" };
+
+  // 自由投稿用的伪任务:不绑任何任务,taskId / nodeId 都传空(后端两个都是可选的)。
+  // 有了它,sheetPick 这条唯一的上传通道就不再依赖"墙上还有没有 open 任务"。
+  var FREE_TASK = { id: "", nodeId: "", type: "free", title: "随便传一张", bounty: 0, yaw: null };
+
+  // ---- 措辞开关:这一页不只用在婚礼上 ----
+  // couple 有值 = 婚礼空间,照旧用「新人 / 两位新人 / 那一天」那套。
+  // couple 为空 = 通用空间(比如 AdventureX 现场),一律换成中性说法,拿空间标题当抬头。
+  function isWedding() {
+    return String((state.space || {}).couple || "").trim() !== "";
+  }
+  function spaceName() {
+    return String((state.space || {}).title || "").trim() || "这个空间";
+  }
+  // 建空间的人怎么称呼:婚礼叫"新人",通用空间叫"空间主人"
+  function owner() {
+    return isWedding() ? "新人" : "空间主人";
+  }
+  // 没有全景节点 = 这个空间还没立起来。后端 upload_photos 第一件事就是拒收
+  // ("这个空间还没有全景节点"),所以整页的说法都得跟着它走:任务墙、toast、底部按钮
+  // 三处以前各说各的,现在统一问这一个函数。
+  function spaceReady() {
+    return (((state.space || {}).nodes) || []).length > 0;
+  }
+  // 后端榜单口径:只有 auto_ok / approved 才算"已经进空间",才计分上榜。
+  // 待审的照片一分都没有(server/space.py recompute_contributors 的注释写死了这条),
+  // 所以页面任何地方都不许拿待审照片去凑数字。
+  function isSelected(s) { return s === "auto_ok" || s === "approved"; }
+  // 抬头。"陈屹 & 林沐" -> "陈屹 ♥ 林沐"。注意必须先切再转义,先转义的话 & 会变成 &amp; 再被切坏
+  function headlineHtml() {
+    if (!isWedding()) return esc(spaceName());
+    return String((state.space || {}).couple).split("&").map(function (s) {
+      return esc(s.trim());
+    }).join(' <span class="heart">♥</span> ');
+  }
+
+  // 八方位口语化:让"yaw 210°"变成人话"左后方"
+  // ⚠️ 2026-07-25:必须和后端 server/space.py 的 DIRECTION_WORDS 逐字一致。
+  // 这里以前把 90° 写成"正右方"、270° 写成"正左方",而后端那两档叫"右侧 / 左侧" ——
+  // 一整圈里有 1/4 的方向前后端说法对不上:任务卡的方向药丸写"朝 76° 正右方",
+  // 同一张卡上后端生成的 brief 却写"站在原地转向右侧,拍那个方向",同一件事两个词。
+  // 分档口径也和后端一致(每 45° 一档,±22.5° 归到最近的那档),只是这里用环形距离算。
+  var DIRS = [
+    [0, "正前方"], [45, "右前方"], [90, "右侧"], [135, "右后方"],
+    [180, "正后方"], [225, "左后方"], [270, "左侧"], [315, "左前方"]
+  ];
+  function dirWord(yaw) {
+    if (yaw == null) return "";
+    var y = ((yaw % 360) + 360) % 360, best = DIRS[0], bd = 999;
+    DIRS.forEach(function (d) {
+      // 环形距离:0° 和 350° 只差 10°,不能直接相减
+      var diff = Math.abs(((y - d[0] + 540) % 360) - 180);
+      if (diff < bd) { bd = diff; best = d; }
+    });
+    return best[1];
+  }
+
+  // ---- 任务属于哪个房间 ----
+  // ⚠️ 2026-07-25 P1:空间有两个节点时,大厅的 t1 和偏厅的 t4 渲染出来的文字一模一样
+  // (都是「全景裁切 · 0° 正前方 / 缺这个角度 / 站在原地转向正前方 / +50 分」),
+  // 只有通缉令图颜色不同,卡上从头到尾没出现过房间名。宾客照着拍完,后端才说
+  // 「这张是在偏厅拍的,而这个任务要的是大厅那边」—— 他根本没被告知过要去哪个房间。
+  // 现在多节点空间的任务卡直接把房间名标出来。单节点空间不标,免得平添噪音。
+  function multiNode() { return (((state.space || {}).nodes) || []).length > 1; }
+  // nodeId -> 人能读的房间名。名字取 space.nodes[].name(建空间的人自己起的);
+  // 只给了 "n1" 这种内部编号就当没有名字(readableNode 会滤掉),不甩到宾客脸上。
+  function nodeNameOf(nodeId) {
+    if (!nodeId) return "";
+    var n = (((state.space || {}).nodes) || []).filter(function (x) {
+      return x && x.id === nodeId;
+    })[0];
+    return readableNode(firstStr(n && n.name, nodeId));
+  }
+  // 任务卡上的房间药丸。多节点 + 拿得到人能读的名字,两个条件都满足才出现。
+  function taskNodeBadge(t) {
+    if (!multiNode() || !taskIsLocated(t)) return "";
+    var nm = nodeNameOf(t && t.nodeId);
+    return nm ? '<span class="badge node">📍 ' + esc(nm) + "</span>" : "";
+  }
+  function taskIsLocated(t) {
+    return !!(t && t.type === "gap" && Array.isArray(t.yawRange) && t.yawRange.length === 2);
+  }
+
+  // 罗盘删了(Max 拍板)。任务卡上那个位置改成一句方向文字,例如「朝 210° 左后方」。
+  // yaw 的来源和读法完全没变(还是 t.yaw + dirWord()),度数和八方位口语一个都没少,只是不画针了。
+  // 这里不再放缩略图:gap 卡片上方的通缉令海报本来就是同一张图,再放一次纯属重复。
+  function taskDirWidget(t) {
+    if (MOCK) return '<span class="dir-pill">方位未测</span>';
+    return '<span class="dir-pill">朝 ' + Math.round(t.yaw || 0) + "° " + dirWord(t.yaw) + "</span>";
+  }
+
+  function toast(msg) {
+    var t = $("toast");
+    t.textContent = msg; t.classList.add("on");
+    clearTimeout(toast._t);
+    toast._t = setTimeout(function () { t.classList.remove("on"); }, 2200);
+  }
+
+  // 头像色块:同一个名字永远同一个颜色,不用存任何东西
+  // 第三个颜色原来是 "#d munge",不是合法色值,轮到它的名字头像就没底色。换成本页色板里的金色。
+  var AV = ["#f2739b", "#f5a66b", "#cf8a55"];
+  function avatar(name) {
+    var h = 0; for (var i = 0; i < name.length; i++) h = (h * 31 + name.charCodeAt(i)) % 997;
+    return { color: AV[h % AV.length], ch: name.slice(0, 1) };
+  }
+
+  // 静态资源路径:space.json 里存的是相对路径
+  function assetUrl(p) {
+    if (!p) return "";
+    if (/^(https?:|data:|\/)/.test(p)) return p;
+    return "/spaces/" + SID + "/" + p;
+  }
+
+  // ------------------------------------------------------------------ 本地小账本
+  // role=guest 拿不到"待审核"的照片(那是新人才看的),所以自己这台手机上记一份,
+  // 这样"我的贡献"里能看到"⏳ 等新人确认"的那几张。
+  function loadMine() {
+    try { return JSON.parse(localStorage.getItem(MINE_KEY) || "[]"); } catch (e) { return []; }
+  }
+  function saveMine(list) {
+    try { localStorage.setItem(MINE_KEY, JSON.stringify(list.slice(-24))); } catch (e) { /* 存满了就算了 */ }
+  }
+
+  // 缩到 120px 存 localStorage,原图 dataURL 会把配额撑爆
+  function shrink(file) {
+    return new Promise(function (resolve) {
+      var url = URL.createObjectURL(file), img = new Image();
+      img.onload = function () {
+        try {
+          var side = 120, c = document.createElement("canvas");
+          c.width = c.height = side;
+          var ctx = c.getContext("2d");
+          var m = Math.min(img.width, img.height);
+          ctx.drawImage(img, (img.width - m) / 2, (img.height - m) / 2, m, m, 0, 0, side, side);
+          URL.revokeObjectURL(url);
+          resolve(c.toDataURL("image/jpeg", 0.7));
+        } catch (e) { resolve(""); }
+      };
+      img.onerror = function () { URL.revokeObjectURL(url); resolve(""); };
+      img.src = url;
+    });
+  }
+
+  // ------------------------------------------------------------------ 接口层
+  // 后端没起来时走 ?mock=1,整页假数据,方便看效果 / 对照联调
+  function api(path, opts) {
+    if (MOCK) return mockApi(path, opts);
+    return fetch(path, opts || {}).then(function (r) {
+      // 接口还没上线时服务器会把 index.html 之类的东西丢回来,别把 JSON 解析报错甩给宾客看
+      return r.text().then(function (txt) {
+        try { return JSON.parse(txt); }
+        catch (e) { return { ok: false, error: "服务还没准备好(HTTP " + r.status + ")" }; }
+      });
+    }).catch(function () {
+      return { ok: false, error: "连不上服务器,换个网再试试" };
+    });
+  }
+
+  // 重新跟后端要一次空间数据。上传完之后页面上所有数字都靠它,而不是本地自己攒:
+  // 张数 / 分数 / 任务状态 / 已有多少人交过,后端算过一遍才是真的。
+  // 返回 true = 这次真的拿到了新数据;false = 没拿到(网断了之类),
+  // 调用方必须据此决定"是显示真数字"还是"老实说没对上",不许拿旧数据冒充新的。
+  function fetchSpace() {
+    return api("/api/space/" + SID + "?role=guest").then(function (data) {
+      if (data && data.ok && data.space) { state.space = data.space; return true; }
+      return false;
+    }).catch(function () { return false; });
+  }
+
+  function upload(fd, onProgress) {
+    if (MOCK) return mockUpload(fd, onProgress);
+    return new Promise(function (resolve, reject) {
+      var xhr = new XMLHttpRequest();
+      xhr.open("POST", "/api/space/" + SID + "/upload");
+      xhr.upload.onprogress = function (e) {
+        if (e.lengthComputable) onProgress(e.loaded / e.total);
+      };
+      xhr.onload = function () {
+        try { resolve(JSON.parse(xhr.responseText)); }
+        catch (e) { reject(new Error("返回不是 JSON")); }
+      };
+      xhr.onerror = function () { reject(new Error("网络断了")); };
+      xhr.send(fd);
+    });
+  }
+
+  // ------------------------------------------------------------------ 渲染:开场
+  function renderWelcome() {
+    var sp = state.space || {};
+    $("wNames").innerHTML = headlineHtml();
+    // 婚礼保持原样:标题里"·"后面那截就是日期。通用空间的标题已经当抬头用掉了,
+    // 这一行改放日期和地点,两个都没有就留空。
+    $("wDate").textContent = isWedding()
+      ? ((sp.title || "").split("·").pop().trim() || "")
+      : [sp.date, sp.place].filter(Boolean).join(" · ");
+    if (MOCK) $("wDate").textContent = "演示数据,照片数、方位和积分均未测";
+    $("wInvite").textContent = isWedding() ? "他们请你交一张照片" : "请你交一张照片";
+    $("wInviteSub").innerHTML = (isWedding() ? "那一天" : "现场") +
+      "散在每个人手机里。<br>你交的这张,会回到它当时朝着的方向。";
+    // 输入框那句例子也是婚礼话("新郎表弟"),通用空间换成谁都能对上的
+    $("nickInput").placeholder = isWedding() ? "比如:新郎表弟 小明" : "比如:第 3 排 小明";
+
+    var people = (sp.contributors || []).length;
+    // 用 contributors 的累计张数,不用 photos.length:宾客视角看不到待审核的那些,会少报
+    var photos = (sp.contributors || []).reduce(function (a, c) { return a + (c.photos || 0); }, 0);
+    if (!MOCK && people > 0) {
+      $("wProof").style.display = "inline-flex";
+      $("wPeople").textContent = people;
+      $("wPhotos").textContent = photos;
+      $("wFaces").innerHTML = (sp.contributors || []).slice(0, 4).map(function (c) {
+        var a = avatar(c.name);
+        return '<i style="background:' + a.color + '">' + esc(a.ch) + "</i>";
+      }).join("");
+    }
+  }
+
+  // ------------------------------------------------------------------ 渲染:任务墙
+  // 这个任务是不是"系统自己关掉的"(方向已被别的照片补齐),而不是"有人认领完成的"。
+  // ⚠️ 防御式:后端 2026-07-25 新加的 closed 状态,filledBy 是空数组。
+  // 以前这里一律走 '已被 ' + (who || "宾客") + ' 认领',于是没人拍过的任务被渲染成
+  // 「✅ 已被 宾客 认领」—— 页面凭空捏造了一个宾客。s20 的 t3 就是实例。
+  // 一个定义走天下:邮戳、落款、分组三处都用它,免得同一张卡上出现两种说法
+  function isSystemClosed(t) {
+    return t.status === "closed" && !((t.filledBy || []).length);
+  }
+
+  function taskCard(t) {
+    var done = t.status !== "open";
+    var who = (t.filledBy || []).join("、");
+    var wishAnswered = t.type === "wish" && !!who;
+    var sysClosed = isSystemClosed(t);
+    var doneCls = (done ? " done" : "") + (sysClosed ? " sysclosed-card" : "");
+    var foot;
+    if (!done) {
+      foot = '<button class="btn-take" data-task="' + esc(t.id) + '">' +
+        (t.type === "gap" ? "我去拍这张" : (wishAnswered ? "我也有这张" : "我有这张")) +
+        "</button>";
+    } else if (who) {
+      foot = '<div class="claimed">✅ 已被 ' + esc(who) + " 认领</div>";
+    } else if (sysClosed) {
+      // 后端给了 closedReason 就照念(例如"这个方向已经有照片了,还差 19°,系统自动结束"),
+      // 没给就走兜底,一个字都不编。
+      foot = '<div class="claimed sysclosed">🧩 这个方向已经补齐了' +
+        (t.closedReason ? '<span class="closed-why">' + esc(t.closedReason) + "</span>" : "") +
+        "</div>";
+    } else {
+      // 状态说完成了、却没留下是谁 —— 别替它编个名字出来
+      foot = '<div class="claimed">✅ 已经有人交了</div>';
+    }
+    var bounty = MOCK
+      ? '<div class="bounty"><i>悬赏未测</i></div>'
+      : wishAnswered
+      ? '<div class="bounty"><i>悬赏已领</i></div>'
+      : '<div class="bounty">+' + (t.bounty || 0) + "<i>分</i></div>";
+
+    if (t.type === "gap") {
+      var img = t.briefImage ? assetUrl(t.briefImage) : posterPlaceholder(t.yaw);
+      return '<div class="card gap' + doneCls + '">' +
+        '<div class="poster">' +
+          '<img src="' + esc(img) + '" alt="缺失方位的全景裁切" ' +
+          'onerror="this.src=\'' + posterPlaceholder(t.yaw) + '\'">' +
+          // 邮戳跟落款说的是同一件事:没人认领过就不许盖"已认领"
+          '<div class="stamp">' +
+            (!done ? "待认领" : (sysClosed ? "已补齐" : (who ? "已认领" : "已完成"))) + "</div>" +
+          '<div class="yawtag">' + (MOCK
+            ? "全景裁切 · 方位未测"
+            : "全景裁切 · " + Math.round(t.yaw || 0) + "° " + dirWord(t.yaw)) + "</div>" +
+        "</div>" +
+        '<div class="card-body">' +
+          '<span class="badge gap">🧭 空间任务 · 系统发现的空洞</span>' + taskNodeBadge(t) +
+          '<h3 class="card-title">' + esc(t.title || "缺这个角度") + "</h3>" +
+          '<p class="card-brief">' + esc(t.brief || "") + "</p>" +
+          '<div class="card-foot">' + taskDirWidget(t) + bounty + foot + "</div>" +
+        "</div></div>";
+    }
+    return '<div class="card wish' + doneCls + '">' +
+      '<div class="card-body">' +
+        '<span class="badge wish">💌 心愿任务 · ' + owner() + "亲手写的</span>" + taskNodeBadge(t) +
+        '<h3 class="card-title"><span class="wish-quote">“</span>' + esc(t.title || "") + "</h3>" +
+        '<p class="card-brief">' + esc(t.brief || "") + "</p>" +
+        '<div class="wish-from">来自 ' + esc(isWedding() ? state.space.couple : spaceName()) + "</div>" +
+        '<div class="card-foot">' + bounty + foot + "</div>" +
+      "</div></div>";
+  }
+
+  // 后端还没切出"通缉令"裁切图时的占位:内联 SVG,不外链任何东西
+  function posterPlaceholder(yaw) {
+    // 按方位换个构图,免得几张任务卡长得一模一样(真的裁切图到位后这段就用不上了)
+    var y = ((yaw || 0) % 360 + 360) % 360;
+    var ax = 90 + (y % 120) * 3.2, bx = 380 + ((y * 7) % 180);
+    var svg =
+      '<svg xmlns="http://www.w3.org/2000/svg" width="640" height="360">' +
+      '<defs><linearGradient id="g" x1="0" y1="0" x2="0" y2="1">' +
+      '<stop offset="0" stop-color="#3a2a22"/><stop offset="1" stop-color="#17110e"/></linearGradient>' +
+      '<radialGradient id="l"><stop offset="0" stop-color="#f2c98a" stop-opacity=".9"/>' +
+      '<stop offset="1" stop-color="#f2c98a" stop-opacity="0"/></radialGradient></defs>' +
+      '<rect width="640" height="360" fill="url(#g)"/>' +
+      '<circle cx="' + ax + '" cy="90" r="70" fill="url(#l)"/>' +
+      '<circle cx="' + bx + '" cy="60" r="55" fill="url(#l)"/>' +
+      '<circle cx="' + ax + '" cy="90" r="7" fill="#ffe6b8"/>' +
+      '<circle cx="' + bx + '" cy="60" r="5" fill="#ffe6b8"/>' +
+      '<path d="M' + (ax - 60) + ' 360 L' + (ax - 60) + ' 215 Q' + (ax + 80) + ' 150 ' +
+      (ax + 220) + ' 215 L' + (ax + 220) + ' 360 Z" fill="#2a1d18"/>' +
+      '<ellipse cx="' + (bx - 40) + '" cy="335" rx="86" ry="26" fill="#241813"/>' +
+      '<ellipse cx="' + (ax - 120) + '" cy="345" rx="80" ry="28" fill="#241813"/>' +
+      '<text x="320" y="200" font-size="20" fill="#8a7462" text-anchor="middle" ' +
+      'font-family="sans-serif">' + (MOCK
+        ? "演示素材 · 方位未测"
+        : "此方位暂无照片 · " + Math.round(yaw || 0) + "°") + "</text></svg>";
+    return "data:image/svg+xml," + encodeURIComponent(svg);
+  }
+
+  function renderTasks() {
+    var sp = state.space || {};
+    var tasks = sp.tasks || [];
+    var open = tasks.filter(function (t) { return t.status === "open"; });
+    var openGaps = open.filter(function (t) { return taskIsLocated(t); });
+    var openWishes = open.filter(function (t) { return !taskIsLocated(t); });
+    // 不再开着的任务分两拨:真有人交了的,和系统自己关掉的(没人拍过)。
+    // 混在一起顶着「已经有人交了 / 他们的照片已经在空间里」那句标题就是在编。
+    var done = tasks.filter(function (t) { return t.status !== "open" && !isSystemClosed(t); });
+    var closedT = tasks.filter(function (t) { return t.status !== "open" && isSystemClosed(t); });
+    $("tabCount").textContent = MOCK ? "未测" : open.length;
+
+    // 没有全景 = 这个空间根本还没立起来,后端也会直接拒收照片(要先有节点才能定位),
+    // 所以自由投稿入口跟着一起藏起来,别给一个点了必然失败的按钮。
+    var ready = spaceReady();
+    $("btnFree").style.display = ready ? "" : "none";
+    // 底部那条"进空间看看"以前不管空间立没立起来都亮着,跟上面刚说完的
+    // "这个空间还没立起来"当场打架。让它跟着同一个判断走。
+    renderWalkCta();
+
+    // 下面三件事以前挤在同一个分支里,导致一个零全景的新空间会对宾客说"全都补齐了"。
+    // 现在分开说:① 还没立起来 ② 立起来了但没任务 ③ 任务都被认领了。
+    var head, sub, blank;
+    if (!ready) {
+      head = "这个空间还没立起来";
+      sub = owner() + "还没传全景,先等一等";
+      blank = '<div class="empty"><span class="big">🏗️</span>这个空间还没立起来<br>' +
+        owner() + "还没传全景,照片暂时放不进去<br>过一会儿再扫一次</div>";
+    } else if (!tasks.length) {
+      head = "还没有任务";
+      sub = "没人发任务也不耽误,直接传一张就行";
+      blank = '<div class="empty"><span class="big">🎐</span>' + owner() + "还没发任务<br>" +
+        "不用等,用上面那条随便传一张</div>";
+    } else if (!open.length) {
+      // 一个 open 都不剩时,别一律说"都被认领了" —— 有些是系统自己关掉的,没人认领过
+      head = closedT.length ? "任务都结束了" : "任务都被认领了";
+      sub = "还想交照片就用上面那条,不挑任务也能传";
+      blank = "";
+    } else {
+      if (openGaps.length) {
+        head = "还有 " + openGaps.length + " 个方向没拍到";
+        sub = "挑一个去拍" +
+          (openWishes.length ? ",另外还有 " + openWishes.length + " 份心愿在继续收照片" : "");
+      } else {
+        head = "还有 " + openWishes.length + " 份心愿";
+        sub = "心愿会继续收照片,从相册里挑一张回应";
+      }
+      blank = "";
+    }
+    $("wallTitle").textContent = MOCK ? "界面预览" : head;
+    $("wallSub").textContent = MOCK
+      ? "演示数据,照片数、方位和积分均未测"
+      : sub;
+
+    var html = open.map(taskCard).join("");
+    if (done.length) {
+      html += '<div class="sect"><h2>已经有人交了</h2><p>他们的照片已经在空间里</p></div>' +
+        done.map(taskCard).join("");
+    }
+    if (closedT.length) {
+      html += '<div class="sect"><h2>系统关掉的</h2><p>这几个方向已经被别的照片补齐了,不用再拍</p></div>' +
+        closedT.map(taskCard).join("");
+    }
+    $("taskList").innerHTML = html || blank;
+  }
+
+  // ------------------------------------------------------------------ 渲染:我的贡献
+  function renderMine() {
+    var mine = loadMine();
+    var sp = state.space || {};
+    // 服务端已入选的照片里认领属于我的那些,状态以服务端为准
+    var byId = {};
+    (sp.photos || []).forEach(function (p) { byId[p.id] = p; });
+
+    // 服务端记着我交过、但这台手机的账本里没有的(换了设备 / 清了缓存),也得显示出来,
+    // 否则会出现"上面写着 3 张、下面说你还没交"这种自相矛盾
+    var seen = {};
+    mine.forEach(function (m) { seen[m.photoId] = 1; });
+    var fromServer = (sp.photos || []).filter(function (p) {
+      return p.contributor === state.nick && !seen[p.id];
+    }).map(function (p) {
+      return {
+        photoId: p.id, yaw: p.yaw, state: p.state, reason: p.reason,
+        thumb: assetUrl(p.thumb || p.src), taskTitle: ""
+      };
+    });
+
+    var merged = fromServer.concat(mine).map(function (m) {
+      var s = byId[m.photoId];
+      return {
+        photoId: m.photoId,
+        thumb: (s && assetUrl(s.thumb || s.src)) || m.thumb,
+        yaw: s ? s.yaw : m.yaw,
+        state: s ? s.state : m.state,
+        reason: s ? s.reason : m.reason,
+        taskTitle: m.taskTitle
+      };
+    });
+
+    // ⚠️ 三个数字一律走后端榜单口径,页面不许自己算一套。
+    // 以前这里是 me ? me.points : merged.reduce(每张 10 分),于是同一屏上
+    // 「张数」来自后端、「分数」来自本地估算,待审的照片在本地算了分、在后端一分没有,
+    // 两个数字当场对不上。现在:后端有你这一行就用后端的,没有就是 0(还没有照片进空间)。
+    var me = (sp.contributors || []).filter(function (c) { return c.name === state.nick; })[0];
+    // 方位数也只数已进空间的照片,跟上面两个数字同源
+    var mineSel = merged.filter(function (m) { return isSelected(m.state); });
+    var dirs = {};
+    mineSel.forEach(function (m) { if (m.yaw != null) dirs[dirWord(m.yaw)] = 1; });
+
+    $("stPhotos").textContent = MOCK ? "未测" : (me ? me.photos : mineSel.length);
+    $("stPoints").textContent = MOCK ? "未测" : (me ? me.points : 0);
+    $("stDirs").textContent = MOCK ? "未测" : Object.keys(dirs).length;
+
+    // 待审的那几张为什么没算进上面的数字,直说,别让人自己猜
+    var pending = merged.filter(function (m) { return m.state === "needs_review"; });
+    var note = $("mineNote");
+    if (MOCK) {
+      note.style.display = "";
+      note.textContent = "演示数据,只预览界面状态,不代表实测结果。";
+    } else if (pending.length) {
+      note.style.display = "";
+      note.textContent = "另外还有 " + pending.length + " 张在等" + owner() +
+        "过目。上面的数字只算已经进空间的照片,等" + owner() + "点了通过,它们才会计进去。";
+    } else {
+      note.style.display = "none";
+    }
+
+    if (!merged.length) {
+      // 任务墙上没 open 任务时不能再喊"去挑一个",那边根本没得挑,指到自由投稿去。
+      // 空间还没立起来的时候连自由投稿都传不了,更不能喊"随便传一张"。
+      var openN = ((sp.tasks || []).filter(function (t) { return t.status === "open"; })).length;
+      var hint = !spaceReady()
+        ? "这个空间还没立起来,照片暂时放不进去"
+        : (openN ? "去任务墙挑一个,一分钟的事" : "回任务墙随便传一张,一分钟的事");
+      $("mineList").innerHTML =
+        '<div class="empty"><span class="big">📷</span>你还没交照片<br>' + hint + "</div>";
+      return;
+    }
+    $("mineList").innerHTML = merged.slice().reverse().map(function (m) {
+      var st = stateLabel(m.state);
+      return '<div class="mine-row">' +
+        '<img src="' + esc(m.thumb || "") + '" alt="">' +
+        '<div class="mine-meta">' +
+          '<div class="mine-dir">' + (m.yaw != null ? esc(dirWord(m.yaw)) + " · " + Math.round(m.yaw) + "°" : "送给" + owner()) + "</div>" +
+          '<div class="mine-sub">' + esc(m.taskTitle || m.reason || "") + "</div>" +
+        "</div>" +
+        '<span class="pill ' + st.cls + '">' + st.txt + "</span></div>";
+    }).join("");
+  }
+
+  function stateLabel(s) {
+    if (s === "auto_ok") return { cls: "ok", txt: "已进空间" };
+    if (s === "approved") return { cls: "ok", txt: owner() + "通过" };
+    if (s === "needs_review") return { cls: "wait", txt: "等" + owner() + "确认" };
+    if (s === "rejected") return { cls: "no", txt: "没被选上" };
+    if (s === "quarantined") return { cls: "no", txt: "放错地方了" };
+    return { cls: "wait", txt: "处理中" };
+  }
+
+  // ------------------------------------------------------------------ 上传抽屉
+  function openSheet(html) {
+    $("sheetIn").innerHTML = html;
+    $("sheet").classList.add("on");
+    $("mask").classList.add("on");
+  }
+  function closeSheet() {
+    $("sheet").classList.remove("on");
+    $("mask").classList.remove("on");
+    state.files = []; state.task = null;
+  }
+
+  function sheetPick(task) {
+    state.task = task; state.files = [];
+    // 三种来路:gap 任务 / wish 任务 / 自由投稿(FREE_TASK,不绑任务)
+    var sub = task.type === "gap"
+      ? "拍好了直接选,或者从相册里翻一张 " + dirWord(task.yaw) + " 的照片。"
+      : task.type === "wish"
+        ? "从相册里挑一张,能对上这份心愿就行。"
+        : "随手拍的、相册里翻出来的都行,系统会自己认这是哪个方位。";
+    // 多节点空间:开拍之前先把房间说清楚。后端的节点校验是照着这个来的,
+    // 站错房间照片照收但不算完成这个任务,不能等交完了才让宾客知道有这回事。
+    var pickRoom = taskIsLocated(task) ? nodeNameOf(task.nodeId) : "";
+    if (multiNode() && pickRoom) sub = "这个任务在「" + pickRoom + "」。" + sub;
+    if (task.type === "wish" && (task.filledBy || []).length) {
+      sub = "这份心愿还在继续收照片,悬赏已经发出。" + sub;
+    }
+    openSheet(
+      '<div class="grab"></div>' +
+      "<h3>" + esc(task.title) + "</h3>" +
+      '<p class="sh-sub">' + esc(sub) + "</p>" +
+      '<div class="picker"><input type="file" id="fInput" accept="image/*" multiple>' +
+        '<div class="pi">📷</div><div class="pt">拍一张 / 从相册选</div>' +
+        '<div class="ps">可以一次选好几张</div></div>' +
+      '<div class="picks" id="picks"></div>' +
+      '<button class="btn-main" id="btnSend" disabled>传上去</button>' +
+      '<button class="btn-ghost" id="btnCancel">先不传</button>'
+    );
+
+    $("fInput").addEventListener("change", function (e) {
+      var fs = e.target.files || [];
+      for (var i = 0; i < fs.length; i++) {
+        if (fs[i].type.indexOf("image/") === 0) state.files.push(fs[i]);
+      }
+      $("picks").innerHTML = state.files.map(function (f) {
+        return '<img src="' + URL.createObjectURL(f) + '" alt="">';
+      }).join("");
+      $("btnSend").disabled = state.files.length === 0;
+      $("btnSend").textContent = "传上去(" + state.files.length + " 张)";
+    });
+    $("btnCancel").addEventListener("click", closeSheet);
+    $("btnSend").addEventListener("click", doUpload);
+  }
+
+  function sheetProgress() {
+    openSheet(
+      '<div class="grab"></div>' +
+      '<div class="prog-wrap">' +
+        "<h3>正在放回空间…</h3>" +
+        '<div class="bar"><i id="barFill"></i></div>' +
+        '<div class="prog-txt" id="progTxt">上传中</div>' +
+      "</div>"
+    );
+  }
+
+  function doUpload() {
+    var task = state.task, files = state.files.slice();
+    if (!files.length) return;
+
+    // 先把缩略图算出来,结果卡片和"我的贡献"都用它
+    Promise.all(files.map(shrink)).then(function (thumbs) {
+      sheetProgress();
+      var fd = new FormData();
+      files.forEach(function (f) { fd.append("photos", f, f.name); });
+      fd.append("contributor", state.nick);
+      if (task.id) fd.append("taskId", task.id);
+      // 任务的 nodeId 是“希望你去哪里拍”,不是照片实际属于哪里。任务上传必须让
+      // 后端在全部节点里独立识别,否则先把答案塞给 CLIP,后面的节点校验就成了循环论证。
+      // 只有不绑任务的自由投稿将来显式选节点时,才允许提交 nodeId。
+      if (!task.id && task.nodeId) fd.append("nodeId", task.nodeId);
+
+      var steps = ["上传中", "AI 正在认这是哪个方位…", "算深度,让它站进空间里…"], si = 0;
+      var timer = setInterval(function () {
+        si = Math.min(si + 1, steps.length - 1);
+        var el = $("progTxt"); if (el) el.textContent = steps[si];
+      }, 1800);
+
+      upload(fd, function (p) {
+        var el = $("barFill"); if (el) el.style.width = Math.round(p * 88) + "%";
+      }).then(function (data) {
+        clearInterval(timer);
+        var el = $("barFill"); if (el) el.style.width = "100%";
+        if (!data || !data.ok) throw new Error((data && data.error) || "服务端没认这次上传");
+        setTimeout(function () { sheetResults(data.results || [], thumbs, task); }, 320);
+      }).catch(function (e) {
+        clearInterval(timer);
+        closeSheet();
+        toast("传失败了:" + (e.message || e));
+      });
+    });
+  }
+
+  // 第一个是数字就返回它,一个都不是就返回 null。给下面那个防御式字段解析用。
+  function firstNum() {
+    for (var i = 0; i < arguments.length; i++) {
+      var v = arguments[i];
+      if (typeof v === "number" && isFinite(v)) return v;
+    }
+    return null;
+  }
+
+  // 第一个"有值"的参数(字符串 / 对象都可能),都没有就 null
+  function firstDef() {
+    for (var i = 0; i < arguments.length; i++) {
+      var v = arguments[i];
+      if (v != null && v !== "" && v !== false) return v;
+    }
+    return null;
+  }
+
+  // 第一个非空字符串,没有就空串
+  function firstStr() {
+    for (var i = 0; i < arguments.length; i++) {
+      var v = arguments[i];
+      if (typeof v === "string" && v.trim()) return v.trim();
+    }
+    return "";
+  }
+
+  // "n1" / "node2" 这种内部编号不是给宾客看的,当没名字处理
+  function readableNode(s) {
+    s = String(s || "").trim();
+    return /^(n|node)[-_]?\d+$/i.test(s) ? "" : s;
+  }
+
+  // 节点字段可能是 "n1" 这样的 id,也可能是 {id,name} 这样的对象。都认,取人能读的那个。
+  function nodeLabel(v) {
+    if (v == null) return "";
+    if (typeof v === "string" || typeof v === "number") return String(v).trim();
+    if (typeof v === "object") return firstStr(v.name, v.title, v.label, v.id);
+    return "";
+  }
+
+  // 后端告诉我们"这张照片和任务要求对不上"时用的字段。
+  // 2026-07-25 实测返回(server/space.py _mismatch_note)长这样:
+  //   { taskId, taskTitle, wantDirection, wantYawRange, photoDirection, photoYaw, message }
+  // 方位【优先用后端给的词】(wantDirection / photoDirection)——它和后端 message 里的
+  // 说法必然一致,自己拿 yaw 再换算一遍反而可能和同一句话里的词打架。
+  // ⚠️ 后端正在加"认领必须同时校验节点"(照片实际在哪个节点 vs 任务要求哪个节点),
+  // 字段名还在动,所以这里把可能的写法都接住;一个都没有就当没有节点信息,照老路走。
+  // ⚠️ 防御式:字段不在(或后端还没改完)就完全按老流程走;布尔 / 字符串形态也认,不许崩。
+  function mismatchOf(r) {
+    var m = r && (r.taskMismatch != null ? r.taskMismatch : r.task_mismatch);
+    if (!m) return null;
+    if (typeof m === "string") return { msg: m };
+    if (m === true) return {};
+    if (typeof m !== "object") return {};
+    var gotNode = nodeLabel(firstDef(m.photoNodeName, m.photoNodeTitle, m.photoNode,
+                                     m.gotNodeName, m.gotNode, m.actualNodeName, m.actualNode,
+                                     m.photoNodeId, m.gotNodeId, m.actualNodeId));
+    var wantNode = nodeLabel(firstDef(m.wantNodeName, m.wantNodeTitle, m.wantNode,
+                                      m.taskNodeName, m.taskNode, m.expectedNodeName, m.expectedNode,
+                                      m.wantNodeId, m.taskNodeId, m.expectedNodeId));
+    // 后端可能只给一个"这次是节点对不上"的旗子,而不给两边的名字
+    var kind = firstStr(m.kind, m.type, m.mismatch, m.reasonCode);
+    var flagged = m.nodeMismatch === true || m.wrongNode === true ||
+                  /node|节点|位置|地点/i.test(kind);
+    return {
+      kind: kind,
+      taskId: firstStr(m.taskId, m.task_id),
+      taskStatus: firstStr(m.taskStatus, m.status),
+      gotDir: firstStr(m.photoDirection, m.gotDirection),
+      wantDir: firstStr(m.wantDirection, m.taskDirection, m.expectedDirection),
+      gotYaw: firstNum(m.photoYaw, m.gotYaw, m.actualYaw, m.yaw),
+      wantYaw: firstNum(m.taskYaw, m.wantYaw, m.expectedYaw),
+      gotNode: gotNode,
+      wantNode: wantNode,
+      // 节点对不上 = 人根本没站在任务要的那个位置上。两个名字都拿到且不一样,
+      // 或者后端明说了是节点问题,才算数 —— 拿不准就别下这个结论。
+      nodeBad: (!!gotNode && !!wantNode && gotNode !== wantNode) || flagged,
+      msg: String(m.message || m.reason || "")
+    };
+  }
+
+  // 后端那句 message 是能直接念的人话,优先用它。但先查一眼它跟照片状态打不打架:
+  // ⚠️ 2026-07-25 实测过一版,不管照片是不是待审,它都写死"照片已经收下并放进空间里了" ——
+  // 而待审的照片并没有进空间(recompute_contributors 也不给它计分),照念就是骗人。
+  // 后端后来改成按状态说了,这道闸留着:哪天它再退回去,回执也不会替它撒谎。
+  function msgSafe(msg, st) {
+    msg = String(msg || "");
+    if (!msg || isSelected(st)) return msg;
+    return /放进空间|进了空间|已在空间|已经在空间|进入空间/.test(msg) ? "" : msg;
+  }
+
+  // ⚠️ 2026-07-25 P0:后端 7/25 那版对"任务已经被填过"的 message 是
+  // 「已经被认领了,不能重复领取悬赏」—— 指控口吻。可这一页自己就写着"可以一次选好几张",
+  // 一次交 3 张给同一个任务时,后 2 张撞上的正是【第 1 张自己刚造成的】filled 状态;
+  // 婚礼现场同一个方向被两个人拍也是常态,不是攻击。所以这句话一律不许照念。
+  // 后端正在改成中性说法;它改好之前先在这里挡下来,改好了自然不匹配、照念它的新话。
+  function blameSafe(msg) {
+    msg = String(msg || "");
+    return /不能重复领取|重复领取悬赏|已经被认领了|不许重复|抢先|来晚/.test(msg) ? "" : msg;
+  }
+
+  // 后端可能新增一个中性字段 taskNote,用来区分「同一次上传里的后续张」和「别人先补上的」。
+  // ⚠️ 它还没落地,所以这里【只当锦上添花读】:拿到就认,拿不到就按 filledHere 自己推,
+  // 两条路都通,少哪个都不许崩。字符串 / 对象两种形态都接。
+  function taskNoteOf(r) {
+    var m = r && (r.taskMismatch != null ? r.taskMismatch : r.task_mismatch);
+    var mo = (m && typeof m === "object") ? m : {};
+    var n = firstDef(r && r.taskNote, r && r.task_note, mo.taskNote, mo.note, mo.taskNoteKind);
+    if (n == null) return null;
+    // 只给一个词(比如 "same_batch")那是机器码,绝不能当人话贴到回执上;
+    // 给了一整句才当它是能直接念的中文。
+    if (typeof n === "string") {
+      return /^[\w.:-]{1,32}$/.test(n) ? { code: n, msg: "" } : { code: n, msg: n };
+    }
+    if (typeof n !== "object") return null;
+    return {
+      code: firstStr(n.code, n.kind, n.type, n.reason),
+      msg: firstStr(n.message, n.text, n.note)
+    };
+  }
+  // taskNote 说的是"这是同一次上传里的后续张"(悬赏已经发给自己前面那张了)
+  function noteSaysSelf(n) {
+    return !!(n && /same|self|dup|batch|extra|again|repeat|本次|同一次|同一批|后续|自己/i.test(n.code));
+  }
+  // taskNote 说的是"别人先补上的"
+  function noteSaysOther(n) {
+    return !!(n && /other|another|else|earlier|someone|别人|他人|先到|先补/i.test(n.code));
+  }
+
+  // 把 mismatch 归成四类。⚠️ 标题和下面的汇总读【同一份归类】,不许两处各判各的 ——
+  // 以前卡片走 mm.nodeBad 猜、汇总走 kind 数,同一批照片能被算成两种东西。
+  // 后端 kind 取值:yaw(方位不符) / node(位置不符) / status(任务已被填过) / missing(任务失效)。
+  // 老后端不给 kind 时退回 nodeBad 那套启发式,最后才落到方位。
+  function mismatchCat(mm) {
+    if (!mm) return "";
+    if (mm.kind === "missing") return "missing";
+    if (mm.kind === "status") return "status";
+    if (mm.kind === "node" || mm.nodeBad) return "node";
+    return "yaw";
+  }
+
+  function sheetResults(results, thumbs, task) {
+    // ⚠️ 2026-07-25 P0:一次上传的回执必须是【一段连贯的话】,不是几条互相打架的通知。
+    // 实测过的翻车现场:一次交 3 张给同一个任务,同一屏里同时出现
+    //   「你这张回到了 左侧 · 已进入空间 ✅」
+    //   「已经被认领了,不能重复领取悬赏」×2
+    //   「这个任务被你补上了 🎉」
+    // 根因是把"任务被填了"当成了拒绝后续照片的理由。正确的模型是:
+    //   状态只决定【悬赏发几份】,不决定【照片收不收】,更不该用指控口吻跟宾客说话。
+    //
+    // 这一批里"自己刚补上"的任务。第 2、3 张撞上的 filled 是【自己上一张造成的】,
+    // 不是被人抢了 —— 这种后续张按普通照片说话,一个字都不提悬赏、不提认领。
+    var filledHere = {};
+    results.forEach(function (r) {
+      if (r && r.taskFilled) filledHere[String(r.taskFilled)] = true;
+    });
+
+    // 每张先定性一次,卡片和汇总都读这一份结论
+    var views = results.map(function (r) {
+      var mm = mismatchOf(r);
+      var note = taskNoteOf(r);
+      var mine = !!(mm && mismatchCat(mm) === "status" &&
+        (noteSaysSelf(note) ||
+          (!noteSaysOther(note) && filledHere[String(mm.taskId || task.id || "")])));
+      // 心愿任务天生就该收很多张("想要一张我妈的笑"不是先到先得),
+      // 所以心愿任务上的 status 也不当成问题:照收、照送到主人手上。
+      var wishExtra = !!(mm && mismatchCat(mm) === "status" && task.type === "wish");
+      // 定性成"这不是问题"的,直接当没有 mismatch,走下面普通照片那套说法
+      return { r: r, mm: (mine || wishExtra) ? null : mm, mine: mine };
+    });
+
+    var rows = views.map(function (v, i) {
+      var head, sub, r = v.r, mm = v.mm;
+      if (MOCK) {
+        head = r.state === "needs_review"
+          ? "待确认状态的界面预览"
+          : "入选状态的界面预览";
+        sub = "演示数据,未跑模型,方位未测";
+      } else if (mm) {
+        var cat = mismatchCat(mm);
+        // 对不上就如实说,别假装认领成功。照片照收,任务照旧开着。
+        // 后端给了方位词就用它的;没给才退回自己按 yaw 换算(老后端 / 简化返回)。
+        var gy = mm.gotYaw != null ? mm.gotYaw : r.yaw;
+        var wy = mm.wantYaw != null ? mm.wantYaw
+               : (typeof task.yaw === "number" ? task.yaw : null);
+        var gw = mm.gotDir || dirWord(gy);
+        var ww = mm.wantDir || dirWord(wy);
+        if (cat === "missing") {
+          head = "这个任务已经失效了";
+          sub = msgSafe(mm.msg, r.state) ||
+            (isSelected(r.state)
+              ? "照片已经收下并放进空间里了,只是不能算完成这份失效的任务。"
+              : "照片收下了,正在等" + owner() + "过目,只是不能算完成这份失效的任务。");
+        } else if (cat === "status") {
+          // 走到这儿只剩一种情况:【别人先补上了】(自己这一批填的已经在 views 里被当成
+          // 正常照片了)。同一个方向被两个人拍是婚礼现场的常态,不是攻击 ——
+          // 照片照收、照归位、照说好话,只是这一份悬赏这次没赶上,不许指控。
+          head = mm.taskStatus === "closed"
+            ? "这个方向已经补齐了"
+            : "这个角度刚才已经有人补上了";
+          sub = msgSafe(blameSafe(mm.msg), r.state) ||
+            (isSelected(r.state)
+              ? "你这张照样收下了,已经回到它朝着的方向。"
+              : "你这张照样收下了,正在等" + owner() + "过目。");
+        } else if (cat === "node") {
+          // 节点对不上 = 根本没站在任务要的那个位置。这时候再去比"朝哪边"是文不对题:
+          // 换个地方站着,同一个方位词指的也不是同一片画面。
+          // 只有拿到【人看得懂的名字】才报名字;后端只给了 n1/n2 这种内部编号时说通用话,
+          // 别把编号甩到宾客脸上。
+          var gn = readableNode(mm.gotNode), wn = readableNode(mm.wantNode);
+          head = (gn && wn)
+            ? "这张是在 <b>" + esc(gn) + "</b> 拍的,这个任务要的是 <b>" + esc(wn) + "</b>"
+            : "这张不是在这个任务要的那个位置拍的";
+          sub = msgSafe(mm.msg, r.state) ||
+            ("照片我们收下了,只是没算完成这个任务,任务还开着。" +
+             (wn ? "想拿这份悬赏,得走到" + wn + "再拍一张。" : ""));
+        } else {
+          // 方位不符。⚠️ 两个方位词一模一样时绝不能照模板念 ——
+          // 实测出过「这张朝的是右侧,和这个任务要的右侧不一样」这种荒唐话。
+          // 词一样只说明这次的问题不在方位上,退回一句不带方位的实话。
+          head = (gw && ww && gw !== ww)
+            ? "这张朝的是 <b>" + esc(gw) + "</b>,和这个任务要的" + esc(ww) + "不一样"
+            : "这张的方位和这个任务要的对不上";
+          sub = msgSafe(mm.msg, r.state);
+        }
+        if (!sub) {
+          // 上面 missing / status / node 三支都自带兜底,只有方位那一支可能落空:
+          // 后端没给能念的话(或那句话跟照片状态打架、被 msgSafe 挡下了)才自己拼,口径跟状态走。
+          sub = (isSelected(r.state)
+                  ? "照片我们收下了,已经回到它朝着的方向"
+                  : "照片我们收下了,在等" + owner() + "过目") + ",这个任务还开着" +
+            (ww ? ";想拿这份悬赏,站在原地转向" + ww + "再补一张" : "");
+        }
+      } else if (r.state === "auto_ok" || r.state === "approved") {
+        head = "你这张回到了 <b>" + esc(dirWord(r.yaw)) + "</b> · 已进入空间 ✅";
+        // 位数和用词跟后端 reason 对齐(后端一律 4 位小数、叫"匹配度"),
+        // 不然回执和"我的贡献"显示成不同精度,看着像两个数。
+        sub = "匹配度 " + (r.confidence != null ? r.confidence.toFixed(4) : "未测") +
+              " · " + Math.round(r.yaw || 0) + "°";
+      } else if (r.state === "needs_review") {
+        head = "机器拿不准,已交给" + owner() + "确认 ⏳";
+        sub = r.reason || "置信度偏低,等" + owner() + "裁决";
+      } else if (r.state === "quarantined") {
+        head = "这张看着不像这个场地,先放一边了";
+        sub = r.reason || "自检环自动隔离";
+      } else if (r.state === "rejected") {
+        head = owner() + "这次没选上它";
+        sub = r.reason || "";
+      } else {
+        head = "已收到,正在处理";
+        sub = r.reason || "";
+      }
+      if (!mm && task.type === "wish" && r.state !== "quarantined") {
+        head = "已经送到" + owner() + "手上 💌";
+        sub = r.reason || "心愿任务由" + owner() + "亲自看";
+      }
+      // 这里不再挂状态药丸:那句话本身已经把状态说清楚了,再挂一个只会把文字挤成两行
+      return '<div class="res" data-i="' + i + '">' +
+        '<img src="' + esc(thumbs[i] || "") + '" alt="">' +
+        '<div class="res-main"><div class="res-t">' + head + '</div>' +
+        '<div class="res-s">' + esc(sub) + "</div></div></div>";
+    }).join("");
+
+    // ⚠️ 分数不许页面自己编。以前这里是 claimed ? task.bounty : results.length * 10,
+    // 而后端 recompute_contributors 只给 auto_ok / approved 计分 —— 被拦进待审队列的
+    // 一分都没有,人也不上榜。于是页面自报的分和榜单必然对不上,三个数字互相打架。
+    // 现在的口径:回执只说【发生了什么】(状态是后端给的),分数留个空位,
+    // 等下面 refresh() 把后端榜单真拉回来再填,拉不到就老实说没拉到。
+    // 任务算不算被补上也一样以后端 taskFilled 为准,方位对不上的那几张不算。
+    // 方位对不上的时候后端会把这次认领撤掉,再看看这张照片是不是正好补上了【别的】缺口。
+    // 所以"补上了"分两种:补上的是你点的那个任务,还是顺手补上了另一个。
+    var rewardedWish = !MOCK && task.type === "wish" && views.some(function (v) {
+      return !v.mm && !!(v.r.taskRewarded || v.r.bountyPaid || v.r.taskFilled);
+    });
+    var filled = !MOCK && task.type !== "wish" &&
+      views.some(function (v) { return v.r.taskFilled && !v.mm; });
+    var filledOther = !MOCK &&
+      views.some(function (v) { return v.r.taskFilled && v.mm; });
+    // 同一批里只要有一张真的把这个任务补上了,后面那些"对不上"的就不能再说"任务还开着"。
+    // 踩过:一次交 2 张,第 1 张对上了第 2 张偏了,一屏同时出现「任务还开着」和「这个任务被你补上了 🎉」。
+    function stillOpenTail() {
+      return filled ? ",不过同一批里有一张对上了,这个任务已经补上" : ",任务还开着";
+    }
+    var okN = results.filter(function (r) { return isSelected(r.state); }).length;
+    var waitN = results.filter(function (r) { return r.state === "needs_review"; }).length;
+    // ⚠️ 汇总和上面的卡片必须读同一份归类(mismatchCat),不许各判各的 ——
+    // 以前卡片按 mm.nodeBad 猜、汇总按 kind 数,同一批照片会被算成两种东西。
+    // 被判成"这不是问题"的那几张(自己这一批填的 / 心愿任务的后续张)mm 已经是 null,
+    // 一条都不进下面这些计数,所以回执里不会再出现"补上了"和"不能领"并排的自相矛盾。
+    function catN(c) {
+      return views.filter(function (v) { return mismatchCat(v.mm) === c; }).length;
+    }
+    var nodeBadN = catN("node");   // 人站错房间了
+    var goneN = catN("missing");   // 任务本身失效了
+    var takenN = catN("status");   // 别人先补上了
+    var yawN = catN("yaw");        // 房间没错,朝向不对
+    // 隔离/被拒 和 "状态还没定" 得分开说,不然上面那张卡写着"正在处理"、
+    // 这里却说"先放一边了",又是一处自相矛盾
+    var badN = results.filter(function (r) {
+      return r.state === "quarantined" || r.state === "rejected";
+    }).length;
+    var otherN = results.length - okN - waitN - badN;
+
+    // 后端给的中性说明(taskNote):"同一次上传里的后续张"(same_batch)和
+    // "别人先补上的"(already_filled)都归它管,照片照收,只是不再重复发同一份悬赏。
+    // ⚠️ 它说的是【这一批照片共同的一件事】,所以只在汇总里说一次,不往每张卡上重复贴 ——
+    // 一屏里同一句话出现三遍就又变成互相打架的通知了。
+    // 逐张过一遍 msgSafe / blameSafe:哪张的状态跟这句话对不上,就不拿那张的话当准;
+    // 一句都没活下来就干脆不说。宁可少说,也不让回执替谁撒谎、替谁指控。
+    var noteLines = [];
+    views.forEach(function (v) {
+      var n = taskNoteOf(v.r);
+      var txt = n ? msgSafe(blameSafe(n.msg), v.r.state) : "";
+      if (txt && noteLines.indexOf(txt) < 0) noteLines.push(txt);
+    });
+
+    var lines = [];
+    if (!MOCK) {
+      if (okN) lines.push(okN + " 张已经回到它当时朝着的方向");
+      if (waitN) lines.push(waitN + " 张机器拿不准,交给" + owner() + "过目了");
+      if (badN) lines.push(badN + " 张先放一边了");
+      if (otherN > 0) lines.push(otherN + " 张还在处理");
+    }
+
+    openSheet(
+      '<div class="grab"></div>' +
+      "<h3>" + (MOCK ? "界面预览" : "好了,一共 " + results.length + " 张") + "</h3>" +
+      '<p class="sh-sub">' + (MOCK
+        ? "演示数据,未跑模型,这里只预览回执样式。"
+        : task.type === "wish"
+        ? "心愿任务不算方位," + owner() + "会亲自看。"
+        : "系统按画面内容认方位,认不准的会交给" + owner() + "。") + "</p>" +
+      rows +
+      '<div class="res-sum" id="resSum">' +
+        (MOCK ? "演示数据,照片数、方位和积分均未测" : "已经收到 " + results.length + " 张") +
+        (lines.length ? " · " + esc(lines.join(" · ")) : "") +
+        // 对不上的单独起一行说"其中",不跟上面的张数并排,免得"1 张 · 1 张"被读成两张
+        // ⚠️「任务还开着」只有在这一批真的没人补上它的时候才成立。
+        // 踩过:一次交 2 张,第 1 张对上了、第 2 张偏了,于是一屏同时出现
+        // 「其中 1 张的方位和这个任务要的不一样,任务还开着」和「这个任务被你补上了 🎉」,
+        // 同一条任务上一行说还开着下一行说被补上了。这种混合批次比整批都对更常见,
+        // 因为宾客本来就分不清 240 度和 255 度。
+        (nodeBadN ? "<br>其中 " + nodeBadN + " 张不是在这个任务要的位置拍的" + stillOpenTail() : "") +
+        (goneN ? "<br>其中 " + goneN + " 张对应的任务已经失效了,照片照常收下" : "") +
+        (takenN ? "<br>其中 " + takenN + " 张对应的方向刚才已经有人补上了,照片照常收下" : "") +
+        (yawN ? "<br>其中 " + yawN + " 张的方位和这个任务要的不一样" + stillOpenTail() : "") +
+        (filled ? "<br>这个任务被你补上了 🎉"
+                : (filledOther ? "<br>不过它顺手补上了另一个缺口 🎉" : "")) +
+        (rewardedWish ? "<br>这份心愿收到你的照片了 🎉" : "") +
+        (noteLines.length ? "<br>" + esc(noteLines.join(" ")) : "") +
+        '<div class="res-pts" id="resPoints">分数以榜单为准,正在跟后端对一下…</div>' +
+      "</div>" +
+      // ⚠️ 一张都没入选(全在待审队列里)的时候不能喊"看看它在空间里" ——
+      // 人点进去翻半天也找不到自己那张,上面刚说完"在等新人过目",这里立刻自相矛盾。
+      '<button class="btn-main" id="btnGoWalk">' +
+        (okN ? "看看它在空间里 →" : "先进空间转转 →") + "</button>" +
+      '<button class="btn-ghost" id="btnMore">再传几张</button>'
+    );
+
+    // 一张张揭晓,别一次糊上去
+    Array.prototype.forEach.call(document.querySelectorAll(".res"), function (el, i) {
+      setTimeout(function () { el.classList.add("in"); }, 260 + i * 420);
+    });
+    setTimeout(function () {
+      var s = $("resSum"); if (s) s.classList.add("in");
+    }, 260 + results.length * 420);
+
+    $("btnGoWalk").addEventListener("click", function () { location.href = walkUrl(); });
+    $("btnMore").addEventListener("click", function () { closeSheet(); refresh(); });
+
+    // 记进本地小账本
+    var mine = loadMine();
+    results.forEach(function (r, i) {
+      mine.push({
+        photoId: r.photoId, yaw: r.yaw, state: r.state, reason: r.reason,
+        thumb: thumbs[i] || "", taskTitle: task.title, at: Date.now()
+      });
+    });
+    saveMine(mine);
+
+    // 假数据模式下顺手把任务标成已认领,好看清"已被认领"的样子
+    if (MOCK && filled) {
+      task.status = "filled";
+      task.filledBy = (task.filledBy || []).concat([state.nick]);
+    }
+    // 传完一定要真的重拉一次:任务状态、张数、积分、"已有几位宾客交过"全变了,
+    // 拿页面上的旧数据接着渲染就是在编。拉回来了才填分数,没拉到就直说没拉到。
+    refresh().then(function (fresh) { fillResultPoints(fresh, waitN); });
+  }
+
+  // 回执上那行分数:只写后端榜单里真有的数字,一个字都不自己算
+  function fillResultPoints(fresh, waitN) {
+    var el = $("resPoints");
+    if (!el) return;                       // 抽屉已经被关掉了,没地方写
+    if (MOCK) {
+      el.textContent = "演示数据,积分未测";
+      return;
+    }
+    if (!fresh) {
+      el.textContent = "分数这次没拉到(网可能断了),以" + owner() + "那边的榜单为准。";
+      return;
+    }
+    var me = (((state.space || {}).contributors) || []).filter(function (c) {
+      return c.name === state.nick;
+    })[0];
+    if (me) {
+      el.innerHTML = "榜上你现在是 <b>" + me.photos + "</b> 张 · <b>" + me.points + "</b> 分";
+    } else if (waitN) {
+      el.textContent = "榜上还没有你的名字:等" + owner() + "过目的照片先不计分,过了就会出现。";
+    } else {
+      // 一张待审的都没有还上不了榜,就不能许"过了就会出现"这个愿 ——
+      // 那几张要么被隔离要么没选上,再等也不会自己冒出来
+      el.textContent = "榜上还没有你的名字:只有真进了空间的照片才计分。";
+    }
+  }
+
+  // 去观景页时把"我"这一页当成它的返回目标带过去,这样宾客从空间里退出来是回到任务墙,
+  // 不是被弹回首页。walk.html 认的是同一套 ?back= 口径。
+  function walkUrl() {
+    return "/viewer/walk.html?space=" + encodeURIComponent(SID) +
+      "&back=" + encodeURIComponent("server/join.html?space=" + SID);
+  }
+
+  // ------------------------------------------------------------------ 视图切换
+  function setView(v) {
+    state.view = v;
+    $("viewTasks").style.display = v === "tasks" ? "" : "none";
+    $("viewMine").style.display = v === "mine" ? "" : "none";
+    $("tabTasks").classList.toggle("on", v === "tasks");
+    $("tabMine").classList.toggle("on", v === "mine");
+    if (v === "mine") renderMine();
+    window.scrollTo(0, 0);
+  }
+
+  // 重刷 = 先跟后端要一次真数据,再拿它渲染。以前这里只是把本地那份旧 state 重画一遍,
+  // 于是传完照片不刷新页面,页面上的数字就永远停在上传之前。
+  // 返回值透传 fetchSpace 的 true/false,让调用方知道这次到底拿没拿到新数据。
+  function refresh() {
+    return fetchSpace().then(function (fresh) {
+      renderWelcome();
+      renderTasks();
+      if (state.view === "mine") renderMine();
+      return fresh;
+    });
+  }
+
+  // 底部那条常驻按钮。空间还没立起来的时候不许再喊"进空间看看" ——
+  // 点进去是一片空,跟任务墙刚说完的"这个空间还没立起来"当场打架。
+  function renderWalkCta() {
+    var a = $("btnWalk");
+    if (!a) return;
+    if (LINK_OK && state.space && spaceReady()) {
+      a.href = walkUrl();
+      a.innerHTML = '🚶 进空间看看 <span style="font-size:12px">→</span>';
+      a.style.opacity = "";
+      a.style.cursor = "";
+      return;
+    }
+    a.removeAttribute("href");          // 没 href 的 <a> 点了不会跳
+    // 进不去的三种原因各说各的,别都套同一句
+    a.textContent = !LINK_OK ? "链接不完整,进不去空间"
+                  : (state.space ? "空间还没立起来,暂时进不去" : "这个空间打不开,进不去");
+    a.style.opacity = ".55";
+    a.style.cursor = "default";
+  }
+
+  function bootMain() {
+    $("hNames").innerHTML = headlineHtml();
+    $("hNick").textContent = state.nick;
+    renderTasks();                       // 里面会顺手把底部按钮也对齐
+  }
+
+  // ------------------------------------------------------------------ 事件
+  $("nickInput").addEventListener("input", function () {
+    $("nickGo").disabled = this.value.trim().length === 0;
+  });
+  $("nickGo").addEventListener("click", function () {
+    var v = $("nickInput").value.trim();
+    if (!v) return;
+    state.nick = v;
+    try { localStorage.setItem(NICK_KEY, v); } catch (e) { /* 隐私模式下存不了也能用 */ }
+    $("welcome").classList.add("off");
+    bootMain();
+    // 这句 toast 和它下面那屏必须说同一件事。以前只分了"有没有 open 任务"两种,
+    // 于是零全景的空间上,任务墙写着"这个空间还没立起来"、toast 却喊"随便传一张就行"。
+    var openN = (((state.space || {}).tasks) || []).filter(function (t) { return t.status === "open"; }).length;
+    var tail = !spaceReady() ? ",这个空间还没立起来,先等一等"
+             : (openN ? ",挑一个任务吧" : ",随便传一张就行");
+    toast("好的 " + v + tail);
+  });
+  $("hMe").addEventListener("click", function () {
+    $("nickInput").value = state.nick;
+    $("nickGo").disabled = false;
+    $("welcome").classList.remove("off");
+  });
+  document.addEventListener("click", function (e) {
+    var t = e.target.closest("[data-task]");
+    if (t) {
+      var id = t.getAttribute("data-task");
+      var task = ((state.space && state.space.tasks) || []).filter(function (x) { return x.id === id; })[0];
+      if (task) sheetPick(task);
+      return;
+    }
+    var tab = e.target.closest(".tab");
+    if (tab) setView(tab.getAttribute("data-view"));
+  });
+  $("mask").addEventListener("click", closeSheet);
+  // 自由投稿:走的还是 sheetPick 那条唯一的上传通道,只是喂给它一个不绑任务的伪任务
+  $("btnFree").addEventListener("click", function () { sheetPick(FREE_TASK); });
+
+  // ------------------------------------------------------------------ 启动
+  // 带了 ?back= 才亮返回键(开场页和顶部条各一个,两屏都回得来)
+  if (BACK) {
+    ["wBack", "hBack"].forEach(function (id) {
+      var el = $(id);
+      if (el) { el.href = BACK; el.classList.add("on"); }
+    });
+  }
+
+  try { state.nick = localStorage.getItem(NICK_KEY) || ""; } catch (e) { state.nick = ""; }
+
+  // 走不下去的两种情况(链接不完整 / 空间没读到)共用这一屏:把头部收干净、
+  // 两个 tab 也收起来(切到"我的贡献"会去读某个空间的本地账本,这时候根本没有"某个空间"),
+  // 只留一句人话。
+  function deadEnd(title, body, icon) {
+    $("hNames").textContent = "UNSEEN";
+    $("hMe").style.display = "none";
+    $("welcome").classList.add("off");
+    $("btnFree").style.display = "none";
+    var tabs = document.querySelector(".tabs");
+    if (tabs) tabs.style.display = "none";
+    $("wallTitle").textContent = title;
+    $("wallSub").textContent = "";
+    $("taskList").innerHTML = '<div class="empty"><span class="big">' + (icon || "🔗") +
+      "</span>" + body + "</div>";
+    renderWalkCta();
+  }
+
+  // 不带 ?space= 就别硬找一个空间塞给人。以前默认落到 s1(一个真婚礼空间),
+  // 等于把一条残缺链接的访客领到不相干的现场去传照片。
+  if (!LINK_OK) {
+    deadEnd("这个链接不完整",
+      "地址里少了空间编号,我们认不出你要传给哪个空间<br>" +
+      "找建空间的人再要一次完整的二维码或链接");
+    return;
+  }
+
+  api("/api/space/" + SID + "?role=guest").then(function (data) {
+    if (!data || !data.ok) throw new Error((data && data.error) || "这个空间不存在");
+    state.space = data.space;
+    renderWelcome();
+
+    // ?screen=xxx 是给截图/演示用的:除了 welcome 本身,其余都当作"名字已经填过"
+    if (FORCE && FORCE !== "welcome" && !state.nick) state.nick = "小明";
+    if (MOCK) mockSeedMine();
+
+    var needNick = !state.nick || FORCE === "welcome";
+    $("welcome").classList.toggle("off", !needNick);
+    if (state.nick) { $("nickInput").value = state.nick; $("nickGo").disabled = false; }
+    bootMain();                 // 背景先渲染好,关掉开场就是完整页面
+
+    if (FORCE === "mine") setView("mine");
+    if (FORCE === "upload") sheetPick((state.space.tasks || [])[0] || FREE_TASK);
+    if (FORCE === "result") mockShowResult();
+  }).catch(function (e) {
+    // 空间没加载出来时别留一堆"—"占位,只留一句人话
+    deadEnd("这个空间打不开", esc(e.message || "加载失败") + "<br>把二维码再扫一次试试", "🥀");
+  });
+
+  // ================================================================== 假数据
+  // ?mock=1:后端还没就绪时,整页用写死的数据跑通全流程(含一次上传结果动画)
+  var MOCK_SPACE = {
+    schema: "psm-space/1",
+    id: "s1",
+    title: "陈屹 ♥ 林沐 · 2026.7.26",
+    couple: "陈屹 & 林沐",
+    createdAt: 1753340000.0,
+    published: true,
+    nodes: [
+      { id: "n1", name: "宴会厅", time: "18:00", panorama: "nodes/n1/pano.jpg" },
+      { id: "n2", name: "仪式区", time: "16:30", panorama: "nodes/n2/pano.jpg" }
+    ],
+    tasks: [
+      { id: "t1", nodeId: "n1", type: "gap", title: "缺这个角度",
+        brief: "站在舞台右前方,回头拍向主桌那一片", yaw: 210, yawRange: [190, 240],
+        briefImage: null, bounty: 50, status: "open", filledBy: [], createdBy: "system", createdAt: 1753340000.0 },
+      { id: "t2", nodeId: "n1", type: "wish", title: "我想要一张我妈妈笑的照片",
+        brief: "敬酒那会儿她一直在笑,我自己一张都没拍到", yaw: null, yawRange: null,
+        briefImage: null, bounty: 100, status: "open", filledBy: [], createdBy: "couple", createdAt: 1753340000.0 },
+      { id: "t3", nodeId: "n2", type: "gap", title: "缺这个角度",
+        brief: "从入口门廊往里拍,要拍到整排花门", yaw: 45, yawRange: [25, 70],
+        briefImage: null, bounty: 60, status: "open", filledBy: [], createdBy: "system", createdAt: 1753340000.0 },
+      { id: "t4", nodeId: "n1", type: "gap", title: "缺这个角度",
+        brief: "背对舞台,拍向签到台那面墙", yaw: 300, yawRange: [280, 320],
+        briefImage: null, bounty: 40, status: "filled", filledBy: ["小雨"], createdBy: "system", createdAt: 1753340000.0 }
+    ],
+    photos: [
+      { id: "p1", src: "photos/p1.jpg", thumb: "thumbs/p1.jpg", nodeId: "n1", yaw: null, pitch: 0,
+        confidence: null, state: "approved", reason: "演示数据,未跑模型,仅用于界面预览",
+        contributor: "小雨", taskId: null, uploadedAt: 1753340000.0 },
+      { id: "p2", src: "photos/p2.jpg", thumb: "thumbs/p2.jpg", nodeId: "n1", yaw: null, pitch: 0,
+        confidence: null, state: "approved", reason: "演示数据,未跑模型,仅用于界面预览",
+        contributor: "小雨", taskId: "t4", uploadedAt: 1753340000.0 },
+      { id: "p3", src: "photos/p3.jpg", thumb: "thumbs/p3.jpg", nodeId: "n2", yaw: null, pitch: 0,
+        confidence: null, state: "approved", reason: "演示数据,未跑模型,仅用于界面预览",
+        contributor: "阿哲", taskId: null, uploadedAt: 1753340000.0 }
+    ],
+    contributors: [
+      { name: "小雨", photos: 5, points: 240 },
+      { name: "阿哲", photos: 3, points: 150 },
+      { name: "婷婷", photos: 2, points: 90 },
+      { name: "老王", photos: 1, points: 40 }
+    ]
+  };
+
+  function mockApi(path) {
+    return new Promise(function (resolve) {
+      setTimeout(function () {
+        if (path.indexOf("/api/space/") === 0) resolve({ ok: true, space: MOCK_SPACE });
+        else resolve({ ok: false, error: "假数据里没这个接口:" + path });
+      }, 120);
+    });
+  }
+
+  function mockUpload(fd, onProgress) {
+    var n = fd.getAll("photos").length || 1;
+    var taskId = fd.get("taskId");
+    return new Promise(function (resolve) {
+      var p = 0;
+      var tick = setInterval(function () {
+        p = Math.min(1, p + 0.18); onProgress(p);
+        if (p >= 1) clearInterval(tick);
+      }, 160);
+      setTimeout(function () {
+        clearInterval(tick);
+        var pool = [
+          { yaw: null, confidence: null, state: "approved", reason: "演示数据,未跑模型,仅用于界面预览", taskFilled: true },
+          { yaw: null, confidence: null, state: "needs_review", reason: "演示数据,未跑模型,仅用于界面预览", taskFilled: false },
+          { yaw: null, confidence: null, state: "approved", reason: "演示数据,未跑模型,仅用于界面预览", taskFilled: false }
+        ];
+        var out = [];
+        for (var i = 0; i < n; i++) {
+          var r = JSON.parse(JSON.stringify(pool[i % pool.length]));
+          r.photoId = "m" + Date.now() + "_" + i;
+          if (!taskId) r.taskFilled = false;
+          out.push(r);
+        }
+        resolve({ ok: true, results: out });
+      }, 2000);
+    });
+  }
+
+  // 假数据模式下先垫几条"我交过的照片",不然"我的贡献"永远是空状态,看不出效果
+  function mockSeedMine() {
+    if (!loadMine().length) saveMine(MOCK_MINE);
+    // 把"我"塞进贡献榜,不然"我的贡献"里的分数对不上
+    var mine = loadMine(), name = state.nick || "小明";
+    MOCK_SPACE.contributors = MOCK_SPACE.contributors.filter(function (c) { return c.name !== name; });
+    MOCK_SPACE.contributors.unshift({ name: name, photos: mine.length, points: mine.length * 50 });
+  }
+
+  var MOCK_MINE = [
+      { photoId: "d1", yaw: null, state: "approved", reason: "演示数据,未跑模型,仅用于界面预览",
+        thumb: posterPlaceholder(213), taskTitle: "缺这个角度 · 舞台右前方", at: 1 },
+      { photoId: "d2", yaw: null, state: "needs_review", reason: "演示数据,未跑模型,仅用于界面预览",
+        thumb: posterPlaceholder(119), taskTitle: "自由投稿", at: 2 },
+      { photoId: "d3", yaw: null, state: "approved", reason: "演示数据,未跑模型,仅用于界面预览",
+        thumb: posterPlaceholder(47), taskTitle: "缺这个角度 · 入口花门", at: 3 }
+  ];
+
+  // ?screen=result:直接停在"上传结果"那一屏,方便截图
+  function mockShowResult() {
+    var task = MOCK_SPACE.tasks[0];
+    var thumbs = [posterPlaceholder(210), posterPlaceholder(120), posterPlaceholder(45)];
+    sheetResults([
+      { photoId: "d1", yaw: null, confidence: null, state: "approved",
+        reason: "演示数据,未跑模型,仅用于界面预览", taskFilled: true },
+      { photoId: "d2", yaw: null, confidence: null, state: "needs_review",
+        reason: "演示数据,未跑模型,仅用于界面预览", taskFilled: false }
+    ], thumbs, task);
+  }
+})();
+</script>
+</body>
+</html>

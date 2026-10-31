@@ -1,0 +1,42 @@
+{
+  "schemaVersion": "unseen-book-lab-contracts-generated-index/1",
+  "generatedFromOnly": {
+    "contract": {
+      "path": "contracts/source/l3-book-lab/BOOK-LAB-CONTRACT.md",
+      "sha256": "a93c6eb54d5d5d949ef0561c414e61e335370bc2ae3012aeb62c6f9572afd249"
+    },
+    "action": {
+      "path": "contracts/source/l3-book-lab/ACTION-REGISTRY.book-lab.json",
+      "sha256": "cba3f1e984cbcaa03f8fdf301581d1fb94bd69a5bffe1797f550b3619df484cf"
+    },
+    "strings": {
+      "path": "contracts/source/l3-book-lab/STRING-CATALOG.book-lab.zh-CN.json",
+      "sha256": "5dd024745d8b91b3fb751a0c10be16093b09a5d0442c4049c05673cb5e8900a1"
+    },
+    "coverage": {
+      "path": "contracts/source/l3-book-lab/ACTION-API-COVERAGE.book-lab.json",
+      "sha256": "d1ca7d5d4f926f2ff3c04a46871c4d8e3f4b6ce966fcc38960d01950d5a866a2"
+    },
+    "states": {
+      "path": "contracts/source/l3-book-lab/STATE-MACHINES.book-lab.json",
+      "sha256": "5f47b1a5bc4d7ed972a82a2dc4629bdb888dd167bbf04df03b9a59e059a08026"
+    }
+  },
+  "counts": {
+    "actions": 20,
+    "actionSourceReferenceChecks": 80,
+    "stringPhasePairs": 180,
+    "canonicalHttpMutationUniqueEndpoints": 15,
+    "coverageMutationUniqueEndpoints": 15,
+    "versionCasDictionaryFields": 8,
+    "technicalOperationEntries": 0,
+    "internalOperationEntries": 2,
+    "stateMachineEntries": 5
+  },
+  "setHashes": {
+    "actionIds": "4e70c3a71b7bd4686147ab54d0f657cd37f6d951287077b46e9626c4c2043183",
+    "sourceProjection": "2f32c3e51b4b415fa9d0d5c0c696b856447396aae39a06987f728587dcbbbd8e",
+    "coverageProjection": "2f32c3e51b4b415fa9d0d5c0c696b856447396aae39a06987f728587dcbbbd8e",
+    "stateMachines": "4c2f5b9cb34dd77deecd2c17ed6b3e110f307d6ea5db9384fc4e289c2589d92c"
+  }
+}

@@ -1,0 +1,59 @@
+{
+  "checkedAt": "2026-09-23T14:37:00.631Z",
+  "version": "0.4.7",
+  "checks": [
+    "cloud-health-version",
+    "separate-sensor-auth-and-owner-management",
+    "report-accepted-and-persistent-idempotency",
+    "target-only-state-event",
+    "expired-retry-does-not-renew-event",
+    "rotation-invalidates-old-token-and-does-not-resurrect-event",
+    "invalid-head-count-rejected",
+    "revoke-stops-event-delivery",
+    "existing-content-unchanged"
+  ],
+  "newFamilies": 0,
+  "contentWrites": 0,
+  "modelCalls": 0,
+  "hardwareVerified": false,
+  "browserVerified": false,
+  "staticFiles": [
+    {
+      "file": "index.html",
+      "bytes": 2003,
+      "sha256": "c6b35ca5043494169c2f6a1b53299102ea90b02c249513eb383c1947fd89a900"
+    },
+    {
+      "file": "app.js",
+      "bytes": 49417,
+      "sha256": "90dd8eda93c46a82f428f4405895a5096155753bf2af47325b819fb388119bd4"
+    },
+    {
+      "file": "style.css",
+      "bytes": 26123,
+      "sha256": "327bd629b673d4241c139c884e77c1ab145b498bbe09912ae1025aee22efb87c"
+    },
+    {
+      "file": "ai-conversation.js",
+      "bytes": 17188,
+      "sha256": "6c146168b51e1c58fb28c1dc5c1d73de1ce6f3d98bd764bf155d47fd43800936"
+    },
+    {
+      "file": "presence-invitation.js",
+      "bytes": 6493,
+      "sha256": "e01955c7722877d5394fb1a661405cebf8ca152a52633579a89f854a460280e5"
+    },
+    {
+      "file": "presence-settings.js",
+      "bytes": 8227,
+      "sha256": "82c0672e60e1eb4c83b797d2428a80079d42040d73c3b3dee61dac11b69ae759"
+    },
+    {
+      "file": "presence.css",
+      "bytes": 1791,
+      "sha256": "65bca9ef67ec3f707767fda1e5cb0fcb1facf6d928873c8b48cae91151b8997a"
+    }
+  ],
+  "messageCount": 12,
+  "passed": true
+}

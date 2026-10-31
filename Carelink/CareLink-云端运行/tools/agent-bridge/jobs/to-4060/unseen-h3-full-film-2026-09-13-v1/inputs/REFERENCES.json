@@ -1,0 +1,202 @@
+[
+  {
+    "path": "references/01-home-space-master.png",
+    "role": "空间地理",
+    "limitations": "俯视母版，用于布局，不作为每镜画面；含人物部分不可复制进空场",
+    "provenance": "Existing AI-created private UNSEEN concept reference from this task; not documentary evidence or approved final frame.",
+    "bytes": 3065413,
+    "sha256": "b7456a7ed15188f7c209222b7d693aebed89cce30ef9561ff4a463accd3e2656"
+  },
+  {
+    "path": "references/02-character-age-reference.png",
+    "role": "人物身份",
+    "limitations": "男主跨年龄固定参考；不是要同时出现五个人",
+    "provenance": "Existing AI-created private UNSEEN concept reference from this task; not documentary evidence or approved final frame.",
+    "bytes": 1970031,
+    "sha256": "f7d300de5c94969226ceadcf5b3f7e58a1672724dfc0e9d632b0c49b62ccb1f8"
+  },
+  {
+    "path": "references/03-campus-space-master.png",
+    "role": "空间地理",
+    "limitations": "大校园参考；必须扩展人尺度校门/教室/树下",
+    "provenance": "Existing AI-created private UNSEEN concept reference from this task; not documentary evidence or approved final frame.",
+    "bytes": 3030777,
+    "sha256": "7b4ef4663b8a24d82203abe6473c25aa51b4987240fe4a11509b3f50899f5c84"
+  },
+  {
+    "path": "references/04-home-plan.png",
+    "role": "空间地理",
+    "limitations": "家平面/侧视，方向和房间布局约束；字样不进成片",
+    "provenance": "Existing AI-created private UNSEEN concept reference from this task; not documentary evidence or approved final frame.",
+    "bytes": 2572576,
+    "sha256": "945ee4bfa629ea96ac8b78109238a9defe2dbfa7e3c7d75fef946b43d01c172a"
+  },
+  {
+    "path": "references/05-campus-plan.png",
+    "role": "空间地理",
+    "limitations": "校园平面，教学楼/连廊/操场固定；字样不进成片",
+    "provenance": "Existing AI-created private UNSEEN concept reference from this task; not documentary evidence or approved final frame.",
+    "bytes": 2788035,
+    "sha256": "63ad9e03c73896834e529d5dfffc8e0f4c30928f14fd3fad3490fba51cc92c36"
+  },
+  {
+    "path": "references/06-home-camera-A.png",
+    "role": "机位候选",
+    "limitations": "旧角度；以新H01动作和cookie-a人物为准",
+    "provenance": "Existing AI-created private UNSEEN concept reference from this task; not documentary evidence or approved final frame.",
+    "bytes": 2511686,
+    "sha256": "71c6f8140d948a2edaee8dc54ec96ab6fc319f7ceb68defac696299fbed3c868"
+  },
+  {
+    "path": "references/07-school-first-day-parent.png",
+    "role": "校门构图",
+    "limitations": "可参考父母手机机位、校门和衣着，不用既有伸手画面重复挥手",
+    "provenance": "Existing AI-created private UNSEEN concept reference from this task; not documentary evidence or approved final frame.",
+    "bytes": 2454463,
+    "sha256": "0a681ced6f7cd4b205ab75dc478cde965a78146d96a95cb55f4586365eb5d49a"
+  },
+  {
+    "path": "references/08-school-corridor.png",
+    "role": "校园人尺度",
+    "limitations": "走廊/教室/操场关系；不是可直接代替教室内场景的参考",
+    "provenance": "Existing AI-created private UNSEEN concept reference from this task; not documentary evidence or approved final frame.",
+    "bytes": 2501884,
+    "sha256": "42895b5eb9b1224d44259a4a9ecb675fa2747fc423c9e5f60561d523353a3c63"
+  },
+  {
+    "path": "references/09-home-camera-B.png",
+    "role": "家中反打候选",
+    "limitations": "孩子站立，适合研究桌侧空间；以cookie-a冻结的衣着/人物为准",
+    "provenance": "Existing AI-created private UNSEEN concept reference from this task; not documentary evidence or approved final frame.",
+    "bytes": 2639268,
+    "sha256": "696c8148f9703ddf60b4ad3f50fe9c5262cfe9808d4d03c8b518de60bbc561cc"
+  },
+  {
+    "path": "references/10-home-camera-C.png",
+    "role": "家中第三角度",
+    "limitations": "场景关系候选，不照搬既有动作",
+    "provenance": "Existing AI-created private UNSEEN concept reference from this task; not documentary evidence or approved final frame.",
+    "bytes": 2359726,
+    "sha256": "7102fcc010ca3d4889996d4b91cb29611cfb2fdde8b08a2da7f97b83766032af"
+  },
+  {
+    "path": "references/11-home-time-17.png",
+    "role": "历史错误警示",
+    "limitations": "禁止坐桌边一直学习到老的时间流动，不能当本轮故事",
+    "provenance": "Existing AI-created private UNSEEN concept reference from this task; not documentary evidence or approved final frame.",
+    "bytes": 2279688,
+    "sha256": "55bad6560c520d54c89396c057abb0ec411d8fbb86553d3a7f952170afaa02af"
+  },
+  {
+    "path": "references/12-home-time-72.png",
+    "role": "历史错误警示",
+    "limitations": "禁止拿来当晚年新住处",
+    "provenance": "Existing AI-created private UNSEEN concept reference from this task; not documentary evidence or approved final frame.",
+    "bytes": 2479624,
+    "sha256": "f1199c267f4ebac3c7848c2d2d64c7e082c0f029653a3a25b29d54bc85a5c860"
+  },
+  {
+    "path": "references/13-home-empty.png",
+    "role": "空场母版",
+    "limitations": "家人尺度空场，方向/绿砖厨房/沙发布局参考",
+    "provenance": "Existing AI-created private UNSEEN concept reference from this task; not documentary evidence or approved final frame.",
+    "bytes": 2415731,
+    "sha256": "07f033f2c9a5d8daabb096d5b9d861a61d5aea9551213104adf95a2fd8dc1e7c"
+  },
+  {
+    "path": "references/14-school-first-day-reverse.png",
+    "role": "校门反打候选",
+    "limitations": "与gate-b近似；动作需从挥手之后继续",
+    "provenance": "Existing AI-created private UNSEEN concept reference from this task; not documentary evidence or approved final frame.",
+    "bytes": 2562492,
+    "sha256": "c9fc1fed31685e410cb09794571dcf7ec4964fca7aa9bbc913f3d185823cc8ce"
+  },
+  {
+    "path": "references/15-wedding-space-master.png",
+    "role": "空间地理",
+    "limitations": "婚礼全场/布局，图底说明区不能进成片",
+    "provenance": "Existing AI-created private UNSEEN concept reference from this task; not documentary evidence or approved final frame.",
+    "bytes": 2921372,
+    "sha256": "007edc1b1c9f1c16eef0c3e11c0b37687adbd8844b8643fd92f721a1288a8ad8"
+  },
+  {
+    "path": "references/16-wedding-guest-C.png",
+    "role": "婚礼人物与场景",
+    "limitations": "冻结新人穿着、院子灯树；动作按新提示继续",
+    "provenance": "Existing AI-created private UNSEEN concept reference from this task; not documentary evidence or approved final frame.",
+    "bytes": 2468830,
+    "sha256": "19a7fc1c48f84912655de3ff27f6159437a112e08d321700ff7d5d55db42f7c8"
+  },
+  {
+    "path": "references/backpack.png",
+    "role": "出门位置/书包参考",
+    "limitations": "旧图仅奶奶与孩子；本轮母亲调包+奶奶放饼干需补齐而非把两人合并",
+    "provenance": "Existing AI-created private UNSEEN concept reference from this task; not documentary evidence or approved final frame.",
+    "bytes": 2108100,
+    "sha256": "27b366c69e2a1dfab513b05cf6e92defae98dad9146f4b3687945fd2e7dfacfa"
+  },
+  {
+    "path": "references/campus-empty.png",
+    "role": "空场总览",
+    "limitations": "仅总览；不能靠一张图多次缩放代替内部漫游",
+    "provenance": "Existing AI-created private UNSEEN concept reference from this task; not documentary evidence or approved final frame.",
+    "bytes": 2980089,
+    "sha256": "9406ae055f12187c6f770917925db48940dea4c3a1d570a4e6789ffc8af6b065"
+  },
+  {
+    "path": "references/cookie-a.png",
+    "role": "饼干主参考",
+    "limitations": "已观察孩子站立奶奶粉开衫母亲持手机；主身份/衣着/场景基准。首镜要从更早一步跑来",
+    "provenance": "Existing AI-created private UNSEEN concept reference from this task; not documentary evidence or approved final frame.",
+    "bytes": 2275984,
+    "sha256": "b6ae4457e118eeba9e493ffd8acf974ecc275e45a483bbeb32951635558ae495"
+  },
+  {
+    "path": "references/cookie-b.png",
+    "role": "反例/人物参考",
+    "limitations": "已知严重错误：孩子坐着，与H01站立不衔接。禁止直接作H02首帧尾帧或合格结果",
+    "provenance": "Existing AI-created private UNSEEN concept reference from this task; not documentary evidence or approved final frame.",
+    "bytes": 2164023,
+    "sha256": "a875c3d5633d38e33dacbcff71a2ff30e41cc80d11f4a9fe70e0648885fa9df0"
+  },
+  {
+    "path": "references/elder-new-room.png",
+    "role": "晚年新住处",
+    "limitations": "阅读椅/书架/城市窗；手和屏幕需要真视频/后期跟踪",
+    "provenance": "Existing AI-created private UNSEEN concept reference from this task; not documentary evidence or approved final frame.",
+    "bytes": 2191617,
+    "sha256": "72846aab7563e354daaea104e8306d169cff7a47c36c2d58ea127d5074cf0923"
+  },
+  {
+    "path": "references/gate-b.png",
+    "role": "校门反打参考",
+    "limitations": "需改成孩子挥手结束后继续走，不能重复前镜动作",
+    "provenance": "Existing AI-created private UNSEEN concept reference from this task; not documentary evidence or approved final frame.",
+    "bytes": 2387080,
+    "sha256": "4c87989af86e2e2476573192ce7118e16137fa69cea7fa8a70115a92224bad49"
+  },
+  {
+    "path": "references/rain.png",
+    "role": "雨天院子",
+    "limitations": "人物衣着、院子、雨光可用；具体毛巾动作待生成",
+    "provenance": "Existing AI-created private UNSEEN concept reference from this task; not documentary evidence or approved final frame.",
+    "bytes": 2643708,
+    "sha256": "6d19bb809c9615f6fbba91dfb13be757e14494b44a5e883d5e8af8dadca58874"
+  },
+  {
+    "path": "references/wedding-empty.png",
+    "role": "婚礼空场",
+    "limitations": "人尺度舞池场地锚点",
+    "provenance": "Existing AI-created private UNSEEN concept reference from this task; not documentary evidence or approved final frame.",
+    "bytes": 2522679,
+    "sha256": "0282b9ebd389c4b64919ef4129778ca509fac4330b514d35919c1cfd9a7ccff2"
+  },
+  {
+    "path": "references/wedding-reverse.png",
+    "role": "婚礼另一角度",
+    "limitations": "只约束空间与人物，不直接重置上镜转身阶段",
+    "provenance": "Existing AI-created private UNSEEN concept reference from this task; not documentary evidence or approved final frame.",
+    "bytes": 2434341,
+    "sha256": "216f200d07210dec38551e5d5782b1a4b9030cfb9fd80e623b9ffd684d360e4b"
+  }
+]

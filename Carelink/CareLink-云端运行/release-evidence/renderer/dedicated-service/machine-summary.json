@@ -1,0 +1,133 @@
+{
+  "schema": "unseen-book-renderer-dedicated-service-evidence/1",
+  "generatedAt": "2026-08-15T01:42:00Z",
+  "status": "CODE_GATES_PASS_TARGET_ACCEPTANCE_REQUIRED",
+  "profile": "unseen-book-renderer-dedicated-service/v1",
+  "baseCommit": "dd77eed64ac26147c3717411e9edfd390886e4ea",
+  "initialCodeCommit": "8dbc2b478a90bde087bfad70c207e3fe66da4d50",
+  "initialCodeTree": "df880d15a2a898968768fdc8cd03178a25896d28",
+  "hardenedCodeCommit": "83dcc88fe1f2679374a61623d59aa6736f35b391",
+  "hardenedCodeTree": "66194d7e833b6ddf4b3e01f0173d3d8ab9acf0c1",
+  "cupsNotFoundFixBase": "34cf0c3d742c2cbcc75047aa8daf8a0cd2302e1e",
+  "nodeRuntimeFixBase": "f6a71d0b9507bf552a03e8eeadac5ad376550b9a",
+  "finalCodeCommit": "30dca550ac73301457e9bff087a56ab112be7e61",
+  "finalCodeTree": "e6b621becf6164040a0c22f561df8f475de4e3c4",
+  "defaultOff": true,
+  "publicContractChanged": false,
+  "liveTargetChanged": false,
+  "openCodeP0": 0,
+  "openCodeP1": 0,
+  "p1Closures": [
+    "dedicated_child_uses_private_files_and_ignores_stdout_for_html_pdf_receipt",
+    "acceptance_receipt_is_root_owned_ipc_group_0640_and_hash_bound",
+    "spool_is_setgid_with_distinct_api_renderer_ownership_and_no_cross_write",
+    "ack_cancel_timeout_notify_failure_and_orphan_cleanup_are_restart_replayable",
+    "target_receipt_is_built_from_measured_candidate_tools_policy_units_cups_and_principals",
+    "main_api_unit_has_narrow_renderer_spool_read_write_path",
+    "target_executables_units_policy_fonts_and_pdf_tools_require_root_ownership_and_no_group_world_write",
+    "reconciler_skips_active_requests_and_only_collects_explicit_or_deadline_owned_work",
+    "pre_manifest_partial_artifacts_are_validated_and_restart_collected_without_rerender",
+    "cups_measurement_command_read_and_parse_failures_reject_acceptance",
+    "runtime_repeats_full_target_measurement_and_rejects_dropins_or_weakened_effective_systemd_properties",
+    "root_spool_inbox_cancel_ack_results_work_and_socket_directories_require_exact_nonsymlink_metadata",
+    "sandbox_pins_are_verified_before_job_materialization_and_partial_seccomp_setup_is_removed",
+    "pdf_tool_inventory_pins_the_executed_pdfinfo_and_pdftotext_binaries",
+    "installed_service_and_socket_are_byte_equal_to_hash_pinned_candidate_templates_after_one_commit_marker_substitution",
+    "explicit_socket_service_unknown_directives_environment_injection_and_dropins_fail_closed",
+    "startup_securely_removes_exact_power_crash_work_and_seccomp_residuals_before_rendering",
+    "periodic_work_collection_protects_active_and_fresh_jobs_and_blocks_on_unknown_linked_or_metadata_drifted_entries",
+    "chromium_temporary_files_are_confined_to_bwrap_private_tmpfs",
+    "renderer_reads_no_environment_file_and_loads_fixed_paths_from_a_root_owned_ipc_group_hash_pin",
+    "renderer_and_api_units_remove_node_loader_runtime_loader_shell_language_and_tls_keylog_environment_injection",
+    "production_env_has_a_fixed_argv_path_exact_key_allowlist_no_inline_secrets_and_metadata_bound_read",
+    "node_options_unknown_duplicate_control_wrong_dac_and_inline_secret_environment_mutations_fail_closed",
+    "cups_gate_accepts_only_both_exact_not_found_rc4_or_both_installed_inactive_disabled_masked",
+    "cups_mixed_alias_generated_transient_command_parse_rc_text_and_listener_drift_fail_closed",
+    "renderer_executes_only_the_fixed_node_22_23_2_absolute_runtime_after_strict_sha256sum_preflight",
+    "node_binary_version_hash_root_ownership_mode_nlink_and_parent_directory_permissions_fail_closed",
+    "official_archive_signed_shasums_commit_pinned_release_keyring_hashes_sizes_and_gpgv_method_are_receipt_bound",
+    "usr_bin_node_path_lookup_symlink_wrong_version_hash_owner_mode_and_archive_provenance_drift_are_rejected",
+    "fixed_node_runtime_root_is_an_explicit_required_read_only_bwrap_mount_and_missing_mount_fails_closed"
+  ],
+  "machineChecks": {
+    "focusedFilesystemIpcLifecycleAndTargetPins": {
+      "command": "node --test tests/e2e/book-lab/dedicated-renderer.verify.mjs",
+      "total": 29,
+      "passed": 29,
+      "failed": 0
+    },
+    "apiRendererIntegration": {
+      "command": "node --test services/api/tests/book-renderer-integration.test.mjs",
+      "total": 4,
+      "passed": 4,
+      "failed": 0
+    },
+    "deploymentLifecycle": {
+      "command": "node --test tests/e2e/book-lab/deployment-lifecycle.verify.mjs",
+      "total": 3,
+      "passed": 3,
+      "failed": 0
+    },
+    "existingRendererWorker": {
+      "command": "node --test tests/e2e/book-lab/renderer-worker.verify.mjs",
+      "total": 3,
+      "passed": 3,
+      "failed": 0
+    },
+    "apiBookAndComposition": {
+      "command": "node --test services/api/tests/*.test.mjs services/book-lab/tests/*.test.mjs tests/e2e/book-lab/deployment-lifecycle.verify.mjs tests/e2e/book-lab/private-ai-composition.verify.mjs tests/e2e/book-lab/real-seam.verify.mjs",
+      "total": 218,
+      "passed": 215,
+      "failed": 3,
+      "failureClassification": "BASELINE_IDENTICAL_REAL_SEAM_STALE_EXPECTATIONS_OUTSIDE_LANE"
+    },
+    "productionPackage": {
+      "command": "node tests/e2e/production-package.verify.mjs",
+      "status": "PASS",
+      "portableBundleVerified": true,
+      "standaloneNonGitCwdVerified": true,
+      "byteTamperRejected": true,
+      "cupsSemanticWeakeningRejected": true,
+      "nodeRuntimeSemanticWeakeningRejected": true,
+      "acceptanceNegativeCases": 32,
+      "externalNetworkRequests": 0
+    },
+    "revisionContract": {
+      "command": "npm run revision:check",
+      "errors": 0,
+      "aggregateActions": 110,
+      "aggregateSourceRefs": 440,
+      "aggregatePhases": 990,
+      "aggregateMutations": 74,
+      "aggregateCas": 55
+    },
+    "generatedContracts": "CONTRACT_GENERATION_CLEAN",
+    "provenance": {
+      "pathOrderingTests": "PASS_3_OF_3",
+      "authorityScan": "NOT_COMPLETED_ICLOUD_SOURCE_STAT_STALLED_180S",
+      "codeFailureObserved": false
+    },
+    "format": "FORMAT_OK",
+    "secretScan": "SECRET_SCAN_CLEAN",
+    "freeze": {
+      "status": "BASELINE_FAILURE",
+      "code": "FREEZE_TRACK8_REGISTRATION"
+    },
+    "systemdAnalyze": "NOT_AVAILABLE_ON_DARWIN",
+    "targetUbuntuExecution": "NOT_RUN"
+  },
+  "targetAcceptanceStillRequired": [
+    "install_and_measure_exact_official_node_22_23_2_archive_signed_shasums_keyring_and_binary_on_target",
+    "prove_fixed_node_checksum_pin_root_ipc_0640_and_runtime_tree_root_owned_nonwritable_under_real_systemd_dac",
+    "install_and_measure_exact_numeric_chromium_snap_browser",
+    "systemd_analyze_verify_rendered_units_on_ubuntu",
+    "measure_loaded_apparmor_bwrap_fonts_pdf_tools_systemd_cups_and_distinct_principals",
+    "confirm_ubuntu_systemctl_show_value_rendering_matches_the_strict_semantic_parser",
+    "run_private_network_descendant_dns_tcp_udp_and_loopback_canaries",
+    "run_two_deterministic_synthetic_pdf_renders_plus_restart_and_pin_drift_negatives",
+    "prove_root_unseen_0640_production_env_and_root_ipc_0640_renderer_pin_dac_under_the_real_distinct_systemd_users",
+    "keep_book_disabled_until_root_owned_acceptance_receipt_and_matching_hash_pin_are_configured"
+  ],
+  "evidenceContainsUserContent": false,
+  "evidenceContainsCredentials": false
+}

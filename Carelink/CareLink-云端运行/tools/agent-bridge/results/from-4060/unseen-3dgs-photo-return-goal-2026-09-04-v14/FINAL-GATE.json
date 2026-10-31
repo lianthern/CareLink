@@ -1,0 +1,93 @@
+{
+  "schemaVersion": "1.0",
+  "jobId": "unseen-3dgs-photo-return-goal-2026-09-04-v14",
+  "challengeId": "v14-fixed-real-panorama-photo-q2",
+  "implementationSha256": "7620f3d9d296f679b555b461e45fc36fecaf9bf28db8bb6ddee1031ba043f4ec",
+  "indexSha256Before": "cb97169c17c6a662fc33936445f6eb90aa3367b9021407ed38f2a1d1d993e7d9",
+  "indexSha256After": "cb97169c17c6a662fc33936445f6eb90aa3367b9021407ed38f2a1d1d993e7d9",
+  "indexUnchanged": true,
+  "cleanProcessRunsExpected": 5,
+  "cleanProcessRunsPassed": 5,
+  "allPassed": true,
+  "thresholds": {
+    "minGeometricInliers": 20,
+    "minGeometricInlierRatio": 0.1,
+    "maxMedianReprojectionPx": 3.5,
+    "maxTranslationErrorSceneFraction": 0.15,
+    "maxRotationErrorDegrees": 15.0
+  },
+  "sceneExtent": 13.622176517494722,
+  "queryGroundTruthPassedToCandidate": false,
+  "runs": [
+    {
+      "runId": "final-01",
+      "querySha256": "ba584e2887f79192457db9b0db08c90b3116a37b59fb3a40fc86689033a802f7",
+      "operation": "identity-jpeg-q98",
+      "processReturnCode": 0,
+      "failure": null,
+      "status": "PASS",
+      "geometricInliers": 55,
+      "geometricInlierRatio": 0.3125,
+      "medianReprojectionPx": 2.732203245162964,
+      "translationError": 0.011863167514966053,
+      "translationErrorSceneFraction": 0.000870871662816173,
+      "rotationErrorDegrees": 0.5481692477334771
+    },
+    {
+      "runId": "final-02",
+      "querySha256": "29c143908c88b80bbf78722e4a3e736cd20dd2cfcee96dacd518cef5cd5df246",
+      "operation": "identity-jpeg-q90",
+      "processReturnCode": 0,
+      "failure": null,
+      "status": "PASS",
+      "geometricInliers": 59,
+      "geometricInlierRatio": 0.34911242603550297,
+      "medianReprojectionPx": 2.533625602722168,
+      "translationError": 0.010463134346133815,
+      "translationErrorSceneFraction": 0.0007680956367505733,
+      "rotationErrorDegrees": 0.4659767871407918
+    },
+    {
+      "runId": "final-03",
+      "querySha256": "a466d8b5726385ec2e7da6673cbd22ffbb2bbff5ad0ea4af4a21fcf93aca8508",
+      "operation": "gamma-0.90",
+      "processReturnCode": 0,
+      "failure": null,
+      "status": "PASS",
+      "geometricInliers": 57,
+      "geometricInlierRatio": 0.3392857142857143,
+      "medianReprojectionPx": 2.8320882320404053,
+      "translationError": 0.014268157571621668,
+      "translationErrorSceneFraction": 0.0010474212805345257,
+      "rotationErrorDegrees": 0.8045867548404282
+    },
+    {
+      "runId": "final-04",
+      "querySha256": "1e155549e343faf2aee0e653bf08c0aee9c19b474149882bc2656f3913508389",
+      "operation": "gamma-1.10",
+      "processReturnCode": 0,
+      "failure": null,
+      "status": "PASS",
+      "geometricInliers": 60,
+      "geometricInlierRatio": 0.3314917127071823,
+      "medianReprojectionPx": 2.8152825832366943,
+      "translationError": 0.00910045680697737,
+      "translationErrorSceneFraction": 0.0006680618765503305,
+      "rotationErrorDegrees": 0.5552953944386425
+    },
+    {
+      "runId": "final-05",
+      "querySha256": "1dec61dca462d57d3a899c62c6fe5e39d064ac9d7b95c0c7fe1d38aabdee326c",
+      "operation": "contrast-1.05-beta-minus-5",
+      "processReturnCode": 0,
+      "failure": null,
+      "status": "PASS",
+      "geometricInliers": 66,
+      "geometricInlierRatio": 0.3567567567567568,
+      "medianReprojectionPx": 2.5560426712036133,
+      "translationError": 0.007816383129951287,
+      "translationErrorSceneFraction": 0.0005737984029140162,
+      "rotationErrorDegrees": 0.2978867990420268
+    }
+  ]
+}

@@ -1,0 +1,41 @@
+# 回见 APP · 现挂在主域 huijian.maxxam.xyz（原 UNSEEN 白标克隆仍在 loopback:4301，
+# 把下面的 4611 改回 4301 即回滚到克隆站）。
+
+huijian.maxxam.xyz {
+	encode zstd gzip
+
+	# 比赛 demo 阶段不希望被搜索引擎收录
+	header {
+		Strict-Transport-Security "max-age=31536000"
+		X-Robots-Tag "noindex, nofollow"
+		X-Content-Type-Options "nosniff"
+		Referrer-Policy "no-referrer"
+		Permissions-Policy "camera=(), microphone=(self), geolocation=()"
+		-Server
+	}
+
+	# Node owns Cache-Control: successful versioned resources are immutable;
+	# HTML, APIs, unversioned files and errors are no-store. Preserve that value.
+	# A default also protects proxy-generated responses without upstream headers.
+	# This works on production Caddy 2.6.2 without newer response-match syntax.
+	header ?Cache-Control "no-store"
+
+	handle /robots.txt {
+		respond "User-agent: *
+Disallow: /" 200
+	}
+
+	reverse_proxy 127.0.0.1:4611 {
+		header_up -Authorization
+		header_up Host {host}
+		header_up X-Forwarded-Proto https
+		# Node trusts this Caddy-overwritten hop header only from the loopback peer.
+		# Client-supplied forwarding headers never select a TTS quota identity.
+		header_up X-Huijian-Visitor {remote_host}
+	}
+
+	log {
+		output file /var/log/caddy/huijian.log
+		format json
+	}
+}

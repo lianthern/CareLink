@@ -1,0 +1,18 @@
+{
+  "schemaVersion": "1.0",
+  "jobId": "unseen-3dgs-360roam-base-2026-09-03-v10",
+  "gpu": "NVIDIA GeForce RTX 4060 Laptop GPU",
+  "nerfstudio": "1.1.5",
+  "torch": "2.1.2+cu121",
+  "cuda": "12.1",
+  "optimizationRuns": 1,
+  "fromScratchOptimizationRuns": 1,
+  "startStep": 0,
+  "endStep": 6999,
+  "wallSeconds": 371,
+  "peakVramMiB": 5685,
+  "exitCode": 0,
+  "oom": false,
+  "continuation30000Run": false,
+  "status": "PASS"
+}

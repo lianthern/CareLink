@@ -1,0 +1,88 @@
+{
+  "schema": "unseen-ui-productization-v2-firefox/1",
+  "status": "PASS",
+  "origin": "http://127.0.0.1:4286",
+  "commit": "9c208fa4d78d4a35092d27ce2cd258df91712140",
+  "browser": {
+    "name": "Mozilla Firefox",
+    "version": "153.0.4",
+    "headless": true
+  },
+  "driver": "geckodriver 0.37.1 (300705c65d1b 2026-07-17 09:25 +0000)",
+  "fixture": true,
+  "representativePath": [
+    "home",
+    "space",
+    "photo",
+    "BL01",
+    "BL02",
+    "BL03",
+    "BL04",
+    "BL05",
+    "BL06"
+  ],
+  "keyboardFocus": {
+    "outline": "solid",
+    "tag": "A",
+    "text": "进入「向晚婚礼」"
+  },
+  "externalResources": [],
+  "fileInputBoundary": "not exercised in this slice; DataTransfer remains the declared file-input automation boundary",
+  "results": [
+    {
+      "developerTerms": [],
+      "externalResources": [],
+      "fixtureNotice": true,
+      "horizontalOverflow": false,
+      "label": "home",
+      "path": "/",
+      "sampleBoundary": false,
+      "title": "UNSEEN · 打开共同空间",
+      "unnamedControls": []
+    },
+    {
+      "developerTerms": [],
+      "externalResources": [],
+      "fixtureNotice": true,
+      "horizontalOverflow": false,
+      "label": "space",
+      "path": "/s/space-gongguang/album",
+      "sampleBoundary": false,
+      "title": "向晚婚礼相册 · UNSEEN",
+      "unnamedControls": []
+    },
+    {
+      "developerTerms": [],
+      "externalResources": [],
+      "fixtureNotice": true,
+      "horizontalOverflow": false,
+      "label": "photo",
+      "path": "/s/space-gongguang/photos/photo-1",
+      "sampleBoundary": true,
+      "title": "烛光亮起时 · UNSEEN",
+      "unnamedControls": []
+    },
+    {
+      "developerTerms": [],
+      "externalResources": [],
+      "fixtureNotice": true,
+      "horizontalOverflow": false,
+      "label": "BL01",
+      "path": "/labs/memories/photos/photo-01",
+      "sampleBoundary": false,
+      "title": "UNSEEN · 记忆成书本地样本",
+      "unnamedControls": []
+    },
+    {
+      "developerTerms": [],
+      "externalResources": [],
+      "fixtureNotice": true,
+      "horizontalOverflow": false,
+      "label": "BL06",
+      "path": "/s/space-adventurex-2026/books/book-adventurex-night/versions/book-version-02",
+      "sampleBoundary": false,
+      "title": "UNSEEN · 记忆成书本地样本",
+      "unnamedControls": []
+    }
+  ]
+}

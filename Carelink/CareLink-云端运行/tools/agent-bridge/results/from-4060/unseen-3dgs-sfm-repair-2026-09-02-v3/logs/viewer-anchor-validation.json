@@ -1,0 +1,35 @@
+{
+  "status": "PASS",
+  "anchors": [
+    {
+      "id": "frame_00001",
+      "sourceFrame": "frame_00001.jpg",
+      "trainIndex": 0,
+      "positionMaxAbsError": 2.9370895382463402e-08,
+      "rotationMatrixMaxAbsError": 4.380349216681623e-08,
+      "fovAbsErrorDegrees": 9.064773465183862e-08
+    },
+    {
+      "id": "frame_00036",
+      "sourceFrame": "frame_00036.jpg",
+      "trainIndex": 35,
+      "positionMaxAbsError": 9.643600473729919e-09,
+      "rotationMatrixMaxAbsError": 8.397875050913939e-08,
+      "fovAbsErrorDegrees": 9.064773465183862e-08
+    },
+    {
+      "id": "frame_00072",
+      "sourceFrame": "frame_00072.jpg",
+      "trainIndex": 71,
+      "positionMaxAbsError": 5.069200131879725e-08,
+      "rotationMatrixMaxAbsError": 4.7541674152995483e-08,
+      "fovAbsErrorDegrees": 9.064773465183862e-08
+    }
+  ],
+  "checks": {
+    "anchorCountAtLeastThree": true,
+    "allAnchorsAreTrainingCameras": true,
+    "startPoseIsFirstAnchor": true,
+    "allTrainingCamerasInsideBoundary": true
+  }
+}

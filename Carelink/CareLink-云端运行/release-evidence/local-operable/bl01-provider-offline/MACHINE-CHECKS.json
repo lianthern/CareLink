@@ -1,0 +1,33 @@
+{
+  "base": "c76ee298e7a9566506252e291e3dfe050c4a3a9f",
+  "scope": [
+    "packages/book-lab-web/src/**",
+    "packages/book-lab-web/tests/**",
+    "release-evidence/local-operable/bl01-provider-offline/**"
+  ],
+  "productFixtureAdded": false,
+  "serviceChanged": false,
+  "apiChanged": false,
+  "contractsChanged": false,
+  "rootLockChanged": false,
+  "livePortsTouched": false,
+  "cloudWrites": 0,
+  "checks": {
+    "bookLabWeb": { "passed": 33, "failed": 0 },
+    "web": { "passed": 43, "failed": 0 },
+    "bookLabService": { "passed": 74, "failed": 0 },
+    "chromeExistingCases": { "passed": 23, "failed": 0 },
+    "chromeOfflineViewports": { "passed": 2, "failed": 0 },
+    "browserDiagnosticCounts": {
+      "consoleErrors": 0,
+      "exceptions": 0,
+      "failedRequests": 0,
+      "httpErrors": 0
+    },
+    "format": "FORMAT_OK",
+    "secretScan": "SECRET_SCAN_CLEAN",
+    "diffCheck": "CLEAN"
+  },
+  "remainingP0": [],
+  "remainingP1": []
+}

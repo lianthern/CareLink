@@ -1,0 +1,1831 @@
+[
+  {
+    "id": "H01",
+    "type": "h3_generated_action",
+    "editSeconds": 4,
+    "state": "usable_pending_H02_cut",
+    "attempts": [
+      {
+        "attempt": "attempt-01",
+        "path": "D:\\H3-runtime\\projects\\unseen-full-v1\\shots\\H01\\attempt-01",
+        "intent": {
+          "key": "unseen-h3-full-film-2026-09-13-v1/H01/attempt-01",
+          "startedAt": "2026-09-14T00:13:29.330369+00:00",
+          "reference": "D:\\H3-runtime\\projects\\unseen-full-v1\\media-inputs\\references\\cookie-a.png",
+          "inputSha256": "b6ae4457e118eeba9e493ffd8acf974ecc275e45a483bbeb32951635558ae495",
+          "seed": 2026091570,
+          "shot": {
+            "id": "H01",
+            "title": "父亲拍：跑向奶奶",
+            "type": "h3_generated_action",
+            "edit_seconds": 4,
+            "generate_seconds_nominal": 4.458333333333333,
+            "frame_count_starting_point": 107,
+            "fps": 24,
+            "recorder": "爸爸",
+            "references": [
+              "cookie-a.png",
+              "02-character-age-reference.png",
+              "04-home-plan.png"
+            ],
+            "start_end_and_action": "Wide view from the father southwest of the dining table, camera height 1.45m, moderate 28mm equivalent field of view. The three-year-old boy in a cream T-shirt and pale blue denim short overalls starts near the green sofa on frame left. He takes three small quick steps toward the table on frame right and stops standing at its south edge. His right hand starts reaching toward a small cookie saucer beside the blue-and-white tin. Grandmother in a pink cardigan stays seated beyond the table. Mother in an ivory blouse stays seated beside her holding a smartphone. Gently pan right with the boy, keeping his feet and table edge visible. End before he touches a cookie.",
+            "prompt": "Naturalistic personal-memory footage with believable human movement and gently handheld smartphone perspective. Keep the approved faces, clothes, lighting and room geometry. One continuous shot, no internal cuts, no age change, no photo cards, no text, no camera flying outside, no slow motion, no duplicated people, no DV camcorder. Wide view from the father southwest of the dining table, camera height 1.45m, moderate 28mm equivalent field of view. The three-year-old boy in a cream T-shirt and pale blue denim short overalls starts near the green sofa on frame left. He takes three small quick steps toward the table on frame right and stops standing at its south edge. His right hand starts reaching toward a small cookie saucer beside the blue-and-white tin. Grandmother in a pink cardigan stays seated beyond the table. Mother in an ivory blouse stays seated beside her holding a smartphone. Gently pan right with the boy, keeping his feet and table edge visible. End before he touches a cookie.",
+            "cut_continuity": "H02 starts with the same empty right hand continuing its reach; the boy is still standing.",
+            "pass_criteria": [
+              "从沙发侧走向桌边，而不是已经坐桌旁",
+              "右手未拿到饼干",
+              "母亲在桌边拍、父亲为画外机位",
+              "奶奶/家具/衣物与H02一致"
+            ],
+            "audio": "Natural scene sound only; no generated music, UI text or unscripted dialogue.",
+            "status": "planned",
+            "output": null,
+            "timeline_start_seconds": 0,
+            "timeline_end_seconds": 4
+          },
+          "outputPrefix": "unseen-full-v1/H01/attempt-01",
+          "apiSha256": "44155b4813fd04a85e4df0510efe4ea5cc92298e852d3912cb5e5c707cc26929"
+        },
+        "submission": {
+          "prompt_id": "ffc0049a-318c-4800-95ac-e400ad3bf50f",
+          "number": 0,
+          "node_errors": {}
+        },
+        "result": {
+          "shot": "H01",
+          "attempt": 1,
+          "promptId": "ffc0049a-318c-4800-95ac-e400ad3bf50f",
+          "video": "D:\\H3-runtime\\projects\\unseen-full-v1\\generated\\unseen-full-v1\\H01\\attempt-01_00001_.mp4",
+          "bytes": 654804,
+          "sha256": "022e893daa92358a38d185daeb95ba92dac5bcf9d3fd401a1fd6f8ea9124697b",
+          "decodeExit": 0,
+          "endedAt": "2026-09-14T00:16:03.590536+00:00",
+          "visualVerdict": "pending_agent_review"
+        },
+        "visual-review": {
+          "shot": "H01",
+          "attempt": 1,
+          "verdict": "usable_pending_H02_cut",
+          "observed": "Boy moves from sofa side to table and remains standing; grandmother and mother remain distinct, clothing and room stay coherent. No clearly visible cookie in right hand at end. Saucer is not distinguishable at this source resolution; verify handoff in H02. Movement is small, not three fully distinct running steps.",
+          "referenceConditioning": "actual LoadImage to MiniMaxH3ImageToVideo.first_frame executed successfully"
+        }
+      }
+    ]
+  },
+  {
+    "id": "H02",
+    "type": "h3_generated_action",
+    "editSeconds": 4,
+    "state": "usable_pending_H01_cut",
+    "attempts": [
+      {
+        "attempt": "attempt-01",
+        "path": "D:\\H3-runtime\\projects\\unseen-full-v1\\shots\\H02\\attempt-01",
+        "intent": {
+          "key": "unseen-h3-full-film-2026-09-13-v1/H02/attempt-01",
+          "startedAt": "2026-09-14T00:16:58.260945+00:00",
+          "reference": "D:\\H3-runtime\\projects\\unseen-full-v1\\shots\\H01\\attempt-01\\last.png",
+          "inputSha256": "ae13a4ccf3633927130ac81fd56c3da79e145d674cb4e2908476ea3a5d902274",
+          "seed": 2026091571,
+          "shot": {
+            "id": "H02",
+            "title": "母亲拍：推碟、拿到、笑",
+            "type": "h3_generated_action",
+            "edit_seconds": 4,
+            "generate_seconds_nominal": 4.458333333333333,
+            "frame_count_starting_point": 107,
+            "fps": 24,
+            "recorder": "妈妈",
+            "references": [
+              "09-home-camera-B.png",
+              "cookie-a.png",
+              "02-character-age-reference.png"
+            ],
+            "start_end_and_action": "A closer three-quarter view from the mother seated beside grandmother at the same table, camera height 1.10m, 35mm equivalent field of view. The same boy remains standing on the floor at the south edge of the same wooden table. His empty right hand continues reaching. Grandmother slides the small saucer about fifteen centimeters toward him with her right hand. He takes exactly one cookie with his right hand and looks up at grandmother with a relieved small smile. Hold the smile briefly. Keep the blue-and-white tin stationary. Keep enough lower body and table edge visible to make his standing posture unambiguous. Mother is behind this camera and is not visible. Single steady take.",
+            "prompt": "Naturalistic personal-memory footage with believable human movement and gently handheld smartphone perspective. Keep the approved faces, clothes, lighting and room geometry. One continuous shot, no internal cuts, no age change, no photo cards, no text, no camera flying outside, no slow motion, no duplicated people, no DV camcorder. A closer three-quarter view from the mother seated beside grandmother at the same table, camera height 1.10m, 35mm equivalent field of view. The same boy remains standing on the floor at the south edge of the same wooden table. His empty right hand continues reaching. Grandmother slides the small saucer about fifteen centimeters toward him with her right hand. He takes exactly one cookie with his right hand and looks up at grandmother with a relieved small smile. Hold the smile briefly. Keep the blue-and-white tin stationary. Keep enough lower body and table edge visible to make his standing posture unambiguous. Mother is behind this camera and is not visible. Single steady take.",
+            "cut_continuity": "Match empty right hand and table contact from H01; do not replay the run or use seated cookie-b as first frame.",
+            "pass_criteria": [
+              "全程站立",
+              "先推碟后拿到，动作单次",
+              "仅一块饼干到右手",
+              "不用旧cookie-b姿势"
+            ],
+            "audio": "Natural scene sound only; no generated music, UI text or unscripted dialogue.",
+            "status": "planned",
+            "output": null,
+            "timeline_start_seconds": 4,
+            "timeline_end_seconds": 8
+          },
+          "outputPrefix": "unseen-full-v1/H02/attempt-01",
+          "apiSha256": "2d8845a3e14ca4c8910e65229f99e18a917fe9e64f52aeeae70c6ed9ee03c546"
+        },
+        "submission": {
+          "prompt_id": "81432064-c428-4684-9a73-3c63c8772e70",
+          "number": 1,
+          "node_errors": {}
+        },
+        "result": {
+          "shot": "H02",
+          "attempt": 1,
+          "promptId": "81432064-c428-4684-9a73-3c63c8772e70",
+          "video": "D:\\H3-runtime\\projects\\unseen-full-v1\\generated\\unseen-full-v1\\H02\\attempt-01_00001_.mp4",
+          "bytes": 510351,
+          "sha256": "c6c998ef6b4d86671ec0b001f8768ff141709a1ec8baeff3dd6b6b988fb9471c",
+          "decodeExit": 0,
+          "endedAt": "2026-09-14T00:19:27.423665+00:00",
+          "visualVerdict": "pending_agent_review"
+        },
+        "visual-review": {
+          "shot": "H02",
+          "attempt": 1,
+          "verdict": "revision_required",
+          "observed": "Standing posture and face/clothing continuity preserved. Cookie pickup and smile visible. Excessive continuous push-in replaces intended normal cut to a close shot; mother remains visible early; saucer appears dark rather than specified pale. Retain as fallback, not full contractual pass.",
+          "nextRevision": "Use a pre-pickup frame from this actual take as a stable close first frame; suppress camera travel and show one cookie pickup only."
+        }
+      },
+      {
+        "attempt": "attempt-02",
+        "path": "D:\\H3-runtime\\projects\\unseen-full-v1\\shots\\H02\\attempt-02",
+        "intent": {
+          "key": "unseen-h3-full-film-2026-09-13-v1/H02/attempt-02",
+          "startedAt": "2026-09-14T02:48:18.991067+00:00",
+          "reference": "D:\\H3-runtime\\projects\\unseen-full-v1\\media-inputs\\reference-delta-01\\H02-mother-POV-v1.png",
+          "inputSha256": "b2322346333b4ac4edd76675be168741de0fb5d1a9ba2c6f0fa0dfe7e2cd6f39",
+          "seed": 2026091572,
+          "shot": {
+            "id": "H02",
+            "title": "母亲拍：推碟、拿到、笑",
+            "type": "h3_generated_action",
+            "edit_seconds": 4,
+            "generate_seconds_nominal": 4.458333333333333,
+            "frame_count_starting_point": 107,
+            "fps": 24,
+            "recorder": "妈妈",
+            "references": [
+              "09-home-camera-B.png",
+              "cookie-a.png",
+              "02-character-age-reference.png"
+            ],
+            "start_end_and_action": "A closer three-quarter view from the mother seated beside grandmother at the same table, camera height 1.10m, 35mm equivalent field of view. The same boy remains standing on the floor at the south edge of the same wooden table. His empty right hand continues reaching. Grandmother slides the small saucer about fifteen centimeters toward him with her right hand. He takes exactly one cookie with his right hand and looks up at grandmother with a relieved small smile. Hold the smile briefly. Keep the blue-and-white tin stationary. Keep enough lower body and table edge visible to make his standing posture unambiguous. Mother is behind this camera and is not visible. Single steady take.",
+            "prompt": "Naturalistic personal-memory footage with believable human movement and gently handheld smartphone perspective. Keep the approved faces, clothes, lighting and room geometry. One continuous shot, no internal cuts, no age change, no photo cards, no text, no camera flying outside, no slow motion, no duplicated people, no DV camcorder. A closer three-quarter view from the mother seated beside grandmother at the same table, camera height 1.10m, 35mm equivalent field of view. The same boy remains standing on the floor at the south edge of the same wooden table. His empty right hand continues reaching. Grandmother slides the small saucer about fifteen centimeters toward him with her right hand. He takes exactly one cookie with his right hand and looks up at grandmother with a relieved small smile. Hold the smile briefly. Keep the blue-and-white tin stationary. Keep enough lower body and table edge visible to make his standing posture unambiguous. Mother is behind this camera and is not visible. Single steady take.",
+            "cut_continuity": "Match empty right hand and table contact from H01; do not replay the run or use seated cookie-b as first frame.",
+            "pass_criteria": [
+              "全程站立",
+              "先推碟后拿到，动作单次",
+              "仅一块饼干到右手",
+              "不用旧cookie-b姿势"
+            ],
+            "audio": "Natural scene sound only; no generated music, UI text or unscripted dialogue.",
+            "status": "planned",
+            "output": null,
+            "timeline_start_seconds": 4,
+            "timeline_end_seconds": 8
+          },
+          "outputPrefix": "unseen-full-v1/H02/attempt-02",
+          "apiSha256": "1b31fbf2c1dfa759f3c6c44cea74963a83a1864627e987620167e57cbeeea447",
+          "conditioningMode": "first-frame",
+          "templatePrompt": "Naturalistic personal-memory footage with believable human movement and gently handheld smartphone perspective. Keep the approved faces, clothes, lighting and room geometry. One continuous shot, no internal cuts, no age change, no photo cards, no text, no camera flying outside, no slow motion, no duplicated people, no DV camcorder. A closer three-quarter view from the mother seated beside grandmother at the same table, camera height 1.10m, 35mm equivalent field of view. The same boy remains standing on the floor at the south edge of the same wooden table. His empty right hand continues reaching. Grandmother slides the small saucer about fifteen centimeters toward him with her right hand. He takes exactly one cookie with his right hand and looks up at grandmother with a relieved small smile. Hold the smile briefly. Keep the blue-and-white tin stationary. Keep enough lower body and table edge visible to make his standing posture unambiguous. Mother is behind this camera and is not visible. Single steady take.",
+          "executedPrompt": "Naturalistic personal-memory footage with believable human movement and gently handheld smartphone perspective. Keep the approved faces, clothes, lighting and room geometry. One continuous shot, no internal cuts, no age change, no photo cards, no text, no camera flying outside, no slow motion, no duplicated people, no DV camcorder. A closer three-quarter view from the mother seated beside grandmother at the same table, camera height 1.10m, 35mm equivalent field of view. The same boy remains standing on the floor at the south edge of the same wooden table. His empty right hand continues reaching. Grandmother slides the small saucer about fifteen centimeters toward him with her right hand. He takes exactly one cookie with his right hand and looks up at grandmother with a relieved small smile. Hold the smile briefly. Keep the blue-and-white tin stationary. Keep enough lower body and table edge visible to make his standing posture unambiguous. Mother is behind this camera and is not visible. Single steady take. Natural scene sound only; no generated music, UI text or unscripted dialogue."
+        },
+        "submission": {
+          "prompt_id": "1d0b17f5-96c7-4f7f-b2b9-da6f6aa0f348",
+          "number": 13,
+          "node_errors": {}
+        },
+        "result": {
+          "shot": "H02",
+          "attempt": 2,
+          "promptId": "1d0b17f5-96c7-4f7f-b2b9-da6f6aa0f348",
+          "video": "D:\\H3-runtime\\projects\\unseen-full-v1\\generated\\unseen-full-v1\\H02\\attempt-02_00001_.mp4",
+          "bytes": 433144,
+          "sha256": "8f77256331a5bc3e25a3560a953aff1d5fcceefb2d767f431f2f3ce051c03699",
+          "decodeExit": 0,
+          "endedAt": "2026-09-14T02:50:48.315810+00:00",
+          "visualVerdict": "pending_agent_review"
+        },
+        "visual-review": {
+          "verdict": "usable_pending_H01_cut",
+          "observed": "Full decode passed. Reviewed contact sheet: actual reverse mother viewpoint preserved, mother absent, boy stays standing and takes cookie with right hand then smiles. Grandmother small saucer movement visible; exact 15cm and fine finger continuity not measured. No DV camera. Requires H01/H02 cut and prop continuity review, not entire home chapter acceptance.",
+          "attempt": 2,
+          "shot": "H02"
+        }
+      }
+    ]
+  },
+  {
+    "id": "H03",
+    "type": "controlled_spatial_composite",
+    "editSeconds": 3,
+    "state": "planned",
+    "attempts": []
+  },
+  {
+    "id": "H04",
+    "type": "controlled_spatial_composite",
+    "editSeconds": 3,
+    "state": "planned",
+    "attempts": []
+  },
+  {
+    "id": "H05",
+    "type": "controlled_spatial_composite",
+    "editSeconds": 1.5,
+    "state": "planned",
+    "attempts": []
+  },
+  {
+    "id": "H06",
+    "type": "h3_generated_action",
+    "editSeconds": 4,
+    "state": "usable_pending_H07_cut",
+    "attempts": [
+      {
+        "attempt": "attempt-01",
+        "path": "D:\\H3-runtime\\projects\\unseen-full-v1\\shots\\H06\\attempt-01",
+        "intent": {
+          "key": "unseen-h3-full-film-2026-09-13-v1/H06/attempt-01",
+          "startedAt": "2026-09-14T02:56:43.158843+00:00",
+          "reference": "D:\\H3-runtime\\projects\\unseen-full-v1\\media-inputs\\reference-delta-01\\H06-courtyard-empty-basin-v2.png",
+          "inputSha256": "edf3219d0afa49276321d872ca91c31e0ac9cf2efd8b6944118658d8c4bc4e4a",
+          "seed": 2026091575,
+          "shot": {
+            "id": "H06",
+            "title": "雨天：去帮母亲收衣服",
+            "type": "h3_generated_action",
+            "edit_seconds": 4,
+            "generate_seconds_nominal": 4.458333333333333,
+            "frame_count_starting_point": 107,
+            "fps": 24,
+            "recorder": "爸爸",
+            "references": [
+              "rain.png",
+              "04-home-plan.png",
+              "02-character-age-reference.png"
+            ],
+            "start_end_and_action": "A wide smartphone view from just inside the glass doorway looking into the family courtyard during a light summer shower. The same boy, now six years old, wears a cream striped shirt and dark shorts. He carries a small empty laundry basin with both hands and walks from the foreground doorway toward his mother at the clothesline. Mother remains beside the line and lifts one towel off it. Wet stone paving and the familiar tree remain fixed. A small forward camera lean follows his arrival. End with him stopping beside her, basin at waist height, before the towel falls. Natural rain and hurried footsteps.",
+            "prompt": "Naturalistic personal-memory footage with believable human movement and gently handheld smartphone perspective. Keep the approved faces, clothes, lighting and room geometry. One continuous shot, no internal cuts, no age change, no photo cards, no text, no camera flying outside, no slow motion, no duplicated people, no DV camcorder. A wide smartphone view from just inside the glass doorway looking into the family courtyard during a light summer shower. The same boy, now six years old, wears a cream striped shirt and dark shorts. He carries a small empty laundry basin with both hands and walks from the foreground doorway toward his mother at the clothesline. Mother remains beside the line and lifts one towel off it. Wet stone paving and the familiar tree remain fixed. A small forward camera lean follows his arrival. End with him stopping beside her, basin at waist height, before the towel falls. Natural rain and hurried footsteps.",
+            "cut_continuity": "H07 continues after he has arrived; no second walk from the door.",
+            "pass_criteria": [
+              "院子属于同一家",
+              "母亲在收衣、父亲在门边拍",
+              "小孩两手抱盆，不凭空出现第二个人"
+            ],
+            "audio": "Natural scene sound only; no generated music, UI text or unscripted dialogue.",
+            "status": "planned",
+            "output": null,
+            "timeline_start_seconds": 15.5,
+            "timeline_end_seconds": 19.5
+          },
+          "outputPrefix": "unseen-full-v1/H06/attempt-01",
+          "apiSha256": "a9fdfb76aa50b30d94fb332f7eaba29f2e47efa85ebc0e466d85feecd2ce0f26",
+          "conditioningMode": "first-frame",
+          "templatePrompt": "Naturalistic personal-memory footage with believable human movement and gently handheld smartphone perspective. Keep the approved faces, clothes, lighting and room geometry. One continuous shot, no internal cuts, no age change, no photo cards, no text, no camera flying outside, no slow motion, no duplicated people, no DV camcorder. A wide smartphone view from just inside the glass doorway looking into the family courtyard during a light summer shower. The same boy, now six years old, wears a cream striped shirt and dark shorts. He carries a small empty laundry basin with both hands and walks from the foreground doorway toward his mother at the clothesline. Mother remains beside the line and lifts one towel off it. Wet stone paving and the familiar tree remain fixed. A small forward camera lean follows his arrival. End with him stopping beside her, basin at waist height, before the towel falls. Natural rain and hurried footsteps.",
+          "executedPrompt": "Naturalistic personal-memory footage with believable human movement and gently handheld smartphone perspective. Keep the approved faces, clothes, lighting and room geometry. One continuous shot, no internal cuts, no age change, no photo cards, no text, no camera flying outside, no slow motion, no duplicated people, no DV camcorder. A wide smartphone view from just inside the glass doorway looking into the family courtyard during a light summer shower. The same boy, now six years old, wears a cream striped shirt and dark shorts. He carries a small empty laundry basin with both hands and walks from the foreground doorway toward his mother at the clothesline. Mother remains beside the line and lifts one towel off it. Wet stone paving and the familiar tree remain fixed. A small forward camera lean follows his arrival. End with him stopping beside her, basin at waist height, before the towel falls. Natural rain and hurried footsteps. Natural scene sound only; no generated music, UI text or unscripted dialogue."
+        },
+        "submission": {
+          "prompt_id": "078fc6d0-bc9e-41f2-bdbd-b3f9ded6ece6",
+          "number": 14,
+          "node_errors": {}
+        },
+        "result": {
+          "shot": "H06",
+          "attempt": 1,
+          "promptId": "078fc6d0-bc9e-41f2-bdbd-b3f9ded6ece6",
+          "video": "D:\\H3-runtime\\projects\\unseen-full-v1\\generated\\unseen-full-v1\\H06\\attempt-01_00001_.mp4",
+          "bytes": 1018179,
+          "sha256": "7f7d4370729725de0fe83e21409e2a6aa02b9208ad62fb84ed21fe2156df280b",
+          "decodeExit": 0,
+          "endedAt": "2026-09-14T02:59:38.727021+00:00",
+          "visualVerdict": "pending_agent_review"
+        },
+        "visual-review": {
+          "verdict": "usable_pending_H07_cut",
+          "attempt": 1,
+          "observed": "Full decode passed; contact sheet and actual last frame reviewed. Boy in cream thin stripes/navy shorts carries grey basin toward mother, stops beside her. Mother removes towel from line and holds it near him by ending, face not yet covered. No third person. Basin side visible but interior empty status is not visible through full shot. Last frame suitable for H07 continuity candidate.",
+          "shot": "H06"
+        }
+      }
+    ]
+  },
+  {
+    "id": "H07",
+    "type": "h3_generated_action",
+    "editSeconds": 4,
+    "state": "revision_required",
+    "attempts": [
+      {
+        "attempt": "attempt-01",
+        "path": "D:\\H3-runtime\\projects\\unseen-full-v1\\shots\\H07\\attempt-01",
+        "intent": {
+          "key": "unseen-h3-full-film-2026-09-13-v1/H07/attempt-01",
+          "startedAt": "2026-09-14T03:07:27.939228+00:00",
+          "reference": "D:\\H3-runtime\\projects\\unseen-full-v1\\shots\\H06\\attempt-01\\last.png",
+          "inputSha256": "74d6c5927c062f4d635e3b26a3ec9ff202b3b8c88dbe3bfec2d6fa578aaa031a",
+          "seed": 2026091576,
+          "shot": {
+            "id": "H07",
+            "title": "雨天：毛巾盖住脸",
+            "type": "h3_generated_action",
+            "edit_seconds": 4,
+            "generate_seconds_nominal": 4.458333333333333,
+            "frame_count_starting_point": 107,
+            "fps": 24,
+            "recorder": "爸爸，记录内剪近",
+            "references": [
+              "rain.png",
+              "02-character-age-reference.png"
+            ],
+            "start_end_and_action": "A closer view from the same doorway side of the courtyard action, still on the same side of the mother-child axis. The six-year-old boy is already standing beside mother holding the laundry basin at waist height. Mother lowers the towel she just removed; its near edge flops lightly over the boy's forehead and eyes. He frees his right hand, lifts the towel off his face, then laughs while mother smiles. His left arm supports the basin throughout. Keep the towel soft and gravity-driven, not floating. Camera stays nearly still. End on their shared smile with the boy's face visible.",
+            "prompt": "Naturalistic personal-memory footage with believable human movement and gently handheld smartphone perspective. Keep the approved faces, clothes, lighting and room geometry. One continuous shot, no internal cuts, no age change, no photo cards, no text, no camera flying outside, no slow motion, no duplicated people, no DV camcorder. A closer view from the same doorway side of the courtyard action, still on the same side of the mother-child axis. The six-year-old boy is already standing beside mother holding the laundry basin at waist height. Mother lowers the towel she just removed; its near edge flops lightly over the boy's forehead and eyes. He frees his right hand, lifts the towel off his face, then laughs while mother smiles. His left arm supports the basin throughout. Keep the towel soft and gravity-driven, not floating. Camera stays nearly still. End on their shared smile with the boy's face visible.",
+            "cut_continuity": "衣服开始尚未盖住脸；承接H06取下毛巾后的状态。",
+            "pass_criteria": [
+              "动作因果清楚",
+              "盆不漂浮",
+              "没有第三摄影者无故出现"
+            ],
+            "audio": "Natural scene sound only; no generated music, UI text or unscripted dialogue.",
+            "status": "planned",
+            "output": null,
+            "timeline_start_seconds": 19.5,
+            "timeline_end_seconds": 23.5
+          },
+          "outputPrefix": "unseen-full-v1/H07/attempt-01",
+          "apiSha256": "3b3595cd82aa877afff57737445c6c12f3e7131f8e5a3a0b59fc818fe94bc695",
+          "conditioningMode": "first-frame",
+          "templatePrompt": "Naturalistic personal-memory footage with believable human movement and gently handheld smartphone perspective. Keep the approved faces, clothes, lighting and room geometry. One continuous shot, no internal cuts, no age change, no photo cards, no text, no camera flying outside, no slow motion, no duplicated people, no DV camcorder. A closer view from the same doorway side of the courtyard action, still on the same side of the mother-child axis. The six-year-old boy is already standing beside mother holding the laundry basin at waist height. Mother lowers the towel she just removed; its near edge flops lightly over the boy's forehead and eyes. He frees his right hand, lifts the towel off his face, then laughs while mother smiles. His left arm supports the basin throughout. Keep the towel soft and gravity-driven, not floating. Camera stays nearly still. End on their shared smile with the boy's face visible.",
+          "executedPrompt": "Naturalistic personal-memory footage with believable human movement and gently handheld smartphone perspective. Keep the approved faces, clothes, lighting and room geometry. One continuous shot, no internal cuts, no age change, no photo cards, no text, no camera flying outside, no slow motion, no duplicated people, no DV camcorder. A closer view from the same doorway side of the courtyard action, still on the same side of the mother-child axis. The six-year-old boy is already standing beside mother holding the laundry basin at waist height. Mother lowers the towel she just removed; its near edge flops lightly over the boy's forehead and eyes. He frees his right hand, lifts the towel off his face, then laughs while mother smiles. His left arm supports the basin throughout. Keep the towel soft and gravity-driven, not floating. Camera stays nearly still. End on their shared smile with the boy's face visible. Natural scene sound only; no generated music, UI text or unscripted dialogue."
+        },
+        "submission": {
+          "prompt_id": "92cdfb02-c73b-456e-807d-39c9b397e8ea",
+          "number": 15,
+          "node_errors": {}
+        },
+        "result": {
+          "shot": "H07",
+          "attempt": 1,
+          "promptId": "92cdfb02-c73b-456e-807d-39c9b397e8ea",
+          "video": "D:\\H3-runtime\\projects\\unseen-full-v1\\generated\\unseen-full-v1\\H07\\attempt-01_00001_.mp4",
+          "bytes": 680284,
+          "sha256": "625b1607e8568d95f6b7faa1d33d7a5814a25d54ec3325b903f4414d09c01f20",
+          "decodeExit": 0,
+          "endedAt": "2026-09-14T03:09:36.417370+00:00",
+          "visualVerdict": "pending_agent_review"
+        },
+        "visual-review": {
+          "verdict": "revision_required",
+          "attempt": 1,
+          "shot": "H07",
+          "observed": "Full decode passed. Mother lowers towel onto boy head, but towel remains hooded over his face through ending; required right-hand lift and revealed smile do not occur. Basin appears supported but finer grip unverified. Targeted revision must explicitly stage removal early enough to reveal face, preserving original H06 ending input."
+        }
+      },
+      {
+        "attempt": "attempt-02",
+        "path": "D:\\H3-runtime\\projects\\unseen-full-v1\\shots\\H07\\attempt-02",
+        "intent": {
+          "key": "unseen-h3-full-film-2026-09-13-v1/H07/attempt-02",
+          "startedAt": "2026-09-14T03:31:17.207843+00:00",
+          "reference": "D:\\H3-runtime\\projects\\unseen-full-v1\\shots\\H06\\attempt-01\\last.png",
+          "inputSha256": "74d6c5927c062f4d635e3b26a3ec9ff202b3b8c88dbe3bfec2d6fa578aaa031a",
+          "seed": 2026091577,
+          "shot": {
+            "id": "H07",
+            "title": "雨天：毛巾盖住脸",
+            "type": "h3_generated_action",
+            "edit_seconds": 4,
+            "generate_seconds_nominal": 4.458333333333333,
+            "frame_count_starting_point": 107,
+            "fps": 24,
+            "recorder": "爸爸，记录内剪近",
+            "references": [
+              "rain.png",
+              "02-character-age-reference.png"
+            ],
+            "start_end_and_action": "A closer view from the same doorway side of the courtyard action, still on the same side of the mother-child axis. The six-year-old boy is already standing beside mother holding the laundry basin at waist height. Mother lowers the towel she just removed; its near edge flops lightly over the boy's forehead and eyes. He frees his right hand, lifts the towel off his face, then laughs while mother smiles. His left arm supports the basin throughout. Keep the towel soft and gravity-driven, not floating. Camera stays nearly still. End on their shared smile with the boy's face visible.",
+            "prompt": "Naturalistic personal-memory footage with believable human movement and gently handheld smartphone perspective. Keep the approved faces, clothes, lighting and room geometry. One continuous shot, no internal cuts, no age change, no photo cards, no text, no camera flying outside, no slow motion, no duplicated people, no DV camcorder. A closer view from the same doorway side of the courtyard action, still on the same side of the mother-child axis. The six-year-old boy is already standing beside mother holding the laundry basin at waist height. Mother lowers the towel she just removed; its near edge flops lightly over the boy's forehead and eyes. He frees his right hand, lifts the towel off his face, then laughs while mother smiles. His left arm supports the basin throughout. Keep the towel soft and gravity-driven, not floating. Camera stays nearly still. End on their shared smile with the boy's face visible.",
+            "cut_continuity": "衣服开始尚未盖住脸；承接H06取下毛巾后的状态。",
+            "pass_criteria": [
+              "动作因果清楚",
+              "盆不漂浮",
+              "没有第三摄影者无故出现"
+            ],
+            "audio": "Natural scene sound only; no generated music, UI text or unscripted dialogue.",
+            "status": "planned",
+            "output": null,
+            "timeline_start_seconds": 19.5,
+            "timeline_end_seconds": 23.5
+          },
+          "outputPrefix": "unseen-full-v1/H07/attempt-02",
+          "apiSha256": "3bd28c6e562cb7d66bf0157dc4fd5cd29f372c6262a3bccee9b51404b67d2e43",
+          "conditioningMode": "first-frame",
+          "templatePrompt": "Naturalistic personal-memory footage with believable human movement and gently handheld smartphone perspective. Keep the approved faces, clothes, lighting and room geometry. One continuous shot, no internal cuts, no age change, no photo cards, no text, no camera flying outside, no slow motion, no duplicated people, no DV camcorder. A closer view from the same doorway side of the courtyard action, still on the same side of the mother-child axis. The six-year-old boy is already standing beside mother holding the laundry basin at waist height. Mother lowers the towel she just removed; its near edge flops lightly over the boy's forehead and eyes. He frees his right hand, lifts the towel off his face, then laughs while mother smiles. His left arm supports the basin throughout. Keep the towel soft and gravity-driven, not floating. Camera stays nearly still. End on their shared smile with the boy's face visible.",
+          "executedPrompt": "Continue the exact mother and boy courtyard scene in the starting frame. Camera remains on the same doorway side. In the first second, mother gently lets the near edge of her one white towel rest across the boy's forehead and eyes. Immediately the boy frees his RIGHT hand and visibly pulls the entire towel upward off his head and down to his right side. By the middle of the shot his head and face are fully uncovered. He turns his uncovered face slightly toward mother and laughs; mother smiles back. End with the towel completely OFF his head, still grasped in his right hand, his face visible. His LEFT forearm supports the grey basin at waist level throughout. Do not leave the towel draped as a hood. Do not have mother remove it for him. One small causal action, no repeated covering, no new towel, no floating basin, no new people, no camera orbit or cut. Preserve striped cream shirt, navy shorts, boots, mother ivory clothes and wet courtyard. Natural soft rain and a brief laugh, no music or intelligible speech.\n"
+        },
+        "submission": {
+          "prompt_id": "f292fe39-0ad1-471b-87a9-ca91f9c825ce",
+          "number": 17,
+          "node_errors": {}
+        },
+        "result": {
+          "shot": "H07",
+          "attempt": 2,
+          "promptId": "f292fe39-0ad1-471b-87a9-ca91f9c825ce",
+          "video": "D:\\H3-runtime\\projects\\unseen-full-v1\\generated\\unseen-full-v1\\H07\\attempt-02_00001_.mp4",
+          "bytes": 402310,
+          "sha256": "96a0bda1eea9124426b2169ec301fc1da39c423c9c603e2bc3a60e96f01f232c",
+          "decodeExit": 0,
+          "endedAt": "2026-09-14T03:33:46.295917+00:00",
+          "visualVerdict": "pending_agent_review"
+        },
+        "visual-review": {
+          "verdict": "revision_required",
+          "attempt": 2,
+          "shot": "H07",
+          "observed": "Full decode passed. Face is revealed late, improving attempt01, but sheet suggests mother lifts towel away; boy required right-hand removal and visible laugh are not established. Preserve as simpler mother-child towel coverage candidate only, not exact action acceptance. One targeted attempt remains."
+        }
+      }
+    ]
+  },
+  {
+    "id": "H08",
+    "type": "controlled_spatial_composite",
+    "editSeconds": 3,
+    "state": "planned",
+    "attempts": []
+  },
+  {
+    "id": "H09",
+    "type": "controlled_spatial_composite",
+    "editSeconds": 1.5,
+    "state": "planned",
+    "attempts": []
+  },
+  {
+    "id": "H10",
+    "type": "h3_generated_action",
+    "editSeconds": 4,
+    "state": "usable_pending_H11_cut",
+    "attempts": [
+      {
+        "attempt": "attempt-01",
+        "path": "D:\\H3-runtime\\projects\\unseen-full-v1\\shots\\H10\\attempt-01",
+        "intent": {
+          "key": "unseen-h3-full-film-2026-09-13-v1/H10/attempt-01",
+          "startedAt": "2026-09-14T00:23:32.159139+00:00",
+          "reference": "D:\\H3-runtime\\projects\\unseen-full-v1\\media-inputs\\references\\backpack.png",
+          "inputSha256": "27b366c69e2a1dfab513b05cf6e92defae98dad9146f4b3687945fd2e7dfacfa",
+          "seed": 2026091570,
+          "shot": {
+            "id": "H10",
+            "title": "出门前：调整书包带",
+            "type": "h3_generated_action",
+            "edit_seconds": 4,
+            "generate_seconds_nominal": 4.458333333333333,
+            "frame_count_starting_point": 107,
+            "fps": 24,
+            "recorder": "爸爸",
+            "references": [
+              "backpack.png",
+              "04-home-plan.png",
+              "02-character-age-reference.png"
+            ],
+            "start_end_and_action": "Medium-wide smartphone view inside the front hallway on a bright morning. The boy is now seven, with the approved childhood face, a white short-sleeved shirt, dark navy shorts and a grey-green backpack. His mother in an ivory top crouches in front of him and tightens the left shoulder strap once. Grandmother with grey short curls and pink cardigan stands beside them holding a small paper packet of cookies. The open front doorway and the edge of the dining room establish the same home. Father films from the living-room side; he is not in frame. The boy shifts his shoulders to feel the adjusted straps. End as mother finishes and grandmother begins moving the packet toward the side pocket.",
+            "prompt": "Naturalistic personal-memory footage with believable human movement and gently handheld smartphone perspective. Keep the approved faces, clothes, lighting and room geometry. One continuous shot, no internal cuts, no age change, no photo cards, no text, no camera flying outside, no slow motion, no duplicated people, no DV camcorder. Medium-wide smartphone view inside the front hallway on a bright morning. The boy is now seven, with the approved childhood face, a white short-sleeved shirt, dark navy shorts and a grey-green backpack. His mother in an ivory top crouches in front of him and tightens the left shoulder strap once. Grandmother with grey short curls and pink cardigan stands beside them holding a small paper packet of cookies. The open front doorway and the edge of the dining room establish the same home. Father films from the living-room side; he is not in frame. The boy shifts his shoulders to feel the adjusted straps. End as mother finishes and grandmother begins moving the packet toward the side pocket.",
+            "cut_continuity": "H11承接书包已调整好，奶奶才开始放饼干。",
+            "pass_criteria": [
+              "母亲与奶奶是两人",
+              "书包颜色和校门段一致",
+              "不使用旧图把奶奶当母亲"
+            ],
+            "audio": "Natural scene sound only; no generated music, UI text or unscripted dialogue.",
+            "status": "planned",
+            "output": null,
+            "timeline_start_seconds": 28.0,
+            "timeline_end_seconds": 32.0
+          },
+          "outputPrefix": "unseen-full-v1/H10/attempt-01",
+          "apiSha256": "4fbd8cb3144507ad24db320a59d132c1c966bed2c4ed8dfcc842fd053784c8b3"
+        },
+        "submission": {
+          "prompt_id": "89b37389-851b-41b3-b7e0-ad389b5863e8",
+          "number": 2,
+          "node_errors": {}
+        },
+        "result": {
+          "shot": "H10",
+          "attempt": 1,
+          "promptId": "89b37389-851b-41b3-b7e0-ad389b5863e8",
+          "video": "D:\\H3-runtime\\projects\\unseen-full-v1\\generated\\unseen-full-v1\\H10\\attempt-01_00001_.mp4",
+          "bytes": 331905,
+          "sha256": "4d91f93e50520aa43b6b998c671c507aaa0f56b3b2b11b2eb2761300078c9979",
+          "decodeExit": 0,
+          "endedAt": "2026-09-14T00:25:55.977975+00:00",
+          "visualVerdict": "pending_agent_review"
+        },
+        "visual-review": {
+          "shot": "H10",
+          "attempt": 1,
+          "verdict": "rejected",
+          "observed": "Only grandmother and boy appear. Grandmother adjusts/touches backpack and puts packet in side pocket; mother never appears. This violates separate mother/grandmother requirement and replays H11 action.",
+          "nextRevision": "Explicitly bring the distinct ivory-bloused mother into frame from left while grandmother waits motionless with packet; focus only on mother adjusting strap."
+        }
+      },
+      {
+        "attempt": "attempt-02",
+        "path": "D:\\H3-runtime\\projects\\unseen-full-v1\\shots\\H10\\attempt-02",
+        "intent": {
+          "key": "unseen-h3-full-film-2026-09-13-v1/H10/attempt-02",
+          "startedAt": "2026-09-14T00:30:36.724437+00:00",
+          "reference": "D:\\H3-runtime\\projects\\unseen-full-v1\\media-inputs\\references\\backpack.png",
+          "inputSha256": "27b366c69e2a1dfab513b05cf6e92defae98dad9146f4b3687945fd2e7dfacfa",
+          "seed": 2026091571,
+          "shot": {
+            "id": "H10",
+            "title": "出门前：调整书包带",
+            "type": "h3_generated_action",
+            "edit_seconds": 4,
+            "generate_seconds_nominal": 4.458333333333333,
+            "frame_count_starting_point": 107,
+            "fps": 24,
+            "recorder": "爸爸",
+            "references": [
+              "backpack.png",
+              "04-home-plan.png",
+              "02-character-age-reference.png"
+            ],
+            "start_end_and_action": "Medium-wide smartphone view inside the front hallway on a bright morning. The boy is now seven, with the approved childhood face, a white short-sleeved shirt, dark navy shorts and a grey-green backpack. His mother in an ivory top crouches in front of him and tightens the left shoulder strap once. Grandmother with grey short curls and pink cardigan stands beside them holding a small paper packet of cookies. The open front doorway and the edge of the dining room establish the same home. Father films from the living-room side; he is not in frame. The boy shifts his shoulders to feel the adjusted straps. End as mother finishes and grandmother begins moving the packet toward the side pocket.",
+            "prompt": "Naturalistic personal-memory footage with believable human movement and gently handheld smartphone perspective. Keep the approved faces, clothes, lighting and room geometry. One continuous shot, no internal cuts, no age change, no photo cards, no text, no camera flying outside, no slow motion, no duplicated people, no DV camcorder. Medium-wide smartphone view inside the front hallway on a bright morning. The boy is now seven, with the approved childhood face, a white short-sleeved shirt, dark navy shorts and a grey-green backpack. His mother in an ivory top crouches in front of him and tightens the left shoulder strap once. Grandmother with grey short curls and pink cardigan stands beside them holding a small paper packet of cookies. The open front doorway and the edge of the dining room establish the same home. Father films from the living-room side; he is not in frame. The boy shifts his shoulders to feel the adjusted straps. End as mother finishes and grandmother begins moving the packet toward the side pocket.",
+            "cut_continuity": "H11承接书包已调整好，奶奶才开始放饼干。",
+            "pass_criteria": [
+              "母亲与奶奶是两人",
+              "书包颜色和校门段一致",
+              "不使用旧图把奶奶当母亲"
+            ],
+            "audio": "Natural scene sound only; no generated music, UI text or unscripted dialogue.",
+            "status": "planned",
+            "output": null,
+            "timeline_start_seconds": 28.0,
+            "timeline_end_seconds": 32.0
+          },
+          "outputPrefix": "unseen-full-v1/H10/attempt-02",
+          "apiSha256": "ef5c0abc2751832fe88edde95076b08a5e2fa4ba534c0b648e70dab3e411f94f"
+        },
+        "submission": {
+          "prompt_id": "8adcb62c-5efe-460c-bf17-02799d4a463c",
+          "number": 3,
+          "node_errors": {}
+        },
+        "result": {
+          "shot": "H10",
+          "attempt": 2,
+          "promptId": "8adcb62c-5efe-460c-bf17-02799d4a463c",
+          "video": "D:\\H3-runtime\\projects\\unseen-full-v1\\generated\\unseen-full-v1\\H10\\attempt-02_00001_.mp4",
+          "bytes": 375200,
+          "sha256": "67b36d9dde388feabe0260893a49903bce59df2492f211c1aff759475c0744da",
+          "decodeExit": 0,
+          "endedAt": "2026-09-14T00:33:05.862956+00:00",
+          "visualVerdict": "pending_agent_review"
+        },
+        "visual-review": {
+          "shot": "H10",
+          "attempt": 2,
+          "verdict": "usable_pending_H11_cut",
+          "observed": "A distinct younger ivory-bloused mother enters from left and kneels in front of boy, adjusting shoulder strap. Grey-haired pink-cardigan grandmother remains at right; both faces stay distinct and boy stands throughout. Static room and backpack remain coherent. Mother's loose black hair differs from childhood reference tied-back hair; carry as identity-continuity limitation. Cookie packet handoff not yet complete.",
+          "next": "Continue H11 from actual last frame to preserve all three people."
+        }
+      }
+    ]
+  },
+  {
+    "id": "H11",
+    "type": "h3_generated_action",
+    "editSeconds": 4,
+    "state": "usable_with_limitations",
+    "attempts": [
+      {
+        "attempt": "attempt-01",
+        "path": "D:\\H3-runtime\\projects\\unseen-full-v1\\shots\\H11\\attempt-01",
+        "intent": {
+          "key": "unseen-h3-full-film-2026-09-13-v1/H11/attempt-01",
+          "startedAt": "2026-09-14T00:37:34.748716+00:00",
+          "reference": "D:\\H3-runtime\\projects\\unseen-full-v1\\shots\\H10\\attempt-02\\last.png",
+          "inputSha256": "4f085b7cb9950298e35a25b76342c6185cfbc7b13f3090065f9610a5b057feaa",
+          "seed": 2026091571,
+          "shot": {
+            "id": "H11",
+            "title": "出门前：奶奶放进一包饼干",
+            "type": "h3_generated_action",
+            "edit_seconds": 4,
+            "generate_seconds_nominal": 4.458333333333333,
+            "frame_count_starting_point": 107,
+            "fps": 24,
+            "recorder": "爸爸，记录内剪近",
+            "references": [
+              "backpack.png",
+              "02-character-age-reference.png"
+            ],
+            "start_end_and_action": "Closer smartphone view from the same living-room side of the front-hall axis. The seven-year-old boy remains standing in the white shirt, navy shorts and grey-green backpack with adjusted straps. Grandmother places the small cookie packet into the backpack side pocket. Mother has just finished helping and stays beside them. The boy turns his head to grandmother, smiles, then takes one step toward the open front door. Camera pans just enough to retain his shoulder, pocket and grandmother's hand. The packet stays in the pocket after her hand withdraws. End on his first outward step, not a new goodbye sequence.",
+            "prompt": "Naturalistic personal-memory footage with believable human movement and gently handheld smartphone perspective. Keep the approved faces, clothes, lighting and room geometry. One continuous shot, no internal cuts, no age change, no photo cards, no text, no camera flying outside, no slow motion, no duplicated people, no DV camcorder. Closer smartphone view from the same living-room side of the front-hall axis. The seven-year-old boy remains standing in the white shirt, navy shorts and grey-green backpack with adjusted straps. Grandmother places the small cookie packet into the backpack side pocket. Mother has just finished helping and stays beside them. The boy turns his head to grandmother, smiles, then takes one step toward the open front door. Camera pans just enough to retain his shoulder, pocket and grandmother's hand. The packet stays in the pocket after her hand withdraws. End on his first outward step, not a new goodbye sequence.",
+            "cut_continuity": "S02 later begins the same school morning with the identical outfit and backpack.",
+            "pass_criteria": [
+              "饼干包进同一侧袋",
+              "同日衣着一致",
+              "不是传送到学校"
+            ],
+            "audio": "Natural scene sound only; no generated music, UI text or unscripted dialogue.",
+            "status": "planned",
+            "output": null,
+            "timeline_start_seconds": 32.0,
+            "timeline_end_seconds": 36.0
+          },
+          "outputPrefix": "unseen-full-v1/H11/attempt-01",
+          "apiSha256": "11522b9d85cb4c79cb1eb03e7597dee654d24ab6f64c782e124703e104d23464"
+        },
+        "submission": {
+          "prompt_id": "24b21dae-1f89-4c79-89d8-3a93513f0372",
+          "number": 4,
+          "node_errors": {}
+        },
+        "result": {
+          "shot": "H11",
+          "attempt": 1,
+          "promptId": "24b21dae-1f89-4c79-89d8-3a93513f0372",
+          "video": "D:\\H3-runtime\\projects\\unseen-full-v1\\generated\\unseen-full-v1\\H11\\attempt-01_00001_.mp4",
+          "bytes": 517025,
+          "sha256": "68448440734673c794e2c25ae1c6c96bad0efb46a00391567fb44c7f3ab695a8",
+          "decodeExit": 0,
+          "endedAt": "2026-09-14T00:40:08.934167+00:00",
+          "visualVerdict": "pending_agent_review"
+        },
+        "visual-review": {
+          "shot": "H11",
+          "attempt": 1,
+          "verdict": "usable_with_limitations",
+          "observed": "Grandmother visibly inserts a snack packet into backpack side pocket, withdraws hand, boy turns and begins outward movement. Mother remains distinct at left; boy stays standing. Packet has bright red top unlike original transparent packet reference; keep continuity limitation, not exact prop pass. Camera push-in exceeds requested small pan but action remains readable.",
+          "next": "Continue S02 in established school reference, retain H11 final backpack/clothing comparison."
+        }
+      }
+    ]
+  },
+  {
+    "id": "H12",
+    "type": "controlled_spatial_composite",
+    "editSeconds": 6,
+    "state": "planned",
+    "attempts": []
+  },
+  {
+    "id": "S01",
+    "type": "controlled_spatial_composite",
+    "editSeconds": 3,
+    "state": "planned",
+    "attempts": []
+  },
+  {
+    "id": "S02",
+    "type": "h3_generated_action",
+    "editSeconds": 4,
+    "state": "usable_with_limitations",
+    "attempts": [
+      {
+        "attempt": "attempt-01",
+        "path": "D:\\H3-runtime\\projects\\unseen-full-v1\\shots\\S02\\attempt-01",
+        "intent": {
+          "key": "unseen-h3-full-film-2026-09-13-v1/S02/attempt-01",
+          "startedAt": "2026-09-14T00:44:40.981157+00:00",
+          "reference": "D:\\H3-runtime\\projects\\unseen-full-v1\\media-inputs\\references\\07-school-first-day-parent.png",
+          "inputSha256": "0a681ced6f7cd4b205ab75dc478cde965a78146d96a95cb55f4586365eb5d49a",
+          "seed": 2026091582,
+          "shot": {
+            "id": "S02",
+            "title": "入学：母亲拍到回头挥手",
+            "type": "h3_generated_action",
+            "edit_seconds": 4,
+            "generate_seconds_nominal": 4.458333333333333,
+            "frame_count_starting_point": 107,
+            "fps": 24,
+            "recorder": "妈妈",
+            "references": [
+              "07-school-first-day-parent.png",
+              "02-character-age-reference.png"
+            ],
+            "start_end_and_action": "Smartphone view from outside the school gate, camera at the mother's chest height, wide enough to include the gateposts and the teaching block beyond. The same seven-year-old boy in a white shirt, navy shorts and grey-green backpack walks through the gate away from camera. He glances over his shoulder once and briefly waves his empty right hand to his mother. He then lowers his hand and begins turning forward. Other children enter calmly without obscuring him. The camera follows with a gentle pan only. End as his shoulders turn toward the school; do not keep him waving throughout.",
+            "prompt": "Naturalistic personal-memory footage with believable human movement and gently handheld smartphone perspective. Keep the approved faces, clothes, lighting and room geometry. One continuous shot, no internal cuts, no age change, no photo cards, no text, no camera flying outside, no slow motion, no duplicated people, no DV camcorder. Smartphone view from outside the school gate, camera at the mother's chest height, wide enough to include the gateposts and the teaching block beyond. The same seven-year-old boy in a white shirt, navy shorts and grey-green backpack walks through the gate away from camera. He glances over his shoulder once and briefly waves his empty right hand to his mother. He then lowers his hand and begins turning forward. Other children enter calmly without obscuring him. The camera follows with a gentle pan only. End as his shoulders turn toward the school; do not keep him waving throughout.",
+            "cut_continuity": "S03从挥手结束、转身继续进校开始，不能重演挥手。",
+            "pass_criteria": [
+              "同出门前衣着和包",
+              "门柱/楼/树方位一致",
+              "挥手只有一次"
+            ],
+            "audio": "Natural scene sound only; no generated music, UI text or unscripted dialogue.",
+            "status": "planned",
+            "output": null,
+            "timeline_start_seconds": 45.0,
+            "timeline_end_seconds": 49.0
+          },
+          "outputPrefix": "unseen-full-v1/S02/attempt-01",
+          "apiSha256": "75682cc9140f6ba6ed00fc29801fb48ad3de4a1dba650ab7ef201d315e8ff4cf"
+        },
+        "submission": {
+          "prompt_id": "04b223a7-1e85-4003-94c8-0003ec889ad2",
+          "number": 5,
+          "node_errors": {}
+        },
+        "result": {
+          "shot": "S02",
+          "attempt": 1,
+          "promptId": "04b223a7-1e85-4003-94c8-0003ec889ad2",
+          "video": "D:\\H3-runtime\\projects\\unseen-full-v1\\generated\\unseen-full-v1\\S02\\attempt-01_00001_.mp4",
+          "bytes": 763868,
+          "sha256": "6f16bc0c396280d53eb69fc9e53f152c8e2620505476d2c5396df61127799890",
+          "decodeExit": 0,
+          "endedAt": "2026-09-14T00:46:59.615422+00:00",
+          "visualVerdict": "pending_agent_review"
+        },
+        "visual-review": {
+          "shot": "S02",
+          "attempt": 1,
+          "verdict": "usable_with_limitations",
+          "observed": "Boy looks back, raises one hand briefly, lowers it and turns toward school, then walks forward. School layout and uniform/backpack are coherent with reference. Foreground photographer camera inherited from reference remains visible; shot cannot be claimed as a clean unobstructed mother's smartphone viewpoint. Cookie packet from H11 not distinguishable at this distance.",
+          "next": "S03 should continue actual ending without another wave."
+        }
+      }
+    ]
+  },
+  {
+    "id": "S03",
+    "type": "h3_generated_action",
+    "editSeconds": 4,
+    "state": "usable_with_limitations",
+    "attempts": [
+      {
+        "attempt": "attempt-01",
+        "path": "D:\\H3-runtime\\projects\\unseen-full-v1\\shots\\S03\\attempt-01",
+        "intent": {
+          "key": "unseen-h3-full-film-2026-09-13-v1/S03/attempt-01",
+          "startedAt": "2026-09-14T00:50:32.465471+00:00",
+          "reference": "D:\\H3-runtime\\projects\\unseen-full-v1\\shots\\S02\\attempt-01\\last.png",
+          "inputSha256": "1102d069a2493c5e1fa5014da7d60e4745f93ada3a8a0a7f651a86e0b609a6c5",
+          "seed": 2026091583,
+          "shot": {
+            "id": "S03",
+            "title": "入学：另一位家长留下门内记录",
+            "type": "h3_generated_action",
+            "edit_seconds": 4,
+            "generate_seconds_nominal": 4.458333333333333,
+            "frame_count_starting_point": 107,
+            "fps": 24,
+            "recorder": "同学家长",
+            "references": [
+              "gate-b.png",
+              "07-school-first-day-parent.png",
+              "02-character-age-reference.png"
+            ],
+            "start_end_and_action": "An inside-the-gate smartphone view from another parent, three-quarter rear-side of the entering children. The same seven-year-old boy has finished his wave and now faces into the campus. His right hand is down. A child beside him falls into step and they walk forward together toward the teaching building, away from the entrance. Keep the same gate, tree-lined path, morning light and grey-green backpack. Use a stable medium-wide shot with a small follow pan, preserving the destination on screen right. The mother remains behind near the gate and does not teleport ahead. End with the children walking comfortably together.",
+            "prompt": "Naturalistic personal-memory footage with believable human movement and gently handheld smartphone perspective. Keep the approved faces, clothes, lighting and room geometry. One continuous shot, no internal cuts, no age change, no photo cards, no text, no camera flying outside, no slow motion, no duplicated people, no DV camcorder. An inside-the-gate smartphone view from another parent, three-quarter rear-side of the entering children. The same seven-year-old boy has finished his wave and now faces into the campus. His right hand is down. A child beside him falls into step and they walk forward together toward the teaching building, away from the entrance. Keep the same gate, tree-lined path, morning light and grey-green backpack. Use a stable medium-wide shot with a small follow pan, preserving the destination on screen right. The mother remains behind near the gate and does not teleport ahead. End with the children walking comfortably together.",
+            "cut_continuity": "只承接往前走；可用门柱中性遮挡解决角度方向，不能水平镜像。",
+            "pass_criteria": [
+              "不二次挥手",
+              "同一校门内侧",
+              "另一来源带来完整事件后半段"
+            ],
+            "audio": "Natural scene sound only; no generated music, UI text or unscripted dialogue.",
+            "status": "planned",
+            "output": null,
+            "timeline_start_seconds": 49.0,
+            "timeline_end_seconds": 53.0
+          },
+          "outputPrefix": "unseen-full-v1/S03/attempt-01",
+          "apiSha256": "c39ac6693a07da76ab9bb9d4897106573ef3a6642a561572b47b2967f608df83"
+        },
+        "submission": {
+          "prompt_id": "30d3b5bd-888d-42f7-9a15-95f5f2433689",
+          "number": 6,
+          "node_errors": {}
+        },
+        "result": {
+          "shot": "S03",
+          "attempt": 1,
+          "promptId": "30d3b5bd-888d-42f7-9a15-95f5f2433689",
+          "video": "D:\\H3-runtime\\projects\\unseen-full-v1\\generated\\unseen-full-v1\\S03\\attempt-01_00001_.mp4",
+          "bytes": 479853,
+          "sha256": "50873d4c13f32a38f9b0adbb72da60051b0ac15b23a8689ce7075551cba33838",
+          "decodeExit": 0,
+          "endedAt": "2026-09-14T00:53:22.507029+00:00",
+          "visualVerdict": "pending_agent_review"
+        },
+        "visual-review": {
+          "shot": "S03",
+          "attempt": 1,
+          "verdict": "revision_required",
+          "observed": "Boy continues walking and does not wave again, but camera remains outside gate in the same S02 viewpoint with foreground photographer. Does not establish inside-gate second recorder viewpoint. Other child does not clearly fall into step.",
+          "nextRevision": "Use verified gate-b inside-gate geometric reference and direct children toward the teacher on camera-left into campus, away from background parents; no wave."
+        }
+      },
+      {
+        "attempt": "attempt-02",
+        "path": "D:\\H3-runtime\\projects\\unseen-full-v1\\shots\\S03\\attempt-02",
+        "intent": {
+          "key": "unseen-h3-full-film-2026-09-13-v1/S03/attempt-02",
+          "startedAt": "2026-09-14T00:59:21.048060+00:00",
+          "reference": "D:\\H3-runtime\\projects\\unseen-full-v1\\media-inputs\\references\\gate-b.png",
+          "inputSha256": "4c87989af86e2e2476573192ce7118e16137fa69cea7fa8a70115a92224bad49",
+          "seed": 2026091584,
+          "shot": {
+            "id": "S03",
+            "title": "入学：另一位家长留下门内记录",
+            "type": "h3_generated_action",
+            "edit_seconds": 4,
+            "generate_seconds_nominal": 4.458333333333333,
+            "frame_count_starting_point": 107,
+            "fps": 24,
+            "recorder": "同学家长",
+            "references": [
+              "gate-b.png",
+              "07-school-first-day-parent.png",
+              "02-character-age-reference.png"
+            ],
+            "start_end_and_action": "An inside-the-gate smartphone view from another parent, three-quarter rear-side of the entering children. The same seven-year-old boy has finished his wave and now faces into the campus. His right hand is down. A child beside him falls into step and they walk forward together toward the teaching building, away from the entrance. Keep the same gate, tree-lined path, morning light and grey-green backpack. Use a stable medium-wide shot with a small follow pan, preserving the destination on screen right. The mother remains behind near the gate and does not teleport ahead. End with the children walking comfortably together.",
+            "prompt": "Naturalistic personal-memory footage with believable human movement and gently handheld smartphone perspective. Keep the approved faces, clothes, lighting and room geometry. One continuous shot, no internal cuts, no age change, no photo cards, no text, no camera flying outside, no slow motion, no duplicated people, no DV camcorder. An inside-the-gate smartphone view from another parent, three-quarter rear-side of the entering children. The same seven-year-old boy has finished his wave and now faces into the campus. His right hand is down. A child beside him falls into step and they walk forward together toward the teaching building, away from the entrance. Keep the same gate, tree-lined path, morning light and grey-green backpack. Use a stable medium-wide shot with a small follow pan, preserving the destination on screen right. The mother remains behind near the gate and does not teleport ahead. End with the children walking comfortably together.",
+            "cut_continuity": "只承接往前走；可用门柱中性遮挡解决角度方向，不能水平镜像。",
+            "pass_criteria": [
+              "不二次挥手",
+              "同一校门内侧",
+              "另一来源带来完整事件后半段"
+            ],
+            "audio": "Natural scene sound only; no generated music, UI text or unscripted dialogue.",
+            "status": "planned",
+            "output": null,
+            "timeline_start_seconds": 49.0,
+            "timeline_end_seconds": 53.0
+          },
+          "outputPrefix": "unseen-full-v1/S03/attempt-02",
+          "apiSha256": "ae07ed01f56ab80902953503a17abadfdff9e97a3327df16d2c0daa72fea4aad"
+        },
+        "submission": {
+          "prompt_id": "dbe8e9b7-9288-4461-8655-3221ebb0439b",
+          "number": 7,
+          "node_errors": {}
+        },
+        "result": {
+          "shot": "S03",
+          "attempt": 2,
+          "promptId": "dbe8e9b7-9288-4461-8655-3221ebb0439b",
+          "video": "D:\\H3-runtime\\projects\\unseen-full-v1\\generated\\unseen-full-v1\\S03\\attempt-02_00001_.mp4",
+          "bytes": 837207,
+          "sha256": "e87a59fdc5041986a6157c7795c3859df3a946073a66255eb2363dd6d0567084",
+          "decodeExit": 0,
+          "endedAt": "2026-09-14T01:01:45.138569+00:00",
+          "visualVerdict": "pending_agent_review"
+        },
+        "visual-review": {
+          "shot": "S03",
+          "attempt": 2,
+          "verdict": "rejected",
+          "observed": "Inside-gate viewpoint changes successfully, but boy walks away from camera toward the background parents/street, contradicting required entry direction. Teacher and second child also drift away. No repeated wave.",
+          "nextRevision": "Final bounded attempt: explicit approach toward camera, front-facing torso increasing in size, then leave foreground-left; remove ambiguous instruction about walking into school."
+        }
+      },
+      {
+        "attempt": "attempt-03",
+        "path": "D:\\H3-runtime\\projects\\unseen-full-v1\\shots\\S03\\attempt-03",
+        "intent": {
+          "key": "unseen-h3-full-film-2026-09-13-v1/S03/attempt-03",
+          "startedAt": "2026-09-14T01:06:17.530695+00:00",
+          "reference": "D:\\H3-runtime\\projects\\unseen-full-v1\\media-inputs\\references\\gate-b.png",
+          "inputSha256": "4c87989af86e2e2476573192ce7118e16137fa69cea7fa8a70115a92224bad49",
+          "seed": 2026091585,
+          "shot": {
+            "id": "S03",
+            "title": "入学：另一位家长留下门内记录",
+            "type": "h3_generated_action",
+            "edit_seconds": 4,
+            "generate_seconds_nominal": 4.458333333333333,
+            "frame_count_starting_point": 107,
+            "fps": 24,
+            "recorder": "同学家长",
+            "references": [
+              "gate-b.png",
+              "07-school-first-day-parent.png",
+              "02-character-age-reference.png"
+            ],
+            "start_end_and_action": "An inside-the-gate smartphone view from another parent, three-quarter rear-side of the entering children. The same seven-year-old boy has finished his wave and now faces into the campus. His right hand is down. A child beside him falls into step and they walk forward together toward the teaching building, away from the entrance. Keep the same gate, tree-lined path, morning light and grey-green backpack. Use a stable medium-wide shot with a small follow pan, preserving the destination on screen right. The mother remains behind near the gate and does not teleport ahead. End with the children walking comfortably together.",
+            "prompt": "Naturalistic personal-memory footage with believable human movement and gently handheld smartphone perspective. Keep the approved faces, clothes, lighting and room geometry. One continuous shot, no internal cuts, no age change, no photo cards, no text, no camera flying outside, no slow motion, no duplicated people, no DV camcorder. An inside-the-gate smartphone view from another parent, three-quarter rear-side of the entering children. The same seven-year-old boy has finished his wave and now faces into the campus. His right hand is down. A child beside him falls into step and they walk forward together toward the teaching building, away from the entrance. Keep the same gate, tree-lined path, morning light and grey-green backpack. Use a stable medium-wide shot with a small follow pan, preserving the destination on screen right. The mother remains behind near the gate and does not teleport ahead. End with the children walking comfortably together.",
+            "cut_continuity": "只承接往前走；可用门柱中性遮挡解决角度方向，不能水平镜像。",
+            "pass_criteria": [
+              "不二次挥手",
+              "同一校门内侧",
+              "另一来源带来完整事件后半段"
+            ],
+            "audio": "Natural scene sound only; no generated music, UI text or unscripted dialogue.",
+            "status": "planned",
+            "output": null,
+            "timeline_start_seconds": 49.0,
+            "timeline_end_seconds": 53.0
+          },
+          "outputPrefix": "unseen-full-v1/S03/attempt-03",
+          "apiSha256": "0b21055587319c3586d33e637af979cab0ea1c1e0643bf0ae526f8925ce8f100"
+        },
+        "submission": {
+          "prompt_id": "06c748d4-1e10-493c-90f0-f3c87821cd79",
+          "number": 8,
+          "node_errors": {}
+        },
+        "result": {
+          "shot": "S03",
+          "attempt": 3,
+          "promptId": "06c748d4-1e10-493c-90f0-f3c87821cd79",
+          "video": "D:\\H3-runtime\\projects\\unseen-full-v1\\generated\\unseen-full-v1\\S03\\attempt-03_00001_.mp4",
+          "bytes": 563605,
+          "sha256": "39cbcde86f00209bda7bf6ad33096e4debcfd9c7fe843182e21b4aa75e100131",
+          "decodeExit": 0,
+          "endedAt": "2026-09-14T01:08:46.739564+00:00",
+          "visualVerdict": "pending_agent_review"
+        },
+        "visual-review": {
+          "shot": "S03",
+          "attempt": 3,
+          "verdict": "usable_with_limitations",
+          "observed": "Boy turns to face camera and walks toward foreground into the school-side interior; parent figures remain behind outside gate. Teacher and another child stay distinct, no second wave. Direction now correct. Companion follows behind rather than walking fully side-by-side. This is a simpler action coverage candidate, not exact original staging. No further attempts permitted under current shot budget."
+        }
+      }
+    ]
+  },
+  {
+    "id": "S04",
+    "type": "controlled_spatial_composite",
+    "editSeconds": 3,
+    "state": "planned",
+    "attempts": []
+  },
+  {
+    "id": "S05",
+    "type": "controlled_spatial_composite",
+    "editSeconds": 1.5,
+    "state": "planned",
+    "attempts": []
+  },
+  {
+    "id": "S06",
+    "type": "h3_generated_action",
+    "editSeconds": 4,
+    "state": "usable_pending_S07_cut",
+    "attempts": [
+      {
+        "attempt": "attempt-01",
+        "path": "D:\\H3-runtime\\projects\\unseen-full-v1\\shots\\S06\\attempt-01",
+        "intent": {
+          "key": "unseen-h3-full-film-2026-09-13-v1/S06/attempt-01",
+          "startedAt": "2026-09-14T03:18:31.212060+00:00",
+          "reference": "D:\\H3-runtime\\projects\\unseen-full-v1\\media-inputs\\reference-delta-01\\S06-classroom-couple-v1.png",
+          "inputSha256": "e2b4813a998aceb1d559f4be6e6d772dabf10434eb3f4b076d16c49770aa175f",
+          "seed": 2026091586,
+          "shot": {
+            "id": "S06",
+            "title": "课堂：找不到橡皮",
+            "type": "h3_generated_action",
+            "edit_seconds": 4,
+            "generate_seconds_nominal": 4.458333333333333,
+            "frame_count_starting_point": 107,
+            "fps": 24,
+            "recorder": "后排同学",
+            "references": [
+              "08-school-corridor.png",
+              "02-character-age-reference.png"
+            ],
+            "start_end_and_action": "An ordinary classroom in the established campus, soft daylight from the courtyard-side windows, green chalkboard at the front, wooden desks in rows. Medium smartphone view from a seated classmate behind and to the boy's left, camera height 1.1m. The protagonist is now seventeen, wearing a white school shirt and dark trousers, with the approved teenage face. He quietly opens his pencil case and searches with one hand, then looks toward the girl at the adjacent desk on his right. The girl has a black ponytail and the same white school uniform; freeze this face for graduation, wedding and old age. End on his small questioning glance before any eraser changes hands. Keep the camera still and avoid legible board text.",
+            "prompt": "Naturalistic personal-memory footage with believable human movement and gently handheld smartphone perspective. Keep the approved faces, clothes, lighting and room geometry. One continuous shot, no internal cuts, no age change, no photo cards, no text, no camera flying outside, no slow motion, no duplicated people, no DV camcorder. An ordinary classroom in the established campus, soft daylight from the courtyard-side windows, green chalkboard at the front, wooden desks in rows. Medium smartphone view from a seated classmate behind and to the boy's left, camera height 1.1m. The protagonist is now seventeen, wearing a white school shirt and dark trousers, with the approved teenage face. He quietly opens his pencil case and searches with one hand, then looks toward the girl at the adjacent desk on his right. The girl has a black ponytail and the same white school uniform; freeze this face for graduation, wedding and old age. End on his small questioning glance before any eraser changes hands. Keep the camera still and avoid legible board text.",
+            "cut_continuity": "S07女生在同侧邻桌，男主伸手发生在本镜寻找之后。",
+            "pass_criteria": [
+              "真正教室内部而非走廊当课堂",
+              "固定女孩脸型和座位",
+              "橡皮尚未交付"
+            ],
+            "audio": "Natural scene sound only; no generated music, UI text or unscripted dialogue.",
+            "status": "planned",
+            "output": null,
+            "timeline_start_seconds": 57.5,
+            "timeline_end_seconds": 61.5
+          },
+          "outputPrefix": "unseen-full-v1/S06/attempt-01",
+          "apiSha256": "a090b5a0cdb58759e37e9271748aa712b47ee0c2cfd3e71941199f170590b018",
+          "conditioningMode": "first-frame",
+          "templatePrompt": "Naturalistic personal-memory footage with believable human movement and gently handheld smartphone perspective. Keep the approved faces, clothes, lighting and room geometry. One continuous shot, no internal cuts, no age change, no photo cards, no text, no camera flying outside, no slow motion, no duplicated people, no DV camcorder. An ordinary classroom in the established campus, soft daylight from the courtyard-side windows, green chalkboard at the front, wooden desks in rows. Medium smartphone view from a seated classmate behind and to the boy's left, camera height 1.1m. The protagonist is now seventeen, wearing a white school shirt and dark trousers, with the approved teenage face. He quietly opens his pencil case and searches with one hand, then looks toward the girl at the adjacent desk on his right. The girl has a black ponytail and the same white school uniform; freeze this face for graduation, wedding and old age. End on his small questioning glance before any eraser changes hands. Keep the camera still and avoid legible board text.",
+          "executedPrompt": "Keep the exact classroom, seated viewpoint, two students, clothing and faces from the starting image. One continuous naturalistic shot, stationary camera, no cuts, no camera relocation, no readable new text. The seventeen-year-old boy on the left quietly searches inside his already-open dark pencil case with his right hand, then turns his head slightly toward the ponytail girl seated immediately on his right, giving a small questioning glance. The girl notices his glance but keeps the single pale-pink eraser resting on her own desk without passing it yet. Keep their separate wooden desks, notebooks, green chalkboard behind and sunlit windows on the right fixed. No age changes, no duplicate people, no additional erasers. Natural quiet classroom ambience, fabric and pencil-case sounds; no music or intelligible speech.\n"
+        },
+        "submission": {
+          "prompt_id": "1a6a1222-72ea-4171-b51e-cff21fb86bbc",
+          "number": 16,
+          "node_errors": {}
+        },
+        "result": {
+          "shot": "S06",
+          "attempt": 1,
+          "promptId": "1a6a1222-72ea-4171-b51e-cff21fb86bbc",
+          "video": "D:\\H3-runtime\\projects\\unseen-full-v1\\generated\\unseen-full-v1\\S06\\attempt-01_00001_.mp4",
+          "bytes": 277352,
+          "sha256": "8615bc18bbfc216cb1c37d61ed290f6100a9e778adc8cc4e8361f7db745c7106",
+          "decodeExit": 0,
+          "endedAt": "2026-09-14T03:20:44.625829+00:00",
+          "visualVerdict": "pending_agent_review"
+        },
+        "visual-review": {
+          "shot": "S06",
+          "observed": "Full decode passed. Contact sheet shows boy searches open pencil case then turns toward ponytail girl; no eraser transfer. Girl lifts pale-pink eraser slightly in her right hand by end rather than leaving it on table, so S07 must continue from this actual lifted position. Classroom layout, outfits and pair remain stable. Same approved frontal reference angle retained; not original behind-left camera.",
+          "verdict": "usable_pending_S07_cut",
+          "attempt": 1
+        }
+      }
+    ]
+  },
+  {
+    "id": "S07",
+    "type": "h3_generated_action",
+    "editSeconds": 4,
+    "state": "usable_pending_S06_cut",
+    "attempts": [
+      {
+        "attempt": "attempt-01",
+        "path": "D:\\H3-runtime\\projects\\unseen-full-v1\\shots\\S07\\attempt-01",
+        "intent": {
+          "key": "unseen-h3-full-film-2026-09-13-v1/S07/attempt-01",
+          "startedAt": "2026-09-14T03:43:41.460992+00:00",
+          "reference": "D:\\H3-runtime\\projects\\unseen-full-v1\\media-inputs\\reference-delta-03\\S07-classroom-side-angle-v1.png",
+          "inputSha256": "741885076c977bcc10cf664ce06fa52407a5f419092c2e2a6bf809a24b545497",
+          "seed": 2026091587,
+          "shot": {
+            "id": "S07",
+            "title": "课堂：邻桌推过一块橡皮",
+            "type": "h3_generated_action",
+            "edit_seconds": 4,
+            "generate_seconds_nominal": 4.458333333333333,
+            "frame_count_starting_point": 107,
+            "fps": 24,
+            "recorder": "另一位同学",
+            "references": [
+              "02-character-age-reference.png"
+            ],
+            "start_end_and_action": "A closer classroom smartphone view from a classmate across the aisle, staying on the same side of the two students' axis. The seventeen-year-old boy and ponytailed girl retain their exact faces, uniform and adjacent desks from the previous shot. Start with his attention already turned toward her. She slides one small white eraser across the short clear desk edge toward him with her left hand. He receives it with his right hand and gives a quiet grateful smile; she smiles briefly and returns her eyes to her exercise book. Keep both hands, the eraser and the two faces visible. No long dialogue, no new student entering, no camera orbit.",
+            "prompt": "Naturalistic personal-memory footage with believable human movement and gently handheld smartphone perspective. Keep the approved faces, clothes, lighting and room geometry. One continuous shot, no internal cuts, no age change, no photo cards, no text, no camera flying outside, no slow motion, no duplicated people, no DV camcorder. A closer classroom smartphone view from a classmate across the aisle, staying on the same side of the two students' axis. The seventeen-year-old boy and ponytailed girl retain their exact faces, uniform and adjacent desks from the previous shot. Start with his attention already turned toward her. She slides one small white eraser across the short clear desk edge toward him with her left hand. He receives it with his right hand and gives a quiet grateful smile; she smiles briefly and returns her eyes to her exercise book. Keep both hands, the eraser and the two faces visible. No long dialogue, no new student entering, no camera orbit.",
+            "cut_continuity": "固定S06参考/实际末帧身份；交接只一次，桌子不可连成别样布局。",
+            "pass_criteria": [
+              "女孩是未来伴侣同一身份",
+              "推→接→回应依次发生",
+              "橡皮不变物体、不穿手"
+            ],
+            "audio": "Natural scene sound only; no generated music, UI text or unscripted dialogue.",
+            "status": "planned",
+            "output": null,
+            "timeline_start_seconds": 61.5,
+            "timeline_end_seconds": 65.5
+          },
+          "outputPrefix": "unseen-full-v1/S07/attempt-01",
+          "apiSha256": "1c979e633185e7a211627f4d0ccb51aeb71661ed35b1d4cf807ab91a1b08f100",
+          "conditioningMode": "first-frame",
+          "templatePrompt": "Naturalistic personal-memory footage with believable human movement and gently handheld smartphone perspective. Keep the approved faces, clothes, lighting and room geometry. One continuous shot, no internal cuts, no age change, no photo cards, no text, no camera flying outside, no slow motion, no duplicated people, no DV camcorder. A closer classroom smartphone view from a classmate across the aisle, staying on the same side of the two students' axis. The seventeen-year-old boy and ponytailed girl retain their exact faces, uniform and adjacent desks from the previous shot. Start with his attention already turned toward her. She slides one small white eraser across the short clear desk edge toward him with her left hand. He receives it with his right hand and gives a quiet grateful smile; she smiles briefly and returns her eyes to her exercise book. Keep both hands, the eraser and the two faces visible. No long dialogue, no new student entering, no camera orbit.",
+          "executedPrompt": "Continue the quiet classroom moment from this exact side-view starting frame. Preserve the same teenage boy, ponytail girl, uniforms, desks, open books, dark pencil case, green board and windows. The boy has already finished searching; he does not search again. The girl gently pushes the single pale pink eraser across the adjoining desk edge toward him using her right fingertips. He reaches with his right hand and receives that same eraser, then they exchange one brief shy smile. Keep one eraser only, visible continuous contact and transfer, no duplicate object or magic appearance. Camera stays at this classmate's side position, no cuts or orbit. Natural quiet classroom ambience, no music or intelligible speech.\n"
+        },
+        "submission": {
+          "prompt_id": "c51ec388-8f15-436f-98a2-29d3f6956b90",
+          "number": 18,
+          "node_errors": {}
+        },
+        "result": {
+          "shot": "S07",
+          "attempt": 1,
+          "promptId": "c51ec388-8f15-436f-98a2-29d3f6956b90",
+          "video": "D:\\H3-runtime\\projects\\unseen-full-v1\\generated\\unseen-full-v1\\S07\\attempt-01_00001_.mp4",
+          "bytes": 322260,
+          "sha256": "1720e38f80304da562ebdf4523b278a69222f93671a995cbadb1377e6fe82db2",
+          "decodeExit": 0,
+          "endedAt": "2026-09-14T03:46:26.342601+00:00",
+          "visualVerdict": "pending_agent_review"
+        },
+        "visual-review": {
+          "attempt": 1,
+          "verdict": "usable_pending_S06_cut",
+          "shot": "S07",
+          "observed": "Full decode passed. Contact sheet shows single pink eraser pushed across joined desk edge then boy reaches and takes it, both smile. Genuine side-view reference preserves same pair and classroom. Girl starts eraser on desk while S06 ending lifts it, so cut S06 before that lift or verify a motivated hand-down cut; do not claim exact end-to-start match yet. Fine object handoff needs close frame review."
+        }
+      }
+    ]
+  },
+  {
+    "id": "S08",
+    "type": "controlled_spatial_composite",
+    "editSeconds": 3,
+    "state": "planned",
+    "attempts": []
+  },
+  {
+    "id": "S09",
+    "type": "controlled_spatial_composite",
+    "editSeconds": 1.5,
+    "state": "planned",
+    "attempts": []
+  },
+  {
+    "id": "S10",
+    "type": "h3_generated_action",
+    "editSeconds": 4,
+    "state": "revision_or_trim_required",
+    "attempts": [
+      {
+        "attempt": "attempt-01",
+        "path": "D:\\H3-runtime\\projects\\unseen-full-v1\\shots\\S10\\attempt-01",
+        "intent": {
+          "key": "unseen-h3-full-film-2026-09-13-v1/S10/attempt-01",
+          "startedAt": "2026-09-14T03:53:02.565375+00:00",
+          "reference": "D:\\H3-runtime\\projects\\unseen-full-v1\\media-inputs\\reference-delta-02\\S10-graduation-couple-v1.png",
+          "inputSha256": "db44044657e2fa1bf48f79575c9fa9f7df1880e6cc187a84a59e0bd802375e90",
+          "seed": 2026091581,
+          "shot": {
+            "id": "S10",
+            "title": "毕业：被朋友叫到一起",
+            "type": "h3_generated_action",
+            "edit_seconds": 4,
+            "generate_seconds_nominal": 4.458333333333333,
+            "frame_count_starting_point": 107,
+            "fps": 24,
+            "recorder": "拍合照的同学",
+            "references": [
+              "03-campus-space-master.png",
+              "02-character-age-reference.png"
+            ],
+            "start_end_and_action": "Wide smartphone group-photo framing under the large campus tree beside the teaching building, late afternoon. The protagonist and the same ponytailed girl are now eighteen, still in white school shirts and dark bottoms. A small group of classmates arranges itself in two loose rows. The boy and girl begin with a small gap; a friend beside them gestures for them to stand closer. They each take half a step toward the gap and smile awkwardly. Keep ordinary graduation-day clothes, no mortarboards or university gowns. Camera remains at eye level, stable and wide enough to see their feet and the familiar building. End with the group finally ready for the photo.",
+            "prompt": "Naturalistic personal-memory footage with believable human movement and gently handheld smartphone perspective. Keep the approved faces, clothes, lighting and room geometry. One continuous shot, no internal cuts, no age change, no photo cards, no text, no camera flying outside, no slow motion, no duplicated people, no DV camcorder. Wide smartphone group-photo framing under the large campus tree beside the teaching building, late afternoon. The protagonist and the same ponytailed girl are now eighteen, still in white school shirts and dark bottoms. A small group of classmates arranges itself in two loose rows. The boy and girl begin with a small gap; a friend beside them gestures for them to stand closer. They each take half a step toward the gap and smile awkwardly. Keep ordinary graduation-day clothes, no mortarboards or university gowns. Camera remains at eye level, stable and wide enough to see their feet and the familiar building. End with the group finally ready for the photo.",
+            "cut_continuity": "S11从合照刚完成后松下来，不重新排一次队。",
+            "pass_criteria": [
+              "同校同人",
+              "移动半步自然",
+              "不把初高中毕业变大学场景"
+            ],
+            "audio": "Natural scene sound only; no generated music, UI text or unscripted dialogue.",
+            "status": "planned",
+            "output": null,
+            "timeline_start_seconds": 70.0,
+            "timeline_end_seconds": 74.0
+          },
+          "outputPrefix": "unseen-full-v1/S10/attempt-01",
+          "apiSha256": "16ebc3c8fb4d337e78d20367fd5661a8f266bf081fa0ae91bf69e128556b78b9",
+          "conditioningMode": "first-frame",
+          "templatePrompt": "Naturalistic personal-memory footage with believable human movement and gently handheld smartphone perspective. Keep the approved faces, clothes, lighting and room geometry. One continuous shot, no internal cuts, no age change, no photo cards, no text, no camera flying outside, no slow motion, no duplicated people, no DV camcorder. Wide smartphone group-photo framing under the large campus tree beside the teaching building, late afternoon. The protagonist and the same ponytailed girl are now eighteen, still in white school shirts and dark bottoms. A small group of classmates arranges itself in two loose rows. The boy and girl begin with a small gap; a friend beside them gestures for them to stand closer. They each take half a step toward the gap and smile awkwardly. Keep ordinary graduation-day clothes, no mortarboards or university gowns. Camera remains at eye level, stable and wide enough to see their feet and the familiar building. End with the group finally ready for the photo.",
+          "executedPrompt": "Naturalistic personal-memory footage with believable human movement and gently handheld smartphone perspective. Keep the approved faces, clothes, lighting and room geometry. One continuous shot, no internal cuts, no age change, no photo cards, no text, no camera flying outside, no slow motion, no duplicated people, no DV camcorder. Wide smartphone group-photo framing under the large campus tree beside the teaching building, late afternoon. The protagonist and the same ponytailed girl are now eighteen, still in white school shirts and dark bottoms. A small group of classmates arranges itself in two loose rows. The boy and girl begin with a small gap; a friend beside them gestures for them to stand closer. They each take half a step toward the gap and smile awkwardly. Keep ordinary graduation-day clothes, no mortarboards or university gowns. Camera remains at eye level, stable and wide enough to see their feet and the familiar building. End with the group finally ready for the photo. Natural scene sound only; no generated music, UI text or unscripted dialogue."
+        },
+        "submission": {
+          "prompt_id": "bc984010-2624-4d0a-ae22-3e37c16d6108",
+          "number": 19,
+          "node_errors": {}
+        },
+        "result": {
+          "shot": "S10",
+          "attempt": 1,
+          "promptId": "bc984010-2624-4d0a-ae22-3e37c16d6108",
+          "video": "D:\\H3-runtime\\projects\\unseen-full-v1\\generated\\unseen-full-v1\\S10\\attempt-01_00001_.mp4",
+          "bytes": 479061,
+          "sha256": "860559c676e35a2f371138dfb6d2f58f8022f79ce9209b5cba1027fad7b861be",
+          "decodeExit": 0,
+          "endedAt": "2026-09-14T03:55:42.177057+00:00",
+          "visualVerdict": "pending_agent_review"
+        },
+        "visual-review": {
+          "attempt": 1,
+          "verdict": "revision_or_trim_required",
+          "shot": "S10",
+          "observed": "Full decode passed. Group moves closer and forms photo pose. Unexpected dark subtitle-like glyphs appear near bottom centre in early contact-sheet samples despite no-text prompt. Must trim only if complete required action survives, otherwise targeted revision. Two rear students become occluded; verify no identity disappearance. Do not call this clean final candidate."
+        }
+      }
+    ]
+  },
+  {
+    "id": "S11",
+    "type": "h3_generated_action",
+    "editSeconds": 4,
+    "state": "usable_pending_S10_cut",
+    "attempts": [
+      {
+        "attempt": "attempt-01",
+        "path": "D:\\H3-runtime\\projects\\unseen-full-v1\\shots\\S11\\attempt-01",
+        "intent": {
+          "key": "unseen-h3-full-film-2026-09-13-v1/S11/attempt-01",
+          "startedAt": "2026-09-14T04:02:42.625222+00:00",
+          "reference": "D:\\H3-runtime\\projects\\unseen-full-v1\\media-inputs\\reference-delta-03\\S11-graduation-side-angle-v1.png",
+          "inputSha256": "093bec77138785daf683911378dbdc1041575077410a9e3ee6448fac6e053f25",
+          "seed": 2026091582,
+          "shot": {
+            "id": "S11",
+            "title": "毕业：快门之后还在笑",
+            "type": "h3_generated_action",
+            "edit_seconds": 4,
+            "generate_seconds_nominal": 4.458333333333333,
+            "frame_count_starting_point": 107,
+            "fps": 24,
+            "recorder": "侧边朋友",
+            "references": [
+              "02-character-age-reference.png"
+            ],
+            "start_end_and_action": "A medium-wide candid smartphone angle from a friend a few steps to the side of the same graduation group. Start just after the group photo has been taken. The same boy and girl remain next to each other under the same tree, with identical faces and uniforms. They release their formal smiles into a spontaneous laugh as a classmate fans their face with an exercise booklet. The boy glances at the girl, then both look toward their laughing friend. Camera makes a tiny human adjustment but stays on the same side of the group. End on their relaxed shared glance, leaving half a second of calm reaction.",
+            "prompt": "Naturalistic personal-memory footage with believable human movement and gently handheld smartphone perspective. Keep the approved faces, clothes, lighting and room geometry. One continuous shot, no internal cuts, no age change, no photo cards, no text, no camera flying outside, no slow motion, no duplicated people, no DV camcorder. A medium-wide candid smartphone angle from a friend a few steps to the side of the same graduation group. Start just after the group photo has been taken. The same boy and girl remain next to each other under the same tree, with identical faces and uniforms. They release their formal smiles into a spontaneous laugh as a classmate fans their face with an exercise booklet. The boy glances at the girl, then both look toward their laughing friend. Camera makes a tiny human adjustment but stays on the same side of the group. End on their relaxed shared glance, leaving half a second of calm reaction.",
+            "cut_continuity": "S10站位保留到S11，合影快门声跨切镜一次。",
+            "pass_criteria": [
+              "时间往前",
+              "伴侣身份清楚",
+              "额外人不凭空变位"
+            ],
+            "audio": "Natural scene sound only; no generated music, UI text or unscripted dialogue.",
+            "status": "planned",
+            "output": null,
+            "timeline_start_seconds": 74.0,
+            "timeline_end_seconds": 78.0
+          },
+          "outputPrefix": "unseen-full-v1/S11/attempt-01",
+          "apiSha256": "fd1e5fc31bd9547199e0c1265242ef94316e356343f9126b59643dfccb734bd0",
+          "conditioningMode": "first-frame",
+          "templatePrompt": "Naturalistic personal-memory footage with believable human movement and gently handheld smartphone perspective. Keep the approved faces, clothes, lighting and room geometry. One continuous shot, no internal cuts, no age change, no photo cards, no text, no camera flying outside, no slow motion, no duplicated people, no DV camcorder. A medium-wide candid smartphone angle from a friend a few steps to the side of the same graduation group. Start just after the group photo has been taken. The same boy and girl remain next to each other under the same tree, with identical faces and uniforms. They release their formal smiles into a spontaneous laugh as a classmate fans their face with an exercise booklet. The boy glances at the girl, then both look toward their laughing friend. Camera makes a tiny human adjustment but stays on the same side of the group. End on their relaxed shared glance, leaving half a second of calm reaction.",
+          "executedPrompt": "Naturalistic personal-memory footage with believable human movement and gently handheld smartphone perspective. Keep the approved faces, clothes, lighting and room geometry. One continuous shot, no internal cuts, no age change, no photo cards, no text, no camera flying outside, no slow motion, no duplicated people, no DV camcorder. A medium-wide candid smartphone angle from a friend a few steps to the side of the same graduation group. Start just after the group photo has been taken. The same boy and girl remain next to each other under the same tree, with identical faces and uniforms. They release their formal smiles into a spontaneous laugh as a classmate fans their face with an exercise booklet. The boy glances at the girl, then both look toward their laughing friend. Camera makes a tiny human adjustment but stays on the same side of the group. End on their relaxed shared glance, leaving half a second of calm reaction. Natural scene sound only; no generated music, UI text or unscripted dialogue."
+        },
+        "submission": {
+          "prompt_id": "6cf2222b-77e6-4f51-8ec0-5980c3073ba9",
+          "number": 20,
+          "node_errors": {}
+        },
+        "result": {
+          "shot": "S11",
+          "attempt": 1,
+          "promptId": "6cf2222b-77e6-4f51-8ec0-5980c3073ba9",
+          "video": "D:\\H3-runtime\\projects\\unseen-full-v1\\generated\\unseen-full-v1\\S11\\attempt-01_00001_.mp4",
+          "bytes": 648798,
+          "sha256": "5411b455d0c9f4605a7f18f17a2966bce5c73606d75138144dabd1f736b2920e",
+          "decodeExit": 0,
+          "endedAt": "2026-09-14T04:05:11.978394+00:00",
+          "visualVerdict": "pending_agent_review"
+        },
+        "visual-review": {
+          "verdict": "usable_pending_S10_cut",
+          "attempt": 1,
+          "shot": "S11",
+          "observed": "Full decode passed. Reviewed full contact sheet: friend waves exercise booklet to fan, main pair laugh and exchange glances, six students remain visible or naturally occluded. Campus tree/building/field relations retained. Side-view change modest; cannot exaggerate as large new angle. S10 text artefact and cut timing still unresolved."
+        }
+      }
+    ]
+  },
+  {
+    "id": "S12",
+    "type": "controlled_spatial_composite",
+    "editSeconds": 6,
+    "state": "planned",
+    "attempts": []
+  },
+  {
+    "id": "W01",
+    "type": "controlled_spatial_composite",
+    "editSeconds": 2,
+    "state": "planned",
+    "attempts": []
+  },
+  {
+    "id": "W02",
+    "type": "h3_generated_action",
+    "editSeconds": 4,
+    "state": "usable_pending_W03_cut",
+    "attempts": [
+      {
+        "attempt": "attempt-01",
+        "path": "D:\\H3-runtime\\projects\\unseen-full-v1\\shots\\W02\\attempt-01",
+        "intent": {
+          "key": "unseen-h3-full-film-2026-09-13-v1/W02/attempt-01",
+          "startedAt": "2026-09-14T04:14:54.823390+00:00",
+          "reference": "D:\\H3-runtime\\projects\\unseen-full-v1\\media-inputs\\reference-delta-02\\W02-wedding-preparation-v1.png",
+          "inputSha256": "cd23db50ed974eda870bb9d41d63e50be59d70a473f7d63124f7444b1516e3b1",
+          "seed": 2026091586,
+          "shot": {
+            "id": "W02",
+            "title": "婚礼前：等她扶正胸花",
+            "type": "h3_generated_action",
+            "edit_seconds": 4,
+            "generate_seconds_nominal": 4.458333333333333,
+            "frame_count_starting_point": 107,
+            "fps": 24,
+            "recorder": "朋友甲",
+            "references": [
+              "15-wedding-space-master.png",
+              "16-wedding-guest-C.png",
+              "02-character-age-reference.png"
+            ],
+            "start_end_and_action": "Medium smartphone view in the sheltered preparation arcade along the back of the wedding courtyard at warm dusk. The adult protagonist, around twenty-eight, wears a dark suit and white shirt, with the approved adult face. The bride is the same girl grown older, in a simple white wedding dress and low black hair bun. He finishes straightening one shirt cuff and notices his slightly tilted boutonniere. She steps half a pace toward him and lifts her right hand toward the flower. Warm lamps and the courtyard opening stay visible behind them. Friend films from their front-left at chest height. End before she touches the flower.",
+            "prompt": "Naturalistic personal-memory footage with believable human movement and gently handheld smartphone perspective. Keep the approved faces, clothes, lighting and room geometry. One continuous shot, no internal cuts, no age change, no photo cards, no text, no camera flying outside, no slow motion, no duplicated people, no DV camcorder. Medium smartphone view in the sheltered preparation arcade along the back of the wedding courtyard at warm dusk. The adult protagonist, around twenty-eight, wears a dark suit and white shirt, with the approved adult face. The bride is the same girl grown older, in a simple white wedding dress and low black hair bun. He finishes straightening one shirt cuff and notices his slightly tilted boutonniere. She steps half a pace toward him and lifts her right hand toward the flower. Warm lamps and the courtyard opening stay visible behind them. Friend films from their front-left at chest height. End before she touches the flower.",
+            "cut_continuity": "W03接手刚抬起去扶胸花，衣服/胸花/发型不变。",
+            "pass_criteria": [
+              "伴侣不是随机新脸",
+              "准备区真实属于庭院",
+              "胸花没有先被扶正"
+            ],
+            "audio": "Natural scene sound only; no generated music, UI text or unscripted dialogue.",
+            "status": "planned",
+            "output": null,
+            "timeline_start_seconds": 86.0,
+            "timeline_end_seconds": 90.0
+          },
+          "outputPrefix": "unseen-full-v1/W02/attempt-01",
+          "apiSha256": "c6c6c00be40578a2a03c6491c80eee50519696f76ebe652a4c97050395af4849",
+          "conditioningMode": "first-frame",
+          "templatePrompt": "Naturalistic personal-memory footage with believable human movement and gently handheld smartphone perspective. Keep the approved faces, clothes, lighting and room geometry. One continuous shot, no internal cuts, no age change, no photo cards, no text, no camera flying outside, no slow motion, no duplicated people, no DV camcorder. Medium smartphone view in the sheltered preparation arcade along the back of the wedding courtyard at warm dusk. The adult protagonist, around twenty-eight, wears a dark suit and white shirt, with the approved adult face. The bride is the same girl grown older, in a simple white wedding dress and low black hair bun. He finishes straightening one shirt cuff and notices his slightly tilted boutonniere. She steps half a pace toward him and lifts her right hand toward the flower. Warm lamps and the courtyard opening stay visible behind them. Friend films from their front-left at chest height. End before she touches the flower.",
+          "executedPrompt": "Preserve this exact bride and groom, clothing, faces, low bridal bun, flower, timber preparation arcade and courtyard lighting. Her right fingertips ALREADY touch his boutonniere at the start. Continue directly: she makes one small careful adjustment to straighten the tilted flower, while her left hand stays gently on his forearm. He watches her fingers then looks up toward her face with a quiet smile. End with her fingertips still lightly against the now straighter flower, ready for the next angle. Do not withdraw then approach again; no cuff-straightening restart, no duplicate flower, no hand teleporting. Camera remains steady at the established front-left angle. Natural fabric and quiet wedding courtyard ambience, no music, no intelligible dialogue, no text or cuts.\n"
+        },
+        "submission": {
+          "prompt_id": "6b673f56-935e-43c7-8b65-fb08adb01c2e",
+          "number": 21,
+          "node_errors": {}
+        },
+        "result": {
+          "shot": "W02",
+          "attempt": 1,
+          "promptId": "6b673f56-935e-43c7-8b65-fb08adb01c2e",
+          "video": "D:\\H3-runtime\\projects\\unseen-full-v1\\generated\\unseen-full-v1\\W02\\attempt-01_00001_.mp4",
+          "bytes": 289606,
+          "sha256": "80df0be3c6d4d8446250956b42786bf0d953f60ecf1e3f7ba7909fad748b2088",
+          "decodeExit": 0,
+          "endedAt": "2026-09-14T04:17:08.418994+00:00",
+          "visualVerdict": "pending_agent_review"
+        },
+        "visual-review": {
+          "observed": "Full decode passed. Sheet shows small flower adjustment from already-touching input, groom watches then looks up smiling. Bride lowers fingers near end, so trim before withdrawal to join W03 touching start; no claim exact final-frame continuity. No cuff/reach restart. Same couple and arcade retained.",
+          "verdict": "usable_pending_W03_cut",
+          "shot": "W02",
+          "attempt": 1
+        }
+      }
+    ]
+  },
+  {
+    "id": "W03",
+    "type": "h3_generated_action",
+    "editSeconds": 4,
+    "state": "usable_pending_W02_cut",
+    "attempts": [
+      {
+        "attempt": "attempt-01",
+        "path": "D:\\H3-runtime\\projects\\unseen-full-v1\\shots\\W03\\attempt-01",
+        "intent": {
+          "key": "unseen-h3-full-film-2026-09-13-v1/W03/attempt-01",
+          "startedAt": "2026-09-14T04:36:34.777920+00:00",
+          "reference": "D:\\H3-runtime\\projects\\unseen-full-v1\\media-inputs\\reference-delta-03\\W03-wedding-side-angle-v1.png",
+          "inputSha256": "287bea2ce5f27aba36c559b4050a52d548efc5b8fdc7d93a694c56a2f6a0e33f",
+          "seed": 2026091587,
+          "shot": {
+            "id": "W03",
+            "title": "婚礼前：扶正胸花，相视一笑",
+            "type": "h3_generated_action",
+            "edit_seconds": 4,
+            "generate_seconds_nominal": 4.458333333333333,
+            "frame_count_starting_point": 107,
+            "fps": 24,
+            "recorder": "朋友乙",
+            "references": [
+              "16-wedding-guest-C.png",
+              "02-character-age-reference.png"
+            ],
+            "start_end_and_action": "A closer smartphone view from another friend within the same wedding arcade, still on the same side of the couple's axis. Continue the bride's raised right hand from the previous shot. She gently straightens the small boutonniere on the groom's left lapel, withdraws her hand, and looks into his eyes. The same groom smiles back softly. Keep their established adult faces, dark suit, white dress, low hair bun and warm dusk lighting. Frame from mid-torso upward so the flower, hand and two faces remain visible. Nearly locked camera. End after their small shared smile, with the flower remaining straight.",
+            "prompt": "Naturalistic personal-memory footage with believable human movement and gently handheld smartphone perspective. Keep the approved faces, clothes, lighting and room geometry. One continuous shot, no internal cuts, no age change, no photo cards, no text, no camera flying outside, no slow motion, no duplicated people, no DV camcorder. A closer smartphone view from another friend within the same wedding arcade, still on the same side of the couple's axis. Continue the bride's raised right hand from the previous shot. She gently straightens the small boutonniere on the groom's left lapel, withdraws her hand, and looks into his eyes. The same groom smiles back softly. Keep their established adult faces, dark suit, white dress, low hair bun and warm dusk lighting. Frame from mid-torso upward so the flower, hand and two faces remain visible. Nearly locked camera. End after their small shared smile, with the flower remaining straight.",
+            "cut_continuity": "单次扶正，不多次摸花；下一段通过空间去舞池。",
+            "pass_criteria": [
+              "胸花左右正确",
+              "同一伴侣",
+              "镜尾留反应"
+            ],
+            "audio": "Natural scene sound only; no generated music, UI text or unscripted dialogue.",
+            "status": "planned",
+            "output": null,
+            "timeline_start_seconds": 90.0,
+            "timeline_end_seconds": 94.0
+          },
+          "outputPrefix": "unseen-full-v1/W03/attempt-01",
+          "apiSha256": "bd71137ecec2c14e744f5c4b92f82904dd33144d640162c478f5e344d6fc3b52",
+          "conditioningMode": "first-frame",
+          "templatePrompt": "Naturalistic personal-memory footage with believable human movement and gently handheld smartphone perspective. Keep the approved faces, clothes, lighting and room geometry. One continuous shot, no internal cuts, no age change, no photo cards, no text, no camera flying outside, no slow motion, no duplicated people, no DV camcorder. A closer smartphone view from another friend within the same wedding arcade, still on the same side of the couple's axis. Continue the bride's raised right hand from the previous shot. She gently straightens the small boutonniere on the groom's left lapel, withdraws her hand, and looks into his eyes. The same groom smiles back softly. Keep their established adult faces, dark suit, white dress, low hair bun and warm dusk lighting. Frame from mid-torso upward so the flower, hand and two faces remain visible. Nearly locked camera. End after their small shared smile, with the flower remaining straight.",
+          "executedPrompt": "Continue this exact side-angle wedding preparation view with the same couple and courtyard. Her fingertips already rest on the flower, which was mostly straightened in the preceding shot. She makes only one tiny final settling touch, then lowers her right hand to rest softly on his forearm. Do not pull away and reach back; do not repeat the whole flower adjustment. He looks up from her hand and meets her eyes. They share a quiet smile and stay still for the final half-second. Keep dark suit, white shirt, same single boutonniere, white dress, low bun, timber pillars and string lights stable. Stationary friend-held camera, no new viewpoint movement, no cuts, no text. Natural quiet fabric and courtyard ambience, no music or intelligible speech.\n"
+        },
+        "submission": {
+          "prompt_id": "1faea00b-fc91-456d-ae84-f4611e22f38b",
+          "number": 22,
+          "node_errors": {}
+        },
+        "result": {
+          "shot": "W03",
+          "attempt": 1,
+          "promptId": "1faea00b-fc91-456d-ae84-f4611e22f38b",
+          "video": "D:\\H3-runtime\\projects\\unseen-full-v1\\generated\\unseen-full-v1\\W03\\attempt-01_00001_.mp4",
+          "bytes": 295044,
+          "sha256": "8df1f1b0194e74e5ac7f4f4d4a543bd87db64d6a6c32b1e340e8c9b4248762e7",
+          "decodeExit": 0,
+          "endedAt": "2026-09-14T04:38:48.894933+00:00",
+          "visualVerdict": "pending_agent_review"
+        },
+        "visual-review": {
+          "verdict": "usable_pending_W02_cut",
+          "observed": "Full decode passed. Reviewed sheet: bride starts touching flower, finishes small adjustment and lowers hand to forearm, couple exchanges smile; side viewpoint and courtyard preserved. Join W02 before its hand withdrawal to avoid repeat. Fine hand contact and final audio need review.",
+          "shot": "W03",
+          "attempt": 1
+        }
+      }
+    ]
+  },
+  {
+    "id": "W04",
+    "type": "controlled_spatial_composite",
+    "editSeconds": 3,
+    "state": "planned",
+    "attempts": []
+  },
+  {
+    "id": "W05",
+    "type": "controlled_spatial_composite",
+    "editSeconds": 1.5,
+    "state": "planned",
+    "attempts": []
+  },
+  {
+    "id": "W06",
+    "type": "h3_generated_action",
+    "editSeconds": 4,
+    "state": "usable_pending_W07_cut",
+    "attempts": [
+      {
+        "attempt": "attempt-01",
+        "path": "D:\\H3-runtime\\projects\\unseen-full-v1\\shots\\W06\\attempt-01",
+        "intent": {
+          "key": "unseen-h3-full-film-2026-09-13-v1/W06/attempt-01",
+          "startedAt": "2026-09-14T01:37:55.380996+00:00",
+          "reference": "D:\\H3-runtime\\projects\\unseen-full-v1\\media-inputs\\references\\16-wedding-guest-C.png",
+          "inputSha256": "19a7fc1c48f84912655de3ff27f6159437a112e08d321700ff7d5d55db42f7c8",
+          "seed": 2026091590,
+          "shot": {
+            "id": "W06",
+            "title": "跳舞：开始慢慢转半圈",
+            "type": "h3_generated_action",
+            "edit_seconds": 4,
+            "generate_seconds_nominal": 4.458333333333333,
+            "frame_count_starting_point": 107,
+            "fps": 24,
+            "recorder": "朋友甲",
+            "references": [
+              "16-wedding-guest-C.png",
+              "wedding-empty.png",
+              "02-character-age-reference.png"
+            ],
+            "start_end_and_action": "Medium-wide smartphone view from the southwest edge of the courtyard dance floor at dusk. The same bride and groom begin a gentle slow dance. Groom holds her right hand in his left, his right hand resting at her upper back. They take two small coordinated steps and start a modest clockwise half-turn as seen from above. Keep full torsos and feet visible, familiar warm string lights, tree trunk and arcades fixed. Camera stays in place with a small pan following their turn. End during the turn before they face one another in the new direction. Do not spin quickly or lift the bride.",
+            "prompt": "Naturalistic personal-memory footage with believable human movement and gently handheld smartphone perspective. Keep the approved faces, clothes, lighting and room geometry. One continuous shot, no internal cuts, no age change, no photo cards, no text, no camera flying outside, no slow motion, no duplicated people, no DV camcorder. Medium-wide smartphone view from the southwest edge of the courtyard dance floor at dusk. The same bride and groom begin a gentle slow dance. Groom holds her right hand in his left, his right hand resting at her upper back. They take two small coordinated steps and start a modest clockwise half-turn as seen from above. Keep full torsos and feet visible, familiar warm string lights, tree trunk and arcades fixed. Camera stays in place with a small pan following their turn. End during the turn before they face one another in the new direction. Do not spin quickly or lift the bride.",
+            "cut_continuity": "记录终点朝向给W07，用实际末帧检查握手与转向。",
+            "pass_criteria": [
+              "同一双人不换脸",
+              "握手结构稳定",
+              "转向单一"
+            ],
+            "audio": "Natural scene sound only; no generated music, UI text or unscripted dialogue.",
+            "status": "planned",
+            "output": null,
+            "timeline_start_seconds": 98.5,
+            "timeline_end_seconds": 102.5
+          },
+          "outputPrefix": "unseen-full-v1/W06/attempt-01",
+          "apiSha256": "0532b3ae324ab75cf13fe68d73aa1954a968147328b833e5323d2401b1e1f94d"
+        },
+        "submission": {
+          "prompt_id": "3b79579e-cdcd-43cb-a8a9-af55fdf52c8a",
+          "number": 11,
+          "node_errors": {}
+        },
+        "result": {
+          "shot": "W06",
+          "attempt": 1,
+          "promptId": "3b79579e-cdcd-43cb-a8a9-af55fdf52c8a",
+          "video": "D:\\H3-runtime\\projects\\unseen-full-v1\\generated\\unseen-full-v1\\W06\\attempt-01_00001_.mp4",
+          "bytes": 635883,
+          "sha256": "8db472554f58e679e37f0159b1d31aa1e86a6b2c310611309710ae20241b7e4a",
+          "decodeExit": 0,
+          "endedAt": "2026-09-14T01:40:24.628998+00:00",
+          "visualVerdict": "pending_agent_review"
+        },
+        "visual-review": {
+          "shot": "W06",
+          "attempt": 1,
+          "observed": "Full decode passed. Contact sheet shows coordinated slow turn, bride rotates to back-facing position, couple remains distinct and courtyard stable. Fine hand anatomy and exact overhead rotation direction require closer review; cross-age partner identity remains unverified. W07 must preserve actual ending pose and obtain justified different coverage, not reset from old reverse reference.",
+          "verdict": "usable_pending_W07_cut"
+        }
+      }
+    ]
+  },
+  {
+    "id": "W07",
+    "type": "h3_generated_action",
+    "editSeconds": 4,
+    "state": "usable_with_limitations",
+    "attempts": [
+      {
+        "attempt": "attempt-01",
+        "path": "D:\\H3-runtime\\projects\\unseen-full-v1\\shots\\W07\\attempt-01",
+        "intent": {
+          "key": "unseen-h3-full-film-2026-09-13-v1/W07/attempt-01",
+          "startedAt": "2026-09-14T01:53:45.921078+00:00",
+          "reference": "D:\\H3-runtime\\projects\\unseen-full-v1\\shots\\W06\\attempt-01\\last.png",
+          "inputSha256": "c9c7354d2f95eef963760bb7a90a32f41d0694881f7ec9ca9b71033bf54b9c19",
+          "seed": 2026091591,
+          "shot": {
+            "id": "W07",
+            "title": "跳舞：转完后看向彼此",
+            "type": "h3_generated_action",
+            "edit_seconds": 4,
+            "generate_seconds_nominal": 4.458333333333333,
+            "frame_count_starting_point": 107,
+            "fps": 24,
+            "recorder": "朋友乙",
+            "references": [
+              "wedding-reverse.png",
+              "16-wedding-guest-C.png",
+              "02-character-age-reference.png"
+            ],
+            "start_end_and_action": "A slightly closer smartphone view from a friend along the west side of the same courtyard dance floor. The same bride and groom continue the already-started clockwise turn for its remaining small arc, then settle facing each other and smile. Retain exactly the established handhold, wardrobe, hairstyles and relative positions of the arcade, tree and guest seating. Choose the start pose from the actual prior clip ending; do not begin another full spin. Keep the camera steady with a mild pan only. End with them stopped briefly in a relaxed dance stance, looking at one another.",
+            "prompt": "Naturalistic personal-memory footage with believable human movement and gently handheld smartphone perspective. Keep the approved faces, clothes, lighting and room geometry. One continuous shot, no internal cuts, no age change, no photo cards, no text, no camera flying outside, no slow motion, no duplicated people, no DV camcorder. A slightly closer smartphone view from a friend along the west side of the same courtyard dance floor. The same bride and groom continue the already-started clockwise turn for its remaining small arc, then settle facing each other and smile. Retain exactly the established handhold, wardrobe, hairstyles and relative positions of the arcade, tree and guest seating. Choose the start pose from the actual prior clip ending; do not begin another full spin. Keep the camera steady with a mild pan only. End with them stopped briefly in a relaxed dance stance, looking at one another.",
+            "cut_continuity": "不能拿旧反打首帧强行重置转角；若越轴以中性两人近景承接。",
+            "pass_criteria": [
+              "动作连续而不是再跳一遍",
+              "左右握手不反转",
+              "新视角仍同院"
+            ],
+            "audio": "Natural scene sound only; no generated music, UI text or unscripted dialogue.",
+            "status": "planned",
+            "output": null,
+            "timeline_start_seconds": 102.5,
+            "timeline_end_seconds": 106.5
+          },
+          "outputPrefix": "unseen-full-v1/W07/attempt-01",
+          "apiSha256": "c427ba989a884813f9953f69ccbd0f7daf2eebd48a811ef0172c09075529e9cf",
+          "conditioningMode": "reference",
+          "templatePrompt": "Naturalistic personal-memory footage with believable human movement and gently handheld smartphone perspective. Keep the approved faces, clothes, lighting and room geometry. One continuous shot, no internal cuts, no age change, no photo cards, no text, no camera flying outside, no slow motion, no duplicated people, no DV camcorder. A slightly closer smartphone view from a friend along the west side of the same courtyard dance floor. The same bride and groom continue the already-started clockwise turn for its remaining small arc, then settle facing each other and smile. Retain exactly the established handhold, wardrobe, hairstyles and relative positions of the arcade, tree and guest seating. Choose the start pose from the actual prior clip ending; do not begin another full spin. Keep the camera steady with a mild pan only. End with them stopped briefly in a relaxed dance stance, looking at one another.",
+          "executedPrompt": "Use <Picture 1> as the exact identity, wardrobe, courtyard geometry, handhold and ongoing dance pose reference. This continues that moment, not another full spin. A friend records from a slightly closer position just west of the prior camera, with a real small viewpoint change and corresponding background parallax, keeping both people visible. The bride starts with her back mostly toward us as in Picture 1. The groom and bride complete only the remaining small clockwise arc, then stop in their relaxed handhold and look at one another with a soft smile. Stable natural faces and anatomically normal hands. No camera orbit, no reset to the original dance pose, no lift, no fast spin, no cuts, no text. Preserve tree on the left, warm arcades behind and guests on either side. Natural quiet courtyard sound, no music or speech.\n"
+        },
+        "submission": {
+          "prompt_id": "07daf748-b18a-4014-acf1-668da24a2f1a",
+          "number": 12,
+          "node_errors": {}
+        },
+        "result": {
+          "shot": "W07",
+          "attempt": 1,
+          "promptId": "07daf748-b18a-4014-acf1-668da24a2f1a",
+          "video": "D:\\H3-runtime\\projects\\unseen-full-v1\\generated\\unseen-full-v1\\W07\\attempt-01_00001_.mp4",
+          "bytes": 502550,
+          "sha256": "0e863c28c86ab909064021ad22d985d9db1452c7a468b94ee7f7c5962bbced8c",
+          "decodeExit": 0,
+          "endedAt": "2026-09-14T01:56:16.900279+00:00",
+          "visualVerdict": "pending_agent_review"
+        },
+        "visual-review": {
+          "observed": "Full decode passed. Visual sheet shows dance continues from bride back-facing to side-facing and settles. View moves during shot; first frame remains similar to W06 ending, so this does not establish a distinct second recorder at the cut. Retain as continuous dance coverage candidate only. Reference-to-video with VAE-conditioned reference image successfully executed; not pure text generation and not a locked-first-frame mode. Fine hand continuity and partner identity still need close review.",
+          "attempt": 1,
+          "shot": "W07",
+          "verdict": "usable_with_limitations"
+        }
+      }
+    ]
+  },
+  {
+    "id": "W08",
+    "type": "h3_generated_action",
+    "editSeconds": 4,
+    "state": "usable_with_limitations",
+    "attempts": [
+      {
+        "attempt": "attempt-01",
+        "path": "D:\\H3-runtime\\projects\\unseen-full-v1\\shots\\W08\\attempt-01",
+        "intent": {
+          "key": "unseen-h3-full-film-2026-09-13-v1/W08/attempt-01",
+          "startedAt": "2026-09-14T04:57:01.267108+00:00",
+          "reference": "D:\\H3-runtime\\projects\\unseen-full-v1\\media-inputs\\reference-delta-02\\W08-aged-parents-phone-v2.png",
+          "inputSha256": "d288be45f4c115f58fcda5d830e2bcc04b345cf7f044ca41ce366162536a224a",
+          "seed": 2026091592,
+          "shot": {
+            "id": "W08",
+            "title": "主角没看见的父母反应",
+            "type": "h3_generated_action",
+            "edit_seconds": 4,
+            "generate_seconds_nominal": 4.458333333333333,
+            "frame_count_starting_point": 107,
+            "fps": 24,
+            "recorder": "另一位宾客",
+            "references": [
+              "15-wedding-space-master.png",
+              "02-character-age-reference.png"
+            ],
+            "start_end_and_action": "Medium smartphone reaction view from a guest beside the west arcade, looking toward the groom's parents seated together at the edge of the same wedding courtyard. His father, now older with greying hair and a restrained dark suit, applauds gently. His mother, naturally aged from the childhood scenes and wearing a muted formal outfit, smiles while holding up a smartphone to record the couple offscreen. Keep their faces distinct from grandmother. Their eyelines point toward the established dance floor. Warm dusk light and the same table decorations link the space. One steady four-second shot with natural applause and quiet laughter; no cut back inside the shot.",
+            "prompt": "Naturalistic personal-memory footage with believable human movement and gently handheld smartphone perspective. Keep the approved faces, clothes, lighting and room geometry. One continuous shot, no internal cuts, no age change, no photo cards, no text, no camera flying outside, no slow motion, no duplicated people, no DV camcorder. Medium smartphone reaction view from a guest beside the west arcade, looking toward the groom's parents seated together at the edge of the same wedding courtyard. His father, now older with greying hair and a restrained dark suit, applauds gently. His mother, naturally aged from the childhood scenes and wearing a muted formal outfit, smiles while holding up a smartphone to record the couple offscreen. Keep their faces distinct from grandmother. Their eyelines point toward the established dance floor. Warm dusk light and the same table decorations link the space. One steady four-second shot with natural applause and quiet laughter; no cut back inside the shot.",
+            "cut_continuity": "婚礼音乐/笑声跨W06-08连续；这是真实反应视角，不声称手机自拍。",
+            "pass_criteria": [
+              "母亲拍摄是手机",
+              "父母合理变老",
+              "父母未被复制到舞池"
+            ],
+            "audio": "Natural scene sound only; no generated music, UI text or unscripted dialogue.",
+            "status": "planned",
+            "output": null,
+            "timeline_start_seconds": 106.5,
+            "timeline_end_seconds": 110.5
+          },
+          "outputPrefix": "unseen-full-v1/W08/attempt-01",
+          "apiSha256": "094709bbd3a7f0b9ac13f4c46e768dcf7eaf7f5690d8009479031e2b5c5fa5bc",
+          "conditioningMode": "first-frame",
+          "templatePrompt": "Naturalistic personal-memory footage with believable human movement and gently handheld smartphone perspective. Keep the approved faces, clothes, lighting and room geometry. One continuous shot, no internal cuts, no age change, no photo cards, no text, no camera flying outside, no slow motion, no duplicated people, no DV camcorder. Medium smartphone reaction view from a guest beside the west arcade, looking toward the groom's parents seated together at the edge of the same wedding courtyard. His father, now older with greying hair and a restrained dark suit, applauds gently. His mother, naturally aged from the childhood scenes and wearing a muted formal outfit, smiles while holding up a smartphone to record the couple offscreen. Keep their faces distinct from grandmother. Their eyelines point toward the established dance floor. Warm dusk light and the same table decorations link the space. One steady four-second shot with natural applause and quiet laughter; no cut back inside the shot.",
+          "executedPrompt": "Naturalistic personal-memory footage with believable human movement and gently handheld smartphone perspective. Keep the approved faces, clothes, lighting and room geometry. One continuous shot, no internal cuts, no age change, no photo cards, no text, no camera flying outside, no slow motion, no duplicated people, no DV camcorder. Medium smartphone reaction view from a guest beside the west arcade, looking toward the groom's parents seated together at the edge of the same wedding courtyard. His father, now older with greying hair and a restrained dark suit, applauds gently. His mother, naturally aged from the childhood scenes and wearing a muted formal outfit, smiles while holding up a smartphone to record the couple offscreen. Keep their faces distinct from grandmother. Their eyelines point toward the established dance floor. Warm dusk light and the same table decorations link the space. One steady four-second shot with natural applause and quiet laughter; no cut back inside the shot. Natural scene sound only; no generated music, UI text or unscripted dialogue."
+        },
+        "submission": {
+          "prompt_id": "f298e71d-5013-4b0a-bc36-f1e5113cb9cf",
+          "number": 23,
+          "node_errors": {}
+        },
+        "result": {
+          "shot": "W08",
+          "attempt": 1,
+          "promptId": "f298e71d-5013-4b0a-bc36-f1e5113cb9cf",
+          "video": "D:\\H3-runtime\\projects\\unseen-full-v1\\generated\\unseen-full-v1\\W08\\attempt-01_00001_.mp4",
+          "bytes": 320615,
+          "sha256": "746d62781819972e7cc94b4a243d0be9b7f3d357dc090962b3a7b3bc519fb74a",
+          "decodeExit": 0,
+          "endedAt": "2026-09-14T04:59:30.506257+00:00",
+          "visualVerdict": "pending_agent_review"
+        },
+        "visual-review": {
+          "attempt": 1,
+          "shot": "W08",
+          "observed": "Full decode passed. Sheet shows father gently applauds and mother holds same phone while smiling toward dance floor. Stable aged pair distinct from grandmother, no phone transformation. Exact cross-age identity and final audio require joined review.",
+          "verdict": "usable_with_limitations"
+        }
+      }
+    ]
+  },
+  {
+    "id": "W09",
+    "type": "controlled_spatial_composite",
+    "editSeconds": 3,
+    "state": "planned",
+    "attempts": []
+  },
+  {
+    "id": "E01",
+    "type": "h3_generated_action",
+    "editSeconds": 4,
+    "state": "usable_with_limitations",
+    "attempts": [
+      {
+        "attempt": "attempt-01",
+        "path": "D:\\H3-runtime\\projects\\unseen-full-v1\\shots\\E01\\attempt-01",
+        "intent": {
+          "key": "unseen-h3-full-film-2026-09-13-v1/E01/attempt-01",
+          "startedAt": "2026-09-14T01:16:02.844277+00:00",
+          "reference": "D:\\H3-runtime\\projects\\unseen-full-v1\\media-inputs\\references\\elder-new-room.png",
+          "inputSha256": "72846aab7563e354daaea104e8306d169cff7a47c36c2d58ea127d5074cf0923",
+          "seed": 2026091567,
+          "shot": {
+            "id": "E01",
+            "title": "老人手中的手机",
+            "type": "h3_generated_action",
+            "edit_seconds": 4,
+            "generate_seconds_nominal": 4.458333333333333,
+            "frame_count_starting_point": 107,
+            "fps": 24,
+            "recorder": "观察视角",
+            "references": [
+              "elder-new-room.png",
+              "02-character-age-reference.png"
+            ],
+            "start_end_and_action": "Close over-shoulder view of the same protagonist at about seventy-two in a new city apartment reading nook. He wears a pale knit cardigan and holds a modern smartphone calmly in both hands. Grey hair, natural aged facial structure from the reference. Keep the phone screen a plain dim neutral surface for later compositing. He makes one small thumb movement near the lower screen edge, then rests his thumb. Warm window light, an upholstered reading chair and bookshelf establish a new home, not the childhood dining room. Camera slowly draws back about thirty centimeters, keeping the phone quadrilateral visible and stable. No generated app UI or readable text.",
+            "prompt": "Naturalistic personal-memory footage with believable human movement and gently handheld smartphone perspective. Keep the approved faces, clothes, lighting and room geometry. One continuous shot, no internal cuts, no age change, no photo cards, no text, no camera flying outside, no slow motion, no duplicated people, no DV camcorder. Close over-shoulder view of the same protagonist at about seventy-two in a new city apartment reading nook. He wears a pale knit cardigan and holds a modern smartphone calmly in both hands. Grey hair, natural aged facial structure from the reference. Keep the phone screen a plain dim neutral surface for later compositing. He makes one small thumb movement near the lower screen edge, then rests his thumb. Warm window light, an upholstered reading chair and bookshelf establish a new home, not the childhood dining room. Camera slowly draws back about thirty centimeters, keeping the phone quadrilateral visible and stable. No generated app UI or readable text.",
+            "cut_continuity": "后期把W09空间图贴入真实屏幕，手机与手出现形成揭示。",
+            "pass_criteria": [
+              "真实手机比例/手部正常",
+              "屏幕可跟踪替换",
+              "新住处区别旧家"
+            ],
+            "audio": "Natural scene sound only; no generated music, UI text or unscripted dialogue.",
+            "status": "planned",
+            "output": null,
+            "timeline_start_seconds": 113.5,
+            "timeline_end_seconds": 117.5
+          },
+          "outputPrefix": "unseen-full-v1/E01/attempt-01",
+          "apiSha256": "4c5531ee65614a2e8a9398f74c19ecc9f3adc16ae05c8b0312c340a1ea3de310"
+        },
+        "submission": {
+          "prompt_id": "52cf6dc6-bf11-4f2c-8a82-937669cf29d5",
+          "number": 9,
+          "node_errors": {}
+        },
+        "result": {
+          "shot": "E01",
+          "attempt": 1,
+          "promptId": "52cf6dc6-bf11-4f2c-8a82-937669cf29d5",
+          "video": "D:\\H3-runtime\\projects\\unseen-full-v1\\generated\\unseen-full-v1\\E01\\attempt-01_00001_.mp4",
+          "bytes": 381824,
+          "sha256": "539fbed53008ba126fb6519fbbeae98a9cc96dd76767a427f04a6b59f063103b",
+          "decodeExit": 0,
+          "endedAt": "2026-09-14T01:18:32.046153+00:00",
+          "visualVerdict": "pending_agent_review"
+        },
+        "visual-review": {
+          "observed": "Contact sheet shows stable elderly couple in new reading nook with subtle pullback and visible phone quadrilateral. Full decode passed. Screen replacement and detailed hand tracking remain unverified; lifelong partner identity across school and wedding remains unverified. Candidate only.",
+          "shot": "E01",
+          "verdict": "usable_with_limitations",
+          "attempt": 1
+        }
+      }
+    ]
+  },
+  {
+    "id": "E02",
+    "type": "h3_generated_action",
+    "editSeconds": 4,
+    "state": "usable_with_limitations",
+    "attempts": [
+      {
+        "attempt": "attempt-01",
+        "path": "D:\\H3-runtime\\projects\\unseen-full-v1\\shots\\E02\\attempt-01",
+        "intent": {
+          "key": "unseen-h3-full-film-2026-09-13-v1/E02/attempt-01",
+          "startedAt": "2026-09-14T01:33:00.945787+00:00",
+          "reference": "D:\\H3-runtime\\projects\\unseen-full-v1\\shots\\E01\\attempt-01\\last.png",
+          "inputSha256": "d8546ade4796422c9d776667cb5b7a9430dae17a2e8ec42b3d0b4c2a8779bd71",
+          "seed": 2026091568,
+          "shot": {
+            "id": "E02",
+            "title": "他们还在一起",
+            "type": "h3_generated_action",
+            "edit_seconds": 4,
+            "generate_seconds_nominal": 4.458333333333333,
+            "frame_count_starting_point": 107,
+            "fps": 24,
+            "recorder": "观察视角",
+            "references": [
+              "elder-new-room.png",
+              "02-character-age-reference.png"
+            ],
+            "start_end_and_action": "Medium-wide continuation in the same new apartment reading nook, from the same side of the elderly man and phone. The seventy-two-year-old man lowers his smartphone slightly and looks toward his wife in the neighboring chair by the window. She is the same lifelong partner naturally aged, softly smiling back, with consistent facial features from school and wedding. Bookshelf and city-window light remain in the same positions. He smiles in recognition; they share a quiet glance. A slow modest camera retreat reveals both chairs, no orbit, no new room, no transition back to the childhood house. End on a calm two-shot with space for later typography.",
+            "prompt": "Naturalistic personal-memory footage with believable human movement and gently handheld smartphone perspective. Keep the approved faces, clothes, lighting and room geometry. One continuous shot, no internal cuts, no age change, no photo cards, no text, no camera flying outside, no slow motion, no duplicated people, no DV camcorder. Medium-wide continuation in the same new apartment reading nook, from the same side of the elderly man and phone. The seventy-two-year-old man lowers his smartphone slightly and looks toward his wife in the neighboring chair by the window. She is the same lifelong partner naturally aged, softly smiling back, with consistent facial features from school and wedding. Bookshelf and city-window light remain in the same positions. He smiles in recognition; they share a quiet glance. A slow modest camera retreat reveals both chairs, no orbit, no new room, no transition back to the childhood house. End on a calm two-shot with space for later typography.",
+            "cut_continuity": "E01手机、开衫、窗方向一致，动作继续而不是重新拿起。",
+            "pass_criteria": [
+              "同一伴侣身份有据可循",
+              "不强加去世等催泪情节",
+              "结尾有呼吸"
+            ],
+            "audio": "Natural scene sound only; no generated music, UI text or unscripted dialogue.",
+            "status": "planned",
+            "output": null,
+            "timeline_start_seconds": 117.5,
+            "timeline_end_seconds": 121.5
+          },
+          "outputPrefix": "unseen-full-v1/E02/attempt-01",
+          "apiSha256": "e63e63956817d0e0d538a378d0f3c3ec49fc3d6aca0a1a5a6dc71552fd1d0e96"
+        },
+        "submission": {
+          "prompt_id": "d3064cec-398d-4824-bd74-44fd6ce35efe",
+          "number": 10,
+          "node_errors": {}
+        },
+        "result": {
+          "shot": "E02",
+          "attempt": 1,
+          "promptId": "d3064cec-398d-4824-bd74-44fd6ce35efe",
+          "video": "D:\\H3-runtime\\projects\\unseen-full-v1\\generated\\unseen-full-v1\\E02\\attempt-01_00001_.mp4",
+          "bytes": 330838,
+          "sha256": "1d1dc596cbd02ad624fb10910a64eedcf59458393b5f9e8d073a153458df8b28",
+          "decodeExit": 0,
+          "endedAt": "2026-09-14T01:35:35.298648+00:00",
+          "visualVerdict": "pending_agent_review"
+        },
+        "visual-review": {
+          "shot": "E02",
+          "attempt": 1,
+          "observed": "Full decode passed. Contact sheet shows phone lowering and man turning toward smiling wife, with coherent reading nook and modest retreat. Back of head limits verification of his smile. Cross-age partner identity remains unverified; candidate, not chapter acceptance.",
+          "verdict": "usable_with_limitations"
+        }
+      }
+    ]
+  },
+  {
+    "id": "E03",
+    "type": "controlled_spatial_composite",
+    "editSeconds": 3,
+    "state": "usable_title_candidate_pending_final_audio",
+    "attempts": [],
+    "composition": {
+      "segment": "E03",
+      "state": "usable_title_candidate_pending_final_audio",
+      "duration": 3,
+      "source": "D:\\H3-runtime\\projects\\unseen-full-v1\\shots\\E02\\attempt-01\\last.png",
+      "sourceSha256": "4c9504198e8148d1f74a1bb582b37fea0d93ae2806efb35e39e3049763623ddc",
+      "video": "D:\\H3-runtime\\projects\\unseen-full-v1\\composition\\E03\\E03-title-candidate.mp4",
+      "sha256": "929ac0157d8e0ad26481be763e20939ee25506ae11041067cf5409dd1d5350b6",
+      "decodeExit": 0,
+      "audio": "No audio in intermediate. Final mix must carry E02 room tone through the title.",
+      "representation": "Closing typography over deliberate hold of generated E02 ending. Upsampled 608x352 source; not native 720p.",
+      "visualReview": "Reviewed 1-second rendered frame: exact Chinese copy, UNSEEN and concept label legible, no clipping. Ending title only; no full film acceptance."
+    }
+  }
+]

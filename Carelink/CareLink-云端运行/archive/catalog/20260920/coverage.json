@@ -1,0 +1,54 @@
+{
+  "schema": "unseen-archive-catalog/1",
+  "snapshot": "20260920",
+  "repository": "maxi-max-dev/unseen",
+  "tag": "unseen-archive-20260920",
+  "codeCommit": "6233df8534efc35b782bca5d0d84b5d2151f7500",
+  "catalogBuiltAt": "2026-09-20T13:50:32.765935+00:00",
+  "captureMode": "逐文件校验的归档快照；不是多目录同一时刻的原子快照",
+  "sourceDirectories": 65,
+  "selectedFileCollections": 3,
+  "sourceLocations": 68,
+  "registeredWorktrees": 96,
+  "originalEntries": 144345,
+  "originalUniqueFiles": 36243,
+  "originalUniqueBytes": 20391456876,
+  "catalogEntries": 144416,
+  "states": {
+    "archived": 144380,
+    "link-metadata": 36
+  },
+  "capsules": 91,
+  "encryptedUploadedBytes": 21102453743,
+  "gitDatabases": 19,
+  "additionalRawGitEntries": 570,
+  "categories": {
+    "文档与草稿": 10667,
+    "数据与其他": 34639,
+    "代码与实验": 69066,
+    "图片与截图": 28709,
+    "视频与录音": 522,
+    "空间与模型": 136,
+    "链接记录": 36,
+    "历史与修改": 641
+  },
+  "icloud": {
+    "entries": 4192,
+    "pending": 0
+  },
+  "excluded": [
+    "可重新安装的 node_modules / venv / Python 缓存",
+    ".git 原目录改为 Git bundle 保存",
+    ".DS_Store",
+    "本次新建的归档工作目录（由本仓库 Git 提交保存）"
+  ],
+  "notCaptured": [
+    "服务器当前数据库和用户上传原件（本机已有备份副本已收录）",
+    "4060 / WSL 设备上尚未同步到本机的文件",
+    "未挂载或未发现的其他设备与目录",
+    "符号链接的目标若在扫描来源之外，只保留链接记录"
+  ],
+  "recoveryKey": "恢复密钥独立保存，不在仓库或附件中。持有人须另行保管；没有密钥无法恢复加密原件。",
+  "automaticCapture": false,
+  "ageRecipient": "age1ekgxwewu53r9xgrmlx026y9r6ke3rdn2cedj3w0z0qvvzrxrqdxqp8899y"
+}

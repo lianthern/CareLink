@@ -1,0 +1,125 @@
+{
+  "schemaVersion": "unseen-bl01-provider-offline-browser/1",
+  "base": "c76ee298e7a9566506252e291e3dfe050c4a3a9f",
+  "status": "PASS",
+  "productFixtureAdded": false,
+  "productionInput": false,
+  "capabilitySource": "x-unseen-question-provider",
+  "exactOfflineCopy": "AI 暂时离线，照片已保存，稍后再问",
+  "states": {
+    "unavailable": {
+      "copy": "AI 暂时离线，照片已保存，稍后再问",
+      "role": "status",
+      "startDisabled": true,
+      "skipDisabled": false
+    },
+    "notReady": {
+      "copy": "暂时不能为这张照片生成问题；你仍可以跳过，照片不会受影响",
+      "role": "status",
+      "startDisabled": true,
+      "skipDisabled": false
+    },
+    "configured": {
+      "copy": null,
+      "role": null,
+      "startDisabled": false,
+      "skipDisabled": false
+    },
+    "missingCapability": {
+      "copy": "暂时不能为这张照片生成问题；你仍可以跳过，照片不会受影响",
+      "role": "status",
+      "startDisabled": true,
+      "skipDisabled": false
+    }
+  },
+  "browserDiagnosticCounts": {
+    "consoleErrors": 0,
+    "exceptions": 0,
+    "failedRequests": 0,
+    "httpErrors": 0
+  },
+  "cases": [
+    {
+      "width": 1440,
+      "height": 900,
+      "name": "desktop-1440",
+      "copy": "AI 暂时离线，照片已保存，稍后再问",
+      "startDisabled": true,
+      "skipDisabled": false,
+      "focusBeforeTab": "MEMORY.OPEN",
+      "horizontalOverflow": false,
+      "warningBounds": {
+        "left": 153,
+        "right": 663,
+        "top": 531.375,
+        "bottom": 575.0625,
+        "inViewport": true
+      },
+      "startBounds": {
+        "left": 343.484375,
+        "right": 540.6875,
+        "top": 591.0625,
+        "bottom": 637.84375,
+        "inViewport": true
+      },
+      "skipBounds": {
+        "left": 153,
+        "right": 268.609375,
+        "top": 647.4375,
+        "bottom": 694.21875,
+        "inViewport": true
+      },
+      "fixtureBannerVisible": true,
+      "externalResources": [],
+      "focusAfterTab": "MEMORY.SKIP",
+      "screenReader": {
+        "status": true,
+        "statusText": "AI 暂时离线，照片已保存，稍后再问",
+        "startDisabled": true,
+        "skip": true
+      },
+      "screenshot": "release-evidence/local-operable/bl01-provider-offline/desktop-1440.png"
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "name": "mobile-390",
+      "copy": "AI 暂时离线，照片已保存，稍后再问",
+      "startDisabled": true,
+      "skipDisabled": false,
+      "focusBeforeTab": "MEMORY.OPEN",
+      "horizontalOverflow": false,
+      "warningBounds": {
+        "left": 35.390625,
+        "right": 354.609375,
+        "top": 582.453125,
+        "bottom": 626.140625,
+        "inViewport": true
+      },
+      "startBounds": {
+        "left": 35.390625,
+        "right": 354.609375,
+        "top": 698.515625,
+        "bottom": 745.296875,
+        "inViewport": true
+      },
+      "skipBounds": {
+        "left": 35.390625,
+        "right": 354.609375,
+        "top": 754.890625,
+        "bottom": 801.671875,
+        "inViewport": true
+      },
+      "fixtureBannerVisible": true,
+      "externalResources": [],
+      "focusAfterTab": "MEMORY.SKIP",
+      "screenReader": {
+        "status": true,
+        "statusText": "AI 暂时离线，照片已保存，稍后再问",
+        "startDisabled": true,
+        "skip": true
+      },
+      "screenshot": "release-evidence/local-operable/bl01-provider-offline/mobile-390.png"
+    }
+  ]
+}

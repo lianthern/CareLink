@@ -1,0 +1,242 @@
+[
+  {
+    "path": "01-brand/embrace-wave.svg",
+    "bytes": 369,
+    "sha256": "1032a21a8fc5663b68d3cfaf03d3f8da31962df1845aafa903f1a01382e9d4c7"
+  },
+  {
+    "path": "01-brand/icon-sprite.svg",
+    "bytes": 3827,
+    "sha256": "5ea2fcd879fa94efa82ffb521df5b4699f656cc1450ddc1b893b7f1b34f79b70"
+  },
+  {
+    "path": "01-brand/icons/back.svg",
+    "bytes": 267,
+    "sha256": "fa033b9eb207285448af56a93af5ea4450e681716e4a9a900f0661ad22c2e656"
+  },
+  {
+    "path": "01-brand/icons/calendar.svg",
+    "bytes": 338,
+    "sha256": "24eca7c89a6332af3c057c52aa76e95f8633b0c1823fde5cd99692ba4a4e5292"
+  },
+  {
+    "path": "01-brand/icons/care.svg",
+    "bytes": 291,
+    "sha256": "cc6fbae23e37d02c9077ce0ac19cde2a0e7c97360d3ab93a4a3bbb00d96da123"
+  },
+  {
+    "path": "01-brand/icons/chat.svg",
+    "bytes": 308,
+    "sha256": "2a96c10ea38868224aee934fc7d27ad16c4cb0b7ef0dfbd65ddffbb2073fc0ea"
+  },
+  {
+    "path": "01-brand/icons/connection.svg",
+    "bytes": 368,
+    "sha256": "166d0e3c3db46d5c03eb265c68cad070b8d3169f35b5fe4a7b58657250fac26f"
+  },
+  {
+    "path": "01-brand/icons/done.svg",
+    "bytes": 290,
+    "sha256": "93977a32a11a06989e12c5792d2dbbbb8b8abb670436190b6025fa8c94b4ebe5"
+  },
+  {
+    "path": "01-brand/icons/family.svg",
+    "bytes": 339,
+    "sha256": "1042c7a797d62ead3d7ae61f5a5729629f3a5c5873ad507974190e4a8cd5b2f0"
+  },
+  {
+    "path": "01-brand/icons/help.svg",
+    "bytes": 318,
+    "sha256": "3a469fe25636ddc76a57b0f00fd2466bba2e503510d3adee91ba83460d22c0f9"
+  },
+  {
+    "path": "01-brand/icons/journal.svg",
+    "bytes": 315,
+    "sha256": "3bcccc7378a2db8ce62b356de8f0c053619a10648c5c0c1a6168b980a37f6916"
+  },
+  {
+    "path": "01-brand/icons/microphone.svg",
+    "bytes": 334,
+    "sha256": "d1b97c051c6cb2a155155ee7fea1186fd5711186dda2fdc7670d42a27d328b9c"
+  },
+  {
+    "path": "01-brand/icons/night.svg",
+    "bytes": 284,
+    "sha256": "46396545c8a4c945723ac8f4063519634969a19ed7d563a944168f4e62add40d"
+  },
+  {
+    "path": "01-brand/icons/phone.svg",
+    "bytes": 296,
+    "sha256": "f0728009d3dafa9b888c255fb7ceca631ca03de46c6a4b589b3e5d3bb5192880"
+  },
+  {
+    "path": "01-brand/icons/privacy.svg",
+    "bytes": 310,
+    "sha256": "650aab5df2feec415cea21bb6f060b164c857dc98c1167275ccdfd7802864374"
+  },
+  {
+    "path": "01-brand/icons/reminder.svg",
+    "bytes": 310,
+    "sha256": "d186c07f2822129996399681a9bda9b411bafcceebdc35b74867848dddabf06b"
+  },
+  {
+    "path": "01-brand/icons/settings.svg",
+    "bytes": 347,
+    "sha256": "8032e7cb27149b0476e04d09bb31977f483a5ee997be40fcd70afe3419f9c193"
+  },
+  {
+    "path": "01-brand/icons/volume.svg",
+    "bytes": 310,
+    "sha256": "2b21c21c193300bb26be634b50ad67715222256eb55a84ec2d0af59f073f3a7d"
+  },
+  {
+    "path": "01-brand/link-mark.svg",
+    "bytes": 278,
+    "sha256": "66680b29fc17d85098f06a2b63392b8b7af94051386f473bfd31a2b1095b41a0"
+  },
+  {
+    "path": "01-brand/link-pattern.svg",
+    "bytes": 6543,
+    "sha256": "8aa1553e76fcb3a06453cd0b09c9190fe98119a613c76daa9afc5e9168db9f22"
+  },
+  {
+    "path": "01-brand/wordmark-mono.svg",
+    "bytes": 2862,
+    "sha256": "143d60483394773e42ec235b3d909d31d90ee406fe712570f9e03616d82ca04b"
+  },
+  {
+    "path": "01-brand/wordmark-primary.svg",
+    "bytes": 2862,
+    "sha256": "04441d4578160200784dae1ae1f787b362b0602d9633b71b97007627b57c26ec"
+  },
+  {
+    "path": "01-brand/wordmark-reverse.svg",
+    "bytes": 2862,
+    "sha256": "77a3914b8a5c1a7ca0568d13a7b441e9f4467d67a894cff2120fc5e97d999768"
+  },
+  {
+    "path": "01-brand/wordmark-stacked.svg",
+    "bytes": 2860,
+    "sha256": "62a26c87486a296e10232e38015e24005fdd56ce623a7deedd4cab1454218c3f"
+  },
+  {
+    "path": "02-character/00-approved-reference.png",
+    "bytes": 1500391,
+    "sha256": "427e1ddb4469a911d8d9f693ada9714d5a3a7e7fa474c317408926fefa3a4d49"
+  },
+  {
+    "path": "02-character/01-master-3d-transparent.png",
+    "bytes": 1068879,
+    "sha256": "ad875fd40be1344d1e286af01b71d535d432b61d5099b488c742bc9623c480e9"
+  },
+  {
+    "path": "02-character/02-turnaround.png",
+    "bytes": 1612540,
+    "sha256": "f223b3e5943b3437c535eb6c2369b5c014439fff827d1e1ad9ff081522a15382"
+  },
+  {
+    "path": "02-character/03-expression-library-12.png",
+    "bytes": 1481036,
+    "sha256": "f32837bbaf8640beb26f28989efa8af26a01a7e67c95333c68af148137dc351b"
+  },
+  {
+    "path": "02-character/04-master-2d-transparent.png",
+    "bytes": 786085,
+    "sha256": "7e4092908f8000f816d35c97a279e00dcef3edce29665bd0729970f1848243db"
+  },
+  {
+    "path": "03-applications/01-welcome-kit.png",
+    "bytes": 1939636,
+    "sha256": "d39d77161014593c66e13508a829c16ccbfc7666edb070276ceef0a73a24eefb"
+  },
+  {
+    "path": "03-applications/02-merchandise.png",
+    "bytes": 2063231,
+    "sha256": "41f96daedeaff34a7f70800ad16f2b7602a0afcf0be5f6fe0b9a1e371aa75273"
+  },
+  {
+    "path": "03-applications/03-digital-experience.png",
+    "bytes": 1653280,
+    "sha256": "d025e64ecff7dd0e616c92afaa6c1ba576a9420fba06e52b3ac559b2cd61d73e"
+  },
+  {
+    "path": "04-templates/family-contact-card-A5.svg",
+    "bytes": 1867,
+    "sha256": "07572658413c32ed833c8ac66307ef1c55ee0333d91bf6d461eaab639a0e358a"
+  },
+  {
+    "path": "04-templates/letterhead-A4.svg",
+    "bytes": 1062,
+    "sha256": "b4a680371a5a609b0835bd6f01f68f59adc276f6fad9fa65399b3947a46b3fbc"
+  },
+  {
+    "path": "04-templates/poster-family-1080x1440.svg",
+    "bytes": 1262,
+    "sha256": "b92b7387c101dbef39fec4dfc60381b251e13becf616ea19e33098ff31959a9b"
+  },
+  {
+    "path": "04-templates/poster-listening-1080x1440.svg",
+    "bytes": 1259,
+    "sha256": "37f1c6669898d13d1b4da934e6f235b3f7d03c2347afaa3ef109e90adc35fcc7"
+  },
+  {
+    "path": "04-templates/poster-welcome-1080x1440.svg",
+    "bytes": 1262,
+    "sha256": "611446f6636c1153f9499a936234bbb63b20c8c302c0b74886625699e7d3f3ff"
+  },
+  {
+    "path": "04-templates/service-card.svg",
+    "bytes": 836,
+    "sha256": "08bca86b4e46ceefe78f8d2b5dde03936c43f9787e69cb915ed214829dfbaf8e"
+  },
+  {
+    "path": "04-templates/weekly-companion-card-A4.svg",
+    "bytes": 4831,
+    "sha256": "70456ebb98527e6489c875992cd431dc90a192091e40bdba575ba783596de7a2"
+  },
+  {
+    "path": "05-design-tokens/tokens.css",
+    "bytes": 541,
+    "sha256": "db719b01107d3529490a94a6dfd125f3b27e193dda3de6975af728a37ae7d31f"
+  },
+  {
+    "path": "05-design-tokens/tokens.json",
+    "bytes": 1125,
+    "sha256": "c3407d7e873c68aac1aa6fbaad920dbd78f76ecbfdcce19ddf26b215fdc26d23"
+  },
+  {
+    "path": "06-guidelines/brand-guidelines.md",
+    "bytes": 7815,
+    "sha256": "9b6194345928c7737619b3cad5641b2e58202cb415a590f05c33fbd46897a8dc"
+  },
+  {
+    "path": "06-guidelines/contents.json",
+    "bytes": 2026,
+    "sha256": "d505e260f2784462e09b37e1b686d31f7071632f2ebd6e239c8e3bc3364fa7cd"
+  },
+  {
+    "path": "06-guidelines/image-generation-prompts.md",
+    "bytes": 1982,
+    "sha256": "fed413cd618059a9f4a240b03daced543d4b25b810ac14cfb400231c3404ba20"
+  },
+  {
+    "path": "06-guidelines/layout-check.json",
+    "bytes": 289,
+    "sha256": "3642e7ecb3b119a9f31e316255c02294d8ee2730e0d215ffda9d9da300473472"
+  },
+  {
+    "path": "CareLink-VI-Manual.pdf",
+    "bytes": 16015938,
+    "sha256": "629e3f0ad82f1f8cb7cc4af4a2345e7039bc892af237b049f05e6b128c1c9f9c"
+  },
+  {
+    "path": "index.html",
+    "bytes": 13406,
+    "sha256": "6eed0e24f92d181e332c411937f2b75d60ffbbf4adcce9a75fbe0688a1b78cb1"
+  },
+  {
+    "path": "README.md",
+    "bytes": 1597,
+    "sha256": "d09cf5afe733624da6522918d84d25102bd925f654b9d83b57dd753e6dc7c3ca"
+  }
+]

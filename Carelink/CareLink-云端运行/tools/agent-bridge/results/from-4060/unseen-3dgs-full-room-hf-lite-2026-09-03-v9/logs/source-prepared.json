@@ -1,0 +1,27 @@
+{
+  "schemaVersion": "1.0",
+  "status": "READY",
+  "archiveBytes": 169378633,
+  "archiveSha256": "2e1f86fd7b25314fbc0361b42f16bf77ee222ac50294777995e8ab737aee8d33",
+  "archiveEntries": 376,
+  "images": 371,
+  "imageWidth": 980,
+  "imageHeight": 543,
+  "registeredImages": 371,
+  "registeredFraction": 1.0,
+  "cameraModel": "PINHOLE",
+  "cameraCount": 1,
+  "scaledCameraWidth": 980,
+  "scaledCameraHeight": 543,
+  "scaledCameraParams": [
+    579.5208916063547,
+    579.5208916063547,
+    490.0,
+    271.5
+  ],
+  "points3D": 124162,
+  "meanObservationsPerImage": 2020.0970350404314,
+  "minimumObservationsPerImage": 483,
+  "imagesPath": "images_2",
+  "colmapPath": "sparse_2/0"
+}

@@ -1,0 +1,14 @@
+{
+  "pages": 25,
+  "text_overflow": [],
+  "contrast": {
+    "navy-on-white": 14.33,
+    "action-on-white": 5.81,
+    "navy-on-mist": 13.09,
+    "blue-on-white": 2.57
+  },
+  "alpha": {
+    "01-master-3d-transparent.png": "RGBA",
+    "04-master-2d-transparent.png": "RGBA"
+  }
+}

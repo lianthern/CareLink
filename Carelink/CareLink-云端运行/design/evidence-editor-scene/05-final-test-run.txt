@@ -1,0 +1,66 @@
+=== services/api (npm run --workspace services/api test) ===
+✔ batch item capacity is a hard server-side maximum (49.277167ms)
+(node:44199) ExperimentalWarning: SQLite is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ attachDepthArtifact rejects malformed inputs before touching the DB (21.716625ms)
+✔ attachDepthArtifact requires an existing space with an activated panorama revision (78.238375ms)
+✔ sceneContext, media serving, and revision-binding for an attached depth artifact (354.438583ms)
+✔ re-attaching for the same revision replaces the prior depth artifact (idempotent upsert) (240.911ms)
+ℹ tests 213
+ℹ suites 0
+ℹ pass 213
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 8144.456334
+
+=== apps/web (npm run --workspace apps/web test) ===
+  duration_ms: 0.039459
+  type: 'test'
+  ...
+1..170
+# tests 170
+# suites 0
+# pass 169
+# fail 0
+# cancelled 0
+# skipped 1
+# todo 0
+# duration_ms 610.284125
+
+=== services/locator ===
+  ...
+1..28
+# tests 28
+# suites 0
+# pass 28
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 75.905708
+
+=== packages/viewer ===
+  ...
+1..13
+# tests 13
+# suites 0
+# pass 13
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 72.936958
+
+=== services/book-lab ===
+✔ end-to-end: a real MiniMax-shaped completion reaches ready with the composed Chinese question (8.4195ms)
+✔ end-to-end: a MiniMax failure keeps the interview queued and skippable, never blocking the book chain (5.16775ms)
+ℹ tests 98
+ℹ suites 0
+ℹ pass 98
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 714.365542

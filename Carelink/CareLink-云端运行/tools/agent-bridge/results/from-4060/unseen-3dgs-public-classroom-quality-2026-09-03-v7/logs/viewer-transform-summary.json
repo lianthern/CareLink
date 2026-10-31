@@ -1,0 +1,29 @@
+{
+  "status": "PASS",
+  "sceneRevisionId": "pexels-classroom-5735358-r001",
+  "cameraSource": "Nerfstudio train/eval Cameras after cache undistortion plus dataparser transform and scale",
+  "coordinateConversion": "c2w_pc = Rx(-90deg) @ c2w_nerfstudio",
+  "photoModePreservesAnchorY": true,
+  "boundaryXZ": [[-0.326478013, -1.15], [0.312741989, -1.15], [0.312741989, 1.037598932], [-0.326478013, 1.037598932]],
+  "anchors": [
+    {
+      "id": "frame_0001",
+      "position": [-0.176478013, 0.495581388, -1.0],
+      "quaternion": [-0.001259148, -0.01917781, -0.008498084, 0.99977918],
+      "fov": 37.248913214
+    },
+    {
+      "id": "frame_0053",
+      "position": [-0.009838293, -0.022483097, -0.006787586],
+      "quaternion": [0.000344729, -0.002249287, 0.001155213, 0.999996744],
+      "fov": 37.248913214
+    },
+    {
+      "id": "frame_0105",
+      "position": [0.145506963, -0.472238332, 0.887598932],
+      "quaternion": [-0.001559019, 0.010463118, 0.007985886, 0.999912155],
+      "fov": 37.248913214
+    }
+  ]
+}
+

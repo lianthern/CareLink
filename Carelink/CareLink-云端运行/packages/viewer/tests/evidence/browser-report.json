@@ -1,0 +1,3796 @@
+{
+  "schemaVersion": "unseen-viewer-browser-evidence/1",
+  "runId": "fdb36dcd-0d6f-4dfa-b84e-50f4539690a3",
+  "browser": "Chrome/151.0.7922.109",
+  "viewportCoverage": [
+    1280,
+    390
+  ],
+  "assertions": [
+    {
+      "name": "depth artifact produces a real depth-ready first frame",
+      "status": "PASS",
+      "detail": {
+        "firstFrameMs": 709.5,
+        "textureWidth": 1024,
+        "textureHeight": 512
+      }
+    },
+    {
+      "name": "SHA-256 is checked before decoder and only static PNG/JPEG/WebP raster magic may render",
+      "status": "PASS",
+      "detail": {
+        "beforeDecode": {
+          "code": "panorama_hash_mismatch",
+          "decoderCalls": 0,
+          "state": {
+            "schemaVersion": "unseen-viewer-state/1",
+            "phase": "error",
+            "renderMode": "flat_fallback",
+            "requestedSceneMode": "rotation360",
+            "sceneId": "harness-scene",
+            "panoramaRevisionId": "pano-revision-a",
+            "capability": {
+              "webgl": false,
+              "sphericalView": false,
+              "depthArtifact": false,
+              "translation": false,
+              "keyboard": false,
+              "touch": false,
+              "fullscreen": true
+            },
+            "pose": {
+              "nodeId": "node-a",
+              "yawDeg": 15,
+              "pitchDeg": -4,
+              "fovDeg": 72,
+              "x": 0,
+              "z": 0
+            },
+            "focus": null,
+            "failure": {
+              "code": "panorama_hash_mismatch",
+              "message": "现场图片校验失败，请重试。",
+              "retryable": true
+            },
+            "metrics": {
+              "firstFrameMs": null,
+              "textureWidth": null,
+              "textureHeight": null
+            }
+          }
+        },
+        "failed": {
+          "code": "panorama_hash_mismatch",
+          "state": {
+            "schemaVersion": "unseen-viewer-state/1",
+            "phase": "error",
+            "renderMode": "flat_fallback",
+            "requestedSceneMode": "rotation360",
+            "sceneId": "harness-scene",
+            "panoramaRevisionId": "pano-revision-a",
+            "capability": {
+              "webgl": false,
+              "sphericalView": false,
+              "depthArtifact": false,
+              "translation": false,
+              "keyboard": false,
+              "touch": false,
+              "fullscreen": true
+            },
+            "pose": {
+              "nodeId": "node-a",
+              "yawDeg": 15,
+              "pitchDeg": -4,
+              "fovDeg": 72,
+              "x": 0,
+              "z": 0
+            },
+            "focus": null,
+            "failure": {
+              "code": "panorama_hash_mismatch",
+              "message": "现场图片校验失败，请重试。",
+              "retryable": true
+            },
+            "metrics": {
+              "firstFrameMs": null,
+              "textureWidth": null,
+              "textureHeight": null
+            }
+          },
+          "canvasHidden": true,
+          "retryVisible": true
+        },
+        "unsupported": {
+          "code": "asset_format_unsupported",
+          "state": {
+            "schemaVersion": "unseen-viewer-state/1",
+            "phase": "error",
+            "renderMode": "flat_fallback",
+            "requestedSceneMode": "rotation360",
+            "sceneId": "harness-scene",
+            "panoramaRevisionId": "pano-revision-a",
+            "capability": {
+              "webgl": false,
+              "sphericalView": false,
+              "depthArtifact": false,
+              "translation": false,
+              "keyboard": false,
+              "touch": false,
+              "fullscreen": true
+            },
+            "pose": {
+              "nodeId": "node-a",
+              "yawDeg": 15,
+              "pitchDeg": -4,
+              "fovDeg": 72,
+              "x": 0,
+              "z": 0
+            },
+            "focus": null,
+            "failure": {
+              "code": "asset_format_unsupported",
+              "message": "现场图片格式暂不支持。",
+              "retryable": false
+            },
+            "metrics": {
+              "firstFrameMs": null,
+              "textureWidth": null,
+              "textureHeight": null
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "real APNG and animated WebP bytes are rejected before browser decode while static WebP remains supported",
+      "status": "PASS",
+      "detail": {
+        "staticWebp": {
+          "result": "resolved",
+          "state": {
+            "schemaVersion": "unseen-viewer-state/1",
+            "phase": "ready",
+            "renderMode": "rotation360",
+            "requestedSceneMode": "rotation360",
+            "sceneId": "harness-scene",
+            "panoramaRevisionId": "pano-revision-a",
+            "capability": {
+              "webgl": true,
+              "sphericalView": true,
+              "depthArtifact": false,
+              "translation": false,
+              "keyboard": true,
+              "touch": true,
+              "fullscreen": true
+            },
+            "pose": {
+              "nodeId": "node-a",
+              "yawDeg": 15,
+              "pitchDeg": -4,
+              "fovDeg": 72,
+              "x": 0,
+              "z": 0
+            },
+            "focus": null,
+            "failure": null,
+            "metrics": {
+              "firstFrameMs": 367.5,
+              "textureWidth": 1024,
+              "textureHeight": 512
+            }
+          }
+        },
+        "apng": {
+          "result": "rejected",
+          "code": "asset_animation_unsupported",
+          "retryable": false,
+          "state": {
+            "schemaVersion": "unseen-viewer-state/1",
+            "phase": "error",
+            "renderMode": "flat_fallback",
+            "requestedSceneMode": "rotation360",
+            "sceneId": "harness-scene",
+            "panoramaRevisionId": "pano-revision-a",
+            "capability": {
+              "webgl": false,
+              "sphericalView": false,
+              "depthArtifact": false,
+              "translation": false,
+              "keyboard": false,
+              "touch": false,
+              "fullscreen": true
+            },
+            "pose": {
+              "nodeId": "node-a",
+              "yawDeg": 15,
+              "pitchDeg": -4,
+              "fovDeg": 72,
+              "x": 0,
+              "z": 0
+            },
+            "focus": null,
+            "failure": {
+              "code": "asset_animation_unsupported",
+              "message": "现场图片格式暂不支持。",
+              "retryable": false
+            },
+            "metrics": {
+              "firstFrameMs": null,
+              "textureWidth": null,
+              "textureHeight": null
+            }
+          },
+          "retryVisible": false
+        },
+        "animatedWebp": {
+          "result": "rejected",
+          "code": "asset_animation_unsupported",
+          "retryable": false,
+          "state": {
+            "schemaVersion": "unseen-viewer-state/1",
+            "phase": "error",
+            "renderMode": "flat_fallback",
+            "requestedSceneMode": "rotation360",
+            "sceneId": "harness-scene",
+            "panoramaRevisionId": "pano-revision-a",
+            "capability": {
+              "webgl": false,
+              "sphericalView": false,
+              "depthArtifact": false,
+              "translation": false,
+              "keyboard": false,
+              "touch": false,
+              "fullscreen": true
+            },
+            "pose": {
+              "nodeId": "node-a",
+              "yawDeg": 15,
+              "pitchDeg": -4,
+              "fovDeg": 72,
+              "x": 0,
+              "z": 0
+            },
+            "focus": null,
+            "failure": {
+              "code": "asset_animation_unsupported",
+              "message": "现场图片格式暂不支持。",
+              "retryable": false
+            },
+            "metrics": {
+              "firstFrameMs": null,
+              "textureWidth": null,
+              "textureHeight": null
+            }
+          },
+          "retryVisible": false
+        },
+        "decoderCalls": 1,
+        "animationDecoderCalls": 0
+      }
+    },
+    {
+      "name": "canonical yaw 0 is the equirectangular seam and initial/focus/drag center pixels add at most 0.5 degrees",
+      "status": "PASS",
+      "detail": {
+        "initial": [
+          {
+            "target": 359.9,
+            "state": {
+              "schemaVersion": "unseen-viewer-state/1",
+              "phase": "ready",
+              "renderMode": "rotation360",
+              "requestedSceneMode": "rotation360",
+              "sceneId": "yaw-marker-scene",
+              "panoramaRevisionId": "yaw-marker-revision",
+              "capability": {
+                "webgl": true,
+                "sphericalView": true,
+                "depthArtifact": false,
+                "translation": false,
+                "keyboard": true,
+                "touch": true,
+                "fullscreen": true
+              },
+              "pose": {
+                "nodeId": "node-a",
+                "yawDeg": 359.9,
+                "pitchDeg": 0,
+                "fovDeg": 72,
+                "x": 0,
+                "z": 0
+              },
+              "focus": null,
+              "failure": null,
+              "metrics": {
+                "firstFrameMs": 43.9,
+                "textureWidth": 1440,
+                "textureHeight": 720
+              }
+            },
+            "marker": {
+              "yawDeg": 359.75,
+              "rgba": [
+                5,
+                159,
+                255,
+                255
+              ]
+            }
+          },
+          {
+            "target": 0,
+            "state": {
+              "schemaVersion": "unseen-viewer-state/1",
+              "phase": "ready",
+              "renderMode": "rotation360",
+              "requestedSceneMode": "rotation360",
+              "sceneId": "yaw-marker-scene",
+              "panoramaRevisionId": "yaw-marker-revision",
+              "capability": {
+                "webgl": true,
+                "sphericalView": true,
+                "depthArtifact": false,
+                "translation": false,
+                "keyboard": true,
+                "touch": true,
+                "fullscreen": true
+              },
+              "pose": {
+                "nodeId": "node-a",
+                "yawDeg": 0,
+                "pitchDeg": 0,
+                "fovDeg": 72,
+                "x": 0,
+                "z": 0
+              },
+              "focus": null,
+              "failure": null,
+              "metrics": {
+                "firstFrameMs": 58.7,
+                "textureWidth": 1440,
+                "textureHeight": 720
+              }
+            },
+            "marker": {
+              "yawDeg": 0,
+              "rgba": [
+                0,
+                0,
+                255,
+                255
+              ]
+            }
+          },
+          {
+            "target": 90,
+            "state": {
+              "schemaVersion": "unseen-viewer-state/1",
+              "phase": "ready",
+              "renderMode": "rotation360",
+              "requestedSceneMode": "rotation360",
+              "sceneId": "yaw-marker-scene",
+              "panoramaRevisionId": "yaw-marker-revision",
+              "capability": {
+                "webgl": true,
+                "sphericalView": true,
+                "depthArtifact": false,
+                "translation": false,
+                "keyboard": true,
+                "touch": true,
+                "fullscreen": true
+              },
+              "pose": {
+                "nodeId": "node-a",
+                "yawDeg": 90,
+                "pitchDeg": 0,
+                "fovDeg": 72,
+                "x": 0,
+                "z": 0
+              },
+              "focus": null,
+              "failure": null,
+              "metrics": {
+                "firstFrameMs": 27.1,
+                "textureWidth": 1440,
+                "textureHeight": 720
+              }
+            },
+            "marker": {
+              "yawDeg": 90,
+              "rgba": [
+                1,
+                104,
+                0,
+                255
+              ]
+            }
+          },
+          {
+            "target": 180,
+            "state": {
+              "schemaVersion": "unseen-viewer-state/1",
+              "phase": "ready",
+              "renderMode": "rotation360",
+              "requestedSceneMode": "rotation360",
+              "sceneId": "yaw-marker-scene",
+              "panoramaRevisionId": "yaw-marker-revision",
+              "capability": {
+                "webgl": true,
+                "sphericalView": true,
+                "depthArtifact": false,
+                "translation": false,
+                "keyboard": true,
+                "touch": true,
+                "fullscreen": true
+              },
+              "pose": {
+                "nodeId": "node-a",
+                "yawDeg": 180,
+                "pitchDeg": 0,
+                "fovDeg": 72,
+                "x": 0,
+                "z": 0
+              },
+              "focus": null,
+              "failure": null,
+              "metrics": {
+                "firstFrameMs": 46.5,
+                "textureWidth": 1440,
+                "textureHeight": 720
+              }
+            },
+            "marker": {
+              "yawDeg": 180,
+              "rgba": [
+                2,
+                208,
+                0,
+                255
+              ]
+            }
+          },
+          {
+            "target": 270,
+            "state": {
+              "schemaVersion": "unseen-viewer-state/1",
+              "phase": "ready",
+              "renderMode": "rotation360",
+              "requestedSceneMode": "rotation360",
+              "sceneId": "yaw-marker-scene",
+              "panoramaRevisionId": "yaw-marker-revision",
+              "capability": {
+                "webgl": true,
+                "sphericalView": true,
+                "depthArtifact": false,
+                "translation": false,
+                "keyboard": true,
+                "touch": true,
+                "fullscreen": true
+              },
+              "pose": {
+                "nodeId": "node-a",
+                "yawDeg": 270,
+                "pitchDeg": 0,
+                "fovDeg": 72,
+                "x": 0,
+                "z": 0
+              },
+              "focus": null,
+              "failure": null,
+              "metrics": {
+                "firstFrameMs": 44.1,
+                "textureWidth": 1440,
+                "textureHeight": 720
+              }
+            },
+            "marker": {
+              "yawDeg": 270,
+              "rgba": [
+                4,
+                56,
+                0,
+                255
+              ]
+            }
+          }
+        ],
+        "focused": [
+          {
+            "target": 359.9,
+            "state": {
+              "schemaVersion": "unseen-viewer-state/1",
+              "phase": "ready",
+              "renderMode": "rotation360",
+              "requestedSceneMode": "rotation360",
+              "sceneId": "yaw-marker-scene",
+              "panoramaRevisionId": "yaw-marker-revision",
+              "capability": {
+                "webgl": true,
+                "sphericalView": true,
+                "depthArtifact": false,
+                "translation": false,
+                "keyboard": true,
+                "touch": true,
+                "fullscreen": true
+              },
+              "pose": {
+                "nodeId": "node-a",
+                "yawDeg": 359.9,
+                "pitchDeg": 0,
+                "fovDeg": 75,
+                "x": 0,
+                "z": 0
+              },
+              "focus": {
+                "photoId": "yaw-photo-359.9",
+                "photoAssetId": "yaw-photo-asset-359.9",
+                "photoAssetVersion": 1,
+                "photoRawSha256": "5555555555555555555555555555555555555555555555555555555555555555",
+                "placementRevisionId": "yaw-placement-359.9",
+                "panoramaRevisionId": "yaw-marker-revision",
+                "returnTarget": null,
+                "pose": {
+                  "nodeId": "node-a",
+                  "yawDeg": 359.9,
+                  "pitchDeg": 0,
+                  "fovDeg": 75,
+                  "x": 0,
+                  "z": 0,
+                  "panoramaRevisionId": "yaw-marker-revision"
+                }
+              },
+              "failure": null,
+              "metrics": {
+                "firstFrameMs": 44.1,
+                "textureWidth": 1440,
+                "textureHeight": 720
+              }
+            },
+            "marker": {
+              "yawDeg": 359.75,
+              "rgba": [
+                5,
+                159,
+                255,
+                255
+              ]
+            }
+          },
+          {
+            "target": 0,
+            "state": {
+              "schemaVersion": "unseen-viewer-state/1",
+              "phase": "ready",
+              "renderMode": "rotation360",
+              "requestedSceneMode": "rotation360",
+              "sceneId": "yaw-marker-scene",
+              "panoramaRevisionId": "yaw-marker-revision",
+              "capability": {
+                "webgl": true,
+                "sphericalView": true,
+                "depthArtifact": false,
+                "translation": false,
+                "keyboard": true,
+                "touch": true,
+                "fullscreen": true
+              },
+              "pose": {
+                "nodeId": "node-a",
+                "yawDeg": 0,
+                "pitchDeg": 0,
+                "fovDeg": 75,
+                "x": 0,
+                "z": 0
+              },
+              "focus": {
+                "photoId": "yaw-photo-0",
+                "photoAssetId": "yaw-photo-asset-0",
+                "photoAssetVersion": 1,
+                "photoRawSha256": "5555555555555555555555555555555555555555555555555555555555555555",
+                "placementRevisionId": "yaw-placement-0",
+                "panoramaRevisionId": "yaw-marker-revision",
+                "returnTarget": null,
+                "pose": {
+                  "nodeId": "node-a",
+                  "yawDeg": 0,
+                  "pitchDeg": 0,
+                  "fovDeg": 75,
+                  "x": 0,
+                  "z": 0,
+                  "panoramaRevisionId": "yaw-marker-revision"
+                }
+              },
+              "failure": null,
+              "metrics": {
+                "firstFrameMs": 44.1,
+                "textureWidth": 1440,
+                "textureHeight": 720
+              }
+            },
+            "marker": {
+              "yawDeg": 0,
+              "rgba": [
+                0,
+                0,
+                255,
+                255
+              ]
+            }
+          },
+          {
+            "target": 90,
+            "state": {
+              "schemaVersion": "unseen-viewer-state/1",
+              "phase": "ready",
+              "renderMode": "rotation360",
+              "requestedSceneMode": "rotation360",
+              "sceneId": "yaw-marker-scene",
+              "panoramaRevisionId": "yaw-marker-revision",
+              "capability": {
+                "webgl": true,
+                "sphericalView": true,
+                "depthArtifact": false,
+                "translation": false,
+                "keyboard": true,
+                "touch": true,
+                "fullscreen": true
+              },
+              "pose": {
+                "nodeId": "node-a",
+                "yawDeg": 90,
+                "pitchDeg": 0,
+                "fovDeg": 75,
+                "x": 0,
+                "z": 0
+              },
+              "focus": {
+                "photoId": "yaw-photo-90",
+                "photoAssetId": "yaw-photo-asset-90",
+                "photoAssetVersion": 1,
+                "photoRawSha256": "5555555555555555555555555555555555555555555555555555555555555555",
+                "placementRevisionId": "yaw-placement-90",
+                "panoramaRevisionId": "yaw-marker-revision",
+                "returnTarget": null,
+                "pose": {
+                  "nodeId": "node-a",
+                  "yawDeg": 90,
+                  "pitchDeg": 0,
+                  "fovDeg": 75,
+                  "x": 0,
+                  "z": 0,
+                  "panoramaRevisionId": "yaw-marker-revision"
+                }
+              },
+              "failure": null,
+              "metrics": {
+                "firstFrameMs": 44.1,
+                "textureWidth": 1440,
+                "textureHeight": 720
+              }
+            },
+            "marker": {
+              "yawDeg": 90,
+              "rgba": [
+                1,
+                104,
+                0,
+                255
+              ]
+            }
+          },
+          {
+            "target": 180,
+            "state": {
+              "schemaVersion": "unseen-viewer-state/1",
+              "phase": "ready",
+              "renderMode": "rotation360",
+              "requestedSceneMode": "rotation360",
+              "sceneId": "yaw-marker-scene",
+              "panoramaRevisionId": "yaw-marker-revision",
+              "capability": {
+                "webgl": true,
+                "sphericalView": true,
+                "depthArtifact": false,
+                "translation": false,
+                "keyboard": true,
+                "touch": true,
+                "fullscreen": true
+              },
+              "pose": {
+                "nodeId": "node-a",
+                "yawDeg": 180,
+                "pitchDeg": 0,
+                "fovDeg": 75,
+                "x": 0,
+                "z": 0
+              },
+              "focus": {
+                "photoId": "yaw-photo-180",
+                "photoAssetId": "yaw-photo-asset-180",
+                "photoAssetVersion": 1,
+                "photoRawSha256": "5555555555555555555555555555555555555555555555555555555555555555",
+                "placementRevisionId": "yaw-placement-180",
+                "panoramaRevisionId": "yaw-marker-revision",
+                "returnTarget": null,
+                "pose": {
+                  "nodeId": "node-a",
+                  "yawDeg": 180,
+                  "pitchDeg": 0,
+                  "fovDeg": 75,
+                  "x": 0,
+                  "z": 0,
+                  "panoramaRevisionId": "yaw-marker-revision"
+                }
+              },
+              "failure": null,
+              "metrics": {
+                "firstFrameMs": 44.1,
+                "textureWidth": 1440,
+                "textureHeight": 720
+              }
+            },
+            "marker": {
+              "yawDeg": 180,
+              "rgba": [
+                2,
+                208,
+                0,
+                255
+              ]
+            }
+          },
+          {
+            "target": 270,
+            "state": {
+              "schemaVersion": "unseen-viewer-state/1",
+              "phase": "ready",
+              "renderMode": "rotation360",
+              "requestedSceneMode": "rotation360",
+              "sceneId": "yaw-marker-scene",
+              "panoramaRevisionId": "yaw-marker-revision",
+              "capability": {
+                "webgl": true,
+                "sphericalView": true,
+                "depthArtifact": false,
+                "translation": false,
+                "keyboard": true,
+                "touch": true,
+                "fullscreen": true
+              },
+              "pose": {
+                "nodeId": "node-a",
+                "yawDeg": 270,
+                "pitchDeg": 0,
+                "fovDeg": 75,
+                "x": 0,
+                "z": 0
+              },
+              "focus": {
+                "photoId": "yaw-photo-270",
+                "photoAssetId": "yaw-photo-asset-270",
+                "photoAssetVersion": 1,
+                "photoRawSha256": "5555555555555555555555555555555555555555555555555555555555555555",
+                "placementRevisionId": "yaw-placement-270",
+                "panoramaRevisionId": "yaw-marker-revision",
+                "returnTarget": null,
+                "pose": {
+                  "nodeId": "node-a",
+                  "yawDeg": 270,
+                  "pitchDeg": 0,
+                  "fovDeg": 75,
+                  "x": 0,
+                  "z": 0,
+                  "panoramaRevisionId": "yaw-marker-revision"
+                }
+              },
+              "failure": null,
+              "metrics": {
+                "firstFrameMs": 44.1,
+                "textureWidth": 1440,
+                "textureHeight": 720
+              }
+            },
+            "marker": {
+              "yawDeg": 270,
+              "rgba": [
+                4,
+                56,
+                0,
+                255
+              ]
+            }
+          }
+        ],
+        "draggedRight": {
+          "state": {
+            "schemaVersion": "unseen-viewer-state/1",
+            "phase": "ready",
+            "renderMode": "rotation360",
+            "requestedSceneMode": "rotation360",
+            "sceneId": "yaw-marker-scene",
+            "panoramaRevisionId": "yaw-marker-revision",
+            "capability": {
+              "webgl": true,
+              "sphericalView": true,
+              "depthArtifact": false,
+              "translation": false,
+              "keyboard": true,
+              "touch": true,
+              "fullscreen": true
+            },
+            "pose": {
+              "nodeId": "node-a",
+              "yawDeg": 347.2,
+              "pitchDeg": 0,
+              "fovDeg": 75,
+              "x": 0,
+              "z": 0
+            },
+            "focus": {
+              "photoId": "yaw-photo-0",
+              "photoAssetId": "yaw-photo-asset-0",
+              "photoAssetVersion": 1,
+              "photoRawSha256": "5555555555555555555555555555555555555555555555555555555555555555",
+              "placementRevisionId": "yaw-placement-0",
+              "panoramaRevisionId": "yaw-marker-revision",
+              "returnTarget": null,
+              "pose": {
+                "nodeId": "node-a",
+                "yawDeg": 0,
+                "pitchDeg": 0,
+                "fovDeg": 75,
+                "x": 0,
+                "z": 0,
+                "panoramaRevisionId": "yaw-marker-revision"
+              }
+            },
+            "failure": null,
+            "metrics": {
+              "firstFrameMs": 44.1,
+              "textureWidth": 1440,
+              "textureHeight": 720
+            }
+          },
+          "marker": {
+            "yawDeg": 347.25,
+            "rgba": [
+              5,
+              109,
+              0,
+              255
+            ]
+          }
+        },
+        "draggedLeft": {
+          "state": {
+            "schemaVersion": "unseen-viewer-state/1",
+            "phase": "ready",
+            "renderMode": "rotation360",
+            "requestedSceneMode": "rotation360",
+            "sceneId": "yaw-marker-scene",
+            "panoramaRevisionId": "yaw-marker-revision",
+            "capability": {
+              "webgl": true,
+              "sphericalView": true,
+              "depthArtifact": false,
+              "translation": false,
+              "keyboard": true,
+              "touch": true,
+              "fullscreen": true
+            },
+            "pose": {
+              "nodeId": "node-a",
+              "yawDeg": 12.800000000000011,
+              "pitchDeg": 0,
+              "fovDeg": 75,
+              "x": 0,
+              "z": 0
+            },
+            "focus": {
+              "photoId": "yaw-photo-0",
+              "photoAssetId": "yaw-photo-asset-0",
+              "photoAssetVersion": 1,
+              "photoRawSha256": "5555555555555555555555555555555555555555555555555555555555555555",
+              "placementRevisionId": "yaw-placement-0",
+              "panoramaRevisionId": "yaw-marker-revision",
+              "returnTarget": null,
+              "pose": {
+                "nodeId": "node-a",
+                "yawDeg": 0,
+                "pitchDeg": 0,
+                "fovDeg": 75,
+                "x": 0,
+                "z": 0,
+                "panoramaRevisionId": "yaw-marker-revision"
+              }
+            },
+            "failure": null,
+            "metrics": {
+              "firstFrameMs": 44.1,
+              "textureWidth": 1440,
+              "textureHeight": 720
+            }
+          },
+          "marker": {
+            "yawDeg": 12.75,
+            "rgba": [
+              0,
+              51,
+              0,
+              255
+            ]
+          }
+        }
+      }
+    },
+    {
+      "name": "photo focus lands exactly and emits the original return target",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "focus accepts exact 0 degrees but rejects missing/non-finite poses, stale nodes, and stale panorama placements",
+      "status": "PASS",
+      "detail": {
+        "validYaw": 0,
+        "missing": "focus_pose_invalid",
+        "nan": "focus_pose_invalid",
+        "infinity": "focus_pose_invalid",
+        "pitchNan": "focus_pose_invalid",
+        "fovInfinity": "focus_pose_invalid",
+        "assetVersionInvalid": "focus_identity_invalid",
+        "assetHashInvalid": "focus_identity_invalid",
+        "nodeMismatch": "focus_node_mismatch",
+        "revisionMismatch": "focus_revision_mismatch",
+        "finalPose": {
+          "nodeId": "node-a",
+          "yawDeg": 0,
+          "pitchDeg": 0,
+          "fovDeg": 75,
+          "x": 0,
+          "z": 0
+        }
+      }
+    },
+    {
+      "name": "real pointer drag changes spherical yaw/pitch",
+      "status": "PASS",
+      "detail": {
+        "before": 0,
+        "after": 337.6
+      }
+    },
+    {
+      "name": "desktop WASD changes camera x/z and photo focus restores the capture origin",
+      "status": "PASS",
+      "detail": {
+        "before": {
+          "nodeId": "node-a",
+          "yawDeg": 337.6,
+          "pitchDeg": 4.2,
+          "fovDeg": 75,
+          "x": 0,
+          "z": 0
+        },
+        "after": {
+          "nodeId": "node-a",
+          "yawDeg": 337.6,
+          "pitchDeg": 4.2,
+          "fovDeg": 75,
+          "x": -0.07586349052517528,
+          "z": 0.18405862437484552
+        },
+        "focused": {
+          "nodeId": "node-a",
+          "yawDeg": 47,
+          "pitchDeg": 6,
+          "fovDeg": 75,
+          "x": 0,
+          "z": 0
+        }
+      }
+    },
+    {
+      "name": "named 44px four-direction controls move real x/z to three unequal bounded envelopes and announce the boundary",
+      "status": "PASS",
+      "detail": {
+        "semantics": {
+          "role": "group",
+          "label": "现场四向平移控制",
+          "buttons": [
+            {
+              "direction": "forward",
+              "name": "向前平移",
+              "width": 44,
+              "height": 44,
+              "display": "block"
+            },
+            {
+              "direction": "left",
+              "name": "向左平移",
+              "width": 44,
+              "height": 44,
+              "display": "block"
+            },
+            {
+              "direction": "backward",
+              "name": "向后平移",
+              "width": 44,
+              "height": 44,
+              "display": "block"
+            },
+            {
+              "direction": "right",
+              "name": "向右平移",
+              "width": 44,
+              "height": 44,
+              "display": "block"
+            }
+          ]
+        },
+        "positions": {
+          "forward": {
+            "nodeId": "node-a",
+            "yawDeg": 15,
+            "pitchDeg": -4,
+            "fovDeg": 72,
+            "x": 0.05694018992255456,
+            "z": 0.21250368178359502
+          },
+          "right": {
+            "nodeId": "node-a",
+            "yawDeg": 15,
+            "pitchDeg": -4,
+            "fovDeg": 72,
+            "x": 0.1352296156804696,
+            "z": -0.03623466631435291
+          },
+          "left": {
+            "nodeId": "node-a",
+            "yawDeg": 15,
+            "pitchDeg": -4,
+            "fovDeg": 72,
+            "x": -0.1159110991546882,
+            "z": 0.03105828541230249
+          }
+        },
+        "live": "已到达这个方向的安全边界。"
+      }
+    },
+    {
+      "name": "the reset control restores saved pose and origin",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "keyboard surface, live status, 44px controls, pass-through overlay, and reduced motion are enforced",
+      "status": "PASS",
+      "detail": {
+        "elapsedMs": 27,
+        "reducedMotion": true,
+        "canvasRole": "application",
+        "canvasTabIndex": 0,
+        "overlayPointerEvents": "none",
+        "controlsPointerEvents": "auto",
+        "ariaLive": "polite",
+        "visibleButtonSizes": [
+          {
+            "action": "return",
+            "width": 91.28125,
+            "height": 44
+          },
+          {
+            "action": "reset",
+            "width": 58.640625,
+            "height": 44
+          },
+          {
+            "action": "fullscreen",
+            "width": 58.640625,
+            "height": 44
+          },
+          {
+            "action": "",
+            "width": 44,
+            "height": 44
+          },
+          {
+            "action": "",
+            "width": 44,
+            "height": 44
+          },
+          {
+            "action": "",
+            "width": 44,
+            "height": 44
+          },
+          {
+            "action": "",
+            "width": 44,
+            "height": 44
+          },
+          {
+            "action": "",
+            "width": 44,
+            "height": 44
+          },
+          {
+            "action": "",
+            "width": 44,
+            "height": 44
+          },
+          {
+            "action": "",
+            "width": 44,
+            "height": 44
+          },
+          {
+            "action": "",
+            "width": 44,
+            "height": 44
+          }
+        ]
+      }
+    },
+    {
+      "name": "photo CTA focusOnComplete enters canvas keyboard orbit and returnrequest restores the originating photo control",
+      "status": "PASS",
+      "detail": {
+        "activeAfterFocus": true,
+        "yawAfterKey": 95,
+        "activeAfterReturn": "depth",
+        "focusedYaw": 90
+      }
+    },
+    {
+      "name": "pointer, wheel, key, reset, updateScene, and dispose reject interrupted focus instead of resolving false success",
+      "status": "PASS",
+      "detail": {
+        "pointer": {
+          "result": "rejected",
+          "code": "focus_cancelled"
+        },
+        "wheel": {
+          "result": "rejected",
+          "code": "focus_cancelled"
+        },
+        "key": {
+          "result": "rejected",
+          "code": "focus_cancelled"
+        },
+        "reset": {
+          "result": "rejected",
+          "code": "focus_cancelled"
+        },
+        "updateScene": {
+          "result": "rejected",
+          "code": "focus_cancelled"
+        },
+        "dispose": {
+          "result": "rejected",
+          "code": "focus_cancelled"
+        }
+      }
+    },
+    {
+      "name": "the real fullscreen control enters, resizes at DPR, and exits cleanly",
+      "status": "PASS",
+      "detail": {
+        "button": "退出全屏",
+        "rootWidth": 1280,
+        "rootHeight": 800,
+        "canvasWidth": 1280,
+        "canvasHeight": 800,
+        "dpr": 1
+      }
+    },
+    {
+      "name": "hung fetch, body reader, color decoder, and depth decoder all time out, clean up, focus retry, and recover with a new deadline",
+      "status": "PASS",
+      "detail": {
+        "fetch": {
+          "elapsedMs": 2235.5,
+          "failureElapsedMs": 2056.4000000059605,
+          "thrown": {
+            "code": "asset_timeout",
+            "message": "现场加载超时，请重试。"
+          },
+          "phase": "error",
+          "renderMode": "flat_fallback",
+          "failure": {
+            "code": "asset_timeout",
+            "message": "现场加载超时，请重试。",
+            "retryable": true
+          },
+          "retryVisible": true,
+          "failureFocus": "retry",
+          "recoveredRenderMode": "rotation360",
+          "recoveryFocus": "canvas",
+          "activeTimers": 0,
+          "activeObjectUrls": 0,
+          "readerCancelCalls": 0,
+          "decoderCalls": 1,
+          "decoderCallsAtFailure": 0,
+          "lateBitmapClosed": 0,
+          "roots": 0,
+          "canvases": 0,
+          "gpu": false,
+          "retainedAssets": 0
+        },
+        "body": {
+          "elapsedMs": 2197.7000000178814,
+          "failureElapsedMs": 2050.2000000178814,
+          "thrown": {
+            "code": "asset_timeout",
+            "message": "现场加载超时，请重试。"
+          },
+          "phase": "error",
+          "renderMode": "flat_fallback",
+          "failure": {
+            "code": "asset_timeout",
+            "message": "现场加载超时，请重试。",
+            "retryable": true
+          },
+          "retryVisible": true,
+          "failureFocus": "retry",
+          "recoveredRenderMode": "rotation360",
+          "recoveryFocus": "canvas",
+          "activeTimers": 0,
+          "activeObjectUrls": 0,
+          "readerCancelCalls": 1,
+          "decoderCalls": 1,
+          "decoderCallsAtFailure": 0,
+          "lateBitmapClosed": 0,
+          "roots": 0,
+          "canvases": 0,
+          "gpu": false,
+          "retainedAssets": 0
+        },
+        "decoder": {
+          "elapsedMs": 2310,
+          "failureElapsedMs": 2081.300000011921,
+          "thrown": {
+            "code": "asset_timeout",
+            "message": "现场加载超时，请重试。"
+          },
+          "phase": "error",
+          "renderMode": "flat_fallback",
+          "failure": {
+            "code": "asset_timeout",
+            "message": "现场加载超时，请重试。",
+            "retryable": true
+          },
+          "retryVisible": true,
+          "failureFocus": "retry",
+          "recoveredRenderMode": "rotation360",
+          "recoveryFocus": "canvas",
+          "activeTimers": 0,
+          "activeObjectUrls": 0,
+          "readerCancelCalls": 0,
+          "decoderCalls": 2,
+          "decoderCallsAtFailure": 1,
+          "lateBitmapClosed": 1,
+          "roots": 0,
+          "canvases": 0,
+          "gpu": false,
+          "retainedAssets": 0
+        },
+        "depth-decoder": {
+          "elapsedMs": 2385.7999999821186,
+          "failureElapsedMs": 2106.300000011921,
+          "thrown": null,
+          "phase": "ready",
+          "renderMode": "rotation360",
+          "failure": {
+            "code": "asset_timeout",
+            "message": "现场加载超时，请重试。",
+            "retryable": true
+          },
+          "retryVisible": true,
+          "failureFocus": "retry",
+          "recoveredRenderMode": "depth_limited_parallax",
+          "recoveryFocus": "canvas",
+          "activeTimers": 0,
+          "activeObjectUrls": 0,
+          "readerCancelCalls": 0,
+          "decoderCalls": 4,
+          "decoderCallsAtFailure": 2,
+          "lateBitmapClosed": 1,
+          "roots": 0,
+          "canvases": 0,
+          "gpu": false,
+          "retainedAssets": 0
+        }
+      }
+    },
+    {
+      "name": "link and second-texture failures delete every incremental GPU object even without WEBGL_lose_context, then retry succeeds",
+      "status": "PASS",
+      "detail": {
+        "link": {
+          "mode": "link",
+          "failure": {
+            "code": "webgl_link_failed",
+            "message": "当前设备无法环视，已显示平面图。",
+            "retryable": true
+          },
+          "renderMode": "flat_fallback",
+          "counts": {
+            "shader": {
+              "created": 2,
+              "deleted": 2
+            },
+            "program": {
+              "created": 1,
+              "deleted": 1
+            },
+            "buffer": {
+              "created": 0,
+              "deleted": 0
+            },
+            "texture": {
+              "created": 0,
+              "deleted": 0
+            }
+          },
+          "recovered": "depth_limited_parallax"
+        },
+        "secondTexture": {
+          "mode": "second-texture",
+          "failure": {
+            "code": "texture_upload_failed",
+            "message": "当前设备无法环视，已显示平面图。",
+            "retryable": true
+          },
+          "renderMode": "flat_fallback",
+          "counts": {
+            "shader": {
+              "created": 2,
+              "deleted": 2
+            },
+            "program": {
+              "created": 1,
+              "deleted": 1
+            },
+            "buffer": {
+              "created": 1,
+              "deleted": 1
+            },
+            "texture": {
+              "created": 2,
+              "deleted": 2
+            }
+          },
+          "recovered": "depth_limited_parallax"
+        }
+      }
+    },
+    {
+      "name": "focused canvas moves to retry on programmatic failure and retryable-to-nonretryable failure moves focus to status",
+      "status": "PASS",
+      "detail": {
+        "firstFailure": "panorama_hash_mismatch",
+        "beforeFailure": "canvas",
+        "afterProgrammaticFailure": "retry",
+        "secondFailure": "panorama_ratio_invalid",
+        "retryHidden": true,
+        "afterNonRetryableFailure": "status"
+      }
+    },
+    {
+      "name": "dispose and a superseding scene invalidate queued focus recovery without stealing external focus",
+      "status": "PASS",
+      "detail": {
+        "afterDispose": "focus-cancellation-sentinel",
+        "duringSupersede": "focus-cancellation-sentinel",
+        "afterSupersede": "focus-cancellation-sentinel"
+      }
+    },
+    {
+      "name": "cancelable retryrequest lets the host replace an expired signed URL without replaying it",
+      "status": "PASS",
+      "detail": {
+        "initialFailure": "asset_fetch_failed",
+        "eventDetail": {
+          "failure": {
+            "code": "asset_fetch_failed",
+            "message": "现场暂时无法打开，请重试。",
+            "retryable": true
+          },
+          "sceneId": "signed-scene",
+          "panoramaRevisionId": "pano-revision-a"
+        },
+        "defaultPrevented": true,
+        "expiredFetches": 1,
+        "renderMode": "rotation360",
+        "panoramaRevisionId": "pano-revision-a",
+        "activeAfterRecovery": "canvas"
+      }
+    },
+    {
+      "name": "successful programmatic updateScene does not steal focus outside the viewer",
+      "status": "PASS",
+      "detail": {
+        "before": "depth",
+        "after": "depth"
+      }
+    },
+    {
+      "name": "flat fallback exposes a working retry control",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "animated render failure and an existing flat fallback both reject public focusPose within a hard bound",
+      "status": "PASS",
+      "detail": {
+        "animated": {
+          "result": "rejected",
+          "code": "spherical_view_unavailable"
+        },
+        "animatedElapsedMs": 68.80000001192093,
+        "flat": {
+          "result": "rejected",
+          "code": "spherical_view_unavailable"
+        },
+        "flatElapsedMs": 0.09999999403953552,
+        "fallbackState": {
+          "schemaVersion": "unseen-viewer-state/1",
+          "phase": "ready",
+          "renderMode": "flat_fallback",
+          "requestedSceneMode": "rotation360",
+          "sceneId": "harness-scene",
+          "panoramaRevisionId": "pano-revision-a",
+          "capability": {
+            "webgl": false,
+            "sphericalView": false,
+            "depthArtifact": false,
+            "translation": false,
+            "keyboard": false,
+            "touch": false,
+            "fullscreen": true
+          },
+          "pose": {
+            "nodeId": "node-a",
+            "yawDeg": 15.070299987555245,
+            "pitchDeg": -4.004686665837017,
+            "fovDeg": 71.99872181840809,
+            "x": 0,
+            "z": 0
+          },
+          "focus": null,
+          "failure": {
+            "code": "webgl_render_failed",
+            "message": "当前设备暂时无法环视，已显示平面图。",
+            "retryable": true
+          },
+          "metrics": {
+            "firstFrameMs": 154.4,
+            "textureWidth": 1024,
+            "textureHeight": 512
+          }
+        },
+        "active": "retry",
+        "returnHidden": true,
+        "status": "当前设备暂时无法环视，已显示平面图。 可使用“重试”再次尝试。"
+      }
+    },
+    {
+      "name": "deterministic invalid depth has no dead-end retry, while host refresh and retryable hash failure can restore bounded translation",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "context loss atomically cancels focus and held WASD before fallback, then default retry recovers without a stale success frame",
+      "status": "PASS",
+      "detail": {
+        "cancelled": {
+          "result": "rejected",
+          "code": "focus_cancelled"
+        },
+        "recovered": {
+          "schemaVersion": "unseen-viewer-state/1",
+          "phase": "ready",
+          "renderMode": "depth_limited_parallax",
+          "requestedSceneMode": "depth_limited_parallax",
+          "sceneId": "harness-scene",
+          "panoramaRevisionId": "pano-revision-a",
+          "capability": {
+            "webgl": true,
+            "sphericalView": true,
+            "depthArtifact": true,
+            "translation": true,
+            "keyboard": true,
+            "touch": true,
+            "fullscreen": true
+          },
+          "pose": {
+            "nodeId": "node-a",
+            "yawDeg": 15,
+            "pitchDeg": -4,
+            "fovDeg": 72,
+            "x": 0,
+            "z": 0
+          },
+          "focus": null,
+          "failure": null,
+          "metrics": {
+            "firstFrameMs": 129,
+            "textureWidth": 1024,
+            "textureHeight": 512
+          }
+        }
+      }
+    },
+    {
+      "name": "four dispose/remount cycles leave one root and one canvas",
+      "status": "PASS",
+      "detail": {
+        "roots": 1,
+        "canvases": 1,
+        "children": 2
+      }
+    },
+    {
+      "name": "1280 desktop has no horizontal overflow or spare joystick",
+      "status": "PASS",
+      "detail": {
+        "overflow": false,
+        "joystick": "none",
+        "width": 1280
+      }
+    },
+    {
+      "name": "390 touch layout supports real drag, pinch, and a visible working joystick",
+      "status": "PASS",
+      "detail": {
+        "layout": {
+          "overflow": false,
+          "joystick": "block",
+          "width": 390,
+          "canvasWidth": 780,
+          "canvasCssWidth": 390
+        },
+        "yawBefore": 15,
+        "yawAfter": 29.399999999999977,
+        "fovBefore": 72,
+        "fovAfter": 35,
+        "before": {
+          "nodeId": "node-a",
+          "yawDeg": 29.399999999999977,
+          "pitchDeg": -1,
+          "fovDeg": 35,
+          "x": 0,
+          "z": 0
+        },
+        "after": {
+          "nodeId": "node-a",
+          "yawDeg": 29.399999999999977,
+          "pitchDeg": -1,
+          "fovDeg": 35,
+          "x": 0.038216857219879205,
+          "z": 0.06782399519737592
+        }
+      }
+    },
+    {
+      "name": "visible HUD messages keep stable technical codes out of customer-facing text",
+      "status": "PASS",
+      "detail": [
+        {
+          "code": "depth_quality_invalid",
+          "text": "暂时只能环视现场。\n重置\n全屏\n\n方位 15 度，俯仰 -4 度"
+        },
+        {
+          "code": "walkable3d_not_supported",
+          "text": "暂时只能环视现场。\n重置\n全屏\n\n方位 15 度，俯仰 -4 度"
+        },
+        {
+          "code": "webgl_unavailable",
+          "text": "当前设备无法环视，已显示平面图。 可使用“重试”再次尝试。\n重试\n重置\n全屏\n\n方位 15 度，俯仰 -4 度"
+        }
+      ]
+    },
+    {
+      "name": "console and network errors are zero",
+      "status": "PASS",
+      "detail": {
+        "requests": 159
+      }
+    }
+  ],
+  "stages": [
+    {
+      "kind": "STAGE_START",
+      "name": "server-start",
+      "at": "2026-08-13T07:24:47.044Z",
+      "detail": {
+        "timeoutMs": 12000
+      }
+    },
+    {
+      "kind": "STAGE_PASS",
+      "name": "server-start",
+      "at": "2026-08-13T07:24:47.052Z",
+      "detail": null
+    },
+    {
+      "kind": "STAGE_START",
+      "name": "browser-launch",
+      "at": "2026-08-13T07:24:47.052Z",
+      "detail": {
+        "timeoutMs": 20000
+      }
+    },
+    {
+      "kind": "STAGE_PASS",
+      "name": "browser-launch",
+      "at": "2026-08-13T07:24:50.204Z",
+      "detail": null
+    },
+    {
+      "kind": "STAGE_START",
+      "name": "initial-scene-ready",
+      "at": "2026-08-13T07:24:50.204Z",
+      "detail": {
+        "timeoutMs": 20000
+      }
+    },
+    {
+      "kind": "ASSERT_PASS",
+      "name": "depth artifact produces a real depth-ready first frame",
+      "at": "2026-08-13T07:24:54.131Z",
+      "detail": {
+        "firstFrameMs": 709.5,
+        "textureWidth": 1024,
+        "textureHeight": 512
+      }
+    },
+    {
+      "kind": "STAGE_PASS",
+      "name": "initial-scene-ready",
+      "at": "2026-08-13T07:24:54.131Z",
+      "detail": null
+    },
+    {
+      "kind": "STAGE_START",
+      "name": "panorama-integrity",
+      "at": "2026-08-13T07:24:54.131Z",
+      "detail": {
+        "timeoutMs": 20000
+      }
+    },
+    {
+      "kind": "ASSERT_PASS",
+      "name": "SHA-256 is checked before decoder and only static PNG/JPEG/WebP raster magic may render",
+      "at": "2026-08-13T07:24:54.659Z",
+      "detail": {
+        "beforeDecode": {
+          "code": "panorama_hash_mismatch",
+          "decoderCalls": 0,
+          "state": {
+            "schemaVersion": "unseen-viewer-state/1",
+            "phase": "error",
+            "renderMode": "flat_fallback",
+            "requestedSceneMode": "rotation360",
+            "sceneId": "harness-scene",
+            "panoramaRevisionId": "pano-revision-a",
+            "capability": {
+              "webgl": false,
+              "sphericalView": false,
+              "depthArtifact": false,
+              "translation": false,
+              "keyboard": false,
+              "touch": false,
+              "fullscreen": true
+            },
+            "pose": {
+              "nodeId": "node-a",
+              "yawDeg": 15,
+              "pitchDeg": -4,
+              "fovDeg": 72,
+              "x": 0,
+              "z": 0
+            },
+            "focus": null,
+            "failure": {
+              "code": "panorama_hash_mismatch",
+              "message": "现场图片校验失败，请重试。",
+              "retryable": true
+            },
+            "metrics": {
+              "firstFrameMs": null,
+              "textureWidth": null,
+              "textureHeight": null
+            }
+          }
+        },
+        "failed": {
+          "code": "panorama_hash_mismatch",
+          "state": {
+            "schemaVersion": "unseen-viewer-state/1",
+            "phase": "error",
+            "renderMode": "flat_fallback",
+            "requestedSceneMode": "rotation360",
+            "sceneId": "harness-scene",
+            "panoramaRevisionId": "pano-revision-a",
+            "capability": {
+              "webgl": false,
+              "sphericalView": false,
+              "depthArtifact": false,
+              "translation": false,
+              "keyboard": false,
+              "touch": false,
+              "fullscreen": true
+            },
+            "pose": {
+              "nodeId": "node-a",
+              "yawDeg": 15,
+              "pitchDeg": -4,
+              "fovDeg": 72,
+              "x": 0,
+              "z": 0
+            },
+            "focus": null,
+            "failure": {
+              "code": "panorama_hash_mismatch",
+              "message": "现场图片校验失败，请重试。",
+              "retryable": true
+            },
+            "metrics": {
+              "firstFrameMs": null,
+              "textureWidth": null,
+              "textureHeight": null
+            }
+          },
+          "canvasHidden": true,
+          "retryVisible": true
+        },
+        "unsupported": {
+          "code": "asset_format_unsupported",
+          "state": {
+            "schemaVersion": "unseen-viewer-state/1",
+            "phase": "error",
+            "renderMode": "flat_fallback",
+            "requestedSceneMode": "rotation360",
+            "sceneId": "harness-scene",
+            "panoramaRevisionId": "pano-revision-a",
+            "capability": {
+              "webgl": false,
+              "sphericalView": false,
+              "depthArtifact": false,
+              "translation": false,
+              "keyboard": false,
+              "touch": false,
+              "fullscreen": true
+            },
+            "pose": {
+              "nodeId": "node-a",
+              "yawDeg": 15,
+              "pitchDeg": -4,
+              "fovDeg": 72,
+              "x": 0,
+              "z": 0
+            },
+            "focus": null,
+            "failure": {
+              "code": "asset_format_unsupported",
+              "message": "现场图片格式暂不支持。",
+              "retryable": false
+            },
+            "metrics": {
+              "firstFrameMs": null,
+              "textureWidth": null,
+              "textureHeight": null
+            }
+          }
+        }
+      }
+    },
+    {
+      "kind": "STAGE_PASS",
+      "name": "panorama-integrity",
+      "at": "2026-08-13T07:24:54.659Z",
+      "detail": null
+    },
+    {
+      "kind": "STAGE_START",
+      "name": "static-raster-animation-policy",
+      "at": "2026-08-13T07:24:54.659Z",
+      "detail": {
+        "timeoutMs": 20000
+      }
+    },
+    {
+      "kind": "ASSERT_PASS",
+      "name": "real APNG and animated WebP bytes are rejected before browser decode while static WebP remains supported",
+      "at": "2026-08-13T07:24:55.687Z",
+      "detail": {
+        "staticWebp": {
+          "result": "resolved",
+          "state": {
+            "schemaVersion": "unseen-viewer-state/1",
+            "phase": "ready",
+            "renderMode": "rotation360",
+            "requestedSceneMode": "rotation360",
+            "sceneId": "harness-scene",
+            "panoramaRevisionId": "pano-revision-a",
+            "capability": {
+              "webgl": true,
+              "sphericalView": true,
+              "depthArtifact": false,
+              "translation": false,
+              "keyboard": true,
+              "touch": true,
+              "fullscreen": true
+            },
+            "pose": {
+              "nodeId": "node-a",
+              "yawDeg": 15,
+              "pitchDeg": -4,
+              "fovDeg": 72,
+              "x": 0,
+              "z": 0
+            },
+            "focus": null,
+            "failure": null,
+            "metrics": {
+              "firstFrameMs": 367.5,
+              "textureWidth": 1024,
+              "textureHeight": 512
+            }
+          }
+        },
+        "apng": {
+          "result": "rejected",
+          "code": "asset_animation_unsupported",
+          "retryable": false,
+          "state": {
+            "schemaVersion": "unseen-viewer-state/1",
+            "phase": "error",
+            "renderMode": "flat_fallback",
+            "requestedSceneMode": "rotation360",
+            "sceneId": "harness-scene",
+            "panoramaRevisionId": "pano-revision-a",
+            "capability": {
+              "webgl": false,
+              "sphericalView": false,
+              "depthArtifact": false,
+              "translation": false,
+              "keyboard": false,
+              "touch": false,
+              "fullscreen": true
+            },
+            "pose": {
+              "nodeId": "node-a",
+              "yawDeg": 15,
+              "pitchDeg": -4,
+              "fovDeg": 72,
+              "x": 0,
+              "z": 0
+            },
+            "focus": null,
+            "failure": {
+              "code": "asset_animation_unsupported",
+              "message": "现场图片格式暂不支持。",
+              "retryable": false
+            },
+            "metrics": {
+              "firstFrameMs": null,
+              "textureWidth": null,
+              "textureHeight": null
+            }
+          },
+          "retryVisible": false
+        },
+        "animatedWebp": {
+          "result": "rejected",
+          "code": "asset_animation_unsupported",
+          "retryable": false,
+          "state": {
+            "schemaVersion": "unseen-viewer-state/1",
+            "phase": "error",
+            "renderMode": "flat_fallback",
+            "requestedSceneMode": "rotation360",
+            "sceneId": "harness-scene",
+            "panoramaRevisionId": "pano-revision-a",
+            "capability": {
+              "webgl": false,
+              "sphericalView": false,
+              "depthArtifact": false,
+              "translation": false,
+              "keyboard": false,
+              "touch": false,
+              "fullscreen": true
+            },
+            "pose": {
+              "nodeId": "node-a",
+              "yawDeg": 15,
+              "pitchDeg": -4,
+              "fovDeg": 72,
+              "x": 0,
+              "z": 0
+            },
+            "focus": null,
+            "failure": {
+              "code": "asset_animation_unsupported",
+              "message": "现场图片格式暂不支持。",
+              "retryable": false
+            },
+            "metrics": {
+              "firstFrameMs": null,
+              "textureWidth": null,
+              "textureHeight": null
+            }
+          },
+          "retryVisible": false
+        },
+        "decoderCalls": 1,
+        "animationDecoderCalls": 0
+      }
+    },
+    {
+      "kind": "STAGE_PASS",
+      "name": "static-raster-animation-policy",
+      "at": "2026-08-13T07:24:55.687Z",
+      "detail": null
+    },
+    {
+      "kind": "STAGE_START",
+      "name": "canonical-yaw-to-equirectangular-seam",
+      "at": "2026-08-13T07:24:55.688Z",
+      "detail": {
+        "timeoutMs": 120000
+      }
+    },
+    {
+      "kind": "ASSERT_PASS",
+      "name": "canonical yaw 0 is the equirectangular seam and initial/focus/drag center pixels add at most 0.5 degrees",
+      "at": "2026-08-13T07:24:57.316Z",
+      "detail": {
+        "initial": [
+          {
+            "target": 359.9,
+            "state": {
+              "schemaVersion": "unseen-viewer-state/1",
+              "phase": "ready",
+              "renderMode": "rotation360",
+              "requestedSceneMode": "rotation360",
+              "sceneId": "yaw-marker-scene",
+              "panoramaRevisionId": "yaw-marker-revision",
+              "capability": {
+                "webgl": true,
+                "sphericalView": true,
+                "depthArtifact": false,
+                "translation": false,
+                "keyboard": true,
+                "touch": true,
+                "fullscreen": true
+              },
+              "pose": {
+                "nodeId": "node-a",
+                "yawDeg": 359.9,
+                "pitchDeg": 0,
+                "fovDeg": 72,
+                "x": 0,
+                "z": 0
+              },
+              "focus": null,
+              "failure": null,
+              "metrics": {
+                "firstFrameMs": 43.9,
+                "textureWidth": 1440,
+                "textureHeight": 720
+              }
+            },
+            "marker": {
+              "yawDeg": 359.75,
+              "rgba": [
+                5,
+                159,
+                255,
+                255
+              ]
+            }
+          },
+          {
+            "target": 0,
+            "state": {
+              "schemaVersion": "unseen-viewer-state/1",
+              "phase": "ready",
+              "renderMode": "rotation360",
+              "requestedSceneMode": "rotation360",
+              "sceneId": "yaw-marker-scene",
+              "panoramaRevisionId": "yaw-marker-revision",
+              "capability": {
+                "webgl": true,
+                "sphericalView": true,
+                "depthArtifact": false,
+                "translation": false,
+                "keyboard": true,
+                "touch": true,
+                "fullscreen": true
+              },
+              "pose": {
+                "nodeId": "node-a",
+                "yawDeg": 0,
+                "pitchDeg": 0,
+                "fovDeg": 72,
+                "x": 0,
+                "z": 0
+              },
+              "focus": null,
+              "failure": null,
+              "metrics": {
+                "firstFrameMs": 58.7,
+                "textureWidth": 1440,
+                "textureHeight": 720
+              }
+            },
+            "marker": {
+              "yawDeg": 0,
+              "rgba": [
+                0,
+                0,
+                255,
+                255
+              ]
+            }
+          },
+          {
+            "target": 90,
+            "state": {
+              "schemaVersion": "unseen-viewer-state/1",
+              "phase": "ready",
+              "renderMode": "rotation360",
+              "requestedSceneMode": "rotation360",
+              "sceneId": "yaw-marker-scene",
+              "panoramaRevisionId": "yaw-marker-revision",
+              "capability": {
+                "webgl": true,
+                "sphericalView": true,
+                "depthArtifact": false,
+                "translation": false,
+                "keyboard": true,
+                "touch": true,
+                "fullscreen": true
+              },
+              "pose": {
+                "nodeId": "node-a",
+                "yawDeg": 90,
+                "pitchDeg": 0,
+                "fovDeg": 72,
+                "x": 0,
+                "z": 0
+              },
+              "focus": null,
+              "failure": null,
+              "metrics": {
+                "firstFrameMs": 27.1,
+                "textureWidth": 1440,
+                "textureHeight": 720
+              }
+            },
+            "marker": {
+              "yawDeg": 90,
+              "rgba": [
+                1,
+                104,
+                0,
+                255
+              ]
+            }
+          },
+          {
+            "target": 180,
+            "state": {
+              "schemaVersion": "unseen-viewer-state/1",
+              "phase": "ready",
+              "renderMode": "rotation360",
+              "requestedSceneMode": "rotation360",
+              "sceneId": "yaw-marker-scene",
+              "panoramaRevisionId": "yaw-marker-revision",
+              "capability": {
+                "webgl": true,
+                "sphericalView": true,
+                "depthArtifact": false,
+                "translation": false,
+                "keyboard": true,
+                "touch": true,
+                "fullscreen": true
+              },
+              "pose": {
+                "nodeId": "node-a",
+                "yawDeg": 180,
+                "pitchDeg": 0,
+                "fovDeg": 72,
+                "x": 0,
+                "z": 0
+              },
+              "focus": null,
+              "failure": null,
+              "metrics": {
+                "firstFrameMs": 46.5,
+                "textureWidth": 1440,
+                "textureHeight": 720
+              }
+            },
+            "marker": {
+              "yawDeg": 180,
+              "rgba": [
+                2,
+                208,
+                0,
+                255
+              ]
+            }
+          },
+          {
+            "target": 270,
+            "state": {
+              "schemaVersion": "unseen-viewer-state/1",
+              "phase": "ready",
+              "renderMode": "rotation360",
+              "requestedSceneMode": "rotation360",
+              "sceneId": "yaw-marker-scene",
+              "panoramaRevisionId": "yaw-marker-revision",
+              "capability": {
+                "webgl": true,
+                "sphericalView": true,
+                "depthArtifact": false,
+                "translation": false,
+                "keyboard": true,
+                "touch": true,
+                "fullscreen": true
+              },
+              "pose": {
+                "nodeId": "node-a",
+                "yawDeg": 270,
+                "pitchDeg": 0,
+                "fovDeg": 72,
+                "x": 0,
+                "z": 0
+              },
+              "focus": null,
+              "failure": null,
+              "metrics": {
+                "firstFrameMs": 44.1,
+                "textureWidth": 1440,
+                "textureHeight": 720
+              }
+            },
+            "marker": {
+              "yawDeg": 270,
+              "rgba": [
+                4,
+                56,
+                0,
+                255
+              ]
+            }
+          }
+        ],
+        "focused": [
+          {
+            "target": 359.9,
+            "state": {
+              "schemaVersion": "unseen-viewer-state/1",
+              "phase": "ready",
+              "renderMode": "rotation360",
+              "requestedSceneMode": "rotation360",
+              "sceneId": "yaw-marker-scene",
+              "panoramaRevisionId": "yaw-marker-revision",
+              "capability": {
+                "webgl": true,
+                "sphericalView": true,
+                "depthArtifact": false,
+                "translation": false,
+                "keyboard": true,
+                "touch": true,
+                "fullscreen": true
+              },
+              "pose": {
+                "nodeId": "node-a",
+                "yawDeg": 359.9,
+                "pitchDeg": 0,
+                "fovDeg": 75,
+                "x": 0,
+                "z": 0
+              },
+              "focus": {
+                "photoId": "yaw-photo-359.9",
+                "photoAssetId": "yaw-photo-asset-359.9",
+                "photoAssetVersion": 1,
+                "photoRawSha256": "5555555555555555555555555555555555555555555555555555555555555555",
+                "placementRevisionId": "yaw-placement-359.9",
+                "panoramaRevisionId": "yaw-marker-revision",
+                "returnTarget": null,
+                "pose": {
+                  "nodeId": "node-a",
+                  "yawDeg": 359.9,
+                  "pitchDeg": 0,
+                  "fovDeg": 75,
+                  "x": 0,
+                  "z": 0,
+                  "panoramaRevisionId": "yaw-marker-revision"
+                }
+              },
+              "failure": null,
+              "metrics": {
+                "firstFrameMs": 44.1,
+                "textureWidth": 1440,
+                "textureHeight": 720
+              }
+            },
+            "marker": {
+              "yawDeg": 359.75,
+              "rgba": [
+                5,
+                159,
+                255,
+                255
+              ]
+            }
+          },
+          {
+            "target": 0,
+            "state": {
+              "schemaVersion": "unseen-viewer-state/1",
+              "phase": "ready",
+              "renderMode": "rotation360",
+              "requestedSceneMode": "rotation360",
+              "sceneId": "yaw-marker-scene",
+              "panoramaRevisionId": "yaw-marker-revision",
+              "capability": {
+                "webgl": true,
+                "sphericalView": true,
+                "depthArtifact": false,
+                "translation": false,
+                "keyboard": true,
+                "touch": true,
+                "fullscreen": true
+              },
+              "pose": {
+                "nodeId": "node-a",
+                "yawDeg": 0,
+                "pitchDeg": 0,
+                "fovDeg": 75,
+                "x": 0,
+                "z": 0
+              },
+              "focus": {
+                "photoId": "yaw-photo-0",
+                "photoAssetId": "yaw-photo-asset-0",
+                "photoAssetVersion": 1,
+                "photoRawSha256": "5555555555555555555555555555555555555555555555555555555555555555",
+                "placementRevisionId": "yaw-placement-0",
+                "panoramaRevisionId": "yaw-marker-revision",
+                "returnTarget": null,
+                "pose": {
+                  "nodeId": "node-a",
+                  "yawDeg": 0,
+                  "pitchDeg": 0,
+                  "fovDeg": 75,
+                  "x": 0,
+                  "z": 0,
+                  "panoramaRevisionId": "yaw-marker-revision"
+                }
+              },
+              "failure": null,
+              "metrics": {
+                "firstFrameMs": 44.1,
+                "textureWidth": 1440,
+                "textureHeight": 720
+              }
+            },
+            "marker": {
+              "yawDeg": 0,
+              "rgba": [
+                0,
+                0,
+                255,
+                255
+              ]
+            }
+          },
+          {
+            "target": 90,
+            "state": {
+              "schemaVersion": "unseen-viewer-state/1",
+              "phase": "ready",
+              "renderMode": "rotation360",
+              "requestedSceneMode": "rotation360",
+              "sceneId": "yaw-marker-scene",
+              "panoramaRevisionId": "yaw-marker-revision",
+              "capability": {
+                "webgl": true,
+                "sphericalView": true,
+                "depthArtifact": false,
+                "translation": false,
+                "keyboard": true,
+                "touch": true,
+                "fullscreen": true
+              },
+              "pose": {
+                "nodeId": "node-a",
+                "yawDeg": 90,
+                "pitchDeg": 0,
+                "fovDeg": 75,
+                "x": 0,
+                "z": 0
+              },
+              "focus": {
+                "photoId": "yaw-photo-90",
+                "photoAssetId": "yaw-photo-asset-90",
+                "photoAssetVersion": 1,
+                "photoRawSha256": "5555555555555555555555555555555555555555555555555555555555555555",
+                "placementRevisionId": "yaw-placement-90",
+                "panoramaRevisionId": "yaw-marker-revision",
+                "returnTarget": null,
+                "pose": {
+                  "nodeId": "node-a",
+                  "yawDeg": 90,
+                  "pitchDeg": 0,
+                  "fovDeg": 75,
+                  "x": 0,
+                  "z": 0,
+                  "panoramaRevisionId": "yaw-marker-revision"
+                }
+              },
+              "failure": null,
+              "metrics": {
+                "firstFrameMs": 44.1,
+                "textureWidth": 1440,
+                "textureHeight": 720
+              }
+            },
+            "marker": {
+              "yawDeg": 90,
+              "rgba": [
+                1,
+                104,
+                0,
+                255
+              ]
+            }
+          },
+          {
+            "target": 180,
+            "state": {
+              "schemaVersion": "unseen-viewer-state/1",
+              "phase": "ready",
+              "renderMode": "rotation360",
+              "requestedSceneMode": "rotation360",
+              "sceneId": "yaw-marker-scene",
+              "panoramaRevisionId": "yaw-marker-revision",
+              "capability": {
+                "webgl": true,
+                "sphericalView": true,
+                "depthArtifact": false,
+                "translation": false,
+                "keyboard": true,
+                "touch": true,
+                "fullscreen": true
+              },
+              "pose": {
+                "nodeId": "node-a",
+                "yawDeg": 180,
+                "pitchDeg": 0,
+                "fovDeg": 75,
+                "x": 0,
+                "z": 0
+              },
+              "focus": {
+                "photoId": "yaw-photo-180",
+                "photoAssetId": "yaw-photo-asset-180",
+                "photoAssetVersion": 1,
+                "photoRawSha256": "5555555555555555555555555555555555555555555555555555555555555555",
+                "placementRevisionId": "yaw-placement-180",
+                "panoramaRevisionId": "yaw-marker-revision",
+                "returnTarget": null,
+                "pose": {
+                  "nodeId": "node-a",
+                  "yawDeg": 180,
+                  "pitchDeg": 0,
+                  "fovDeg": 75,
+                  "x": 0,
+                  "z": 0,
+                  "panoramaRevisionId": "yaw-marker-revision"
+                }
+              },
+              "failure": null,
+              "metrics": {
+                "firstFrameMs": 44.1,
+                "textureWidth": 1440,
+                "textureHeight": 720
+              }
+            },
+            "marker": {
+              "yawDeg": 180,
+              "rgba": [
+                2,
+                208,
+                0,
+                255
+              ]
+            }
+          },
+          {
+            "target": 270,
+            "state": {
+              "schemaVersion": "unseen-viewer-state/1",
+              "phase": "ready",
+              "renderMode": "rotation360",
+              "requestedSceneMode": "rotation360",
+              "sceneId": "yaw-marker-scene",
+              "panoramaRevisionId": "yaw-marker-revision",
+              "capability": {
+                "webgl": true,
+                "sphericalView": true,
+                "depthArtifact": false,
+                "translation": false,
+                "keyboard": true,
+                "touch": true,
+                "fullscreen": true
+              },
+              "pose": {
+                "nodeId": "node-a",
+                "yawDeg": 270,
+                "pitchDeg": 0,
+                "fovDeg": 75,
+                "x": 0,
+                "z": 0
+              },
+              "focus": {
+                "photoId": "yaw-photo-270",
+                "photoAssetId": "yaw-photo-asset-270",
+                "photoAssetVersion": 1,
+                "photoRawSha256": "5555555555555555555555555555555555555555555555555555555555555555",
+                "placementRevisionId": "yaw-placement-270",
+                "panoramaRevisionId": "yaw-marker-revision",
+                "returnTarget": null,
+                "pose": {
+                  "nodeId": "node-a",
+                  "yawDeg": 270,
+                  "pitchDeg": 0,
+                  "fovDeg": 75,
+                  "x": 0,
+                  "z": 0,
+                  "panoramaRevisionId": "yaw-marker-revision"
+                }
+              },
+              "failure": null,
+              "metrics": {
+                "firstFrameMs": 44.1,
+                "textureWidth": 1440,
+                "textureHeight": 720
+              }
+            },
+            "marker": {
+              "yawDeg": 270,
+              "rgba": [
+                4,
+                56,
+                0,
+                255
+              ]
+            }
+          }
+        ],
+        "draggedRight": {
+          "state": {
+            "schemaVersion": "unseen-viewer-state/1",
+            "phase": "ready",
+            "renderMode": "rotation360",
+            "requestedSceneMode": "rotation360",
+            "sceneId": "yaw-marker-scene",
+            "panoramaRevisionId": "yaw-marker-revision",
+            "capability": {
+              "webgl": true,
+              "sphericalView": true,
+              "depthArtifact": false,
+              "translation": false,
+              "keyboard": true,
+              "touch": true,
+              "fullscreen": true
+            },
+            "pose": {
+              "nodeId": "node-a",
+              "yawDeg": 347.2,
+              "pitchDeg": 0,
+              "fovDeg": 75,
+              "x": 0,
+              "z": 0
+            },
+            "focus": {
+              "photoId": "yaw-photo-0",
+              "photoAssetId": "yaw-photo-asset-0",
+              "photoAssetVersion": 1,
+              "photoRawSha256": "5555555555555555555555555555555555555555555555555555555555555555",
+              "placementRevisionId": "yaw-placement-0",
+              "panoramaRevisionId": "yaw-marker-revision",
+              "returnTarget": null,
+              "pose": {
+                "nodeId": "node-a",
+                "yawDeg": 0,
+                "pitchDeg": 0,
+                "fovDeg": 75,
+                "x": 0,
+                "z": 0,
+                "panoramaRevisionId": "yaw-marker-revision"
+              }
+            },
+            "failure": null,
+            "metrics": {
+              "firstFrameMs": 44.1,
+              "textureWidth": 1440,
+              "textureHeight": 720
+            }
+          },
+          "marker": {
+            "yawDeg": 347.25,
+            "rgba": [
+              5,
+              109,
+              0,
+              255
+            ]
+          }
+        },
+        "draggedLeft": {
+          "state": {
+            "schemaVersion": "unseen-viewer-state/1",
+            "phase": "ready",
+            "renderMode": "rotation360",
+            "requestedSceneMode": "rotation360",
+            "sceneId": "yaw-marker-scene",
+            "panoramaRevisionId": "yaw-marker-revision",
+            "capability": {
+              "webgl": true,
+              "sphericalView": true,
+              "depthArtifact": false,
+              "translation": false,
+              "keyboard": true,
+              "touch": true,
+              "fullscreen": true
+            },
+            "pose": {
+              "nodeId": "node-a",
+              "yawDeg": 12.800000000000011,
+              "pitchDeg": 0,
+              "fovDeg": 75,
+              "x": 0,
+              "z": 0
+            },
+            "focus": {
+              "photoId": "yaw-photo-0",
+              "photoAssetId": "yaw-photo-asset-0",
+              "photoAssetVersion": 1,
+              "photoRawSha256": "5555555555555555555555555555555555555555555555555555555555555555",
+              "placementRevisionId": "yaw-placement-0",
+              "panoramaRevisionId": "yaw-marker-revision",
+              "returnTarget": null,
+              "pose": {
+                "nodeId": "node-a",
+                "yawDeg": 0,
+                "pitchDeg": 0,
+                "fovDeg": 75,
+                "x": 0,
+                "z": 0,
+                "panoramaRevisionId": "yaw-marker-revision"
+              }
+            },
+            "failure": null,
+            "metrics": {
+              "firstFrameMs": 44.1,
+              "textureWidth": 1440,
+              "textureHeight": 720
+            }
+          },
+          "marker": {
+            "yawDeg": 12.75,
+            "rgba": [
+              0,
+              51,
+              0,
+              255
+            ]
+          }
+        }
+      }
+    },
+    {
+      "kind": "STAGE_PASS",
+      "name": "canonical-yaw-to-equirectangular-seam",
+      "at": "2026-08-13T07:24:57.316Z",
+      "detail": null
+    },
+    {
+      "kind": "STAGE_START",
+      "name": "focus-and-return",
+      "at": "2026-08-13T07:24:57.316Z",
+      "detail": {
+        "timeoutMs": 12000
+      }
+    },
+    {
+      "kind": "ASSERT_PASS",
+      "name": "photo focus lands exactly and emits the original return target",
+      "at": "2026-08-13T07:24:57.444Z",
+      "detail": null
+    },
+    {
+      "kind": "STAGE_PASS",
+      "name": "focus-and-return",
+      "at": "2026-08-13T07:24:57.444Z",
+      "detail": null
+    },
+    {
+      "kind": "STAGE_START",
+      "name": "focus-input-and-revision-validation",
+      "at": "2026-08-13T07:24:57.444Z",
+      "detail": {
+        "timeoutMs": 12000
+      }
+    },
+    {
+      "kind": "ASSERT_PASS",
+      "name": "focus accepts exact 0 degrees but rejects missing/non-finite poses, stale nodes, and stale panorama placements",
+      "at": "2026-08-13T07:24:57.621Z",
+      "detail": {
+        "validYaw": 0,
+        "missing": "focus_pose_invalid",
+        "nan": "focus_pose_invalid",
+        "infinity": "focus_pose_invalid",
+        "pitchNan": "focus_pose_invalid",
+        "fovInfinity": "focus_pose_invalid",
+        "assetVersionInvalid": "focus_identity_invalid",
+        "assetHashInvalid": "focus_identity_invalid",
+        "nodeMismatch": "focus_node_mismatch",
+        "revisionMismatch": "focus_revision_mismatch",
+        "finalPose": {
+          "nodeId": "node-a",
+          "yawDeg": 0,
+          "pitchDeg": 0,
+          "fovDeg": 75,
+          "x": 0,
+          "z": 0
+        }
+      }
+    },
+    {
+      "kind": "STAGE_PASS",
+      "name": "focus-input-and-revision-validation",
+      "at": "2026-08-13T07:24:57.621Z",
+      "detail": null
+    },
+    {
+      "kind": "STAGE_START",
+      "name": "pointer-drag",
+      "at": "2026-08-13T07:24:57.621Z",
+      "detail": {
+        "timeoutMs": 12000
+      }
+    },
+    {
+      "kind": "ASSERT_PASS",
+      "name": "real pointer drag changes spherical yaw/pitch",
+      "at": "2026-08-13T07:24:57.671Z",
+      "detail": {
+        "before": 0,
+        "after": 337.6
+      }
+    },
+    {
+      "kind": "STAGE_PASS",
+      "name": "pointer-drag",
+      "at": "2026-08-13T07:24:57.671Z",
+      "detail": null
+    },
+    {
+      "kind": "STAGE_START",
+      "name": "keyboard-movement",
+      "at": "2026-08-13T07:24:57.671Z",
+      "detail": {
+        "timeoutMs": 12000
+      }
+    },
+    {
+      "kind": "STAGE_OBSERVATION",
+      "name": "keyboard-movement",
+      "at": "2026-08-13T07:24:58.208Z",
+      "detail": {
+        "before": {
+          "nodeId": "node-a",
+          "yawDeg": 337.6,
+          "pitchDeg": 4.2,
+          "fovDeg": 75,
+          "x": 0,
+          "z": 0
+        },
+        "after": {
+          "nodeId": "node-a",
+          "yawDeg": 337.6,
+          "pitchDeg": 4.2,
+          "fovDeg": 75,
+          "x": -0.07586349052517528,
+          "z": 0.18405862437484552
+        }
+      }
+    },
+    {
+      "kind": "ASSERT_PASS",
+      "name": "desktop WASD changes camera x/z and photo focus restores the capture origin",
+      "at": "2026-08-13T07:24:58.381Z",
+      "detail": {
+        "before": {
+          "nodeId": "node-a",
+          "yawDeg": 337.6,
+          "pitchDeg": 4.2,
+          "fovDeg": 75,
+          "x": 0,
+          "z": 0
+        },
+        "after": {
+          "nodeId": "node-a",
+          "yawDeg": 337.6,
+          "pitchDeg": 4.2,
+          "fovDeg": 75,
+          "x": -0.07586349052517528,
+          "z": 0.18405862437484552
+        },
+        "focused": {
+          "nodeId": "node-a",
+          "yawDeg": 47,
+          "pitchDeg": 6,
+          "fovDeg": 75,
+          "x": 0,
+          "z": 0
+        }
+      }
+    },
+    {
+      "kind": "STAGE_PASS",
+      "name": "keyboard-movement",
+      "at": "2026-08-13T07:24:58.381Z",
+      "detail": null
+    },
+    {
+      "kind": "STAGE_START",
+      "name": "assistive-four-direction-translation",
+      "at": "2026-08-13T07:24:58.381Z",
+      "detail": {
+        "timeoutMs": 12000
+      }
+    },
+    {
+      "kind": "ASSERT_PASS",
+      "name": "named 44px four-direction controls move real x/z to three unequal bounded envelopes and announce the boundary",
+      "at": "2026-08-13T07:25:01.020Z",
+      "detail": {
+        "semantics": {
+          "role": "group",
+          "label": "现场四向平移控制",
+          "buttons": [
+            {
+              "direction": "forward",
+              "name": "向前平移",
+              "width": 44,
+              "height": 44,
+              "display": "block"
+            },
+            {
+              "direction": "left",
+              "name": "向左平移",
+              "width": 44,
+              "height": 44,
+              "display": "block"
+            },
+            {
+              "direction": "backward",
+              "name": "向后平移",
+              "width": 44,
+              "height": 44,
+              "display": "block"
+            },
+            {
+              "direction": "right",
+              "name": "向右平移",
+              "width": 44,
+              "height": 44,
+              "display": "block"
+            }
+          ]
+        },
+        "positions": {
+          "forward": {
+            "nodeId": "node-a",
+            "yawDeg": 15,
+            "pitchDeg": -4,
+            "fovDeg": 72,
+            "x": 0.05694018992255456,
+            "z": 0.21250368178359502
+          },
+          "right": {
+            "nodeId": "node-a",
+            "yawDeg": 15,
+            "pitchDeg": -4,
+            "fovDeg": 72,
+            "x": 0.1352296156804696,
+            "z": -0.03623466631435291
+          },
+          "left": {
+            "nodeId": "node-a",
+            "yawDeg": 15,
+            "pitchDeg": -4,
+            "fovDeg": 72,
+            "x": -0.1159110991546882,
+            "z": 0.03105828541230249
+          }
+        },
+        "live": "已到达这个方向的安全边界。"
+      }
+    },
+    {
+      "kind": "STAGE_PASS",
+      "name": "assistive-four-direction-translation",
+      "at": "2026-08-13T07:25:01.020Z",
+      "detail": null
+    },
+    {
+      "kind": "STAGE_START",
+      "name": "reset",
+      "at": "2026-08-13T07:25:01.020Z",
+      "detail": {
+        "timeoutMs": 12000
+      }
+    },
+    {
+      "kind": "ASSERT_PASS",
+      "name": "the reset control restores saved pose and origin",
+      "at": "2026-08-13T07:25:01.213Z",
+      "detail": null
+    },
+    {
+      "kind": "STAGE_PASS",
+      "name": "reset",
+      "at": "2026-08-13T07:25:01.213Z",
+      "detail": null
+    },
+    {
+      "kind": "STAGE_START",
+      "name": "accessibility-controls",
+      "at": "2026-08-13T07:25:01.215Z",
+      "detail": {
+        "timeoutMs": 12000
+      }
+    },
+    {
+      "kind": "ASSERT_PASS",
+      "name": "keyboard surface, live status, 44px controls, pass-through overlay, and reduced motion are enforced",
+      "at": "2026-08-13T07:25:01.270Z",
+      "detail": {
+        "elapsedMs": 27,
+        "reducedMotion": true,
+        "canvasRole": "application",
+        "canvasTabIndex": 0,
+        "overlayPointerEvents": "none",
+        "controlsPointerEvents": "auto",
+        "ariaLive": "polite",
+        "visibleButtonSizes": [
+          {
+            "action": "return",
+            "width": 91.28125,
+            "height": 44
+          },
+          {
+            "action": "reset",
+            "width": 58.640625,
+            "height": 44
+          },
+          {
+            "action": "fullscreen",
+            "width": 58.640625,
+            "height": 44
+          },
+          {
+            "action": "",
+            "width": 44,
+            "height": 44
+          },
+          {
+            "action": "",
+            "width": 44,
+            "height": 44
+          },
+          {
+            "action": "",
+            "width": 44,
+            "height": 44
+          },
+          {
+            "action": "",
+            "width": 44,
+            "height": 44
+          },
+          {
+            "action": "",
+            "width": 44,
+            "height": 44
+          },
+          {
+            "action": "",
+            "width": 44,
+            "height": 44
+          },
+          {
+            "action": "",
+            "width": 44,
+            "height": 44
+          },
+          {
+            "action": "",
+            "width": 44,
+            "height": 44
+          }
+        ]
+      }
+    },
+    {
+      "kind": "STAGE_PASS",
+      "name": "accessibility-controls",
+      "at": "2026-08-13T07:25:01.270Z",
+      "detail": null
+    },
+    {
+      "kind": "STAGE_START",
+      "name": "photo-cta-keyboard-return-focus-loop",
+      "at": "2026-08-13T07:25:01.270Z",
+      "detail": {
+        "timeoutMs": 12000
+      }
+    },
+    {
+      "kind": "ASSERT_PASS",
+      "name": "photo CTA focusOnComplete enters canvas keyboard orbit and returnrequest restores the originating photo control",
+      "at": "2026-08-13T07:25:01.329Z",
+      "detail": {
+        "activeAfterFocus": true,
+        "yawAfterKey": 95,
+        "activeAfterReturn": "depth",
+        "focusedYaw": 90
+      }
+    },
+    {
+      "kind": "STAGE_PASS",
+      "name": "photo-cta-keyboard-return-focus-loop",
+      "at": "2026-08-13T07:25:01.329Z",
+      "detail": null
+    },
+    {
+      "kind": "STAGE_START",
+      "name": "focus-animation-interruptions",
+      "at": "2026-08-13T07:25:01.329Z",
+      "detail": {
+        "timeoutMs": 60000
+      }
+    },
+    {
+      "kind": "ASSERT_PASS",
+      "name": "pointer, wheel, key, reset, updateScene, and dispose reject interrupted focus instead of resolving false success",
+      "at": "2026-08-13T07:25:02.773Z",
+      "detail": {
+        "pointer": {
+          "result": "rejected",
+          "code": "focus_cancelled"
+        },
+        "wheel": {
+          "result": "rejected",
+          "code": "focus_cancelled"
+        },
+        "key": {
+          "result": "rejected",
+          "code": "focus_cancelled"
+        },
+        "reset": {
+          "result": "rejected",
+          "code": "focus_cancelled"
+        },
+        "updateScene": {
+          "result": "rejected",
+          "code": "focus_cancelled"
+        },
+        "dispose": {
+          "result": "rejected",
+          "code": "focus_cancelled"
+        }
+      }
+    },
+    {
+      "kind": "STAGE_PASS",
+      "name": "focus-animation-interruptions",
+      "at": "2026-08-13T07:25:02.773Z",
+      "detail": null
+    },
+    {
+      "kind": "STAGE_START",
+      "name": "fullscreen-resize",
+      "at": "2026-08-13T07:25:02.773Z",
+      "detail": {
+        "timeoutMs": 12000
+      }
+    },
+    {
+      "kind": "ASSERT_PASS",
+      "name": "the real fullscreen control enters, resizes at DPR, and exits cleanly",
+      "at": "2026-08-13T07:25:03.444Z",
+      "detail": {
+        "button": "退出全屏",
+        "rootWidth": 1280,
+        "rootHeight": 800,
+        "canvasWidth": 1280,
+        "canvasHeight": 800,
+        "dpr": 1
+      }
+    },
+    {
+      "kind": "STAGE_PASS",
+      "name": "fullscreen-resize",
+      "at": "2026-08-13T07:25:03.444Z",
+      "detail": null
+    },
+    {
+      "kind": "STAGE_START",
+      "name": "product-runtime-timeout",
+      "at": "2026-08-13T07:25:03.444Z",
+      "detail": {
+        "timeoutMs": 35000
+      }
+    },
+    {
+      "kind": "ASSERT_PASS",
+      "name": "hung fetch, body reader, color decoder, and depth decoder all time out, clean up, focus retry, and recover with a new deadline",
+      "at": "2026-08-13T07:25:12.601Z",
+      "detail": {
+        "fetch": {
+          "elapsedMs": 2235.5,
+          "failureElapsedMs": 2056.4000000059605,
+          "thrown": {
+            "code": "asset_timeout",
+            "message": "现场加载超时，请重试。"
+          },
+          "phase": "error",
+          "renderMode": "flat_fallback",
+          "failure": {
+            "code": "asset_timeout",
+            "message": "现场加载超时，请重试。",
+            "retryable": true
+          },
+          "retryVisible": true,
+          "failureFocus": "retry",
+          "recoveredRenderMode": "rotation360",
+          "recoveryFocus": "canvas",
+          "activeTimers": 0,
+          "activeObjectUrls": 0,
+          "readerCancelCalls": 0,
+          "decoderCalls": 1,
+          "decoderCallsAtFailure": 0,
+          "lateBitmapClosed": 0,
+          "roots": 0,
+          "canvases": 0,
+          "gpu": false,
+          "retainedAssets": 0
+        },
+        "body": {
+          "elapsedMs": 2197.7000000178814,
+          "failureElapsedMs": 2050.2000000178814,
+          "thrown": {
+            "code": "asset_timeout",
+            "message": "现场加载超时，请重试。"
+          },
+          "phase": "error",
+          "renderMode": "flat_fallback",
+          "failure": {
+            "code": "asset_timeout",
+            "message": "现场加载超时，请重试。",
+            "retryable": true
+          },
+          "retryVisible": true,
+          "failureFocus": "retry",
+          "recoveredRenderMode": "rotation360",
+          "recoveryFocus": "canvas",
+          "activeTimers": 0,
+          "activeObjectUrls": 0,
+          "readerCancelCalls": 1,
+          "decoderCalls": 1,
+          "decoderCallsAtFailure": 0,
+          "lateBitmapClosed": 0,
+          "roots": 0,
+          "canvases": 0,
+          "gpu": false,
+          "retainedAssets": 0
+        },
+        "decoder": {
+          "elapsedMs": 2310,
+          "failureElapsedMs": 2081.300000011921,
+          "thrown": {
+            "code": "asset_timeout",
+            "message": "现场加载超时，请重试。"
+          },
+          "phase": "error",
+          "renderMode": "flat_fallback",
+          "failure": {
+            "code": "asset_timeout",
+            "message": "现场加载超时，请重试。",
+            "retryable": true
+          },
+          "retryVisible": true,
+          "failureFocus": "retry",
+          "recoveredRenderMode": "rotation360",
+          "recoveryFocus": "canvas",
+          "activeTimers": 0,
+          "activeObjectUrls": 0,
+          "readerCancelCalls": 0,
+          "decoderCalls": 2,
+          "decoderCallsAtFailure": 1,
+          "lateBitmapClosed": 1,
+          "roots": 0,
+          "canvases": 0,
+          "gpu": false,
+          "retainedAssets": 0
+        },
+        "depth-decoder": {
+          "elapsedMs": 2385.7999999821186,
+          "failureElapsedMs": 2106.300000011921,
+          "thrown": null,
+          "phase": "ready",
+          "renderMode": "rotation360",
+          "failure": {
+            "code": "asset_timeout",
+            "message": "现场加载超时，请重试。",
+            "retryable": true
+          },
+          "retryVisible": true,
+          "failureFocus": "retry",
+          "recoveredRenderMode": "depth_limited_parallax",
+          "recoveryFocus": "canvas",
+          "activeTimers": 0,
+          "activeObjectUrls": 0,
+          "readerCancelCalls": 0,
+          "decoderCalls": 4,
+          "decoderCallsAtFailure": 2,
+          "lateBitmapClosed": 1,
+          "roots": 0,
+          "canvases": 0,
+          "gpu": false,
+          "retainedAssets": 0
+        }
+      }
+    },
+    {
+      "kind": "STAGE_PASS",
+      "name": "product-runtime-timeout",
+      "at": "2026-08-13T07:25:12.601Z",
+      "detail": null
+    },
+    {
+      "kind": "STAGE_START",
+      "name": "partial-gpu-allocation-cleanup",
+      "at": "2026-08-13T07:25:12.601Z",
+      "detail": {
+        "timeoutMs": 45000
+      }
+    },
+    {
+      "kind": "ASSERT_PASS",
+      "name": "link and second-texture failures delete every incremental GPU object even without WEBGL_lose_context, then retry succeeds",
+      "at": "2026-08-13T07:25:12.799Z",
+      "detail": {
+        "link": {
+          "mode": "link",
+          "failure": {
+            "code": "webgl_link_failed",
+            "message": "当前设备无法环视，已显示平面图。",
+            "retryable": true
+          },
+          "renderMode": "flat_fallback",
+          "counts": {
+            "shader": {
+              "created": 2,
+              "deleted": 2
+            },
+            "program": {
+              "created": 1,
+              "deleted": 1
+            },
+            "buffer": {
+              "created": 0,
+              "deleted": 0
+            },
+            "texture": {
+              "created": 0,
+              "deleted": 0
+            }
+          },
+          "recovered": "depth_limited_parallax"
+        },
+        "secondTexture": {
+          "mode": "second-texture",
+          "failure": {
+            "code": "texture_upload_failed",
+            "message": "当前设备无法环视，已显示平面图。",
+            "retryable": true
+          },
+          "renderMode": "flat_fallback",
+          "counts": {
+            "shader": {
+              "created": 2,
+              "deleted": 2
+            },
+            "program": {
+              "created": 1,
+              "deleted": 1
+            },
+            "buffer": {
+              "created": 1,
+              "deleted": 1
+            },
+            "texture": {
+              "created": 2,
+              "deleted": 2
+            }
+          },
+          "recovered": "depth_limited_parallax"
+        }
+      }
+    },
+    {
+      "kind": "STAGE_PASS",
+      "name": "partial-gpu-allocation-cleanup",
+      "at": "2026-08-13T07:25:12.799Z",
+      "detail": null
+    },
+    {
+      "kind": "STAGE_START",
+      "name": "focus-recovery-failures",
+      "at": "2026-08-13T07:25:12.799Z",
+      "detail": {
+        "timeoutMs": 20000
+      }
+    },
+    {
+      "kind": "ASSERT_PASS",
+      "name": "focused canvas moves to retry on programmatic failure and retryable-to-nonretryable failure moves focus to status",
+      "at": "2026-08-13T07:25:12.934Z",
+      "detail": {
+        "firstFailure": "panorama_hash_mismatch",
+        "beforeFailure": "canvas",
+        "afterProgrammaticFailure": "retry",
+        "secondFailure": "panorama_ratio_invalid",
+        "retryHidden": true,
+        "afterNonRetryableFailure": "status"
+      }
+    },
+    {
+      "kind": "STAGE_PASS",
+      "name": "focus-recovery-failures",
+      "at": "2026-08-13T07:25:12.934Z",
+      "detail": null
+    },
+    {
+      "kind": "STAGE_START",
+      "name": "focus-recovery-cancellation",
+      "at": "2026-08-13T07:25:12.934Z",
+      "detail": {
+        "timeoutMs": 25000
+      }
+    },
+    {
+      "kind": "ASSERT_PASS",
+      "name": "dispose and a superseding scene invalidate queued focus recovery without stealing external focus",
+      "at": "2026-08-13T07:25:13.271Z",
+      "detail": {
+        "afterDispose": "focus-cancellation-sentinel",
+        "duringSupersede": "focus-cancellation-sentinel",
+        "afterSupersede": "focus-cancellation-sentinel"
+      }
+    },
+    {
+      "kind": "STAGE_PASS",
+      "name": "focus-recovery-cancellation",
+      "at": "2026-08-13T07:25:13.271Z",
+      "detail": null
+    },
+    {
+      "kind": "STAGE_START",
+      "name": "signed-url-retry-request",
+      "at": "2026-08-13T07:25:13.271Z",
+      "detail": {
+        "timeoutMs": 20000
+      }
+    },
+    {
+      "kind": "ASSERT_PASS",
+      "name": "cancelable retryrequest lets the host replace an expired signed URL without replaying it",
+      "at": "2026-08-13T07:25:13.416Z",
+      "detail": {
+        "initialFailure": "asset_fetch_failed",
+        "eventDetail": {
+          "failure": {
+            "code": "asset_fetch_failed",
+            "message": "现场暂时无法打开，请重试。",
+            "retryable": true
+          },
+          "sceneId": "signed-scene",
+          "panoramaRevisionId": "pano-revision-a"
+        },
+        "defaultPrevented": true,
+        "expiredFetches": 1,
+        "renderMode": "rotation360",
+        "panoramaRevisionId": "pano-revision-a",
+        "activeAfterRecovery": "canvas"
+      }
+    },
+    {
+      "kind": "STAGE_PASS",
+      "name": "signed-url-retry-request",
+      "at": "2026-08-13T07:25:13.416Z",
+      "detail": null
+    },
+    {
+      "kind": "STAGE_START",
+      "name": "programmatic-update-preserves-external-focus",
+      "at": "2026-08-13T07:25:13.416Z",
+      "detail": {
+        "timeoutMs": 20000
+      }
+    },
+    {
+      "kind": "ASSERT_PASS",
+      "name": "successful programmatic updateScene does not steal focus outside the viewer",
+      "at": "2026-08-13T07:25:13.568Z",
+      "detail": {
+        "before": "depth",
+        "after": "depth"
+      }
+    },
+    {
+      "kind": "STAGE_PASS",
+      "name": "programmatic-update-preserves-external-focus",
+      "at": "2026-08-13T07:25:13.568Z",
+      "detail": null
+    },
+    {
+      "kind": "STAGE_START",
+      "name": "fallback-retry",
+      "at": "2026-08-13T07:25:13.568Z",
+      "detail": {
+        "timeoutMs": 20000
+      }
+    },
+    {
+      "kind": "ASSERT_PASS",
+      "name": "flat fallback exposes a working retry control",
+      "at": "2026-08-13T07:25:13.759Z",
+      "detail": null
+    },
+    {
+      "kind": "STAGE_PASS",
+      "name": "fallback-retry",
+      "at": "2026-08-13T07:25:13.760Z",
+      "detail": null
+    },
+    {
+      "kind": "STAGE_START",
+      "name": "focus-render-failure-settles",
+      "at": "2026-08-13T07:25:13.760Z",
+      "detail": {
+        "timeoutMs": 12000
+      }
+    },
+    {
+      "kind": "ASSERT_PASS",
+      "name": "animated render failure and an existing flat fallback both reject public focusPose within a hard bound",
+      "at": "2026-08-13T07:25:14.008Z",
+      "detail": {
+        "animated": {
+          "result": "rejected",
+          "code": "spherical_view_unavailable"
+        },
+        "animatedElapsedMs": 68.80000001192093,
+        "flat": {
+          "result": "rejected",
+          "code": "spherical_view_unavailable"
+        },
+        "flatElapsedMs": 0.09999999403953552,
+        "fallbackState": {
+          "schemaVersion": "unseen-viewer-state/1",
+          "phase": "ready",
+          "renderMode": "flat_fallback",
+          "requestedSceneMode": "rotation360",
+          "sceneId": "harness-scene",
+          "panoramaRevisionId": "pano-revision-a",
+          "capability": {
+            "webgl": false,
+            "sphericalView": false,
+            "depthArtifact": false,
+            "translation": false,
+            "keyboard": false,
+            "touch": false,
+            "fullscreen": true
+          },
+          "pose": {
+            "nodeId": "node-a",
+            "yawDeg": 15.070299987555245,
+            "pitchDeg": -4.004686665837017,
+            "fovDeg": 71.99872181840809,
+            "x": 0,
+            "z": 0
+          },
+          "focus": null,
+          "failure": {
+            "code": "webgl_render_failed",
+            "message": "当前设备暂时无法环视，已显示平面图。",
+            "retryable": true
+          },
+          "metrics": {
+            "firstFrameMs": 154.4,
+            "textureWidth": 1024,
+            "textureHeight": 512
+          }
+        },
+        "active": "retry",
+        "returnHidden": true,
+        "status": "当前设备暂时无法环视，已显示平面图。 可使用“重试”再次尝试。"
+      }
+    },
+    {
+      "kind": "STAGE_PASS",
+      "name": "focus-render-failure-settles",
+      "at": "2026-08-13T07:25:14.008Z",
+      "detail": null
+    },
+    {
+      "kind": "STAGE_START",
+      "name": "depth-integrity-degrade",
+      "at": "2026-08-13T07:25:14.008Z",
+      "detail": {
+        "timeoutMs": 20000
+      }
+    },
+    {
+      "kind": "ASSERT_PASS",
+      "name": "deterministic invalid depth has no dead-end retry, while host refresh and retryable hash failure can restore bounded translation",
+      "at": "2026-08-13T07:25:14.642Z",
+      "detail": null
+    },
+    {
+      "kind": "STAGE_PASS",
+      "name": "depth-integrity-degrade",
+      "at": "2026-08-13T07:25:14.642Z",
+      "detail": null
+    },
+    {
+      "kind": "STAGE_START",
+      "name": "context-loss-recovery",
+      "at": "2026-08-13T07:25:14.642Z",
+      "detail": {
+        "timeoutMs": 20000
+      }
+    },
+    {
+      "kind": "ASSERT_PASS",
+      "name": "context loss atomically cancels focus and held WASD before fallback, then default retry recovers without a stale success frame",
+      "at": "2026-08-13T07:25:15.335Z",
+      "detail": {
+        "cancelled": {
+          "result": "rejected",
+          "code": "focus_cancelled"
+        },
+        "recovered": {
+          "schemaVersion": "unseen-viewer-state/1",
+          "phase": "ready",
+          "renderMode": "depth_limited_parallax",
+          "requestedSceneMode": "depth_limited_parallax",
+          "sceneId": "harness-scene",
+          "panoramaRevisionId": "pano-revision-a",
+          "capability": {
+            "webgl": true,
+            "sphericalView": true,
+            "depthArtifact": true,
+            "translation": true,
+            "keyboard": true,
+            "touch": true,
+            "fullscreen": true
+          },
+          "pose": {
+            "nodeId": "node-a",
+            "yawDeg": 15,
+            "pitchDeg": -4,
+            "fovDeg": 72,
+            "x": 0,
+            "z": 0
+          },
+          "focus": null,
+          "failure": null,
+          "metrics": {
+            "firstFrameMs": 129,
+            "textureWidth": 1024,
+            "textureHeight": 512
+          }
+        }
+      }
+    },
+    {
+      "kind": "STAGE_PASS",
+      "name": "context-loss-recovery",
+      "at": "2026-08-13T07:25:15.336Z",
+      "detail": null
+    },
+    {
+      "kind": "STAGE_START",
+      "name": "dispose-remount",
+      "at": "2026-08-13T07:25:15.336Z",
+      "detail": {
+        "timeoutMs": 55000
+      }
+    },
+    {
+      "kind": "ASSERT_PASS",
+      "name": "four dispose/remount cycles leave one root and one canvas",
+      "at": "2026-08-13T07:25:16.183Z",
+      "detail": {
+        "roots": 1,
+        "canvases": 1,
+        "children": 2
+      }
+    },
+    {
+      "kind": "STAGE_PASS",
+      "name": "dispose-remount",
+      "at": "2026-08-13T07:25:16.183Z",
+      "detail": null
+    },
+    {
+      "kind": "STAGE_START",
+      "name": "desktop-layout",
+      "at": "2026-08-13T07:25:16.183Z",
+      "detail": {
+        "timeoutMs": 20000
+      }
+    },
+    {
+      "kind": "ASSERT_PASS",
+      "name": "1280 desktop has no horizontal overflow or spare joystick",
+      "at": "2026-08-13T07:25:16.503Z",
+      "detail": {
+        "overflow": false,
+        "joystick": "none",
+        "width": 1280
+      }
+    },
+    {
+      "kind": "STAGE_PASS",
+      "name": "desktop-layout",
+      "at": "2026-08-13T07:25:16.503Z",
+      "detail": null
+    },
+    {
+      "kind": "STAGE_START",
+      "name": "mobile-touch-layout",
+      "at": "2026-08-13T07:25:16.503Z",
+      "detail": {
+        "timeoutMs": 25000
+      }
+    },
+    {
+      "kind": "ASSERT_PASS",
+      "name": "390 touch layout supports real drag, pinch, and a visible working joystick",
+      "at": "2026-08-13T07:25:18.045Z",
+      "detail": {
+        "layout": {
+          "overflow": false,
+          "joystick": "block",
+          "width": 390,
+          "canvasWidth": 780,
+          "canvasCssWidth": 390
+        },
+        "yawBefore": 15,
+        "yawAfter": 29.399999999999977,
+        "fovBefore": 72,
+        "fovAfter": 35,
+        "before": {
+          "nodeId": "node-a",
+          "yawDeg": 29.399999999999977,
+          "pitchDeg": -1,
+          "fovDeg": 35,
+          "x": 0,
+          "z": 0
+        },
+        "after": {
+          "nodeId": "node-a",
+          "yawDeg": 29.399999999999977,
+          "pitchDeg": -1,
+          "fovDeg": 35,
+          "x": 0.038216857219879205,
+          "z": 0.06782399519737592
+        }
+      }
+    },
+    {
+      "kind": "STAGE_PASS",
+      "name": "mobile-touch-layout",
+      "at": "2026-08-13T07:25:18.045Z",
+      "detail": null
+    },
+    {
+      "kind": "STAGE_START",
+      "name": "customer-message-technical-blacklist",
+      "at": "2026-08-13T07:25:18.045Z",
+      "detail": {
+        "timeoutMs": 25000
+      }
+    },
+    {
+      "kind": "ASSERT_PASS",
+      "name": "visible HUD messages keep stable technical codes out of customer-facing text",
+      "at": "2026-08-13T07:25:18.330Z",
+      "detail": [
+        {
+          "code": "depth_quality_invalid",
+          "text": "暂时只能环视现场。\n重置\n全屏\n\n方位 15 度，俯仰 -4 度"
+        },
+        {
+          "code": "walkable3d_not_supported",
+          "text": "暂时只能环视现场。\n重置\n全屏\n\n方位 15 度，俯仰 -4 度"
+        },
+        {
+          "code": "webgl_unavailable",
+          "text": "当前设备无法环视，已显示平面图。 可使用“重试”再次尝试。\n重试\n重置\n全屏\n\n方位 15 度，俯仰 -4 度"
+        }
+      ]
+    },
+    {
+      "kind": "STAGE_PASS",
+      "name": "customer-message-technical-blacklist",
+      "at": "2026-08-13T07:25:18.330Z",
+      "detail": null
+    },
+    {
+      "kind": "STAGE_START",
+      "name": "console-network-zero",
+      "at": "2026-08-13T07:25:18.330Z",
+      "detail": {
+        "timeoutMs": 12000
+      }
+    },
+    {
+      "kind": "ASSERT_PASS",
+      "name": "console and network errors are zero",
+      "at": "2026-08-13T07:25:18.330Z",
+      "detail": {
+        "requests": 159
+      }
+    },
+    {
+      "kind": "STAGE_PASS",
+      "name": "console-network-zero",
+      "at": "2026-08-13T07:25:18.330Z",
+      "detail": null
+    }
+  ],
+  "finalState": {
+    "schemaVersion": "unseen-viewer-state/1",
+    "phase": "ready",
+    "renderMode": "depth_limited_parallax",
+    "requestedSceneMode": "depth_limited_parallax",
+    "sceneId": "harness-scene",
+    "panoramaRevisionId": "pano-revision-a",
+    "capability": {
+      "webgl": true,
+      "sphericalView": true,
+      "depthArtifact": true,
+      "translation": true,
+      "keyboard": true,
+      "touch": true,
+      "fullscreen": true
+    },
+    "pose": {
+      "nodeId": "node-a",
+      "yawDeg": 15,
+      "pitchDeg": -4,
+      "fovDeg": 72,
+      "x": 0,
+      "z": 0
+    },
+    "focus": null,
+    "failure": null,
+    "metrics": {
+      "firstFrameMs": 47.1,
+      "textureWidth": 1024,
+      "textureHeight": 512
+    }
+  },
+  "consoleErrors": 0,
+  "browserLogErrors": 0,
+  "runtimeExceptions": 0,
+  "networkFailures": 0,
+  "networkHttpErrors": [],
+  "externalRequests": [],
+  "requestedUrls": [
+    "http://127.0.0.1:55681/favicon.ico",
+    "http://127.0.0.1:55681/tests/fixtures/depth.png",
+    "blob:http://127.0.0.1:55681/b8b8e7e2-a74b-424f-8459-9abb4c7e22ab",
+    "http://127.0.0.1:55681/harness/index.html",
+    "http://127.0.0.1:55681/harness/harness.js",
+    "http://127.0.0.1:55681/src/public/index.js",
+    "http://127.0.0.1:55681/src/viewer.js",
+    "http://127.0.0.1:55681/src/math.js",
+    "http://127.0.0.1:55681/src/depth.js",
+    "http://127.0.0.1:55681/src/styles.js",
+    "http://127.0.0.1:55681/tests/fixtures/panorama.png",
+    "blob:http://127.0.0.1:55681/fd07dd86-8ddc-415e-957f-23ff0205ff4a",
+    "http://127.0.0.1:55681/tests/fixtures/unsupported.svg",
+    "blob:http://127.0.0.1:55681/54e08618-c2ce-4609-857c-d62659e647cb",
+    "http://127.0.0.1:55681/tests/fixtures/static-panorama.webp",
+    "blob:http://127.0.0.1:55681/b531c812-2db4-48dd-b870-fa408606dd9d",
+    "http://127.0.0.1:55681/tests/fixtures/animated.apng",
+    "http://127.0.0.1:55681/tests/fixtures/animated.webp",
+    "blob:http://127.0.0.1:55681/f27a27c2-7ea7-4082-b877-077f35f03cd1",
+    "http://127.0.0.1:55681/tests/fixtures/yaw-markers.png",
+    "blob:http://127.0.0.1:55681/7f64a998-990d-426e-866b-ac59f7643b2e",
+    "blob:http://127.0.0.1:55681/339e71ee-cfa4-40d5-a72b-aaa7cfe371fd",
+    "blob:http://127.0.0.1:55681/953fe060-ac1e-40bc-80e6-f47eca33e2ce",
+    "blob:http://127.0.0.1:55681/2909ad2e-e62d-4c85-a9d9-e6180aab5a58",
+    "blob:http://127.0.0.1:55681/b4fd9602-9a79-411a-85aa-7d5b5529a7bb",
+    "blob:http://127.0.0.1:55681/2f57ce4f-3d8d-4a27-8e7d-d7d09cae15f2",
+    "blob:http://127.0.0.1:55681/73040980-c0d4-4b3c-8914-8fa1e60f6bf0",
+    "blob:http://127.0.0.1:55681/0e705701-8160-45d0-a6f3-f2528ce1895b",
+    "blob:http://127.0.0.1:55681/6456bdb8-505d-4527-a58a-9a50f8170d12",
+    "blob:http://127.0.0.1:55681/4338c9a7-ddca-4d25-9200-1be9af94b39a",
+    "blob:http://127.0.0.1:55681/ad1049ce-5aaf-4f7d-b456-11fb135a45c5",
+    "blob:http://127.0.0.1:55681/18048bc6-f60f-4bdd-b571-f3769262762a",
+    "blob:http://127.0.0.1:55681/713c19c4-88b6-4cad-9859-ec96b4459365",
+    "blob:http://127.0.0.1:55681/12555f52-283b-4d77-aedc-d58e23260e72",
+    "blob:http://127.0.0.1:55681/8a26c194-5eb7-4e92-b95c-0ad84c08c6d4",
+    "blob:http://127.0.0.1:55681/d9cca263-5368-48f3-b7ae-89d823b9e137",
+    "blob:http://127.0.0.1:55681/711f2720-f081-450f-9470-14559fc52380",
+    "blob:http://127.0.0.1:55681/f325e833-9e38-4f99-ad48-384d93e2a6e2",
+    "blob:http://127.0.0.1:55681/6dc6e01d-8c28-4321-84f2-a2d29615bd0d",
+    "blob:http://127.0.0.1:55681/5a06d6ce-6955-44b4-be91-6db69e49b830",
+    "blob:http://127.0.0.1:55681/058eb3e5-9615-4db2-a7cd-97dced2f3a7d",
+    "blob:http://127.0.0.1:55681/ad291a7f-3fd1-43fa-ba26-cee252eb3eb3",
+    "blob:http://127.0.0.1:55681/1e8103f9-0385-4583-9510-a24073cc5c11",
+    "http://127.0.0.1:55681/tests/fixtures/square.png",
+    "blob:http://127.0.0.1:55681/fa6fdc08-6514-4e69-8316-7d3fdb72bf9c",
+    "blob:http://127.0.0.1:55681/fdb32504-5a10-4194-a5f9-3b13b95c9f16",
+    "blob:http://127.0.0.1:55681/5506503d-f270-460e-8fca-7eefba754b43",
+    "blob:http://127.0.0.1:55681/ca3cd564-8a96-4ef8-8a8e-d9a7a84c9f7e",
+    "blob:http://127.0.0.1:55681/46e1eea0-8a08-420f-8b35-9d2b3db18bcd",
+    "blob:http://127.0.0.1:55681/d260daa2-44c7-46cf-b857-d2e177e45e5e",
+    "blob:http://127.0.0.1:55681/16425738-4006-4146-8f1d-c1651179048c",
+    "blob:http://127.0.0.1:55681/a8a7dc50-6086-4108-ab3f-53d9ee6a7098",
+    "blob:http://127.0.0.1:55681/16c948cb-0d80-4c58-af0b-f106a2ef3411",
+    "blob:http://127.0.0.1:55681/407c2a28-cda6-4627-ae51-3d953b5cb044",
+    "blob:http://127.0.0.1:55681/b8a6445e-6e97-4a05-bf5f-bee5904ba17f",
+    "blob:http://127.0.0.1:55681/5d1c0691-94a4-4ef3-ba4c-523d32b863fe",
+    "blob:http://127.0.0.1:55681/f5b7af42-5d34-43ee-ba48-c15491395a08",
+    "blob:http://127.0.0.1:55681/6a8b6d3f-1261-4b8a-b1b5-35afb0749f74",
+    "blob:http://127.0.0.1:55681/495e4715-abbe-4b1e-aeb1-cd1fc934f12e",
+    "blob:http://127.0.0.1:55681/59b275ae-6c3a-4052-bcdf-d886a0b26836",
+    "blob:http://127.0.0.1:55681/99d06a4e-709f-48c3-821d-b31137a690d1",
+    "blob:http://127.0.0.1:55681/e51411ff-35a5-4734-ac16-b01d03226429",
+    "blob:http://127.0.0.1:55681/2218e8e6-51e8-4bd7-8572-0a70ca7f71e3",
+    "http://127.0.0.1:55681/harness/index.html?mobile=1",
+    "blob:http://127.0.0.1:55681/63405e47-b9ac-4c43-bf31-117854c3f0e7",
+    "blob:http://127.0.0.1:55681/af64e354-8f36-4429-8c41-da4d9fad3b84",
+    "blob:http://127.0.0.1:55681/13790150-aea6-41ac-a680-a40739b36319",
+    "blob:http://127.0.0.1:55681/c3152630-50d8-46b3-a543-283822c8d476",
+    "blob:http://127.0.0.1:55681/2bc1f3fe-00f5-4c37-807a-3c5fe095ba90"
+  ],
+  "screenshots": [
+    "screenshots/viewer-1280.png",
+    "screenshots/viewer-390.png"
+  ]
+}

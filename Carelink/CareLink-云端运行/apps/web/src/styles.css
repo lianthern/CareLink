@@ -1,0 +1,1044 @@
+:root {
+  color-scheme: light;
+  /* v4.1「暖釉」token 偏离 — design/RFC-UI-V41-WARM-GLAZE.md 偏离清单表。
+     canvas/pink/gold/ink/ink-muted/ink-subtle/border/primary/halo 按表换值；
+     surface-warm/gold-soft 额外做了 RFC §7 允许的 ±5% 明度/色相微调，让它们
+     在新的暖白底上仍读得出"比 canvas 深一档"的层次，不是表内硬性项（数值推导
+     见块 8 交付汇报）。burgundy/border-strong/danger 组/全部 darkViewer 组是
+     「不动」红线，一个字符都没有改。 */
+  --canvas: #fff6f1;
+  /* v4.1 三段暖洗的三个色标（RFC §偏离清单 "页面底改三段暖洗"）。拆成独立 token
+     只是为了满足这个文件的架构合同 §契约测试（组件规则只准引用冻结 token
+     变量，不许裸写 hex/rgba）——数值就是 RFC 表里那三个色标，没有另外调过。 */
+  --canvas-wash-1: #fff3f1;
+  --canvas-wash-2: #fff7ee;
+  --canvas-wash-3: #ffefe3;
+  --surface: #fff;
+  --surface-warm: #ffe9e3;
+  --surface-muted: #f7f1ef;
+  --ink: #3e2430;
+  --ink-muted: #5c3b48;
+  --ink-subtle: #9a7c86;
+  --border: #f2dcda;
+  --border-strong: #a57e75;
+  --pink: #ff7fa8;
+  --pink-soft: #ffd6e1;
+  --gold: #ffc981;
+  --gold-soft: #ffe9bf;
+  --burgundy: #461528;
+  --success: #2f7d63;
+  --warning: #9a6517;
+  --danger: #a43e4a;
+  --info: #436a84;
+  --danger-border: #c0707a;
+  --viewer-canvas: #170e12;
+  --viewer-surface: #24171d;
+  --viewer-surface-raised: #302027;
+  --viewer-ink: #fff8f5;
+  --viewer-ink-muted: #cfbec4;
+  --viewer-border: #8c6877;
+  --viewer-focus: #d7c6ff;
+  --viewer-control: rgba(255, 248, 245, 0.35);
+  --viewer-control-hover: rgba(255, 248, 245, 0.43);
+  --viewer-glass: rgba(36, 23, 29, 0.82);
+  --viewer-glass-bar-height: 84px;
+  --scrim: rgba(31, 13, 20, 0.58);
+  --primary: linear-gradient(100deg, #ff7fa8 0%, #ffc981 100%);
+  --halo: radial-gradient(circle, rgba(255, 127, 168, 0.3) 0%, rgba(255, 201, 129, 0.22) 45%, rgba(255, 246, 241, 0) 74%);
+  /* v4.1 照片署名条打底 (RFC 新增光层 §3), same rgb as --viewer-canvas (23,14,18)
+     ramped through three alpha stops — baked as one token (same pattern as
+     --halo/--primary above) so .photo-signature only ever references var(). By
+     the text's actual position (bottom-anchored) the alpha has already reached
+     .82; contrast recheck against a worst-case pure-white photo there is ~9:1
+     for --viewer-ink white text, see 块 8 交付汇报. */
+  --signature-scrim: linear-gradient(180deg, rgba(23, 14, 18, 0) 0%, rgba(23, 14, 18, .5) 45%, rgba(23, 14, 18, .82) 100%);
+  /* .text-grad's own gradient — deliberately NOT --primary. The light pastel
+     --primary pair (#ff7fa8/#ffc981) reads fine as a burgundy-texted button
+     fill, but as the text's own color against the new pale canvas wash it
+     measures ~1.4–2.2:1 (checked against all three wash stops), well under
+     the 3:1 large-text floor. These two stops are the deepest point on the
+     same pink→gold hue line that clears 3:1 against every wash stop AND the
+     dark /open/:token photo scrim (both checked, ≥3.1:1 — see 块 8 交付汇报
+     for the numbers). Same identity, just pulled dark enough to stay legible
+     as body-adjacent large text instead of only working as a fill. */
+  --text-grad: linear-gradient(100deg, #ff3375 0%, #ca7300 100%);
+  --font: Inter, "PingFang SC", "Noto Sans CJK SC", "Microsoft YaHei", ui-sans-serif, system-ui, sans-serif;
+  --shadow-card: 0 8px 28px rgba(70, 21, 40, 0.08);
+  --shadow-raised: 0 16px 48px rgba(70, 21, 40, 0.14);
+  --shadow-glow: 0 8px 24px rgba(255, 127, 168, 0.35);
+  --sheen: rgba(255, 255, 255, 0.7);
+  --radius-xs: 6px;
+  --radius-sm: 10px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --radius-xl: 28px;
+  --header-height: 64px;
+  --dur-fast: 120ms;
+  --dur-base: 180ms;
+  --dur-slow: 320ms;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { min-width: 320px; overflow-anchor: none; background: var(--canvas); scroll-behavior: smooth; }
+/* v4.1「暖釉」三段暖洗（RFC §偏离清单）：135deg 粉白→奶油→暖杏，
+   background-attachment:fixed 让斜切角度不随内容高度重复/断层，320–1440px
+   验证过都是同一片连续渐变，不会露接缝。background-color 兜底给不支持
+   fixed 的极端环境（例如打印）。
+   ui-merge punch list：保持现状不改动 —— fixed 背景在部分移动端浏览器
+   （尤其 iOS Safari）滚动时有已知的重绘/卡顿代价，本次合并未做真机验证，
+   仅在桌面 headless Chromium 里过了 320–1440px 静态截图。上线后必须用真机
+   iPhone 验证滚动流畅度；如果卡顿，把 background-attachment 退回 scroll
+   （唯一已知副作用是斜切角度会随内容高度重复/断层，见上）。 */
+body { min-width: 320px; min-height: 100dvh; margin: 0; overflow-x: hidden; color: var(--ink); background-color: var(--canvas); background-image: linear-gradient(135deg, var(--canvas-wash-1) 0%, var(--canvas-wash-2) 50%, var(--canvas-wash-3) 100%); background-attachment: fixed; background-size: 100% 100%; font: 400 16px/24px var(--font); }
+body::before { position: fixed; inset: -20vh -20vw auto auto; width: 70vw; height: 70vw; max-width: 900px; max-height: 900px; pointer-events: none; background: var(--halo); content: ""; opacity: 0.44; z-index: -1; }
+button, input, select, textarea { color: inherit; font: inherit; }
+button, a, input, select, textarea { -webkit-tap-highlight-color: transparent; }
+button { cursor: pointer; }
+img { display: block; max-width: 100%; }
+a { color: var(--burgundy); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+h1, h2, h3, p { margin-top: 0; }
+h1 { margin-bottom: 16px; font-size: 32px; line-height: 40px; font-weight: 600; letter-spacing: -0.02em; }
+h2 { margin-bottom: 12px; font-size: 24px; line-height: 32px; font-weight: 600; letter-spacing: -0.015em; }
+h3 { margin-bottom: 8px; font-size: 20px; line-height: 28px; font-weight: 600; }
+p { margin-bottom: 16px; }
+
+:focus-visible { outline: 2px solid var(--burgundy); outline-offset: 3px; }
+.skip-link { position: fixed; top: 8px; left: 8px; z-index: 100; transform: translateY(-150%); padding: 10px 14px; border-radius: var(--radius-sm); background: var(--surface); box-shadow: var(--shadow-raised); }
+.skip-link:focus { transform: translateY(0); }
+.sr-only { position: absolute !important; width: 1px !important; height: 1px !important; padding: 0 !important; margin: -1px !important; overflow: hidden !important; clip: rect(0, 0, 0, 0) !important; white-space: nowrap !important; border: 0 !important; }
+.icon { width: 20px; height: 20px; flex: 0 0 auto; }
+
+.site-header { position: sticky; top: 0; z-index: 20; height: var(--header-height); border-bottom: 1px solid var(--border); background: var(--canvas); }
+.header-inner { width: min(1184px, calc(100% - 32px)); height: 100%; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+.brand { display: inline-flex; min-height: 44px; align-items: center; gap: 10px; color: var(--ink); text-decoration: none; }
+.brand-word { font-size: 14px; font-weight: 600; letter-spacing: 0.22em; }
+.brand-mark { position: relative; width: 34px; height: 34px; flex: 0 0 34px; }
+.brand-mark span { position: absolute; width: 21px; height: 21px; border: 1px solid var(--surface); border-radius: 999px; mix-blend-mode: multiply; }
+.brand-mark .circle-a { top: 1px; left: 7px; background: var(--pink); }
+.brand-mark .circle-b { bottom: 1px; left: 1px; background: var(--pink); }
+.brand-mark .circle-c { right: 1px; bottom: 1px; background: var(--gold); }
+.brand-mark::after { position: absolute; left: 12px; top: 13px; width: 10px; height: 9px; background: var(--surface); border-radius: 6px 6px 8px 8px; clip-path: polygon(50% 100%, 5% 43%, 8% 18%, 28% 5%, 50% 24%, 72% 5%, 92% 18%, 95% 43%); content: ""; }
+.header-actions { display: flex; align-items: center; gap: 8px; }
+.header-link { min-width: 44px; min-height: 44px; display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 8px 10px; border-radius: var(--radius-sm); color: var(--ink-muted); text-decoration: none; }
+.header-link:hover { color: var(--burgundy); background: var(--surface-warm); }
+.product-header-link { font-size: 14px; font-weight: 600; }
+
+/* Small "测试" disclosure chip (was a full-width banner band, A1). Block 2:
+   sits inline in the header actions row (left of 帮助) instead of floating
+   fixed over the page — that used to collide with the first card on narrow
+   viewports. Opening it (native <details>, no JS required) reveals the
+   original disclosure copy unchanged. */
+.fixture-banner { display: inline-flex; }
+.fixture-banner-toggle { position: relative; }
+.fixture-chip { min-height: 44px; display: inline-flex; align-items: center; gap: 6px; padding: 5px 14px 5px 10px; border: 1px solid var(--border-strong); border-radius: 999px; background: var(--gold-soft); color: var(--burgundy); font-size: 12px; font-weight: 700; letter-spacing: 0.02em; white-space: nowrap; box-shadow: var(--shadow-card); }
+.fixture-banner-panel { position: absolute; top: calc(100% + 8px); right: 0; z-index: 5; width: min(300px, calc(100vw - 24px)); padding: 14px 16px; border: 1px solid var(--border-strong); border-radius: var(--radius-md); background: var(--surface); color: var(--ink); box-shadow: var(--shadow-raised); font-size: 13px; line-height: 20px; }
+.fixture-banner-panel p { margin: 0 0 10px; }
+.fixture-banner-panel button { min-height: 40px; padding: 6px 12px; border: 1px solid var(--border-strong); border-radius: var(--radius-sm); background: var(--surface-warm); }
+/* Server-injected disclosure banner on the deployed local-operable build
+   (infra/integration/local-operable.mjs, not editable from this block) — one
+   line of markup right after <body>. Block 2 A1: was a loud full-width
+   gold-soft band; now a quiet, compact hairline-bordered strip. Only styles
+   change here, the class names and injected markup stay exactly as-is. */
+.local-locator-banner { border-bottom: 1px solid var(--border); background: var(--surface-warm); color: var(--ink); }
+.local-locator-banner-inner { width: min(1184px, calc(100% - 32px)); min-height: 0; margin: 0 auto; padding: 8px 0; display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 8px; font-size: 12px; line-height: 16px; }
+.local-locator-banner-inner strong { color: var(--burgundy); white-space: nowrap; }
+.local-locator-banner-inner span::before { content: "· "; }
+.temporary-access-banner { border-bottom: 1px solid var(--border-strong); background: var(--gold-soft); color: var(--ink); }
+.temporary-access-banner-inner { width: min(1184px, calc(100% - 32px)); min-height: 52px; margin: 0 auto; display: flex; align-items: center; gap: 14px; font-size: 14px; line-height: 20px; }
+.temporary-access-banner-inner strong { flex: 0 0 auto; padding: 4px 10px; border: 1px solid var(--border-strong); border-radius: 999px; background: var(--surface); color: var(--burgundy); white-space: nowrap; }
+.temporary-access-banner-inner span { color: var(--ink-muted); }
+
+.page { width: min(1184px, calc(100% - 32px)); margin: 0 auto; padding: 32px 0 96px; }
+.axis-wide { width: 100%; }
+.axis-narrow { width: min(100%, 560px); }
+/* Block 6 ("正文排版页：measure 65ch、行距 24"): body line-height is already
+   24 from the sitewide `body{font:400 16px/24px}` rule, this just sets the
+   reading-width measure used by support/legal/media-notice's prose column. */
+.axis-copy { width: min(100%, 65ch); }
+.page-heading { display: flex; align-items: flex-start; justify-content: space-between; gap: 24px; margin-bottom: 24px; }
+.page-heading p { margin: 4px 0 0; color: var(--ink-muted); }
+.eyebrow { margin-bottom: 8px; color: var(--ink-muted); font-size: 12px; line-height: 16px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; }
+.muted { color: var(--ink-muted); }
+.fine { color: var(--ink-muted); font-size: 14px; line-height: 20px; }
+.stack { display: grid; gap: 16px; }
+.stack-tight { display: grid; gap: 8px; }
+.cluster { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; }
+.spacer { flex: 1; }
+.divider { height: 1px; margin: 8px 0; background: var(--border); }
+
+.button { min-height: 44px; display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 9px 20px; border: 1px solid var(--border-strong); border-radius: 999px; background: var(--surface); color: var(--burgundy); font-weight: 600; line-height: 24px; text-decoration: none; box-shadow: none; transition: transform var(--dur-fast) cubic-bezier(.2,.8,.2,1), background-color var(--dur-base) ease, box-shadow var(--dur-base) ease, filter var(--dur-base) ease; }
+.button:hover { background: var(--surface-warm); }
+.button:active { transform: scale(.98); }
+.button-primary { min-height: 52px; border-color: var(--burgundy); background: var(--primary); box-shadow: var(--shadow-glow); }
+.button-primary:hover { filter: saturate(1.04); }
+.button-danger { border-color: var(--danger-border); color: var(--danger); }
+.button-quiet { border-color: transparent; background: transparent; color: var(--ink-muted); font-weight: 500; }
+.button-icon { width: 44px; min-width: 44px; padding: 0; border-radius: 999px; }
+.button[disabled] { cursor: not-allowed; opacity: 0.58; }
+/* Block 6 (manage tabs, "审核队列行的操作按钮统一白胶囊小号"): a visually
+   quieter footprint for dense in-row actions — tighter padding and a smaller
+   label, but min-height stays the sitewide 44px touch-target floor (never
+   shrunk; the accessibility harness flags any control under ~43.5px). */
+.button-sm { padding: 6px 14px; font-size: 13px; line-height: 20px; }
+.text-link { min-height: 44px; display: inline-flex; align-items: center; gap: 6px; padding: 8px 4px; border: 0; background: transparent; color: var(--ink-muted); text-decoration: underline; text-underline-offset: 3px; }
+.text-link .icon { flex: 0 0 auto; text-decoration: none; }
+summary { min-height: 44px; display: flex; align-items: center; cursor: pointer; }
+
+.field { display: grid; gap: 8px; }
+.field label, .field-label { font-size: 14px; line-height: 20px; font-weight: 600; }
+.field input, .field select, .field textarea { width: 100%; min-height: 44px; padding: 10px 14px; border: 1px solid var(--border-strong); border-radius: var(--radius-sm); background: var(--surface); }
+.field textarea { min-height: 112px; resize: vertical; }
+.field input[aria-invalid="true"], .field select[aria-invalid="true"], .field textarea[aria-invalid="true"] { border: 2px solid var(--danger); }
+.field-error { color: var(--danger); font-size: 14px; line-height: 20px; }
+.check-row { min-height: 44px; display: flex; align-items: flex-start; gap: 10px; }
+.check-row input { width: 20px; height: 20px; margin: 12px 0 0; accent-color: var(--burgundy); }
+/* Block 5 (UI v4 spec "块5"): "notice 同意区排版整理（checkbox 行高 44、文字
+   14/20）" — the label itself already carries the 44px row height (min-height
+   above); this sizes and centers the acknowledgement copy inside that row. */
+.check-row span { flex: 1; padding: 12px 0; font-size: 14px; line-height: 20px; }
+.segmented { display: grid; grid-auto-flow: column; grid-auto-columns: 1fr; padding: 3px; border: 1px solid var(--border); border-radius: var(--radius-md); background: var(--surface-muted); }
+.segmented button, .segmented label { min-height: 44px; display: flex; align-items: center; justify-content: center; padding: 8px 10px; border: 0; border-radius: var(--radius-sm); background: transparent; color: var(--ink-muted); text-align: center; transition: background-color var(--dur-base) ease, color var(--dur-base) ease, box-shadow var(--dur-base) ease; }
+.segmented a { min-height: 44px; display: flex; align-items: center; justify-content: center; gap: 8px; padding: 8px 10px; border-radius: var(--radius-sm); color: var(--ink-muted); text-align: center; text-decoration: none; transition: background-color var(--dur-base) ease, color var(--dur-base) ease, box-shadow var(--dur-base) ease; }
+.segmented [aria-selected="true"], .segmented input:checked + span { background: var(--surface); color: var(--ink); box-shadow: var(--shadow-card); }
+.segmented a[aria-current="page"] { background: var(--surface); color: var(--ink); box-shadow: var(--shadow-card); }
+/* 相册/现场 segmented (block 3, B "灵光"): a flat 44px overall instead of the
+   general .segmented's ~50px (44 inner + 6px outer padding); selected segment
+   stays white via .segmented a[aria-current="page"] above. */
+.view-tabs { width: min(100%, 360px); height: 44px; padding: 2px; }
+.view-tabs a { min-height: 40px; }
+
+.card { border: 1px solid var(--border); border-radius: var(--radius-lg); background: var(--surface); box-shadow: var(--shadow-card); }
+.card-body { padding: 20px; }
+.interactive-card { border-radius: var(--radius-xl); transition: border-color var(--dur-fast) cubic-bezier(.2,.8,.2,1), transform var(--dur-fast) cubic-bezier(.2,.8,.2,1), box-shadow var(--dur-base) ease; }
+.interactive-card:hover { border-color: var(--border-strong); transform: translateY(-1px); box-shadow: var(--shadow-raised); }
+.interactive-card:active { transform: scale(.98); }
+/* Radial glow utility (B "灵光" halo). Place as the first child of a
+   position:relative container, one per page max (contract §2); give the
+   container's real content position:relative;z-index:1 to sit above it. */
+.halo-spot { position: absolute; inset: -12% -12% auto auto; z-index: 0; width: 60%; height: 60%; max-width: 420px; max-height: 420px; pointer-events: none; background: var(--halo); opacity: 0.5; }
+
+/* v4.1「暖釉」光斑层 (RFC 新增光层 §1): 9 个模糊圆，粉/金/白三色，缓慢漂移。
+   只在首页 (.home-page) 与 /open/:token 落地页 (.open-landing) 使用，替换了
+   那两页原本会用到的 halo-spot（block2 的 continueCard 不再自带 halo-spot，
+   见 templates.js — 每页仍然只有一处光效，没有叠加两层）。跟 halo-spot 一样
+   的两段式写法：本层 z-index:0 铺在容器最底下，容器的真实内容套一层
+   .bokeh-content(position:relative;z-index:1) 才会稳定盖在光斑之上，不依赖
+   DOM 顺序。overflow:hidden 把漂移动画约束在页面框内，宽屏也不会横向溢出。
+   prefers-reduced-motion 已有全站 animation-duration:0.01ms!important 兜底
+   （见文件末尾），光斑到那条规则下自动静止，这里不用重复写。 */
+.bokeh-layer { position: absolute; inset: 0; z-index: 0; overflow: hidden; pointer-events: none; }
+.bokeh-content { position: relative; z-index: 1; }
+.bokeh-dot { position: absolute; top: var(--bokeh-top); left: var(--bokeh-left); width: var(--bokeh-size); height: var(--bokeh-size); border-radius: 50%; background: var(--bokeh-color); opacity: var(--bokeh-opacity); filter: blur(var(--bokeh-blur));
+  animation: bokeh-drift var(--bokeh-duration) ease-in-out var(--bokeh-delay, 0s) infinite alternate; }
+@keyframes bokeh-drift { from { transform: translate(0, 0) scale(1); } to { transform: translate(var(--bokeh-dx), var(--bokeh-dy)) scale(1.06); } }
+.bokeh-dot:nth-child(1) { --bokeh-top: 4%;  --bokeh-left: 8%;  --bokeh-size: 120px; --bokeh-color: var(--pink); --bokeh-opacity: .22; --bokeh-blur: 30px; --bokeh-duration: 74s; --bokeh-delay: -6s;  --bokeh-dx: 24px;  --bokeh-dy: -18px; }
+.bokeh-dot:nth-child(2) { --bokeh-top: 12%; --bokeh-left: 78%; --bokeh-size: 80px;  --bokeh-color: var(--gold); --bokeh-opacity: .28; --bokeh-blur: 22px; --bokeh-duration: 68s; --bokeh-delay: -22s; --bokeh-dx: -20px; --bokeh-dy: 22px; }
+.bokeh-dot:nth-child(3) { --bokeh-top: 62%; --bokeh-left: 88%; --bokeh-size: 160px; --bokeh-color: var(--pink); --bokeh-opacity: .16; --bokeh-blur: 36px; --bokeh-duration: 86s; --bokeh-delay: -40s; --bokeh-dx: -26px; --bokeh-dy: -20px; }
+.bokeh-dot:nth-child(4) { --bokeh-top: 78%; --bokeh-left: 6%;  --bokeh-size: 100px; --bokeh-color: var(--gold); --bokeh-opacity: .2;  --bokeh-blur: 26px; --bokeh-duration: 79s; --bokeh-delay: -12s; --bokeh-dx: 18px;  --bokeh-dy: 20px; }
+.bokeh-dot:nth-child(5) { --bokeh-top: -4%; --bokeh-left: 42%; --bokeh-size: 180px; --bokeh-color: var(--surface); --bokeh-opacity: .18; --bokeh-blur: 40px; --bokeh-duration: 90s; --bokeh-delay: -55s; --bokeh-dx: 14px;  --bokeh-dy: 24px; }
+.bokeh-dot:nth-child(6) { --bokeh-top: 40%; --bokeh-left: 22%; --bokeh-size: 40px;  --bokeh-color: var(--gold); --bokeh-opacity: .32; --bokeh-blur: 12px; --bokeh-duration: 60s; --bokeh-delay: -30s; --bokeh-dx: 16px;  --bokeh-dy: -14px; }
+.bokeh-dot:nth-child(7) { --bokeh-top: 30%; --bokeh-left: 64%; --bokeh-size: 60px;  --bokeh-color: var(--surface); --bokeh-opacity: .24; --bokeh-blur: 18px; --bokeh-duration: 65s; --bokeh-delay: -18s; --bokeh-dx: -18px; --bokeh-dy: 16px; }
+.bokeh-dot:nth-child(8) { --bokeh-top: 88%; --bokeh-left: 58%; --bokeh-size: 70px;  --bokeh-color: var(--pink); --bokeh-opacity: .3;  --bokeh-blur: 16px; --bokeh-duration: 71s; --bokeh-delay: -48s; --bokeh-dx: -14px; --bokeh-dy: -18px; }
+.bokeh-dot:nth-child(9) { --bokeh-top: 54%; --bokeh-left: -2%; --bokeh-size: 90px;  --bokeh-color: var(--gold); --bokeh-opacity: .18; --bokeh-blur: 22px; --bokeh-duration: 83s; --bokeh-delay: -64s; --bokeh-dx: 20px;  --bokeh-dy: 14px; }
+
+/* v4.1「暖釉」渐变字 (RFC 新增光层 §2): 只用于首页 h1 后半句与 /open/:token
+   落地页标题一行，正文/功能文字禁用（见 templates.js 用法处的注释）。基础规则
+   先给 color:var(--ink) 当兜底，@supports 探测到 background-clip:text 才转
+   透明改渐变，不支持的浏览器/200% zoom 下纯放大不受影响、原样落回 ink 实色。
+   .invitation-preview-copy 是唯一一处渐变字出现在深色照片蒙层之上的场景——
+   那里的兜底该用亮色 (viewer-ink) 而不是 ink（深梅字压在深蒙层上会读不出
+   来），用一条更高特异度的后代选择器覆盖，同一文件顺序/优先级都保证它赢。
+   forced-colors（系统高对比模式）下渐变会被强制关掉、颜色交给系统的
+   CanvasText，浅色深色主题都不会读丢字。
+   ui-merge punch list：保持现状不改动 —— 这条 forced-colors 兜底只在
+   headless Chromium 里模拟过 forced-colors media feature，未在真实的
+   Windows 高对比模式或真机屏幕阅读器组合下复核过实际观感。 */
+.text-grad { color: var(--ink); }
+.invitation-preview-copy .text-grad { color: var(--viewer-ink); }
+@supports (background-clip: text) or (-webkit-background-clip: text) {
+  .text-grad { background: var(--text-grad); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; color: transparent; }
+}
+@media (forced-colors: active) {
+  .text-grad { background: none; -webkit-text-fill-color: currentColor; color: CanvasText; }
+}
+
+/* v4.1「暖釉」照片署名条 (RFC 新增光层 §3): 相册网格卡与现场胶片条 tile 底部
+   可选一条渐变黑透明打底 + 12px 白字（上传者，方位有数据再加）。数据缺失时
+   templates.js 直接不渲染这个 span，不会出现空条。渐变的深色端固定用
+   --viewer-canvas 的 rgb（deliberately 不用 token 本身，因为要控制 alpha），
+   到文字所在的底部一带 alpha 已经堆到 .82，用一张纯白照片压力测试都还有
+   ~9:1 对 --viewer-ink 白字，比 4.5:1 门槛留了两倍余量（见 RFC 对比复核表）。
+   跟 badge-dot 共存：badge 挪去卡片右上角（见下面 .photo-card-copy override），
+   署名条只占底部，两者不再叠在同一角。 */
+.photo-signature { position: absolute; right: 0; bottom: 0; left: 0; z-index: 1; padding: 18px 10px 6px; background: var(--signature-scrim); color: var(--viewer-ink); font-size: 12px; line-height: 16px; font-weight: 600; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; pointer-events: none; }
+.photo-signature-direction { margin-left: 4px; color: var(--viewer-ink-muted); font-weight: 500; }
+.status-pill { min-height: 28px; display: inline-flex; align-items: center; gap: 6px; padding: 4px 10px; border: 1px solid var(--border-strong); border-radius: 999px; background: var(--surface); color: var(--ink-muted); font-size: 12px; line-height: 18px; font-weight: 600; white-space: nowrap; }
+.status-pill::before { width: 7px; height: 7px; border-radius: 50%; background: currentColor; content: ""; }
+.badge-dot { display: inline-block; width: 10px; height: 10px; flex: 0 0 auto; border-radius: 999px; background: var(--primary); box-shadow: 0 0 0 2px var(--surface); }
+/* B10: the only other per-photo dot tone — 待定位 (not yet returned to the
+   scene), a flat ink-subtle fill instead of the gradient. */
+.badge-dot-subtle { background: var(--ink-subtle); }
+/* Block 7: outside_scene ("不在这个现场") gets its own flat ink-muted fill —
+   one step darker than badge-dot-subtle's ink-subtle — so it never reads as
+   the same state as an ordinary not-yet-placed (待定位) photo. */
+.badge-dot-muted { background: var(--ink-muted); }
+/* 2026-08-17: confirmed+confirmationMode==='auto' ("AI 定位 · 可修正") — reuses the same
+   --info token status-pill/status-info already use, so the grid dot and the clickable chip on
+   photoPage read as the same status even though they're two different components. */
+.badge-dot-info { background: var(--info); }
+.status-success { color: var(--success); }
+.status-warning { color: var(--warning); }
+.status-danger { color: var(--danger); }
+.status-info { color: var(--info); }
+
+/* position:relative here is the .bokeh-layer's containing block (see
+   templates.js homePage — bokeh-layer is its first child, real content is
+   wrapped in .bokeh-content right after it). */
+.home-page { position: relative; padding-top: 24px; }
+.home-copy { position: relative; z-index: 1; }
+/* ui-merge punch list: the old max-width: 11ch cap (≥1248px only — the
+   ≤1247px query below already overrides it to none for the mobile title
+   wrap) computed narrower than "打开你的共同空间" at this 44px size, forcing
+   a two-line break that landed mid-phrase, right through the .text-grad
+   accent span ("共同空 / 间"). .page already caps the row at min(1184px, …),
+   so the h1 doesn't need its own width limit to stay a reasonable measure —
+   dropped entirely, matching the mobile rule's own max-width: none. */
+.home-copy h1 { font-size: 44px; line-height: 52px; letter-spacing: -0.03em; }
+.home-copy .lead { max-width: 30ch; color: var(--ink-muted); font-size: 18px; line-height: 28px; }
+
+/* Signature "继续：我的空间" card (B1/B "灵光"): progressRing + space name +
+   status line, with the one halo-spot this page is allowed (contract §2)
+   glowing behind it. .continue-card-inner/-chevron carry z-index:1 so they
+   paint above the halo, which sits at z-index:0 inside this
+   position:relative;overflow:hidden card. */
+.continue-card { position: relative; overflow: hidden; display: flex; align-items: center; gap: 12px; padding: 20px; text-decoration: none; color: inherit; }
+.continue-card-inner { position: relative; z-index: 1; display: flex; min-width: 0; flex: 1; align-items: center; gap: 16px; }
+.continue-card-body { display: grid; min-width: 0; gap: 2px; }
+.continue-card-body .eyebrow { margin-bottom: 0; }
+.continue-card-body strong { font-size: 18px; line-height: 24px; }
+.continue-card-chevron { position: relative; z-index: 1; flex: 0 0 auto; color: var(--ink-subtle); }
+
+.nav-card-grid { display: grid; grid-template-columns: 1fr; gap: 16px; }
+.nav-card { display: flex; align-items: center; gap: 16px; padding: 20px; text-decoration: none; color: inherit; }
+/* Icon-in-gradient-tile treatment (B "灵光" nav-card hand). Reusable: pair
+   .icon-tile with a size modifier like .nav-card-icon wherever an icon needs
+   the soft pink-gold pill backing. */
+.icon-tile { display: grid; place-items: center; border-radius: 999px; background: var(--primary); color: var(--surface); box-shadow: var(--shadow-card); }
+.icon-tile .icon { width: 24px; height: 24px; }
+.nav-card-icon { width: 52px; height: 52px; flex: 0 0 52px; }
+.nav-card-body { flex: 1; display: grid; min-width: 0; gap: 4px; }
+.nav-card-body strong { font-size: 18px; line-height: 24px; }
+.nav-card-chevron { flex: 0 0 auto; color: var(--ink-subtle); }
+
+/* Small neutral category tag (e.g. discover's "模板空间"), distinct from
+   .status-pill which always carries a colored status dot. */
+.chip { display: inline-flex; align-items: center; padding: 3px 10px; border-radius: 999px; background: var(--surface-warm); color: var(--ink-muted); font-size: 12px; line-height: 18px; font-weight: 600; white-space: nowrap; }
+
+/* Inline "more coming" note (discoverPage footnote, B "空态组件" requirement):
+   icon-tile + one line, not a lone paragraph of fine print. */
+.empty-note { display: flex; align-items: center; gap: 10px; }
+.empty-note p { margin: 0; }
+.empty-note-icon { width: 32px; height: 32px; flex: 0 0 32px; }
+.empty-note-icon .icon { width: 16px; height: 16px; }
+
+/* Block 6 (404/status "icon 空态组件，复用块 2 empty-note 手法"): same
+   icon-tile gradient-circle language as empty-note/drop-zone, sized up for a
+   full-page empty state instead of an inline footnote. */
+.status-icon-tile { width: 56px; height: 56px; flex: 0 0 56px; }
+.status-icon-tile .icon { width: 26px; height: 26px; }
+.empty-state-page { width: min(100%, 440px); margin: 8dvh auto 0; justify-items: center; gap: 16px; padding: 0 20px; text-align: center; }
+
+/* Featured-space cover card (B3/D2). The cover div always shows the
+   halo/surface-warm gradient via CSS background; an <img> (when `cover` is
+   set) simply paints over it, so a missing cover falls back to the gradient
+   automatically with no extra markup branching. */
+.featured-space-card { overflow: hidden; text-decoration: none; color: inherit; }
+.featured-space-cover { height: 160px; overflow: hidden; background: var(--halo), var(--surface-warm); }
+.featured-space-cover img { width: 100%; height: 100%; object-fit: cover; }
+.featured-space-card .card-body { display: grid; gap: 8px; }
+.featured-space-card h2 { margin: 0; }
+
+.open-card { margin: 8dvh auto 0; }
+/* v4.1「暖釉」: openCampaignPage (/open/:token 落地页) is the bokeh-layer's
+   containing block here — same first-child-layer pattern as .home-page
+   above, but .open-card is the page's only content child so it doubles as
+   the .bokeh-content wrapper directly (see templates.js) instead of adding
+   an extra div. */
+.open-landing { position: relative; }
+/* B6 (UI v4 audit): the brand mark is enlarged via transform, which doesn't
+   reserve layout space — without an explicit stacking order it visually
+   overflowed onto the eyebrow text below it. position:relative + z-index on
+   both sides keeps the mark purely decorative and always underneath. */
+.open-card-heading { position: relative; }
+/* .brand-mark is a <span> (inline by default) — outside the header's flex
+   row it's normally used in, `width`/`height`/`margin-bottom` on an inline
+   box are no-ops, so the "58px" sizing and the space this was meant to
+   reserve above the eyebrow never actually applied. display:block makes the
+   box (and its absolutely-positioned circle children) real, so the scale
+   transform enlarges a coherent 58x58 mark instead of a collapsed one. */
+.open-card-heading .brand-mark { position: relative; z-index: 0; display: block; width: 58px; height: 58px; transform: scale(1.6); transform-origin: top left; margin-bottom: 30px; }
+.open-card-heading .eyebrow, .open-card-heading h1, .open-card-heading .muted { position: relative; z-index: 1; }
+.invitation-preview { position: relative; min-height: 220px; overflow: hidden; border-radius: var(--radius-lg); }
+.invitation-preview img { width: 100%; height: 220px; object-fit: cover; }
+/* B4 (UI v4 audit): the old transparent-30%→ink-100% ramp only reached ~40%
+   darkening by the top of the eyebrow text, not enough over a bright photo.
+   Starts darkening from the top edge now and is mostly opaque well before the
+   copy block begins, so both lines sit on a consistently dark scrim. */
+.invitation-preview::after { position: absolute; inset: 0; background: linear-gradient(180deg, transparent 0%, var(--ink) 75%); content: ""; opacity: 0.86; }
+.invitation-preview-copy { position: absolute; right: 16px; bottom: 16px; left: 16px; z-index: 1; color: var(--viewer-ink); }
+/* .eyebrow's own color rule otherwise wins over the inherited scrim color
+   above (a same-specificity rule matched directly on the element beats an
+   inherited value regardless of source order), which left this eyebrow in
+   muted ink-brown instead of the light color the dark scrim needs. */
+.invitation-preview-copy .eyebrow { color: var(--viewer-ink-muted); }
+
+.space-shell { min-width: 0; display: grid; gap: 24px; }
+.space-title-row { min-width: 0; display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; }
+.cap-tabs { min-width: 0; min-height: 52px; display: flex; align-items: center; gap: 4px; padding: 4px; border: 1px solid var(--border); border-radius: var(--radius-md); background: var(--surface); }
+.cap-tabs a { min-height: 44px; display: inline-flex; align-items: center; gap: 8px; padding: 8px 16px; border-radius: var(--radius-sm); color: var(--ink-muted); text-decoration: none; }
+.cap-tabs a[aria-current="page"] { background: var(--surface); color: var(--ink); box-shadow: var(--shadow-card); }
+/* B10 grid ("网格 B 化"): 8px white gutters, rounded-corner waterfall. The
+   5n+1 double-row span is the pre-existing masonry pattern (kept as-is,
+   only the surrounding gutter/gap/badge treatment changed here) standing in
+   for real portrait-photo detection — every 5th tile gets the taller
+   "portrait" slot regardless of the source image's actual aspect ratio. */
+.gallery { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+.photo-card { position: relative; min-width: 0; overflow: hidden; border-radius: var(--radius-lg); background: var(--surface-muted); aspect-ratio: 4 / 3; }
+.photo-card:nth-child(5n + 1) { grid-row: span 2; aspect-ratio: auto; min-height: 420px; }
+.photo-card a { position: absolute; inset: 0; color: var(--viewer-ink); }
+/* Block 7 a11y recheck: the sitewide :focus-visible rule draws its ring with
+   outline-offset: 3px (outward). That's invisible here — this link fills
+   .photo-card exactly (inset: 0) and the card clips overflow to round the
+   photo's corners, so the outward ring has nowhere to paint. Every other
+   overflow:hidden card in this file (continue-card, featured-space-card,
+   space-card) is itself the focusable element, where an element's own
+   overflow never clips its own outline — only this parent/child split runs
+   into it. Fix: pull the ring inward instead of adding a bigger click
+   target or restructuring the DOM. */
+.photo-card a:focus-visible { outline-offset: -3px; }
+.photo-card img { width: 100%; height: 100%; object-fit: cover; transition: transform 320ms cubic-bezier(.2,.8,.2,1); }
+.photo-card:hover img { transform: scale(1.015); }
+/* B10: a single badge-dot (see .badge-dot/.badge-dot-subtle) is painted on
+   top of the photo — the dot's own white ring (box-shadow on .badge-dot)
+   keeps it visible against any photo. v4.1「暖釉」moved this to the top-right
+   corner (was bottom-right) so it no longer competes with the new
+   .photo-signature strip anchored to the bottom edge (RFC 新增光层 §3). */
+.photo-card-copy { position: absolute; top: 10px; right: 10px; z-index: 1; }
+/* Video corner mark (audio-track follow-up companion task): opposite corner from
+   .photo-card-copy's status dot, clear of the bottom .photo-signature scrim strip. Reuses the
+   same dark-glass/warm-white pairing the 360 viewer chrome already uses (--viewer-glass /
+   --viewer-ink) rather than inventing a new color, since this sits on top of an arbitrary photo
+   the same way the viewer's own controls do. */
+.photo-card-video-badge { position: absolute; top: 10px; left: 10px; z-index: 1; display: grid; place-items: center; width: 26px; height: 26px; border-radius: 999px; background: var(--viewer-glass); color: var(--viewer-ink); }
+.photo-card-video-badge .icon { width: 13px; height: 13px; }
+.gallery-stats { margin: 0; }
+.product-journey { display: flex; align-items: center; gap: 8px; overflow-x: auto; color: var(--ink-muted); font-size: 13px; white-space: nowrap; }
+.product-journey a, .product-journey span { min-height: 36px; display: inline-flex; align-items: center; border-radius: 999px; padding: 5px 11px; color: inherit; text-decoration: none; }
+.product-journey span[aria-current="step"] { border: 1px solid var(--border-strong); background: var(--surface); color: var(--burgundy); }
+.product-journey > * + *::before { margin-right: 8px; color: var(--pink); content: "→"; }
+
+.empty-state, .state-panel { min-height: 280px; display: grid; place-items: center; padding: 40px 20px; text-align: center; }
+.state-panel-inner { max-width: 440px; }
+.state-symbol { width: 56px; height: 56px; margin: 0 auto 16px; display: grid; place-items: center; border: 1px solid var(--border-strong); border-radius: 999px; background: var(--surface-warm); color: var(--burgundy); }
+.loading-line { height: 8px; overflow: hidden; border-radius: 999px; background: var(--surface-muted); }
+.loading-line::after { display: block; width: 40%; height: 100%; border-radius: inherit; background: var(--primary); animation: loading 1.2s ease-in-out infinite; content: ""; }
+@keyframes loading { from { transform: translateX(-110%); } to { transform: translateX(360%); } }
+
+/* Skeleton loading block (A5/A6): surface-muted fill with a soft light sweep,
+   timed off the --dur-slow token. prefers-reduced-motion already zeroes every
+   animation-duration site-wide (see bottom of file), which leaves this static. */
+.skeleton { position: relative; overflow: hidden; background: var(--surface-muted); border-radius: var(--radius-sm); }
+.skeleton::after { position: absolute; inset: 0; transform: translateX(-100%); background: linear-gradient(90deg, transparent, var(--sheen), transparent); animation: skeleton-sweep calc(var(--dur-slow) * 4) ease-in-out infinite; content: ""; }
+@keyframes skeleton-sweep { to { transform: translateX(100%); } }
+/* Thin skeleton bar for text-line placeholders (block 5 route-loading
+   skeletons, see uploadFlowSkeleton in templates.js) — pairs with the
+   .skeleton fill/sweep above, sized per-use via inline width/height. */
+.skeleton-line { display: block; border-radius: 999px; }
+
+/* Progress ring (signature "回到现场" element, wired up by templates.js
+   progressRing()). Gradient stroke pink→gold, center text slot. */
+.progress-ring { position: relative; display: inline-grid; width: 64px; height: 64px; place-items: center; }
+.progress-ring svg { transform: rotate(-90deg); }
+.progress-ring-track { stroke: var(--border); }
+.progress-ring-value { transition: stroke-dashoffset var(--dur-slow) cubic-bezier(.2,.8,.2,1); }
+.progress-ring-center { position: absolute; inset: 0; display: grid; place-items: center; font-size: 13px; font-weight: 700; color: var(--ink); }
+
+/* B17/B20 (UI v4 audit): image-first layout — the media block is a dark
+   viewer-canvas stage sized to dominate the first screen, with the info card
+   stacked below it (not a side column) at every width, matching the spec's
+   "图区占首屏主体...信息卡其下". Block 7 confirmed this single-column shape
+   as final, including at desktop 1248px+ (no grid-template-columns is added
+   for that breakpoint anywhere in this file, unlike upload/placement/account
+   which do gain a 320px side rail there) — immersion is the point of this
+   page, so a bigger image on a wider screen is the intended outcome, not a
+   layout gap to close. */
+.photo-detail-layout { display: grid; gap: 20px; }
+.photo-detail-media { min-height: 460px; display: grid; place-items: center; overflow: hidden; border-radius: var(--radius-lg); background: var(--viewer-canvas); }
+.photo-detail-media img { width: 100%; height: 100%; max-height: calc(100dvh - 200px); object-fit: contain; }
+.photo-detail-panel { align-self: start; }
+.photo-detail-heading h1 { margin-bottom: 4px; }
+.photo-detail-meta { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin: 0; color: var(--ink-muted); }
+.photo-detail-actions { justify-content: space-between; }
+.memory-bridge { display: grid; gap: 8px; border-top: 1px solid var(--border); padding-top: 16px; }
+.memory-bridge p { margin: 0; }
+.memory-bridge > p:first-child { color: var(--danger); font-size: 12px; line-height: 18px; }
+.metadata-list { display: grid; gap: 0; margin: 0; }
+.metadata-row { min-height: 52px; display: flex; align-items: center; justify-content: space-between; gap: 16px; border-bottom: 1px solid var(--border); }
+.metadata-row:last-child { border-bottom: 0; }
+.metadata-row dt { color: var(--ink-muted); }
+.metadata-row dd { margin: 0; text-align: right; }
+
+.viewer-wrap { overflow: hidden; border-radius: var(--radius-lg); background: var(--viewer-canvas); color: var(--viewer-ink); box-shadow: var(--shadow-raised); }
+.viewer-muted { color: var(--viewer-ink-muted); }
+.viewer-fixture, [data-viewer-root], .viewer-render-host { position: relative; min-height: 520px; }
+/* B fix (2026-08-17, editor-mobile): packages/viewer's own .unseen-viewer root is
+   height:100% (see packages/viewer/src/styles.js) — a percentage height, which only
+   resolves against a containing block with a *definite* height. .viewer-render-host
+   (this app's own wrapper div, created in adapters/viewer/index.js#mount, the direct
+   parent .unseen-viewer mounts into) previously carried only min-height, never height,
+   so per CSS2.1 §10.5 the percentage fell back to 'auto' — and since every one of
+   .unseen-viewer's own children is position:absolute (contributes nothing to auto
+   content height), .unseen-viewer collapsed to its own 240px min-height floor
+   regardless of how much taller .viewer-render-host/[data-viewer-root] measured
+   (520px, or min(58dvh,520px) below — see the narrow-viewport override). The
+   reserved-but-unfilled remainder rendered as a flat block of .viewer-wrap's own
+   near-black --viewer-canvas background: the "黑色空白" bug, present at every
+   viewport width, not just mobile (confirmed via direct getBoundingClientRect probes
+   at 375px and 1280px alike) — just easiest to notice on a short/narrow screen where
+   it eats into visible content instead of hiding below an unusually tall fold.
+   Giving .viewer-render-host an explicit height (kept equal to its own min-height so
+   it stays a single source of truth, mirrored below for the narrow-viewport value)
+   makes it a definite containing block, so .unseen-viewer's height:100% finally
+   resolves to fill it — no packages/viewer change needed, this is purely how its
+   already-shipped CSS composes with an ancestor that now offers a real height.
+   [data-viewer-root] itself is deliberately left as min-height-only: it also holds
+   the normal-flow .viewer-photo-list filmstrip below .viewer-render-host, and forcing
+   a fixed height there (rather than min-height) would let that filmstrip's height
+   overflow the box and get clipped by .viewer-wrap's overflow:hidden. Leaving
+   [data-viewer-root] auto-height keeps it sized to its actual content (render host +
+   filmstrip), same as before this fix. */
+.viewer-render-host { position: relative; z-index: 1; height: 520px; }
+.viewer-photo-list { display: flex; flex-wrap: wrap; gap: 8px; padding: 12px; border-top: 1px solid var(--viewer-border); background: var(--viewer-surface); }
+.viewer-photo-button { border-color: var(--viewer-border); background: var(--viewer-surface-raised); color: var(--viewer-ink); }
+.viewer-stage { min-height: 520px; overflow: hidden; background-image: linear-gradient(180deg, transparent 64%, var(--viewer-canvas)), var(--viewer-image); background-size: auto 100%; background-position: center; }
+.viewer-unavailable { position: absolute; inset: 0; z-index: 1; display: grid; place-items: center; gap: 12px; padding: 24px; text-align: center; background: var(--viewer-canvas); color: var(--viewer-ink); overflow-y: auto; }
+.viewer-unavailable .button { border-color: var(--viewer-border); background: var(--viewer-control); color: var(--viewer-ink); }
+/* Block 7: static 2D direction fallback (templates.js sceneStaticFallback),
+   only ever a child of .viewer-unavailable. Purely informational — no
+   interactive affordance, no rendering dependency of any kind.
+   Accessibility recheck note: the intro/empty <p> sits directly on
+   .viewer-unavailable's solid --viewer-canvas, so --viewer-ink-muted there
+   measures about 10.7:1 (WCAG 2.2 AA formula) — fine. .viewer-static-count
+   sits on --viewer-control instead (translucent over --viewer-canvas), where
+   --viewer-ink-muted only measures about 3.4:1, below the 4.5:1 body-text
+   minimum — every other element already on --viewer-control in this file
+   (.viewer-hud-line, .glass-btn-icon, .viewer-unavailable .button) uses
+   plain --viewer-ink there for exactly this reason, so .viewer-static-count
+   follows the same existing pattern instead of introducing a new,
+   non-compliant pairing. */
+.viewer-static-fallback { display: grid; gap: 8px; width: min(280px, 100%); }
+.viewer-static-fallback p { margin: 0; color: var(--viewer-ink-muted); }
+.viewer-static-list { display: grid; gap: 6px; margin: 0; padding: 0; list-style: none; }
+.viewer-static-list li { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 8px 12px; border: 1px solid var(--viewer-border); border-radius: var(--radius-sm); background: var(--viewer-control); text-align: left; }
+.viewer-static-direction { font-weight: 600; }
+.viewer-static-count { font-size: 13px; }
+
+/* Shared glass chrome (block 4, UI v4 audit B12-B16): the translucent
+   blurred bar/button language reused by both the scene page's full-bleed
+   bottom operate-bar and the placement editor's contained toolbar. Base
+   rules here are shape/typography only and read fine on the light UI too;
+   the two host contexts below (.scene-immersive, .placement-viewer) supply
+   the actual glass surface + backdrop-filter + positioning. */
+.viewer-glass-bar { display: flex; align-items: center; gap: 10px; }
+.viewer-glass-center { min-width: 0; flex: 1 1 auto; }
+.viewer-hud-line { margin: 0; padding: 6px 14px; border: 1px solid var(--viewer-border); border-radius: 999px; background: var(--viewer-control); color: var(--viewer-ink); font-size: 13px; line-height: 18px; font-weight: 600; white-space: nowrap; }
+.viewer-hud-line-inline { display: inline-flex; align-items: center; gap: 4px; white-space: normal; }
+.glass-btn-icon { width: 44px; height: 44px; flex: 0 0 auto; display: inline-flex; align-items: center; justify-content: center; border: 1px solid var(--viewer-border); border-radius: 999px; background: var(--viewer-control); color: var(--viewer-ink); text-decoration: none; transition: background-color var(--dur-base) ease; }
+.glass-btn-icon:hover { background: var(--viewer-control-hover); }
+.viewer-filmstrip { display: flex; align-items: center; gap: 8px; overflow-x: auto; scroll-padding-inline: 8px; padding: 2px; }
+.viewer-filmstrip-empty { margin: 0; padding: 0 4px; }
+.filmstrip-item { position: relative; flex: 0 0 auto; width: 44px; height: 44px; overflow: hidden; border-radius: var(--radius-sm); border: 2px solid transparent; background: var(--viewer-surface-raised); scroll-snap-align: center; }
+.filmstrip-item img { width: 100%; height: 100%; object-fit: cover; }
+.filmstrip-item.is-active { border-color: var(--pink); }
+/* v4.1「暖釉」照片署名条落在这个 44px 胶片格里，18px 的默认顶部 padding 会
+   吃掉快一半格子高度，这里按格子尺寸收紧成更薄的一条（字号仍是规格定的
+   12px，没有缩字号，只是给它腾出能放下的空间）；一两个字之后靠
+   text-overflow:ellipsis 截断，不做横向滚动。 */
+.filmstrip-item .photo-signature { padding: 10px 4px 2px; line-height: 12px; }
+
+/* Placement editor: same glass-bar shell, contained (not edge-to-edge) —
+   sits as a normal-flow toolbar above the viewer canvas, direction controls
+   stay always visible (moving yaw/pitch is this page's core task). */
+.placement-viewer .viewer-glass-bar-toolbar { min-height: 56px; padding: 8px 12px; border-bottom: 1px solid var(--viewer-border); background: var(--viewer-glass); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); }
+.placement-viewer .viewer-hud-line-inline { background: transparent; border: 0; padding: 0; }
+/* B fix (2026-08-17, editor-mobile): packages/viewer's own stylesheet (frozen, not
+   edited here — see packages/viewer/src/styles.js) unconditionally hides
+   .unseen-viewer__directions under `(hover:none) and (pointer:coarse)` — i.e. on a
+   real touchscreen — falling back to a joystick that itself only appears when
+   data-depth-ready="true". For every non-depth scene (the common case) that leaves a
+   touch user with *no* on-screen rotation control at all: getBoundingClientRect on
+   the hidden pad reports all-zero, which is what the "坍缩为 (0,0)" symptom from
+   375px touch-emulated testing actually was — not this app's flex/grid squeezing it,
+   packages/viewer's own display:none. The comment two rules up already states this
+   page's intent ("direction controls stay always visible") for exactly this reason;
+   this rule is the outer-layout fix that makes it true on touch too, purely via a
+   higher-specificity selector in our own stylesheet (packages/viewer's rule is a
+   single class, 0-1-0; this is two classes, 0-2-0, so it wins regardless of the
+   dynamically-injected <style> tag's position in the DOM). The depth-ready+touch
+   joystick is left alone — it only ever appears alongside a depth artifact, a
+   narrower case not covered by this pass; see the mobile-editor report for that
+   known gap. */
+@media (hover: none) and (pointer: coarse) {
+  .placement-viewer .unseen-viewer__directions { display: grid; }
+}
+
+/* Scene page (B12): edge-to-edge immersion. No .page wrapper here — this
+   sits as a direct <main> child so it isn't constrained to the 1184px
+   content column, and its height fills exactly the viewport below the
+   sticky header (no extra scroll, no dead space below the canvas). */
+.scene-immersive { position: relative; height: calc(100dvh - var(--header-height)); min-height: 420px; overflow: hidden; background: var(--viewer-canvas); }
+.scene-immersive #viewer-root, .scene-immersive [data-viewer-root] { position: absolute; inset: 0; width: 100%; height: 100%; min-height: 0; background: var(--viewer-canvas); }
+.scene-immersive .viewer-render-host { position: absolute; inset: 0; }
+.scene-immersive .viewer-stage, .scene-immersive .viewer-unavailable { position: absolute; inset: 0; min-height: 0; }
+/* The adapter's own non-visual "已定位照片" list (spec §8 item 4) — kept
+   fully functional, just docked as a slim strip right above our glass bar
+   instead of stacking below the canvas as a stray, isolated pill (B16). */
+.scene-immersive .viewer-photo-list { position: absolute; right: 0; bottom: var(--viewer-glass-bar-height); left: 0; z-index: 2; justify-content: center; padding: 6px 12px; border-top: 0; background: transparent; }
+.scene-immersive .viewer-photo-button { min-height: 36px; padding: 6px 14px; border-radius: 999px; background: var(--viewer-control); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); font-size: 13px; }
+/* B: "转场结束后...脉冲一次『已定位·当前照片』标记高亮" — is-current is a sticky marker
+   for whichever photo #focus() last completed a transition onto (apps/web/src/adapters/
+   viewer/index.js's #pulseFocused()); is-focus-pulse is the one-shot ring pulse replayed
+   on every fresh transition, including re-focusing the same photo. Sitewide
+   prefers-reduced-motion (below) already zeroes animation-duration, so this collapses to
+   just the static is-current outline with no motion for those visitors. */
+.scene-immersive .viewer-photo-button.is-current { border-color: var(--viewer-focus); box-shadow: 0 0 0 1px var(--viewer-focus) inset; }
+.scene-immersive .viewer-photo-button.is-focus-pulse { animation: viewer-photo-pulse 900ms ease-out; }
+@keyframes viewer-photo-pulse { 0% { box-shadow: 0 0 0 0 color-mix(in srgb, var(--viewer-focus) 70%, transparent), 0 0 0 1px var(--viewer-focus) inset; } 100% { box-shadow: 0 0 0 10px color-mix(in srgb, var(--viewer-focus) 0%, transparent), 0 0 0 1px var(--viewer-focus) inset; } }
+
+.scene-immersive .viewer-topbar { position: absolute; top: max(10px, env(safe-area-inset-top)); left: 0; z-index: 3; display: grid; justify-items: center; gap: 8px; width: 100%; padding: 0 12px; pointer-events: none; }
+.scene-immersive .viewer-topbar > * { pointer-events: auto; }
+.scene-immersive .view-tabs { width: auto; min-width: 220px; border: 1px solid var(--viewer-border); background: var(--viewer-glass); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); box-shadow: none; }
+.scene-immersive .view-tabs a { color: var(--viewer-ink-muted); }
+.scene-immersive .view-tabs a[aria-current="page"] { background: var(--viewer-surface-raised); color: var(--viewer-ink); box-shadow: none; }
+/* Track 4's own top row (.unseen-viewer__top: on-canvas status pill left,
+   return/retry/reset/fullscreen buttons right) lives in the same corner our
+   floating view-tabs+HUD stack does. Rather than fight it for the same
+   band — the native row's real width varies with its button count/labels
+   and can't be measured from here — reserve room below our stack via
+   padding-top on its own HUD container (longhand, so it doesn't clobber the
+   12px set on the other three sides) and let Track 4's row start clear of
+   it at every viewport width. */
+.scene-immersive .unseen-viewer__hud { padding-top: calc(max(10px, env(safe-area-inset-top)) + 96px); }
+
+.viewer-skip-link.skip-link { top: max(10px, env(safe-area-inset-top)); background: var(--viewer-surface-raised); color: var(--viewer-ink); box-shadow: var(--shadow-raised); }
+
+.scene-immersive .viewer-glass-bar { position: absolute; right: 0; bottom: 0; left: 0; z-index: 3; min-height: var(--viewer-glass-bar-height); padding: 10px max(12px, env(safe-area-inset-right)) max(10px, env(safe-area-inset-bottom)) max(12px, env(safe-area-inset-left)); border-top: 1px solid var(--viewer-border); background: var(--viewer-glass); backdrop-filter: blur(20px) saturate(1.15); -webkit-backdrop-filter: blur(20px) saturate(1.15); }
+
+/* B14, C fix (2026-08-17): Track 4's own always-on "前/左/后/右" + ↑←↓→
+   direction/translation controls (packages/viewer's .unseen-viewer__bottom)
+   collapse behind the single compass button by default and only reveal on
+   toggle — pure CSS, Track 4's DOM/keyboard/focus behavior underneath is
+   untouched. Only scoped to the scene page: the placement editor never gets
+   this class, so its own direction controls stay always-visible as before.
+   ---
+   C regression: the original rule below hid .unseen-viewer__bottom itself
+   with display:none outside compass-open. That's a parent element — a
+   display:none ancestor removes *every* descendant from layout regardless
+   of the descendant's own display value, so .unseen-viewer__translation-
+   controls (the depth-parallax 前/后/左/右 move buttons, only ever present
+   for spaces with depth artifacts — [data-depth-ready=true] is still Track
+   4's own gate, untouched) came out 0x0 and stayed genuinely unreachable,
+   not just visually deprioritized behind the toggle like the rotation pad.
+   Fix (option ①, chosen over adding an apps/web-drawn button group that
+   duplicates Track 4's own translation API): un-hide .unseen-viewer__bottom
+   itself and hide only .unseen-viewer__directions (the rotation pad) behind
+   the compass toggle as before. .unseen-viewer__translation-controls is
+   rare/valuable enough (a whole separate feature track, cc/depth-parallax)
+   that it gets its own always-visible slot pinned above the glass bar
+   instead of waiting for an extra tap; when depth-ready is false it renders
+   nothing (Track 4's own display:none default) so non-depth spaces are
+   visually unaffected — "无深度空间不出现" still holds. compass-open still
+   reveals both together as a matching glass popover, unchanged. */
+.scene-immersive .unseen-viewer__bottom { position: absolute; right: 12px; bottom: calc(var(--viewer-glass-bar-height) + 12px); left: auto; }
+.scene-immersive:not(.compass-open) .unseen-viewer__directions { display: none; }
+.scene-immersive.compass-open .unseen-viewer__bottom { flex-direction: column; align-items: flex-end; padding: 10px; border: 1px solid var(--viewer-border); border-radius: var(--radius-md); background: var(--viewer-glass); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); transition: opacity var(--dur-base) ease; }
+.scene-immersive [data-compass-toggle][aria-expanded="true"] { background: var(--viewer-control-hover); }
+
+/* B15: Track 4's own on-canvas status pill (.unseen-viewer__status, top-left
+   in .unseen-viewer__top) sets its own text straight to "已回到照片所在位置。"
+   after every successful focus and never clears it — app.js's
+   watchViewerStatusToast() adds/removes this class 3s after each text
+   change (MutationObserver), fading the pill without ever touching its
+   aria-live=polite semantics or textContent. */
+.unseen-viewer__status.is-quiet { opacity: 0; transition: opacity var(--dur-slow) ease; }
+
+/* Dark-viewer focus token everywhere inside the immersive scene/placement
+   viewer (spec §7: dark viewer must never fall back to the light burgundy
+   outline) — higher specificity than the sitewide :focus-visible rule, so
+   this wins regardless of style-tag injection order. */
+.scene-immersive :focus-visible, .placement-viewer :focus-visible { outline-color: var(--viewer-focus); }
+
+body.scene-immersive-active .toast-region { bottom: calc(var(--viewer-glass-bar-height) + env(safe-area-inset-bottom) + 12px); }
+.qr-video { width: 100%; border-radius: var(--radius-md); background: var(--viewer-canvas); }
+
+.upload-layout { display: grid; gap: 24px; }
+.notice-box { padding: 16px; border: 1px solid var(--border-strong); border-radius: var(--radius-md); background: var(--surface-warm); }
+/* Block 5 (UI v4 spec "块5"): dashed-box placeholder → hairline rounded card
+   with an icon-tile, matching the rest of the B "灵光" component language
+   instead of a bare drag-target box. Still just a styled file-picker label —
+   no drag/drop event wiring changes here (upload semantics untouched). */
+.drop-zone { min-height: 220px; padding: 32px; border: 1px solid var(--border); border-radius: var(--radius-xl); background: var(--surface); text-align: center; justify-items: center; align-content: center; }
+.drop-zone input { max-width: 100%; }
+.drop-zone-icon { width: 56px; height: 56px; flex: 0 0 56px; }
+.drop-zone-icon .icon { width: 26px; height: 26px; }
+.batch-list { display: grid; gap: 12px; }
+/* Queue/receipt row (block 5): thumbnail (radius-sm) + filename (truncated,
+   see .batch-item-name) + chip/progress. Shared by the pre-finalize editable
+   queue (batchItemRow) and the read-only receipt list (batchReceiptItemLink)
+   — both build on the same .batch-thumb/.batch-item-copy/.batch-item-actions
+   grid cells so the two visually agree. */
+.batch-item { display: grid; grid-template-columns: 88px minmax(0, 1fr) auto; align-items: center; gap: 16px; padding: 12px; }
+a.batch-item { text-decoration: none; color: inherit; }
+.batch-thumb { width: 88px; height: 72px; overflow: hidden; border-radius: var(--radius-sm); background: var(--surface-muted); }
+.batch-thumb img { width: 100%; height: 100%; object-fit: cover; }
+/* Block 6 (accountUploadsPage row, "与块 5 回执行视觉一致"): same slot, no
+   single photo to show for a whole batch — a centered icon stands in. */
+.batch-thumb-icon { display: grid; place-items: center; color: var(--ink-subtle); }
+.batch-item-copy { display: grid; min-width: 0; justify-items: start; gap: 4px; }
+.batch-item-name { display: block; max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.batch-item-actions { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 8px; }
+/* Thin gradient progress bar for a still-in-flight queue item (block 5:
+   "进度用细渐变条") — same shimmering-fill mechanics as .loading-line
+   (reused, not reimplemented), just a slimmer 4px bar so it reads as a row
+   accent rather than a page-level loading state. */
+.loading-line-thin { height: 4px; }
+
+/* batchResultPage stat row (block 5, B10 convention reused: badge-dot + "X n
+   · Y m"). The dot here is plain aria-hidden decoration — see the
+   batchResultStats/statsLine comment in templates.js for why it doesn't carry
+   its own aria-label. */
+.batch-stats { display: flex; align-items: center; gap: 8px; margin: 4px 0 0; }
+/* Recovery-credential card (block 5: "恢复凭据区独立卡"). Monospace so the
+   receipt code's characters are unambiguous to read/type, wraps instead of
+   overflowing on narrow widths. */
+.credential-row { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; }
+.credential-code { flex: 1 1 220px; min-width: 0; overflow-wrap: anywhere; padding: 10px 14px; border: 1px solid var(--border); border-radius: var(--radius-sm); background: var(--surface-muted); color: var(--ink); font-family: ui-monospace, "SF Mono", "Cascadia Code", Consolas, monospace; font-size: 13px; line-height: 20px; }
+
+.placement-editor { display: grid; gap: 24px; }
+.placement-viewer { min-width: 0; }
+.placement-target { display: grid; grid-template-columns: 72px minmax(0, 1fr); align-items: center; gap: 12px; }
+.placement-target img { width: 72px; height: 72px; object-fit: cover; border-radius: var(--radius-sm); background: var(--surface-muted); }
+.ai-candidates { display: grid; gap: 8px; padding: 12px; border: 1px solid var(--border-strong); border-radius: var(--radius-sm); background: var(--surface-warm); }
+.ai-candidates .cluster { gap: 8px; }
+.candidate-chip { min-height: 36px; padding: 6px 14px; border: 1px solid var(--border-strong); border-radius: 999px; background: var(--surface); color: var(--burgundy); font-weight: 600; font-size: 13px; line-height: 20px; }
+.candidate-chip:hover { background: var(--surface-warm); }
+.candidate-chip[aria-pressed="true"] { border-color: var(--burgundy); background: var(--primary); }
+.direction-control { position: relative; width: min(100%, 360px); aspect-ratio: 1; margin: 0 auto; border: 1px solid var(--border-strong); border-radius: 999px; background: var(--halo), var(--surface); }
+.direction-control::before, .direction-control::after { position: absolute; inset: 50% 12%; height: 1px; background: var(--border); content: ""; }
+.direction-control::after { transform: rotate(90deg); }
+.direction-knob { position: absolute; left: 50%; top: 12%; width: 44px; height: 44px; transform: translate(-50%, -50%); border: 2px solid var(--burgundy); border-radius: 999px; background: var(--primary); box-shadow: var(--shadow-card); }
+.range-row { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; align-items: center; gap: 12px; }
+.range-row input { width: 100%; min-height: 44px; accent-color: var(--burgundy); }
+
+.spaces-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+.space-card { overflow: hidden; }
+.space-card-cover { height: 180px; background: var(--surface-warm); }
+.space-card-cover img { width: 100%; height: 100%; object-fit: cover; }
+.space-card-cover-empty { display: grid; width: 100%; height: 100%; place-items: center; color: var(--ink-subtle); }
+.space-card-cover-empty .icon { width: 28px; height: 28px; }
+.space-card .card-body { display: grid; gap: 12px; }
+
+/* Block 6 ("管理页是唯一可用三栏的页面，桌面 240/主区/320"): the only page in
+   the product allowed a three-column desktop layout — nav rail / tab content
+   / a read-only context rail (space quick-facts + recent activity, see
+   manageContextRail in templates.js) that stays in sync with whichever tab is
+   open without duplicating that tab's own primary content. Collapses to a
+   single stacked column below 1248 alongside the nav (see the narrow-viewport
+   media query further down). */
+.manage-shell { display: grid; grid-template-columns: 240px minmax(0, 1fr) 320px; gap: 24px; align-items: start; }
+/* Tab rail reuses the segmented-control language (block 3's .view-tabs/.segmented):
+   muted track background, white "selected" chip with shadow-card, 180ms color
+   transition. Applies to both the vertical desktop rail and the horizontal
+   mobile scroller (same markup, see the narrow-viewport override below). */
+.manage-nav { position: sticky; top: 88px; padding: 4px; border: 1px solid var(--border); border-radius: var(--radius-lg); background: var(--surface-muted); box-shadow: none; }
+.manage-nav a { min-height: 44px; display: flex; align-items: center; gap: 10px; padding: 10px 12px; border-radius: var(--radius-sm); color: var(--ink-muted); text-decoration: none; transition: background-color var(--dur-base) ease, color var(--dur-base) ease, box-shadow var(--dur-base) ease; }
+.manage-nav a[aria-current="page"] { background: var(--surface); color: var(--burgundy); font-weight: 600; box-shadow: var(--shadow-card); }
+.manage-content { min-width: 0; }
+/* Right rail (block 6, contract §4 three-column allowance): quiet, read-only —
+   progress ring + collection/sharing chips + a short recent-activity list, all
+   info that already exists on `management` (spaceReturnStats/audit), nothing
+   new fetched just to fill the column. */
+.manage-context { position: sticky; top: 88px; padding: 20px; }
+.manage-context-space { display: flex; align-items: center; gap: 12px; }
+.manage-context-space strong { display: block; font-size: 16px; line-height: 22px; }
+.manage-context h3 { margin: 0 0 4px; font-size: 13px; line-height: 18px; }
+.manage-activity-list { display: grid; margin: 0; padding: 0; list-style: none; }
+.manage-activity-list li { padding: 8px 0; border-bottom: 1px solid var(--border); color: var(--ink-muted); font-size: 14px; line-height: 20px; }
+.manage-activity-list li:last-child { border-bottom: 0; padding-bottom: 0; }
+.queue-layout { display: grid; gap: 16px; }
+.review-card { display: grid; grid-template-columns: 180px minmax(0, 1fr); overflow: hidden; }
+.review-card-media { min-height: 210px; background: var(--surface-muted); }
+.review-card-media img { width: 100%; height: 100%; object-fit: cover; }
+.review-card .card-body { display: grid; align-content: center; gap: 16px; }
+/* Hairline list (block 6, "表格/列表加 hairline 分隔"): a single card shell
+   with plain hairline-separated rows instead of a stack of individually
+   bordered/shadowed row-cards — reads as one dense table, not N small cards.
+   Row content (.setting-row/.member-row) keeps its own layout rules; it just
+   no longer carries its own border/radius/shadow when nested here. */
+.list-card { border: 1px solid var(--border); border-radius: var(--radius-lg); background: var(--surface); box-shadow: var(--shadow-card); overflow: hidden; }
+.list-card > * { padding-inline: 16px; }
+.list-card > * + * { border-top: 1px solid var(--border); }
+.settings-list { display: grid; gap: 12px; }
+/* .setting-row is used on <article>/<div> rows but also as a plain <button>
+   (accountPage's "导出我的数据") or <a> (accountPage's old "我的上传" link,
+   still true generally) — without an explicit reset those tags keep the
+   browser's own UA background/border, which showed up as a stray grey pill
+   once the row no longer got its background for free from a co-applied
+   .card class (see .list-card above). */
+.setting-row { width: 100%; min-height: 44px; display: flex; align-items: center; justify-content: space-between; gap: 20px; padding: 14px 16px; border: 0; background: none; color: inherit; text-align: left; text-decoration: none; }
+.setting-copy { min-width: 0; }
+.setting-copy strong { display: block; }
+.setting-copy span { color: var(--ink-muted); font-size: 14px; line-height: 20px; }
+.member-row { min-height: 44px; display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: 16px; padding: 16px; }
+.avatar { width: 44px; height: 44px; display: grid; place-items: center; border-radius: 999px; background: var(--pink-soft); color: var(--burgundy); font-weight: 700; }
+
+.qr-wrap { width: min(100%, 320px); margin: 0 auto; padding: 20px; border: 1px solid var(--border); border-radius: var(--radius-lg); background: var(--surface); }
+.qr-canvas { width: 100%; aspect-ratio: 1; image-rendering: pixelated; }
+.campaign-card { padding: 16px; }
+.campaign-link { overflow-wrap: anywhere; }
+
+.account-layout { display: grid; gap: 24px; }
+.account-summary { display: flex; align-items: center; gap: 16px; }
+.account-summary .avatar { width: 56px; height: 56px; }
+.danger-zone { border-color: var(--danger-border); }
+
+.toast-region { position: fixed; right: 16px; bottom: 16px; z-index: 80; width: min(360px, calc(100% - 32px)); display: grid; gap: 8px; pointer-events: none; }
+.toast { padding: 14px 16px; border: 1px solid var(--border-strong); border-radius: var(--radius-md); background: var(--surface); box-shadow: var(--shadow-raised); color: var(--ink); }
+.toast-success { border-color: var(--success); }
+.toast-error { border-color: var(--danger-border); }
+
+.dialog-scrim { position: fixed; inset: 0; z-index: 60; display: grid; place-items: center; padding: 16px; background: var(--scrim); }
+.dialog { width: min(100%, 520px); max-height: calc(100dvh - 32px); overflow: auto; border: 1px solid var(--border-strong); border-radius: var(--radius-lg); background: var(--surface); box-shadow: var(--shadow-raised); }
+.dialog-header { display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; padding: 20px 20px 0; }
+.dialog-body { padding: 20px; }
+.dialog-footer { display: flex; justify-content: flex-end; flex-wrap: wrap; gap: 12px; padding: 0 20px 20px; }
+.local-captcha-dialog { width: min(100%, 440px); }
+.local-captcha-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+.local-captcha-tile { aspect-ratio: 1; padding: 6px; overflow: hidden; border: 2px solid var(--border); border-radius: var(--radius-sm); background: var(--surface-muted); }
+.local-captcha-tile:hover { border-color: var(--border-strong); }
+.local-captcha-tile[aria-pressed="true"] { border-color: var(--burgundy); background: var(--pink-soft); box-shadow: var(--shadow-card); }
+.local-captcha-tile svg { width: 100%; height: 100%; }
+.local-captcha-tile circle { fill: var(--border-strong); opacity: .3; }
+
+/* B19: the "⋯" overflow menu (photo detail page) is a dialog full of plain
+   buttons — see openPhotoMenuDialog in app.js — not a bespoke dropdown
+   widget, so it inherits the dialog's Tab-trap/Escape handling for free. */
+.menu-list { display: grid; gap: 2px; }
+.menu-item { min-height: 44px; display: flex; align-items: center; gap: 10px; padding: 10px 12px; border: 0; border-radius: var(--radius-sm); background: transparent; color: var(--ink); font-weight: 500; text-align: left; transition: background-color var(--dur-base) ease; }
+.menu-item:hover, .menu-item:focus-visible { background: var(--surface-warm); }
+
+.bottom-nav { position: fixed; right: 0; bottom: 0; left: 0; z-index: 20; display: none; min-height: calc(64px + env(safe-area-inset-bottom)); padding: 4px 8px env(safe-area-inset-bottom); border-top: 1px solid var(--border); background: var(--canvas); }
+.bottom-nav a { min-width: 64px; min-height: 56px; flex: 1; display: grid; place-items: center; align-content: center; gap: 2px; border-radius: var(--radius-sm); color: var(--ink-muted); font-size: 12px; line-height: 16px; text-decoration: none; }
+.bottom-nav a[aria-current="page"] { color: var(--burgundy); background: var(--surface-warm); }
+
+@media (min-width: 1248px) {
+  .header-inner, .local-locator-banner-inner, .temporary-access-banner-inner, .page { width: min(1184px, calc(100% - 64px)); }
+  .page { padding-top: 40px; }
+  .button-primary { min-height: 44px; }
+  .nav-card-grid { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
+  .gallery { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
+  .photo-detail-media { min-height: 560px; }
+  .upload-layout { grid-template-columns: minmax(0, 1fr) 320px; }
+  .placement-editor { grid-template-columns: minmax(0, 1fr) 320px; }
+  .account-layout { grid-template-columns: minmax(0, 1fr) 320px; }
+}
+
+@media (max-width: 1247px) {
+  .site-header .header-link .label { display: none; }
+  .product-header-link { display: none; }
+  .page { padding-top: 24px; padding-bottom: 48px; }
+  .temporary-access-banner-inner { min-height: 0; align-items: flex-start; flex-direction: column; gap: 6px; padding: 12px 0; }
+  .home-page { padding-top: 16px; }
+  /* Block 7 (ui-merge punch list: the base rule above no longer sets a
+     max-width at all — see its comment — so this max-width: none is now
+     belt-and-suspenders rather than an override of a competing desktop cap;
+     kept explicit anyway so this rule still reads correctly on its own).
+     Verified rendered single-line at 390×844. Still reuses the base h1
+     32/40 token pair, not a one-off size. */
+  .home-copy h1 { max-width: none; font-size: 32px; line-height: 40px; }
+  .space-title-row, .page-heading { align-items: flex-start; flex-direction: column; gap: 12px; }
+  .cap-tabs { width: 100%; overflow-x: auto; }
+  .cap-tabs a { min-width: 0; flex: 1; justify-content: center; padding-inline: 4px; white-space: nowrap; }
+  .photo-card:nth-child(5n + 1) { min-height: 320px; }
+  /* B17/B20: keep the dark-canvas/contain hero treatment on narrow viewports
+     too (previously overridden to a cropped object-fit:cover 4:3 box here) —
+     just size it off viewport height so it still dominates the first screen. */
+  .photo-detail-media { min-height: min(58dvh, 520px); }
+  .viewer-fixture, .viewer-stage, [data-viewer-root], .viewer-render-host { min-height: min(58dvh, 520px); }
+  /* Mirrors the explicit height added to the base .viewer-render-host rule above —
+     see that rule's comment for why min-height alone leaves .unseen-viewer collapsed
+     to a black-filled 240px sliver. Narrow-viewport value stays in sync with the
+     min-height on this same line by construction (same min(58dvh,520px) formula). */
+  .viewer-render-host { height: min(58dvh, 520px); }
+  /* Placement editor AI-candidate chips (placementEditorPage's aiCandidatesSection)
+     were min-height:36px sitewide — under the 44px touch target this page's other
+     controls already honor (.glass-btn-icon, .filmstrip-item, .range-row input, the
+     unseen-viewer__* buttons). Bumped only in this narrow-viewport bucket so the
+     desktop/mouse 36px chip is untouched. */
+  .candidate-chip { min-height: 44px; }
+  .batch-item { grid-template-columns: 72px minmax(0, 1fr); }
+  .batch-thumb { width: 72px; height: 64px; }
+  .batch-item-actions { grid-column: 1 / -1; justify-content: flex-start; }
+  .spaces-grid { grid-template-columns: 1fr; }
+  .manage-shell { min-width: 0; grid-template-columns: minmax(0, 1fr); }
+  .manage-nav { position: static; min-width: 0; max-width: 100%; display: flex; overflow-x: auto; white-space: nowrap; }
+  .manage-nav a { flex: 0 0 auto; }
+  .manage-context { position: static; }
+  .review-card { grid-template-columns: 1fr; }
+  .review-card-media { min-height: 240px; }
+  .toast-region { bottom: 16px; }
+  .product-journey { margin-inline: -16px; padding-inline: 16px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
+  .photo-card:hover img, .interactive-card:hover, .interactive-card:active, .button:active { transform: none; }
+}
+
+/* ---- 纪念册工作台：两条清晰路径，仍然属于同一个 UNSEEN ---- */
+.book-studio-page { width: min(1040px, 100%); }
+.book-studio-intro { width: min(760px, 100%); display: grid; gap: 10px; }
+.book-studio-intro .lead { margin: 0; }
+.book-mode-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 420px), 1fr)); gap: clamp(16px, 3vw, 28px); }
+.book-mode-card { min-height: min(430px, 70dvh); display: flex; flex-direction: column; gap: 22px; padding: clamp(22px, 4vw, 36px); overflow: hidden; background: linear-gradient(155deg, var(--surface) 56%, var(--surface-warm)); }
+.book-mode-card--quick { box-shadow: var(--shadow-raised); }
+.book-mode-card__top { display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+.book-mode-card > .button, .book-mode-card > .fine { margin-top: auto; align-self: flex-start; }
+.book-layout-proof { height: 118px; display: grid; grid-template-columns: 1.2fr .72fr .72fr 1fr; gap: 8px; align-items: end; padding: 12px; border-radius: var(--radius-md); background: var(--ink); transform: rotate(-1deg); }
+.book-layout-proof span { display: block; height: 86%; border-radius: 3px; background: var(--canvas); box-shadow: inset 0 -22px 0 var(--pink-soft); }
+.book-layout-proof span:nth-child(2) { height: 62%; box-shadow: inset 0 -36px 0 var(--gold-soft); }
+.book-layout-proof span:nth-child(3) { height: 78%; background: linear-gradient(90deg, var(--canvas) 47%, transparent 47% 53%, var(--canvas) 53%); }
+.book-layout-proof span:nth-child(4) { height: 100%; box-shadow: inset 0 -10px 0 var(--surface-warm); }
+.book-story-proof { height: 118px; display: grid; grid-template-columns: 1fr 34px 1fr; align-items: center; gap: 8px; padding: 18px; border: 1px solid var(--border); border-radius: var(--radius-md); background: var(--surface-muted); }
+.book-story-proof span { height: 68px; display: grid; place-items: center; border-radius: var(--radius-sm); background: var(--surface); color: var(--ink-muted); font-family: "Songti SC", "Iowan Old Style", serif; }
+.book-story-proof i { height: 1px; background: var(--border-strong); position: relative; }
+.book-story-proof i::after { content: ""; position: absolute; right: -1px; top: -3px; width: 7px; height: 7px; border-radius: 50%; background: var(--pink); }
+.book-print-note { display: flex; flex-wrap: wrap; align-items: flex-start; gap: 12px; padding: 16px 18px; border: 1px solid var(--border); border-radius: var(--radius-md); background: var(--surface-warm); }
+.book-print-note p { margin: 2px 0 0; }
+
+/* ---- 快速成册工作台：warm-glaze 底色，"版式试纸"是唯一的视觉签名 ---- */
+.zine-route { padding-top: 24px; }
+.zine-intro { max-width: 68ch; margin-bottom: 24px; }
+.zine-privacy { display: inline-flex; align-items: center; gap: 6px; margin-top: 8px; padding: 8px 12px; border: 1px solid var(--border-strong); border-radius: var(--radius-md); background: var(--surface-warm); color: var(--ink); }
+
+.zine-picker { width: min(920px, 100%); padding: clamp(20px, 4vw, 36px); gap: 24px; }
+.zine-picker-heading h2, .zine-finish-heading h2 { margin-bottom: 8px; font-family: "Songti SC", "Iowan Old Style", serif; }
+.zine-picker-heading > :last-child, .zine-finish-heading > :last-child { margin-bottom: 0; }
+.zine-source-actions, .zine-selection-row { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; }
+.zine-source-actions { justify-content: flex-start; }
+.zine-selection-row p { margin: 0; }
+.zine-file-button { position: relative; overflow: hidden; text-align: center; }
+.zine-file-button input[type="file"] { position: absolute; inset: 0; width: 100%; opacity: 0; cursor: pointer; }
+.zine-file-button:focus-within { outline: 2px solid var(--burgundy); outline-offset: 3px; }
+.zine-empty-hint { margin: -8px 0 0; }
+
+.zine-thumb-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(84px, 1fr)); gap: 10px; margin: 0; padding: 0; list-style: none; }
+.zine-thumb { position: relative; aspect-ratio: 1; overflow: hidden; border: 1px solid var(--border); border-radius: var(--radius-sm); background: var(--surface-muted); }
+.zine-thumb img { width: 100%; height: 100%; object-fit: cover; }
+.zine-thumb-order { position: absolute; bottom: 5px; left: 5px; min-width: 24px; height: 24px; display: grid; place-items: center; padding: 0 5px; border-radius: 999px; background: var(--surface); color: var(--burgundy); box-shadow: var(--shadow-card); font-size: 11px; font-weight: 700; }
+.zine-thumb-remove { position: absolute; top: 4px; right: 4px; width: 28px; height: 28px; display: grid; place-items: center; padding: 0; border: 0; border-radius: 999px; background: var(--scrim); color: var(--surface); font-size: 12px; line-height: 1; }
+
+.zine-control-group { min-width: 0; margin: 0; padding: 0; border: 0; }
+.zine-control-group legend { width: 100%; display: flex; align-items: baseline; justify-content: space-between; gap: 12px; margin-bottom: 10px; padding: 0; }
+.zine-control-group legend span { color: var(--ink); font-weight: 700; }
+.zine-control-group legend small { color: var(--ink-subtle); font-size: 12px; }
+.zine-control-columns { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); gap: 24px; }
+
+.zine-proof-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 210px), 1fr)); gap: 10px; }
+.zine-proof-option, .zine-format-option { min-width: 0; cursor: pointer; }
+.zine-proof-card { min-height: 164px; display: grid; grid-template-rows: 76px auto 1fr; gap: 7px; padding: 10px; border: 1px solid var(--border); border-radius: var(--radius-md); background: var(--surface); color: var(--ink); transition: border-color var(--dur-base) ease, transform var(--dur-base) ease, box-shadow var(--dur-base) ease; }
+.zine-proof-card strong { font-family: "Songti SC", "Iowan Old Style", serif; font-size: 17px; }
+.zine-proof-card small { color: var(--ink-muted); font-size: 12px; line-height: 17px; }
+.zine-proof-option:hover .zine-proof-card { transform: translateY(-2px); box-shadow: var(--shadow-card); }
+.zine-proof-option input:checked + .zine-proof-card { border-color: var(--burgundy); box-shadow: 0 0 0 1px var(--burgundy); }
+.zine-proof-option input:focus-visible + .zine-proof-card, .zine-format-option input:focus-visible + span { outline: 2px solid var(--burgundy); outline-offset: 3px; }
+.zine-proof-strip { display: grid; gap: 4px; overflow: hidden; padding: 6px; border-radius: var(--radius-sm); background: var(--surface-muted); }
+.zine-proof-strip i { display: block; min-width: 0; min-height: 0; border-radius: 3px; background: linear-gradient(135deg, var(--pink-soft), var(--gold-soft)); }
+.zine-proof-card[data-zine-proof="story"] .zine-proof-strip { grid-template: repeat(2, 1fr) / 1.4fr .8fr; }
+.zine-proof-card[data-zine-proof="story"] .zine-proof-strip i:first-child { grid-row: 1 / -1; }
+.zine-proof-card[data-zine-proof="gallery"] .zine-proof-strip { grid-template: 1fr / repeat(4, 1fr); gap: 8px; padding: 13px 10px; background: var(--canvas); }
+.zine-proof-card[data-zine-proof="gallery"] .zine-proof-strip i:nth-child(even) { transform: translateY(6px); }
+.zine-proof-card[data-zine-proof="collage"] .zine-proof-strip { grid-template: repeat(2, 1fr) / repeat(3, 1fr); gap: 2px; padding: 3px; background: var(--surface-warm); }
+.zine-proof-card[data-zine-proof="collage"] .zine-proof-strip i:first-child { grid-row: 1 / -1; }
+.zine-proof-card[data-zine-proof="collage"] .zine-proof-strip i:last-child { grid-column: 2 / -1; }
+
+.zine-format-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); gap: 8px; }
+.zine-format-option > span { min-height: 82px; display: grid; grid-template-columns: 38px minmax(0, 1fr); grid-template-rows: auto auto; align-content: center; align-items: center; column-gap: 8px; padding: 10px; border: 1px solid var(--border); border-radius: var(--radius-sm); background: var(--surface); }
+.zine-format-option input:checked + span { border-color: var(--burgundy); box-shadow: 0 0 0 1px var(--burgundy); }
+.zine-format-option strong { align-self: end; font-size: 13px; line-height: 18px; }
+.zine-format-option small { align-self: start; display: flex; flex-wrap: wrap; align-items: center; gap: 5px; color: var(--ink-subtle); font-size: 11px; }
+.zine-format-recommended { padding: 1px 5px; border-radius: 999px; background: var(--gold-soft); color: var(--burgundy); font-size: 9px; font-weight: 800; letter-spacing: .05em; }
+.zine-format-shape { grid-row: 1 / -1; place-self: center; display: block; border: 2px solid var(--border-strong); background: linear-gradient(145deg, var(--surface-warm), var(--gold-soft)); box-shadow: 3px 3px 0 var(--border); }
+.zine-format-shape[data-zine-format-shape="portrait"] { width: 22px; aspect-ratio: 3 / 4; }
+.zine-format-shape[data-zine-format-shape="square"] { width: 27px; aspect-ratio: 1; }
+.zine-format-shape[data-zine-format-shape="landscape"] { width: 34px; aspect-ratio: 4 / 3; }
+.zine-material-fit { display: grid; gap: 9px; margin-top: 10px; padding: 11px 12px; border: 1px solid var(--border); border-radius: var(--radius-sm); background: linear-gradient(135deg, var(--surface-warm), var(--surface)); box-shadow: inset 3px 0 0 var(--gold); }
+.zine-material-fit.is-measuring { color: var(--ink-muted); }
+.zine-material-fit.is-measuring strong { color: var(--ink); }
+.zine-material-fit.is-measuring span { font-size: 12px; }
+.zine-material-contact { display: flex; flex-wrap: wrap; gap: 7px 12px; padding-bottom: 8px; border-bottom: 1px dashed var(--border); }
+.zine-material-contact span { display: inline-flex; align-items: center; gap: 5px; color: var(--ink-subtle); font-size: 11px; font-weight: 700; }
+.zine-material-contact i { display: block; border: 1px solid var(--border-strong); background: var(--surface); box-shadow: 2px 2px 0 var(--pink-soft); }
+.zine-material-contact i[data-zine-orientation="portrait"] { width: 8px; height: 11px; }
+.zine-material-contact i[data-zine-orientation="square"] { width: 10px; height: 10px; }
+.zine-material-contact i[data-zine-orientation="landscape"] { width: 13px; height: 9px; }
+.zine-material-fit p { display: grid; gap: 2px; margin: 0; }
+.zine-material-fit p strong { color: var(--burgundy); font-family: "Songti SC", "Iowan Old Style", serif; font-size: 14px; }
+.zine-material-fit p span { color: var(--ink-muted); font-size: 12px; line-height: 18px; }
+.zine-sort-options { display: grid; gap: 8px; }
+.zine-sort-options label { min-height: 40px; display: flex; align-items: center; gap: 9px; padding: 7px 10px; border: 1px solid var(--border); border-radius: var(--radius-sm); background: var(--surface); font-size: 13px; }
+.zine-sort-options input { accent-color: var(--burgundy); }
+.zine-safe-note { margin: 0; padding: 12px 14px; border-left: 3px solid var(--gold); background: var(--surface-warm); color: var(--ink-muted); font-size: 13px; line-height: 20px; }
+.zine-safe-note strong { color: var(--ink); }
+.zine-final-action { display: flex; justify-content: flex-end; }
+
+.zine-progress { max-width: 480px; }
+.zine-progress .eyebrow { margin-bottom: 0; }
+
+.zine-flipbook { width: 100%; display: grid; justify-items: center; gap: 16px; padding-top: 8px; }
+.zine-finish-heading { max-width: 680px; text-align: center; }
+.zine-finish-heading .eyebrow { margin-bottom: 4px; }
+.zine-book-wrap { width: 100%; display: flex; align-items: center; justify-content: center; gap: 12px; }
+.zine-book { position: relative; width: min(calc(100vw - 132px), 360px); aspect-ratio: var(--zine-page-ratio, 3 / 4); cursor: pointer; perspective: 2200px; }
+.zine-flipbook[data-zine-format="square"] .zine-book { width: min(calc(100vw - 132px), 460px); }
+.zine-flipbook[data-zine-format="landscape"] .zine-book { width: min(calc(100vw - 132px), 620px); }
+.zine-book::after { position: absolute; inset: 5%; z-index: 100; pointer-events: none; border: 1px dashed var(--surface); border-radius: calc(var(--radius-md) / 2); content: ""; opacity: .56; filter: drop-shadow(0 0 1px var(--burgundy)); }
+.zine-stack { position: absolute; inset: 0; }
+.zine-page { position: absolute; inset: 0; transform-origin: left center; transform: rotateY(0deg); overflow: hidden; border-radius: var(--radius-md); box-shadow: var(--shadow-raised); backface-visibility: hidden; transition: transform 620ms cubic-bezier(.4, .1, .2, 1); }
+.zine-page.is-flipped { transform: rotateY(-178deg); }
+.zine-canvas { width: 100%; height: 100%; display: block; }
+.zine-flip-nav { width: 44px; height: 44px; flex: 0 0 44px; display: grid; place-items: center; padding: 0; border: 1px solid var(--border-strong); border-radius: 999px; background: var(--surface); color: var(--burgundy); font-size: 22px; }
+.zine-flip-nav:disabled { cursor: default; opacity: .38; }
+.zine-counter { margin: 0; }
+.zine-toolbar { justify-content: center; }
+.zine-flipbook > .zine-safe-note { width: min(680px, 100%); }
+.zine-flipbook > .fine:last-child { margin-bottom: 0; text-align: center; }
+
+.zine-print-sheet { display: none; }
+.zine-print-sheet[data-zine-format="portrait"] { --zine-print-width: 120mm; --zine-print-height: 160mm; }
+.zine-print-sheet[data-zine-format="square"] { --zine-print-width: 150mm; --zine-print-height: 150mm; }
+.zine-print-sheet[data-zine-format="landscape"] { --zine-print-width: 180mm; --zine-print-height: 135mm; }
+@media print {
+  @page { margin: 8mm; }
+  body * { visibility: hidden; }
+  .zine-print-sheet, .zine-print-sheet * { visibility: visible; }
+  .zine-print-sheet { position: absolute; inset: 0; display: block; margin: 0; }
+  .zine-print-page { width: var(--zine-print-width); height: var(--zine-print-height); max-width: 100%; display: block; margin: 0 auto; object-fit: contain; break-after: page; page-break-after: always; }
+  .zine-print-page:last-child { break-after: auto; page-break-after: auto; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .zine-page, .zine-proof-card { transition: none; }
+  .zine-proof-option:hover .zine-proof-card { transform: none; }
+}

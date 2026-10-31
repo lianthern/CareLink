@@ -1,0 +1,998 @@
+{
+  "schema": "unseen-stage-rc-chrome-perf-a11y-preflight/1",
+  "generatedAt": "2026-08-14T00:38:26.342Z",
+  "status": "PRE_RELEASE_PREFLIGHT_NOT_R0",
+  "claimBoundary": {
+    "productCandidate": "b4651c997a4411fb35271d7025321455ed3d674f",
+    "harnessBaseCommit": "1b545d32e6090a0a6eeb5d1b07e4907572a10299",
+    "runner": "tests/e2e/stage-rc-chrome-perf-a11y.mjs",
+    "runnerSha256": "0789bc0cbf918725fdbd877c34a4fb218fc313f8a3a6e761f63a80fe91c74317",
+    "localDeterministicFixture": true,
+    "fixturePromotedToProductionEvidence": false,
+    "productionReady": false,
+    "liveStaging4282Accessed": false,
+    "externalExposure": false,
+    "cloudWrites": 0
+  },
+  "platform": {
+    "os": "macOS",
+    "version": "15.7.8",
+    "build": "24G824",
+    "model": "Mac16,10",
+    "architecture": "arm64",
+    "chrome": {
+      "version": "151.0.7922.109",
+      "signingTeam": "EQHXZ8M8AV",
+      "signingTimestamp": "6 Aug 2026 at 11:03:50",
+      "notarizationTicketStapled": true,
+      "strictCodesignPass": false,
+      "strictCodesignFailure": "/Applications/Google Chrome.app: resource fork, Finder information, or similar detritus not allowed",
+      "spctlAccepted": true,
+      "spctlOutput": "/Applications/Google Chrome.app: accepted\nsource=Notarized Developer ID",
+      "toolAttestation": "DEGRADED_NOT_RELEASE_ATTESTATION",
+      "officialIntegrityPassClaimed": false
+    }
+  },
+  "frozenGate": {
+    "source": "contracts/source/technical/RELEASE-READINESS-CONTRACT.md §9",
+    "literal": "named 4G/25Mbps profile P75≤3s; Scene lazy load measured separately",
+    "profileSignatureComplete": false,
+    "missingSignatureFields": [
+      "RTT/latency",
+      "CPU throttle",
+      "cache cold/warm policy"
+    ],
+    "formalVerdict": "INDETERMINATE_PROFILE_UNDERSPECIFIED_FAIL_CLOSED"
+  },
+  "diagnosticBenchmark": {
+    "profile": {
+      "downloadBitsPerSecond": 25000000,
+      "uploadBitsPerSecond": 25000000,
+      "latencyMs": 0,
+      "cpuSlowdownMultiplier": 1,
+      "cacheDisabled": true,
+      "samples": 3
+    },
+    "percentileMethod": "nearest-rank (3 samples => maximum)",
+    "firstUsableDefinition": "navigation start to visible #main, heading and named interactive control after loading phase",
+    "routes": [
+      {
+        "id": "home",
+        "samples": [
+          {
+            "round": 1,
+            "route": "/",
+            "title": "UNSEEN · 打开共同空间",
+            "phase": null,
+            "firstUsableMs": 191.60000002384186,
+            "lcp": {
+              "name": "",
+              "entryType": "largest-contentful-paint",
+              "startTime": 232,
+              "duration": 0,
+              "navigationId": 6072,
+              "paintTime": 192.5,
+              "presentationTime": 232,
+              "size": 16536,
+              "renderTime": 232,
+              "loadTime": 0,
+              "id": "",
+              "url": ""
+            },
+            "paint": {
+              "first-paint": 108,
+              "first-contentful-paint": 108
+            },
+            "navigation": {
+              "name": "http://127.0.0.1:62435/",
+              "entryType": "navigation",
+              "startTime": 0,
+              "duration": 223.69999998807907,
+              "navigationId": 6072,
+              "initiatorType": "navigation",
+              "deliveryType": "",
+              "nextHopProtocol": "http/1.1",
+              "renderBlockingStatus": "non-blocking",
+              "contentType": "text/html",
+              "contentEncoding": "",
+              "workerStart": 0,
+              "workerRouterEvaluationStart": 0,
+              "workerCacheLookupStart": 0,
+              "workerMatchedSourceType": "",
+              "workerFinalSourceType": "",
+              "redirectStart": 0,
+              "redirectEnd": 0,
+              "fetchStart": 0.9000000357627869,
+              "domainLookupStart": 0.9000000357627869,
+              "domainLookupEnd": 0.9000000357627869,
+              "connectStart": 0.9000000357627869,
+              "secureConnectionStart": 0,
+              "connectEnd": 0.9000000357627869,
+              "requestStart": 1.600000023841858,
+              "responseStart": 6.5,
+              "firstInterimResponseStart": 0,
+              "finalResponseHeadersStart": 6.5,
+              "responseEnd": 7.600000023841858,
+              "transferSize": 2087,
+              "encodedBodySize": 1787,
+              "decodedBodySize": 1787,
+              "responseStatus": 200,
+              "serverTiming": [],
+              "unloadEventStart": 0,
+              "unloadEventEnd": 0,
+              "domInteractive": 72.19999998807907,
+              "domContentLoadedEventStart": 191.60000002384186,
+              "domContentLoadedEventEnd": 191.60000002384186,
+              "domComplete": 223.69999998807907,
+              "loadEventStart": 223.69999998807907,
+              "loadEventEnd": 223.69999998807907,
+              "type": "navigate",
+              "redirectCount": 0,
+              "activationStart": 0,
+              "criticalCHRestart": 0,
+              "notRestoredReasons": null,
+              "confidence": {}
+            }
+          },
+          {
+            "round": 2,
+            "route": "/",
+            "title": "UNSEEN · 打开共同空间",
+            "phase": null,
+            "firstUsableMs": 170.60000002384186,
+            "lcp": {
+              "name": "",
+              "entryType": "largest-contentful-paint",
+              "startTime": 200,
+              "duration": 0,
+              "navigationId": 4970,
+              "paintTime": 170.80000001192093,
+              "presentationTime": 200,
+              "size": 16536,
+              "renderTime": 200,
+              "loadTime": 0,
+              "id": "",
+              "url": ""
+            },
+            "paint": {
+              "first-paint": 96,
+              "first-contentful-paint": 96
+            },
+            "navigation": {
+              "name": "http://127.0.0.1:62435/",
+              "entryType": "navigation",
+              "startTime": 0,
+              "duration": 203.5,
+              "navigationId": 4970,
+              "initiatorType": "navigation",
+              "deliveryType": "",
+              "nextHopProtocol": "http/1.1",
+              "renderBlockingStatus": "non-blocking",
+              "contentType": "text/html",
+              "contentEncoding": "",
+              "workerStart": 0,
+              "workerRouterEvaluationStart": 0,
+              "workerCacheLookupStart": 0,
+              "workerMatchedSourceType": "",
+              "workerFinalSourceType": "",
+              "redirectStart": 0,
+              "redirectEnd": 0,
+              "fetchStart": 0.40000003576278687,
+              "domainLookupStart": 0.40000003576278687,
+              "domainLookupEnd": 0.40000003576278687,
+              "connectStart": 0.40000003576278687,
+              "secureConnectionStart": 0,
+              "connectEnd": 0.40000003576278687,
+              "requestStart": 0.9000000357627869,
+              "responseStart": 1.9000000357627869,
+              "firstInterimResponseStart": 0,
+              "finalResponseHeadersStart": 1.9000000357627869,
+              "responseEnd": 3,
+              "transferSize": 2087,
+              "encodedBodySize": 1787,
+              "decodedBodySize": 1787,
+              "responseStatus": 200,
+              "serverTiming": [],
+              "unloadEventStart": 29.400000035762787,
+              "unloadEventEnd": 29.400000035762787,
+              "domInteractive": 50,
+              "domContentLoadedEventStart": 170.60000002384186,
+              "domContentLoadedEventEnd": 170.69999998807907,
+              "domComplete": 203.4000000357628,
+              "loadEventStart": 203.5,
+              "loadEventEnd": 203.5,
+              "type": "navigate",
+              "redirectCount": 0,
+              "activationStart": 0,
+              "criticalCHRestart": 0,
+              "notRestoredReasons": null,
+              "confidence": {}
+            }
+          },
+          {
+            "round": 3,
+            "route": "/",
+            "title": "UNSEEN · 打开共同空间",
+            "phase": null,
+            "firstUsableMs": 175.20000004768372,
+            "lcp": {
+              "name": "",
+              "entryType": "largest-contentful-paint",
+              "startTime": 216,
+              "duration": 0,
+              "navigationId": 1331,
+              "paintTime": 175.4000000357628,
+              "presentationTime": 216,
+              "size": 16536,
+              "renderTime": 216,
+              "loadTime": 0,
+              "id": "",
+              "url": ""
+            },
+            "paint": {
+              "first-paint": 100,
+              "first-contentful-paint": 100
+            },
+            "navigation": {
+              "name": "http://127.0.0.1:62435/",
+              "entryType": "navigation",
+              "startTime": 0,
+              "duration": 207.30000001192093,
+              "navigationId": 1331,
+              "initiatorType": "navigation",
+              "deliveryType": "",
+              "nextHopProtocol": "http/1.1",
+              "renderBlockingStatus": "non-blocking",
+              "contentType": "text/html",
+              "contentEncoding": "",
+              "workerStart": 0,
+              "workerRouterEvaluationStart": 0,
+              "workerCacheLookupStart": 0,
+              "workerMatchedSourceType": "",
+              "workerFinalSourceType": "",
+              "redirectStart": 0,
+              "redirectEnd": 0,
+              "fetchStart": 0.6000000238418579,
+              "domainLookupStart": 0.6000000238418579,
+              "domainLookupEnd": 0.6000000238418579,
+              "connectStart": 0.6000000238418579,
+              "secureConnectionStart": 0,
+              "connectEnd": 0.6000000238418579,
+              "requestStart": 1.100000023841858,
+              "responseStart": 2.900000035762787,
+              "firstInterimResponseStart": 0,
+              "finalResponseHeadersStart": 2.900000035762787,
+              "responseEnd": 4.5,
+              "transferSize": 2087,
+              "encodedBodySize": 1787,
+              "decodedBodySize": 1787,
+              "responseStatus": 200,
+              "serverTiming": [],
+              "unloadEventStart": 33.90000003576279,
+              "unloadEventEnd": 33.90000003576279,
+              "domInteractive": 53.40000003576279,
+              "domContentLoadedEventStart": 175.20000004768372,
+              "domContentLoadedEventEnd": 175.30000001192093,
+              "domComplete": 207.30000001192093,
+              "loadEventStart": 207.30000001192093,
+              "loadEventEnd": 207.30000001192093,
+              "type": "navigate",
+              "redirectCount": 0,
+              "activationStart": 0,
+              "criticalCHRestart": 0,
+              "notRestoredReasons": null,
+              "confidence": {}
+            }
+          }
+        ],
+        "p75FirstUsableMs": 191.60000002384186,
+        "diagnosticThresholdMs": 3000,
+        "diagnosticWithinThreshold": true
+      },
+      {
+        "id": "authenticated-spaces",
+        "samples": [
+          {
+            "round": 1,
+            "route": "/spaces",
+            "title": "我的空间 · UNSEEN",
+            "phase": null,
+            "firstUsableMs": 168.0999999642372,
+            "lcp": null,
+            "paint": {},
+            "navigation": {
+              "name": "http://127.0.0.1:62435/spaces",
+              "entryType": "navigation",
+              "startTime": 0,
+              "duration": 164.39999997615814,
+              "navigationId": 4603,
+              "initiatorType": "navigation",
+              "deliveryType": "",
+              "nextHopProtocol": "http/1.1",
+              "renderBlockingStatus": "non-blocking",
+              "contentType": "text/html",
+              "contentEncoding": "",
+              "workerStart": 0,
+              "workerRouterEvaluationStart": 0,
+              "workerCacheLookupStart": 0,
+              "workerMatchedSourceType": "",
+              "workerFinalSourceType": "",
+              "redirectStart": 0,
+              "redirectEnd": 0,
+              "fetchStart": 0.19999998807907104,
+              "domainLookupStart": 0.19999998807907104,
+              "domainLookupEnd": 0.19999998807907104,
+              "connectStart": 0.19999998807907104,
+              "secureConnectionStart": 0,
+              "connectEnd": 0.19999998807907104,
+              "requestStart": 0.5999999642372131,
+              "responseStart": 1.300000011920929,
+              "firstInterimResponseStart": 0,
+              "finalResponseHeadersStart": 1.300000011920929,
+              "responseEnd": 2.5,
+              "transferSize": 2087,
+              "encodedBodySize": 1787,
+              "decodedBodySize": 1787,
+              "responseStatus": 200,
+              "serverTiming": [],
+              "unloadEventStart": 24,
+              "unloadEventEnd": 24,
+              "domInteractive": 43.59999996423721,
+              "domContentLoadedEventStart": 164.19999998807907,
+              "domContentLoadedEventEnd": 164.30000001192093,
+              "domComplete": 164.30000001192093,
+              "loadEventStart": 164.39999997615814,
+              "loadEventEnd": 164.39999997615814,
+              "type": "navigate",
+              "redirectCount": 0,
+              "activationStart": 0,
+              "criticalCHRestart": 0,
+              "notRestoredReasons": null,
+              "confidence": {}
+            }
+          },
+          {
+            "round": 2,
+            "route": "/spaces",
+            "title": "我的空间 · UNSEEN",
+            "phase": null,
+            "firstUsableMs": 171.69999998807907,
+            "lcp": null,
+            "paint": {},
+            "navigation": {
+              "name": "http://127.0.0.1:62435/spaces",
+              "entryType": "navigation",
+              "startTime": 0,
+              "duration": 167.79999995231628,
+              "navigationId": 9179,
+              "initiatorType": "navigation",
+              "deliveryType": "",
+              "nextHopProtocol": "http/1.1",
+              "renderBlockingStatus": "non-blocking",
+              "contentType": "text/html",
+              "contentEncoding": "",
+              "workerStart": 0,
+              "workerRouterEvaluationStart": 0,
+              "workerCacheLookupStart": 0,
+              "workerMatchedSourceType": "",
+              "workerFinalSourceType": "",
+              "redirectStart": 0,
+              "redirectEnd": 0,
+              "fetchStart": 0.3999999761581421,
+              "domainLookupStart": 0.3999999761581421,
+              "domainLookupEnd": 0.3999999761581421,
+              "connectStart": 0.3999999761581421,
+              "secureConnectionStart": 0,
+              "connectEnd": 0.3999999761581421,
+              "requestStart": 0.7999999523162842,
+              "responseStart": 1.7999999523162842,
+              "firstInterimResponseStart": 0,
+              "finalResponseHeadersStart": 1.7999999523162842,
+              "responseEnd": 2.799999952316284,
+              "transferSize": 2087,
+              "encodedBodySize": 1787,
+              "decodedBodySize": 1787,
+              "responseStatus": 200,
+              "serverTiming": [],
+              "unloadEventStart": 27.299999952316284,
+              "unloadEventEnd": 27.299999952316284,
+              "domInteractive": 46.89999997615814,
+              "domContentLoadedEventStart": 167.79999995231628,
+              "domContentLoadedEventEnd": 167.79999995231628,
+              "domComplete": 167.79999995231628,
+              "loadEventStart": 167.79999995231628,
+              "loadEventEnd": 167.79999995231628,
+              "type": "navigate",
+              "redirectCount": 0,
+              "activationStart": 0,
+              "criticalCHRestart": 0,
+              "notRestoredReasons": null,
+              "confidence": {}
+            }
+          },
+          {
+            "round": 3,
+            "route": "/spaces",
+            "title": "我的空间 · UNSEEN",
+            "phase": null,
+            "firstUsableMs": 172.69999998807907,
+            "lcp": null,
+            "paint": {},
+            "navigation": {
+              "name": "http://127.0.0.1:62435/spaces",
+              "entryType": "navigation",
+              "startTime": 0,
+              "duration": 168.69999998807907,
+              "navigationId": 7390,
+              "initiatorType": "navigation",
+              "deliveryType": "",
+              "nextHopProtocol": "http/1.1",
+              "renderBlockingStatus": "non-blocking",
+              "contentType": "text/html",
+              "contentEncoding": "",
+              "workerStart": 0,
+              "workerRouterEvaluationStart": 0,
+              "workerCacheLookupStart": 0,
+              "workerMatchedSourceType": "",
+              "workerFinalSourceType": "",
+              "redirectStart": 0,
+              "redirectEnd": 0,
+              "fetchStart": 0.800000011920929,
+              "domainLookupStart": 0.800000011920929,
+              "domainLookupEnd": 0.800000011920929,
+              "connectStart": 0.800000011920929,
+              "secureConnectionStart": 0,
+              "connectEnd": 0.800000011920929,
+              "requestStart": 1.699999988079071,
+              "responseStart": 3,
+              "firstInterimResponseStart": 0,
+              "finalResponseHeadersStart": 3,
+              "responseEnd": 4.199999988079071,
+              "transferSize": 2087,
+              "encodedBodySize": 1787,
+              "decodedBodySize": 1787,
+              "responseStatus": 200,
+              "serverTiming": [],
+              "unloadEventStart": 28.19999998807907,
+              "unloadEventEnd": 28.19999998807907,
+              "domInteractive": 47.69999998807907,
+              "domContentLoadedEventStart": 168.5999999642372,
+              "domContentLoadedEventEnd": 168.69999998807907,
+              "domComplete": 168.69999998807907,
+              "loadEventStart": 168.69999998807907,
+              "loadEventEnd": 168.69999998807907,
+              "type": "navigate",
+              "redirectCount": 0,
+              "activationStart": 0,
+              "criticalCHRestart": 0,
+              "notRestoredReasons": null,
+              "confidence": {}
+            }
+          }
+        ],
+        "p75FirstUsableMs": 172.69999998807907,
+        "diagnosticThresholdMs": 3000,
+        "diagnosticWithinThreshold": true
+      }
+    ],
+    "viewer": {
+      "status": "INDETERMINATE_SETUP_UNAVAILABLE",
+      "measured": false,
+      "reason": "No already-provisioned real scene plus admission was available in this isolated run; unauthenticated or query-fixture error pages were not sampled."
+    }
+  },
+  "authentication": {
+    "method": "real Web login form + isolated local OTP",
+    "accountTextPresent": true
+  },
+  "accessibility": {
+    "scope": "automated WCAG AA preflight; home + authenticated /spaces only",
+    "contrastPolicy": "gradient/image backgrounds skipped as INDETERMINATE",
+    "dependenciesAdded": 0,
+    "routes": [
+      {
+        "route": "/",
+        "lock": {
+          "route": "/",
+          "title": "UNSEEN · 打开共同空间",
+          "phase": null
+        },
+        "automated": {
+          "route": "/",
+          "title": "UNSEEN · 打开共同空间",
+          "phase": null,
+          "landmarks": {
+            "main": 1,
+            "header": 1,
+            "nav": 1
+          },
+          "headings": [
+            {
+              "level": 1,
+              "name": "打开受邀空间"
+            }
+          ],
+          "headingSkip": false,
+          "duplicateIds": [],
+          "unlabeledForms": [],
+          "unnamedButtons": [],
+          "textContrast": [],
+          "controlContrast": [],
+          "skippedText": 13,
+          "skippedControl": 1,
+          "skippedTextReasons": [
+            {
+              "tag": "STRONG",
+              "name": "本地定位 fixture：high / 需要确认 / failed",
+              "reason": "pseudo-element gradient/image/background"
+            },
+            {
+              "tag": "SPAN",
+              "name": "非真实定位质量 · 本机数据",
+              "reason": "pseudo-element gradient/image/background"
+            },
+            {
+              "tag": "A",
+              "name": "跳到主要内容",
+              "reason": "pseudo-element gradient/image/background"
+            },
+            {
+              "tag": "SPAN",
+              "name": "UNSEEN",
+              "reason": "pseudo-element gradient/image/background"
+            },
+            {
+              "tag": "SPAN",
+              "name": "帮助",
+              "reason": "pseudo-element gradient/image/background"
+            },
+            {
+              "tag": "SPAN",
+              "name": "登录",
+              "reason": "pseudo-element gradient/image/background"
+            },
+            {
+              "tag": "STRONG",
+              "name": "确定性本地定位样本",
+              "reason": "pseudo-element gradient/image/background"
+            },
+            {
+              "tag": "SPAN",
+              "name": "非真实定位质量",
+              "reason": "pseudo-element gradient/image/background"
+            },
+            {
+              "tag": "H1",
+              "name": "打开受邀空间",
+              "reason": "pseudo-element gradient/image/background"
+            },
+            {
+              "tag": "P",
+              "name": "查看空间里的照片，或上传你拍到的照片。",
+              "reason": "pseudo-element gradient/image/background"
+            },
+            {
+              "tag": "BUTTON",
+              "name": "打开空间",
+              "reason": "pseudo-element gradient/image/background"
+            },
+            {
+              "tag": "A",
+              "name": "我是空间成员，登录",
+              "reason": "pseudo-element gradient/image/background"
+            },
+            {
+              "tag": "FIGCAPTION",
+              "name": "朋友分享的空间照片",
+              "reason": "pseudo-element gradient/image/background"
+            }
+          ],
+          "skippedControlReasons": [
+            {
+              "tag": "BUTTON",
+              "name": "打开空间",
+              "reason": "pseudo-element gradient/image/background"
+            }
+          ],
+          "focusables": [
+            {
+              "tag": "A",
+              "name": "跳到主要内容"
+            },
+            {
+              "tag": "A",
+              "name": "UNSEEN 首页"
+            },
+            {
+              "tag": "A",
+              "name": "帮助"
+            },
+            {
+              "tag": "A",
+              "name": "登录"
+            },
+            {
+              "tag": "BUTTON",
+              "name": "打开空间"
+            },
+            {
+              "tag": "A",
+              "name": "我是空间成员，登录"
+            }
+          ]
+        },
+        "keyboard": {
+          "expectedPrefix": [
+            {
+              "tag": "A",
+              "name": "跳到主要内容"
+            },
+            {
+              "tag": "A",
+              "name": "UNSEEN 首页"
+            },
+            {
+              "tag": "A",
+              "name": "帮助"
+            },
+            {
+              "tag": "A",
+              "name": "登录"
+            },
+            {
+              "tag": "BUTTON",
+              "name": "打开空间"
+            },
+            {
+              "tag": "A",
+              "name": "我是空间成员，登录"
+            }
+          ],
+          "actual": [
+            {
+              "tag": "A",
+              "name": "跳到主要内容",
+              "visible": true,
+              "focusVisible": true
+            },
+            {
+              "tag": "A",
+              "name": "UNSEEN 首页",
+              "visible": true,
+              "focusVisible": true
+            },
+            {
+              "tag": "A",
+              "name": "帮助",
+              "visible": true,
+              "focusVisible": true
+            },
+            {
+              "tag": "A",
+              "name": "登录",
+              "visible": true,
+              "focusVisible": true
+            },
+            {
+              "tag": "BUTTON",
+              "name": "打开空间",
+              "visible": true,
+              "focusVisible": true
+            },
+            {
+              "tag": "A",
+              "name": "我是空间成员，登录",
+              "visible": true,
+              "focusVisible": true
+            }
+          ],
+          "orderPass": true,
+          "visibleNamedPass": true,
+          "visibleFocusPass": true
+        },
+        "axUnnamed": [],
+        "reflow200": {
+          "clientWidth": 390,
+          "scrollWidth": 390,
+          "pass": true
+        },
+        "reducedMotion": {
+          "rule": "opacity transitions <=120ms allowed; animation/continuous/scale/parallax/auto-pan rejected",
+          "offenders": [],
+          "pass": true
+        },
+        "checks": {
+          "landmarks": true,
+          "headings": true,
+          "formLabels": true,
+          "buttonNames": true,
+          "duplicateIds": true,
+          "textContrast": "INDETERMINATE",
+          "controlContrast": "INDETERMINATE",
+          "keyboardOrder": true,
+          "visibleFocus": true,
+          "reflow200": true,
+          "reducedMotion": true
+        }
+      },
+      {
+        "route": "/spaces",
+        "lock": {
+          "route": "/spaces",
+          "title": "我的空间 · UNSEEN",
+          "phase": null
+        },
+        "automated": {
+          "route": "/spaces",
+          "title": "我的空间 · UNSEEN",
+          "phase": null,
+          "landmarks": {
+            "main": 1,
+            "header": 1,
+            "nav": 1
+          },
+          "headings": [
+            {
+              "level": 1,
+              "name": "我的空间"
+            },
+            {
+              "level": 2,
+              "name": "还没有空间。创建一个空间开始收集照片。"
+            }
+          ],
+          "headingSkip": false,
+          "duplicateIds": [],
+          "unlabeledForms": [],
+          "unnamedButtons": [],
+          "textContrast": [],
+          "controlContrast": [],
+          "skippedText": 15,
+          "skippedControl": 0,
+          "skippedTextReasons": [
+            {
+              "tag": "STRONG",
+              "name": "本地定位 fixture：high / 需要确认 / failed",
+              "reason": "pseudo-element gradient/image/background"
+            },
+            {
+              "tag": "SPAN",
+              "name": "非真实定位质量 · 本机数据",
+              "reason": "pseudo-element gradient/image/background"
+            },
+            {
+              "tag": "A",
+              "name": "跳到主要内容",
+              "reason": "pseudo-element gradient/image/background"
+            },
+            {
+              "tag": "SPAN",
+              "name": "UNSEEN",
+              "reason": "pseudo-element gradient/image/background"
+            },
+            {
+              "tag": "SPAN",
+              "name": "帮助",
+              "reason": "pseudo-element gradient/image/background"
+            },
+            {
+              "tag": "SPAN",
+              "name": "我的空间",
+              "reason": "pseudo-element gradient/image/background"
+            },
+            {
+              "tag": "SPAN",
+              "name": "账号",
+              "reason": "pseudo-element gradient/image/background"
+            },
+            {
+              "tag": "STRONG",
+              "name": "确定性本地定位样本",
+              "reason": "pseudo-element gradient/image/background"
+            },
+            {
+              "tag": "SPAN",
+              "name": "非真实定位质量",
+              "reason": "pseudo-element gradient/image/background"
+            },
+            {
+              "tag": "P",
+              "name": "账号空间",
+              "reason": "pseudo-element gradient/image/background"
+            },
+            {
+              "tag": "H1",
+              "name": "我的空间",
+              "reason": "pseudo-element gradient/image/background"
+            },
+            {
+              "tag": "P",
+              "name": "按你的查看、上传和管理权限进入。",
+              "reason": "pseudo-element gradient/image/background"
+            },
+            {
+              "tag": "A",
+              "name": "创建空间",
+              "reason": "pseudo-element gradient/image/background"
+            },
+            {
+              "tag": "H2",
+              "name": "还没有空间。创建一个空间开始收集照片。",
+              "reason": "pseudo-element gradient/image/background"
+            },
+            {
+              "tag": "A",
+              "name": "查看已归档空间",
+              "reason": "pseudo-element gradient/image/background"
+            }
+          ],
+          "skippedControlReasons": [],
+          "focusables": [
+            {
+              "tag": "A",
+              "name": "跳到主要内容"
+            },
+            {
+              "tag": "A",
+              "name": "UNSEEN 首页"
+            },
+            {
+              "tag": "A",
+              "name": "帮助"
+            },
+            {
+              "tag": "A",
+              "name": "我的空间"
+            },
+            {
+              "tag": "A",
+              "name": "账号"
+            },
+            {
+              "tag": "A",
+              "name": "创建空间"
+            },
+            {
+              "tag": "A",
+              "name": "查看已归档空间"
+            }
+          ]
+        },
+        "keyboard": {
+          "expectedPrefix": [
+            {
+              "tag": "A",
+              "name": "跳到主要内容"
+            },
+            {
+              "tag": "A",
+              "name": "UNSEEN 首页"
+            },
+            {
+              "tag": "A",
+              "name": "帮助"
+            },
+            {
+              "tag": "A",
+              "name": "我的空间"
+            },
+            {
+              "tag": "A",
+              "name": "账号"
+            },
+            {
+              "tag": "A",
+              "name": "创建空间"
+            },
+            {
+              "tag": "A",
+              "name": "查看已归档空间"
+            }
+          ],
+          "actual": [
+            {
+              "tag": "A",
+              "name": "跳到主要内容",
+              "visible": true,
+              "focusVisible": true
+            },
+            {
+              "tag": "A",
+              "name": "UNSEEN 首页",
+              "visible": true,
+              "focusVisible": true
+            },
+            {
+              "tag": "A",
+              "name": "帮助",
+              "visible": true,
+              "focusVisible": true
+            },
+            {
+              "tag": "A",
+              "name": "我的空间",
+              "visible": true,
+              "focusVisible": true
+            },
+            {
+              "tag": "A",
+              "name": "账号",
+              "visible": true,
+              "focusVisible": true
+            },
+            {
+              "tag": "A",
+              "name": "创建空间",
+              "visible": true,
+              "focusVisible": true
+            },
+            {
+              "tag": "A",
+              "name": "查看已归档空间",
+              "visible": true,
+              "focusVisible": true
+            }
+          ],
+          "orderPass": true,
+          "visibleNamedPass": true,
+          "visibleFocusPass": true
+        },
+        "axUnnamed": [],
+        "reflow200": {
+          "clientWidth": 390,
+          "scrollWidth": 390,
+          "pass": true
+        },
+        "reducedMotion": {
+          "rule": "opacity transitions <=120ms allowed; animation/continuous/scale/parallax/auto-pan rejected",
+          "offenders": [],
+          "pass": true
+        },
+        "checks": {
+          "landmarks": true,
+          "headings": true,
+          "formLabels": true,
+          "buttonNames": true,
+          "duplicateIds": true,
+          "textContrast": "INDETERMINATE",
+          "controlContrast": true,
+          "keyboardOrder": true,
+          "visibleFocus": true,
+          "reflow200": true,
+          "reducedMotion": true
+        }
+      }
+    ],
+    "findings": [
+      {
+        "route": "/",
+        "check": "textContrast",
+        "classification": "INDETERMINATE"
+      },
+      {
+        "route": "/",
+        "check": "controlContrast",
+        "classification": "INDETERMINATE"
+      },
+      {
+        "route": "/spaces",
+        "check": "textContrast",
+        "classification": "INDETERMINATE"
+      }
+    ],
+    "pass": false
+  },
+  "diagnostics": {
+    "consoleErrors": 0,
+    "exceptions": 0,
+    "httpErrors": 0,
+    "failedRequests": 0,
+    "externalRequests": 0
+  },
+  "cleanup": {
+    "stagingProcessGroupStopped": true,
+    "chromeProcessGroupStopped": true,
+    "temporaryStateRemoved": true,
+    "devtoolsEndpointClosed": true
+  }
+}

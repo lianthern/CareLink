@@ -1,0 +1,7 @@
+# Drop-in for actual unseen-operable.service, not the unrelated unseen.service template.
+# Preserve existing provider/CLIP/runtime settings; render the complete canonical SHA.
+[Service]
+WorkingDirectory=/opt/unseen/releases/REQUIRED_CANONICAL_SHA
+ExecStart=
+ExecStart=/usr/local/bin/node infra/integration/local-operable.mjs
+Environment=UNSEEN_LOCAL_DATA_DIR=/var/lib/unseen/operable/data

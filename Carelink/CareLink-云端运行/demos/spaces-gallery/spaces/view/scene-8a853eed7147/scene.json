@@ -1,0 +1,74 @@
+{
+  "sceneRevisionId": "scene-8a853eed7147-r001",
+  "name": "OmniPhotos · 街巷 · 7k 预览",
+  "sceneAsset": {
+    "url": "./assets/scene.sog",
+    "format": "sog",
+    "required": true,
+    "position": [
+      0,
+      0,
+      0
+    ],
+    "rotationEuler": [
+      -90,
+      0,
+      0
+    ],
+    "scale": 1
+  },
+  "backgroundColor": [
+    0.12,
+    0.12,
+    0.12
+  ],
+  "navigation": {
+    "eyeHeight": 0.06367001339523415,
+    "moveSpeed": 0.25,
+    "lookSensitivity": 0.11,
+    "defaultFov": 70,
+    "fovRangeDegrees": [
+      30,
+      110
+    ],
+    "sprintMultiplier": 3,
+    "startMode": "walk",
+    "boundaryType": "camera-bounds",
+    "boundaryXZ": [
+      [
+        -1.1020787171470157,
+        -0.9801073976918497
+      ],
+      [
+        0.9073032755154155,
+        -0.9801073976918497
+      ],
+      [
+        0.9073032755154155,
+        0.8843160777320659
+      ],
+      [
+        -1.1020787171470157,
+        0.8843160777320659
+      ]
+    ],
+    "startPose": {
+      "id": "start",
+      "label": "Initial scene camera",
+      "sceneRevisionId": "scene-8a853eed7147-r001",
+      "position": [
+        -0.8127966778656778,
+        -0.7387398431948401,
+        0.33024097182177103
+      ],
+      "quaternion": [
+        -0.009181377355391221,
+        0.5980148373071736,
+        -0.050423679180738375,
+        0.7998446156899542
+      ],
+      "fov": 100.00000000000006
+    }
+  },
+  "photoAnchors": []
+}

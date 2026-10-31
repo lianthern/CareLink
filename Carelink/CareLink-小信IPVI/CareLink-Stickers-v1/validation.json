@@ -1,0 +1,38 @@
+{
+  "pdf": {
+    "小信在呢-贴纸方案册.pdf": {
+      "pages": 6,
+      "size_pt": [
+        1000.0,
+        707.0
+      ]
+    },
+    "小信在呢-A5拼版视觉校样.pdf": {
+      "pages": 2,
+      "size_pt": [
+        419.5276,
+        595.2756
+      ]
+    }
+  },
+  "art_dimensions": {
+    "01-sticker-collection.png": [
+      1536,
+      1024
+    ],
+    "02-sheet-A-companionship.png": [
+      1053,
+      1493
+    ],
+    "03-sheet-B-daily-joy.png": [
+      1054,
+      1492
+    ],
+    "04-product-mockup.png": [
+      1536,
+      1024
+    ]
+  },
+  "individual_sticker_files": false,
+  "die_lines_included": false
+}

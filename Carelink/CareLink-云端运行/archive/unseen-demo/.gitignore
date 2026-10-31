@@ -1,0 +1,19 @@
+.venv/
+.venv-dap/
+vendor/DAP/
+tools/cache/
+__pycache__/
+*.pyc
+*.bak
+server/sessions/
+server/spaces/
+server/public_site_url.txt
+server/public_url.txt
+server/.host_pin
+film/out/memory-film.mp4
+film/*/_frames/
+film/assets/flythrough.mp4
+film/.hf-tmp/
+
+# 压测截图证据只留本地
+tools/stress/shots/

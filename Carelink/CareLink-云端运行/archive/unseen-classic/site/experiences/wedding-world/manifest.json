@@ -1,0 +1,179 @@
+{
+  "schemaVersion": "2.0",
+  "id": "wedding-world-v2",
+  "version": "2.1.0",
+  "mode": "prebuilt-demo",
+  "locale": "zh-CN",
+  "title": "庭间 · 三维空间回顾",
+  "subtitle": "照片不再贴在全景球上，而是落在同一个三维世界坐标中",
+  "disclosure": "照片为 AI 生成的功能演示素材；三维 Coffee Shop 场景为 CC BY 3.0 授权素材。",
+  "coordinateSystem": {
+    "handedness": "right",
+    "upAxis": "+Y",
+    "cameraForwardAxis": "-Z",
+    "unit": "meter",
+    "quaternionOrder": "XYZW"
+  },
+  "world": {
+    "id": "coffee-shop-world",
+    "asset": {
+      "format": "glb",
+      "src": "/experiences/wedding-world/assets/coffee-shop.glb",
+      "preview": "/experiences/wedding-world/assets/coffee-shop-preview.png"
+    },
+    "worldFromAsset": {
+      "positionM": [0, 1.254, 0],
+      "rotationEulerDeg": [-90, 0, 0],
+      "scale": 0.1
+    },
+    "initialCamera": {
+      "positionM": [0, 1.65, 5.8],
+      "quaternionXyzw": [-0.03026139, 0, 0, 0.99954202],
+      "targetM": [0, 1.25, -0.8],
+      "fovDeg": 55
+    },
+    "overviewCamera": {
+      "positionM": [8.8, 8.2, 10.5],
+      "quaternionXyzw": [-0.22172276, 0.32376913, 0.07833177, 0.91644787],
+      "targetM": [0, 1, -0.4],
+      "fovDeg": 48
+    },
+    "movementBounds": {
+      "minM": [-5.9, 0.72, -6.8],
+      "maxM": [6.35, 7.8, 6.15]
+    }
+  },
+  "media": [
+    {
+      "id": "world-counter-toast",
+      "worldId": "coffee-shop-world",
+      "sequence": 1,
+      "kind": "photo",
+      "src": "/experiences/wedding/photos/welcome-toast.jpg",
+      "thumbnail": "/experiences/wedding/photos/welcome-toast.jpg",
+      "title": "吧台边的第一杯",
+      "timeLabel": "18:42 · 咖啡吧台",
+      "emphasis": "highlight",
+      "origin": "ai-generated-demo",
+      "anchor3D": {
+        "markerPositionM": [-2.437, 1.5, 0.498],
+        "markerOffsetM": [0, 0.18, 0],
+        "capturePose": {
+          "positionM": [-1.2, 1.65, 3.1],
+          "quaternionXyzw": [-0.05058247, 0.21977641, 0.01141158, 0.9741712],
+          "targetM": [-2.437, 1.35, 0.498],
+          "fovDeg": 52
+        }
+      },
+      "localization": {
+        "status": "seeded",
+        "method": "authored-world-pose",
+        "confidence": 1
+      }
+    },
+    {
+      "id": "world-lounge-friends",
+      "worldId": "coffee-shop-world",
+      "sequence": 2,
+      "kind": "photo",
+      "src": "/experiences/wedding/photos/party-friends.jpg",
+      "thumbnail": "/experiences/wedding/photos/party-friends.jpg",
+      "title": "沙发区的朋友们",
+      "timeLabel": "19:18 · 中央沙发",
+      "emphasis": "lowlight",
+      "audio": {
+        "src": "/experiences/wedding/audio/wedding-memory-ambience.mp3",
+        "label": "香槟碰杯与庭院晚风"
+      },
+      "origin": "ai-generated-demo",
+      "anchor3D": {
+        "markerPositionM": [1.637, 1.5, 1.518],
+        "markerOffsetM": [0, 0.18, 0],
+        "capturePose": {
+          "positionM": [0.1, 1.65, 3.7],
+          "quaternionXyzw": [-0.05332438, -0.30157133, -0.01689544, 0.95180134],
+          "targetM": [1.637, 1.35, 1.518],
+          "fovDeg": 50
+        }
+      },
+      "localization": {
+        "status": "seeded",
+        "method": "authored-world-pose",
+        "confidence": 1
+      }
+    },
+    {
+      "id": "world-stage-moment",
+      "worldId": "coffee-shop-world",
+      "sequence": 3,
+      "kind": "photo",
+      "src": "/experiences/wedding/photos/dinner-toast.jpg",
+      "thumbnail": "/experiences/wedding/photos/dinner-toast.jpg",
+      "title": "舞台前的致辞",
+      "timeLabel": "20:06 · 小舞台",
+      "emphasis": "lowlight",
+      "origin": "ai-generated-demo",
+      "anchor3D": {
+        "markerPositionM": [2.071, 1.5, -1.759],
+        "markerOffsetM": [0, 0.18, 0],
+        "capturePose": {
+          "positionM": [0.1, 1.65, 0.4],
+          "quaternionXyzw": [-0.03975708, -0.36124412, -0.01541823, 0.93149575],
+          "targetM": [2.071, 1.4, -1.759],
+          "fovDeg": 48
+        }
+      },
+      "localization": {
+        "status": "seeded",
+        "method": "authored-world-pose",
+        "confidence": 1
+      }
+    },
+    {
+      "id": "world-front-laughter",
+      "worldId": "coffee-shop-world",
+      "sequence": 4,
+      "kind": "photo",
+      "src": "/experiences/wedding/photos/dinner-guests.jpg",
+      "thumbnail": "/experiences/wedding/photos/dinner-guests.jpg",
+      "title": "前排吧台的笑声",
+      "timeLabel": "20:37 · 前排吧台",
+      "emphasis": "lowlight",
+      "origin": "ai-generated-demo",
+      "anchor3D": {
+        "markerPositionM": [3.435, 1.5, 4.027],
+        "markerOffsetM": [0, 0.18, 0],
+        "capturePose": {
+          "positionM": [1.7, 1.65, 5.7],
+          "quaternionXyzw": [-0.04754097, -0.39054832, -0.02020063, 0.91913209],
+          "targetM": [3.435, 1.4, 4.027],
+          "fovDeg": 50
+        }
+      },
+      "localization": {
+        "status": "seeded",
+        "method": "authored-world-pose",
+        "confidence": 1
+      }
+    }
+  ],
+  "navigation": {
+    "mediaOrder": [
+      "world-counter-toast",
+      "world-lounge-friends",
+      "world-stage-moment",
+      "world-front-laughter"
+    ]
+  },
+  "provenance": {
+    "worldAsset": {
+      "title": "Coffee Shop",
+      "creator": "majesticmaje",
+      "sourceUrl": "https://poly.pizza/m/FDG8rFhvv7",
+      "creditsUrl": "https://poly.pizza/bundle/Coffeehouse-Lounge-Pack-6iH5dHrr4x",
+      "license": "CC BY 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/3.0/"
+    },
+    "photoDisclosure": "AI-generated demonstration photos"
+  }
+}

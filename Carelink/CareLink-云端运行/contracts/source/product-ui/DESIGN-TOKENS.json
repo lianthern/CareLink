@@ -1,0 +1,103 @@
+{
+  "schemaVersion": 1,
+  "name": "UNSEEN 共光",
+  "source": "2026-07-25 六张早期美术参考图；见 SOURCE-OF-TRUTH.md",
+  "updatedAt": "2026-08-13T12:15:00+10:00",
+  "color": {
+    "canvas": "#FFF9F7",
+    "surface": "#FFFFFF",
+    "surfaceWarm": "#FFF4F0",
+    "surfaceMuted": "#F7F1EF",
+    "ink": "#321722",
+    "inkMuted": "#725F66",
+    "inkSubtle": "#9A868D",
+    "border": "#E9DDDA",
+    "borderStrong": "#A57E75",
+    "pink": "#FF96B2",
+    "pinkSoft": "#FFD6E1",
+    "gold": "#FFD678",
+    "goldSoft": "#FFF0BF",
+    "burgundy": "#461528",
+    "success": "#2F7D63",
+    "warning": "#9A6517",
+    "danger": "#A43E4A",
+    "info": "#436A84",
+    "focus": "#461528",
+    "scrim": "rgba(31, 13, 20, 0.58)",
+    "primaryGradient": "linear-gradient(100deg, #FF96B2 0%, #FFD678 100%)",
+    "haloGradient": "radial-gradient(circle, rgba(255,150,178,.30) 0%, rgba(255,214,120,.22) 45%, rgba(255,249,247,0) 74%)"
+  },
+  "colorUsage": {
+    "text": {"primary":"ink","secondary":"inkMuted","metadata":"inkMuted","disabled":"inkMuted"},
+    "nonTextOnly": {"inkSubtle":["decorative-placeholder","non-semantic-hairline"]},
+    "rule": "inkSubtle MUST NOT be used for text; metadata MUST use inkMuted"
+  },
+  "type": {
+    "latinDisplay": "Inter, ui-sans-serif, system-ui, sans-serif",
+    "sans": "Inter, PingFang SC, Noto Sans CJK SC, Microsoft YaHei, ui-sans-serif, system-ui, sans-serif",
+    "mono": "ui-monospace, SFMono-Regular, Menlo, monospace",
+    "weight": {"regular":400,"medium":500,"semibold":600},
+    "size": {"xs":12,"sm":14,"body":16,"bodyLarge":18,"title3":20,"title2":24,"title1":32,"display":44},
+    "lineHeight": {"xs":16,"sm":20,"body":24,"bodyLarge":28,"title3":28,"title2":32,"title1":40,"display":52},
+    "tracking": {"brand":0.22,"label":0.01,"body":0}
+  },
+  "spacing": {"0":0,"1":4,"2":8,"3":12,"4":16,"5":20,"6":24,"8":32,"10":40,"12":48,"16":64,"20":80},
+  "breakpoint": {"mobileMax":1247,"desktopMin":1248},
+  "layout": {
+    "mobile": {"minViewport":320,"maxViewport":1247,"gutter":16,"gridColumns":4,"gridGap":12,"contentMax":"100%","bottomBarHeight":64,"safeAreaPolicy":"env(safe-area-inset-*)"},
+    "desktop": {"minViewport":1248,"referenceViewport":1280,"outerMaxViewport":1440,"gutter":32,"gridColumns":12,"gridGap":24,"contentWidth":1184,"sidebarWidth":224,"mainWidth":936,"headerHeight":64},
+    "desktopFitEquation": "desktopMin = contentWidth + 2*gutter = 1184 + 64 = 1248; horizontal overflow is forbidden",
+    "desktopGrowthRule": "1248 到 1440 只增加左右外留白；contentWidth、sidebarWidth、mainWidth、gridGap 与文本 measure 固定",
+    "textMeasure": {"bodyMaxCh":68,"formMax":560,"dialogMax":520,"managementThreeColumn":"240px minmax(328px, 1fr) 320px"}
+  },
+  "radius": {"xs":6,"sm":10,"md":14,"lg":20,"xl":28,"pill":999},
+  "shadow": {
+    "card": "0 8px 28px rgba(70, 21, 40, 0.08)",
+    "raised": "0 16px 48px rgba(70, 21, 40, 0.14)",
+    "focus": "0 0 0 3px rgba(70, 21, 40, 0.28)",
+    "none": "none"
+  },
+  "border": {"hairline":1,"emphasis":2,"style":"solid"},
+  "zIndex": {"base":0,"sticky":20,"dropdown":40,"scrim":60,"dialog":70,"toast":80,"focus":90},
+  "control": {"heightSm":36,"heightMd":44,"heightLg":52,"icon":20,"iconTouchTarget":44,"fieldPaddingX":14,"buttonPaddingX":20},
+  "mediaRatio": {"thumbnail":"4 / 3","photoDetail":"intrinsic","panorama":"2 / 1","avatar":"1 / 1","brandMark":"1 / 1"},
+  "mediaFit": {"photoDetail":{"objectFit":"contain","maxContainer":{"width":"100%","height":"calc(100dvh - 128px)"}}},
+  "darkViewer": {
+    "canvas":"#170E12",
+    "surface":"#24171D",
+    "surfaceRaised":"#302027",
+    "ink":"#FFF8F5",
+    "inkMuted":"#CFBEC4",
+    "border":"#8C6877",
+    "control":"rgba(255,248,245,.35)",
+    "controlHover":"rgba(255,248,245,.43)",
+    "focus":"#D7C6FF"
+  },
+  "focus": {"outlineWidth":2,"outlineOffset":3,"outlineColor":"#461528","restore":"returning overlays restore focus to invoker","trap":"modal and sheet only","shadowRole":"supplemental-only-never-the-sole-focus-indicator","darkViewerOutlineColor":"#D7C6FF","rule":"light UI always uses the solid burgundy outline; dark viewer always uses darkViewerOutlineColor"},
+  "motion": {
+    "durationFast":120,
+    "durationBase":180,
+    "durationSlow":320,
+    "easing":"cubic-bezier(.2,.8,.2,1)",
+    "reducedMotion":"remove scale, parallax, auto-pan and continuous glow; retain instant state change and opacity <=120ms"
+  },
+  "component": {
+    "primaryCta":{"background":"primaryGradient","foreground":"#461528","border":"#461528","borderWidth":1,"shadow":"card","maxPerPage":1},
+    "secondaryButton":{"background":"#FFFFFF","foreground":"#461528","border":"#A57E75"},
+    "dangerButton":{"background":"#FFFFFF","foreground":"#A43E4A","border":"#C0707A"},
+    "field":{"background":"#FFFFFF","foreground":"#321722","border":"#A57E75"},
+    "selectionControl":{"foreground":"#321722","border":"#A57E75"},
+    "iconButton":{"foreground":"#461528","border":"#A57E75"},
+    "card":{"background":"#FFFFFF","border":"#E9DDDA","interactiveBorder":"#A57E75","radius":20,"shadow":"card"},
+    "status":{"shape":"pill","usesColorAlone":false}
+  },
+  "nonTextContrast": {
+    "minimumRatio":3,
+    "rule":"Every boundary required to identify an interactive control or state MUST use an accessible boundary token; decorative color.border is not sufficient.",
+    "lightRequiredBoundary":"#A57E75",
+    "dangerRequiredBoundary":"#C0707A",
+    "darkViewerRequiredBoundary":"#8C6877",
+    "primaryCtaBoundary":"#461528",
+    "proof":"UI-SYSTEM-SPEC.md#non-text-contrast-evidence"
+  }
+}

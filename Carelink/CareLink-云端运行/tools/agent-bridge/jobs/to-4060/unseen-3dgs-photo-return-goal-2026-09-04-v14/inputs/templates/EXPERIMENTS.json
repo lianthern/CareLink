@@ -1,0 +1,23 @@
+{
+  "schemaVersion": "1.0",
+  "jobId": "unseen-3dgs-photo-return-goal-2026-09-04-v14",
+  "baselines": [
+    {
+      "experimentId": "v12-single-descriptor-sift",
+      "status": "FAIL",
+      "queryKeypoints": 640,
+      "ratioMatches": 13,
+      "geometricInliers": 0,
+      "reason": "insufficient globally consistent 2D-3D correspondences"
+    },
+    {
+      "experimentId": "v13-multiview-rootsift-bank",
+      "status": "FAIL",
+      "queryKeypoints": 4880,
+      "ratioMatches": 56,
+      "geometricInliers": 0,
+      "reason": "descriptor coverage improved, but globally matched landmarks remained geometrically inconsistent"
+    }
+  ],
+  "experiments": []
+}

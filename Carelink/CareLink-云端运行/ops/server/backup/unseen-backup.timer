@@ -1,0 +1,18 @@
+[Unit]
+Description=Run UNSEEN daily backup (unseen-backup.service) once a day at low-traffic hours
+
+[Timer]
+# 03:15 Hong Kong time regardless of the system's own default timezone — explicit so this stays
+# correct even if that ever changes. Low-traffic hour on a personal-scale service.
+OnCalendar=*-*-* 03:15:00 Asia/Hong_Kong
+# Spread actual fire time across a 5-minute window so a reboot-triggered catch-up run (see
+# Persistent= below) doesn't land at the exact same wall-clock second as other daily timers on
+# this box.
+RandomizedDelaySec=300
+# If the box was off/rebooting at 03:15, run once as soon as it's back — a skipped day is exactly
+# the kind of silent gap this whole subsystem exists to prevent.
+Persistent=true
+Unit=unseen-backup.service
+
+[Install]
+WantedBy=timers.target

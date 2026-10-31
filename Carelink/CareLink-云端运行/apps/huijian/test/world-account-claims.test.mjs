@@ -1,0 +1,50 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import {mkdtemp,readFile,rm} from 'node:fs/promises';
+import {tmpdir} from 'node:os';
+import {join} from 'node:path';
+import {createWorldJobStore} from '../lib/unseen-world-jobs.mjs';
+test('explicit claim is atomic, removes old browser access, preserves original history and survives restart',async t=>{
+ const dir=await mkdtemp(join(tmpdir(),'world-claim-'));t.after(()=>rm(dir,{recursive:true,force:true}));
+ const file=join(dir,'jobs.json'),store=createWorldJobStore(file);
+ await store.begin('old-cookie','job-a',{mode:'single'});await store.update('old-cookie','job-a',{status:'complete',operation:{id:'operation-1',done:true}});
+ await assert.rejects(store.claim('old-cookie','account:a',['job-a','missing']),{code:'world_claim_unavailable'});
+ assert.ok(await store.get('old-cookie','job-a'));assert.deepEqual(await store.list('account:a'),[]);
+ await store.claim('old-cookie','account:a',['job-a']);
+ assert.equal(await store.get('old-cookie','job-a'),null);assert.deepEqual(await store.list('old-cookie'),[]);
+ assert.equal((await createWorldJobStore(file).get('account:a','job-a')).status,'complete');
+ await store.claim('old-cookie','account:a',['job-a']);
+ await assert.rejects(store.claim('old-cookie','account:b',['job-a']),{code:'world_claim_unavailable'});
+ await assert.rejects(store.begin('old-cookie','job-a',{mode:'single'}),{status:409});
+ assert.equal(Object.values(JSON.parse(await readFile(file))).length,2,'old row remains retained privately');
+});
+test('account job records retain target revision without persisting input images',async t=>{
+ const dir=await mkdtemp(join(tmpdir(),'world-account-'));t.after(()=>rm(dir,{recursive:true,force:true}));
+ const file=join(dir,'jobs.json'),store=createWorldJobStore(file);
+ const {job}=await store.begin('account:a','job-new',{images:['PRIVATE_BYTES'],spaceId:'space-one',spaceVersion:2,sceneVersion:3});
+ assert.equal(job.spaceId,'space-one');assert.equal(job.sceneVersion,3);assert.doesNotMatch(await readFile(file,'utf8'),/PRIVATE_BYTES/);
+ assert.deepEqual(await store.list('account:b'),[]);
+});
+test('provider responses arriving after an explicit claim reach the account job',async t=>{
+ const dir=await mkdtemp(join(tmpdir(),'world-claim-late-'));t.after(()=>rm(dir,{recursive:true,force:true}));
+ const store=createWorldJobStore(join(dir,'jobs.json'));
+ await store.begin('old-cookie','job-late',{mode:'single'});
+ await store.claim('old-cookie','account:a',['job-late']);
+ await store.update('old-cookie','job-late',{status:'processing',operation:{id:'late-operation',done:false}});
+ assert.equal((await store.get('account:a','job-late')).operation.id,'late-operation');
+ assert.equal(await store.get('old-cookie','job-late'),null);
+ await store.update('old-cookie','job-late',{status:'complete',operation:{id:'late-operation',done:true}});
+ assert.equal((await store.get('account:a','job-late')).status,'complete');
+});
+test('unresolved account admission atomically blocks a second paid request across sessions',async t=>{
+ const dir=await mkdtemp(join(tmpdir(),'world-account-pending-'));t.after(()=>rm(dir,{recursive:true,force:true}));
+ const store=createWorldJobStore(join(dir,'jobs.json'));
+ const attempts=await Promise.allSettled([store.begin('account:a','first',{}),store.begin('account:a','second',{})]);
+ assert.equal(attempts.filter(x=>x.status==='fulfilled').length,1);
+ assert.equal(attempts.find(x=>x.status==='rejected').reason.code,'world_result_pending_reconciliation');
+ await store.update('account:a','first',{status:'unknown'});
+ await assert.rejects(store.begin('account:a','third',{}),{code:'world_result_pending_reconciliation'});
+ await store.begin('account:b','other-account',{});
+ await store.update('account:a','first',{status:'processing',operation:{id:'known-operation'}});
+ assert.equal((await store.begin('account:a','third',{})).fresh,true);
+});

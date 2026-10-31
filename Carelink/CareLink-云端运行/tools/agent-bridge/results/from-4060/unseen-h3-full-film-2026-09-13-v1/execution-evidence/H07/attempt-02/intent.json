@@ -1,0 +1,39 @@
+{
+  "key": "unseen-h3-full-film-2026-09-13-v1/H07/attempt-02",
+  "startedAt": "2026-09-14T03:31:17.207843+00:00",
+  "reference": "D:\\H3-runtime\\projects\\unseen-full-v1\\shots\\H06\\attempt-01\\last.png",
+  "inputSha256": "74d6c5927c062f4d635e3b26a3ec9ff202b3b8c88dbe3bfec2d6fa578aaa031a",
+  "seed": 2026091577,
+  "shot": {
+    "id": "H07",
+    "title": "\u96e8\u5929\uff1a\u6bdb\u5dfe\u76d6\u4f4f\u8138",
+    "type": "h3_generated_action",
+    "edit_seconds": 4,
+    "generate_seconds_nominal": 4.458333333333333,
+    "frame_count_starting_point": 107,
+    "fps": 24,
+    "recorder": "\u7238\u7238\uff0c\u8bb0\u5f55\u5185\u526a\u8fd1",
+    "references": [
+      "rain.png",
+      "02-character-age-reference.png"
+    ],
+    "start_end_and_action": "A closer view from the same doorway side of the courtyard action, still on the same side of the mother-child axis. The six-year-old boy is already standing beside mother holding the laundry basin at waist height. Mother lowers the towel she just removed; its near edge flops lightly over the boy's forehead and eyes. He frees his right hand, lifts the towel off his face, then laughs while mother smiles. His left arm supports the basin throughout. Keep the towel soft and gravity-driven, not floating. Camera stays nearly still. End on their shared smile with the boy's face visible.",
+    "prompt": "Naturalistic personal-memory footage with believable human movement and gently handheld smartphone perspective. Keep the approved faces, clothes, lighting and room geometry. One continuous shot, no internal cuts, no age change, no photo cards, no text, no camera flying outside, no slow motion, no duplicated people, no DV camcorder. A closer view from the same doorway side of the courtyard action, still on the same side of the mother-child axis. The six-year-old boy is already standing beside mother holding the laundry basin at waist height. Mother lowers the towel she just removed; its near edge flops lightly over the boy's forehead and eyes. He frees his right hand, lifts the towel off his face, then laughs while mother smiles. His left arm supports the basin throughout. Keep the towel soft and gravity-driven, not floating. Camera stays nearly still. End on their shared smile with the boy's face visible.",
+    "cut_continuity": "\u8863\u670d\u5f00\u59cb\u5c1a\u672a\u76d6\u4f4f\u8138\uff1b\u627f\u63a5H06\u53d6\u4e0b\u6bdb\u5dfe\u540e\u7684\u72b6\u6001\u3002",
+    "pass_criteria": [
+      "\u52a8\u4f5c\u56e0\u679c\u6e05\u695a",
+      "\u76c6\u4e0d\u6f02\u6d6e",
+      "\u6ca1\u6709\u7b2c\u4e09\u6444\u5f71\u8005\u65e0\u6545\u51fa\u73b0"
+    ],
+    "audio": "Natural scene sound only; no generated music, UI text or unscripted dialogue.",
+    "status": "planned",
+    "output": null,
+    "timeline_start_seconds": 19.5,
+    "timeline_end_seconds": 23.5
+  },
+  "outputPrefix": "unseen-full-v1/H07/attempt-02",
+  "apiSha256": "3bd28c6e562cb7d66bf0157dc4fd5cd29f372c6262a3bccee9b51404b67d2e43",
+  "conditioningMode": "first-frame",
+  "templatePrompt": "Naturalistic personal-memory footage with believable human movement and gently handheld smartphone perspective. Keep the approved faces, clothes, lighting and room geometry. One continuous shot, no internal cuts, no age change, no photo cards, no text, no camera flying outside, no slow motion, no duplicated people, no DV camcorder. A closer view from the same doorway side of the courtyard action, still on the same side of the mother-child axis. The six-year-old boy is already standing beside mother holding the laundry basin at waist height. Mother lowers the towel she just removed; its near edge flops lightly over the boy's forehead and eyes. He frees his right hand, lifts the towel off his face, then laughs while mother smiles. His left arm supports the basin throughout. Keep the towel soft and gravity-driven, not floating. Camera stays nearly still. End on their shared smile with the boy's face visible.",
+  "executedPrompt": "Continue the exact mother and boy courtyard scene in the starting frame. Camera remains on the same doorway side. In the first second, mother gently lets the near edge of her one white towel rest across the boy's forehead and eyes. Immediately the boy frees his RIGHT hand and visibly pulls the entire towel upward off his head and down to his right side. By the middle of the shot his head and face are fully uncovered. He turns his uncovered face slightly toward mother and laughs; mother smiles back. End with the towel completely OFF his head, still grasped in his right hand, his face visible. His LEFT forearm supports the grey basin at waist level throughout. Do not leave the towel draped as a hood. Do not have mother remove it for him. One small causal action, no repeated covering, no new towel, no floating basin, no new people, no camera orbit or cut. Preserve striped cream shirt, navy shorts, boots, mother ivory clothes and wet courtyard. Natural soft rain and a brief laugh, no music or intelligible speech.\n"
+}

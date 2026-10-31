@@ -1,0 +1,15 @@
+import Foundation
+let root = URL(fileURLWithPath: "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Unseen")
+var requested = 0
+var failures = 0
+if let files = FileManager.default.enumerator(at: root, includingPropertiesForKeys: [.isRegularFileKey]) {
+  for case let file as URL in files {
+    do {
+      if try file.resourceValues(forKeys: [.isRegularFileKey]).isRegularFile == true {
+        try FileManager.default.startDownloadingUbiquitousItem(at: file)
+        requested += 1
+      }
+    } catch { failures += 1 }
+  }
+}
+print("download_requests=\(requested) errors=\(failures)")

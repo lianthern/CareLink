@@ -1,0 +1,11 @@
+{
+  "shot": "W02",
+  "attempt": 1,
+  "promptId": "6b673f56-935e-43c7-8b65-fb08adb01c2e",
+  "video": "D:\\H3-runtime\\projects\\unseen-full-v1\\generated\\unseen-full-v1\\W02\\attempt-01_00001_.mp4",
+  "bytes": 289606,
+  "sha256": "80df0be3c6d4d8446250956b42786bf0d953f60ecf1e3f7ba7909fad748b2088",
+  "decodeExit": 0,
+  "endedAt": "2026-09-14T04:17:08.418994+00:00",
+  "visualVerdict": "pending_agent_review"
+}

@@ -1,0 +1,74 @@
+{
+  "sceneRevisionId": "scene-0b7786edeeb9-r001",
+  "name": "普通视频 · 空间重建 · 高精度 v1",
+  "sceneAsset": {
+    "url": "./assets/scene.sog",
+    "format": "sog",
+    "required": true,
+    "position": [
+      0,
+      0,
+      0
+    ],
+    "rotationEuler": [
+      -90,
+      0,
+      0
+    ],
+    "scale": 1
+  },
+  "backgroundColor": [
+    0.12,
+    0.12,
+    0.12
+  ],
+  "navigation": {
+    "eyeHeight": -0.0034430093755409533,
+    "moveSpeed": 0.25,
+    "lookSensitivity": 0.11,
+    "defaultFov": 70,
+    "fovRangeDegrees": [
+      30,
+      110
+    ],
+    "sprintMultiplier": 3,
+    "startMode": "walk",
+    "boundaryType": "camera-bounds",
+    "boundaryXZ": [
+      [
+        -0.9885812496577046,
+        -0.6550488296759001
+      ],
+      [
+        1.2500000099832707,
+        -0.6550488296759001
+      ],
+      [
+        1.2500000099832707,
+        0.5129863177545897
+      ],
+      [
+        -0.9885812496577046,
+        0.5129863177545897
+      ]
+    ],
+    "startPose": {
+      "id": "start",
+      "label": "Initial scene camera",
+      "sceneRevisionId": "scene-0b7786edeeb9-r001",
+      "position": [
+        0.9817950219296284,
+        0.03331545978713723,
+        -0.01591223125318061
+      ],
+      "quaternion": [
+        0.02407859133735269,
+        0.10616535601579319,
+        0.00960769451367816,
+        0.9940104782281626
+      ],
+      "fov": 142.11841183214923
+    }
+  },
+  "photoAnchors": []
+}

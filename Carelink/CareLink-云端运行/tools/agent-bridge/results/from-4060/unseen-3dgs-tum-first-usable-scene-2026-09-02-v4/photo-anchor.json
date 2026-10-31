@@ -1,0 +1,21 @@
+{
+  "schemaVersion": "1.0",
+  "status": "PASS",
+  "sceneRevisionId": "tum-freiburg1-desk-v4-r001",
+  "defaultPhotoAnchorId": "frame_00050",
+  "anchor": {
+    "id": "frame_00050",
+    "label": "TUM frame_00050",
+    "position": [-0.926030079, 0.034531521, 0.115393243],
+    "quaternion": [-0.19562634, -0.181628028, -0.275663074, 0.923445431],
+    "fovDegrees": 49.134342641,
+    "sourceFrame": "images/frame_00050.png"
+  },
+  "measuredErrors": {
+    "positionMaxAbs": 2.0391937249897296e-8,
+    "quaternionMaxAbsSignInvariant": 4.099682260338966e-9,
+    "fovAbsDegrees": 0.0
+  },
+  "restoredNavigationMode": "photo-anchor",
+  "confirmationMessage": "已回到这张照片的拍摄视角"
+}

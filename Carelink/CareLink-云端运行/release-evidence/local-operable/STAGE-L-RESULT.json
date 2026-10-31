@@ -1,0 +1,56 @@
+{
+  "schema": "unseen-stage-l-result/1",
+  "generatedAt": "2026-08-13T14:48:58.677Z",
+  "productLabel": "Core Local Operable = PASS",
+  "status": "PASS",
+  "runtimeIdentity": {
+    "runtimeId": "unseen-stage-l-local-operable-v1",
+    "origin": "http://127.0.0.1:4281",
+    "responseHeadersVerified": true,
+    "preferredPort": 4281,
+    "portFallback": false
+  },
+  "inputs": {
+    "effectiveRevision": "00c918a7549cdeae37a8f6de81a6e4482bd5a8ee",
+    "track1A": "415a0c2c6f28534bd6c40cb2d50b63894e141a21",
+    "track2": "13b9f9b04edc1122242fa9a0e264f471dbd5c3ad",
+    "track4": "5e068e3d04263adc2f480ac9db5a3bc1f18157d7",
+    "track3A": "52cfbb5182261c335521b78e2265771acc80304d",
+    "track6A": "52e5393ff3068ba2e3f2c8d001a86cf222e36578"
+  },
+  "assertions": {
+    "productionHttpAdapter": true,
+    "fixtureAdapter": false,
+    "persistentSQLite": true,
+    "filesystemMediaStore": true,
+    "oneOriginSessionMedia": true,
+    "viewerEtagEqualsDtoSha256": true,
+    "viewerBytesSha256EqualsDtoSha256": true,
+    "localFixtureNullPitchProjectedToZero": true,
+    "sourcePlacementPitchRemainsNull": true,
+    "visiblyLabelledFixtureStates": [
+      "high",
+      "需要确认",
+      "failed"
+    ],
+    "participantFailedRetry": true,
+    "participantManualCorrection": true,
+    "ownerReview": true,
+    "viewerFocusAndReturn": true,
+    "cacheAndSiteDataReopen": true,
+    "consoleErrors": 0,
+    "unexpectedNetworkErrors": 0,
+    "cloudWrites": 0
+  },
+  "evidence": {
+    "browserTrace": "BROWSER-TRACE.json",
+    "cacheReopen": "CACHE-REOPEN.json",
+    "consoleNetwork": "CONSOLE-NETWORK.json",
+    "dbObjectChecksums": "DB-OBJECT-CHECKSUMS.json",
+    "screenshots": [
+      "screenshots/02-fixture-results.png",
+      "screenshots/01-owner-space.png",
+      "screenshots/03-viewer-reopen.png"
+    ]
+  }
+}

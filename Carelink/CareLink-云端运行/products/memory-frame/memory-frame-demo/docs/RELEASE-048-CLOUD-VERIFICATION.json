@@ -1,0 +1,168 @@
+{
+  "version": "0.4.8",
+  "deployedSource": "1f65748",
+  "businessSource": "6ae5e9c",
+  "appTests": {
+    "tests": 512,
+    "pass": 512,
+    "fail": 0,
+    "skipped": 0
+  },
+  "publicTests": {
+    "tests": 536,
+    "pass": 536,
+    "fail": 0,
+    "skipped": 0
+  },
+  "exporterTests": {
+    "tests": 12,
+    "pass": 12
+  },
+  "presence": {
+    "checkedAt": "2026-09-23T17:48:31.904Z",
+    "version": "0.4.8",
+    "checks": [
+      "cloud-health-version",
+      "separate-sensor-auth-and-owner-management",
+      "report-accepted-and-persistent-idempotency",
+      "target-only-state-event",
+      "expired-retry-does-not-renew-event",
+      "rotation-invalidates-old-token-and-does-not-resurrect-event",
+      "invalid-head-count-rejected",
+      "revoke-stops-event-delivery",
+      "existing-content-unchanged"
+    ],
+    "newFamilies": 0,
+    "contentWrites": 0,
+    "modelCalls": 0,
+    "hardwareVerified": false,
+    "browserVerified": false,
+    "staticFiles": [
+      {
+        "file": "index.html",
+        "bytes": 2057,
+        "sha256": "9cb857eb85f7235c6d90a71d996b59eaa7e05396711d8af35877a1909907fb07"
+      },
+      {
+        "file": "app.js",
+        "bytes": 50229,
+        "sha256": "8dc2cd93df60f484e9ff110183481cbc5d2cc5215ceb241c7cb58fe5eb0e8d97"
+      },
+      {
+        "file": "style.css",
+        "bytes": 26123,
+        "sha256": "327bd629b673d4241c139c884e77c1ab145b498bbe09912ae1025aee22efb87c"
+      },
+      {
+        "file": "ai-conversation.js",
+        "bytes": 22593,
+        "sha256": "f67cdb945f3e888d8665b4b48f56adaf890ef497db221bc2b07d1621f6111dd7"
+      },
+      {
+        "file": "presence-invitation.js",
+        "bytes": 6463,
+        "sha256": "cdd0212d4fd1b631cd7b9d3be2a5a2dda74a69c45cb5f673aa9bb430d7417857"
+      },
+      {
+        "file": "presence-settings.js",
+        "bytes": 8227,
+        "sha256": "82c0672e60e1eb4c83b797d2428a80079d42040d73c3b3dee61dac11b69ae759"
+      },
+      {
+        "file": "presence.css",
+        "bytes": 1791,
+        "sha256": "65bca9ef67ec3f707767fda1e5cb0fcb1facf6d928873c8b48cae91151b8997a"
+      },
+      {
+        "file": "spatial-link.js",
+        "bytes": 3305,
+        "sha256": "1fb018b282452407c2e98a8856cabe39968040b5c8479dec1023babcf27c1bdb"
+      }
+    ],
+    "messageCount": 17,
+    "passed": true
+  },
+  "vision": {
+    "checkedAt": "2026-09-23T17:49:19.357Z",
+    "version": "0.4.8",
+    "modelCalls": 1,
+    "newFamilies": 0,
+    "contentWrites": 0,
+    "hardwareVerified": false,
+    "voiceVerified": false,
+    "checks": [
+      "actual-configured-vision-provider-called-on-one-existing-family-photo",
+      "one-short-question-compatible-with-controlled-frontend-entry",
+      "existing-family-content-unchanged"
+    ],
+    "imageUsed": true,
+    "questionFormatAccepted": true,
+    "actionCandidateReturned": false,
+    "existingContentUnchanged": true,
+    "passed": true,
+    "temporarySessionLoggedOut": true
+  },
+  "spatial": {
+    "timestamp": "2026-09-23T17:49:24.864Z",
+    "origin": "https://memory-frame-demo-d7djiee0702b6c.service.tcloudbase.com",
+    "evidence": "cloud HTTP and actual viewer download module; no cloud browser or GPU test",
+    "newFamilies": 0,
+    "contentWrites": 0,
+    "accounts": [
+      {
+        "role": "owner",
+        "messages": 17,
+        "bytes": 16324085,
+        "digest": "93224a51c0385145c747f3d7033907678f20ac3f251f30f7c61a61f1ffb0a630",
+        "segments": 4,
+        "contentUnchanged": true
+      },
+      {
+        "role": "family",
+        "messages": 17,
+        "bytes": 16324085,
+        "digest": "93224a51c0385145c747f3d7033907678f20ac3f251f30f7c61a61f1ffb0a630",
+        "segments": 4,
+        "contentUnchanged": true
+      }
+    ],
+    "testSessionsRevoked": 2,
+    "version": "0.4.8",
+    "passed": true
+  },
+  "kevin": {
+    "checkedAt": "2026-09-23T17:49:39.549Z",
+    "version": "0.4.8",
+    "readOnlyBindingCheck": true,
+    "cameraEventSent": false,
+    "tokenRotated": false,
+    "bindingPreserved": true,
+    "frameOnlineAtCheck": false,
+    "passed": true,
+    "temporarySessionLoggedOut": true
+  },
+  "publicRelease": {
+    "publicRepository": "https://github.com/maxi-max-dev/unseen-memory-frame",
+    "remoteCommit": "9f1d687dbb52f92d9148e24007ba25f918fe5550",
+    "parent": "3c3b808c28f7f5cd872082c7119afaeb16fc5417",
+    "tree": "e4125a265fe98327c66e67199911b68429ffaf6d",
+    "files": 193,
+    "treeMatches": true,
+    "privateHistoryPublished": false
+  },
+  "privateValueMatches": 0,
+  "publicZip": {
+    "filesVerified": 193,
+    "bytes": 16945644,
+    "sha256": "f9fa3e3c063c234a75954afab06fc061df8357663f2ec98e20ee4e07a38a2fe2"
+  },
+  "trtc": {
+    "enabled": false,
+    "configurationReady": false,
+    "missingFields": 7,
+    "networkRequests": 0
+  },
+  "hardwareVerified": false,
+  "realVoiceVerified": false,
+  "mobileHardwareGPUVerified": false
+}

@@ -1,0 +1,10 @@
+{
+  "schemaVersion": "1.0",
+  "jobId": "unseen-3dgs-360-photo-relocalization-multiview-2026-09-04-v13",
+  "state": "RECEIVED_VERIFIED",
+  "createdAt": "2026-09-04T02:52:36.6059862Z",
+  "agent": "4060 Agent",
+  "machine": "DESKTOP-NIBL3D4",
+  "message": "v13 received; same v12 queries and gates; CPU-only multiview descriptor canary.",
+  "evidence": []
+}

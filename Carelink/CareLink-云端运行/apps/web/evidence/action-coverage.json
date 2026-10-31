@@ -1,0 +1,3704 @@
+{
+  "generatedFrom": [
+    "ACTION-REGISTRY.json",
+    "ACTION-API-COVERAGE.json"
+  ],
+  "actionCount": 90,
+  "phaseCount": 9,
+  "entryCount": 19,
+  "phases": [
+    "initial",
+    "loading",
+    "success",
+    "stable_error",
+    "retry",
+    "session_or_permission_loss",
+    "empty",
+    "destructive_confirm",
+    "return"
+  ],
+  "entries": {
+    "P01": {
+      "surfaces": [
+        "/",
+        "/open",
+        "/support",
+        "/privacy",
+        "/terms"
+      ],
+      "actions": [
+        "HOME.OPEN_SPACE",
+        "AUTH.OPEN_LOGIN",
+        "INVITATION.SCAN_AGAIN",
+        "SUPPORT.OPEN",
+        "LEGAL.OPEN_PRIVACY",
+        "LEGAL.OPEN_TERMS"
+      ]
+    },
+    "P02": {
+      "surfaces": [
+        "/login"
+      ],
+      "actions": [
+        "AUTH.OPEN_LOGIN",
+        "AUTH.REQUEST_CODE",
+        "AUTH.VERIFY_CODE"
+      ]
+    },
+    "P03": {
+      "surfaces": [
+        "/spaces",
+        "/account"
+      ],
+      "actions": [
+        "AUTH.REAUTH_REQUEST_CODE",
+        "AUTH.REAUTHENTICATE",
+        "MY_SPACES.OPEN",
+        "MY_SPACES.OPEN_ARCHIVED",
+        "SPACE.OPEN_CREATE",
+        "SPACE.OPEN",
+        "ACCOUNT.OPEN",
+        "OWNER_TRANSFER.ACCEPT"
+      ]
+    },
+    "P04": {
+      "surfaces": [
+        "/spaces/new",
+        "/manage/:spaceId?tab=setup"
+      ],
+      "actions": [
+        "SPACE.CREATE"
+      ]
+    },
+    "P05": {
+      "surfaces": [
+        "/open/:publicCampaignId",
+        "/open#invite=:secret"
+      ],
+      "actions": [
+        "INVITATION.EXCHANGE",
+        "INVITATION.SCAN_AGAIN"
+      ]
+    },
+    "P06": {
+      "surfaces": [
+        "/s/:spaceId/album",
+        "/s/:spaceId/scene",
+        "/s/:spaceId/upload"
+      ],
+      "actions": [
+        "VIEW.OPEN_ALBUM",
+        "VIEW.OPEN_SCENE",
+        "UPLOAD.OPEN",
+        "SUPPORT.OPEN",
+        "LEGAL.OPEN_PRIVACY",
+        "LEGAL.OPEN_TERMS"
+      ]
+    },
+    "P07": {
+      "surfaces": [
+        "/s/:spaceId/upload",
+        "/notices/media"
+      ],
+      "actions": [
+        "UPLOAD.ACCEPT_NOTICE",
+        "UPLOAD.SELECT_FILES",
+        "UPLOAD.REMOVE_ITEM",
+        "UPLOAD.RETRY_ITEM",
+        "UPLOAD.FINALIZE_BATCH",
+        "MEDIA_NOTICE.OPEN"
+      ]
+    },
+    "P08": {
+      "surfaces": [
+        "/uploads/:batchId",
+        "/uploads/:batchId/items/:itemId",
+        "/account/uploads"
+      ],
+      "actions": [
+        "UPLOAD.OPEN",
+        "BATCH.OPEN_RESULT",
+        "BATCH.OPEN_ITEM",
+        "BATCH_RECEIPT.EXCHANGE",
+        "BATCH_BINDING.REQUEST_CODE",
+        "BATCH_BINDING.CONFIRM",
+        "BATCH.RECOVER_FROM_ACCOUNT",
+        "BATCH_RECEIPT.REVOKE",
+        "BATCH.DELETE_ITEM",
+        "APPEAL.SUBMIT",
+        "SUPPORT.OPEN",
+        "LEGAL.OPEN_PRIVACY",
+        "LEGAL.OPEN_TERMS"
+      ]
+    },
+    "P09": {
+      "surfaces": [
+        "/uploads/:batchId/items/:itemId",
+        "/placements/:photoId/edit"
+      ],
+      "actions": [
+        "BATCH.OPEN_ITEM",
+        "PLACEMENT.RETRY",
+        "PLACEMENT.CONFIRM",
+        "PLACEMENT.OPEN_EDITOR"
+      ]
+    },
+    "P09B": {
+      "surfaces": [
+        "/uploads/:batchId/items/:itemId#optional-scene-note"
+      ],
+      "actions": [
+        "NOTE.OPT_IN",
+        "NOTE.CONFIRM",
+        "NOTE.WITHDRAW"
+      ]
+    },
+    "P10": {
+      "surfaces": [
+        "/placements/:photoId/edit"
+      ],
+      "actions": [
+        "PLACEMENT.OPEN_EDITOR",
+        "PLACEMENT.SAVE",
+        "PLACEMENT.UNDO",
+        "PLACEMENT.MARK_OUTSIDE",
+        "PLACEMENT.REOPEN_FOR_CONTRIBUTOR"
+      ]
+    },
+    "P11": {
+      "surfaces": [
+        "/manage/:spaceId"
+      ],
+      "actions": [
+        "MANAGE.OPEN",
+        "MANAGE.OPEN_NEXT"
+      ]
+    },
+    "P12": {
+      "surfaces": [
+        "/manage/:spaceId?tab=placement",
+        "/placements/:photoId/edit"
+      ],
+      "actions": [
+        "PLACEMENT.MARK_OUTSIDE",
+        "PLACEMENT.REOPEN_FOR_CONTRIBUTOR"
+      ]
+    },
+    "P13": {
+      "surfaces": [
+        "/manage/:spaceId?tab=review"
+      ],
+      "actions": [
+        "CONTENT.APPROVE",
+        "CONTENT.HIDE",
+        "CONTENT.REJECT",
+        "CONTENT.RESTORE",
+        "CONTENT.REOPEN"
+      ]
+    },
+    "P14": {
+      "surfaces": [
+        "/s/:spaceId/photos/:photoId",
+        "/s/:spaceId/scene"
+      ],
+      "actions": [
+        "VIEW.OPEN_SCENE",
+        "PHOTO.RETURN_TO_SCENE"
+      ]
+    },
+    "P15": {
+      "surfaces": [
+        "/manage/:spaceId?tab=scene"
+      ],
+      "actions": [
+        "PANORAMA.UPLOAD_CANDIDATE",
+        "PANORAMA.SWITCH_CANDIDATE",
+        "PANORAMA.ROLLBACK"
+      ]
+    },
+    "P16": {
+      "surfaces": [
+        "/manage/:spaceId?tab=invitations",
+        "/manage/:spaceId?tab=members"
+      ],
+      "actions": [
+        "INVITATION.COPY_LINK",
+        "INVITATION.SHOW_QR",
+        "EXTERNAL_INVITATION.CREATE",
+        "EXTERNAL_INVITATION.REVOKE",
+        "MEMBER_INVITATION.CREATE",
+        "MEMBER_INVITATION.ACCEPT",
+        "MEMBER_INVITATION.REVOKE",
+        "MEMBERSHIP.UPDATE",
+        "MEMBERSHIP.REVOKE"
+      ]
+    },
+    "P17": {
+      "surfaces": [
+        "/manage/:spaceId?tab=settings",
+        "/exports/:id",
+        "/deletions/:id"
+      ],
+      "actions": [
+        "AUTH.REAUTH_REQUEST_CODE",
+        "AUTH.REAUTHENTICATE",
+        "COLLECTION.PAUSE",
+        "COLLECTION.RESUME",
+        "SHARING.ENABLE",
+        "SHARING.DISABLE",
+        "SPACE.ARCHIVE",
+        "SPACE.RESTORE",
+        "SPACE.EXPORT",
+        "SPACE.DELETE_REQUEST",
+        "EXPORT.OPEN_STATUS",
+        "EXPORT.DOWNLOAD",
+        "DELETION.OPEN_STATUS"
+      ]
+    },
+    "P18": {
+      "surfaces": [
+        "/account",
+        "/account/uploads",
+        "/exports/:id",
+        "/deletions/:id",
+        "/reports/:id",
+        "/appeals/:id",
+        "/support/cases/:id"
+      ],
+      "actions": [
+        "AUTH.LOGOUT",
+        "AUTH.LOGOUT_ALL",
+        "AUTH.REAUTH_REQUEST_CODE",
+        "AUTH.REAUTHENTICATE",
+        "BATCH.OPEN_ACCOUNT_UPLOADS",
+        "BATCH.RECOVER_FROM_ACCOUNT",
+        "BATCH_RECEIPT.REVOKE",
+        "SPACE.EXPORT",
+        "SPACE.DELETE_REQUEST",
+        "ACCOUNT.OPEN",
+        "ACCOUNT.EXPORT",
+        "ACCOUNT.DELETE_REQUEST",
+        "OWNER_TRANSFER.CREATE",
+        "OWNER_TRANSFER.ACCEPT",
+        "OWNER_TRANSFER.REVOKE",
+        "EXPORT.OPEN_STATUS",
+        "EXPORT.DOWNLOAD",
+        "DELETION.OPEN_STATUS",
+        "REPORT.SUBMIT",
+        "REPORT.OPEN_STATUS",
+        "APPEAL.SUBMIT",
+        "APPEAL.OPEN_STATUS",
+        "SUPPORT.OPEN",
+        "SUPPORT.SUBMIT_SAFETY_LEAD",
+        "SUPPORT.OPEN_STATUS",
+        "LEGAL.OPEN_PRIVACY",
+        "LEGAL.OPEN_TERMS"
+      ]
+    }
+  },
+  "actions": [
+    {
+      "id": "HOME.OPEN_SPACE",
+      "entries": [
+        "P01"
+      ],
+      "actor": "any",
+      "contractRoute": "/",
+      "returnTarget": "/",
+      "surfaces": [
+        "/",
+        "/open",
+        "/support",
+        "/privacy",
+        "/terms"
+      ],
+      "boundary": {
+        "endpoint": "/open",
+        "method": "NAVIGATE",
+        "releaseLane": "v1",
+        "stableErrors": []
+      },
+      "phases": [
+        "initial",
+        "loading",
+        "success",
+        "stable_error",
+        "retry",
+        "session_or_permission_loss",
+        "empty",
+        "destructive_confirm",
+        "return"
+      ]
+    },
+    {
+      "id": "AUTH.OPEN_LOGIN",
+      "entries": [
+        "P01",
+        "P02"
+      ],
+      "actor": "any-not-authenticated",
+      "contractRoute": "/login",
+      "returnTarget": "/spaces-or-requested-route",
+      "surfaces": [
+        "/",
+        "/open",
+        "/support",
+        "/privacy",
+        "/terms",
+        "/login"
+      ],
+      "boundary": {
+        "endpoint": "/login",
+        "method": "NAVIGATE",
+        "releaseLane": "v1",
+        "stableErrors": []
+      },
+      "phases": [
+        "initial",
+        "loading",
+        "success",
+        "stable_error",
+        "retry",
+        "session_or_permission_loss",
+        "empty",
+        "destructive_confirm",
+        "return"
+      ]
+    },
+    {
+      "id": "AUTH.REQUEST_CODE",
+      "entries": [
+        "P02"
+      ],
+      "actor": "anonymous",
+      "contractRoute": "/login",
+      "returnTarget": "requested-route",
+      "surfaces": [
+        "/login"
+      ],
+      "boundary": {
+        "endpoint": "/v1/auth/email-otp-challenges",
+        "method": "POST",
+        "releaseLane": "v1",
+        "stableErrors": [
+          "validation_failed",
+          "rate_limited",
+          "authentication_failed"
+        ]
+      },
+      "phases": [
+        "initial",
+        "loading",
+        "success",
+        "stable_error",
+        "retry",
+        "session_or_permission_loss",
+        "empty",
+        "destructive_confirm",
+        "return"
+      ]
+    },
+    {
+      "id": "AUTH.VERIFY_CODE",
+      "entries": [
+        "P02"
+      ],
+      "actor": "anonymous",
+      "contractRoute": "/login",
+      "returnTarget": "requested-route-or-/spaces",
+      "surfaces": [
+        "/login"
+      ],
+      "boundary": {
+        "endpoint": "/v1/auth/email-otp-verifications",
+        "method": "POST",
+        "releaseLane": "v1",
+        "stableErrors": [
+          "validation_failed",
+          "rate_limited",
+          "authentication_failed"
+        ]
+      },
+      "phases": [
+        "initial",
+        "loading",
+        "success",
+        "stable_error",
+        "retry",
+        "session_or_permission_loss",
+        "empty",
+        "destructive_confirm",
+        "return"
+      ]
+    },
+    {
+      "id": "AUTH.LOGOUT",
+      "entries": [
+        "P18"
+      ],
+      "actor": "account",
+      "contractRoute": "/account",
+      "returnTarget": "/",
+      "surfaces": [
+        "/account",
+        "/account/uploads",
+        "/exports/:id",
+        "/deletions/:id",
+        "/reports/:id",
+        "/appeals/:id",
+        "/support/cases/:id"
+      ],
+      "boundary": {
+        "endpoint": "/v1/auth/logout",
+        "method": "POST",
+        "releaseLane": "v1",
+        "stableErrors": [
+          "session_unavailable",
+          "idempotency_conflict",
+          "rate_limited"
+        ]
+      },
+      "phases": [
+        "initial",
+        "loading",
+        "success",
+        "stable_error",
+        "retry",
+        "session_or_permission_loss",
+        "empty",
+        "destructive_confirm",
+        "return"
+      ]
+    },
+    {
+      "id": "AUTH.LOGOUT_ALL",
+      "entries": [
+        "P18"
+      ],
+      "actor": "account-with-reauth",
+      "contractRoute": "/account/sessions",
+      "returnTarget": "/",
+      "surfaces": [
+        "/account",
+        "/account/uploads",
+        "/exports/:id",
+        "/deletions/:id",
+        "/reports/:id",
+        "/appeals/:id",
+        "/support/cases/:id"
+      ],
+      "boundary": {
+        "endpoint": "/v1/auth/logout-all",
+        "method": "POST",
+        "releaseLane": "v1",
+        "stableErrors": [
+          "session_unavailable",
+          "reauth_required",
+          "reauth_unavailable",
+          "version_conflict",
+          "idempotency_conflict",
+          "rate_limited"
+        ]
+      },
+      "phases": [
+        "initial",
+        "loading",
+        "success",
+        "stable_error",
+        "retry",
+        "session_or_permission_loss",
+        "empty",
+        "destructive_confirm",
+        "return"
+      ]
+    },
+    {
+      "id": "AUTH.REAUTH_REQUEST_CODE",
+      "entries": [
+        "P03",
+        "P17",
+        "P18"
+      ],
+      "actor": "account",
+      "contractRoute": "/reauth",
+      "returnTarget": "calling-route",
+      "surfaces": [
+        "/spaces",
+        "/account",
+        "/manage/:spaceId?tab=settings",
+        "/exports/:id",
+        "/deletions/:id",
+        "/account/uploads",
+        "/reports/:id",
+        "/appeals/:id",
+        "/support/cases/:id"
+      ],
+      "boundary": {
+        "endpoint": "/v1/auth/reauth-challenges",
+        "method": "POST",
+        "releaseLane": "v1",
+        "stableErrors": [
+          "session_unavailable",
+          "reauth_challenge_unavailable",
+          "rate_limited",
+          "idempotency_conflict"
+        ]
+      },
+      "phases": [
+        "initial",
+        "loading",
+        "success",
+        "stable_error",
+        "retry",
+        "session_or_permission_loss",
+        "empty",
+        "destructive_confirm",
+        "return"
+      ]
+    },
+    {
+      "id": "AUTH.REAUTHENTICATE",
+      "entries": [
+        "P03",
+        "P17",
+        "P18"
+      ],
+      "actor": "account",
+      "contractRoute": "/reauth",
+      "returnTarget": "calling-route",
+      "surfaces": [
+        "/spaces",
+        "/account",
+        "/manage/:spaceId?tab=settings",
+        "/exports/:id",
+        "/deletions/:id",
+        "/account/uploads",
+        "/reports/:id",
+        "/appeals/:id",
+        "/support/cases/:id"
+      ],
+      "boundary": {
+        "endpoint": "/v1/auth/reauth-verifications",
+        "method": "POST",
+        "releaseLane": "v1",
+        "stableErrors": [
+          "authentication_failed",
+          "session_unavailable",
+          "reauth_challenge_unavailable",
+          "rate_limited",
+          "idempotency_conflict"
+        ]
+      },
+      "phases": [
+        "initial",
+        "loading",
+        "success",
+        "stable_error",
+        "retry",
+        "session_or_permission_loss",
+        "empty",
+        "destructive_confirm",
+        "return"
+      ]
+    },
+    {
+      "id": "MY_SPACES.OPEN",
+      "entries": [
+        "P03"
+      ],
+      "actor": "account",
+      "contractRoute": "/spaces",
+      "returnTarget": "/spaces",
+      "surfaces": [
+        "/spaces",
+        "/account"
+      ],
+      "boundary": {
+        "endpoint": "/v1/me/spaces",
+        "method": "GET",
+        "releaseLane": "v1",
+        "stableErrors": [
+          "session_unavailable",
+          "resource_unavailable",
+          "rate_limited"
+        ]
+      },
+      "phases": [
+        "initial",
+        "loading",
+        "success",
+        "stable_error",
+        "retry",
+        "session_or_permission_loss",
+        "empty",
+        "destructive_confirm",
+        "return"
+      ]
+    },
+    {
+      "id": "MY_SPACES.OPEN_ARCHIVED",
+      "entries": [
+        "P03"
+      ],
+      "actor": "owner",
+      "contractRoute": "/spaces?filter=archived",
+      "returnTarget": "/spaces",
+      "surfaces": [
+        "/spaces",
+        "/account"
+      ],
+      "boundary": {
+        "endpoint": "/v1/me/spaces?lifecycle=archived",
+        "method": "GET",
+        "releaseLane": "v1",
+        "stableErrors": [
+          "session_unavailable",
+          "resource_unavailable",
+          "rate_limited"
+        ]
+      },
+      "phases": [
+        "initial",
+        "loading",
+        "success",
+        "stable_error",
+        "retry",
+        "session_or_permission_loss",
+        "empty",
+        "destructive_confirm",
+        "return"
+      ]
+    },
+    {
+      "id": "SPACE.OPEN_CREATE",
+      "entries": [
+        "P03"
+      ],
+      "actor": "account",
+      "contractRoute": "/spaces/new",
+      "returnTarget": "/spaces",
+      "surfaces": [
+        "/spaces",
+        "/account"
+      ],
+      "boundary": {
+        "endpoint": "/spaces/new",
+        "method": "NAVIGATE",
+        "releaseLane": "v1",
+        "stableErrors": [
+          "route_unavailable"
+        ]
+      },
+      "phases": [
+        "initial",
+        "loading",
+        "success",
+        "stable_error",
+        "retry",
+        "session_or_permission_loss",
+        "empty",
+        "destructive_confirm",
+        "return"
+      ]
+    },
+    {
+      "id": "SPACE.CREATE",
+      "entries": [
+        "P04"
+      ],
+      "actor": "account",
+      "contractRoute": "/spaces/new",
+      "returnTarget": "/manage/:spaceId?tab=setup",
+      "surfaces": [
+        "/spaces/new",
+        "/manage/:spaceId?tab=setup"
+      ],
+      "boundary": {
+        "endpoint": "/v1/spaces",
+        "method": "POST",
+        "releaseLane": "v1",
+        "stableErrors": [
+          "validation_failed",
+          "notice_acknowledgement_required",
+          "scene_initialization_failed",
+          "authorization_changed",
+          "version_conflict",
+          "idempotency_conflict",
+          "rate_limited"
+        ]
+      },
+      "phases": [
+        "initial",
+        "loading",
+        "success",
+        "stable_error",
+        "retry",
+        "session_or_permission_loss",
+        "empty",
+        "destructive_confirm",
+        "return"
+      ]
+    },
+    {
+      "id": "SPACE.OPEN",
+      "entries": [
+        "P03",
+        "session-reentry"
+      ],
+      "actor": "capability-projector",
+      "contractRoute": "/s/:spaceId",
+      "returnTarget": "/spaces-or-/",
+      "surfaces": [
+        "/spaces",
+        "/account"
+      ],
+      "boundary": {
+        "endpoint": "/s/{spaceId}",
+        "method": "NAVIGATE",
+        "releaseLane": "v1",
+        "stableErrors": [
+          "route_unavailable"
+        ]
+      },
+      "phases": [
+        "initial",
+        "loading",
+        "success",
+        "stable_error",
+        "retry",
+        "session_or_permission_loss",
+        "empty",
+        "destructive_confirm",
+        "return"
+      ]
+    },
+    {
+      "id": "INVITATION.EXCHANGE",
+      "entries": [
+        "P05"
+      ],
+      "actor": "anonymous-per-access-bootstrap",
+      "contractRoute": "/open#invite=:secret",
+      "returnTarget": "server-canonical-entryTask-route",
+      "surfaces": [
+        "/open/:publicCampaignId",
+        "/open#invite=:secret"
+      ],
+      "boundary": {
+        "endpoint": "workflow:external-campaign-admission-and-per-visitor-exchange",
+        "method": "WORKFLOW",
+        "releaseLane": "v1",
+        "stableErrors": [
+          "campaign_unavailable",
+          "invite_unavailable"
+        ]
+      },
+      "phases": [
+        "initial",
+        "loading",
+        "success",
+        "stable_error",
+        "retry",
+        "session_or_permission_loss",
+        "empty",
+        "destructive_confirm",
+        "return"
+      ]
+    },
+    {
+      "id": "INVITATION.SCAN_AGAIN",
+      "entries": [
+        "P01",
+        "P05"
+      ],
+      "actor": "any",
+      "contractRoute": "/open",
+      "returnTarget": "/",
+      "surfaces": [
+        "/",
+        "/open",
+        "/support",
+        "/privacy",
+        "/terms",
+        "/open/:publicCampaignId",
+        "/open#invite=:secret"
+      ],
+      "boundary": {
+        "endpoint": "/open",
+        "method": "NAVIGATE",
+        "releaseLane": "v1",
+        "stableErrors": [
+          "camera_unavailable",
+          "qr_unrecognized"
+        ]
+      },
+      "phases": [
+        "initial",
+        "loading",
+        "success",
+        "stable_error",
+        "retry",
+        "session_or_permission_loss",
+        "empty",
+        "destructive_confirm",
+        "return"
+      ]
+    },
+    {
+      "id": "INVITATION.COPY_LINK",
+      "entries": [
+        "P16"
+      ],
+      "actor": "invitation-creator",
+      "contractRoute": "invitation-link-state",
+      "returnTarget": "calling-invitation-page",
+      "surfaces": [
+        "/manage/:spaceId?tab=invitations",
+        "/manage/:spaceId?tab=members"
+      ],
+      "boundary": {
+        "endpoint": "client:clipboard",
+        "method": "CLIPBOARD_WRITE",
+        "releaseLane": "v1",
+        "stableErrors": [
+          "clipboard_unavailable",
+          "clipboard_permission_denied",
+          "invitation_link_unavailable"
+        ]
+      },
+      "phases": [
+        "initial",
+        "loading",
+        "success",
+        "stable_error",
+        "retry",
+        "session_or_permission_loss",
+        "empty",
+        "destructive_confirm",
+        "return"
+      ]
+    },
+    {
+      "id": "INVITATION.SHOW_QR",
+      "entries": [
+        "P16"
+      ],
+      "actor": "member-with-canInvite-or-owner",
+      "contractRoute": "activity-invitation-management-read-model",
+      "returnTarget": "calling-invitation-page",
+      "surfaces": [
+        "/manage/:spaceId?tab=invitations",
+        "/manage/:spaceId?tab=members"
+      ],
+      "boundary": {
+        "endpoint": "client:local-qrcode-renderer",
+        "method": "LOCAL_RENDER",
+        "releaseLane": "v1",
+        "stableErrors": [
+          "campaign_share_unavailable",
+          "qr_render_unavailable"
+        ]
+      },
+      "phases": [
+        "initial",
+        "loading",
+        "success",
+        "stable_error",
+        "retry",
+        "session_or_permission_loss",
+        "empty",
+        "destructive_confirm",
+        "return"
+      ]
+    },
+    {
+      "id": "VIEW.OPEN_ALBUM",
+      "entries": [
+        "P06"
+      ],
+      "actor": "effective-view",
+      "contractRoute": "/s/:spaceId/album",
+      "returnTarget": "/s/:spaceId",
+      "surfaces": [
+        "/s/:spaceId/album",
+        "/s/:spaceId/scene",
+        "/s/:spaceId/upload"
+      ],
+      "boundary": {
+        "endpoint": "/v1/viewer/spaces/{sid}",
+        "method": "GET",
+        "releaseLane": "v1",
+        "stableErrors": [
+          "session_unavailable",
+          "resource_unavailable",
+          "rate_limited"
+        ]
+      },
+      "phases": [
+        "initial",
+        "loading",
+        "success",
+        "stable_error",
+        "retry",
+        "session_or_permission_loss",
+        "empty",
+        "destructive_confirm",
+        "return"
+      ]
+    },
+    {
+      "id": "VIEW.OPEN_SCENE",
+      "entries": [
+        "P06",
+        "P06B",
+        "P14"
+      ],
+      "actor": "effective-view",
+      "contractRoute": "/s/:spaceId/scene",
+      "returnTarget": "/s/:spaceId/album",
+      "surfaces": [
+        "/s/:spaceId/album",
+        "/s/:spaceId/scene",
+        "/s/:spaceId/upload",
+        "/s/:spaceId/photos/:photoId"
+      ],
+      "boundary": {
+        "endpoint": "/v1/viewer/spaces/{sid}",
+        "method": "GET",
+        "releaseLane": "v1",
+        "stableErrors": [
+          "session_unavailable",
+          "resource_unavailable",
+          "scene_unavailable",
+          "rate_limited"
+        ]
+      },
+      "phases": [
+        "initial",
+        "loading",
+        "success",
+        "stable_error",
+        "retry",
+        "session_or_permission_loss",
+        "empty",
+        "destructive_confirm",
+        "return"
+      ]
+    },
+    {
+      "id": "PHOTO.OPEN_DETAIL",
+      "entries": [
+        "P06B"
+      ],
+      "actor": "effective-view",
+      "contractRoute": "/s/:spaceId/photos/:photoId",
+      "returnTarget": "album-scroll-anchor",
+      "surfaces": [],
+      "boundary": {
+        "endpoint": "/v1/viewer/spaces/{sid}/photos/{pid}",
+        "method": "GET",
+        "releaseLane": "v1",
+        "stableErrors": [
+          "session_unavailable",
+          "resource_unavailable",
+          "rate_limited"
+        ]
+      },
+      "phases": [
+        "initial",
+        "loading",
+        "success",
+        "stable_error",
+        "retry",
+        "session_or_permission_loss",
+        "empty",
+        "destructive_confirm",
+        "return"
+      ]
+    },
+    {
+      "id": "PHOTO.RETURN_TO_SCENE",
+      "entries": [
+        "P06B",
+        "P14"
+      ],
+      "actor": "effective-view",
+      "contractRoute": "/s/:spaceId/photos/:photoId",
+      "returnTarget": "photo-detail",
+      "surfaces": [
+        "/s/:spaceId/photos/:photoId",
+        "/s/:spaceId/scene"
+      ],
+      "boundary": {
+        "endpoint": "/v1/viewer/spaces/{sid}/photos/{pid}/scene-context",
+        "method": "GET",
+        "releaseLane": "v1",
+        "stableErrors": [
+          "session_unavailable",
+          "photo_scene_unavailable",
+          "scene_unavailable",
+          "rate_limited"
+        ]
+      },
+      "phases": [
+        "initial",
+        "loading",
+        "success",
+        "stable_error",
+        "retry",
+        "session_or_permission_loss",
+        "empty",
+        "destructive_confirm",
+        "return"
+      ]
+    },
+    {
+      "id": "UPLOAD.ACCEPT_NOTICE",
+      "entries": [
+        "P07"
+      ],
+      "actor": "effective-upload",
+      "contractRoute": "/s/:spaceId/upload",
+      "returnTarget": "upload-selection",
+      "surfaces": [
+        "/s/:spaceId/upload",
+        "/notices/media"
+      ],
+      "boundary": {
+        "endpoint": "/v1/consent-events",
+        "method": "POST",
+        "releaseLane": "v1",
+        "stableErrors": [
+          "session_unavailable",
+          "notice_version_stale",
+          "consent_required",
+          "rate_limited",
+          "idempotency_conflict"
+        ]
+      },
+      "phases": [
+        "initial",
+        "loading",
+        "success",
+        "stable_error",
+        "retry",
+        "session_or_permission_loss",
+        "empty",
+        "destructive_confirm",
+        "return"
+      ]
+    },
+    {
+      "id": "UPLOAD.OPEN",
+      "entries": [
+        "P06",
+        "P08"
+      ],
+      "actor": "effective-upload",
+      "contractRoute": "/s/:spaceId/upload",
+      "returnTarget": "calling-space-or-batch",
+      "surfaces": [
+        "/s/:spaceId/album",
+        "/s/:spaceId/scene",
+        "/s/:spaceId/upload",
+        "/uploads/:batchId",
+        "/uploads/:batchId/items/:itemId",
+        "/account/uploads"
+      ],
+      "boundary": {
+        "endpoint": "/s/{spaceId}/upload",
+        "method": "NAVIGATE",
+        "releaseLane": "v1",
+        "stableErrors": [
+          "route_unavailable",
+          "upload_unavailable"
+        ]
+      },
+      "phases": [
+        "initial",
+        "loading",
+        "success",
+        "stable_error",
+        "retry",
+        "session_or_permission_loss",
+        "empty",
+        "destructive_confirm",
+        "return"
+      ]
+    },
+    {
+      "id": "UPLOAD.SELECT_FILES",
+      "entries": [
+        "P07"
+      ],
+      "actor": "current-consent-effective-upload",
+      "contractRoute": "/s/:spaceId/upload",
+      "returnTarget": "upload-selection",
+      "surfaces": [
+        "/s/:spaceId/upload",
+        "/notices/media"
+      ],
+      "boundary": {
+        "endpoint": "/v1/spaces/{sid}/contribution-batches",
+        "method": "POST",
+        "releaseLane": "v1",
+        "stableErrors": [
+          "session_unavailable",
+          "upload_unavailable",
+          "consent_required",
+          "media_limit_exceeded",
+          "rate_limited",
+          "idempotency_conflict"
+        ]
+      },
+      "phases": [
+        "initial",
+        "loading",
+        "success",
+        "stable_error",
+        "retry",
+        "session_or_permission_loss",
+        "empty",
+        "destructive_confirm",
+        "return"
+      ]
+    },
+    {
+      "id": "UPLOAD.REMOVE_ITEM",
+      "entries": [
+        "P07"
+      ],
+      "actor": "open-batch-contributor-failed-item",
+      "contractRoute": "/s/:spaceId/upload",
+      "returnTarget": "upload-selection",
+      "surfaces": [
+        "/s/:spaceId/upload",
+        "/notices/media"
+      ],
+      "boundary": {
+        "endpoint": "/v1/contribution-batches/{bid}/items/{iid}",
+        "method": "DELETE",
+        "releaseLane": "v1",
+        "stableErrors": [
+          "batch_unavailable",
+          "item_unavailable",
+          "item_state_conflict",
+          "batch_access_unavailable",
+          "version_conflict",
+          "idempotency_conflict"
+        ]
+      },
+      "phases": [
+        "initial",
+        "loading",
+        "success",
+        "stable_error",
+        "retry",
+        "session_or_permission_loss",
+        "empty",
+        "destructive_confirm",
+        "return"
+      ]
+    },
+    {
+      "id": "UPLOAD.RETRY_ITEM",
+      "entries": [
+        "P07"
+      ],
+      "actor": "batch-contributor",
+      "contractRoute": "/s/:spaceId/upload",
+      "returnTarget": "upload-selection",
+      "surfaces": [
+        "/s/:spaceId/upload",
+        "/notices/media"
+      ],
+      "boundary": {
+        "endpoint": "/v1/contribution-batches/{bid}/items/{iid}/retries",
+        "method": "POST",
+        "releaseLane": "v1",
+        "stableErrors": [
+          "batch_unavailable",
+          "batch_finalized",
+          "item_unavailable",
+          "item_state_conflict",
+          "upload_unavailable",
+          "batch_access_unavailable",
+          "version_conflict",
+          "idempotency_conflict"
+        ]
+      },
+      "phases": [
+        "initial",
+        "loading",
+        "success",
+        "stable_error",
+        "retry",
+        "session_or_permission_loss",
+        "empty",
+        "destructive_confirm",
+        "return"
+      ]
+    },
+    {
+      "id": "UPLOAD.FINALIZE_BATCH",
+      "entries": [
+        "P07"
+      ],
+      "actor": "batch-contributor",
+      "contractRoute": "/s/:spaceId/upload",
+      "returnTarget": "/uploads/:batchId",
+      "surfaces": [
+        "/s/:spaceId/upload",
+        "/notices/media"
+      ],
+      "boundary": {
+        "endpoint": "/v1/contribution-batches/{bid}/finalizations",
+        "method": "POST",
+        "releaseLane": "v1",
+        "stableErrors": [
+          "batch_unavailable",
+          "no_terminal_items",
+          "items_changed",
+          "batch_finalized",
+          "batch_access_unavailable",
+          "version_conflict",
+          "idempotency_conflict"
+        ]
+      },
+      "phases": [
+        "initial",
+        "loading",
+        "success",
+        "stable_error",
+        "retry",
+        "session_or_permission_loss",
+        "empty",
+        "destructive_confirm",
+        "return"
+      ]
+    },
+    {
+      "id": "BATCH.OPEN_RESULT",
+      "entries": [
+        "P08"
+      ],
+      "actor": "batch-session-or-bound-account",
+      "contractRoute": "/uploads/:batchId",
+      "returnTarget": "space-or-/",
+      "surfaces": [
+        "/uploads/:batchId",
+        "/uploads/:batchId/items/:itemId",
+        "/account/uploads"
+      ],
+      "boundary": {
+        "endpoint": "/v1/batch-receipt",
+        "method": "GET",
+        "releaseLane": "v1",
+        "stableErrors": [
+          "receipt_session_unavailable",
+          "batch_unavailable",
+          "batch_access_unavailable",
+          "rate_limited"
+        ]
+      },
+      "phases": [
+        "initial",
+        "loading",
+        "success",
+        "stable_error",
+        "retry",
+        "session_or_permission_loss",
+        "empty",
+        "destructive_confirm",
+        "return"
+      ]
+    },
+    {
+      "id": "BATCH.OPEN_ITEM",
+      "entries": [
+        "P08",
+        "P09"
+      ],
+      "actor": "batch-session-or-bound-account",
+      "contractRoute": "/uploads/:batchId/items/:itemId",
+      "returnTarget": "/uploads/:batchId",
+      "surfaces": [
+        "/uploads/:batchId",
+        "/uploads/:batchId/items/:itemId",
+        "/account/uploads",
+        "/placements/:photoId/edit"
+      ],
+      "boundary": {
+        "endpoint": "/v1/batch-receipt/items/{itemId}",
+        "method": "GET",
+        "releaseLane": "v1",
+        "stableErrors": [
+          "receipt_session_unavailable",
+          "batch_item_unavailable",
+          "batch_access_unavailable",
+          "rate_limited"
+        ]
+      },
+      "phases": [
+        "initial",
+        "loading",
+        "success",
+        "stable_error",
+        "retry",
+        "session_or_permission_loss",
+        "empty",
+        "destructive_confirm",
+        "return"
+      ]
+    },
+    {
+      "id": "BATCH_RECEIPT.EXCHANGE",
+      "entries": [
+        "P08"
+      ],
+      "actor": "batch-receipt-secret",
+      "contractRoute": "/uploads/open#receipt=:secret",
+      "returnTarget": "/uploads/:batchId",
+      "surfaces": [
+        "/uploads/:batchId",
+        "/uploads/:batchId/items/:itemId",
+        "/account/uploads"
+      ],
+      "boundary": {
+        "endpoint": "/v1/batch-receipt-exchanges",
+        "method": "POST",
+        "releaseLane": "v1",
+        "stableErrors": [
+          "receipt_unavailable",
+          "batch_access_unavailable"
+        ]
+      },
+      "phases": [
+        "initial",
+        "loading",
+        "success",
+        "stable_error",
+        "retry",
+        "session_or_permission_loss",
+        "empty",
+        "destructive_confirm",
+        "return"
+      ]
+    },
+    {
+      "id": "BATCH_BINDING.REQUEST_CODE",
+      "entries": [
+        "P08"
+      ],
+      "actor": "batch-session",
+      "contractRoute": "/uploads/:batchId/recovery",
+      "returnTarget": "/uploads/:batchId",
+      "surfaces": [
+        "/uploads/:batchId",
+        "/uploads/:batchId/items/:itemId",
+        "/account/uploads"
+      ],
+      "boundary": {
+        "endpoint": "/v1/batch-receipt/account-binding-otp-challenges",
+        "method": "POST",
+        "releaseLane": "v1",
+        "stableErrors": [
+          "receipt_session_unavailable",
+          "binding_challenge_unavailable",
+          "recovery_window_closed",
+          "batch_access_unavailable",
+          "rate_limited",
+          "idempotency_conflict"
+        ]
+      },
+      "phases": [
+        "initial",
+        "loading",
+        "success",
+        "stable_error",
+        "retry",
+        "session_or_permission_loss",
+        "empty",
+        "destructive_confirm",
+        "return"
+      ]
+    },
+    {
+      "id": "BATCH_BINDING.CONFIRM",
+      "entries": [
+        "P08"
+      ],
+      "actor": "batch-session-with-code",
+      "contractRoute": "/uploads/:batchId/recovery",
+      "returnTarget": "/uploads/:batchId",
+      "surfaces": [
+        "/uploads/:batchId",
+        "/uploads/:batchId/items/:itemId",
+        "/account/uploads"
+      ],
+      "boundary": {
+        "endpoint": "/v1/batch-receipt/account-bindings",
+        "method": "POST",
+        "releaseLane": "v1",
+        "stableErrors": [
+          "receipt_session_unavailable",
+          "verification_failed",
+          "notice_acknowledgement_required",
+          "binding_unavailable",
+          "recovery_window_closed",
+          "batch_access_unavailable",
+          "version_conflict",
+          "idempotency_conflict"
+        ]
+      },
+      "phases": [
+        "initial",
+        "loading",
+        "success",
+        "stable_error",
+        "retry",
+        "session_or_permission_loss",
+        "empty",
+        "destructive_confirm",
+        "return"
+      ]
+    },
+    {
+      "id": "BATCH.OPEN_ACCOUNT_UPLOADS",
+      "entries": [
+        "P18"
+      ],
+      "actor": "account",
+      "contractRoute": "/account/uploads",
+      "returnTarget": "/account",
+      "surfaces": [
+        "/account",
+        "/account/uploads",
+        "/exports/:id",
+        "/deletions/:id",
+        "/reports/:id",
+        "/appeals/:id",
+        "/support/cases/:id"
+      ],
+      "boundary": {
+        "endpoint": "/v1/me/batch-receipt-bindings",
+        "method": "GET",
+        "releaseLane": "v1",
+        "stableErrors": [
+          "session_unavailable",
+          "account_uploads_unavailable",
+          "rate_limited"
+        ]
+      },
+      "phases": [
+        "initial",
+        "loading",
+        "success",
+        "stable_error",
+        "retry",
+        "session_or_permission_loss",
+        "empty",
+        "destructive_confirm",
+        "return"
+      ]
+    },
+    {
+      "id": "BATCH.RECOVER_FROM_ACCOUNT",
+      "entries": [
+        "P08",
+        "P18"
+      ],
+      "actor": "bound-account",
+      "contractRoute": "/account/uploads/:batchId/recover",
+      "returnTarget": "/uploads/:batchId",
+      "surfaces": [
+        "/uploads/:batchId",
+        "/uploads/:batchId/items/:itemId",
+        "/account/uploads",
+        "/account",
+        "/exports/:id",
+        "/deletions/:id",
+        "/reports/:id",
+        "/appeals/:id",
+        "/support/cases/:id"
+      ],
+      "boundary": {
+        "endpoint": "/v1/me/batch-receipt-recoveries",
+        "method": "POST",
+        "releaseLane": "v1",
+        "stableErrors": [
+          "binding_unavailable",
+          "receipt_recovery_unavailable",
+          "batch_access_unavailable",
+          "reauth_required",
+          "rate_limited",
+          "idempotency_conflict"
+        ]
+      },
+      "phases": [
+        "initial",
+        "loading",
+        "success",
+        "stable_error",
+        "retry",
+        "session_or_permission_loss",
+        "empty",
+        "destructive_confirm",
+        "return"
+      ]
+    },
+    {
+      "id": "BATCH_RECEIPT.REVOKE",
+      "entries": [
+        "P08",
+        "P18"
+      ],
+      "actor": "batch-session",
+      "contractRoute": "/uploads/:batchId/access",
+      "returnTarget": "/account/uploads-or-/",
+      "surfaces": [
+        "/uploads/:batchId",
+        "/uploads/:batchId/items/:itemId",
+        "/account/uploads",
+        "/account",
+        "/exports/:id",
+        "/deletions/:id",
+        "/reports/:id",
+        "/appeals/:id",
+        "/support/cases/:id"
+      ],
+      "boundary": {
+        "endpoint": "/v1/batch-receipt/revocations",
+        "method": "POST",
+        "releaseLane": "v1",
+        "stableErrors": [
+          "receipt_session_unavailable",
+          "receipt_revocation_unavailable",
+          "batch_access_unavailable",
+          "version_conflict",
+          "idempotency_conflict"
+        ]
+      },
+      "phases": [
+        "initial",
+        "loading",
+        "success",
+        "stable_error",
+        "retry",
+        "session_or_permission_loss",
+        "empty",
+        "destructive_confirm",
+        "return"
+      ]
+    },
+    {
+      "id": "BATCH.DELETE_ITEM",
+      "entries": [
+        "P08"
+      ],
+      "actor": "batch-session-or-owner",
+      "contractRoute": "/uploads/:batchId/photos/:photoId",
+      "returnTarget": "/uploads/:batchId",
+      "surfaces": [
+        "/uploads/:batchId",
+        "/uploads/:batchId/items/:itemId",
+        "/account/uploads"
+      ],
+      "boundary": {
+        "endpoint": "/v1/photos/{pid}/deletion-requests",
+        "method": "POST",
+        "releaseLane": "v1",
+        "stableErrors": [
+          "photo_unavailable",
+          "deletion_not_allowed",
+          "reauth_required",
+          "batch_access_unavailable",
+          "version_conflict",
+          "idempotency_conflict"
+        ]
+      },
+      "phases": [
+        "initial",
+        "loading",
+        "success",
+        "stable_error",
+        "retry",
+        "session_or_permission_loss",
+        "empty",
+        "destructive_confirm",
+        "return"
+      ]
+    },
+    {
+      "id": "PLACEMENT.RETRY",
+      "entries": [
+        "P09"
+      ],
+      "actor": "authorized-placement-editor",
+      "contractRoute": "/uploads/:batchId/photos/:photoId/placement",
+      "returnTarget": "photo-result",
+      "surfaces": [
+        "/uploads/:batchId/items/:itemId",
+        "/placements/:photoId/edit"
+      ],
+      "boundary": {
+        "endpoint": "/v1/photos/{pid}/placement-actions",
+        "method": "POST",
+        "releaseLane": "v1",
+        "stableErrors": [
+          "placement_action_unavailable",
+          "placement_write_locked",
+          "authorization_changed",
+          "stale_revision",
+          "version_conflict",
+          "idempotency_conflict"
+        ]
+      },
+      "phases": [
+        "initial",
+        "loading",
+        "success",
+        "stable_error",
+        "retry",
+        "session_or_permission_loss",
+        "empty",
+        "destructive_confirm",
+        "return"
+      ]
+    },
+    {
+      "id": "PLACEMENT.CONFIRM",
+      "entries": [
+        "P09"
+      ],
+      "actor": "authorized-placement-editor",
+      "contractRoute": "/uploads/:batchId/photos/:photoId/placement",
+      "returnTarget": "photo-result",
+      "surfaces": [
+        "/uploads/:batchId/items/:itemId",
+        "/placements/:photoId/edit"
+      ],
+      "boundary": {
+        "endpoint": "/v1/photos/{pid}/placement-revisions",
+        "method": "POST",
+        "releaseLane": "v1",
+        "stableErrors": [
+          "placement_action_unavailable",
+          "placement_write_locked",
+          "authorization_changed",
+          "stale_revision",
+          "version_conflict",
+          "idempotency_conflict"
+        ]
+      },
+      "phases": [
+        "initial",
+        "loading",
+        "success",
+        "stable_error",
+        "retry",
+        "session_or_permission_loss",
+        "empty",
+        "destructive_confirm",
+        "return"
+      ]
+    },
+    {
+      "id": "PLACEMENT.OPEN_EDITOR",
+      "entries": [
+        "P09",
+        "P10"
+      ],
+      "actor": "authorized-placement-editor",
+      "contractRoute": "/placements/:photoId/edit",
+      "returnTarget": "calling-photo",
+      "surfaces": [
+        "/uploads/:batchId/items/:itemId",
+        "/placements/:photoId/edit"
+      ],
+      "boundary": {
+        "endpoint": "/v1/photos/{pid}/placement-edit",
+        "method": "GET",
+        "releaseLane": "v1",
+        "stableErrors": [
+          "placement_edit_unavailable",
+          "placement_write_locked",
+          "session_unavailable",
+          "rate_limited"
+        ]
+      },
+      "phases": [
+        "initial",
+        "loading",
+        "success",
+        "stable_error",
+        "retry",
+        "session_or_permission_loss",
+        "empty",
+        "destructive_confirm",
+        "return"
+      ]
+    },
+    {
+      "id": "PLACEMENT.SAVE",
+      "entries": [
+        "P10"
+      ],
+      "actor": "authorized-placement-editor",
+      "contractRoute": "/placements/:photoId/edit",
+      "returnTarget": "calling-photo",
+      "surfaces": [
+        "/placements/:photoId/edit"
+      ],
+      "boundary": {
+        "endpoint": "/v1/photos/{pid}/placement-revisions",
+        "method": "POST",
+        "releaseLane": "v1",
+        "stableErrors": [
+          "placement_action_unavailable",
+          "placement_write_locked",
+          "authorization_changed",
+          "stale_revision",
+          "version_conflict",
+          "idempotency_conflict"
+        ]
+      },
+      "phases": [
+        "initial",
+        "loading",
+        "success",
+        "stable_error",
+        "retry",
+        "session_or_permission_loss",
+        "empty",
+        "destructive_confirm",
+        "return"
+      ]
+    },
+    {
+      "id": "PLACEMENT.UNDO",
+      "entries": [
+        "P10"
+      ],
+      "actor": "authorized-placement-editor",
+      "contractRoute": "/placements/:photoId/history",
+      "returnTarget": "calling-photo",
+      "surfaces": [
+        "/placements/:photoId/edit"
+      ],
+      "boundary": {
+        "endpoint": "/v1/photos/{pid}/placement-actions",
+        "method": "POST",
+        "releaseLane": "v1",
+        "stableErrors": [
+          "placement_action_unavailable",
+          "placement_write_locked",
+          "authorization_changed",
+          "stale_revision",
+          "version_conflict",
+          "idempotency_conflict"
+        ]
+      },
+      "phases": [
+        "initial",
+        "loading",
+        "success",
+        "stable_error",
+        "retry",
+        "session_or_permission_loss",
+        "empty",
+        "destructive_confirm",
+        "return"
+      ]
+    },
+    {
+      "id": "PLACEMENT.MARK_OUTSIDE",
+      "entries": [
+        "P10",
+        "P12"
+      ],
+      "actor": "authorized-placement-editor",
+      "contractRoute": "/placements/:photoId/edit",
+      "returnTarget": "calling-photo",
+      "surfaces": [
+        "/placements/:photoId/edit",
+        "/manage/:spaceId?tab=placement"
+      ],
+      "boundary": {
+        "endpoint": "/v1/photos/{pid}/placement-actions",
+        "method": "POST",
+        "releaseLane": "v1",
+        "stableErrors": [
+          "placement_action_unavailable",
+          "placement_write_locked",
+          "authorization_changed",
+          "stale_revision",
+          "version_conflict",
+          "idempotency_conflict"
+        ]
+      },
+      "phases": [
+        "initial",
+        "loading",
+        "success",
+        "stable_error",
+        "retry",
+        "session_or_permission_loss",
+        "empty",
+        "destructive_confirm",
+        "return"
+      ]
+    },
+    {
+      "id": "PLACEMENT.REOPEN_FOR_CONTRIBUTOR",
+      "entries": [
+        "P10",
+        "P12"
+      ],
+      "actor": "owner",
+      "contractRoute": "/manage/:spaceId/placements/:photoId",
+      "returnTarget": "placement-detail",
+      "surfaces": [
+        "/placements/:photoId/edit",
+        "/manage/:spaceId?tab=placement"
+      ],
+      "boundary": {
+        "endpoint": "/v1/batch-receipts/{rid}/items/{iid}/placement-reopens",
+        "method": "POST",
+        "releaseLane": "v1",
+        "stableErrors": [
+          "item_unavailable",
+          "owner_required",
+          "version_conflict",
+          "idempotency_conflict"
+        ]
+      },
+      "phases": [
+        "initial",
+        "loading",
+        "success",
+        "stable_error",
+        "retry",
+        "session_or_permission_loss",
+        "empty",
+        "destructive_confirm",
+        "return"
+      ]
+    },
+    {
+      "id": "NOTE.OPT_IN",
+      "entries": [
+        "P09B"
+      ],
+      "actor": "contributor",
+      "contractRoute": "/experiments/scene-note/:photoId",
+      "returnTarget": "photo-result",
+      "surfaces": [
+        "/uploads/:batchId/items/:itemId#optional-scene-note"
+      ],
+      "boundary": {
+        "endpoint": "/v2-experiments/batch-receipt/items/{iid}/scene-note-jobs",
+        "method": "POST",
+        "releaseLane": "L2",
+        "stableErrors": [
+          "experiment_unavailable",
+          "consent_required",
+          "item_unavailable",
+          "rate_limited",
+          "idempotency_conflict"
+        ]
+      },
+      "phases": [
+        "initial",
+        "loading",
+        "success",
+        "stable_error",
+        "retry",
+        "session_or_permission_loss",
+        "empty",
+        "destructive_confirm",
+        "return"
+      ]
+    },
+    {
+      "id": "NOTE.CONFIRM",
+      "entries": [
+        "P09B"
+      ],
+      "actor": "contributor",
+      "contractRoute": "/experiments/scene-note/:photoId",
+      "returnTarget": "photo-result",
+      "surfaces": [
+        "/uploads/:batchId/items/:itemId#optional-scene-note"
+      ],
+      "boundary": {
+        "endpoint": "/v2-experiments/batch-receipt/items/{iid}/scene-note-confirmations",
+        "method": "POST",
+        "releaseLane": "L2",
+        "stableErrors": [
+          "experiment_unavailable",
+          "draft_unavailable",
+          "consent_required",
+          "version_conflict",
+          "idempotency_conflict"
+        ]
+      },
+      "phases": [
+        "initial",
+        "loading",
+        "success",
+        "stable_error",
+        "retry",
+        "session_or_permission_loss",
+        "empty",
+        "destructive_confirm",
+        "return"
+      ]
+    },
+    {
+      "id": "NOTE.WITHDRAW",
+      "entries": [
+        "P09B"
+      ],
+      "actor": "contributor",
+      "contractRoute": "/experiments/scene-note/:photoId",
+      "returnTarget": "photo-result",
+      "surfaces": [
+        "/uploads/:batchId/items/:itemId#optional-scene-note"
+      ],
+      "boundary": {
+        "endpoint": "/v2-experiments/batch-receipt/items/{iid}/scene-note-withdrawals",
+        "method": "POST",
+        "releaseLane": "L2",
+        "stableErrors": [
+          "experiment_unavailable",
+          "scene_note_unavailable",
+          "version_conflict",
+          "idempotency_conflict"
+        ]
+      },
+      "phases": [
+        "initial",
+        "loading",
+        "success",
+        "stable_error",
+        "retry",
+        "session_or_permission_loss",
+        "empty",
+        "destructive_confirm",
+        "return"
+      ]
+    },
+    {
+      "id": "MANAGE.OPEN",
+      "entries": [
+        "P11"
+      ],
+      "actor": "management-member-or-owner",
+      "contractRoute": "/manage/:spaceId",
+      "returnTarget": "/spaces",
+      "surfaces": [
+        "/manage/:spaceId"
+      ],
+      "boundary": {
+        "endpoint": "/v1/spaces/{sid}/management",
+        "method": "GET",
+        "releaseLane": "v1",
+        "stableErrors": [
+          "session_unavailable",
+          "resource_unavailable",
+          "rate_limited"
+        ]
+      },
+      "phases": [
+        "initial",
+        "loading",
+        "success",
+        "stable_error",
+        "retry",
+        "session_or_permission_loss",
+        "empty",
+        "destructive_confirm",
+        "return"
+      ]
+    },
+    {
+      "id": "MANAGE.OPEN_NEXT",
+      "entries": [
+        "P11"
+      ],
+      "actor": "management-member-or-owner",
+      "contractRoute": "/manage/:spaceId/next",
+      "returnTarget": "/manage/:spaceId",
+      "surfaces": [
+        "/manage/:spaceId"
+      ],
+      "boundary": {
+        "endpoint": "/v1/spaces/{sid}/management/next-target",
+        "method": "GET",
+        "releaseLane": "v1",
+        "stableErrors": [
+          "session_unavailable",
+          "resource_unavailable",
+          "authorization_changed",
+          "concurrent_change",
+          "invalid_queue_kind",
+          "rate_limited"
+        ]
+      },
+      "phases": [
+        "initial",
+        "loading",
+        "success",
+        "stable_error",
+        "retry",
+        "session_or_permission_loss",
+        "empty",
+        "destructive_confirm",
+        "return"
+      ]
+    },
+    {
+      "id": "CONTENT.APPROVE",
+      "entries": [
+        "P13"
+      ],
+      "actor": "member-with-canReview-or-owner",
+      "contractRoute": "/manage/:spaceId/content/:photoId",
+      "returnTarget": "moderation-queue",
+      "surfaces": [
+        "/manage/:spaceId?tab=review"
+      ],
+      "boundary": {
+        "endpoint": "/v1/photos/{pid}/content-transitions",
+        "method": "POST",
+        "releaseLane": "v1",
+        "stableErrors": [
+          "transition_not_allowed",
+          "decision_reason_not_allowed",
+          "authorization_changed",
+          "version_conflict",
+          "idempotency_conflict"
+        ]
+      },
+      "phases": [
+        "initial",
+        "loading",
+        "success",
+        "stable_error",
+        "retry",
+        "session_or_permission_loss",
+        "empty",
+        "destructive_confirm",
+        "return"
+      ]
+    },
+    {
+      "id": "CONTENT.HIDE",
+      "entries": [
+        "P13"
+      ],
+      "actor": "member-with-canReview-or-owner",
+      "contractRoute": "/manage/:spaceId/content/:photoId",
+      "returnTarget": "moderation-queue",
+      "surfaces": [
+        "/manage/:spaceId?tab=review"
+      ],
+      "boundary": {
+        "endpoint": "/v1/photos/{pid}/content-transitions",
+        "method": "POST",
+        "releaseLane": "v1",
+        "stableErrors": [
+          "transition_not_allowed",
+          "decision_reason_required",
+          "decision_reason_not_allowed",
+          "decision_note_required",
+          "authorization_changed",
+          "version_conflict",
+          "idempotency_conflict"
+        ]
+      },
+      "phases": [
+        "initial",
+        "loading",
+        "success",
+        "stable_error",
+        "retry",
+        "session_or_permission_loss",
+        "empty",
+        "destructive_confirm",
+        "return"
+      ]
+    },
+    {
+      "id": "CONTENT.REJECT",
+      "entries": [
+        "P13"
+      ],
+      "actor": "member-with-canReview-or-owner",
+      "contractRoute": "/manage/:spaceId/content/:photoId",
+      "returnTarget": "moderation-queue",
+      "surfaces": [
+        "/manage/:spaceId?tab=review"
+      ],
+      "boundary": {
+        "endpoint": "/v1/photos/{pid}/content-transitions",
+        "method": "POST",
+        "releaseLane": "v1",
+        "stableErrors": [
+          "transition_not_allowed",
+          "decision_reason_required",
+          "decision_reason_not_allowed",
+          "decision_note_required",
+          "authorization_changed",
+          "version_conflict",
+          "idempotency_conflict"
+        ]
+      },
+      "phases": [
+        "initial",
+        "loading",
+        "success",
+        "stable_error",
+        "retry",
+        "session_or_permission_loss",
+        "empty",
+        "destructive_confirm",
+        "return"
+      ]
+    },
+    {
+      "id": "CONTENT.RESTORE",
+      "entries": [
+        "P13"
+      ],
+      "actor": "member-with-canReview-or-owner",
+      "contractRoute": "/manage/:spaceId/content/:photoId",
+      "returnTarget": "moderation-queue",
+      "surfaces": [
+        "/manage/:spaceId?tab=review"
+      ],
+      "boundary": {
+        "endpoint": "/v1/photos/{pid}/content-transitions",
+        "method": "POST",
+        "releaseLane": "v1",
+        "stableErrors": [
+          "transition_not_allowed",
+          "decision_reason_required",
+          "decision_reason_not_allowed",
+          "decision_note_required",
+          "authorization_changed",
+          "version_conflict",
+          "idempotency_conflict"
+        ]
+      },
+      "phases": [
+        "initial",
+        "loading",
+        "success",
+        "stable_error",
+        "retry",
+        "session_or_permission_loss",
+        "empty",
+        "destructive_confirm",
+        "return"
+      ]
+    },
+    {
+      "id": "CONTENT.REOPEN",
+      "entries": [
+        "P13"
+      ],
+      "actor": "member-with-canReview-or-owner",
+      "contractRoute": "/manage/:spaceId/content/:photoId",
+      "returnTarget": "moderation-queue",
+      "surfaces": [
+        "/manage/:spaceId?tab=review"
+      ],
+      "boundary": {
+        "endpoint": "/v1/photos/{pid}/content-transitions",
+        "method": "POST",
+        "releaseLane": "v1",
+        "stableErrors": [
+          "transition_not_allowed",
+          "decision_reason_required",
+          "decision_reason_not_allowed",
+          "decision_note_required",
+          "authorization_changed",
+          "version_conflict",
+          "idempotency_conflict"
+        ]
+      },
+      "phases": [
+        "initial",
+        "loading",
+        "success",
+        "stable_error",
+        "retry",
+        "session_or_permission_loss",
+        "empty",
+        "destructive_confirm",
+        "return"
+      ]
+    },
+    {
+      "id": "PANORAMA.UPLOAD_CANDIDATE",
+      "entries": [
+        "P15"
+      ],
+      "actor": "member-with-canManageScene-or-owner",
+      "contractRoute": "/manage/:spaceId/scene",
+      "returnTarget": "scene-management",
+      "surfaces": [
+        "/manage/:spaceId?tab=scene"
+      ],
+      "boundary": {
+        "endpoint": "workflow:PANORAMA_CANDIDATE_UPLOAD",
+        "method": "WORKFLOW",
+        "releaseLane": "v1",
+        "stableErrors": [
+          "scene_management_unavailable",
+          "notice_acknowledgement_required",
+          "panorama_media_policy_invalid",
+          "panorama_upload_unavailable",
+          "panorama_object_missing",
+          "panorama_object_mismatch",
+          "panorama_decode_rejected",
+          "panorama_candidate_unavailable",
+          "panorama_retry_not_allowed",
+          "version_conflict",
+          "idempotency_conflict"
+        ]
+      },
+      "phases": [
+        "initial",
+        "loading",
+        "success",
+        "stable_error",
+        "retry",
+        "session_or_permission_loss",
+        "empty",
+        "destructive_confirm",
+        "return"
+      ]
+    },
+    {
+      "id": "PANORAMA.SWITCH_CANDIDATE",
+      "entries": [
+        "P15"
+      ],
+      "actor": "member-with-canManageScene-or-owner",
+      "contractRoute": "/manage/:spaceId/scene",
+      "returnTarget": "scene-management",
+      "surfaces": [
+        "/manage/:spaceId?tab=scene"
+      ],
+      "boundary": {
+        "endpoint": "/v1/spaces/{sid}/panorama-switches",
+        "method": "POST",
+        "releaseLane": "v1",
+        "stableErrors": [
+          "panorama_revision_unavailable",
+          "panorama_not_ready",
+          "scene_version_conflict",
+          "version_conflict",
+          "idempotency_conflict"
+        ]
+      },
+      "phases": [
+        "initial",
+        "loading",
+        "success",
+        "stable_error",
+        "retry",
+        "session_or_permission_loss",
+        "empty",
+        "destructive_confirm",
+        "return"
+      ]
+    },
+    {
+      "id": "PANORAMA.ROLLBACK",
+      "entries": [
+        "P15"
+      ],
+      "actor": "member-with-canManageScene-or-owner",
+      "contractRoute": "/manage/:spaceId/scene/history",
+      "returnTarget": "scene-management",
+      "surfaces": [
+        "/manage/:spaceId?tab=scene"
+      ],
+      "boundary": {
+        "endpoint": "/v1/spaces/{sid}/panorama-switches",
+        "method": "POST",
+        "releaseLane": "v1",
+        "stableErrors": [
+          "panorama_revision_unavailable",
+          "panorama_not_ready",
+          "scene_version_conflict",
+          "version_conflict",
+          "idempotency_conflict"
+        ]
+      },
+      "phases": [
+        "initial",
+        "loading",
+        "success",
+        "stable_error",
+        "retry",
+        "session_or_permission_loss",
+        "empty",
+        "destructive_confirm",
+        "return"
+      ]
+    },
+    {
+      "id": "EXTERNAL_INVITATION.CREATE",
+      "entries": [
+        "P16"
+      ],
+      "actor": "member-with-canInvite-or-owner",
+      "contractRoute": "/manage/:spaceId/invitations/external",
+      "returnTarget": "activity-invitations",
+      "surfaces": [
+        "/manage/:spaceId?tab=invitations",
+        "/manage/:spaceId?tab=members"
+      ],
+      "boundary": {
+        "endpoint": "/v1/spaces/{sid}/external-invitation-campaigns",
+        "method": "POST",
+        "releaseLane": "v1",
+        "stableErrors": [
+          "campaign_policy_invalid",
+          "space_state_conflict",
+          "version_conflict",
+          "idempotency_conflict"
+        ]
+      },
+      "phases": [
+        "initial",
+        "loading",
+        "success",
+        "stable_error",
+        "retry",
+        "session_or_permission_loss",
+        "empty",
+        "destructive_confirm",
+        "return"
+      ]
+    },
+    {
+      "id": "EXTERNAL_INVITATION.REVOKE",
+      "entries": [
+        "P16"
+      ],
+      "actor": "member-with-canInvite-or-owner",
+      "contractRoute": "/manage/:spaceId/invitations/external/:invitationId",
+      "returnTarget": "activity-invitations",
+      "surfaces": [
+        "/manage/:spaceId?tab=invitations",
+        "/manage/:spaceId?tab=members"
+      ],
+      "boundary": {
+        "endpoint": "/v1/external-invitation-campaigns/{cid}/revocations",
+        "method": "POST",
+        "releaseLane": "v1",
+        "stableErrors": [
+          "campaign_management_unavailable",
+          "version_conflict",
+          "idempotency_conflict"
+        ]
+      },
+      "phases": [
+        "initial",
+        "loading",
+        "success",
+        "stable_error",
+        "retry",
+        "session_or_permission_loss",
+        "empty",
+        "destructive_confirm",
+        "return"
+      ]
+    },
+    {
+      "id": "MEMBER_INVITATION.CREATE",
+      "entries": [
+        "P16"
+      ],
+      "actor": "owner",
+      "contractRoute": "/manage/:spaceId/members/invitations",
+      "returnTarget": "members",
+      "surfaces": [
+        "/manage/:spaceId?tab=invitations",
+        "/manage/:spaceId?tab=members"
+      ],
+      "boundary": {
+        "endpoint": "/v1/spaces/{sid}/member-invitations",
+        "method": "POST",
+        "releaseLane": "v1",
+        "stableErrors": [
+          "owner_required",
+          "target_identifier_invalid",
+          "member_invitation_conflict",
+          "version_conflict",
+          "idempotency_conflict"
+        ]
+      },
+      "phases": [
+        "initial",
+        "loading",
+        "success",
+        "stable_error",
+        "retry",
+        "session_or_permission_loss",
+        "empty",
+        "destructive_confirm",
+        "return"
+      ]
+    },
+    {
+      "id": "MEMBER_INVITATION.ACCEPT",
+      "entries": [
+        "P16"
+      ],
+      "actor": "account",
+      "contractRoute": "/member-invitations/accept#invite=:secret",
+      "returnTarget": "/spaces",
+      "surfaces": [
+        "/manage/:spaceId?tab=invitations",
+        "/manage/:spaceId?tab=members"
+      ],
+      "boundary": {
+        "endpoint": "/v1/member-invitation-acceptances",
+        "method": "POST",
+        "releaseLane": "v1",
+        "stableErrors": [
+          "member_invite_unavailable",
+          "idempotency_conflict"
+        ]
+      },
+      "phases": [
+        "initial",
+        "loading",
+        "success",
+        "stable_error",
+        "retry",
+        "session_or_permission_loss",
+        "empty",
+        "destructive_confirm",
+        "return"
+      ]
+    },
+    {
+      "id": "MEMBER_INVITATION.REVOKE",
+      "entries": [
+        "P16"
+      ],
+      "actor": "owner",
+      "contractRoute": "/manage/:spaceId/members/invitations/:invitationId",
+      "returnTarget": "members",
+      "surfaces": [
+        "/manage/:spaceId?tab=invitations",
+        "/manage/:spaceId?tab=members"
+      ],
+      "boundary": {
+        "endpoint": "/v1/member-invitations/{iid}/revocations",
+        "method": "POST",
+        "releaseLane": "v1",
+        "stableErrors": [
+          "owner_required",
+          "member_invitation_unavailable",
+          "version_conflict",
+          "idempotency_conflict"
+        ]
+      },
+      "phases": [
+        "initial",
+        "loading",
+        "success",
+        "stable_error",
+        "retry",
+        "session_or_permission_loss",
+        "empty",
+        "destructive_confirm",
+        "return"
+      ]
+    },
+    {
+      "id": "MEMBERSHIP.UPDATE",
+      "entries": [
+        "P16"
+      ],
+      "actor": "owner",
+      "contractRoute": "/manage/:spaceId/members/:membershipId",
+      "returnTarget": "members",
+      "surfaces": [
+        "/manage/:spaceId?tab=invitations",
+        "/manage/:spaceId?tab=members"
+      ],
+      "boundary": {
+        "endpoint": "/v1/spaces/{sid}/memberships/{mid}",
+        "method": "PATCH",
+        "releaseLane": "v1",
+        "stableErrors": [
+          "owner_required",
+          "membership_unavailable",
+          "membership_policy_invalid",
+          "version_conflict",
+          "idempotency_conflict"
+        ]
+      },
+      "phases": [
+        "initial",
+        "loading",
+        "success",
+        "stable_error",
+        "retry",
+        "session_or_permission_loss",
+        "empty",
+        "destructive_confirm",
+        "return"
+      ]
+    },
+    {
+      "id": "MEMBERSHIP.REVOKE",
+      "entries": [
+        "P16"
+      ],
+      "actor": "owner",
+      "contractRoute": "/manage/:spaceId/members/:membershipId",
+      "returnTarget": "members",
+      "surfaces": [
+        "/manage/:spaceId?tab=invitations",
+        "/manage/:spaceId?tab=members"
+      ],
+      "boundary": {
+        "endpoint": "/v1/spaces/{sid}/memberships/{mid}",
+        "method": "DELETE",
+        "releaseLane": "v1",
+        "stableErrors": [
+          "owner_required",
+          "membership_unavailable",
+          "owner_membership_immutable",
+          "version_conflict",
+          "idempotency_conflict"
+        ]
+      },
+      "phases": [
+        "initial",
+        "loading",
+        "success",
+        "stable_error",
+        "retry",
+        "session_or_permission_loss",
+        "empty",
+        "destructive_confirm",
+        "return"
+      ]
+    },
+    {
+      "id": "COLLECTION.PAUSE",
+      "entries": [
+        "P17"
+      ],
+      "actor": "owner",
+      "contractRoute": "/manage/:spaceId/settings/collection",
+      "returnTarget": "space-settings",
+      "surfaces": [
+        "/manage/:spaceId?tab=settings",
+        "/exports/:id",
+        "/deletions/:id"
+      ],
+      "boundary": {
+        "endpoint": "/v1/spaces/{sid}/collection-transitions",
+        "method": "POST",
+        "releaseLane": "v1",
+        "stableErrors": [
+          "owner_required",
+          "transition_not_allowed",
+          "version_conflict",
+          "idempotency_conflict"
+        ]
+      },
+      "phases": [
+        "initial",
+        "loading",
+        "success",
+        "stable_error",
+        "retry",
+        "session_or_permission_loss",
+        "empty",
+        "destructive_confirm",
+        "return"
+      ]
+    },
+    {
+      "id": "COLLECTION.RESUME",
+      "entries": [
+        "P17"
+      ],
+      "actor": "owner",
+      "contractRoute": "/manage/:spaceId/settings/collection",
+      "returnTarget": "space-settings",
+      "surfaces": [
+        "/manage/:spaceId?tab=settings",
+        "/exports/:id",
+        "/deletions/:id"
+      ],
+      "boundary": {
+        "endpoint": "/v1/spaces/{sid}/collection-transitions",
+        "method": "POST",
+        "releaseLane": "v1",
+        "stableErrors": [
+          "owner_required",
+          "transition_not_allowed",
+          "version_conflict",
+          "idempotency_conflict"
+        ]
+      },
+      "phases": [
+        "initial",
+        "loading",
+        "success",
+        "stable_error",
+        "retry",
+        "session_or_permission_loss",
+        "empty",
+        "destructive_confirm",
+        "return"
+      ]
+    },
+    {
+      "id": "SHARING.ENABLE",
+      "entries": [
+        "P17"
+      ],
+      "actor": "member-with-canPublish-or-owner",
+      "contractRoute": "/manage/:spaceId/settings/sharing",
+      "returnTarget": "space-settings",
+      "surfaces": [
+        "/manage/:spaceId?tab=settings",
+        "/exports/:id",
+        "/deletions/:id"
+      ],
+      "boundary": {
+        "endpoint": "/v1/spaces/{sid}/sharing-transitions",
+        "method": "POST",
+        "releaseLane": "v1",
+        "stableErrors": [
+          "sharing_management_unavailable",
+          "transition_not_allowed",
+          "version_conflict",
+          "idempotency_conflict"
+        ]
+      },
+      "phases": [
+        "initial",
+        "loading",
+        "success",
+        "stable_error",
+        "retry",
+        "session_or_permission_loss",
+        "empty",
+        "destructive_confirm",
+        "return"
+      ]
+    },
+    {
+      "id": "SHARING.DISABLE",
+      "entries": [
+        "P17"
+      ],
+      "actor": "member-with-canPublish-or-owner",
+      "contractRoute": "/manage/:spaceId/settings/sharing",
+      "returnTarget": "space-settings",
+      "surfaces": [
+        "/manage/:spaceId?tab=settings",
+        "/exports/:id",
+        "/deletions/:id"
+      ],
+      "boundary": {
+        "endpoint": "/v1/spaces/{sid}/sharing-transitions",
+        "method": "POST",
+        "releaseLane": "v1",
+        "stableErrors": [
+          "sharing_management_unavailable",
+          "transition_not_allowed",
+          "version_conflict",
+          "idempotency_conflict"
+        ]
+      },
+      "phases": [
+        "initial",
+        "loading",
+        "success",
+        "stable_error",
+        "retry",
+        "session_or_permission_loss",
+        "empty",
+        "destructive_confirm",
+        "return"
+      ]
+    },
+    {
+      "id": "SPACE.ARCHIVE",
+      "entries": [
+        "P17"
+      ],
+      "actor": "owner-with-reauth",
+      "contractRoute": "/manage/:spaceId/settings",
+      "returnTarget": "/spaces?filter=archived",
+      "surfaces": [
+        "/manage/:spaceId?tab=settings",
+        "/exports/:id",
+        "/deletions/:id"
+      ],
+      "boundary": {
+        "endpoint": "/v1/spaces/{sid}/archive",
+        "method": "POST",
+        "releaseLane": "v1",
+        "stableErrors": [
+          "owner_required",
+          "reauth_required",
+          "transition_not_allowed",
+          "version_conflict",
+          "idempotency_conflict"
+        ]
+      },
+      "phases": [
+        "initial",
+        "loading",
+        "success",
+        "stable_error",
+        "retry",
+        "session_or_permission_loss",
+        "empty",
+        "destructive_confirm",
+        "return"
+      ]
+    },
+    {
+      "id": "SPACE.RESTORE",
+      "entries": [
+        "P17"
+      ],
+      "actor": "owner-with-reauth",
+      "contractRoute": "/spaces/:spaceId/archived",
+      "returnTarget": "/spaces",
+      "surfaces": [
+        "/manage/:spaceId?tab=settings",
+        "/exports/:id",
+        "/deletions/:id"
+      ],
+      "boundary": {
+        "endpoint": "/v1/spaces/{sid}/unarchive",
+        "method": "POST",
+        "releaseLane": "v1",
+        "stableErrors": [
+          "owner_required",
+          "reauth_required",
+          "transition_not_allowed",
+          "version_conflict",
+          "idempotency_conflict"
+        ]
+      },
+      "phases": [
+        "initial",
+        "loading",
+        "success",
+        "stable_error",
+        "retry",
+        "session_or_permission_loss",
+        "empty",
+        "destructive_confirm",
+        "return"
+      ]
+    },
+    {
+      "id": "SPACE.EXPORT",
+      "entries": [
+        "P17",
+        "P18"
+      ],
+      "actor": "owner",
+      "contractRoute": "/spaces/:spaceId/export",
+      "returnTarget": "/spaces/:spaceId/archived-or-/manage/:spaceId",
+      "surfaces": [
+        "/manage/:spaceId?tab=settings",
+        "/exports/:id",
+        "/deletions/:id",
+        "/account",
+        "/account/uploads",
+        "/reports/:id",
+        "/appeals/:id",
+        "/support/cases/:id"
+      ],
+      "boundary": {
+        "endpoint": "/v1/exports",
+        "method": "POST",
+        "releaseLane": "v1",
+        "stableErrors": [
+          "owner_required",
+          "export_unavailable",
+          "reauth_required",
+          "rate_limited",
+          "idempotency_conflict"
+        ]
+      },
+      "phases": [
+        "initial",
+        "loading",
+        "success",
+        "stable_error",
+        "retry",
+        "session_or_permission_loss",
+        "empty",
+        "destructive_confirm",
+        "return"
+      ]
+    },
+    {
+      "id": "SPACE.DELETE_REQUEST",
+      "entries": [
+        "P17",
+        "P18"
+      ],
+      "actor": "owner-with-reauth",
+      "contractRoute": "/spaces/:spaceId/delete",
+      "returnTarget": "/spaces",
+      "surfaces": [
+        "/manage/:spaceId?tab=settings",
+        "/exports/:id",
+        "/deletions/:id",
+        "/account",
+        "/account/uploads",
+        "/reports/:id",
+        "/appeals/:id",
+        "/support/cases/:id"
+      ],
+      "boundary": {
+        "endpoint": "/v1/spaces/{sid}/deletion-requests",
+        "method": "POST",
+        "releaseLane": "v1",
+        "stableErrors": [
+          "owner_required",
+          "reauth_required",
+          "deletion_not_allowed",
+          "version_conflict",
+          "idempotency_conflict"
+        ]
+      },
+      "phases": [
+        "initial",
+        "loading",
+        "success",
+        "stable_error",
+        "retry",
+        "session_or_permission_loss",
+        "empty",
+        "destructive_confirm",
+        "return"
+      ]
+    },
+    {
+      "id": "ACCOUNT.OPEN",
+      "entries": [
+        "P03",
+        "P18"
+      ],
+      "actor": "account",
+      "contractRoute": "/account",
+      "returnTarget": "calling-route-or-/spaces",
+      "surfaces": [
+        "/spaces",
+        "/account",
+        "/account/uploads",
+        "/exports/:id",
+        "/deletions/:id",
+        "/reports/:id",
+        "/appeals/:id",
+        "/support/cases/:id"
+      ],
+      "boundary": {
+        "endpoint": "/v1/me",
+        "method": "GET",
+        "releaseLane": "v1",
+        "stableErrors": [
+          "session_unavailable",
+          "account_unavailable",
+          "rate_limited"
+        ]
+      },
+      "phases": [
+        "initial",
+        "loading",
+        "success",
+        "stable_error",
+        "retry",
+        "session_or_permission_loss",
+        "empty",
+        "destructive_confirm",
+        "return"
+      ]
+    },
+    {
+      "id": "ACCOUNT.EXPORT",
+      "entries": [
+        "P18"
+      ],
+      "actor": "account",
+      "contractRoute": "/account/export",
+      "returnTarget": "/account",
+      "surfaces": [
+        "/account",
+        "/account/uploads",
+        "/exports/:id",
+        "/deletions/:id",
+        "/reports/:id",
+        "/appeals/:id",
+        "/support/cases/:id"
+      ],
+      "boundary": {
+        "endpoint": "/v1/exports",
+        "method": "POST",
+        "releaseLane": "v1",
+        "stableErrors": [
+          "session_unavailable",
+          "export_unavailable",
+          "rate_limited",
+          "idempotency_conflict"
+        ]
+      },
+      "phases": [
+        "initial",
+        "loading",
+        "success",
+        "stable_error",
+        "retry",
+        "session_or_permission_loss",
+        "empty",
+        "destructive_confirm",
+        "return"
+      ]
+    },
+    {
+      "id": "ACCOUNT.DELETE_REQUEST",
+      "entries": [
+        "P18"
+      ],
+      "actor": "account-with-reauth",
+      "contractRoute": "/account/delete",
+      "returnTarget": "/",
+      "surfaces": [
+        "/account",
+        "/account/uploads",
+        "/exports/:id",
+        "/deletions/:id",
+        "/reports/:id",
+        "/appeals/:id",
+        "/support/cases/:id"
+      ],
+      "boundary": {
+        "endpoint": "/v1/me/deletion-requests",
+        "method": "POST",
+        "releaseLane": "v1",
+        "stableErrors": [
+          "reauth_required",
+          "owner_disposition_required",
+          "deletion_not_allowed",
+          "deletion_status_session_unavailable",
+          "version_conflict",
+          "idempotency_conflict"
+        ]
+      },
+      "phases": [
+        "initial",
+        "loading",
+        "success",
+        "stable_error",
+        "retry",
+        "session_or_permission_loss",
+        "empty",
+        "destructive_confirm",
+        "return"
+      ]
+    },
+    {
+      "id": "OWNER_TRANSFER.CREATE",
+      "entries": [
+        "P18"
+      ],
+      "actor": "owner-with-reauth",
+      "contractRoute": "/spaces/:spaceId/owner-transfer",
+      "returnTarget": "/account",
+      "surfaces": [
+        "/account",
+        "/account/uploads",
+        "/exports/:id",
+        "/deletions/:id",
+        "/reports/:id",
+        "/appeals/:id",
+        "/support/cases/:id"
+      ],
+      "boundary": {
+        "endpoint": "/v1/spaces/{sid}/owner-transfers",
+        "method": "POST",
+        "releaseLane": "v1",
+        "stableErrors": [
+          "owner_required",
+          "reauth_required",
+          "target_membership_invalid",
+          "transfer_conflict",
+          "version_conflict",
+          "idempotency_conflict"
+        ]
+      },
+      "phases": [
+        "initial",
+        "loading",
+        "success",
+        "stable_error",
+        "retry",
+        "session_or_permission_loss",
+        "empty",
+        "destructive_confirm",
+        "return"
+      ]
+    },
+    {
+      "id": "OWNER_TRANSFER.ACCEPT",
+      "entries": [
+        "P03",
+        "P18"
+      ],
+      "actor": "target-active-member-account-with-reauth",
+      "contractRoute": "/spaces/pending-owner-transfers/:transferId",
+      "returnTarget": "/spaces",
+      "surfaces": [
+        "/spaces",
+        "/account",
+        "/account/uploads",
+        "/exports/:id",
+        "/deletions/:id",
+        "/reports/:id",
+        "/appeals/:id",
+        "/support/cases/:id"
+      ],
+      "boundary": {
+        "endpoint": "/v1/owner-transfer-acceptances",
+        "method": "POST",
+        "releaseLane": "v1",
+        "stableErrors": [
+          "owner_transfer_unavailable",
+          "reauth_required",
+          "version_conflict",
+          "idempotency_conflict"
+        ]
+      },
+      "phases": [
+        "initial",
+        "loading",
+        "success",
+        "stable_error",
+        "retry",
+        "session_or_permission_loss",
+        "empty",
+        "destructive_confirm",
+        "return"
+      ]
+    },
+    {
+      "id": "OWNER_TRANSFER.REVOKE",
+      "entries": [
+        "P18"
+      ],
+      "actor": "current-owner",
+      "contractRoute": "/spaces/:spaceId/owner-transfer",
+      "returnTarget": "/account",
+      "surfaces": [
+        "/account",
+        "/account/uploads",
+        "/exports/:id",
+        "/deletions/:id",
+        "/reports/:id",
+        "/appeals/:id",
+        "/support/cases/:id"
+      ],
+      "boundary": {
+        "endpoint": "/v1/owner-transfers/{tid}/revocations",
+        "method": "POST",
+        "releaseLane": "v1",
+        "stableErrors": [
+          "owner_required",
+          "owner_transfer_unavailable",
+          "version_conflict",
+          "idempotency_conflict"
+        ]
+      },
+      "phases": [
+        "initial",
+        "loading",
+        "success",
+        "stable_error",
+        "retry",
+        "session_or_permission_loss",
+        "empty",
+        "destructive_confirm",
+        "return"
+      ]
+    },
+    {
+      "id": "EXPORT.OPEN_STATUS",
+      "entries": [
+        "P17",
+        "P18"
+      ],
+      "actor": "export-requester",
+      "contractRoute": "/exports/:exportId",
+      "returnTarget": "calling-export-page",
+      "surfaces": [
+        "/manage/:spaceId?tab=settings",
+        "/exports/:id",
+        "/deletions/:id",
+        "/account",
+        "/account/uploads",
+        "/reports/:id",
+        "/appeals/:id",
+        "/support/cases/:id"
+      ],
+      "boundary": {
+        "endpoint": "/v1/exports/{eid}",
+        "method": "GET",
+        "releaseLane": "v1",
+        "stableErrors": [
+          "export_unavailable",
+          "session_unavailable",
+          "rate_limited"
+        ]
+      },
+      "phases": [
+        "initial",
+        "loading",
+        "success",
+        "stable_error",
+        "retry",
+        "session_or_permission_loss",
+        "empty",
+        "destructive_confirm",
+        "return"
+      ]
+    },
+    {
+      "id": "EXPORT.DOWNLOAD",
+      "entries": [
+        "P17",
+        "P18"
+      ],
+      "actor": "export-requester",
+      "contractRoute": "/exports/:exportId",
+      "returnTarget": "calling-export-page",
+      "surfaces": [
+        "/manage/:spaceId?tab=settings",
+        "/exports/:id",
+        "/deletions/:id",
+        "/account",
+        "/account/uploads",
+        "/reports/:id",
+        "/appeals/:id",
+        "/support/cases/:id"
+      ],
+      "boundary": {
+        "endpoint": "/v1/exports/{eid}/download-authorizations",
+        "method": "POST",
+        "releaseLane": "v1",
+        "stableErrors": [
+          "export_unavailable",
+          "export_not_ready",
+          "download_expired",
+          "session_unavailable",
+          "rate_limited",
+          "idempotency_conflict"
+        ]
+      },
+      "phases": [
+        "initial",
+        "loading",
+        "success",
+        "stable_error",
+        "retry",
+        "session_or_permission_loss",
+        "empty",
+        "destructive_confirm",
+        "return"
+      ]
+    },
+    {
+      "id": "DELETION.OPEN_STATUS",
+      "entries": [
+        "P17",
+        "P18"
+      ],
+      "actor": "exact-deletion-status-session-or-live-space-photo-requester",
+      "contractRoute": "/deletions/:deletionId",
+      "returnTarget": "calling-account-or-space-page",
+      "surfaces": [
+        "/manage/:spaceId?tab=settings",
+        "/exports/:id",
+        "/deletions/:id",
+        "/account",
+        "/account/uploads",
+        "/reports/:id",
+        "/appeals/:id",
+        "/support/cases/:id"
+      ],
+      "boundary": {
+        "endpoint": "/v1/deletion-requests/{did}",
+        "method": "GET",
+        "releaseLane": "v1",
+        "stableErrors": [
+          "deletion_request_unavailable",
+          "rate_limited"
+        ]
+      },
+      "phases": [
+        "initial",
+        "loading",
+        "success",
+        "stable_error",
+        "retry",
+        "session_or_permission_loss",
+        "empty",
+        "destructive_confirm",
+        "return"
+      ]
+    },
+    {
+      "id": "REPORT.SUBMIT",
+      "entries": [
+        "P06B",
+        "P18"
+      ],
+      "actor": "valid-viewer-batch-or-account-session",
+      "contractRoute": "/reports/new",
+      "returnTarget": "reported-object-or-support",
+      "surfaces": [
+        "/account",
+        "/account/uploads",
+        "/exports/:id",
+        "/deletions/:id",
+        "/reports/:id",
+        "/appeals/:id",
+        "/support/cases/:id"
+      ],
+      "boundary": {
+        "endpoint": "/v1/reports",
+        "method": "POST",
+        "releaseLane": "v1",
+        "stableErrors": [
+          "case_submission_unavailable",
+          "notice_acknowledgement_required",
+          "object_context_unavailable",
+          "unsupported_field",
+          "rate_limited",
+          "idempotency_conflict"
+        ]
+      },
+      "phases": [
+        "initial",
+        "loading",
+        "success",
+        "stable_error",
+        "retry",
+        "session_or_permission_loss",
+        "empty",
+        "destructive_confirm",
+        "return"
+      ]
+    },
+    {
+      "id": "REPORT.OPEN_STATUS",
+      "entries": [
+        "P18"
+      ],
+      "actor": "reporter-session-or-account",
+      "contractRoute": "/reports/:reportNumber",
+      "returnTarget": "/support",
+      "surfaces": [
+        "/account",
+        "/account/uploads",
+        "/exports/:id",
+        "/deletions/:id",
+        "/reports/:id",
+        "/appeals/:id",
+        "/support/cases/:id"
+      ],
+      "boundary": {
+        "endpoint": "/v1/reports/{caseId}",
+        "method": "GET",
+        "releaseLane": "v1",
+        "stableErrors": [
+          "case_unavailable",
+          "rate_limited"
+        ]
+      },
+      "phases": [
+        "initial",
+        "loading",
+        "success",
+        "stable_error",
+        "retry",
+        "session_or_permission_loss",
+        "empty",
+        "destructive_confirm",
+        "return"
+      ]
+    },
+    {
+      "id": "APPEAL.SUBMIT",
+      "entries": [
+        "P08",
+        "P18"
+      ],
+      "actor": "affected-contributor-or-account",
+      "contractRoute": "/appeals/new",
+      "returnTarget": "photo-result-or-/support",
+      "surfaces": [
+        "/uploads/:batchId",
+        "/uploads/:batchId/items/:itemId",
+        "/account/uploads",
+        "/account",
+        "/exports/:id",
+        "/deletions/:id",
+        "/reports/:id",
+        "/appeals/:id",
+        "/support/cases/:id"
+      ],
+      "boundary": {
+        "endpoint": "/v1/appeals",
+        "method": "POST",
+        "releaseLane": "v1",
+        "stableErrors": [
+          "appeal_submission_unavailable",
+          "notice_acknowledgement_required",
+          "case_unavailable",
+          "unsupported_field",
+          "rate_limited",
+          "idempotency_conflict"
+        ]
+      },
+      "phases": [
+        "initial",
+        "loading",
+        "success",
+        "stable_error",
+        "retry",
+        "session_or_permission_loss",
+        "empty",
+        "destructive_confirm",
+        "return"
+      ]
+    },
+    {
+      "id": "APPEAL.OPEN_STATUS",
+      "entries": [
+        "P18"
+      ],
+      "actor": "appellant-session-or-account",
+      "contractRoute": "/appeals/:appealNumber",
+      "returnTarget": "/support",
+      "surfaces": [
+        "/account",
+        "/account/uploads",
+        "/exports/:id",
+        "/deletions/:id",
+        "/reports/:id",
+        "/appeals/:id",
+        "/support/cases/:id"
+      ],
+      "boundary": {
+        "endpoint": "/v1/appeals/{caseId}",
+        "method": "GET",
+        "releaseLane": "v1",
+        "stableErrors": [
+          "case_unavailable",
+          "rate_limited"
+        ]
+      },
+      "phases": [
+        "initial",
+        "loading",
+        "success",
+        "stable_error",
+        "retry",
+        "session_or_permission_loss",
+        "empty",
+        "destructive_confirm",
+        "return"
+      ]
+    },
+    {
+      "id": "SUPPORT.OPEN",
+      "entries": [
+        "P01",
+        "P06",
+        "P08",
+        "P18"
+      ],
+      "actor": "any",
+      "contractRoute": "/support",
+      "returnTarget": "calling-route-or-/",
+      "surfaces": [
+        "/",
+        "/open",
+        "/support",
+        "/privacy",
+        "/terms",
+        "/s/:spaceId/album",
+        "/s/:spaceId/scene",
+        "/s/:spaceId/upload",
+        "/uploads/:batchId",
+        "/uploads/:batchId/items/:itemId",
+        "/account/uploads",
+        "/account",
+        "/exports/:id",
+        "/deletions/:id",
+        "/reports/:id",
+        "/appeals/:id",
+        "/support/cases/:id"
+      ],
+      "boundary": {
+        "endpoint": "/support",
+        "method": "GET",
+        "releaseLane": "v1",
+        "stableErrors": [
+          "resource_unavailable"
+        ]
+      },
+      "phases": [
+        "initial",
+        "loading",
+        "success",
+        "stable_error",
+        "retry",
+        "session_or_permission_loss",
+        "empty",
+        "destructive_confirm",
+        "return"
+      ]
+    },
+    {
+      "id": "SUPPORT.SUBMIT_SAFETY_LEAD",
+      "entries": [
+        "P18"
+      ],
+      "actor": "any-no-object-context",
+      "contractRoute": "/support/safety",
+      "returnTarget": "/support",
+      "surfaces": [
+        "/account",
+        "/account/uploads",
+        "/exports/:id",
+        "/deletions/:id",
+        "/reports/:id",
+        "/appeals/:id",
+        "/support/cases/:id"
+      ],
+      "boundary": {
+        "endpoint": "/v1/support-cases",
+        "method": "POST",
+        "releaseLane": "v1",
+        "stableErrors": [
+          "support_submission_unavailable",
+          "unsupported_field",
+          "rate_limited",
+          "idempotency_conflict"
+        ]
+      },
+      "phases": [
+        "initial",
+        "loading",
+        "success",
+        "stable_error",
+        "retry",
+        "session_or_permission_loss",
+        "empty",
+        "destructive_confirm",
+        "return"
+      ]
+    },
+    {
+      "id": "SUPPORT.OPEN_STATUS",
+      "entries": [
+        "P18"
+      ],
+      "actor": "case-session-or-account",
+      "contractRoute": "/support/cases/:caseId",
+      "returnTarget": "/support",
+      "surfaces": [
+        "/account",
+        "/account/uploads",
+        "/exports/:id",
+        "/deletions/:id",
+        "/reports/:id",
+        "/appeals/:id",
+        "/support/cases/:id"
+      ],
+      "boundary": {
+        "endpoint": "/v1/support-cases/{caseId}",
+        "method": "GET",
+        "releaseLane": "v1",
+        "stableErrors": [
+          "case_unavailable",
+          "rate_limited"
+        ]
+      },
+      "phases": [
+        "initial",
+        "loading",
+        "success",
+        "stable_error",
+        "retry",
+        "session_or_permission_loss",
+        "empty",
+        "destructive_confirm",
+        "return"
+      ]
+    },
+    {
+      "id": "MEDIA_NOTICE.OPEN",
+      "entries": [
+        "P07"
+      ],
+      "actor": "effective-upload",
+      "contractRoute": "/notices/media",
+      "returnTarget": "calling-upload-page",
+      "surfaces": [
+        "/s/:spaceId/upload",
+        "/notices/media"
+      ],
+      "boundary": {
+        "endpoint": "/v1/notices/current?purpose=photo_upload",
+        "method": "GET",
+        "releaseLane": "v1",
+        "stableErrors": [
+          "session_unavailable",
+          "upload_unavailable",
+          "notice_unavailable",
+          "rate_limited"
+        ]
+      },
+      "phases": [
+        "initial",
+        "loading",
+        "success",
+        "stable_error",
+        "retry",
+        "session_or_permission_loss",
+        "empty",
+        "destructive_confirm",
+        "return"
+      ]
+    },
+    {
+      "id": "LEGAL.OPEN_PRIVACY",
+      "entries": [
+        "P01",
+        "P06",
+        "P08",
+        "P18"
+      ],
+      "actor": "any",
+      "contractRoute": "/privacy",
+      "returnTarget": "calling-route-or-/",
+      "surfaces": [
+        "/",
+        "/open",
+        "/support",
+        "/privacy",
+        "/terms",
+        "/s/:spaceId/album",
+        "/s/:spaceId/scene",
+        "/s/:spaceId/upload",
+        "/uploads/:batchId",
+        "/uploads/:batchId/items/:itemId",
+        "/account/uploads",
+        "/account",
+        "/exports/:id",
+        "/deletions/:id",
+        "/reports/:id",
+        "/appeals/:id",
+        "/support/cases/:id"
+      ],
+      "boundary": {
+        "endpoint": "/privacy",
+        "method": "GET",
+        "releaseLane": "v1",
+        "stableErrors": [
+          "resource_unavailable"
+        ]
+      },
+      "phases": [
+        "initial",
+        "loading",
+        "success",
+        "stable_error",
+        "retry",
+        "session_or_permission_loss",
+        "empty",
+        "destructive_confirm",
+        "return"
+      ]
+    },
+    {
+      "id": "LEGAL.OPEN_TERMS",
+      "entries": [
+        "P01",
+        "P06",
+        "P08",
+        "P18"
+      ],
+      "actor": "any",
+      "contractRoute": "/terms",
+      "returnTarget": "calling-route-or-/",
+      "surfaces": [
+        "/",
+        "/open",
+        "/support",
+        "/privacy",
+        "/terms",
+        "/s/:spaceId/album",
+        "/s/:spaceId/scene",
+        "/s/:spaceId/upload",
+        "/uploads/:batchId",
+        "/uploads/:batchId/items/:itemId",
+        "/account/uploads",
+        "/account",
+        "/exports/:id",
+        "/deletions/:id",
+        "/reports/:id",
+        "/appeals/:id",
+        "/support/cases/:id"
+      ],
+      "boundary": {
+        "endpoint": "/terms",
+        "method": "GET",
+        "releaseLane": "v1",
+        "stableErrors": [
+          "resource_unavailable"
+        ]
+      },
+      "phases": [
+        "initial",
+        "loading",
+        "success",
+        "stable_error",
+        "retry",
+        "session_or_permission_loss",
+        "empty",
+        "destructive_confirm",
+        "return"
+      ]
+    }
+  ]
+}

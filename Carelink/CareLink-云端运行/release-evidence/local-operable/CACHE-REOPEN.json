@@ -1,0 +1,14 @@
+{
+  "schema": "unseen-stage-l-cache-reopen/1",
+  "generatedAt": "2026-08-13T14:48:58.672Z",
+  "siteDataCleared": true,
+  "newIsolatedBrowserContext": true,
+  "samePhotoId": true,
+  "samePhotoAssetId": true,
+  "samePhotoRawSha256": true,
+  "samePanoramaRevisionId": true,
+  "samePanoramaSha256": true,
+  "photoRef": "89c360e1c8ee4d3b",
+  "panoramaRef": "22fd7158333095f1",
+  "pass": true
+}

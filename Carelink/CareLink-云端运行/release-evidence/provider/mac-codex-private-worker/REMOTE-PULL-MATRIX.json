@@ -1,0 +1,107 @@
+{
+  "evidenceClass": "PRIVATE_BETA_TRANSPORT_IMPLEMENTATION",
+  "baseCommit": "94f778095567332711401be10b56074065732466",
+  "originalCodeCommit": "bcd9fc485b3592e86128c2feb4f980933e638429",
+  "v1AttemptCeilingCommit": "3114a1f89c6542550f3fe19b51fee3a04aadea61",
+  "codeCommit": "497de1c239d5d4686ca7d048b1e8a575d7cf4526",
+  "codeTree": "b16ce5a3940046e24f83a54a21fd9144e2c2c1cc",
+  "recordedAt": "2026-08-14T17:41:20Z",
+  "scope": [
+    "infra/integration/mac-codex-private-worker/**",
+    "tests/e2e/mac-codex-private-worker/**",
+    "release-evidence/provider/mac-codex-private-worker/**"
+  ],
+  "protocol": {
+    "name": "unseen-private-ai-pull/1",
+    "base": "/__internal/private-ai/v1",
+    "direction": "MAC_TO_SERVER_HTTPS_ONLY",
+    "publicMacListener": false,
+    "redirectsAllowed": false,
+    "originAndHostnameExact": true,
+    "bearerTokenSource": "ABSOLUTE_O_NOFOLLOW_OWNED_0400_OR_0600_FILE",
+    "leaseDtoContainsSourceIdentity": false,
+    "concurrency": 1
+  },
+  "codex": {
+    "productBoundary": "CHATGPT_SUBSCRIPTION_PRIVATE_TEST_NOT_OPENAI_API",
+    "commercialSla": false,
+    "version": "codex-cli 0.147.0",
+    "model": "gpt-5.6-sol",
+    "modelVersion": "codex-cli 0.147.0/gpt-5.6-sol",
+    "promptHash": "67a580e7617893004c7edb1e0f7578cd40a28509dd5ac756ae914ed201479d73",
+    "policyHash": "75ea90bfd53213ce15adf81973de5e26db4f091c3ca853aa991033ee37d46e5d",
+    "runtimePreflightBeforeLeaseAndImage": true,
+    "strictOutputAndEventAllowlist": true,
+    "remainingQuota": "UNKNOWN_NOT_EXPOSED"
+  },
+  "privacy": {
+    "sourcePhotoStoredByWorker": false,
+    "downloadTemporaryRootMode": "0700",
+    "downloadFileMode": "0600",
+    "mimeBytesPixelsAndHashVerified": true,
+    "exifGpsAndTextMetadataCopiedToCodex": false,
+    "temporaryCleanup": "TRUNCATE_FSYNC_REMOVE_FINALLY",
+    "diagnosticsContainImageOrDtoOrAnswerOrTokenOrAuth": false
+  },
+  "checks": {
+    "command": "node --test tests/e2e/mac-codex-private-worker/*.test.mjs",
+    "passed": 18,
+    "failed": 0,
+    "bookRegressionCommand": "node --test tests/e2e/book-lab/*.mjs",
+    "bookRegressionPassed": 9,
+    "bookRegressionFailed": 0,
+    "format": "FORMAT_OK",
+    "secretScan": "SECRET_SCAN_CLEAN",
+    "plistLint": "OK",
+    "defaultOffDaemonExit": 0,
+    "v1AttemptCeilingFollowup": {
+      "command": "node --test tests/e2e/mac-codex-private-worker/https-transport.test.mjs tests/e2e/mac-codex-private-worker/remote-pull.test.mjs tests/e2e/mac-codex-private-worker/daemon-config.test.mjs",
+      "passed": 13,
+      "failed": 0,
+      "attempt11RejectedBeforeImageOrAnalysis": true,
+      "maxAttempts11RejectedBeforeImageOrAnalysis": true,
+      "liveImageRerun": false
+    },
+    "legacyWorkerRetirement": {
+      "reason": "PrivateQuestionPullWorker was test-only and its in-process Book contract was superseded by RemotePrivateAiPullWorker plus the frozen server protocol.",
+      "referenceCommand": "rg -n --hidden -S 'PrivateQuestionPullWorker|pull-worker\\.mjs' . --glob '!**/node_modules/**' --glob '!release-evidence/**'",
+      "sourceMatches": 0,
+      "remoteRetryAndReclaimCovered": true,
+      "remoteDuplicateTerminalReplayCovered": true,
+      "liveImageRerun": false
+    },
+    "covered": [
+      "valid_local_tls_e2e",
+      "wrong_ca",
+      "wrong_spki_pin",
+      "wrong_origin",
+      "redirect",
+      "wrong_token",
+      "token_owner_mode_symlink",
+      "lease_expiry",
+      "v1_attempt_and_max_attempts_ceiling",
+      "bad_large_tampered_image",
+      "server_disconnect",
+      "codex_timeout_quota_unavailable",
+      "duplicate_terminal_replay",
+      "worker_restart",
+      "concurrency_one",
+      "exponential_jitter",
+      "temporary_cleanup",
+      "diagnostic_redaction"
+    ]
+  },
+  "externalState": {
+    "hongKongEndpointContacted": false,
+    "launchdInstalled": false,
+    "workerTokenCreated": false,
+    "serverTokenHashInstalled": false,
+    "productionEnabled": false
+  },
+  "remainingP1": [
+    "Integrate and deploy the matching server queue protocol and Book private-facts contract.",
+    "Create the private worker token, install only its hash on the server, and enable the private Mac config.",
+    "Install launchd and pass disconnect, reconnect, Mac restart, and Hong Kong HTTPS end-to-end acceptance."
+  ],
+  "decision": "IMPLEMENTED_DEFAULT_OFF_NOT_DEPLOYED"
+}

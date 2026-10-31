@@ -1,0 +1,25 @@
+{
+  "id": "modelscope",
+  "path": "demos/modelscope",
+  "repository": "https://www.modelscope.cn/studios/maximax/Unseen",
+  "commit": "573bd7750a6df96a7f94e2f4c62a45ce1425ebe1",
+  "includedFiles": 3,
+  "includedBytes": 4546,
+  "inventory": [
+    {
+      "path": ".gitattributes",
+      "bytes": 2075,
+      "sha256": "247a3cfc672484dd40bdf07af0f83ee7a4457e9a995dadb47eedc36c630103b6"
+    },
+    {
+      "path": "README.md",
+      "bytes": 1015,
+      "sha256": "1747f8e632f6f00808928b4e5687ae8f702f086a9e50e8887aa2719d8b74ee34"
+    },
+    {
+      "path": "app.py",
+      "bytes": 1456,
+      "sha256": "73dc549bb9dfa3b298c19fea2da14260c1a669e5a0dcbd00d7b0abfb0290f71c"
+    }
+  ]
+}

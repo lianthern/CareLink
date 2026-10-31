@@ -1,0 +1,24 @@
+Nerfstudio: 1.1.5
+Command contract from actual help:
+  ns-eval --load-config PATH [--output-path PATH] [--render-output-path PATH]
+
+Baseline checkpoint loaded successfully:
+  step-000006999.ckpt
+
+Eval result (7 images):
+  PSNR: 31.843599319458008
+  PSNR std: 2.3326988220214844
+  SSIM: 0.9634218811988831
+  SSIM std: 0.008980424143373966
+  LPIPS: 0.07953710108995438
+  LPIPS std: 0.014983948320150375
+  rays/sec: 1407946.875
+  FPS: 1.531040906906128
+
+Train result through native cached_train/model metrics path (65 images):
+  PSNR: 32.42977564885066
+  PSNR std: 2.32308802374957
+  SSIM: 0.9706201810103197
+  SSIM std: 0.007698228344338315
+  LPIPS: 0.07471344207341854
+  LPIPS std: 0.015610572272338783

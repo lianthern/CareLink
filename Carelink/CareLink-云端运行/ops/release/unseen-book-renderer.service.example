@@ -1,0 +1,57 @@
+[Unit]
+Description=UNSEEN dedicated network-isolated Book renderer
+Requires=unseen-book-renderer.socket
+After=unseen-book-renderer.socket
+
+[Service]
+Type=simple
+User=unseen-renderer
+Group=unseen-render-ipc
+WorkingDirectory=/opt/unseen/releases/REQUIRED_IMMUTABLE_RELEASE_COMMIT
+ExecStartPre=/usr/bin/sha256sum --strict --check --status /run/unseen/approvals/node-runtime.sha256
+ExecStartPre=/opt/unseen/runtime/node-v22.23.2-linux-x64/bin/node infra/integration/book-lab/renderer-service.mjs --verify
+ExecStart=/opt/unseen/runtime/node-v22.23.2-linux-x64/bin/node infra/integration/book-lab/renderer-service.mjs
+UnsetEnvironment=NODE_OPTIONS NODE_PATH PATH LD_PRELOAD LD_LIBRARY_PATH LD_AUDIT LD_DEBUG LD_DEBUG_OUTPUT LD_PROFILE GCONV_PATH BASH_ENV ENV PYTHONPATH PYTHONHOME PERL5OPT RUBYOPT OPENSSL_CONF OPENSSL_MODULES SSLKEYLOGFILE
+Restart=on-failure
+RestartSec=5s
+TimeoutStartSec=120s
+TimeoutStopSec=5s
+UMask=0027
+NoNewPrivileges=true
+PrivateNetwork=true
+IPAddressDeny=any
+RestrictAddressFamilies=AF_UNIX
+AppArmorProfile=unseen-book-renderer
+CapabilityBoundingSet=
+AmbientCapabilities=
+SystemCallArchitectures=native
+RestrictNamespaces=user mnt pid ipc uts
+LockPersonality=true
+MemoryDenyWriteExecute=false
+RestrictRealtime=true
+RestrictSUIDSGID=true
+RemoveIPC=true
+PrivateDevices=true
+PrivateTmp=true
+ProtectClock=true
+ProtectControlGroups=true
+ProtectHome=true
+ProtectHostname=true
+ProtectKernelLogs=true
+ProtectKernelModules=true
+ProtectKernelTunables=true
+ProtectSystem=strict
+ReadWritePaths=/var/lib/unseen/renderer-spool
+ReadOnlyPaths=/opt/unseen/runtime/node-v22.23.2-linux-x64 /opt/unseen/runtime/sources/node-v22.23.2 /opt/unseen/runtime/trust/node-release-keys-b28073028e6d6855cfb53bf7fa0137599c01f967.kbx /run/unseen/approvals/book-renderer-acceptance.json /run/unseen/approvals/book-renderer-acceptance.sha256 /run/unseen/approvals/node-runtime.sha256
+MemoryMax=768M
+MemorySwapMax=0
+CPUQuota=150%
+TasksMax=256
+LimitNOFILE=1024
+OOMPolicy=stop
+StandardInput=null
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target

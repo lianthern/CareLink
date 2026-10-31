@@ -1,0 +1,1255 @@
+diff --git a/scripts/build_v8_viewer_comparison.py b/scripts/build_v8_viewer_comparison.py
+new file mode 100644
+index 0000000..19f715f
+--- /dev/null
++++ b/scripts/build_v8_viewer_comparison.py
+@@ -0,0 +1,44 @@
++#!/usr/bin/env python3
++"""Create a safe side-by-side Viewer regression image without source media."""
++
++from __future__ import annotations
++
++import argparse
++from pathlib import Path
++
++from PIL import Image, ImageDraw, ImageFont, ImageOps
++
++
++def fit(image: Image.Image, size: tuple[int, int]) -> Image.Image:
++    return ImageOps.fit(image.convert("RGB"), size, method=Image.Resampling.LANCZOS)
++
++
++def main() -> int:
++    parser = argparse.ArgumentParser()
++    parser.add_argument("--before", type=Path, required=True)
++    parser.add_argument("--after", type=Path, required=True)
++    parser.add_argument("--output", type=Path, required=True)
++    args = parser.parse_args()
++
++    panel_size = (960, 600)
++    header = 56
++    canvas = Image.new("RGB", (panel_size[0] * 2, panel_size[1] + header), "#142329")
++    with Image.open(args.before) as before, Image.open(args.after) as after:
++        canvas.paste(fit(before, panel_size), (0, header))
++        canvas.paste(fit(after, panel_size), (panel_size[0], header))
++
++    draw = ImageDraw.Draw(canvas)
++    try:
++        font = ImageFont.truetype("/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf", 24)
++    except OSError:
++        font = ImageFont.load_default()
++    draw.text((24, 14), "BEFORE — v7 camera-like controls", fill="#f2f0e9", font=font)
++    draw.text((panel_size[0] + 24, 14), "AFTER — level free-walk, zoom, sprint, hull", fill="#e6a75e", font=font)
++    draw.line((panel_size[0], 0, panel_size[0], canvas.height), fill="#e6a75e", width=2)
++    args.output.parent.mkdir(parents=True, exist_ok=True)
++    canvas.save(args.output, format="JPEG", quality=88, optimize=True)
++    return 0
++
++
++if __name__ == "__main__":
++    raise SystemExit(main())
+diff --git a/scripts/generate_tum_v4_viewer.py b/scripts/generate_tum_v4_viewer.py
+index 92d6dbe..4833f50 100644
+--- a/scripts/generate_tum_v4_viewer.py
++++ b/scripts/generate_tum_v4_viewer.py
+@@ -70,6 +70,66 @@ def rounded(values: np.ndarray, digits: int = 9) -> list[float]:
+     return [round(float(value), digits) for value in values]
+ 
+ 
++def convex_hull_xz(points: np.ndarray) -> np.ndarray:
++    """Return the counter-clockwise 2D convex hull without repeating its first point."""
++    unique = sorted({(float(point[0]), float(point[1])) for point in np.asarray(points)})
++    if len(unique) < 3:
++        raise ValueError("navigation needs at least three unique camera positions")
++
++    def cross(origin: tuple[float, float], left: tuple[float, float], right: tuple[float, float]) -> float:
++        return (left[0] - origin[0]) * (right[1] - origin[1]) - (left[1] - origin[1]) * (right[0] - origin[0])
++
++    lower: list[tuple[float, float]] = []
++    for point in unique:
++        while len(lower) >= 2 and cross(lower[-2], lower[-1], point) <= 0:
++            lower.pop()
++        lower.append(point)
++    upper: list[tuple[float, float]] = []
++    for point in reversed(unique):
++        while len(upper) >= 2 and cross(upper[-2], upper[-1], point) <= 0:
++            upper.pop()
++        upper.append(point)
++    hull = np.asarray(lower[:-1] + upper[:-1], dtype=np.float64)
++    if len(hull) < 3:
++        raise ValueError("camera trajectory is collinear; no navigation hull exists")
++    return hull
++
++
++def buffer_convex_polygon(polygon: np.ndarray, distance: float) -> np.ndarray:
++    """Apply a small, deterministic mitred buffer to a CCW convex polygon."""
++    vertices = np.asarray(polygon, dtype=np.float64)
++    if len(vertices) < 3 or distance < 0:
++        raise ValueError("buffer requires a convex polygon and a non-negative distance")
++    if distance == 0:
++        return vertices.copy()
++
++    edges = np.roll(vertices, -1, axis=0) - vertices
++    lengths = np.linalg.norm(edges, axis=1)
++    if np.any(lengths <= 1e-12):
++        raise ValueError("navigation hull contains a zero-length edge")
++    outward = np.column_stack((edges[:, 1], -edges[:, 0])) / lengths[:, None]
++    buffered: list[np.ndarray] = []
++    for index in range(len(vertices)):
++        previous = (index - 1) % len(vertices)
++        first = vertices[previous] + outward[previous] * distance
++        second = vertices[index] + outward[index] * distance
++        direction_a = edges[previous]
++        direction_b = edges[index]
++        denominator = direction_a[0] * direction_b[1] - direction_a[1] * direction_b[0]
++        if abs(denominator) <= 1e-12:
++            buffered.append(vertices[index] + (outward[previous] + outward[index]) * (distance / 2))
++            continue
++        delta = second - first
++        parameter = (delta[0] * direction_b[1] - delta[1] * direction_b[0]) / denominator
++        buffered.append(first + direction_a * parameter)
++    return np.asarray(buffered)
++
++
++def navigation_boundary(positions: np.ndarray, buffer_distance: float = 0.05) -> list[list[float]]:
++    xz = np.asarray(positions, dtype=np.float64)[:, [0, 2]]
++    return [rounded(point) for point in buffer_convex_polygon(convex_hull_xz(xz), buffer_distance)]
++
++
+ def main() -> int:
+     parser = argparse.ArgumentParser()
+     parser.add_argument("--transforms", type=Path, required=True)
+@@ -127,15 +187,10 @@ def main() -> int:
+         "fov": anchors[0]["fov"],
+     }
+     positions = np.asarray(all_positions)
+-    margin = 0.15
+-    min_x, max_x = float(positions[:, 0].min() - margin), float(positions[:, 0].max() + margin)
+-    min_z, max_z = float(positions[:, 2].min() - margin), float(positions[:, 2].max() + margin)
+-    boundary = [
+-        [round(min_x, 9), round(min_z, 9)],
+-        [round(max_x, 9), round(min_z, 9)],
+-        [round(max_x, 9), round(max_z, 9)],
+-        [round(min_x, 9), round(max_z, 9)],
+-    ]
++    boundary = navigation_boundary(positions)
++    boundary_array = np.asarray(boundary)
++    move_speed = max(0.15, float(np.ptp(boundary_array, axis=0).min()) * 0.5)
++    eye_height = float(np.median(positions[:, 1]))
+     manifest = {
+         "$schema": "./scene.schema.json",
+         "sceneRevisionId": args.scene_revision_id,
+@@ -151,9 +206,15 @@ def main() -> int:
+         "backgroundColor": [0.15, 0.15, 0.15],
+         "defaultPhotoAnchorId": args.default_photo_anchor,
+         "navigation": {
+-            "eyeHeight": start_pose["position"][1],
+-            "moveSpeed": 0.15,
++            "eyeHeight": round(eye_height, 9),
++            "eyeHeightStatistic": "median-camera-y",
++            "moveSpeed": round(move_speed, 9),
+             "lookSensitivity": 0.11,
++            "defaultFov": start_pose["fov"],
++            "fovRangeDegrees": [30.0, 90.0],
++            "sprintMultiplier": 3.0,
++            "startMode": "walk",
++            "boundaryType": "buffered-camera-convex-hull",
+             "boundaryXZ": boundary,
+             "startPose": start_pose,
+         },
+@@ -176,6 +237,8 @@ def main() -> int:
+         "anchorCount": len(anchors),
+         "anchors": anchors,
+         "boundaryXZ": boundary,
++        "boundaryType": "buffered-camera-convex-hull",
++        "eyeHeightStatistic": "median-camera-y",
+         "walkMode": "explicit; first movement switches to navigation.eyeHeight without overwriting photo-anchor Y",
+     }
+     args.validation_output.parent.mkdir(parents=True, exist_ok=True)
+diff --git a/scripts/generate_v7_viewer.py b/scripts/generate_v7_viewer.py
+index b607066..d299c84 100644
+--- a/scripts/generate_v7_viewer.py
++++ b/scripts/generate_v7_viewer.py
+@@ -11,7 +11,12 @@ import numpy as np
+ from PIL import Image, ImageOps
+ from nerfstudio.utils.eval_utils import eval_setup
+ 
+-from generate_tum_v4_viewer import PLAYCANVAS_FROM_NERFSTUDIO, matrix_to_quaternion_xyzw, rounded
++from generate_tum_v4_viewer import (
++    PLAYCANVAS_FROM_NERFSTUDIO,
++    matrix_to_quaternion_xyzw,
++    navigation_boundary,
++    rounded,
++)
+ 
+ 
+ SCENE_REVISION = "pexels-classroom-5735358-r001"
+@@ -81,13 +86,10 @@ def main() -> int:
+             }
+         )
+     positions = np.asarray(all_positions)
+-    margin = 0.15
+-    boundary = [
+-        [round(float(positions[:, 0].min() - margin), 9), round(float(positions[:, 2].min() - margin), 9)],
+-        [round(float(positions[:, 0].max() + margin), 9), round(float(positions[:, 2].min() - margin), 9)],
+-        [round(float(positions[:, 0].max() + margin), 9), round(float(positions[:, 2].max() + margin), 9)],
+-        [round(float(positions[:, 0].min() - margin), 9), round(float(positions[:, 2].max() + margin), 9)],
+-    ]
++    boundary = navigation_boundary(positions)
++    boundary_array = np.asarray(boundary)
++    move_speed = max(0.15, float(np.ptp(boundary_array, axis=0).min()) * 0.5)
++    eye_height = float(np.median(positions[:, 1]))
+     start = anchors[1]
+     manifest = {
+         "$schema": "./scene.schema.json",
+@@ -104,9 +106,15 @@ def main() -> int:
+         "backgroundColor": [0.15, 0.15, 0.15],
+         "defaultPhotoAnchorId": "frame_0053",
+         "navigation": {
+-            "eyeHeight": start["position"][1],
+-            "moveSpeed": 0.15,
++            "eyeHeight": round(eye_height, 9),
++            "eyeHeightStatistic": "median-camera-y",
++            "moveSpeed": round(move_speed, 9),
+             "lookSensitivity": 0.11,
++            "defaultFov": start["fov"],
++            "fovRangeDegrees": [30.0, 90.0],
++            "sprintMultiplier": 3.0,
++            "startMode": "walk",
++            "boundaryType": "buffered-camera-convex-hull",
+             "boundaryXZ": boundary,
+             "startPose": {"position": start["position"], "quaternion": start["quaternion"], "fov": start["fov"]},
+         },
+@@ -123,6 +131,8 @@ def main() -> int:
+         "anchorCount": len(anchors),
+         "anchors": anchors,
+         "boundaryXZ": boundary,
++        "boundaryType": "buffered-camera-convex-hull",
++        "eyeHeightStatistic": "median-camera-y",
+         "photoModePreservesAnchorY": True,
+     }
+     validation_path.write_text(json.dumps(validation, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+diff --git a/scripts/test_generate_tum_v4_viewer.py b/scripts/test_generate_tum_v4_viewer.py
+index 481a59f..26fd4b0 100644
+--- a/scripts/test_generate_tum_v4_viewer.py
++++ b/scripts/test_generate_tum_v4_viewer.py
+@@ -9,7 +9,10 @@ import numpy as np
+ from generate_tum_v4_viewer import (
+     PLAYCANVAS_FROM_NERFSTUDIO,
+     apply_dataparser_transform,
++    buffer_convex_polygon,
++    convex_hull_xz,
+     matrix_to_quaternion_xyzw,
++    navigation_boundary,
+ )
+ 
+ 
+@@ -25,6 +28,31 @@ def quaternion_xyzw_to_matrix(values: list[float]) -> np.ndarray:
+ 
+ 
+ class ViewerTransformTests(unittest.TestCase):
++    def test_navigation_boundary_is_buffered_convex_hull_not_aabb(self) -> None:
++        positions = np.asarray(
++            [
++                [0.0, 1.0, 0.0],
++                [2.0, 1.2, 0.0],
++                [1.1, 0.8, 0.4],
++                [0.3, 1.1, 1.5],
++                [1.0, 1.0, 0.5],
++            ]
++        )
++        hull = convex_hull_xz(positions[:, [0, 2]])
++        buffered = buffer_convex_polygon(hull, 0.05)
++        boundary = navigation_boundary(positions, 0.05)
++        self.assertGreaterEqual(len(hull), 3)
++        self.assertEqual(len(buffered), len(hull))
++        self.assertEqual(len(boundary), len(hull))
++        self.assertNotEqual(len(boundary), 4, "the fixture hull must not be an axis-aligned rectangle")
++        self.assertLess(min(point[0] for point in boundary), 0.0)
++        self.assertGreater(max(point[1] for point in boundary), 1.5)
++
++    def test_collinear_navigation_positions_are_rejected(self) -> None:
++        positions = np.asarray([[0.0, 1.0, 0.0], [1.0, 1.0, 1.0], [2.0, 1.0, 2.0]])
++        with self.assertRaisesRegex(ValueError, "collinear"):
++            navigation_boundary(positions)
++
+     def test_matrix_quaternion_roundtrip(self) -> None:
+         matrix = PLAYCANVAS_FROM_NERFSTUDIO[:3, :3]
+         quaternion = matrix_to_quaternion_xyzw(matrix)
+diff --git a/scripts/viewer_v8_regression_e2e.js b/scripts/viewer_v8_regression_e2e.js
+new file mode 100644
+index 0000000..6af6a16
+--- /dev/null
++++ b/scripts/viewer_v8_regression_e2e.js
+@@ -0,0 +1,249 @@
++const fs = require("fs");
++const path = require("path");
++const { chromium } = require("playwright");
++
++const args = process.argv.slice(2);
++if (args.length !== 3) {
++  console.error("Usage: node viewer_v8_regression_e2e.js <viewer-url> <result-json> <overview-png>");
++  process.exit(2);
++}
++
++function maxAbs(left, right) {
++  return Math.max(...left.map((value, index) => Math.abs(value - right[index])));
++}
++
++function angleDifference(left, right) {
++  return Math.abs(((left - right + 180) % 360 + 360) % 360 - 180);
++}
++
++function pointInPolygon(x, z, polygon) {
++  let inside = false;
++  for (let i = 0, j = polygon.length - 1; i < polygon.length; j = i++) {
++    const [xi, zi] = polygon[i];
++    const [xj, zj] = polygon[j];
++    if (zi > z !== zj > z && x < ((xj - xi) * (z - zi)) / (zj - zi) + xi) inside = !inside;
++  }
++  return inside;
++}
++
++async function cameraState(page) {
++  return page.locator("#sceneCanvas").evaluate((canvas) => ({
++    position: canvas.dataset.cameraPosition.split(",").map(Number),
++    quaternion: canvas.dataset.cameraQuaternion.split(",").map(Number),
++    euler: canvas.dataset.cameraEuler.split(",").map(Number),
++    fov: Number(canvas.dataset.cameraFov),
++    mode: canvas.dataset.navigationMode,
++    walkY: Number(canvas.dataset.walkY),
++    speedTier: canvas.dataset.speedTier,
++    moveSpeed: Number(canvas.dataset.moveSpeed),
++  }));
++}
++
++async function holdForward(page, milliseconds, sprint = false) {
++  if (sprint) await page.keyboard.down("Shift");
++  await page.keyboard.down("w");
++  await page.waitForTimeout(milliseconds);
++  await page.keyboard.up("w");
++  if (sprint) await page.keyboard.up("Shift");
++  await page.waitForTimeout(120);
++}
++
++async function resetWalk(page) {
++  await page.locator("#freeWalkAction").click();
++  await page.waitForTimeout(120);
++}
++
++(async () => {
++  const [url, resultPath, overviewPath] = args;
++  fs.mkdirSync(path.dirname(resultPath), { recursive: true });
++  fs.mkdirSync(path.dirname(overviewPath), { recursive: true });
++  const browser = await chromium.launch({
++    headless: true,
++    executablePath: process.env.CHROME_PATH || "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe",
++  });
++  const page = await browser.newPage({ viewport: { width: 1440, height: 900 }, deviceScaleFactor: 1 });
++  const progress = (message) => console.log(`[e2e] ${message}`);
++  const consoleErrors = [];
++  page.on("console", (message) => {
++    if (message.type() === "error") consoleErrors.push(message.text());
++  });
++  page.on("pageerror", (error) => consoleErrors.push(error.message));
++  progress("opening Viewer");
++  await page.goto(url, { waitUntil: "networkidle" });
++  await page.waitForFunction(
++    () => document.querySelector("#sceneState")?.textContent?.includes("SOG ready"),
++    null,
++    { timeout: 60000 }
++  );
++  await page.waitForFunction(() => document.querySelector("#sceneCanvas")?.dataset.cameraEuler);
++  progress("SOG ready and camera telemetry active");
++  const manifest = await page.evaluate(() => {
++    const sceneUrl = new URLSearchParams(window.location.search).get("scene");
++    return fetch(sceneUrl).then((response) => response.json());
++  });
++
++  const anchorChecks = [];
++  for (const anchor of manifest.photoAnchors) {
++    await page.locator(`[data-photo-anchor-id="${anchor.id}"]`).click();
++    await page.waitForTimeout(700);
++    const actual = await cameraState(page);
++    const positionMaxAbs = maxAbs(actual.position, anchor.position);
++    const quaternionMaxAbs = Math.min(
++      maxAbs(actual.quaternion, anchor.quaternion),
++      maxAbs(actual.quaternion, anchor.quaternion.map((value) => -value))
++    );
++    const fovAbs = Math.abs(actual.fov - anchor.fov);
++    anchorChecks.push({
++      id: anchor.id,
++      actual,
++      positionMaxAbs,
++      quaternionMaxAbs,
++      fovAbs,
++      pass:
++        actual.mode === "photo-anchor" &&
++        positionMaxAbs <= 1e-5 &&
++        quaternionMaxAbs <= 1e-5 &&
++        fovAbs <= 1e-6,
++    });
++  }
++  progress("photo anchors verified");
++
++  const middle = manifest.photoAnchors.find((anchor) => anchor.id === "frame_0053") || manifest.photoAnchors[1];
++  await page.locator(`[data-photo-anchor-id="${middle.id}"]`).click();
++  await page.waitForTimeout(700);
++  const photoPose = await cameraState(page);
++  await resetWalk(page);
++  const levelPose = await cameraState(page);
++  const levelGate = {
++    yawDifferenceDegrees: angleDifference(photoPose.euler[1], levelPose.euler[1]),
++    pitchAbs: Math.abs(levelPose.euler[0]),
++    rollAbs: Math.abs(levelPose.euler[2]),
++    eyeHeightAbs: Math.abs(levelPose.position[1] - manifest.navigation.eyeHeight),
++  };
++  progress("free-walk leveling verified");
++
++  await page.keyboard.press("0");
++  const defaultZoom = await cameraState(page);
++  await page.locator("#zoomInAction").click();
++  const buttonZoom = await cameraState(page);
++  await page.locator("#sceneCanvas").dispatchEvent("wheel", { deltaY: 120 });
++  const wheelZoom = await cameraState(page);
++  for (let index = 0; index < 20; index++) await page.locator("#zoomInAction").click();
++  const minZoom = await cameraState(page);
++  for (let index = 0; index < 20; index++) await page.locator("#zoomOutAction").click();
++  const maxZoom = await cameraState(page);
++  await page.keyboard.press("0");
++  const restoredZoom = await cameraState(page);
++  const fovUi = Number((await page.locator("#fovValue").innerText()).replace("°", ""));
++  progress("zoom controls verified");
++
++  await resetWalk(page);
++  const beforeOneSecond = await cameraState(page);
++  await holdForward(page, 1000);
++  const afterOneSecond = await cameraState(page);
++  const oneSecondDistance = Math.hypot(
++    afterOneSecond.position[0] - beforeOneSecond.position[0],
++    afterOneSecond.position[2] - beforeOneSecond.position[2]
++  );
++  progress("one-second normal walk measured");
++
++  await resetWalk(page);
++  const normalStart = await cameraState(page);
++  await holdForward(page, 250);
++  const normalEnd = await cameraState(page);
++  const normalDistance = Math.hypot(
++    normalEnd.position[0] - normalStart.position[0],
++    normalEnd.position[2] - normalStart.position[2]
++  );
++  await resetWalk(page);
++  const sprintStart = await cameraState(page);
++  await holdForward(page, 250, true);
++  const sprintEnd = await cameraState(page);
++  const sprintDistance = Math.hypot(
++    sprintEnd.position[0] - sprintStart.position[0],
++    sprintEnd.position[2] - sprintStart.position[2]
++  );
++  const sprintRatio = sprintDistance / normalDistance;
++  progress("sprint ratio measured");
++
++  await resetWalk(page);
++  const beforeLook = await cameraState(page);
++  const canvasBox = await page.locator("#sceneCanvas").boundingBox();
++  await page.mouse.move(canvasBox.x + canvasBox.width / 2, canvasBox.y + canvasBox.height - 35);
++  await page.mouse.down();
++  await page.mouse.move(canvasBox.x + canvasBox.width / 2, canvasBox.y + 35, { steps: 12 });
++  await page.mouse.up();
++  await page.waitForTimeout(100);
++  const afterLook = await cameraState(page);
++  await holdForward(page, 200);
++  const afterLookWalk = await cameraState(page);
++  progress("look clamp and level walk verified");
++
++  await page.locator(`[data-photo-anchor-id="${middle.id}"]`).click();
++  await page.waitForTimeout(700);
++  const returned = await cameraState(page);
++  const returnedPositionError = maxAbs(returned.position, middle.position);
++  const returnedQuaternionError = Math.min(
++    maxAbs(returned.quaternion, middle.quaternion),
++    maxAbs(returned.quaternion, middle.quaternion.map((value) => -value))
++  );
++  const returnedFovError = Math.abs(returned.fov - middle.fov);
++  progress("photo-anchor return verified");
++
++  await resetWalk(page);
++  await page.locator("#zoomInAction").click();
++  await page.keyboard.down("Shift");
++  await page.waitForTimeout(120);
++  const screenshotState = await cameraState(page);
++  await page.screenshot({ path: overviewPath, type: "png" });
++  await page.keyboard.up("Shift");
++  const oldShortSide = 0.312741989 - -0.326478013;
++  const checks = {
++    sogReady: (await page.locator("#sceneState").innerText()).includes("SOG ready"),
++    allAnchorsRestoreExactly: anchorChecks.every((row) => row.pass),
++    freeWalkMode: levelPose.mode === "walk",
++    freeWalkYawContinuous: levelGate.yawDifferenceDegrees <= 0.5,
++    freeWalkPitchLevel: levelGate.pitchAbs <= 0.5,
++    freeWalkRollLevel: levelGate.rollAbs <= 0.5,
++    freeWalkUsesMedianHeight: levelGate.eyeHeightAbs <= 1e-5,
++    buttonZoomChangesAtLeastFiveDegrees: defaultZoom.fov - buttonZoom.fov >= 4.999,
++    wheelZoomChangesAtLeastFiveDegrees: wheelZoom.fov - buttonZoom.fov >= 4.999,
++    fovMinimumClamp: Math.abs(minZoom.fov - 30) <= 1e-6,
++    fovMaximumClamp: Math.abs(maxZoom.fov - 90) <= 1e-6,
++    zeroRestoresDefaultFov: Math.abs(restoredZoom.fov - manifest.navigation.defaultFov) <= 1e-6,
++    fovUiMatchesCamera: Math.abs(fovUi - restoredZoom.fov) <= 0.051,
++    normalOneSecondVisible: oneSecondDistance >= oldShortSide * 0.25,
++    normalWalkInsideHull: pointInPolygon(afterOneSecond.position[0], afterOneSecond.position[2], manifest.navigation.boundaryXZ),
++    sprintRatioIsThree: sprintRatio >= 2.7 && sprintRatio <= 3.3,
++    dragPitchClamp: Math.abs(Math.abs(afterLook.euler[0]) - 75) <= 0.5,
++    dragRollZero: Math.abs(afterLook.euler[2]) <= 0.5,
++    forwardDoesNotChangeY: Math.abs(afterLookWalk.position[1] - beforeLook.position[1]) <= 1e-5,
++    photoAnchorReturnAfterWalk: returned.mode === "photo-anchor" && returnedPositionError <= 1e-5 && returnedQuaternionError <= 1e-5 && returnedFovError <= 1e-6,
++    screenshotShowsFreeWalk: screenshotState.mode === "walk",
++    screenshotShowsSprint: screenshotState.speedTier === "sprint",
++    noConsoleErrors: consoleErrors.length === 0,
++  };
++  const result = {
++    status: Object.values(checks).every(Boolean) ? "PASS" : "FAIL",
++    url,
++    sceneState: await page.locator("#sceneState").innerText(),
++    manifestSceneRevisionId: manifest.sceneRevisionId,
++    boundaryType: manifest.navigation.boundaryType,
++    levelGate,
++    zoom: { defaultZoom, buttonZoom, wheelZoom, minZoom, maxZoom, restoredZoom, fovUi },
++    movement: { oneSecondDistance, normalDistance, sprintDistance, sprintRatio, afterOneSecond },
++    look: { beforeLook, afterLook, afterLookWalk },
++    anchorChecks,
++    returned: { state: returned, returnedPositionError, returnedQuaternionError, returnedFovError },
++    screenshotState,
++    consoleErrors,
++    checks,
++  };
++  fs.writeFileSync(resultPath, JSON.stringify(result, null, 2) + "\n");
++  console.log(JSON.stringify(result, null, 2));
++  await browser.close();
++  if (result.status !== "PASS") process.exitCode = 1;
++})().catch((error) => {
++  console.error(error.stack || String(error));
++  process.exitCode = 1;
++});
+diff --git a/viewer/app.js b/viewer/app.js
+index 10666db..d7e1673 100644
+--- a/viewer/app.js
++++ b/viewer/app.js
+@@ -12,6 +12,12 @@ const ui = {
+   loadingText: document.querySelector("#loadingText"),
+   modeNote: document.querySelector("#modeNote"),
+   modeNoteText: document.querySelector("#modeNoteText"),
++  navigationMode: document.querySelector("#navigationMode"),
++  speedMode: document.querySelector("#speedMode"),
++  fovValue: document.querySelector("#fovValue"),
++  zoomValue: document.querySelector("#zoomValue"),
++  zoomInAction: document.querySelector("#zoomInAction"),
++  zoomOutAction: document.querySelector("#zoomOutAction"),
+   eyeHeight: document.querySelector("#eyeHeight"),
+   helpEyeHeight: document.querySelector("#helpEyeHeight"),
+   coordinate: document.querySelector("#coordinateReadout"),
+@@ -25,6 +31,7 @@ const ui = {
+   photoAnchorList: document.querySelector("#photoAnchorList"),
+   anchorAction: document.querySelector("#anchorAction"),
+   worldAnchor: document.querySelector("#worldAnchor"),
++  freeWalkAction: document.querySelector("#freeWalkAction"),
+   homeAction: document.querySelector("#homeAction"),
+   helpAction: document.querySelector("#helpAction"),
+   helpSheet: document.querySelector("#helpSheet"),
+@@ -49,12 +56,76 @@ const state = {
+   transition: null,
+   navigationMode: "photo-anchor",
+   walkY: null,
++  mapMarkerScale: 1,
+   path: [],
+   lastPathPosition: null,
+   fpsFrames: 0,
+   fpsElapsed: 0
+ };
+ 
++function clamp(value, minimum, maximum) {
++  return Math.max(minimum, Math.min(maximum, value));
++}
++
++function fovRange() {
++  const configured = state.manifest?.navigation?.fovRangeDegrees;
++  if (
++    Array.isArray(configured) &&
++    configured.length === 2 &&
++    configured.every(Number.isFinite) &&
++    configured[0] < configured[1]
++  ) {
++    return configured;
++  }
++  return [30, 90];
++}
++
++function defaultFov() {
++  const configured = state.manifest?.navigation?.defaultFov;
++  return Number.isFinite(configured) ? configured : state.manifest.navigation.startPose.fov;
++}
++
++function syncFovUI() {
++  if (!state.camera) return;
++  const fov = state.camera.camera.fov;
++  const base = defaultFov();
++  const zoom = Math.tan((base * Math.PI) / 360) / Math.tan((fov * Math.PI) / 360);
++  ui.fovValue.textContent = fov.toFixed(1).replace(/\.0$/, "");
++  ui.zoomValue.textContent = `${zoom.toFixed(2)}×`;
++  ui.canvas.dataset.cameraFov = fov.toString();
++}
++
++function setFov(value) {
++  if (!state.camera) return;
++  const [minimum, maximum] = fovRange();
++  state.camera.camera.fov = clamp(value, minimum, maximum);
++  syncFovUI();
++}
++
++function adjustFov(deltaDegrees) {
++  if (!state.camera || state.transition) return;
++  setFov(state.camera.camera.fov + deltaDegrees);
++}
++
++function syncModeUI() {
++  const walking = state.navigationMode === "walk";
++  ui.navigationMode.textContent = walking ? "自由行走" : "照片机位";
++  ui.shell.dataset.navigationMode = state.navigationMode;
++}
++
++function sprintMultiplier() {
++  const configured = state.manifest?.navigation?.sprintMultiplier;
++  return Number.isFinite(configured) && configured >= 1 ? configured : 3;
++}
++
++function syncSpeedUI() {
++  const sprinting = state.keys.has("shift");
++  const multiplier = sprinting ? sprintMultiplier() : 1;
++  ui.speedMode.textContent = sprinting ? `冲刺 ${multiplier.toFixed(0)}×` : "正常 1×";
++  ui.speedMode.dataset.tier = sprinting ? "sprint" : "normal";
++  ui.canvas.dataset.speedTier = sprinting ? "sprint" : "normal";
++}
++
+ function setLoading(message) {
+   ui.loadingText.textContent = message;
+ }
+@@ -87,6 +158,19 @@ function validateManifest(manifest) {
+   if (!manifest?.navigation || !Number.isFinite(manifest.navigation.eyeHeight)) {
+     errors.push("navigation.eyeHeight must be a number");
+   }
++  if (
++    manifest?.navigation?.fovRangeDegrees !== undefined &&
++    (!isNumbers(manifest.navigation.fovRangeDegrees, 2) ||
++      manifest.navigation.fovRangeDegrees[0] >= manifest.navigation.fovRangeDegrees[1])
++  ) {
++    errors.push("navigation.fovRangeDegrees must be [minimum, maximum]");
++  }
++  if (
++    manifest?.navigation?.sprintMultiplier !== undefined &&
++    (!Number.isFinite(manifest.navigation.sprintMultiplier) || manifest.navigation.sprintMultiplier < 1)
++  ) {
++    errors.push("navigation.sprintMultiplier must be at least 1");
++  }
+   if (!Array.isArray(manifest?.navigation?.boundaryXZ) || manifest.navigation.boundaryXZ.length < 3) {
+     errors.push("navigation.boundaryXZ needs at least three vertices");
+   } else if (!manifest.navigation.boundaryXZ.every((point) => isNumbers(point, 2))) {
+@@ -146,7 +230,10 @@ function selectPhotoAnchor(anchor) {
+   ui.anchorPosition.textContent = anchor.position.map((value) => value.toFixed(2)).join(" / ");
+   ui.anchorPosition.title = `[${anchor.position.join(", ")}]`;
+   ui.anchorFov.textContent = `${anchor.fov.toFixed(0)}°`;
+-  ui.mapAnchor.setAttribute("transform", `translate(${anchor.position[0]} ${anchor.position[2]})`);
++  ui.mapAnchor.setAttribute(
++    "transform",
++    `translate(${anchor.position[0]} ${anchor.position[2]}) scale(${state.mapMarkerScale})`
++  );
+   for (const button of ui.photoAnchorList.querySelectorAll("[data-photo-anchor-id]")) {
+     const active = button.dataset.photoAnchorId === anchor.id;
+     button.setAttribute("aria-pressed", active ? "true" : "false");
+@@ -196,12 +283,23 @@ function configureManifestUI() {
+   state.walkY = nav.eyeHeight;
+   ui.sceneName.textContent = manifest.name;
+   syncWalkHeightUI();
+-  configurePhotoAnchorButtons();
+-  selectPhotoAnchor(initialAnchor);
+   ui.navBoundary.setAttribute(
+     "points",
+     nav.boundaryXZ.map(([x, z]) => `${x},${z}`).join(" ")
+   );
++  const xs = nav.boundaryXZ.map(([x]) => x);
++  const zs = nav.boundaryXZ.map(([, z]) => z);
++  const width = Math.max(...xs) - Math.min(...xs);
++  const height = Math.max(...zs) - Math.min(...zs);
++  const longestSpan = Math.max(width, height);
++  const padding = longestSpan * 0.12 || 0.25;
++  state.mapMarkerScale = Math.max(longestSpan / 8, 0.03);
++  ui.navBoundary.ownerSVGElement.setAttribute(
++    "viewBox",
++    `${Math.min(...xs) - padding} ${Math.min(...zs) - padding} ${width + padding * 2} ${height + padding * 2}`
++  );
++  configurePhotoAnchorButtons();
++  selectPhotoAnchor(initialAnchor);
+ }
+ 
+ function makeMaterial(pc, color) {
+@@ -301,7 +399,7 @@ function setCameraPose(pose, mode = "photo-anchor") {
+   const { pc, camera } = state;
+   camera.setPosition(...pose.position);
+   camera.setRotation(new pc.Quat(...pose.quaternion));
+-  camera.camera.fov = pose.fov;
++  setFov(pose.fov);
+   state.navigationMode = mode;
+   if (mode === "walk") {
+     state.walkY = pose.position[1];
+@@ -310,6 +408,40 @@ function setCameraPose(pose, mode = "photo-anchor") {
+   const euler = camera.getEulerAngles();
+   state.pitch = euler.x;
+   state.yaw = euler.y;
++  syncModeUI();
++}
++
++function levelYawDegrees() {
++  const forward = state.camera.forward;
++  const horizontalLength = Math.hypot(forward.x, forward.z);
++  if (horizontalLength > 1e-6) {
++    return Math.atan2(-forward.x, -forward.z) * (180 / Math.PI);
++  }
++  return state.camera.getEulerAngles().y;
++}
++
++function enterFreeWalk(pose = null) {
++  if (!state.camera) return;
++  const position = pose?.position || (() => {
++    const current = state.camera.getPosition();
++    return [current.x, current.y, current.z];
++  })();
++  let yaw = levelYawDegrees();
++  if (pose?.quaternion) {
++    const rotation = new state.pc.Quat(...pose.quaternion);
++    state.camera.setRotation(rotation);
++    yaw = levelYawDegrees();
++  }
++  state.transition = null;
++  state.walkY = state.manifest.navigation.eyeHeight;
++  state.navigationMode = "walk";
++  state.pitch = 0;
++  state.yaw = yaw;
++  state.camera.setPosition(position[0], state.walkY, position[2]);
++  state.camera.setEulerAngles(0, state.yaw, 0);
++  ui.modeNote.hidden = true;
++  syncWalkHeightUI();
++  syncModeUI();
+ }
+ 
+ function normalizedQuaternion(values) {
+@@ -367,6 +499,7 @@ function updateTransition(dt) {
+   state.camera.setPosition(...position);
+   state.camera.setRotation(new state.pc.Quat(...rotation));
+   state.camera.camera.fov = transition.fromFov + (transition.toFov - transition.fromFov) * t;
++  syncFovUI();
+   if (linear >= 1) {
+     setCameraPose(transition.finalPose, transition.finalMode);
+     announcePhotoReturn(transition.completionMessage);
+@@ -383,6 +516,18 @@ function keyboardVector() {
+   };
+ }
+ 
++function normalMoveSpeed() {
++  const nav = state.manifest.navigation;
++  const xs = nav.boundaryXZ.map(([x]) => x);
++  const zs = nav.boundaryXZ.map(([, z]) => z);
++  const shortSpan = Math.min(
++    Math.max(...xs) - Math.min(...xs),
++    Math.max(...zs) - Math.min(...zs)
++  );
++  const configured = Number.isFinite(nav.moveSpeed) ? nav.moveSpeed : 0;
++  return Math.max(configured, shortSpan * 0.5);
++}
++
+ function updateMovement(dt) {
+   if (!state.camera || updateTransition(dt)) return;
+   const keyboard = keyboardVector();
+@@ -395,19 +540,17 @@ function updateMovement(dt) {
+   }
+   if (Math.abs(inputX) < 0.001 && Math.abs(inputY) < 0.001) return;
+ 
+-  const position = state.camera.getPosition();
+   if (state.navigationMode !== "walk") {
+-    state.navigationMode = "walk";
+-    state.walkY = state.manifest.navigation.eyeHeight;
+-    syncWalkHeightUI();
++    enterFreeWalk();
+   }
++  const position = state.camera.getPosition();
+   const forward = state.camera.forward.clone();
+   const right = state.camera.right.clone();
+   forward.y = 0;
+   right.y = 0;
+   forward.normalize();
+   right.normalize();
+-  const speed = state.manifest.navigation.moveSpeed || 1.35;
++  const speed = normalMoveSpeed() * (state.keys.has("shift") ? sprintMultiplier() : 1);
+   const dx = (forward.x * -inputY + right.x * inputX) * speed * dt;
+   const dz = (forward.z * -inputY + right.z * inputX) * speed * dt;
+   const boundary = state.manifest.navigation.boundaryXZ;
+@@ -421,9 +564,10 @@ function updateMovement(dt) {
+ 
+ function updateCameraLook(dx, dy) {
+   if (!state.camera || state.transition) return;
++  if (state.navigationMode !== "walk") enterFreeWalk();
+   const sensitivity = state.manifest.navigation.lookSensitivity || 0.11;
+   state.yaw -= dx * sensitivity;
+-  state.pitch = Math.max(-78, Math.min(78, state.pitch - dy * sensitivity));
++  state.pitch = clamp(state.pitch - dy * sensitivity, -75, 75);
+   state.camera.setEulerAngles(state.pitch, state.yaw, 0);
+ }
+ 
+@@ -435,11 +579,15 @@ function updateReadouts(dt) {
+   ui.canvas.dataset.walkY = state.walkY.toString();
+   ui.canvas.dataset.cameraPosition = [position.x, position.y, position.z].join(",");
+   ui.canvas.dataset.cameraQuaternion = [rotation.x, rotation.y, rotation.z, rotation.w].join(",");
+-  ui.canvas.dataset.cameraFov = state.camera.camera.fov.toString();
++  const euler = state.camera.getEulerAngles();
++  ui.canvas.dataset.cameraEuler = [euler.x, euler.y, euler.z].join(",");
++  ui.canvas.dataset.moveSpeed = normalMoveSpeed().toString();
++  syncFovUI();
++  syncSpeedUI();
+   ui.coordinate.textContent = `X ${position.x.toFixed(2)} · Z ${position.z.toFixed(2)}`;
+   ui.mapCamera.setAttribute(
+     "transform",
+-    `translate(${position.x} ${position.z}) rotate(${-state.yaw})`
++    `translate(${position.x} ${position.z}) rotate(${-state.yaw}) scale(${state.mapMarkerScale})`
+   );
+ 
+   const last = state.lastPathPosition;
+@@ -490,6 +638,19 @@ function bindControls() {
+       event.preventDefault();
+       state.keys.add(key);
+     }
++    if (key === "shift") state.keys.add("shift");
++    if (key === "0") {
++      event.preventDefault();
++      setFov(defaultFov());
++    }
++    if (key === "+" || key === "=") {
++      event.preventDefault();
++      adjustFov(-5);
++    }
++    if (key === "-" || key === "_") {
++      event.preventDefault();
++      adjustFov(5);
++    }
+     if (event.key === "Escape" && !ui.helpSheet.hidden) closeHelp();
+   });
+   window.addEventListener("keyup", (event) => state.keys.delete(event.key.toLowerCase()));
+@@ -517,6 +678,16 @@ function bindControls() {
+   };
+   ui.canvas.addEventListener("pointerup", releaseLook);
+   ui.canvas.addEventListener("pointercancel", releaseLook);
++  ui.canvas.addEventListener(
++    "wheel",
++    (event) => {
++      event.preventDefault();
++      if (event.deltaY !== 0) adjustFov(event.deltaY > 0 ? 5 : -5);
++    },
++    { passive: false }
++  );
++  ui.zoomInAction.addEventListener("click", () => adjustFov(-5));
++  ui.zoomOutAction.addEventListener("click", () => adjustFov(5));
+ 
+   const updateJoystick = (event) => {
+     const rect = ui.joystick.getBoundingClientRect();
+@@ -554,9 +725,12 @@ function bindControls() {
+     beginPoseTransition(state.anchor, "photo-anchor", "已回到这张照片的拍摄视角");
+   ui.anchorAction.addEventListener("click", goToAnchor);
+   ui.worldAnchor.addEventListener("click", goToAnchor);
+-  ui.homeAction.addEventListener("click", () =>
+-    beginPoseTransition(state.manifest.navigation.startPose, "photo-anchor")
+-  );
++  const resetFreeWalk = () => {
++    enterFreeWalk(state.manifest.navigation.startPose);
++    setFov(defaultFov());
++  };
++  ui.freeWalkAction.addEventListener("click", resetFreeWalk);
++  ui.homeAction.addEventListener("click", resetFreeWalk);
+ 
+   const openHelp = () => {
+     ui.helpSheet.hidden = false;
+@@ -609,6 +783,7 @@ async function initializeViewer() {
+     app.root.addChild(camera);
+     state.camera = camera;
+     setCameraPose(state.manifest.navigation.startPose, "photo-anchor");
++    if (state.manifest.navigation.startMode === "walk") enterFreeWalk(state.manifest.navigation.startPose);
+ 
+     app.start();
+     await loadSceneAsset(pc, app);
+diff --git a/viewer/index.html b/viewer/index.html
+index 510b326..2ae500a 100644
+--- a/viewer/index.html
++++ b/viewer/index.html
+@@ -65,11 +65,27 @@
+ 
+         <div class="reticle" aria-hidden="true"><span></span></div>
+ 
++        <div class="view-controls" aria-label="View and movement status">
++          <div class="mode-readout">
++            <span class="utility-label">Mode</span>
++            <strong id="navigationMode">照片机位</strong>
++            <span id="speedMode">正常 1×</span>
++          </div>
++          <div class="zoom-controls" aria-label="Field of view zoom controls">
++            <button id="zoomOutAction" type="button" aria-label="Zoom out">−</button>
++            <span class="zoom-readout">
++              <strong><span id="fovValue">—</span>° FOV</strong>
++              <small id="zoomValue">—×</small>
++            </span>
++            <button id="zoomInAction" type="button" aria-label="Zoom in">+</button>
++          </div>
++        </div>
++
+         <div class="movement-hint" id="movementHint">
+           <span><kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd></span>
+           <span>walk</span>
+           <span class="hint-separator">+</span>
+-          <span>drag to look</span>
++          <span><kbd>Shift</kbd> sprint · drag to look · scroll to zoom</span>
+         </div>
+ 
+         <div class="joystick" id="joystick" aria-hidden="true">
+@@ -138,10 +154,18 @@
+               <small>Restore the selected photo's exact XYZ, quaternion and FOV</small>
+             </span>
+           </button>
++
++          <button class="walk-action" id="freeWalkAction" type="button">
++            <span class="action-icon" aria-hidden="true">↟</span>
++            <span>
++              <strong>自由行走</strong>
++              <small>Return to a level, fixed-height walk pose</small>
++            </span>
++          </button>
+         </section>
+ 
+         <footer class="deck-footer">
+-          <button class="quiet-action" id="homeAction" type="button">Reset walk</button>
++          <button class="quiet-action" id="homeAction" type="button">Reset free walk</button>
+           <button class="quiet-action" id="helpAction" type="button" aria-expanded="false">Controls</button>
+           <span id="runtimeLabel">PlayCanvas 2.21.4</span>
+         </footer>
+@@ -152,8 +176,8 @@
+           <strong>Walk the captured room</strong>
+           <button id="closeHelp" type="button" aria-label="Close controls">×</button>
+         </div>
+-        <p><kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd> or arrow keys move within the drawn boundary.</p>
+-        <p>Drag the scene to look around. On touch screens, drag anywhere outside the move pad.</p>
++        <p><kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd> or arrow keys move within the camera-trajectory hull. Hold <kbd>Shift</kbd> to sprint at 3× speed.</p>
++        <p>Drag the scene to look around. Scroll, use + / −, or press 0 to control zoom. On touch screens, drag anywhere outside the move pad.</p>
+         <p>Eye height stays fixed at <span id="helpEyeHeight">1.62</span> m. This PoC does not infer floors or collision.</p>
+       </div>
+     </main>
+diff --git a/viewer/pexels-classroom-v7.scene.json b/viewer/pexels-classroom-v7.scene.json
+index ed98cf2..f396039 100644
+--- a/viewer/pexels-classroom-v7.scene.json
++++ b/viewer/pexels-classroom-v7.scene.json
+@@ -25,25 +25,74 @@
+   ],
+   "defaultPhotoAnchorId": "frame_0053",
+   "navigation": {
+-    "eyeHeight": -0.022483097,
+-    "moveSpeed": 0.15,
++    "eyeHeight": -0.072239027,
++    "eyeHeightStatistic": "median-camera-y",
++    "moveSpeed": 0.22,
+     "lookSensitivity": 0.11,
++    "defaultFov": 37.248913214,
++    "fovRangeDegrees": [
++      30.0,
++      90.0
++    ],
++    "sprintMultiplier": 3.0,
++    "startMode": "walk",
++    "boundaryType": "buffered-camera-convex-hull",
+     "boundaryXZ": [
+       [
+-        -0.326478013,
+-        -1.15
++        0.137167499,
++        0.700763549
++      ],
++      [
++        0.189743422,
++        0.466721511
++      ],
++      [
++        0.194800069,
++        0.442613816
++      ],
++      [
++        0.197284936,
++        0.419604667
++      ],
++      [
++        0.198777177,
++        0.395807805
++      ],
++      [
++        0.197948181,
++        0.368567416
++      ],
++      [
++        0.192170899,
++        0.345394048
++      ],
++      [
++        0.189908034,
++        0.336993907
++      ],
++      [
++        0.186911828,
++        0.326104461
++      ],
++      [
++        -0.193430689,
++        -0.70664107
++      ],
++      [
++        -0.237070712,
++        -0.695869582
+       ],
+       [
+-        0.312741989,
+-        -1.15
++        -0.198353423,
++        -0.402258269
+       ],
+       [
+-        0.312741989,
+-        1.037598932
++        -0.168791943,
++        -0.286417777
+       ],
+       [
+-        -0.326478013,
+-        1.037598932
++        -0.045951949,
++        0.146467403
+       ]
+     ],
+     "startPose": {
+diff --git a/viewer/scene.schema.json b/viewer/scene.schema.json
+index 2b06af1..8f316b1 100644
+--- a/viewer/scene.schema.json
++++ b/viewer/scene.schema.json
+@@ -34,6 +34,20 @@
+         "eyeHeight": { "type": "number" },
+         "moveSpeed": { "type": "number", "exclusiveMinimum": 0 },
+         "lookSensitivity": { "type": "number", "exclusiveMinimum": 0 },
++        "defaultFov": { "type": "number", "minimum": 30, "maximum": 90 },
++        "fovRangeDegrees": {
++          "type": "array",
++          "prefixItems": [
++            { "type": "number", "minimum": 30, "maximum": 90 },
++            { "type": "number", "minimum": 30, "maximum": 90 }
++          ],
++          "minItems": 2,
++          "maxItems": 2
++        },
++        "sprintMultiplier": { "type": "number", "minimum": 1 },
++        "startMode": { "enum": ["walk", "photo-anchor"] },
++        "boundaryType": { "enum": ["buffered-camera-convex-hull", "legacy-polygon"] },
++        "eyeHeightStatistic": { "type": "string" },
+         "boundaryXZ": {
+           "type": "array",
+           "minItems": 3,
+diff --git a/viewer/styles.css b/viewer/styles.css
+index 7c816d7..32a5c33 100644
+--- a/viewer/styles.css
++++ b/viewer/styles.css
+@@ -337,6 +337,80 @@ canvas:focus-visible,
+   pointer-events: none;
+ }
+ 
++.view-controls {
++  position: absolute;
++  z-index: 6;
++  top: 1rem;
++  right: 1rem;
++  display: flex;
++  gap: 0.55rem;
++  align-items: stretch;
++  color: var(--paper);
++  font-family: var(--utility);
++}
++
++.mode-readout,
++.zoom-controls {
++  border: 1px solid rgba(242, 240, 233, 0.35);
++  background: rgba(20, 35, 41, 0.84);
++  backdrop-filter: blur(8px);
++}
++
++.mode-readout {
++  display: grid;
++  min-width: 7.8rem;
++  padding: 0.52rem 0.65rem;
++}
++
++.mode-readout .utility-label {
++  color: rgba(242, 240, 233, 0.58);
++  font-size: 0.48rem;
++}
++
++.mode-readout strong {
++  margin-top: 0.12rem;
++  font-size: 0.66rem;
++}
++
++.mode-readout > span:last-child {
++  margin-top: 0.16rem;
++  color: var(--amber);
++  font-size: 0.54rem;
++}
++
++.zoom-controls {
++  display: grid;
++  grid-template-columns: 2.2rem minmax(5.4rem, auto) 2.2rem;
++}
++
++.zoom-controls button {
++  border: 0;
++  background: transparent;
++  color: var(--paper);
++  font-size: 1.2rem;
++  cursor: pointer;
++}
++
++.zoom-controls button:hover {
++  background: var(--amber);
++  color: var(--ink);
++}
++
++.zoom-readout {
++  display: grid;
++  place-content: center;
++  border-inline: 1px solid rgba(242, 240, 233, 0.22);
++  text-align: center;
++}
++
++.zoom-readout strong,
++.zoom-readout small {
++  display: block;
++}
++
++.zoom-readout strong { font-size: 0.58rem; }
++.zoom-readout small { margin-top: 0.12rem; color: var(--amber); font-size: 0.5rem; }
++
+ kbd {
+   display: inline-flex;
+   align-items: center;
+@@ -475,6 +549,7 @@ kbd {
+   position: relative;
+   display: grid;
+   min-height: 13rem;
++  height: 13rem;
+   margin-top: 1.35rem;
+   border: 1px solid var(--line);
+   background: #e7e9e5;
+@@ -496,8 +571,12 @@ kbd {
+ }
+ 
+ .nav-map svg {
++  position: absolute;
++  inset: 0;
++  display: block;
+   width: 100%;
+   height: 100%;
++  overflow: hidden;
+ }
+ 
+ .map-boundary {
+@@ -644,7 +723,8 @@ kbd {
+   font-size: 0.58rem;
+ }
+ 
+-.anchor-action {
++.anchor-action,
++.walk-action {
+   display: flex;
+   gap: 0.8rem;
+   align-items: center;
+@@ -659,7 +739,8 @@ kbd {
+   transition: background-color 140ms ease, color 140ms ease;
+ }
+ 
+-.anchor-action:hover {
++.anchor-action:hover,
++.walk-action:hover {
+   background: var(--amber);
+   color: var(--ink);
+ }
+@@ -675,17 +756,21 @@ kbd {
+ }
+ 
+ .anchor-action strong,
+-.anchor-action small {
++.anchor-action small,
++.walk-action strong,
++.walk-action small {
+   display: block;
+ }
+ 
+-.anchor-action strong {
++.anchor-action strong,
++.walk-action strong {
+   font-family: var(--body);
+   font-size: 0.76rem;
+   font-weight: 600;
+ }
+ 
+-.anchor-action small {
++.anchor-action small,
++.walk-action small {
+   margin-top: 0.15rem;
+   color: currentColor;
+   font-family: var(--utility);
+@@ -693,6 +778,22 @@ kbd {
+   opacity: 0.68;
+ }
+ 
++.walk-action {
++  display: flex;
++  gap: 0.8rem;
++  align-items: center;
++  width: 100%;
++  margin-top: 0.45rem;
++  padding: 0.8rem;
++  border: 1px solid var(--blueprint-dark);
++  border-radius: 0;
++  background: transparent;
++  color: var(--ink);
++  text-align: left;
++  cursor: pointer;
++  transition: background-color 140ms ease, color 140ms ease;
++}
++
+ .deck-footer {
+   display: flex;
+   gap: 0.4rem;
+@@ -809,7 +910,7 @@ noscript {
+   }
+ 
+   .map-section { min-height: 24rem; }
+-  .nav-map { min-height: 15rem; }
++  .nav-map { min-height: 15rem; height: 15rem; }
+ 
+   .help-sheet {
+     right: 0;
+@@ -833,6 +934,8 @@ noscript {
+     border-bottom: 1px solid var(--line);
+   }
+   .anchor-data div:last-child { border-bottom: 0; }
++  .view-controls { right: 0.6rem; left: 0.6rem; justify-content: flex-end; }
++  .mode-readout { display: none; }
+ }
+ 
+ @media (prefers-reduced-motion: reduce) {
+

@@ -1,0 +1,33 @@
+{
+  "schemaVersion": "1.0",
+  "jobId": "unseen-3dgs-360roam-base-2026-09-03-v10",
+  "failures": [
+    {
+      "entrypoint": "Start-V10-360Roam.ps1",
+      "phase": "Windows-to-WSL path translation",
+      "cause": "Backslashes in the Windows script path were consumed across the WSL interop argv boundary before wslpath processed them.",
+      "attemptMarkerCreated": false,
+      "nsTrainStarted": false,
+      "gpuOptimizationSteps": 0
+    },
+    {
+      "entrypoint": "Run-V10-Preview.sh",
+      "phase": "prerequisite check",
+      "cause": "The script checked for ns-train before activating the project .venv.",
+      "attemptMarkerCreated": false,
+      "nsTrainStarted": false,
+      "gpuOptimizationSteps": 0
+    },
+    {
+      "entrypoint": "Run-V10-Preview.sh with corrected PATH",
+      "phase": "prerequisite check",
+      "cause": "The temporary PATH omitted /usr/lib/wsl/lib, so nvidia-smi was not visible.",
+      "attemptMarkerCreated": false,
+      "nsTrainStarted": false,
+      "gpuOptimizationSteps": 0
+    }
+  ],
+  "optimizationRunsAfterEntrypointCorrection": 1,
+  "hiddenRetries": 0,
+  "status": "DOCUMENTED"
+}

@@ -1,0 +1,38 @@
+{
+  "schemaVersion": "1.0",
+  "jobId": "unseen-3dgs-sceneworker-2026-09-02-v1",
+  "targetAgent": "Max RTX 4060 Laptop Agent",
+  "publishedAt": "2026-09-02T01:20:10Z",
+  "state": "PUBLISHED",
+  "artifact": {
+    "delivery": "github-private-release",
+    "releaseTag": "unseen-3dgs-sceneworker-2026-09-02-v1",
+    "assetName": "02-UNSEEN-3DGS-SINGLE-ZIP-sha256-4187dcb112286bb4581da17eb014c6391211140db458a32f83f7eecadfbbe462.zip",
+    "sha256": "4187dcb112286bb4581da17eb014c6391211140db458a32f83f7eecadfbbe462",
+    "bytes": 1373866,
+    "format": "zip"
+  },
+  "execution": {
+    "mode": "isolated-pexels-canary",
+    "productionConnectionEnabled": false,
+    "unpackRootFolder": "UNSEEN-3DGS-SceneWorker-TRANSFER",
+    "entryPath": "UNSEEN-3DGS-SceneWorker-TRANSFER/00-READ-FIRST.md",
+    "nextDocument": "UNSEEN-3DGS-SceneWorker-TRANSFER/UNSEEN-3DGS-SceneWorker-2026-09-02/START-HERE.md",
+    "instructions": "先读 entryPath，再按 START-HERE 在 WSL ext4 的 ~/src 中运行；不要直接在 iCloud、Windows /mnt/c 或解压目录训练。"
+  },
+  "receipt": {
+    "repository": "maxi-max-dev/max-agent-bridge",
+    "issueNumber": 1,
+    "directory": "receipts/from-4060/unseen-3dgs-sceneworker-2026-09-02-v1",
+    "reportPath": "results/from-4060/unseen-3dgs-sceneworker-2026-09-02-v1/UNSEEN-3DGS-CANARY-REPORT.md",
+    "requiredStates": ["RECEIVED_VERIFIED", "RUNNING", "COMPLETED"],
+    "githubIsAuthoritative": true,
+    "icloudReportIsBestEffortOnly": true
+  },
+  "security": {
+    "allowedNetwork": "outbound-https-only",
+    "productionApiAllowed": false,
+    "paidApiAllowed": false,
+    "forbiddenUploads": ["raw video", "frames", "private media", "SOG", "PLY", "checkpoint", "work directory", "token", ".env"]
+  }
+}

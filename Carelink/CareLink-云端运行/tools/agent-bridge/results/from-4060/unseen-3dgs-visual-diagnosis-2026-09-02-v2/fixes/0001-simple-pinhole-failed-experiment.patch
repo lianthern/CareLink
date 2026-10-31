@@ -1,0 +1,9 @@
+diff --git a/scripts/process_data.sh b/scripts/process_data.sh
+--- a/scripts/process_data.sh
++++ b/scripts/process_data.sh
+@@ -16,4 +16,4 @@
+-cmd=(ns-process-data images --data "$FRAMES_DIR" --output-dir "$PROCESSED_DIR" --sfm-tool colmap --matching-method "$MATCHING_METHOD" --camera-type perspective --num-downscales 0)
++cmd=(ns-process-data images --data "$FRAMES_DIR" --output-dir "$PROCESSED_DIR" --sfm-tool colmap --matching-method "$MATCHING_METHOD" --camera-type simple_pinhole --num-downscales 0)
+ if (( DRY_RUN == 1 )); then
+   note "COLMAP + Nerfstudio processing ($variant)"
+   quote_cmd "${cmd[@]}"

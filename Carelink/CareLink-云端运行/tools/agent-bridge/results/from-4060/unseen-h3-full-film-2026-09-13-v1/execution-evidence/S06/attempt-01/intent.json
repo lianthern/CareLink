@@ -1,0 +1,39 @@
+{
+  "key": "unseen-h3-full-film-2026-09-13-v1/S06/attempt-01",
+  "startedAt": "2026-09-14T03:18:31.212060+00:00",
+  "reference": "D:\\H3-runtime\\projects\\unseen-full-v1\\media-inputs\\reference-delta-01\\S06-classroom-couple-v1.png",
+  "inputSha256": "e2b4813a998aceb1d559f4be6e6d772dabf10434eb3f4b076d16c49770aa175f",
+  "seed": 2026091586,
+  "shot": {
+    "id": "S06",
+    "title": "\u8bfe\u5802\uff1a\u627e\u4e0d\u5230\u6a61\u76ae",
+    "type": "h3_generated_action",
+    "edit_seconds": 4,
+    "generate_seconds_nominal": 4.458333333333333,
+    "frame_count_starting_point": 107,
+    "fps": 24,
+    "recorder": "\u540e\u6392\u540c\u5b66",
+    "references": [
+      "08-school-corridor.png",
+      "02-character-age-reference.png"
+    ],
+    "start_end_and_action": "An ordinary classroom in the established campus, soft daylight from the courtyard-side windows, green chalkboard at the front, wooden desks in rows. Medium smartphone view from a seated classmate behind and to the boy's left, camera height 1.1m. The protagonist is now seventeen, wearing a white school shirt and dark trousers, with the approved teenage face. He quietly opens his pencil case and searches with one hand, then looks toward the girl at the adjacent desk on his right. The girl has a black ponytail and the same white school uniform; freeze this face for graduation, wedding and old age. End on his small questioning glance before any eraser changes hands. Keep the camera still and avoid legible board text.",
+    "prompt": "Naturalistic personal-memory footage with believable human movement and gently handheld smartphone perspective. Keep the approved faces, clothes, lighting and room geometry. One continuous shot, no internal cuts, no age change, no photo cards, no text, no camera flying outside, no slow motion, no duplicated people, no DV camcorder. An ordinary classroom in the established campus, soft daylight from the courtyard-side windows, green chalkboard at the front, wooden desks in rows. Medium smartphone view from a seated classmate behind and to the boy's left, camera height 1.1m. The protagonist is now seventeen, wearing a white school shirt and dark trousers, with the approved teenage face. He quietly opens his pencil case and searches with one hand, then looks toward the girl at the adjacent desk on his right. The girl has a black ponytail and the same white school uniform; freeze this face for graduation, wedding and old age. End on his small questioning glance before any eraser changes hands. Keep the camera still and avoid legible board text.",
+    "cut_continuity": "S07\u5973\u751f\u5728\u540c\u4fa7\u90bb\u684c\uff0c\u7537\u4e3b\u4f38\u624b\u53d1\u751f\u5728\u672c\u955c\u5bfb\u627e\u4e4b\u540e\u3002",
+    "pass_criteria": [
+      "\u771f\u6b63\u6559\u5ba4\u5185\u90e8\u800c\u975e\u8d70\u5eca\u5f53\u8bfe\u5802",
+      "\u56fa\u5b9a\u5973\u5b69\u8138\u578b\u548c\u5ea7\u4f4d",
+      "\u6a61\u76ae\u5c1a\u672a\u4ea4\u4ed8"
+    ],
+    "audio": "Natural scene sound only; no generated music, UI text or unscripted dialogue.",
+    "status": "planned",
+    "output": null,
+    "timeline_start_seconds": 57.5,
+    "timeline_end_seconds": 61.5
+  },
+  "outputPrefix": "unseen-full-v1/S06/attempt-01",
+  "apiSha256": "a090b5a0cdb58759e37e9271748aa712b47ee0c2cfd3e71941199f170590b018",
+  "conditioningMode": "first-frame",
+  "templatePrompt": "Naturalistic personal-memory footage with believable human movement and gently handheld smartphone perspective. Keep the approved faces, clothes, lighting and room geometry. One continuous shot, no internal cuts, no age change, no photo cards, no text, no camera flying outside, no slow motion, no duplicated people, no DV camcorder. An ordinary classroom in the established campus, soft daylight from the courtyard-side windows, green chalkboard at the front, wooden desks in rows. Medium smartphone view from a seated classmate behind and to the boy's left, camera height 1.1m. The protagonist is now seventeen, wearing a white school shirt and dark trousers, with the approved teenage face. He quietly opens his pencil case and searches with one hand, then looks toward the girl at the adjacent desk on his right. The girl has a black ponytail and the same white school uniform; freeze this face for graduation, wedding and old age. End on his small questioning glance before any eraser changes hands. Keep the camera still and avoid legible board text.",
+  "executedPrompt": "Keep the exact classroom, seated viewpoint, two students, clothing and faces from the starting image. One continuous naturalistic shot, stationary camera, no cuts, no camera relocation, no readable new text. The seventeen-year-old boy on the left quietly searches inside his already-open dark pencil case with his right hand, then turns his head slightly toward the ponytail girl seated immediately on his right, giving a small questioning glance. The girl notices his glance but keeps the single pale-pink eraser resting on her own desk without passing it yet. Keep their separate wooden desks, notebooks, green chalkboard behind and sunlit windows on the right fixed. No age changes, no duplicate people, no additional erasers. Natural quiet classroom ambience, fabric and pencil-case sounds; no music or intelligible speech.\n"
+}

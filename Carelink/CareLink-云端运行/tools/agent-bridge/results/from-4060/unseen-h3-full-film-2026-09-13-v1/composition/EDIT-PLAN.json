@@ -1,0 +1,618 @@
+{
+  "version": 1,
+  "output": {
+    "width": 1280,
+    "height": 720,
+    "fps": 24,
+    "minSeconds": 110,
+    "maxSeconds": 140,
+    "resampling": "608x352 sources cropped/resampled; S02 only 384x216 effective"
+  },
+  "completeFilm": false,
+  "missingSegments": [
+    "H02",
+    "H03",
+    "H04",
+    "H05",
+    "H06",
+    "H07",
+    "H08",
+    "H09",
+    "H12",
+    "S01",
+    "S04",
+    "S05",
+    "S06",
+    "S07",
+    "S08",
+    "S09",
+    "S10",
+    "S11",
+    "S12",
+    "W01",
+    "W02",
+    "W03",
+    "W04",
+    "W05",
+    "W08",
+    "W09"
+  ],
+  "candidateSeconds": 39.166666666666664,
+  "audio": "Final mix and listening review required; original generation audio is not automatically approved.",
+  "entries": [
+    {
+      "id": "H01",
+      "type": "h3_generated_action",
+      "nominalSeconds": 4,
+      "state": "candidate",
+      "requiredCriteria": [
+        "从沙发侧走向桌边，而不是已经坐桌旁",
+        "右手未拿到饼干",
+        "母亲在桌边拍、父亲为画外机位",
+        "奶奶/家具/衣物与H02一致"
+      ],
+      "source": "D:\\H3-runtime\\projects\\unseen-full-v1\\generated\\unseen-full-v1\\H01\\attempt-01_00001_.mp4",
+      "sha256": "022e893daa92358a38d185daeb95ba92dac5bcf9d3fd401a1fd6f8ea9124697b",
+      "frames": [
+        0,
+        107
+      ],
+      "crop": [
+        608,
+        342,
+        0,
+        5
+      ],
+      "review": {
+        "shot": "H01",
+        "attempt": 1,
+        "verdict": "usable_pending_H02_cut",
+        "observed": "Boy moves from sofa side to table and remains standing; grandmother and mother remain distinct, clothing and room stay coherent. No clearly visible cookie in right hand at end. Saucer is not distinguishable at this source resolution; verify handoff in H02. Movement is small, not three fully distinct running steps.",
+        "referenceConditioning": "actual LoadImage to MiniMaxH3ImageToVideo.first_frame executed successfully"
+      },
+      "seconds": 4.458333333333333
+    },
+    {
+      "id": "H02",
+      "type": "h3_generated_action",
+      "nominalSeconds": 4,
+      "state": "missing",
+      "requiredCriteria": [
+        "全程站立",
+        "先推碟后拿到，动作单次",
+        "仅一块饼干到右手",
+        "不用旧cookie-b姿势"
+      ]
+    },
+    {
+      "id": "H03",
+      "type": "controlled_spatial_composite",
+      "nominalSeconds": 3,
+      "state": "missing",
+      "requiredCriteria": [
+        "两张封面来自真实生成片段",
+        "只退到家内部",
+        "家具视差和遮挡成立"
+      ]
+    },
+    {
+      "id": "H04",
+      "type": "controlled_spatial_composite",
+      "nominalSeconds": 3,
+      "state": "missing",
+      "requiredCriteria": [
+        "不是横向贴屏卡片队列",
+        "旧两张仍留原位",
+        "不出现多个年龄男主"
+      ]
+    },
+    {
+      "id": "H05",
+      "type": "controlled_spatial_composite",
+      "nominalSeconds": 1.5,
+      "state": "missing",
+      "requiredCriteria": [
+        "从小卡开始",
+        "扩大有透视衔接"
+      ]
+    },
+    {
+      "id": "H06",
+      "type": "h3_generated_action",
+      "nominalSeconds": 4,
+      "state": "missing",
+      "requiredCriteria": [
+        "院子属于同一家",
+        "母亲在收衣、父亲在门边拍",
+        "小孩两手抱盆，不凭空出现第二个人"
+      ]
+    },
+    {
+      "id": "H07",
+      "type": "h3_generated_action",
+      "nominalSeconds": 4,
+      "state": "missing",
+      "requiredCriteria": [
+        "动作因果清楚",
+        "盆不漂浮",
+        "没有第三摄影者无故出现"
+      ]
+    },
+    {
+      "id": "H08",
+      "type": "controlled_spatial_composite",
+      "nominalSeconds": 3,
+      "state": "missing",
+      "requiredCriteria": [
+        "院内到门厅有通路",
+        "禁止整家又变玩具模型"
+      ]
+    },
+    {
+      "id": "H09",
+      "type": "controlled_spatial_composite",
+      "nominalSeconds": 1.5,
+      "state": "missing",
+      "requiredCriteria": [
+        "小→大→人物开始动作"
+      ]
+    },
+    {
+      "id": "H10",
+      "type": "h3_generated_action",
+      "nominalSeconds": 4,
+      "state": "candidate",
+      "requiredCriteria": [
+        "母亲与奶奶是两人",
+        "书包颜色和校门段一致",
+        "不使用旧图把奶奶当母亲"
+      ],
+      "source": "D:\\H3-runtime\\projects\\unseen-full-v1\\generated\\unseen-full-v1\\H10\\attempt-02_00001_.mp4",
+      "sha256": "67b36d9dde388feabe0260893a49903bce59df2492f211c1aff759475c0744da",
+      "frames": [
+        0,
+        107
+      ],
+      "crop": [
+        608,
+        342,
+        0,
+        5
+      ],
+      "review": {
+        "shot": "H10",
+        "attempt": 2,
+        "verdict": "usable_pending_H11_cut",
+        "observed": "A distinct younger ivory-bloused mother enters from left and kneels in front of boy, adjusting shoulder strap. Grey-haired pink-cardigan grandmother remains at right; both faces stay distinct and boy stands throughout. Static room and backpack remain coherent. Mother's loose black hair differs from childhood reference tied-back hair; carry as identity-continuity limitation. Cookie packet handoff not yet complete.",
+        "next": "Continue H11 from actual last frame to preserve all three people."
+      },
+      "seconds": 4.458333333333333
+    },
+    {
+      "id": "H11",
+      "type": "h3_generated_action",
+      "nominalSeconds": 4,
+      "state": "candidate",
+      "requiredCriteria": [
+        "饼干包进同一侧袋",
+        "同日衣着一致",
+        "不是传送到学校"
+      ],
+      "source": "D:\\H3-runtime\\projects\\unseen-full-v1\\generated\\unseen-full-v1\\H11\\attempt-01_00001_.mp4",
+      "sha256": "68448440734673c794e2c25ae1c6c96bad0efb46a00391567fb44c7f3ab695a8",
+      "frames": [
+        78,
+        107
+      ],
+      "crop": [
+        480,
+        270,
+        90,
+        65
+      ],
+      "review": {
+        "shot": "H11",
+        "attempt": 1,
+        "verdict": "usable_with_limitations",
+        "observed": "Grandmother visibly inserts a snack packet into backpack side pocket, withdraws hand, boy turns and begins outward movement. Mother remains distinct at left; boy stays standing. Packet has bright red top unlike original transparent packet reference; keep continuity limitation, not exact prop pass. Camera push-in exceeds requested small pan but action remains readable.",
+        "next": "Continue S02 in established school reference, retain H11 final backpack/clothing comparison."
+      },
+      "seconds": 1.2083333333333333,
+      "cropReview": "Frames 78 and 103 reviewed; 480x270 crop retains pocket insertion/hand withdrawal, no second packet. Whole retained interval review follows in cut candidate."
+    },
+    {
+      "id": "H12",
+      "type": "controlled_spatial_composite",
+      "nominalSeconds": 6,
+      "state": "missing",
+      "requiredCriteria": [
+        "这是家章第一次整体退远",
+        "所有卡跟场所一同运动",
+        "方向始终左移"
+      ]
+    },
+    {
+      "id": "S01",
+      "type": "controlled_spatial_composite",
+      "nominalSeconds": 3,
+      "state": "missing",
+      "requiredCriteria": [
+        "校园不只是一张航拍图",
+        "校门照片锚点准确"
+      ]
+    },
+    {
+      "id": "S02",
+      "type": "h3_generated_action",
+      "nominalSeconds": 4,
+      "state": "candidate",
+      "requiredCriteria": [
+        "同出门前衣着和包",
+        "门柱/楼/树方位一致",
+        "挥手只有一次"
+      ],
+      "source": "D:\\H3-runtime\\projects\\unseen-full-v1\\generated\\unseen-full-v1\\S02\\attempt-01_00001_.mp4",
+      "sha256": "6f16bc0c396280d53eb69fc9e53f152c8e2620505476d2c5396df61127799890",
+      "frames": [
+        0,
+        107
+      ],
+      "crop": [
+        384,
+        216,
+        224,
+        136
+      ],
+      "review": {
+        "shot": "S02",
+        "attempt": 1,
+        "verdict": "usable_with_limitations",
+        "observed": "Boy looks back, raises one hand briefly, lowers it and turns toward school, then walks forward. School layout and uniform/backpack are coherent with reference. Foreground photographer camera inherited from reference remains visible; shot cannot be claimed as a clean unobstructed mother's smartphone viewpoint. Cookie packet from H11 not distinguishable at this distance.",
+        "next": "S03 should continue actual ending without another wave."
+      },
+      "seconds": 4.458333333333333
+    },
+    {
+      "id": "S03",
+      "type": "h3_generated_action",
+      "nominalSeconds": 4,
+      "state": "candidate",
+      "requiredCriteria": [
+        "不二次挥手",
+        "同一校门内侧",
+        "另一来源带来完整事件后半段"
+      ],
+      "source": "D:\\H3-runtime\\projects\\unseen-full-v1\\generated\\unseen-full-v1\\S03\\attempt-03_00001_.mp4",
+      "sha256": "39cbcde86f00209bda7bf6ad33096e4debcfd9c7fe843182e21b4aa75e100131",
+      "frames": [
+        17,
+        107
+      ],
+      "crop": [
+        608,
+        342,
+        0,
+        5
+      ],
+      "review": {
+        "shot": "S03",
+        "attempt": 3,
+        "verdict": "usable_with_limitations",
+        "observed": "Boy turns to face camera and walks toward foreground into the school-side interior; parent figures remain behind outside gate. Teacher and another child stay distinct, no second wave. Direction now correct. Companion follows behind rather than walking fully side-by-side. This is a simpler action coverage candidate, not exact original staging. No further attempts permitted under current shot budget."
+      },
+      "seconds": 3.75
+    },
+    {
+      "id": "S04",
+      "type": "controlled_spatial_composite",
+      "nominalSeconds": 3,
+      "state": "missing",
+      "requiredCriteria": [
+        "校门→教学楼连续关系可理解",
+        "两份记录不消失"
+      ]
+    },
+    {
+      "id": "S05",
+      "type": "controlled_spatial_composite",
+      "nominalSeconds": 1.5,
+      "state": "missing",
+      "requiredCriteria": [
+        "不是对航拍图再次放大",
+        "课桌和黑板关系明确"
+      ]
+    },
+    {
+      "id": "S06",
+      "type": "h3_generated_action",
+      "nominalSeconds": 4,
+      "state": "missing",
+      "requiredCriteria": [
+        "真正教室内部而非走廊当课堂",
+        "固定女孩脸型和座位",
+        "橡皮尚未交付"
+      ]
+    },
+    {
+      "id": "S07",
+      "type": "h3_generated_action",
+      "nominalSeconds": 4,
+      "state": "missing",
+      "requiredCriteria": [
+        "女孩是未来伴侣同一身份",
+        "推→接→回应依次发生",
+        "橡皮不变物体、不穿手"
+      ]
+    },
+    {
+      "id": "S08",
+      "type": "controlled_spatial_composite",
+      "nominalSeconds": 3,
+      "state": "missing",
+      "requiredCriteria": [
+        "不跳出整个校园",
+        "上课的记忆只在照片内"
+      ]
+    },
+    {
+      "id": "S09",
+      "type": "controlled_spatial_composite",
+      "nominalSeconds": 1.5,
+      "state": "missing",
+      "requiredCriteria": [
+        "已建立的树/楼位置一致"
+      ]
+    },
+    {
+      "id": "S10",
+      "type": "h3_generated_action",
+      "nominalSeconds": 4,
+      "state": "missing",
+      "requiredCriteria": [
+        "同校同人",
+        "移动半步自然",
+        "不把初高中毕业变大学场景"
+      ]
+    },
+    {
+      "id": "S11",
+      "type": "h3_generated_action",
+      "nominalSeconds": 4,
+      "state": "missing",
+      "requiredCriteria": [
+        "时间往前",
+        "伴侣身份清楚",
+        "额外人不凭空变位"
+      ]
+    },
+    {
+      "id": "S12",
+      "type": "controlled_spatial_composite",
+      "nominalSeconds": 6,
+      "state": "missing",
+      "requiredCriteria": [
+        "校园内三段均已播放",
+        "统一换地语言",
+        "照片随地点移动"
+      ]
+    },
+    {
+      "id": "W01",
+      "type": "controlled_spatial_composite",
+      "nominalSeconds": 2,
+      "state": "missing",
+      "requiredCriteria": [
+        "必须落到人尺度",
+        "准备区/舞池/父母席方位可追踪"
+      ]
+    },
+    {
+      "id": "W02",
+      "type": "h3_generated_action",
+      "nominalSeconds": 4,
+      "state": "missing",
+      "requiredCriteria": [
+        "伴侣不是随机新脸",
+        "准备区真实属于庭院",
+        "胸花没有先被扶正"
+      ]
+    },
+    {
+      "id": "W03",
+      "type": "h3_generated_action",
+      "nominalSeconds": 4,
+      "state": "missing",
+      "requiredCriteria": [
+        "胸花左右正确",
+        "同一伴侣",
+        "镜尾留反应"
+      ]
+    },
+    {
+      "id": "W04",
+      "type": "controlled_spatial_composite",
+      "nominalSeconds": 3,
+      "state": "missing",
+      "requiredCriteria": [
+        "婚礼也有内部漫游",
+        "不在每个反应后缩整院"
+      ]
+    },
+    {
+      "id": "W05",
+      "type": "controlled_spatial_composite",
+      "nominalSeconds": 1.5,
+      "state": "missing",
+      "requiredCriteria": [
+        "小照片而非巨型屏幕"
+      ]
+    },
+    {
+      "id": "W06",
+      "type": "h3_generated_action",
+      "nominalSeconds": 4,
+      "state": "candidate",
+      "requiredCriteria": [
+        "同一双人不换脸",
+        "握手结构稳定",
+        "转向单一"
+      ],
+      "source": "D:\\H3-runtime\\projects\\unseen-full-v1\\generated\\unseen-full-v1\\W06\\attempt-01_00001_.mp4",
+      "sha256": "8db472554f58e679e37f0159b1d31aa1e86a6b2c310611309710ae20241b7e4a",
+      "frames": [
+        0,
+        107
+      ],
+      "crop": [
+        608,
+        342,
+        0,
+        5
+      ],
+      "review": {
+        "shot": "W06",
+        "attempt": 1,
+        "observed": "Full decode passed. Contact sheet shows coordinated slow turn, bride rotates to back-facing position, couple remains distinct and courtyard stable. Fine hand anatomy and exact overhead rotation direction require closer review; cross-age partner identity remains unverified. W07 must preserve actual ending pose and obtain justified different coverage, not reset from old reverse reference.",
+        "verdict": "usable_pending_W07_cut"
+      },
+      "seconds": 4.458333333333333
+    },
+    {
+      "id": "W07",
+      "type": "h3_generated_action",
+      "nominalSeconds": 4,
+      "state": "candidate",
+      "requiredCriteria": [
+        "动作连续而不是再跳一遍",
+        "左右握手不反转",
+        "新视角仍同院"
+      ],
+      "source": "D:\\H3-runtime\\projects\\unseen-full-v1\\generated\\unseen-full-v1\\W07\\attempt-01_00001_.mp4",
+      "sha256": "0e863c28c86ab909064021ad22d985d9db1452c7a468b94ee7f7c5962bbced8c",
+      "frames": [
+        0,
+        107
+      ],
+      "crop": [
+        608,
+        342,
+        0,
+        5
+      ],
+      "review": {
+        "observed": "Full decode passed. Visual sheet shows dance continues from bride back-facing to side-facing and settles. View moves during shot; first frame remains similar to W06 ending, so this does not establish a distinct second recorder at the cut. Retain as continuous dance coverage candidate only. Reference-to-video with VAE-conditioned reference image successfully executed; not pure text generation and not a locked-first-frame mode. Fine hand continuity and partner identity still need close review.",
+        "attempt": 1,
+        "shot": "W07",
+        "verdict": "usable_with_limitations"
+      },
+      "seconds": 4.458333333333333
+    },
+    {
+      "id": "W08",
+      "type": "h3_generated_action",
+      "nominalSeconds": 4,
+      "state": "missing",
+      "requiredCriteria": [
+        "母亲拍摄是手机",
+        "父母合理变老",
+        "父母未被复制到舞池"
+      ]
+    },
+    {
+      "id": "W09",
+      "type": "controlled_spatial_composite",
+      "nominalSeconds": 3,
+      "state": "missing",
+      "requiredCriteria": [
+        "至少两件完整婚礼故事",
+        "多来源位置正确",
+        "此处不再横滑去旧家"
+      ]
+    },
+    {
+      "id": "E01",
+      "type": "h3_generated_action",
+      "nominalSeconds": 4,
+      "state": "candidate",
+      "requiredCriteria": [
+        "真实手机比例/手部正常",
+        "屏幕可跟踪替换",
+        "新住处区别旧家"
+      ],
+      "source": "D:\\H3-runtime\\projects\\unseen-full-v1\\generated\\unseen-full-v1\\E01\\attempt-01_00001_.mp4",
+      "sha256": "539fbed53008ba126fb6519fbbeae98a9cc96dd76767a427f04a6b59f063103b",
+      "frames": [
+        0,
+        107
+      ],
+      "crop": [
+        608,
+        342,
+        0,
+        5
+      ],
+      "review": {
+        "observed": "Contact sheet shows stable elderly couple in new reading nook with subtle pullback and visible phone quadrilateral. Full decode passed. Screen replacement and detailed hand tracking remain unverified; lifelong partner identity across school and wedding remains unverified. Candidate only.",
+        "shot": "E01",
+        "verdict": "usable_with_limitations",
+        "attempt": 1
+      },
+      "seconds": 4.458333333333333
+    },
+    {
+      "id": "E02",
+      "type": "h3_generated_action",
+      "nominalSeconds": 4,
+      "state": "candidate",
+      "requiredCriteria": [
+        "同一伴侣身份有据可循",
+        "不强加去世等催泪情节",
+        "结尾有呼吸"
+      ],
+      "source": "D:\\H3-runtime\\projects\\unseen-full-v1\\generated\\unseen-full-v1\\E02\\attempt-01_00001_.mp4",
+      "sha256": "1d1dc596cbd02ad624fb10910a64eedcf59458393b5f9e8d073a153458df8b28",
+      "frames": [
+        0,
+        107
+      ],
+      "crop": [
+        608,
+        342,
+        0,
+        5
+      ],
+      "review": {
+        "shot": "E02",
+        "attempt": 1,
+        "observed": "Full decode passed. Contact sheet shows phone lowering and man turning toward smiling wife, with coherent reading nook and modest retreat. Back of head limits verification of his smile. Cross-age partner identity remains unverified; candidate, not chapter acceptance.",
+        "verdict": "usable_with_limitations"
+      },
+      "seconds": 4.458333333333333
+    },
+    {
+      "id": "E03",
+      "type": "controlled_spatial_composite",
+      "nominalSeconds": 3,
+      "state": "title_candidate",
+      "requiredCriteria": [
+        "文字准确后期排版",
+        "无未验证产品承诺"
+      ],
+      "source": "D:\\H3-runtime\\projects\\unseen-full-v1\\composition\\E03\\E03-title-candidate.mp4",
+      "seconds": 3,
+      "review": {
+        "segment": "E03",
+        "state": "usable_title_candidate_pending_final_audio",
+        "duration": 3,
+        "source": "D:\\H3-runtime\\projects\\unseen-full-v1\\shots\\E02\\attempt-01\\last.png",
+        "sourceSha256": "4c9504198e8148d1f74a1bb582b37fea0d93ae2806efb35e39e3049763623ddc",
+        "video": "D:\\H3-runtime\\projects\\unseen-full-v1\\composition\\E03\\E03-title-candidate.mp4",
+        "sha256": "929ac0157d8e0ad26481be763e20939ee25506ae11041067cf5409dd1d5350b6",
+        "decodeExit": 0,
+        "audio": "No audio in intermediate. Final mix must carry E02 room tone through the title.",
+        "representation": "Closing typography over deliberate hold of generated E02 ending. Upsampled 608x352 source; not native 720p.",
+        "visualReview": "Reviewed 1-second rendered frame: exact Chinese copy, UNSEEN and concept label legible, no clipping. Ending title only; no full film acceptance."
+      }
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="referrer" content="no-referrer"><meta name="robots" content="noindex,nofollow">
+<title>送一张照片 · unseen 记忆相框</title>
+<link rel="stylesheet" href="/assets/fonts/unseen-sans/fonts.css"><link rel="stylesheet" href="/style.css"><link rel="stylesheet" href="/contribute.css">
+<script src="/contribute.js" defer></script>
+</head>
+<body>
+<header><a class="brand" href="/family">unseen <span>记忆相框</span></a><span class="onsite-tag">现场分享</span></header>
+<main class="upload-page">
+<section class="paper taped upload-card">
+<p class="eyebrow" id="destination">正在连接相框…</p>
+<h1>把这一刻，<br>送到相框里。</h1>
+<p class="intro">选一张照片，留一句话。无需注册。</p>
+<p id="notice" role="status" aria-live="polite">正在确认上传链接…</p>
+<form id="uploadForm" class="form" hidden>
+<label>你的称呼 <span class="muted">相框上会显示，选填</span><input id="nickname" maxlength="30" autocomplete="nickname" placeholder="例如：小明"></label>
+<label class="photo-pick" for="photos"><span class="pick-mark" aria-hidden="true">＋</span><strong>选择照片</strong><span>从手机相册选，一次最多 9 张</span><input id="photos" type="file" accept="image/*" multiple required></label>
+<div id="previews" class="previews" aria-live="polite"></div>
+<label>捎一句话 <span class="muted">选填</span><textarea id="note" maxlength="3000" placeholder="这张是我们今天一起拍的。"></textarea></label>
+<button class="primary full" id="sendPhotos" type="submit">寄到相框</button>
+<p class="fine-print">照片会加入这个相框所在的家庭，家人可以查看和聊聊照片。这里仅供上传，不会展示家庭旧照片。</p>
+</form>
+<section id="results" hidden aria-live="polite"><h2>这次寄出的照片</h2><ul id="resultList"></ul><button class="quiet full" type="button" id="morePhotos">再送几张</button></section>
+<p id="error" class="error" role="alert" hidden></p>
+<button id="retryLink" class="quiet" type="button" hidden>重新连接</button>
+</section>
+<p class="upload-footer" id="expiry"></p>
+</main>
+</body>
+</html>

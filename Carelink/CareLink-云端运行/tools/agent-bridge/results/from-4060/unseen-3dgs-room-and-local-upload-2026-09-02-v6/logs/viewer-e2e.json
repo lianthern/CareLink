@@ -1,0 +1,144 @@
+{
+  "status": "PASS",
+  "sceneState": "SOG ready",
+  "fps": 234,
+  "initial": {
+    "position": [
+      -0.7906511425971985,
+      0.20283111929893494,
+      -0.5401465892791748
+    ],
+    "quaternion": [
+      -0.19953694532290325,
+      -0.3684973859913904,
+      -0.20682549341868076,
+      0.8840915672264024
+    ],
+    "fov": 49.134342641,
+    "mode": "photo-anchor"
+  },
+  "walked": {
+    "position": [
+      -0.7201902270317078,
+      0.20283111929893494,
+      -0.6204826831817627
+    ],
+    "mode": "walk",
+    "walkY": 0.202831113
+  },
+  "movementDistance": 0.10685798335104697,
+  "walkedInsideBoundary": true,
+  "returned": {
+    "position": [
+      0.34883806109428406,
+      -0.28304722905158997,
+      0.8128156065940857
+    ],
+    "quaternion": [
+      -0.041153918936232235,
+      0.9344940462628382,
+      0.31340519675105993,
+      0.1637205396550112
+    ],
+    "fov": 49.134342641,
+    "mode": "photo-anchor"
+  },
+  "expectedPhotoAnchor": {
+    "id": "frame_00060",
+    "label": "TUM frame_00060",
+    "sceneRevisionId": "tum-freiburg1-room-v6-r001",
+    "position": [
+      0.348838065,
+      -0.28304724,
+      0.812815599
+    ],
+    "quaternion": [
+      -0.041153919,
+      0.934494045,
+      0.3134052,
+      0.163720538
+    ],
+    "fov": 49.134342641,
+    "sourceFrame": "images/frame_00060.png"
+  },
+  "photoAnchors": [
+    {
+      "id": "frame_00000",
+      "label": "TUM frame_00000",
+      "sceneRevisionId": "tum-freiburg1-room-v6-r001",
+      "position": [
+        -0.790651165,
+        0.202831113,
+        -0.540146609
+      ],
+      "quaternion": [
+        -0.199536935,
+        -0.368497392,
+        -0.206825499,
+        0.884091566
+      ],
+      "fov": 49.134342641,
+      "sourceFrame": "images/frame_00000.png"
+    },
+    {
+      "id": "frame_00060",
+      "label": "TUM frame_00060",
+      "sceneRevisionId": "tum-freiburg1-room-v6-r001",
+      "position": [
+        0.348838065,
+        -0.28304724,
+        0.812815599
+      ],
+      "quaternion": [
+        -0.041153919,
+        0.934494045,
+        0.3134052,
+        0.163720538
+      ],
+      "fov": 49.134342641,
+      "sourceFrame": "images/frame_00060.png"
+    },
+    {
+      "id": "frame_00119",
+      "label": "TUM frame_00119",
+      "sceneRevisionId": "tum-freiburg1-room-v6-r001",
+      "position": [
+        0.386963751,
+        -0.02219959,
+        0.13596009
+      ],
+      "quaternion": [
+        -0.201905687,
+        0.041619026,
+        0.07928228,
+        0.975303168
+      ],
+      "fov": 49.134342641,
+      "sourceFrame": "images/frame_00119.png"
+    }
+  ],
+  "consoleErrors": [],
+  "photoAnchorErrors": {
+    "positionMaxAbs": 1.0948410011923926e-8,
+    "quaternionMaxAbs": 3.24894006142884e-9,
+    "fovAbs": 0
+  },
+  "message": "已回到这张照片的拍摄视角",
+  "checks": {
+    "sogReady": true,
+    "threeUniquePhotoAnchors": true,
+    "photoAnchorsMatchSceneRevision": true,
+    "photoAnchorsInsideBoundary": true,
+    "boundedWalkMoved": true,
+    "boundedWalkStayedInside": true,
+    "walkModeActivated": true,
+    "walkHeightMatchesManifest": true,
+    "displayedEyeHeightMatchesWalkPlane": true,
+    "photoModeRestored": true,
+    "photoPositionExact": true,
+    "photoQuaternionExact": true,
+    "photoFovExact": true,
+    "confirmationMessage": true,
+    "noConsoleErrors": true
+  }
+}

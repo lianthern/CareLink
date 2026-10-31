@@ -1,0 +1,31 @@
+{
+  "schemaVersion": "1.0",
+  "status": "PASS",
+  "step": 6999,
+  "rawPly": {
+    "gaussians": 147769,
+    "shDegree": 3,
+    "matchesCheckpointPixelsExactlyAtAllAnchors": true
+  },
+  "sogRoundtrip": {
+    "gaussians": 147769,
+    "shDegree": 1
+  },
+  "anchors": [
+    {
+      "frame": "frame_00001",
+      "rawPlyMaxAbsPixelError": 0.0,
+      "sogVsRawPly": {"psnr": 35.09980773925781, "ssim": 0.9916195869445801, "lpips": 0.024597205221652985}
+    },
+    {
+      "frame": "frame_00036",
+      "rawPlyMaxAbsPixelError": 0.0,
+      "sogVsRawPly": {"psnr": 30.641902923583984, "ssim": 0.9848880767822266, "lpips": 0.03214923292398453}
+    },
+    {
+      "frame": "frame_00072",
+      "rawPlyMaxAbsPixelError": 0.0,
+      "sogVsRawPly": {"psnr": 30.111827850341797, "ssim": 0.977932870388031, "lpips": 0.03431176021695137}
+    }
+  ]
+}

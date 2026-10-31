@@ -1,0 +1,122 @@
+{
+  "schemaVersion": "1.0",
+  "jobId": "unseen-3dgs-360-photo-relocalization-2026-09-04-v12",
+  "state": "PUBLISHED",
+  "createdAt": "2026-09-04T12:09:44+10:00",
+  "title": "Estimate three held-out photo poses and return them into the accepted v11 360 scene",
+  "priority": "P0",
+  "artifact": {
+    "delivery": "github-private-release",
+    "releaseTag": "unseen-3dgs-sceneworker-2026-09-02-v1",
+    "assetName": "02-UNSEEN-3DGS-SINGLE-ZIP-sha256-4187dcb112286bb4581da17eb014c6391211140db458a32f83f7eecadfbbe462.zip",
+    "sha256": "4187dcb112286bb4581da17eb014c6391211140db458a32f83f7eecadfbbe462",
+    "bytes": 1373866,
+    "format": "zip",
+    "redownloadRequired": false
+  },
+  "inputs": [
+    {
+      "path": "inputs/scripts/linux/localize_v11_photos.py",
+      "bytes": 20669,
+      "sha256": "a4c4d152695e9b8f1b335d5ff0cb83952aa1e1bd64cd0f269079eaa6c2bc3273"
+    },
+    {
+      "path": "inputs/scripts/linux/Run-V12-Relocalization.sh",
+      "bytes": 3556,
+      "sha256": "3d7338c15f7d9342a681d16565779582f62644fe17c02638e51e3fba2ab9327f"
+    },
+    {
+      "path": "inputs/scripts/windows/Start-V12-Relocalization.ps1",
+      "bytes": 1437,
+      "sha256": "1c1b5b62874044656c8d2746ef95b084451977f1c3774cba7f3701d912696552"
+    },
+    {
+      "path": "inputs/tests/test_localize_v11_photos.py",
+      "bytes": 3752,
+      "sha256": "0001f6f7a81172645b8ce3ec89acd3e3cf306a6dd408eea57d29eba2b59c741c"
+    }
+  ],
+  "execution": {
+    "host": "Max RTX 4060 Laptop",
+    "workRoot": "/home/max/src/unseen-3dgs-sceneworker",
+    "mode": "training-free-held-out-photo-to-pose-canary",
+    "parentJobId": "unseen-3dgs-360roam-posefix-2026-09-04-v11",
+    "sceneRevisionId": "360roam-base-posefix-r001",
+    "reuseAcceptedV11": true,
+    "productionConnectionEnabled": false,
+    "gpuOptimizationRunsAllowed": 0,
+    "preview7000Allowed": false,
+    "quality30000Allowed": false,
+    "sourceRedownloadAllowed": false,
+    "query": {
+      "count": 3,
+      "source": "v11 frozen held-out perspective views",
+      "selection": [
+        "held-out panorama index 1 / front",
+        "held-out panorama middle index / right",
+        "held-out panorama penultimate index / left"
+      ],
+      "mustBeDisjointFromTraining": true,
+      "groundTruthPoseAvailableToEstimator": false,
+      "groundTruthPoseUse": "score only after pose estimation"
+    },
+    "localization": {
+      "referenceInputs": "v11 training images and training camera poses only",
+      "feature": "OpenCV SIFT",
+      "map": "source-derived triangulated 3D feature map",
+      "poseSolver": "solvePnPRansac plus solvePnPRefineLM",
+      "minMapPoints": 2000,
+      "minPnpInliers": 20,
+      "minPnpInlierRatio": 0.1,
+      "maxMedianReprojectionPx": 3.5,
+      "maxTranslationErrorSceneFraction": 0.15,
+      "maxRotationErrorDegrees": 15.0,
+      "requiredPassCount": 3,
+      "usesAuthorScenePly": false,
+      "usesV11SogGeometry": false
+    },
+    "viewer": {
+      "reuseV11Sog": true,
+      "newManifestRequired": true,
+      "estimatedPoseRequired": true,
+      "groundTruthAnchorForbidden": true,
+      "bindAddress": "127.0.0.1",
+      "compareImages": 3
+    },
+    "firstAction": "Pull main, read all v12 files, submit RECEIVED_VERIFIED, verify the accepted v11 cache is intact, then run the single frozen CPU-only localizer. Do not train or tune after seeing query results."
+  },
+  "receipt": {
+    "repository": "maxi-max-dev/max-agent-bridge",
+    "issueNumber": 13,
+    "directory": "receipts/from-4060/unseen-3dgs-360-photo-relocalization-2026-09-04-v12",
+    "reportPath": "results/from-4060/unseen-3dgs-360-photo-relocalization-2026-09-04-v12/V12-REPORT.md",
+    "requiredStates": ["RECEIVED_VERIFIED", "RUNNING", "UPLOADING", "COMPLETED"],
+    "failureStatesAllowed": ["BLOCKED", "FAILED"],
+    "githubIsAuthoritative": true,
+    "icloudReportIsBestEffortOnly": true
+  },
+  "security": {
+    "allowedNetwork": "outbound HTTPS to GitHub plus loopback HTTP only",
+    "productionApiAllowed": false,
+    "paidApiAllowed": false,
+    "firewallChangeAllowed": false,
+    "lanOrPublicListenAllowed": false,
+    "privateMediaAllowed": false,
+    "safeDerivedCompareImagesAllowed": true,
+    "forbiddenUploads": [
+      "source panoramas",
+      "original or standalone query images",
+      "virtual-view corpus",
+      "pose_c2w.json",
+      "feature map",
+      "descriptors",
+      "checkpoint",
+      "trained PLY",
+      "SOG",
+      "work directory",
+      "private media",
+      "token",
+      ".env"
+    ]
+  }
+}

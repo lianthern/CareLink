@@ -1,0 +1,21 @@
+{
+  "capturedFrom": "local-operable (http://127.0.0.1:57827), manager account session, real browser",
+  "step": "队列 -> 打开位置编辑器 之前：GET /v1/photos/{pid}/placement-edit 的真实响应",
+  "targetPhoto": "photo_4423f464f53248759d1103b939d22c70 (photo-4.jpg fixture, deterministic classification=uncertain -> needs_confirmation)",
+  "request": "GET /v1/photos/photo_4423f464f53248759d1103b939d22c70/placement-edit",
+  "response": {
+    "photoId": "photo_4423f464f53248759d1103b939d22c70",
+    "placementState": "needs_confirmation",
+    "confirmationMode": null,
+    "currentPlacementRevisionId": null,
+    "canEditPlacement": true,
+    "sceneContext": {
+      "photoId": "photo_4423f464f53248759d1103b939d22c70",
+      "sceneReadiness": "ready",
+      "sceneMode": "rotation360",
+      "placement": null,
+      "note": "photoId 与请求目标一致（本地 local-operable.mjs 投影层的旧 anchor 逻辑修复前，这里会错误地返回空间里另一张已确认照片的 sceneContext——见 05-local-operable-shim-bug.json）"
+    }
+  },
+  "verdict": "editView() 现在直接把 sceneContext 编进响应，且 placement 正确地为 null（未确认照片没有真实 yaw）——这就是 A v2 编辑器 360 预览缺口的修复点。"
+}

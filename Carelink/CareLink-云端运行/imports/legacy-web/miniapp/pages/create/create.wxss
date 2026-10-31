@@ -1,0 +1,27 @@
+.create-page { background: linear-gradient(160deg, var(--u-bg), #FFF5F1); }
+.create-main { padding: 30rpx 30rpx 72rpx; }
+.eyebrow { display: block; color: var(--u-active); font-size: 20rpx; font-weight: 760; letter-spacing: .18em; }
+.heading { display: block; margin-top: 16rpx; font-size: 48rpx; font-weight: 760; }
+.lead { display: block; margin-top: 14rpx; color: var(--u-muted); font-size: 26rpx; line-height: 1.6; }
+.form-card, .pano-card { margin-top: 30rpx; padding: 30rpx; }
+.field-label { display: block; font-size: 25rpx; font-weight: 680; }
+.field-label--next { margin-top: 28rpx; }
+.field-input { margin-top: 14rpx; height: 92rpx; padding: 0 24rpx; display: flex; align-items: center; border: 2rpx solid var(--u-line); border-radius: 24rpx; background: var(--u-bg); font-size: 28rpx; }
+.input-placeholder, .picker-placeholder { color: #866A70; }
+.pano-head { display: flex; justify-content: space-between; gap: 20rpx; }
+.pano-copy { min-width: 0; display: flex; flex-direction: column; gap: 8rpx; }
+.pano-title { font-size: 29rpx; font-weight: 710; }
+.pano-sub, .pano-rule { color: var(--u-muted); font-size: 23rpx; line-height: 1.55; }
+.optional { flex: none; padding: 7rpx 16rpx; border-radius: var(--u-pill); background: rgba(248, 200, 214, .32); color: var(--u-active); font-size: 20rpx; }
+.choose-pano { margin-top: 24rpx; min-height: 110rpx; display: flex; align-items: center; justify-content: center; border: 2rpx dashed rgba(255,127,159,.5); border-radius: 24rpx; background: rgba(248,200,214,.14); font-size: 27rpx; font-weight: 650; }
+.pano-preview { margin-top: 24rpx; width: 100%; height: 220rpx; border-radius: 24rpx; background: var(--u-shell); }
+.pano-meta-row { margin-top: 14rpx; display: flex; align-items: center; justify-content: space-between; color: var(--u-muted); font-size: 22rpx; }
+.remove-link { padding: 12rpx; color: var(--u-danger); font-size: 23rpx; }
+.pano-rule { display: block; margin-top: 22rpx; }
+.field-error { display: block; margin-top: 14rpx; color: var(--u-danger); font-size: 24rpx; line-height: 1.5; }
+.notice { margin-top: 24rpx; }
+.submit { margin-top: 26rpx; }
+.cloud-error { margin-top: 22rpx; padding: 22rpx 24rpx; border: 2rpx solid rgba(182,70,93,.2); border-radius: 22rpx; background: rgba(182,70,93,.07); color: var(--u-danger); font-size: 24rpx; line-height: 1.5; }
+.cloud-error-note { display: block; margin-top: 8rpx; color: var(--u-muted); font-size: 22rpx; }
+.local-submit { margin-top: 18rpx; }
+.local-help { display: block; margin-top: 12rpx; color: var(--u-muted); text-align: center; font-size: 21rpx; }

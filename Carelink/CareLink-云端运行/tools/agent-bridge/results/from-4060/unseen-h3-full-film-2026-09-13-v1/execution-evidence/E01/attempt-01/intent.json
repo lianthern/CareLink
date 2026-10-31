@@ -1,0 +1,36 @@
+{
+  "key": "unseen-h3-full-film-2026-09-13-v1/E01/attempt-01",
+  "startedAt": "2026-09-14T01:16:02.844277+00:00",
+  "reference": "D:\\H3-runtime\\projects\\unseen-full-v1\\media-inputs\\references\\elder-new-room.png",
+  "inputSha256": "72846aab7563e354daaea104e8306d169cff7a47c36c2d58ea127d5074cf0923",
+  "seed": 2026091567,
+  "shot": {
+    "id": "E01",
+    "title": "\u8001\u4eba\u624b\u4e2d\u7684\u624b\u673a",
+    "type": "h3_generated_action",
+    "edit_seconds": 4,
+    "generate_seconds_nominal": 4.458333333333333,
+    "frame_count_starting_point": 107,
+    "fps": 24,
+    "recorder": "\u89c2\u5bdf\u89c6\u89d2",
+    "references": [
+      "elder-new-room.png",
+      "02-character-age-reference.png"
+    ],
+    "start_end_and_action": "Close over-shoulder view of the same protagonist at about seventy-two in a new city apartment reading nook. He wears a pale knit cardigan and holds a modern smartphone calmly in both hands. Grey hair, natural aged facial structure from the reference. Keep the phone screen a plain dim neutral surface for later compositing. He makes one small thumb movement near the lower screen edge, then rests his thumb. Warm window light, an upholstered reading chair and bookshelf establish a new home, not the childhood dining room. Camera slowly draws back about thirty centimeters, keeping the phone quadrilateral visible and stable. No generated app UI or readable text.",
+    "prompt": "Naturalistic personal-memory footage with believable human movement and gently handheld smartphone perspective. Keep the approved faces, clothes, lighting and room geometry. One continuous shot, no internal cuts, no age change, no photo cards, no text, no camera flying outside, no slow motion, no duplicated people, no DV camcorder. Close over-shoulder view of the same protagonist at about seventy-two in a new city apartment reading nook. He wears a pale knit cardigan and holds a modern smartphone calmly in both hands. Grey hair, natural aged facial structure from the reference. Keep the phone screen a plain dim neutral surface for later compositing. He makes one small thumb movement near the lower screen edge, then rests his thumb. Warm window light, an upholstered reading chair and bookshelf establish a new home, not the childhood dining room. Camera slowly draws back about thirty centimeters, keeping the phone quadrilateral visible and stable. No generated app UI or readable text.",
+    "cut_continuity": "\u540e\u671f\u628aW09\u7a7a\u95f4\u56fe\u8d34\u5165\u771f\u5b9e\u5c4f\u5e55\uff0c\u624b\u673a\u4e0e\u624b\u51fa\u73b0\u5f62\u6210\u63ed\u793a\u3002",
+    "pass_criteria": [
+      "\u771f\u5b9e\u624b\u673a\u6bd4\u4f8b/\u624b\u90e8\u6b63\u5e38",
+      "\u5c4f\u5e55\u53ef\u8ddf\u8e2a\u66ff\u6362",
+      "\u65b0\u4f4f\u5904\u533a\u522b\u65e7\u5bb6"
+    ],
+    "audio": "Natural scene sound only; no generated music, UI text or unscripted dialogue.",
+    "status": "planned",
+    "output": null,
+    "timeline_start_seconds": 113.5,
+    "timeline_end_seconds": 117.5
+  },
+  "outputPrefix": "unseen-full-v1/E01/attempt-01",
+  "apiSha256": "4c5531ee65614a2e8a9398f74c19ecc9f3adc16ae05c8b0312c340a1ea3de310"
+}

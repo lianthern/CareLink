@@ -1,0 +1,43 @@
+{
+  "name": "UNSEEN PICO Panorama Bridge",
+  "short_name": "UNSEEN PICO",
+  "description": "电脑与 PICO 共用的 360° 视频和全景照片媒体库",
+  "lang": "zh-CN",
+  "id": "/pico/",
+  "start_url": "/pico/",
+  "scope": "/",
+  "display": "minimal-ui",
+  "background_color": "#060b0c",
+  "theme_color": "#060b0c",
+  "icons": [
+    {
+      "src": "/pico-app-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/pico-app-1024.png",
+      "sizes": "1024x1024",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "xr_main_scene": {
+    "type": "volume",
+    "default_size": {
+      "width": 1440,
+      "height": 920,
+      "depth": 520
+    },
+    "resizability": {
+      "min_width": 960,
+      "max_width": 1920,
+      "min_height": 680,
+      "max_height": 1200
+    },
+    "world_scaling": "dynamic",
+    "world_alignment": "gravityAligned",
+    "baseplate_visibility": "hidden"
+  }
+}

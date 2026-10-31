@@ -1,0 +1,100 @@
+{
+  "schemaVersion": "1.0",
+  "status": "PASS",
+  "parser": "NerfstudioDataParserConfig",
+  "orientationMethod": "up",
+  "centerMethod": "poses",
+  "autoScalePoses": true,
+  "load3DPoints": true,
+  "seedPoints": 6465,
+  "downscaleFactor": 1,
+  "train": {
+    "count": 450,
+    "cameraTypes": [
+      1
+    ],
+    "positionMin": [
+      -0.9112942814826965,
+      -0.9810330867767334,
+      -0.025638263672590256
+    ],
+    "positionMax": [
+      1.0,
+      0.7418236136436462,
+      0.041688624769449234
+    ],
+    "positionRange": [
+      1.9112942218780518,
+      1.7228567600250244,
+      0.06732688844203949
+    ],
+    "widthValues": [
+      1024
+    ],
+    "heightValues": [
+      1024
+    ]
+  },
+  "val": {
+    "count": 90,
+    "cameraTypes": [
+      1
+    ],
+    "positionMin": [
+      -0.8980063199996948,
+      -0.6593196392059326,
+      -0.02269645407795906
+    ],
+    "positionMax": [
+      0.796798825263977,
+      0.7163045406341553,
+      0.015799039974808693
+    ],
+    "positionRange": [
+      1.6948051452636719,
+      1.375624179840088,
+      0.0384954959154129
+    ],
+    "widthValues": [
+      1024
+    ],
+    "heightValues": [
+      1024
+    ]
+  },
+  "totalPositionRange": [
+    1.9112942218780518,
+    1.7228567600250244,
+    0.06732688844203949
+  ],
+  "dataparserScale": 0.18098333537863337,
+  "dataparserTransform": [
+    [
+      0.5353361368179321,
+      -0.8445731401443481,
+      0.01055041141808033,
+      -0.06810395419597626
+    ],
+    [
+      -0.8445731401443481,
+      -0.5350964069366455,
+      0.019176432862877846,
+      -0.02399967424571514
+    ],
+    [
+      -0.01055041141808033,
+      -0.019176432862877846,
+      -0.9997602701187134,
+      -0.0005489611066877842
+    ]
+  ],
+  "checks": {
+    "exact450Train": true,
+    "exact90Val": true,
+    "disjointSplit": true,
+    "allPerspective": true,
+    "all1024Square": true,
+    "nonzeroPositionRange": true,
+    "sourceDerivedSeedPoints": true
+  }
+}

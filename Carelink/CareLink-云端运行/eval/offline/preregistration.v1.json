@@ -1,0 +1,36 @@
+{
+  "schemaVersion": "unseen.locator.preregistration.v1",
+  "preregisteredAt": "2026-08-14",
+  "primaryUnit": "burst_or_near_duplicate_cluster",
+  "splitUnit": "space",
+  "testStratification": "spaceStratum",
+  "clusterAggregation": {
+    "high": "any sample in the cluster is high",
+    "correct": "every high sample is same-scene and has circular yaw error at most 45 degrees",
+    "catastrophic": "any high sample is wrong-scene or has circular yaw error above 90 degrees",
+    "evaluable": "every canonical sample in the cluster is adjudicated evaluable"
+  },
+  "denominators": {
+    "highConfirmedCorrectness": "high intersection evaluable ID clusters",
+    "catastrophicDirection": "high intersection evaluable ID clusters",
+    "oodHighFalseConfirm": "all preregistered OOD clusters",
+    "highCoverage": "all evaluable ID clusters"
+  },
+  "statisticalMethod": "bonferroni_clopper_pearson_exact",
+  "familyWiseOneSidedAlpha": 0.05,
+  "perEndpointOneSidedAlpha": 0.0125,
+  "minimums": {
+    "testSpaces": 10,
+    "evaluableIdClusters": 300,
+    "oodClusters": 300,
+    "idClustersPerSpace": 20
+  },
+  "thresholds": {
+    "highConfirmedCorrectness": 0.95,
+    "catastrophicDirection": 0.01,
+    "oodHighFalseConfirm": 0.01,
+    "highCoverage": 0.3
+  },
+  "stoppingRule": "Add authorized clusters until all four adjusted bounds jointly pass or the separately registered no-go budget is exhausted.",
+  "exclusions": "Ambiguous, multi-solution, blur, and evaluability rules are frozen before predictions and cannot be changed after results."
+}

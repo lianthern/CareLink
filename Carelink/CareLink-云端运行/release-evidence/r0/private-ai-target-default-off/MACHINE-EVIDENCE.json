@@ -1,0 +1,156 @@
+{
+  "schema": "unseen-private-ai-target-default-off-evidence/1",
+  "kind": "TARGET_OBSERVATION_NOT_PRODUCTION_OR_PROVIDER_ACCEPTANCE",
+  "observedAt": "2026-08-14T18:13:04Z",
+  "claimBoundary": {
+    "candidateCommit": "49856278ce0c891bc7c5c736a902bb9ca106d879",
+    "candidateTree": "6fbcf883666c4de839b4da8fd26dbbd4aa2f5ea2",
+    "releaseClaim": "NO_GO",
+    "productionReady": false,
+    "privateAiEnabled": false,
+    "bookEnabled": false,
+    "otpProviderEnabled": false,
+    "fixtureOrFallbackEnabled": false,
+    "canonicalJobCreated": false,
+    "subscriptionImageInvocation": false,
+    "providerRequests": 0,
+    "imageRequests": 0,
+    "userDataAccepted": false
+  },
+  "package": {
+    "directoryName": "production-49856278ce0c",
+    "standaloneVerify": "PASS",
+    "manifestSha256": "b6f30ba984bb6be6f7e3f2b7d51aa61496d2a4faf0362854bfd4f63c6a8d805b",
+    "bundleSha256": "a6c052c0d044fe430e9fb4775edde74183ed54ef1055df2694119ca98912b181",
+    "installedCheckout": "/opt/unseen/releases/49856278ce0c891bc7c5c736a902bb9ca106d879",
+    "checkoutClean": true
+  },
+  "target": {
+    "os": "Ubuntu 24.04.4 LTS",
+    "resourceClass": "2_vCPU_2_GiB_50_GiB",
+    "domain": "unseen.maxxam.xyz",
+    "rootDomainChanged": false,
+    "wwwHostChanged": false,
+    "apiListener": "127.0.0.1:4282",
+    "webListener": "127.0.0.1:4173",
+    "publicListeners": [
+      "tcp/80",
+      "tcp/443"
+    ],
+    "apiUnit": "active",
+    "webUnit": "active",
+    "caddyUnit": "active",
+    "caddyConfigValidated": true,
+    "staticPublicPageByteIdenticalToPreDeployBackup": true
+  },
+  "database": {
+    "quickCheck": "ok",
+    "migrationCount": 10,
+    "privateAiJobs": 0,
+    "privateAiAuthorizations": 0,
+    "accounts": 0,
+    "spaces": 0,
+    "photos": 0
+  },
+  "privateBoundary": {
+    "serverTokenHashFile": {
+      "path": "/etc/unseen/secrets/private-ai-worker-token.sha256",
+      "valueRecorded": false,
+      "regularFile": true,
+      "symbolicLink": false,
+      "linkCount": 1,
+      "mode": "0400",
+      "owner": "service_euid",
+      "bytes": 65
+    },
+    "macTokenFile": {
+      "path": "/Users/max/Library/Application Support/UNSEEN/private-ai-worker/worker.token",
+      "valueRecorded": false,
+      "regularFile": true,
+      "symbolicLink": false,
+      "mode": "0600",
+      "owner": "max",
+      "bytes": 44
+    },
+    "tokenOrHashInRepository": false,
+    "tokenOrHashInChatOrLogs": false,
+    "macListenerOpened": false,
+    "codexAuthenticationReadOrChanged": false
+  },
+  "macWorker": {
+    "launchdLabel": "com.maxxam.unseen.private-ai-worker",
+    "launchdInstalled": true,
+    "launchdLoaded": true,
+    "configEnabled": false,
+    "runs": 1,
+    "lastExitCode": 0,
+    "currentState": "not_running_default_off",
+    "origin": "https://unseen.maxxam.xyz",
+    "codexVersion": "codex-cli 0.147.0",
+    "codexSha256": "19c4f144c5226a9f17c58e6f0fa854843b0f77a6eb420f40e2745a12f10f5d37",
+    "model": "gpt-5.6-sol",
+    "productionTransport": false,
+    "commercialSla": false
+  },
+  "httpMatrix": {
+    "publicMissingBasicAuth": 401,
+    "publicWrongBasicAuth": 401,
+    "publicCorrectBasicAuth": 200,
+    "privateAiDisabledMissingBearer": 503,
+    "privateAiDisabledWrongBearer": 503,
+    "disabledErrorCode": "private_ai_worker_disabled",
+    "internalRouteBypassesBasicAuthOnly": true,
+    "publicHostPreserved": true,
+    "forwardedProto": "https",
+    "jsonBodyCapConfigured": "32KB",
+    "enabledMissingBearer": "NOT_RUN_FEATURE_OFF",
+    "enabledWrongBearer": "NOT_RUN_FEATURE_OFF",
+    "enabledBodyCap": "NOT_RUN_FEATURE_OFF"
+  },
+  "backup": {
+    "snapshot": "/var/backups/unseen/private-beta/pre-private-ai-20260814T180103Z",
+    "snapshotManifestSha256": "078fdbdb5bc09b3de0920223936ed4590c38d24b6dca7c69998d8f9f11a7229e",
+    "snapshotDatabaseSha256": "63dcb7cec711f465f1c8aa60414bf34da9b95c7bb22e415ca960381715e14be8",
+    "snapshotVerify": "PASS",
+    "alternateRestore": "/var/lib/unseen/private-beta/restore-drill-pre-private-ai-20260814T180103Z",
+    "alternateRestoreDatabaseSha256": "63dcb7cec711f465f1c8aa60414bf34da9b95c7bb22e415ca960381715e14be8",
+    "alternateRestoreQuickCheck": "ok",
+    "alternateRestoreMigrationCount": 9,
+    "configurationBackup": "/var/backups/unseen/private-beta/config-pre-private-ai-20260814T180103Z",
+    "liveDataOverwritten": false
+  },
+  "rollback": {
+    "mac": [
+      "launchctl bootout gui/501 /Users/max/Library/LaunchAgents/com.maxxam.unseen.private-ai-worker.plist"
+    ],
+    "target": [
+      "sudo systemctl stop unseen-private-beta-web unseen-private-beta-api",
+      "sudo install -o root -g root -m 0600 /var/backups/unseen/private-beta/config-pre-private-ai-20260814T180103Z/private-beta-api.env /etc/unseen/private-beta-api.env",
+      "sudo install -o root -g root -m 0600 /var/backups/unseen/private-beta/config-pre-private-ai-20260814T180103Z/private-beta-web.env /etc/unseen/private-beta-web.env",
+      "sudo install -o root -g root -m 0644 /var/backups/unseen/private-beta/config-pre-private-ai-20260814T180103Z/unseen-private-beta-api.service /etc/systemd/system/unseen-private-beta-api.service",
+      "sudo install -o root -g root -m 0644 /var/backups/unseen/private-beta/config-pre-private-ai-20260814T180103Z/unseen-private-beta-web.service /etc/systemd/system/unseen-private-beta-web.service",
+      "sudo install -o root -g caddy -m 0640 /var/backups/unseen/private-beta/config-pre-private-ai-20260814T180103Z/Caddyfile /etc/caddy/Caddyfile",
+      "sudo caddy validate --config /etc/caddy/Caddyfile --adapter caddyfile",
+      "sudo systemctl daemon-reload",
+      "sudo test ! -e /var/lib/unseen/private-beta/core-data.failed-49856278ce0c",
+      "sudo mv /var/lib/unseen/private-beta/core-data /var/lib/unseen/private-beta/core-data.failed-49856278ce0c",
+      "sudo env UNSEEN_STAGING_DATA_DIR=/var/lib/unseen/private-beta/core-data UNSEEN_BOOK_OUTPUT_DIR=/var/lib/unseen/private-beta/core-data/book-artifacts UNSEEN_STAGING_RUNTIME_EVIDENCE_DIR=/var/lib/unseen/private-beta/runtime UNSEEN_BOOK_WORKTREE=/opt/unseen/core UNSEEN_STAGING_EXPECT_REPOSITORY_STATE=clean UNSEEN_STAGING_SNAPSHOT_DIR=/var/backups/unseen/private-beta/pre-private-ai-20260814T180103Z /usr/local/bin/node /opt/unseen/core/infra/integration/staging-snapshot.mjs restore",
+      "sudo chown -R unseen:unseen /var/lib/unseen/private-beta/core-data",
+      "sudo -u unseen sqlite3 /var/lib/unseen/private-beta/core-data/unseen.sqlite 'PRAGMA quick_check; SELECT count(*) FROM schema_migrations;'",
+      "sudo systemctl start unseen-private-beta-api unseen-private-beta-web",
+      "sudo systemctl reload caddy"
+    ]
+  },
+  "blockedBeforeEnable": [
+    "CANONICAL_AUTHORIZED_NON_PRIVATE_PHOTO_ENQUEUE_INPUT_MISSING",
+    "BOOK_TARGET_CHROMIUM_RENDERER_NOTICE_ACCEPTANCE_MISSING"
+  ],
+  "nonClaims": [
+    "not a private-AI end-to-end acceptance",
+    "not a provider or OpenAI API acceptance",
+    "not a Core-operable Beta",
+    "not a Legal or Privacy approval",
+    "not a production release"
+  ],
+  "claudeReview": "CANCELLED_BY_MAX_NOT_APPLICABLE"
+}

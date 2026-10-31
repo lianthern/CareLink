@@ -1,0 +1,67 @@
+{
+  "verified": true,
+  "zipSha256": "93b72889fb138cb7a5a8dc3388358f1875fec81aa5cdb6297622510da18246c8",
+  "manifest": {
+    "job": "unseen-h3-full-film-2026-09-13-v1",
+    "type": "private-additive-reference-delta",
+    "generator": "Codex built-in image_gen",
+    "review": "Producer inspected new viewpoints and identity. Match prior actual H3 ending before submitting; image qualification does not certify action video.",
+    "files": [
+      {
+        "path": "S07-classroom-side-angle-v1.png",
+        "bytes": 1950307,
+        "sha256": "741885076c977bcc10cf664ce06fa52407a5f419092c2e2a6bf809a24b545497",
+        "shots": [
+          "S07"
+        ],
+        "purpose": "New right-side classmate recording viewpoint; one pink eraser ready to slide. Preserve S06 actual last pose, do not reset search."
+      },
+      {
+        "path": "S07-classroom-side-angle-v1.prompt.txt",
+        "bytes": 1320,
+        "sha256": "ac4724760495b37fef4c0cc6521794279208bac3af440c40f5224b35a49287e0",
+        "shots": [
+          "S07"
+        ],
+        "purpose": "Exact built-in generation prompt"
+      },
+      {
+        "path": "S11-graduation-side-angle-v1.png",
+        "bytes": 2417036,
+        "sha256": "093bec77138785daf683911378dbdc1041575077410a9e3ee6448fac6e053f25",
+        "shots": [
+          "S11"
+        ],
+        "purpose": "New side viewpoint, same six students, pair already closer, one classmate has exercise booklet ready to fan. Continue S10 actual ending, no repeated grouping."
+      },
+      {
+        "path": "S11-graduation-side-angle-v1.prompt.txt",
+        "bytes": 1268,
+        "sha256": "cda9c794365568f28a1cb1ce941a06f834b4bfb907b82eccae8a189fe4f3430f",
+        "shots": [
+          "S11"
+        ],
+        "purpose": "Exact built-in generation prompt"
+      },
+      {
+        "path": "W03-wedding-side-angle-v1.png",
+        "bytes": 2003783,
+        "sha256": "287bea2ce5f27aba36c559b4050a52d548efc5b8fdc7d93a694c56a2f6a0e33f",
+        "shots": [
+          "W03"
+        ],
+        "purpose": "New left-side friend viewpoint, groom profile and bride more frontal, changed column/tree occlusion. Bride already touches one left-lapel flower; continue W02 actual ending without withdrawing hand."
+      },
+      {
+        "path": "W03-wedding-side-angle-v1.prompt.txt",
+        "bytes": 1354,
+        "sha256": "b9e6fe4fe7532ada1374939660e536878c0dfc3f7f8020af3534a9ffe181e7aa",
+        "shots": [
+          "W03"
+        ],
+        "purpose": "Exact built-in generation prompt"
+      }
+    ],
+    "scope": "Three new shot conditions only. No new job, no full93MB repack, no additional model or paid API."
+  }
+}

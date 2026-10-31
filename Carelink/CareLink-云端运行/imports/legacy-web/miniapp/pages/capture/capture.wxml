@@ -1,0 +1,137 @@
+<view class="capture-page">
+  <canvas wx:if="{{phase === 'capture' && worldCanvasMounted}}"
+          type="2d" id="worldCanvas" class="world-canvas"
+          bindrendererror="onNativeRenderError"></canvas>
+
+  <view class="capture-layer {{phase === 'capture' ? '' : 'capture-layer--hidden'}}">
+    <view class="preview-label">720° 球面全景 · {{captureBackendLabel}}</view>
+
+    <view class="capture-head"
+          style="padding-top:{{navBarTop}}px;height:{{navBarTop + navBarHeight}}px">
+      <view class="round-btn" bindtap="onBack" aria-role="button" aria-label="返回">‹</view>
+      <view class="capture-count">
+        <text class="capture-count-main">{{capturedCount}} / {{targetCount}}</text>
+        <text class="capture-count-sub">{{coverageText}}</text>
+      </view>
+      <view class="round-btn" bindtap="onHelp" aria-role="button" aria-label="拍摄说明">?</view>
+    </view>
+
+    <view class="target-dot {{targetHidden ? 'target-dot--hidden' : ''}} {{targetOffscreen ? 'target-dot--offscreen' : ''}} {{targetAligned ? 'target-dot--aligned' : ''}}"
+          style="left:{{targetX}}px;top:{{targetY}}px;--dwell:{{dwellDeg}}deg">
+      <view class="target-core"></view>
+    </view>
+    <view class="fixed-reticle"></view>
+
+    <view class="live-window">
+      <!-- Keep the native VisionKit canvas mounted throughout capture. Repeated
+           wx:if destruction during retry is a known same-layer render hazard. -->
+      <canvas wx:if="{{phase === 'capture' && captureBackend === 'visionkit'}}"
+              type="webgl"
+              id="vkCameraCanvas"
+              class="camera {{cameraOn ? '' : 'camera--inactive'}}"
+              bindwebglcontextlost="onVKContextLost"
+              bindrendererror="onNativeRenderError"></canvas>
+      <camera wx:if="{{cameraOn && captureBackend === 'basic'}}"
+              id="cameraView"
+              class="camera"
+              device-position="back"
+              flash="off"
+              resolution="medium"
+              bindinitdone="onCameraReady"
+              bindstop="onCameraStop"
+              binderror="onCameraError"
+              bindrendererror="onNativeRenderError"></camera>
+      <view wx:if="{{!cameraOn}}" class="camera-empty">后摄画面会显示在这里</view>
+      <view class="capture-flash {{flashOn ? 'capture-flash--on' : ''}}"></view>
+    </view>
+
+    <view class="capture-guide">
+      <text class="guide-title">{{guideTitle}}</text>
+      <text class="guide-detail">{{guideDetail}}</text>
+      <text class="capture-diagnostic">{{diagnosticText}}</text>
+    </view>
+
+    <view class="capture-actions">
+      <button class="ghost-btn" bindtap="onUndo" disabled="{{capturedCount === 0 || busy}}">撤销</button>
+      <button class="primary-btn" bindtap="onStartOrCapture"
+              disabled="{{capabilityBlocked || busy || (cameraOn && !cameraReady)}}">
+        {{cameraReady ? (orientationReady ? (captureNeedsRetry ? '重试这一张' : (captureSessionStarted ? (capturedCount === 0 ? '确认第一张' : '手动拍一张') : '开始拍摄')) : '等待同帧姿态') : (cameraOn ? '正在开启…' : '开启相机')}}
+      </button>
+      <button class="ghost-btn" bindtap="onFinish" disabled="{{!canFinish || busy}}">完成</button>
+    </view>
+  </view>
+
+  <view class="process-layer" wx:if="{{phase === 'processing'}}">
+    <view class="spinner"></view>
+    <text class="process-title">正在生成 720° 球面全景</text>
+    <text class="process-copy">{{processText}}</text>
+    <view class="progress-track"><view class="progress-fill" style="width:{{progress}}%"></view></view>
+    <text class="progress-number">{{progress}}%</text>
+  </view>
+
+  <view class="result-layer {{phase === 'capture' ? 'result-layer--hidden' : ''}}">
+    <view class="result-head"
+          style="padding-top:{{navBarTop}}px;height:{{navBarTop + navBarHeight}}px">
+      <view class="round-btn" bindtap="onBackToCapture" aria-role="button" aria-label="返回拍摄">‹</view>
+      <view class="result-title">
+        <text class="result-title-main">720° 球面全景已生成</text>
+        <text class="result-title-sub">{{resultMeta}}</text>
+      </view>
+    </view>
+
+    <view class="result-frame">
+      <canvas wx:if="{{resultCanvasMounted}}"
+              type="2d" id="resultCanvas"
+              class="result-canvas"
+              bindrendererror="onNativeRenderError"></canvas>
+      <image wx:if="{{resultImagePath}}"
+             class="result-canvas {{viewerActive ? 'canvas-hidden' : ''}}"
+             src="{{resultImagePath}}" mode="aspectFit"></image>
+      <canvas wx:if="{{viewerCanvasMounted}}"
+              type="webgl" id="viewerCanvas"
+              class="viewer-canvas {{viewerActive ? '' : 'canvas-hidden'}}"
+              bindtouchstart="onViewerTouchStart"
+              bindtouchmove="onViewerTouchMove"
+              bindtouchend="onViewerTouchEnd"
+              bindwebglcontextlost="onWebGLContextLost"
+              bindrendererror="onNativeRenderError"></canvas>
+      <text wx:if="{{viewerMessage}}" class="viewer-message">{{viewerMessage}}</text>
+    </view>
+
+    <view class="result-copy">
+      <text class="result-mode">{{viewerActive ? '360° 查看 · 拖动环视' : '2D 等距柱状结果'}}</text>
+      <text class="result-note">360° 查看是可选增强；启动失败会自动回到这张 2D 图。</text>
+    </view>
+    <view class="result-actions">
+      <button class="ghost-btn" bindtap="onToggleViewer" disabled="{{viewerStarting}}">
+        {{viewerStarting ? '正在开启…' : (viewerActive ? '返回 2D 结果' : '开启 360° 查看')}}
+      </button>
+      <button class="primary-btn" bindtap="onSaveResult" disabled="{{saving}}">
+        {{saving ? '正在保存…' : '保存全景'}}
+      </button>
+    </view>
+  </view>
+
+  <view class="help-sheet" wx:if="{{helpVisible}}" bindtap="onCloseHelp">
+    <view class="help-card" catchtap="noop">
+      <text class="help-title">拍满 360° 水平 × 180° 垂直</text>
+      <text class="help-copy">竖直握住手机，让中央圆环依次对准唯一的白点。每拍一张，真实照片会立即固定在对应方向；黑色就是还没拍到的区域。</text>
+      <text class="help-copy">第一张必须手动确认。侧倾、原始角速度、完整快门窗口、清晰度或曝光任一不合格，本张都不会计入。</text>
+      <button class="primary-btn" bindtap="onCloseHelp">知道了</button>
+    </view>
+  </view>
+
+  <view class="capability-sheet" wx:if="{{capabilityBlocked}}">
+    <view class="capability-card">
+      <text class="capability-kicker">可靠模式未通过</text>
+      <text class="capability-title">当前手机暂不能拍 720° 球面全景</text>
+      <text class="capability-copy">{{capabilityMessage}}</text>
+      <text class="capability-copy">你仍可返回上一页，上传已经拼好的 2:1 全景图。</text>
+      <button class="primary-btn" bindtap="onCapabilityBack">返回上传全景</button>
+    </view>
+  </view>
+
+  <canvas wx:if="{{sourceCanvasFallback}}"
+          type="2d" id="sourceCanvas" class="source-canvas-fallback"
+          bindrendererror="onNativeRenderError"></canvas>
+</view>

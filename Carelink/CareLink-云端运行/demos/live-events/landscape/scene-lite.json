@@ -1,0 +1,65 @@
+{
+  "sceneRevisionId": "insta-GS3DCbb700bdacfd244808a43d0615cb470ba-local-20260916",
+  "name": "活动二",
+  "sceneAsset": {
+    "format": "sog",
+    "url": "assets/scene.sog",
+    "required": true,
+    "rotationEuler": [
+      180,
+      0,
+      0
+    ],
+    "scale": 1
+  },
+  "navigation": {
+    "eyeHeight": 0.44274331098940134,
+    "startMode": "walk",
+    "startPose": {
+      "position": [
+        -0.8765188183154391,
+        0.44274331098940134,
+        -4.192338690590958
+      ],
+      "quaternion": [
+        0.0,
+        0.9858247359052638,
+        0.0,
+        0.16777839574068243
+      ],
+      "fov": 75
+    },
+    "boundaryXZ": [
+      [
+        -5.901001644874478,
+        -9.721451342456804
+      ],
+      [
+        7.033579598110219,
+        -9.721451342456804
+      ],
+      [
+        7.033579598110219,
+        8.346054389194464
+      ],
+      [
+        -5.901001644874478,
+        8.346054389194464
+      ]
+    ],
+    "moveSpeed": 0.8,
+    "fovRangeDegrees": [
+      30,
+      100
+    ]
+  },
+  "photoAnchors": [],
+  "provenance": {
+    "source": "https://app.insta360.com/3dspace/detail/GS3DCbb700bdacfd244808a43d0615cb470ba?source=3d_timeline&region=c",
+    "taskOrderNo": "GS3DCbb700bdacfd244808a43d0615cb470ba",
+    "cameraCount": 1050,
+    "centerCount": 66,
+    "watermark": "removed-overlay-not-baked",
+    "viewer": "Local PlayCanvas viewer; original SOG bytes; start pose from first cam1_center, yaw along capture path. Overlay watermark omitted. Voxel collision from original 3DGS.voxel pair. Remy particle MP4s not used."
+  }
+}

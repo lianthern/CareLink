@@ -1,0 +1,349 @@
+{
+  "schemaVersion": "unseen.locator.offline-evidence.v1",
+  "status": "EVALUATED_NO_GO",
+  "decision": "NO_GO_SYNTHETIC_FIXTURE",
+  "releaseId": "locator-synthetic-tooling-v0",
+  "productionClaimsAllowed": false,
+  "thresholdPassClaimAllowed": false,
+  "reasons": [
+    "minimum_sample_gate_not_met",
+    "joint_adjusted_bounds_not_met",
+    "synthetic_fixture_not_release_eligible",
+    "real_model_not_present",
+    "authorized_shadow_data_not_present"
+  ],
+  "hashes": {
+    "manifestBytesSha256": "2a31d09e22451c469d6d0b458e8b23f646e3af4f99ff891d076874ad819626d7",
+    "datasetContentSha256": "9a8fa43d1ba6a318441049fc6383a9f54d403845ff02a7a6bf999fae01cb3fa1",
+    "releaseMetadataSha256": "c72efd8151d7e622e77fb5cc36c515ae856108596a14460aa9e6686232d5324e",
+    "modelSha256": "b4ec556503986a583c741eecabf2632a184e0fa73bc436dedda1b48738dff1a5",
+    "preprocessSha256": "758f08c74de7a27b740a84b56bf4f9622e42e38e35d1624f43ce16c61b56e7f3",
+    "thresholdPolicySha256": "813b73ef07e8b13c3a234efae0acdcedac592245e4c11473d5aac742e6bbd2be",
+    "preregistrationSha256": "81f2c78a9309cef90b89cbe51ac9947457e4cd1213bc1b45a87da03b40e89d08",
+    "predictionsSha256": "6464e097c3394b5f3d24a7d37a5cc93beb3d850e49f0df3f6921ef471066b85e",
+    "pipelineCodeSha256": "3ae43ab3242f3e8cb76af5325a4ebf35c411d85ce369c032d225ee98d11bff45",
+    "workerContractSha256": "ee16b37e0fdfa5d8291c1e7eb0344fb05bc9b263fa46f21e1a72d3f763637695"
+  },
+  "dataset": {
+    "inputSampleCount": 13,
+    "canonicalSampleCount": 12,
+    "exactDuplicatesRemoved": 1,
+    "splitCounts": {
+      "calibration": 4,
+      "test": 4,
+      "train": 4
+    },
+    "testPrimaryClusters": 4
+  },
+  "primaryUnit": "burst_or_near_duplicate_cluster",
+  "clusterAggregation": {
+    "high": "any sample in the cluster is high",
+    "correct": "every high sample is same-scene and has circular yaw error at most 45 degrees",
+    "catastrophic": "any high sample is wrong-scene or has circular yaw error above 90 degrees",
+    "evaluable": "every canonical sample in the cluster is adjudicated evaluable"
+  },
+  "sampleGate": {
+    "testSpaces": {
+      "actual": 2,
+      "required": 10,
+      "passed": false
+    },
+    "evaluableIdClusters": {
+      "actual": 2,
+      "required": 300,
+      "passed": false
+    },
+    "oodClusters": {
+      "actual": 2,
+      "required": 300,
+      "passed": false
+    },
+    "idClustersPerSpace": {
+      "actual": {
+        "syn-space-i3": 1,
+        "syn-space-o3": 1
+      },
+      "required": 20,
+      "passed": false
+    }
+  },
+  "endpoints": {
+    "highConfirmedCorrectness": {
+      "numerator": 2,
+      "denominator": 2,
+      "point": 1,
+      "boundType": "lower",
+      "adjustedOneSidedAlpha": 0.0125,
+      "bound": 0.1118033988749895,
+      "threshold": 0.95,
+      "passed": false
+    },
+    "catastrophicDirection": {
+      "numerator": 0,
+      "denominator": 2,
+      "point": 0,
+      "boundType": "upper",
+      "adjustedOneSidedAlpha": 0.0125,
+      "bound": 0.8881966011250104,
+      "threshold": 0.01,
+      "passed": false
+    },
+    "oodHighFalseConfirm": {
+      "numerator": 0,
+      "denominator": 2,
+      "point": 0,
+      "boundType": "upper",
+      "adjustedOneSidedAlpha": 0.0125,
+      "bound": 0.8881966011250104,
+      "threshold": 0.01,
+      "passed": false
+    },
+    "highCoverage": {
+      "numerator": 2,
+      "denominator": 2,
+      "point": 1,
+      "boundType": "lower",
+      "adjustedOneSidedAlpha": 0.0125,
+      "bound": 0.1118033988749895,
+      "threshold": 0.3,
+      "passed": false
+    }
+  },
+  "spaceStratified": [
+    {
+      "spaceId": "syn-space-i3",
+      "evaluableIdClusters": 1,
+      "oodClusters": 1,
+      "endpoints": {
+        "highConfirmedCorrectness": {
+          "numerator": 1,
+          "denominator": 1,
+          "point": 1,
+          "boundType": "lower",
+          "adjustedOneSidedAlpha": 0.0125,
+          "bound": 0.0125,
+          "threshold": 0.95,
+          "passed": false
+        },
+        "catastrophicDirection": {
+          "numerator": 0,
+          "denominator": 1,
+          "point": 0,
+          "boundType": "upper",
+          "adjustedOneSidedAlpha": 0.0125,
+          "bound": 0.9875,
+          "threshold": 0.01,
+          "passed": false
+        },
+        "oodHighFalseConfirm": {
+          "numerator": 0,
+          "denominator": 1,
+          "point": 0,
+          "boundType": "upper",
+          "adjustedOneSidedAlpha": 0.0125,
+          "bound": 0.9875,
+          "threshold": 0.01,
+          "passed": false
+        },
+        "highCoverage": {
+          "numerator": 1,
+          "denominator": 1,
+          "point": 1,
+          "boundType": "lower",
+          "adjustedOneSidedAlpha": 0.0125,
+          "bound": 0.0125,
+          "threshold": 0.3,
+          "passed": false
+        }
+      }
+    },
+    {
+      "spaceId": "syn-space-o3",
+      "evaluableIdClusters": 1,
+      "oodClusters": 1,
+      "endpoints": {
+        "highConfirmedCorrectness": {
+          "numerator": 1,
+          "denominator": 1,
+          "point": 1,
+          "boundType": "lower",
+          "adjustedOneSidedAlpha": 0.0125,
+          "bound": 0.0125,
+          "threshold": 0.95,
+          "passed": false
+        },
+        "catastrophicDirection": {
+          "numerator": 0,
+          "denominator": 1,
+          "point": 0,
+          "boundType": "upper",
+          "adjustedOneSidedAlpha": 0.0125,
+          "bound": 0.9875,
+          "threshold": 0.01,
+          "passed": false
+        },
+        "oodHighFalseConfirm": {
+          "numerator": 0,
+          "denominator": 1,
+          "point": 0,
+          "boundType": "upper",
+          "adjustedOneSidedAlpha": 0.0125,
+          "bound": 0.9875,
+          "threshold": 0.01,
+          "passed": false
+        },
+        "highCoverage": {
+          "numerator": 1,
+          "denominator": 1,
+          "point": 1,
+          "boundType": "lower",
+          "adjustedOneSidedAlpha": 0.0125,
+          "bound": 0.0125,
+          "threshold": 0.3,
+          "passed": false
+        }
+      }
+    }
+  ],
+  "macro": {
+    "highConfirmedCorrectness": 1,
+    "catastrophicDirection": 0,
+    "oodHighFalseConfirm": 0,
+    "highCoverage": 1
+  },
+  "worstSpace": {
+    "highConfirmedCorrectness": {
+      "spaceId": "syn-space-i3",
+      "numerator": 1,
+      "denominator": 1,
+      "point": 1,
+      "boundType": "lower",
+      "adjustedOneSidedAlpha": 0.0125,
+      "bound": 0.0125,
+      "threshold": 0.95,
+      "passed": false
+    },
+    "catastrophicDirection": {
+      "spaceId": "syn-space-i3",
+      "numerator": 0,
+      "denominator": 1,
+      "point": 0,
+      "boundType": "upper",
+      "adjustedOneSidedAlpha": 0.0125,
+      "bound": 0.9875,
+      "threshold": 0.01,
+      "passed": false
+    },
+    "oodHighFalseConfirm": {
+      "spaceId": "syn-space-i3",
+      "numerator": 0,
+      "denominator": 1,
+      "point": 0,
+      "boundType": "upper",
+      "adjustedOneSidedAlpha": 0.0125,
+      "bound": 0.9875,
+      "threshold": 0.01,
+      "passed": false
+    },
+    "highCoverage": {
+      "spaceId": "syn-space-i3",
+      "numerator": 1,
+      "denominator": 1,
+      "point": 1,
+      "boundType": "lower",
+      "adjustedOneSidedAlpha": 0.0125,
+      "bound": 0.0125,
+      "threshold": 0.3,
+      "passed": false
+    }
+  },
+  "clusterAwareSensitivity": {
+    "primaryClusterEndpoints": {
+      "highConfirmedCorrectness": {
+        "numerator": 2,
+        "denominator": 2,
+        "point": 1,
+        "boundType": "lower",
+        "adjustedOneSidedAlpha": 0.0125,
+        "bound": 0.1118033988749895,
+        "threshold": 0.95,
+        "passed": false
+      },
+      "catastrophicDirection": {
+        "numerator": 0,
+        "denominator": 2,
+        "point": 0,
+        "boundType": "upper",
+        "adjustedOneSidedAlpha": 0.0125,
+        "bound": 0.8881966011250104,
+        "threshold": 0.01,
+        "passed": false
+      },
+      "oodHighFalseConfirm": {
+        "numerator": 0,
+        "denominator": 2,
+        "point": 0,
+        "boundType": "upper",
+        "adjustedOneSidedAlpha": 0.0125,
+        "bound": 0.8881966011250104,
+        "threshold": 0.01,
+        "passed": false
+      },
+      "highCoverage": {
+        "numerator": 2,
+        "denominator": 2,
+        "point": 1,
+        "boundType": "lower",
+        "adjustedOneSidedAlpha": 0.0125,
+        "bound": 0.1118033988749895,
+        "threshold": 0.3,
+        "passed": false
+      }
+    },
+    "canonicalSampleEndpoints": {
+      "highConfirmedCorrectness": {
+        "numerator": 2,
+        "denominator": 2,
+        "point": 1,
+        "boundType": "lower",
+        "adjustedOneSidedAlpha": 0.0125,
+        "bound": 0.1118033988749895,
+        "threshold": 0.95,
+        "passed": false
+      },
+      "catastrophicDirection": {
+        "numerator": 0,
+        "denominator": 2,
+        "point": 0,
+        "boundType": "upper",
+        "adjustedOneSidedAlpha": 0.0125,
+        "bound": 0.8881966011250104,
+        "threshold": 0.01,
+        "passed": false
+      },
+      "oodHighFalseConfirm": {
+        "numerator": 0,
+        "denominator": 2,
+        "point": 0,
+        "boundType": "upper",
+        "adjustedOneSidedAlpha": 0.0125,
+        "bound": 0.8881966011250104,
+        "threshold": 0.01,
+        "passed": false
+      },
+      "highCoverage": {
+        "numerator": 2,
+        "denominator": 2,
+        "point": 1,
+        "boundType": "lower",
+        "adjustedOneSidedAlpha": 0.0125,
+        "bound": 0.1118033988749895,
+        "threshold": 0.3,
+        "passed": false
+      }
+    },
+    "note": "The cluster result is authoritative; canonical-sample results are sensitivity only and cannot increase n."
+  },
+  "jointGatePassed": false,
+  "nextGate": "Track 3B requires written authorization, at least 10 test Spaces, 300 evaluable ID clusters, 300 OOD clusters, and all four adjusted one-sided bounds."
+}

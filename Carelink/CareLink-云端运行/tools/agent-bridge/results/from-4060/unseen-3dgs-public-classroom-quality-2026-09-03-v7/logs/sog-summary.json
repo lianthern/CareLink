@@ -1,0 +1,28 @@
+{
+  "status": "PASS",
+  "bestStage": 7000,
+  "rawPly": {
+    "gaussians": 68164,
+    "shDegree": 3,
+    "bytes": 16906264,
+    "sha256": "8511b45234f997a45ed46d1355c0f2bdcc548f6ab9e620eb264601840ca00e8b",
+    "includedInGitHub": false
+  },
+  "sog": {
+    "gaussians": 68164,
+    "shDegree": 2,
+    "bytes": 2306212,
+    "sha256": "669e5699137a2c6f9698212c31d1038a3e6ce094f7f49e4e0c0dc4db1cc9fa8b",
+    "conversionWallSeconds": 169.675,
+    "includedInGitHub": false
+  },
+  "roundtrip": {
+    "gaussians": 68164,
+    "shDegree": 2,
+    "bytes": 10361879,
+    "sha256": "f75238987a2c8e83952736c64cb732f2755d059a7312cff93e5c67f683ad3e2a",
+    "gaussianCountPreserved": true,
+    "includedInGitHub": false
+  }
+}
+

@@ -1,0 +1,118 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://unseen.local/schemas/scene-manifest.schema.json",
+  "title": "UNSEEN scene viewer manifest",
+  "type": "object",
+  "required": ["sceneRevisionId", "name", "sceneAsset", "navigation", "photoAnchors"],
+  "properties": {
+    "sceneRevisionId": { "type": "string", "minLength": 1 },
+    "name": { "type": "string", "minLength": 1 },
+    "sceneAsset": {
+      "type": "object",
+      "required": ["url", "format"],
+      "properties": {
+        "url": { "type": ["string", "null"] },
+        "format": { "enum": ["sog", "ply", "compressed.ply"] },
+        "required": { "type": "boolean", "default": false },
+        "position": { "$ref": "#/$defs/vec3" },
+        "rotationEuler": { "$ref": "#/$defs/vec3" },
+        "scale": { "type": "number", "exclusiveMinimum": 0 }
+      },
+      "additionalProperties": false
+    },
+    "qualityReview": {"type":"object"},
+    "inspectionViews": {"type":"array","items":{"$ref":"#/$defs/pose"}},
+    "backgroundColor": {
+      "type": "array",
+      "items": { "type": "number", "minimum": 0, "maximum": 1 },
+      "minItems": 3,
+      "maxItems": 3
+    },
+    "defaultPhotoAnchorId": { "type": "string", "minLength": 1 },
+    "navigation": {
+      "type": "object",
+      "required": ["eyeHeight", "boundaryXZ", "startPose"],
+      "properties": {
+        "collision": {"type":"object","required":["version","sceneRevisionId","units","enabled","floorY","eyeOffset","radius","bodyHeight","proxies"],"properties":{"version":{"const":1},"sceneRevisionId":{"type":"string"},"units":{"const":"scene"},"enabled":{"type":"boolean"},"floorY":{"type":"number"},"eyeOffset":{"type":"number","exclusiveMinimum":0},"radius":{"type":"number","exclusiveMinimum":0},"bodyHeight":{"type":"number","exclusiveMinimum":0},"proxies":{"type":"array","maxItems":100}}},
+        "eyeHeight": { "type": "number" },
+        "moveSpeed": { "type": "number", "exclusiveMinimum": 0 },
+        "lookSensitivity": { "type": "number", "exclusiveMinimum": 0 },
+        "defaultFov": { "type": "number", "minimum": 30, "maximum": 90 },
+        "fovRangeDegrees": {
+          "type": "array",
+          "prefixItems": [
+            { "type": "number", "minimum": 30, "maximum": 90 },
+            { "type": "number", "minimum": 30, "maximum": 110 }
+          ],
+          "minItems": 2,
+          "maxItems": 2
+        },
+        "sprintMultiplier": { "type": "number", "minimum": 1 },
+        "startMode": { "enum": ["walk", "photo-anchor"] },
+        "boundaryType": { "enum": ["buffered-camera-convex-hull", "legacy-polygon", "camera-bounds"] },
+        "eyeHeightStatistic": { "type": "string" },
+        "boundaryXZ": {
+          "type": "array",
+          "minItems": 3,
+          "items": {
+            "type": "array",
+            "items": { "type": "number" },
+            "minItems": 2,
+            "maxItems": 2
+          }
+        },
+        "startPose": { "$ref": "#/$defs/pose" }
+      },
+      "additionalProperties": false
+    },
+    "photoAnchors": {
+      "type": "array",
+      "minItems": 0,
+      "items": {
+        "allOf": [
+          { "$ref": "#/$defs/pose" },
+          {
+            "type": "object",
+            "required": ["id", "label", "sceneRevisionId"],
+            "properties": {
+              "id": { "type": "string" },
+              "label": { "type": "string" },
+              "sceneRevisionId": { "type": "string" },
+              "sourceFrame": { "type": "string" },
+              "thumbnail": { "type": "string" },
+              "photoId": {"type": "string"},
+              "originalUrl": {"type": "string"},
+              "imageWidth": {"type": "integer", "minimum": 1},
+              "imageHeight": {"type": "integer", "minimum": 1},
+              "fovAxis": {"enum": ["vertical"]},
+              "status": {"enum": ["ready"]}
+            }
+          }
+        ]
+      }
+    }
+  },
+  "$defs": {
+    "vec3": {
+      "type": "array",
+      "items": { "type": "number" },
+      "minItems": 3,
+      "maxItems": 3
+    },
+    "quaternion": {
+      "type": "array",
+      "items": { "type": "number" },
+      "minItems": 4,
+      "maxItems": 4
+    },
+    "pose": {
+      "type": "object",
+      "required": ["position", "quaternion", "fov"],
+      "properties": {
+        "position": { "$ref": "#/$defs/vec3" },
+        "quaternion": { "$ref": "#/$defs/quaternion" },
+        "fov": { "type": "number", "minimum": 10, "maximum": 170 }
+      }
+    }
+  }
+}

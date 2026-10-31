@@ -1,0 +1,154 @@
+{
+  "schemaVersion": "1.0",
+  "jobId": "unseen-3dgs-full-room-hf-lite-2026-09-03-v9",
+  "sceneRevisionId": "tandt-meetingroom-hf-r001",
+  "finalStatus": "FULL_ROOM_CANARY_ACCEPTED",
+  "viewer": {
+    "v9Url": "http://127.0.0.1:8765/?scene=./tandt-meetingroom-v9.scene.json",
+    "v9Running": true,
+    "bindAddress": "127.0.0.1",
+    "port": 8765,
+    "intakeUrl": "http://127.0.0.1:8780/",
+    "intakeStatus": "READY",
+    "intakeTrainingStartsAutomatically": false,
+    "pythonTestsPassed": 24,
+    "pythonTestsTotal": 24,
+    "schemaManifestsPassed": 5,
+    "schemaManifestsTotal": 5,
+    "legacyE2E": "PASS",
+    "v8RegressionE2E": "PASS",
+    "v9E2E": "PASS",
+    "startMode": "walk",
+    "startPitchDegrees": 0.0,
+    "startRollDegrees": 0.0,
+    "startAtMedianHeight": true,
+    "photoAnchors": 3,
+    "photoAnchorsRestoreExactly": true,
+    "directionScreenshots": 6,
+    "directionsVisuallyValid": true,
+    "upShowsCeilingOrBeams": true,
+    "normalDistance": 0.186253432459167,
+    "sprintDistance": 0.577004317468933,
+    "sprintRatio": 3.09795266508944,
+    "fixedYDuringMovement": true,
+    "twoAxisRouteReturnError": 0.00600817021679606,
+    "consoleErrors": 0
+  },
+  "source": {
+    "provider": "NerfBaselines Hugging Face mirror of Tanks and Temples",
+    "revision": "6a638951a007c8b47eb8a0301d48b04d18e955cf",
+    "asset": "tanksandtemples/meetingroom_2down.tar.gz",
+    "bytes": 169378633,
+    "sha256": "2e1f86fd7b25314fbc0361b42f16bf77ee222ac50294777995e8ab737aee8d33",
+    "exactFrozenUrl": true,
+    "archiveEntries": 376,
+    "images": 371,
+    "width": 980,
+    "height": 543,
+    "registeredImages": 371,
+    "registeredFraction": 1.0,
+    "cameraModel": "PINHOLE",
+    "cameraCount": 1,
+    "points3D": 124162,
+    "status": "READY"
+  },
+  "inputGate": {
+    "status": "PASS",
+    "temporalBinsPopulated": 12,
+    "planarPcaRatio": 0.45666083369528243,
+    "hullArea": 55.77866215074337,
+    "hullDiameter": 10.81658830521854,
+    "trajectoryLength": 81.46234834360264,
+    "trajectoryToHullDiameter": 7.531242388535816,
+    "manualFloorBins": 9,
+    "manualUpperBins": 12,
+    "footprintCoversTwoPlanarDirections": true,
+    "trainImages": 358,
+    "heldOutImages": 13,
+    "heldOutBins": 12
+  },
+  "training": {
+    "originalContractMaximumInvocations": 1,
+    "nsTrainProcessInvocationsIncludingParserFailure": 2,
+    "optimizationRuns": 1,
+    "fromScratchOptimizationRuns": 1,
+    "userAuthorizedCorrectedRetry": true,
+    "authorizationEvidence": "logs/retry-authorization.json",
+    "priorParserOnlyFailureArchived": true,
+    "priorParserOnlyFailureOptimizationSteps": 0,
+    "requestedSteps": 7000,
+    "actualOptimizationSteps": 7000,
+    "startStep": 0,
+    "endStep": 6999,
+    "exitCode": 0,
+    "wallSeconds": 300.449,
+    "oom": false,
+    "peakVramMiB": 3929,
+    "nerfstudioVersion": "1.1.5",
+    "torchVersion": "2.1.2+cu121",
+    "gpu": "NVIDIA GeForce RTX 4060 Laptop GPU",
+    "checkpoint": {
+      "bytes": 296441362,
+      "sha256": "c1c388deaef97c3eb4dc63801ba5fb4a28485320d02c96103250b234d99a8b24",
+      "uploaded": false
+    },
+    "status": "TRAINING_COMPLETE"
+  },
+  "evaluation": {
+    "status": "PASS",
+    "heldOutCount": 13,
+    "heldOutBins": 12,
+    "mean": {
+      "psnr": 23.48865112891564,
+      "ssim": 0.8371081627332247,
+      "lpips": 0.23781902400346902
+    },
+    "worst": {
+      "psnr": 20.695913314819336,
+      "ssim": 0.8003891706466675,
+      "lpips": 0.2748635709285736
+    }
+  },
+  "artifacts": {
+    "rawPly": {
+      "bytes": 100369921,
+      "sha256": "beaacf5d95a7ed01fcc31673cfa92059eae512901e1eca48f6922f7bc9083846",
+      "gaussians": 404711,
+      "uploaded": false
+    },
+    "sog": {
+      "bytes": 6278049,
+      "sha256": "0106c7ce0b6e6984b6291a24b61af9f2c90dccb8b4fd08221b41913fb4017992",
+      "gaussians": 404711,
+      "selectedShDegree": 1,
+      "uploaded": false
+    },
+    "sh1FallbackReason": "SH2 conversion timed out after 600 seconds; the timeout and unfinished temporary output are preserved in the sanitized export log.",
+    "roundtripGaussians": 404711,
+    "gaussianCountPreserved": true,
+    "manifest": "viewer/tandt-meetingroom-v9.scene.json",
+    "walkthrough": {
+      "path": "viewer-walkthrough-v9.mp4",
+      "codec": "h264",
+      "width": 1280,
+      "height": 720,
+      "durationSeconds": 10.959,
+      "bytes": 494813,
+      "sha256": "0983152a245165375d013fd0283b85c84e5f757023c6e4696a81a31a64449447"
+    }
+  },
+  "limitations": [
+    "This is a 7k research canary, not a production reconstruction.",
+    "Close foliage, chair edges, the straight-down view, and positions near the camera hull boundary show blur or floating Gaussian artifacts.",
+    "SH2 did not finish within the 600-second conversion limit, so the validated Viewer asset uses SH1."
+  ],
+  "security": {
+    "productionCalls": 0,
+    "paidApiCalls": 0,
+    "firewallChanges": 0,
+    "packageInstalls": 0,
+    "lanOrPublicListeners": 0,
+    "privateMediaUsed": false,
+    "forbiddenArtifactsUploaded": false
+  }
+}

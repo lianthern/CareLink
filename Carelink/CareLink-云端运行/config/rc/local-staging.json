@@ -1,0 +1,20 @@
+{
+  "schema": "unseen-local-staging-config/1",
+  "productLabel": "UNSEEN Local Staging",
+  "host": "127.0.0.1",
+  "port": 4180,
+  "persistence": {
+    "dataDirectory": "UNSEEN/local-staging/core-data",
+    "runtimeEvidenceDirectory": "UNSEEN/local-staging/runtime-evidence",
+    "backupDirectory": "UNSEEN/local-staging/backups"
+  },
+  "inputs": {
+    "coreLocal": "2cfb25f7da1cbdab901a1f731326c8dfaad6a765",
+    "bookWeb": "7d3590d3329252f4226adb2a751ffe9a2384d390"
+  },
+  "book": {
+    "enabled": true,
+    "worktree": "/Users/max/code/unseen-worktrees/8b-book-web",
+    "fixtureNotice": "确定性本地样本 / 非真实 AI 问题质量"
+  }
+}

@@ -1,0 +1,137 @@
+{
+  "schemaVersion": "1.0",
+  "jobId": "unseen-3dgs-visual-diagnosis-2026-09-02-v2",
+  "status": "BLOCKED",
+  "earliestFailureStage": "INPUT_OR_POSE",
+  "confidence": "HIGH",
+  "baseline": {
+    "frozenAt": "2026-09-02T03:52:39Z",
+    "unchangedAfterExperiment": true,
+    "files": {
+      "config": {"bytes": 7839, "sha256": "caf172bf132828fbb30d4f0d914a03a8c3e6c67121857a39729d2dfaac4834de"},
+      "checkpoint": {"bytes": 135964114, "sha256": "5b1dc3a4d12f878ccad8f2f8679b7af9ea8a9077599b9ba2b5409a5924bbec95"},
+      "ply": {"bytes": 44159233, "sha256": "25b9ccb910c9ab386e6cded49969906c17f6a69b2653ee1e55a3b6a2fe7951b1"},
+      "sog": {"bytes": 4665339, "sha256": "901d501dd41d254ed047322198cb283bdf2f146a92aeab94a16e1efecad5c223"},
+      "transforms": {"bytes": 64612, "sha256": "b9175c7216eef06ba9d1acbf394c0fcf81c59d81da43a9befa38f1841b31f319"}
+    }
+  },
+  "tools": {
+    "nerfstudio": "1.1.5",
+    "torch": "2.1.2+cu121",
+    "gsplat": "1.4.0+pt21cu121",
+    "colmap": "3.7",
+    "splatTransform": "3.3.3 (d092ae9)",
+    "node": "22.23.1",
+    "gpu": "NVIDIA GeForce RTX 4060 Laptop GPU",
+    "driver": "596.49"
+  },
+  "stages": {
+    "INPUT_OR_POSE": {
+      "status": "FAIL",
+      "evidence": [
+        "COLMAP OPENCV intrinsics are fx=832.1798 and fy=175.8516 for 1280x720 square-pixel source frames (fx/fy=4.7329).",
+        "Original source frames are normal perspective images; Nerfstudio undistortion and all downstream renders are strongly fisheye-distorted.",
+        "Checkpoint-to-original-source metrics at the three anchors are only PSNR 10.64-11.90 dB and LPIPS 0.6455-0.6685."
+      ]
+    },
+    "CHECKPOINT": {
+      "status": "PASS_RELATIVE_TO_PROCESSED_TRAINING_DOMAIN",
+      "train": {"imageCount": 65, "psnr": 32.42977564885066, "ssim": 0.9706201810103197, "lpips": 0.07471344207341854},
+      "eval": {"imageCount": 7, "psnr": 31.843599319458008, "ssim": 0.9634218811988831, "lpips": 0.07953710108995438}
+    },
+    "EXPORT_PLY": {
+      "status": "PASS",
+      "checkpointGaussianCount": 178055,
+      "plyGaussianCount": 178055,
+      "allParameterMaxAbsError": 0.0,
+      "threeAnchorPixelExact": true
+    },
+    "CONVERT_SOG": {
+      "status": "PASS_WITH_EXPECTED_LOSSY_COMPRESSION",
+      "gaussianCount": 178055,
+      "anchorPsnrRange": [34.37431716918945, 38.66510772705078],
+      "anchorSsimRange": [0.9880916476249695, 0.9942376017570496],
+      "anchorLpipsRange": [0.02112782932817936, 0.03374320641160011]
+    },
+    "VIEWER_TRANSFORM": {
+      "status": "FAIL_ADDITIONAL_LATER_STAGE",
+      "rendererWithInjectedTrainingCameras": "PASS_VISUAL_AT_THREE_ANCHORS",
+      "shippedManifest": "FAIL",
+      "evidence": "The shipped start pose and only photo anchor are hand-authored Y-up walk-space values unrelated to training cameras; setCameraPose also replaces pose Y with a global eyeHeight."
+    }
+  },
+  "colmap": {
+    "baseline": {
+      "registeredImages": 72,
+      "totalImages": 72,
+      "points": 8218,
+      "observations": 78752,
+      "meanReprojectionErrorPx": 0.985025,
+      "meanTrackLength": 9.582867,
+      "meanObservationsPerImage": 1093.777778
+    },
+    "camera": {
+      "model": "OPENCV",
+      "width": 1280,
+      "height": 720,
+      "fx": 832.1797717687189,
+      "fy": 175.85163723116887,
+      "cx": 715.7966895676459,
+      "cy": 353.4620206479023,
+      "k1": 0.29323876086891654,
+      "k2": -0.006430532692419854,
+      "p1": 0.01649579365199991,
+      "p2": 0.036589730620214415
+    }
+  },
+  "anchors": [
+    {
+      "frame": "frame_00001",
+      "checkpointVsOriginalSource": {"psnr": 10.657026290893555, "ssim": 0.650184154510498, "lpips": 0.6533211469650269},
+      "checkpointVsProcessedTrainingSource": {"psnr": 28.35678482055664, "ssim": 0.9619749784469604, "lpips": 0.09926846623420715},
+      "rawPlyVsCheckpoint": {"exactPixelMatch": true, "psnr": null, "ssim": 0.9999999403953552, "lpips": 0.0},
+      "sogVsRawPly": {"psnr": 38.66510772705078, "ssim": 0.9942376017570496, "lpips": 0.02112782932817936},
+      "currentWebViewer": "PASS_VISUAL_WITH_INJECTED_TRAINING_CAMERA"
+    },
+    {
+      "frame": "frame_00036",
+      "checkpointVsOriginalSource": {"psnr": 10.644245147705078, "ssim": 0.5658379793167114, "lpips": 0.6684502959251404},
+      "checkpointVsProcessedTrainingSource": {"psnr": 31.245948791503906, "ssim": 0.9701801538467407, "lpips": 0.07695017755031586},
+      "rawPlyVsCheckpoint": {"exactPixelMatch": true, "psnr": null, "ssim": 0.9999999403953552, "lpips": 0.0},
+      "sogVsRawPly": {"psnr": 34.37431716918945, "ssim": 0.9880916476249695, "lpips": 0.03374320641160011},
+      "currentWebViewer": "PASS_VISUAL_WITH_INJECTED_TRAINING_CAMERA"
+    },
+    {
+      "frame": "frame_00072",
+      "checkpointVsOriginalSource": {"psnr": 11.898574829101562, "ssim": 0.5593967437744141, "lpips": 0.6455012559890747},
+      "checkpointVsProcessedTrainingSource": {"psnr": 32.50699996948242, "ssim": 0.9647299647331238, "lpips": 0.07413430511951447},
+      "rawPlyVsCheckpoint": {"exactPixelMatch": true, "psnr": null, "ssim": 0.9999999403953552, "lpips": 0.0},
+      "sogVsRawPly": {"psnr": 37.67571258544922, "ssim": 0.991230845451355, "lpips": 0.025209737941622734},
+      "currentWebViewer": "PASS_VISUAL_WITH_INJECTED_TRAINING_CAMERA"
+    }
+  ],
+  "repairExperiment": {
+    "changedVariable": "ns-process-data --camera-type perspective -> simple_pinhole",
+    "patch": "fixes/0001-simple-pinhole-failed-experiment.patch",
+    "status": "FAILED_BEFORE_TRAIN",
+    "isolatedOutputRoot": "LOCAL_ONLY",
+    "colmap": {
+      "registeredImages": 17,
+      "totalImages": 72,
+      "points": 13,
+      "observations": 32,
+      "meanTrackLength": 2.461538,
+      "meanReprojectionErrorPx": 0.0,
+      "registeredFrameRange": "frame_00056-frame_00072"
+    },
+    "preview7000": "NOT_RUN_DEGENERATE_SFM",
+    "quality30000": "NOT_RUN_FORBIDDEN",
+    "workingScriptRestored": true
+  },
+  "blockedOn": "Need a separately approved SfM experiment that preserves square-pixel/plausible focal constraints while recovering non-degenerate, near-full-frame camera registration before any new 7k training.",
+  "forbiddenUploadsIncluded": false,
+  "pendingFields": {
+    "repairedPreview7000Metrics": "PENDING",
+    "repairedPreview7000ThreeAnchorVisual": "PENDING"
+  }
+}

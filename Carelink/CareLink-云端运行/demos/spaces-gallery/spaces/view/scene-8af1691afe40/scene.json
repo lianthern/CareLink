@@ -1,0 +1,148 @@
+{
+  "sceneRevisionId": "scene-8af1691afe40-r001",
+  "name": "PanDORA · 室内咖啡间 · 7k 预览",
+  "sceneAsset": {
+    "url": "./assets/scene.sog",
+    "format": "sog",
+    "required": true,
+    "position": [
+      0,
+      0,
+      0
+    ],
+    "rotationEuler": [
+      -90,
+      0,
+      0
+    ],
+    "scale": 1
+  },
+  "backgroundColor": [
+    0.12,
+    0.12,
+    0.12
+  ],
+  "defaultPhotoAnchorId": "photo-6903cfa21d96",
+  "navigation": {
+    "eyeHeight": 0.044218724015139786,
+    "moveSpeed": 0.25,
+    "lookSensitivity": 0.11,
+    "defaultFov": 70,
+    "fovRangeDegrees": [
+      30,
+      110
+    ],
+    "sprintMultiplier": 3,
+    "startMode": "walk",
+    "boundaryType": "camera-bounds",
+    "boundaryXZ": [
+      [
+        -0.9158154840947418,
+        -0.6373502000771354
+      ],
+      [
+        0.93377726671246,
+        -0.6373502000771354
+      ],
+      [
+        0.93377726671246,
+        1.2500001336175088
+      ],
+      [
+        -0.9158154840947418,
+        1.2500001336175088
+      ]
+    ],
+    "startPose": {
+      "id": "start",
+      "label": "Initial scene camera",
+      "sceneRevisionId": "scene-8af1691afe40-r001",
+      "position": [
+        0.056020229677465484,
+        0.05159142290300129,
+        -0.2418963557079173
+      ],
+      "quaternion": [
+        -0.041347608704860504,
+        0.9393361452166439,
+        0.028211438951443325,
+        0.33932594397749005
+      ],
+      "fov": 100.00000000000006
+    }
+  },
+  "photoAnchors": [
+    {
+      "id": "photo-6903cfa21d96",
+      "label": "照片 1",
+      "sceneRevisionId": "scene-8af1691afe40-r001",
+      "position": [
+        -0.5061080690922835,
+        -0.3120687807168679,
+        0.8037707192994155
+      ],
+      "quaternion": [
+        0.0164372405838993,
+        -0.09801704753705431,
+        0.04619900839389269,
+        0.9939759187915606
+      ],
+      "fov": 97.45724656364827,
+      "photoId": "photo-6903cfa21d96",
+      "thumbnail": "./photos/photo-6903cfa21d96.thumb.jpg",
+      "originalUrl": "./photos/photo-6903cfa21d96.jpg",
+      "imageWidth": 1024,
+      "imageHeight": 1024,
+      "fovAxis": "vertical",
+      "status": "ready"
+    },
+    {
+      "id": "photo-ce6a81e1adf2",
+      "label": "照片 2",
+      "sceneRevisionId": "scene-8af1691afe40-r001",
+      "position": [
+        0.13483710295022275,
+        -0.21997674549592042,
+        0.11498937290788228
+      ],
+      "quaternion": [
+        0.05705634190717233,
+        -0.43244084464852034,
+        0.03057994933259189,
+        0.8993355082652205
+      ],
+      "fov": 93.35530916912995,
+      "photoId": "photo-ce6a81e1adf2",
+      "thumbnail": "./photos/photo-ce6a81e1adf2.thumb.jpg",
+      "originalUrl": "./photos/photo-ce6a81e1adf2.jpg",
+      "imageWidth": 1024,
+      "imageHeight": 1024,
+      "fovAxis": "vertical",
+      "status": "ready"
+    },
+    {
+      "id": "photo-52b0da8cecbe",
+      "label": "照片 3",
+      "sceneRevisionId": "scene-8af1691afe40-r001",
+      "position": [
+        0.5712345933461286,
+        0.05017312719682145,
+        0.5583333662895354
+      ],
+      "quaternion": [
+        0.041289168206388054,
+        0.04785115942013228,
+        0.04732658683982468,
+        0.996877959084795
+      ],
+      "fov": 83.08462705968013,
+      "photoId": "photo-52b0da8cecbe",
+      "thumbnail": "./photos/photo-52b0da8cecbe.thumb.jpg",
+      "originalUrl": "./photos/photo-52b0da8cecbe.jpg",
+      "imageWidth": 1024,
+      "imageHeight": 1024,
+      "fovAxis": "vertical",
+      "status": "ready"
+    }
+  ]
+}

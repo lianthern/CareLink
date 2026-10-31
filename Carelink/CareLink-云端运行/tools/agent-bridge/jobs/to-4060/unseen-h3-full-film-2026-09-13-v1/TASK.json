@@ -1,0 +1,126 @@
+{
+  "schemaVersion": "1.0",
+  "jobId": "unseen-h3-full-film-2026-09-13-v1",
+  "targetAgent": "Existing RTX 4060 Laptop Windows H3 Agent",
+  "publishedAt": "2026-09-13T13:29:25.436389+00:00",
+  "state": "PUBLISHED",
+  "artifact": {
+    "delivery": "github-private-release",
+    "releaseTag": "unseen-h3-full-film-2026-09-13-v1",
+    "assetName": "unseen-h3-full-film-2026-09-13-v1.zip",
+    "sha256": "76f620ace4812de5209fc5d740a98fc8cf845c8d9ddf21e0453cad4155e32969",
+    "bytes": 225565,
+    "format": "zip",
+    "payloadManifestPath": "MANIFEST.json",
+    "payloadManifestSha256": "96db37dd8a813b1540829049dbab8654b512e177fc03b420a3c7158cf3690ce4",
+    "payloadFileCount": 15,
+    "redownloadRequired": true
+  },
+  "inputs": [
+    {
+      "path": "inputs/4060-REUSE-AND-PRIVATE-BRIDGE.md",
+      "bytes": 8627,
+      "sha256": "74c9a88ea99f210e72db05fe8c3c1e3f5ced9eac5af1b8669c0f973ca564de98"
+    },
+    {
+      "path": "inputs/BASE-T2V-API.json",
+      "bytes": 3252,
+      "sha256": "a02438e3034c5307da8cb9c30cfa6a9ed85b4b818324f03121e0562cccfba8a3"
+    },
+    {
+      "path": "inputs/BASE-T2V-WORKFLOW.json",
+      "bytes": 65901,
+      "sha256": "c15b68e92af028b9fcddf008b7560f059817cd8429860471c1fd15f8f4477c4b"
+    },
+    {
+      "path": "inputs/CREATIVE-CONTRACT.md",
+      "bytes": 7841,
+      "sha256": "f905f47f504df9f9c2a78d18b311409f41d5d4c4e7fb0553e384c2e732a095d0"
+    },
+    {
+      "path": "inputs/CREATIVE-START-HERE.md",
+      "bytes": 6213,
+      "sha256": "853e79fd737d7e4a1c314c9ea9df5e3bca08b2bfd6d6188b2f846d10c1f2559a"
+    },
+    {
+      "path": "inputs/REFERENCES.json",
+      "bytes": 10471,
+      "sha256": "43e8ad15ba4f57d5c6136a8a7c2f1e0038cb083d6212706d4d7626ce59a31b49"
+    },
+    {
+      "path": "inputs/SHOT-RECORD.example.json",
+      "bytes": 940,
+      "sha256": "c4ef3a160594a74160d067215bb7d292b703c7d8c89d82a174dc3a0cb73a1220"
+    },
+    {
+      "path": "inputs/SHOTS.json",
+      "bytes": 57654,
+      "sha256": "9261ed64dc4ef99f7ef87e4df1298e90312e008f03c3a87be8acb17cbd84e4ce"
+    },
+    {
+      "path": "inputs/SHOTS.md",
+      "bytes": 28998,
+      "sha256": "2a26e6ec014da244d6521abae699bb7b825c0e672ee3f2d1ad88d910c673b507"
+    },
+    {
+      "path": "inputs/guard_service.original.txt",
+      "bytes": 583,
+      "sha256": "8b142c3452cb8ec3f0ff99e06e3603c923eee6aa703dbf0aefe0a4ac1064a863"
+    },
+    {
+      "path": "inputs/run_service.original.txt",
+      "bytes": 1218,
+      "sha256": "c6b4ccda7bfb2998fe2f2e0bb7df3f44a07ef9e57a68bc857d2dc7ee5cdb274c"
+    },
+    {
+      "path": "inputs/verify_private_inputs.py",
+      "bytes": 6439,
+      "sha256": "a5144d88bdd61454f214858b694a342dffeddf79425110ab77b40450ebc1bc80"
+    }
+  ],
+  "execution": {
+    "entryPath": "START-HERE.md",
+    "productionConnectionEnabled": false,
+    "ownerThreadId": "01a09aee-3deb-7510-ae39-3eda5f765932",
+    "acceptanceThreadId": "01a0950e-6cfe-7923-85fa-3dfaa4a623a4",
+    "existingWindowsThreadId": "01a098ec-6a73-7070-a239-b0d73104c896",
+    "scope": "complete_film_36_segments_19_h3_actions_110_to_140_seconds",
+    "privateInputsPath": "PRIVATE-INPUTS.json",
+    "firstAction": "Receive exact control, verify separate private inputs, repair/test guard-loss supervision on Windows, reuse existing shared-lock runner, then continue full serial shot queue and edit.",
+    "gpuConcurrency": 1,
+    "maxAttemptsPerShot": 3,
+    "existingGpuJobPolicy": "wait_do_not_interrupt"
+  },
+  "receipt": {
+    "repository": "maxi-max-dev/max-agent-bridge",
+    "directory": "receipts/from-4060/unseen-h3-full-film-2026-09-13-v1",
+    "reportPath": "results/from-4060/unseen-h3-full-film-2026-09-13-v1/REPORT.md",
+    "requiredStates": [
+      "RECEIVED_VERIFIED",
+      "RUNNING",
+      "UPLOADING",
+      "COMPLETED"
+    ],
+    "additionalRequiredEvidence": [
+      "INPUTS-VERIFIED.json",
+      "GUARD-SUPERVISION-TEST.json",
+      "SHOT-LEDGER.json",
+      "OUTPUT-ASSETS.json"
+    ],
+    "githubIsAuthoritative": true,
+    "issueNumber": 23
+  },
+  "security": {
+    "productionApiAllowed": false,
+    "paidApiAllowed": false,
+    "lanOrPublicListenAllowed": false,
+    "killUnrelatedProcessesAllowed": false,
+    "existing3dgsChangesAllowed": false,
+    "weightsInGitAllowed": false,
+    "publicMediaPublicationAllowed": false,
+    "exactListedAiReferencesPrivateReleaseAllowed": true,
+    "generatedFilmPrivateReleaseAllowed": true,
+    "mediaInControlZipAllowed": false,
+    "exceptionScope": "Only this exact fictional UNSEEN film in the same private Release."
+  }
+}

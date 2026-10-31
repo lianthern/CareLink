@@ -1,0 +1,10 @@
+{
+  "passed": true,
+  "concurrentReturnCodes": [
+    3,
+    0
+  ],
+  "mockPostCount": 1,
+  "existingIntentUnchanged": true,
+  "noNetworkOrGPU": true
+}

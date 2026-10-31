@@ -1,0 +1,16 @@
+{
+  "schemaVersion": "1.0",
+  "checkedAt": "2026-09-02T08:06:18Z",
+  "distro": "Ubuntu-22.04",
+  "bindAddress": "127.0.0.1",
+  "port": 8765,
+  "url": "http://127.0.0.1:8765/?scene=./repair-v3.scene.json",
+  "wslPid": 420,
+  "windowsWslPid": 19544,
+  "processCommand": "python3 -m http.server 8765 --bind 127.0.0.1",
+  "wslHttpStatus": 200,
+  "windowsHttpStatus": 200,
+  "defaultBrowserLaunchRequested": true,
+  "listenerVerifiedLoopbackOnly": true,
+  "viewerStillRunning": true
+}

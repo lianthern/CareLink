@@ -1,0 +1,51 @@
+{
+  "schemaVersion": "1.0",
+  "runId": "final-04",
+  "querySha256": "1e155549e343faf2aee0e653bf08c0aee9c19b474149882bc2656f3913508389",
+  "groundTruthRead": false,
+  "hardcodedPoseUsed": false,
+  "cachedQueryPoseUsed": false,
+  "method": "alexnet-superpoint-lightglue-training-track-v1",
+  "queryKeypoints": 1412,
+  "retrievedReferences": 30,
+  "referencesWithMatches": 4,
+  "poseCandidates": 8,
+  "selection": "local-reference-cluster",
+  "seedReferenceId": 248,
+  "clusterReferenceIds": [
+    248,
+    246,
+    236,
+    225
+  ],
+  "geometricInliers": 60,
+  "geometricInlierRatio": 0.3314917127071823,
+  "medianReprojectionPx": 2.8152825832366943,
+  "correspondences": 181,
+  "estimatedC2wOpenGL": [
+    [
+      -0.8467774904114099,
+      -0.005505006992778838,
+      -0.5319187688271245,
+      1.029897742993705
+    ],
+    [
+      0.5319356773630477,
+      -0.0021657430780430698,
+      -0.8467819936118357,
+      3.63143685748626
+    ],
+    [
+      0.0035095414045236972,
+      -0.9999825020743758,
+      0.004762212112093822,
+      0.011612978641648307
+    ],
+    [
+      0.0,
+      0.0,
+      0.0,
+      1.0
+    ]
+  ]
+}

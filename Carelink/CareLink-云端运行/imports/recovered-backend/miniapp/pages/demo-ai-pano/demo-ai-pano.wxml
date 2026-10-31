@@ -1,0 +1,29 @@
+<view class="page-shell ai-pano-page" style="padding-top:{{navBarTop}}px">
+  <view class="native-nav ai-pano-nav" style="height:{{navBarHeight}}px">
+    <view class="nav-back" bindtap="onBack" aria-role="button" aria-label="返回">‹</view>
+    <text class="nav-title">纯 AI 婚礼全景</text>
+    <view class="nav-spacer"></view>
+  </view>
+
+  <view class="ai-pano-main">
+    <view class="ai-pano-hero">
+      <image src="{{activeScene.image}}" mode="aspectFill" />
+      <view class="ai-pano-shade"></view>
+      <text class="ai-pano-badge">AI GENERATED DEMO</text>
+      <view class="ai-pano-cover-copy"><text>{{activeScene.eyebrow}}</text><text>{{activeScene.title}}</text><text>{{activeScene.place}}</text></view>
+    </view>
+
+    <view class="scene-tabs"><view class="scene-tab {{activeIndex === index ? 'scene-tab--active' : ''}}" wx:for="{{scenes}}" wx:key="id" data-index="{{index}}" bindtap="onScene"><text>{{item.number}}</text><text>{{item.title}}</text></view></view>
+
+    <view class="ai-pano-content">
+      <view class="ai-pano-head"><view><text>2:1 PANORAMA</text><text>拖动查看完整场景</text></view><text>{{activeScene.number}} / 04</text></view>
+      <scroll-view class="ai-panorama" scroll-x enhanced scroll-left="{{panoScrollLeft}}" scroll-with-animation><image src="{{activeScene.image}}" mode="scaleToFill" /></scroll-view>
+      <text class="ai-direction-label">{{panoDirection}} · {{activeScene.place}}</text>
+      <view class="ai-directions"><button class="{{panoScrollLeft === index * 285 ? 'active' : ''}}" wx:for="{{['正前','右侧','后方','左侧']}}" wx:key="*this" data-index="{{index}}" bindtap="onDirection">{{item}}</button></view>
+      <view class="ai-scene-copy"><text>{{activeScene.eyebrow}}</text><text>{{activeScene.title}} · {{activeScene.place}}</text><text>{{activeScene.copy}}</text></view>
+      <view class="ai-pano-facts"><view><text>4</text><text>个 AI 场景</text></view><view><text>8</text><text>张 AI 照片</text></view><view><text>2:1</text><text>全景比例</text></view></view>
+      <view class="ai-disclosure"><text>生成内容说明</text><text>本体验使用 AI 生成的婚礼场景与演示照片，不对应真实人物或真实婚礼记录。技术对照样片另行归档，不与这套作品混写。</text></view>
+      <view class="ai-pano-back" bindtap="onBack">返回演示档案馆</view>
+    </view>
+  </view>
+</view>

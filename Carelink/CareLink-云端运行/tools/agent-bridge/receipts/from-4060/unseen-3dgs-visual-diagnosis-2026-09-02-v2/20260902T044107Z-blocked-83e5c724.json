@@ -1,0 +1,18 @@
+{
+  "schemaVersion": "1.0",
+  "jobId": "unseen-3dgs-visual-diagnosis-2026-09-02-v2",
+  "state": "BLOCKED",
+  "createdAt": "2026-09-02T04:41:07.8920329Z",
+  "agent": "4060 Agent",
+  "machine": "DESKTOP-NIBL3D4",
+  "message": "Earliest failure isolated to INPUT_OR_POSE: baseline OPENCV fx/fy=4.73 distorts the training domain; checkpoint, PLY export, and SOG conversion pass. The one-variable SIMPLE_PINHOLE repair registered only 17/72 images and 13 points, so no 7k train was launched. A new SfM experiment needs approval.",
+  "evidence": [
+    "report:results/from-4060/unseen-3dgs-visual-diagnosis-2026-09-02-v2/DIAGNOSIS.md",
+    "result_commit:39850fc",
+    "baseline_colmap:72/72,8218_points,0.985025px,track_9.582867",
+    "checkpoint_train:PSNR_32.4298,SSIM_0.970620,LPIPS_0.074713",
+    "checkpoint_eval:PSNR_31.8436,SSIM_0.963422,LPIPS_0.079537",
+    "repair_colmap:17/72,13_points,track_2.461538",
+    "quality30000:NOT_RUN"
+  ]
+}

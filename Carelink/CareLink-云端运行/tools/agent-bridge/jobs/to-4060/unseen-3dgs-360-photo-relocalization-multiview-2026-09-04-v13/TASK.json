@@ -1,0 +1,131 @@
+{
+  "schemaVersion": "1.0",
+  "jobId": "unseen-3dgs-360-photo-relocalization-multiview-2026-09-04-v13",
+  "state": "PUBLISHED",
+  "createdAt": "2026-09-04T12:46:39+10:00",
+  "title": "Relocalize the unchanged three v12 photos using training-only multiview descriptors",
+  "priority": "P0",
+  "artifact": {
+    "delivery": "github-private-release",
+    "releaseTag": "unseen-3dgs-sceneworker-2026-09-02-v1",
+    "assetName": "02-UNSEEN-3DGS-SINGLE-ZIP-sha256-4187dcb112286bb4581da17eb014c6391211140db458a32f83f7eecadfbbe462.zip",
+    "sha256": "4187dcb112286bb4581da17eb014c6391211140db458a32f83f7eecadfbbe462",
+    "bytes": 1373866,
+    "format": "zip",
+    "redownloadRequired": false
+  },
+  "inputs": [
+    {
+      "path": "inputs/scripts/linux/localize_v11_photos_multiview.py",
+      "bytes": 16068,
+      "sha256": "e5110af28ddf3ac9fab53c2694193f8360b3a20b9cda26abf1bd9354991a55bf"
+    },
+    {
+      "path": "inputs/scripts/linux/Run-V13-Multiview-Relocalization.sh",
+      "bytes": 4214,
+      "sha256": "d02a10a356c99af2dee4935f403a8382181e33818acd43d3c238707411114f1f"
+    },
+    {
+      "path": "inputs/scripts/windows/Start-V13-Multiview-Relocalization.ps1",
+      "bytes": 1484,
+      "sha256": "59efe3939fd804b39925a8dd0458ad8b8a2cc4dca9102b14f15795b674174a50"
+    },
+    {
+      "path": "inputs/tests/test_localize_v11_photos_multiview.py",
+      "bytes": 4487,
+      "sha256": "7838dc9d998c1b3fefaf018d15fae53c9adc223026631e5d86262d5a9e81135f"
+    }
+  ],
+  "execution": {
+    "host": "Max RTX 4060 Laptop",
+    "workRoot": "/home/max/src/unseen-3dgs-sceneworker",
+    "mode": "training-free-held-out-photo-to-pose-multiview-canary",
+    "parentJobId": "unseen-3dgs-360-photo-relocalization-2026-09-04-v12",
+    "sceneRevisionId": "360roam-base-posefix-r001",
+    "reuseAcceptedV11": true,
+    "reuseV12TrainingOnlyMap": true,
+    "productionConnectionEnabled": false,
+    "gpuOptimizationRunsAllowed": 0,
+    "preview7000Allowed": false,
+    "quality30000Allowed": false,
+    "sourceRedownloadAllowed": false,
+    "officialRunsAllowed": 1,
+    "postResultRetuningAllowed": false,
+    "query": {
+      "count": 3,
+      "identicalToV12": true,
+      "selection": [
+        "held-out panorama index 1 / front",
+        "held-out panorama middle index / right",
+        "held-out panorama penultimate index / left"
+      ],
+      "replacementAllowed": false,
+      "mustBeDisjointFromTraining": true,
+      "groundTruthPoseAvailableToEstimator": false,
+      "groundTruthPoseUse": "score only after pose estimation"
+    },
+    "localization": {
+      "referenceGeometry": "frozen v12 training-only triangulated 3D feature map",
+      "descriptorSource": "v11 horizontal training images only",
+      "feature": "RootSIFT up to 5000 features per image",
+      "maxObservationsPerLandmark": 6,
+      "associationRadiusPx": 3.5,
+      "ratio": 0.82,
+      "ratioRunnerUpMustBeDifferentLandmark": true,
+      "minPnpInliers": 20,
+      "minPnpInlierRatio": 0.1,
+      "maxMedianReprojectionPx": 3.5,
+      "maxTranslationErrorSceneFraction": 0.15,
+      "maxRotationErrorDegrees": 15.0,
+      "requiredPassCount": 3,
+      "passThresholdsIdenticalToV12": true,
+      "usesHeldOutImages": false,
+      "usesAuthorScenePly": false,
+      "usesV11SogGeometry": false
+    },
+    "viewer": {
+      "allowedOnlyAfterPhaseA3Of3": true,
+      "reuseV11Sog": true,
+      "newManifestRequired": true,
+      "estimatedPoseRequired": true,
+      "groundTruthAnchorForbidden": true,
+      "bindAddress": "127.0.0.1",
+      "compareImages": 3
+    },
+    "firstAction": "Pull main, read all v13 files, submit RECEIVED_VERIFIED, verify v11 and v12 frozen results, then run the unique PowerShell command once. Do not train, replace query 2, lower gates, retune, or rerun after the result."
+  },
+  "receipt": {
+    "repository": "maxi-max-dev/max-agent-bridge",
+    "issueNumber": 14,
+    "directory": "receipts/from-4060/unseen-3dgs-360-photo-relocalization-multiview-2026-09-04-v13",
+    "reportPath": "results/from-4060/unseen-3dgs-360-photo-relocalization-multiview-2026-09-04-v13/V13-REPORT.md",
+    "requiredStates": ["RECEIVED_VERIFIED", "RUNNING", "UPLOADING", "COMPLETED"],
+    "failureStatesAllowed": ["BLOCKED", "FAILED"],
+    "githubIsAuthoritative": true,
+    "icloudReportIsBestEffortOnly": true
+  },
+  "security": {
+    "allowedNetwork": "outbound HTTPS to GitHub plus loopback HTTP only",
+    "productionApiAllowed": false,
+    "paidApiAllowed": false,
+    "firewallChangeAllowed": false,
+    "lanOrPublicListenAllowed": false,
+    "privateMediaAllowed": false,
+    "safeDerivedCompareImagesAllowed": true,
+    "forbiddenUploads": [
+      "source panoramas",
+      "original or standalone query images",
+      "virtual-view corpus",
+      "pose_c2w.json",
+      "feature map",
+      "descriptor bank",
+      "checkpoint",
+      "trained PLY",
+      "SOG",
+      "work directory",
+      "private media",
+      "token",
+      ".env"
+    ]
+  }
+}

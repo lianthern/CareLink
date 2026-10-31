@@ -1,0 +1,7 @@
+PATCH_APPLY_CHECK=PASS
+base=clean PoC Viewer fixture containing the original viewer/app.js and viewer/scene.schema.json
+command=git apply --check fixes/unseen-3dgs-local-viewer-integration-v5.patch
+patchFiles=21
+viewerAppOccurrences=1
+viewerSchemaOccurrences=1
+profiles=repair-v3 and tum-v4 kept separate

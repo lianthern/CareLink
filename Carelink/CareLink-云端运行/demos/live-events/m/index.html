@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,maximum-scale=1">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="theme-color" content="#241d3a">
+<link rel="icon" href="data:,">
+<title>UNSEEN · 一场婚礼，两个空间</title>
+<link rel="stylesheet" href="../fonts/fonts.css">
+<style>
+:root{
+  --gold:#C9A45B;--gold2:#E2C288;
+  --serif:"Noto Serif SC","Songti SC",serif;
+  --en:"Cormorant Garamond","Georgia",serif;
+  --sans:"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+}
+*{box-sizing:border-box}
+html,body{margin:0;height:100%;background:#1a1526;color:#F5EEF9;font-family:var(--sans);-webkit-font-smoothing:antialiased;overflow:hidden}
+.page{display:flex;flex-direction:column;height:100dvh;padding:calc(12px + env(safe-area-inset-top)) 14px calc(10px + env(safe-area-inset-bottom))}
+.top{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:8px}
+.brand{font-family:var(--en);font-style:italic;letter-spacing:.22em;font-size:12px;color:#B9AED3}
+.hint{font-size:11px;color:#9E93BD}
+h1{font-family:var(--serif);font-weight:600;font-size:26px;margin:4px 0 12px;letter-spacing:.04em}
+h1 em{font-style:normal;background:linear-gradient(90deg,#F3E2BC,#E2C288 50%,#D9B872);-webkit-background-clip:text;background-clip:text;color:transparent}
+.tabs{display:flex;gap:8px;margin-bottom:10px}
+.tabs button{
+  flex:1;border:1px solid rgba(201,164,91,.55);background:rgba(255,255,255,.06);color:#d8cfea;
+  border-radius:999px;padding:10px 0;font-size:15px;font-family:var(--serif);
+}
+.tabs button.on{background:linear-gradient(160deg,rgba(255,250,236,.18),rgba(226,194,136,.22));color:#F3E2BC;border-color:#E2C288}
+.stage{flex:1;min-height:0;position:relative;border:1px solid rgba(226,194,136,.5);border-radius:18px;overflow:hidden;background:#120f18}
+.stage iframe{position:absolute;inset:0;width:100%;height:100%;border:0;background:#120f18}
+.stage iframe[hidden]{display:none}
+.note{margin-top:8px;font-size:12px;color:#9E93BD;text-align:center}
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="top"><div class="brand">UNSEEN · MEMORY MOMENT</div></div>
+  <h1>一场婚礼，<em>两个空间</em></h1>
+  <div class="tabs">
+    <button type="button" class="on" data-scene="a">空间一</button>
+    <button type="button" data-scene="b">空间二</button>
+  </div>
+  <div class="stage">
+    <iframe id="frame-a" title="空间一" data-src="../viewer/index.html?scene=../portrait/scene.json" allow="fullscreen"></iframe>
+    <iframe id="frame-b" title="空间二" data-src="../viewer/index.html?scene=../landscape/scene-lite.json" hidden allow="fullscreen"></iframe>
+  </div>
+  <p class="note">每个空间大约 16MB，第一次打开会等几秒</p>
+</div>
+<script>
+(function(){
+  const frames = {a: document.getElementById('frame-a'), b: document.getElementById('frame-b')};
+  function load(key){
+    const f = frames[key];
+    if (f.dataset.src){ f.src = f.dataset.src; delete f.dataset.src; }
+  }
+  function show(key){
+    document.querySelectorAll('.tabs button').forEach(b => b.classList.toggle('on', b.dataset.scene === key));
+    Object.entries(frames).forEach(([k,f]) => {
+      const on = k === key;
+      f.hidden = !on;
+      try { f.contentWindow.postMessage({type: on ? 'viewer-resume' : 'viewer-pause'}, location.origin); } catch (e) {}
+    });
+    load(key);
+  }
+  load('a');
+  document.querySelectorAll('.tabs button').forEach(b => b.addEventListener('click', () => show(b.dataset.scene)));
+})();
+</script>
+</body>
+</html>

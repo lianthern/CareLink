@@ -1,0 +1,60 @@
+{
+  "schemaVersion": "1.0",
+  "jobId": "unseen-companion-one-2026-09-21-v1",
+  "releaseTag": "unseen-companion-one-2026-09-21-v1",
+  "scope": "release-payload",
+  "selfExcluded": true,
+  "taskExcluded": true,
+  "files": [
+    {
+      "path": "ACCEPTANCE.md",
+      "bytes": 1898,
+      "sha256": "5c89dfba214c479ca086ee7942f4f60b21f6c46cac25af36454742d2974c3261"
+    },
+    {
+      "path": "CONTEXT.md",
+      "bytes": 4131,
+      "sha256": "48bd6c6827657f7c74180aac47aa0ace8400ff01444ef0263c796bbdce8b1026"
+    },
+    {
+      "path": "Prepare-Runtime.ps1",
+      "bytes": 2627,
+      "sha256": "b91381746ecc140c4d87db9f830c277e3acf9240a4cc0ab3086ea0a195a6afec"
+    },
+    {
+      "path": "RUNTIME-PACKAGE.json",
+      "bytes": 5941,
+      "sha256": "c40fb411efdf8946ed49bd07128c30e1e4985ebf9a900e917d3cd7085bc46e75"
+    },
+    {
+      "path": "START-HERE.md",
+      "bytes": 6489,
+      "sha256": "10a20df5d78a1e7041693e3d460a88a09a5bc912916669365728df826a86598b"
+    },
+    {
+      "path": "inputs/DESIGN.md",
+      "bytes": 1207,
+      "sha256": "7ab10e99188dcb860809fd3948002ca3b1a06a7c7998ee57e639f96d916d8f36"
+    },
+    {
+      "path": "inputs/DEVICE-RESEARCH.md",
+      "bytes": 4358,
+      "sha256": "589f309cbfad141622dc047b4cdbaa725534a31f6036e5152b6024a8550f930f"
+    },
+    {
+      "path": "inputs/LAB-README.md",
+      "bytes": 6761,
+      "sha256": "130a58a75fdb21bf88dbb209ef33c34e813f7633ea163dbc9624d7d8cd45160d"
+    },
+    {
+      "path": "inputs/MAC-VALIDATION.md",
+      "bytes": 2480,
+      "sha256": "a23e079b7e12a1f35be1f63952586170dbf0c0254af525e090e0b6f330399236"
+    },
+    {
+      "path": "inputs/NOTICE.md",
+      "bytes": 751,
+      "sha256": "29fd28381c54f12d8e44256dfffc7d20ef1a8123155164e8bfa84f8aa8703a1f"
+    }
+  ]
+}

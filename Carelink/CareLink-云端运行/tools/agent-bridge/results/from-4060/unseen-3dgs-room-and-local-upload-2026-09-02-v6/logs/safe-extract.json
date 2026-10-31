@@ -1,0 +1,23 @@
+{
+  "schemaVersion": "1.0",
+  "status": "PASS",
+  "archive": "/home/max/src/unseen-3dgs-sceneworker/data/tum-room-v6/download/rgbd_dataset_freiburg1_room.tgz",
+  "destination": "/home/max/src/unseen-3dgs-sceneworker/data/tum-room-v6/raw",
+  "datasetRoot": "/home/max/src/unseen-3dgs-sceneworker/data/tum-room-v6/raw/rgbd_dataset_freiburg1_room",
+  "memberCount": 2729,
+  "regularFileCount": 2726,
+  "declaredRegularBytes": 837765933,
+  "safetyChecks": {
+    "noAbsolutePaths": true,
+    "noParentTraversal": true,
+    "noBackslashPaths": true,
+    "noSymlinkOrHardlink": true,
+    "regularFilesAndDirectoriesOnly": true,
+    "singleRequiredIndexSet": true
+  },
+  "requiredIndexes": {
+    "rgb.txt": "/home/max/src/unseen-3dgs-sceneworker/data/tum-room-v6/raw/rgbd_dataset_freiburg1_room/rgb.txt",
+    "depth.txt": "/home/max/src/unseen-3dgs-sceneworker/data/tum-room-v6/raw/rgbd_dataset_freiburg1_room/depth.txt",
+    "groundtruth.txt": "/home/max/src/unseen-3dgs-sceneworker/data/tum-room-v6/raw/rgbd_dataset_freiburg1_room/groundtruth.txt"
+  }
+}

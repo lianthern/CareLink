@@ -1,0 +1,41 @@
+{
+  "schemaVersion": "1.0",
+  "jobId": "unseen-3dgs-visual-diagnosis-2026-09-02-v2",
+  "targetAgent": "Max RTX 4060 Laptop Agent",
+  "publishedAt": "2026-09-02T03:38:12Z",
+  "state": "PUBLISHED",
+  "artifact": {
+    "delivery": "github-private-release",
+    "releaseTag": "unseen-3dgs-sceneworker-2026-09-02-v1",
+    "assetName": "02-UNSEEN-3DGS-SINGLE-ZIP-sha256-4187dcb112286bb4581da17eb014c6391211140db458a32f83f7eecadfbbe462.zip",
+    "sha256": "4187dcb112286bb4581da17eb014c6391211140db458a32f83f7eecadfbbe462",
+    "bytes": 1373866,
+    "format": "zip"
+  },
+  "execution": {
+    "mode": "same-machine-visual-diagnosis",
+    "parentJobId": "unseen-3dgs-sceneworker-2026-09-02-v1",
+    "reuseExistingLocalArtifacts": true,
+    "redownloadRequired": false,
+    "productionConnectionEnabled": false,
+    "quality30000Allowed": false,
+    "firstAction": "Pull main, read README.md for this job, acknowledge RECEIVED_VERIFIED, then inspect existing checkpoint/PLY/SOG without retraining.",
+    "localProjectPath": "/home/max/src/unseen-3dgs-sceneworker",
+    "instructions": "Find the earliest failing boundary among checkpoint render, raw PLY, SOG conversion, and web viewer. Capture a baseline before changing packages or scripts."
+  },
+  "receipt": {
+    "repository": "maxi-max-dev/max-agent-bridge",
+    "issueNumber": 2,
+    "directory": "receipts/from-4060/unseen-3dgs-visual-diagnosis-2026-09-02-v2",
+    "reportPath": "results/from-4060/unseen-3dgs-visual-diagnosis-2026-09-02-v2/DIAGNOSIS.md",
+    "requiredStates": ["RECEIVED_VERIFIED", "RUNNING", "COMPLETED"],
+    "githubIsAuthoritative": true,
+    "icloudReportIsBestEffortOnly": true
+  },
+  "security": {
+    "allowedNetwork": "outbound-https-only",
+    "productionApiAllowed": false,
+    "paidApiAllowed": false,
+    "forbiddenUploads": ["raw video", "frames", "private media", "SOG", "PLY", "checkpoint", "work directory", "token", ".env"]
+  }
+}

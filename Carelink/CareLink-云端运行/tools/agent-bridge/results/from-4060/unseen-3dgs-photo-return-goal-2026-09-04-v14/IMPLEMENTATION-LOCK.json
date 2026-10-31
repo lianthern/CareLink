@@ -1,0 +1,20 @@
+{
+  "schemaVersion": "1.0",
+  "status": "LOCKED",
+  "method": "alexnet-superpoint-lightglue-training-track-v1",
+  "implementation": {
+    "path": "final_localizer.py",
+    "sha256": "7620f3d9d296f679b555b461e45fc36fecaf9bf28db8bb6ddee1031ba043f4ec"
+  },
+  "indexBuilder": {
+    "path": "build_v14_lightglue_index.py",
+    "sha256": "ab540740b997a8fd44323cdbd3dd8271a7d378f77abdb0fc3bbe8c1bd740bd9b"
+  },
+  "challengeManifestSha256": "ccf14ff274a7ff4756ca6414e0bb8c2405b140affc31ba53c2894a432e6fa0b8",
+  "indexManifestSha256": "fe2adb589901afe03f949d60f14e86219c5673caf86c1587a3eac67655d27aba",
+  "indexTreeSha256": "cb97169c17c6a662fc33936445f6eb90aa3367b9021407ed38f2a1d1d993e7d9",
+  "indexUnchangedAcrossFiveCleanRuns": true,
+  "queryImagesOpenedDuringIndexBuild": 0,
+  "lockedBeforePrivateFinalGate": true,
+  "implementationMatchesPrivateFinalGate": true
+}

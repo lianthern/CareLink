@@ -1,0 +1,219 @@
+{
+  "schema": "unseen-target-renderer-s35-adaptive-evidence/1",
+  "kind": "S35_ADAPTIVE_STOPPED_AT_BWRAP_DIRECT_BROWSER_NONSECRET_EVIDENCE",
+  "observedDate": "2026-08-15",
+  "sourceRepositoryHeadBeforeEvidence": "af9e73eb0da622c3c75bebcf1bf29b8121c8ead7",
+  "sourceEvidence": {
+    "receiptHashCorrectionCommit": "864105f436d778f5161281c7d9d5b4f436878bf6",
+    "diagnosticsV2Commit": "4885457eba80f1115e381cf986040fc73e74f7fc",
+    "traceabilityAuditCommit": "7cdd1095b96271a79b6be0ccc9ec6075ab661fa5",
+    "s3V3Commit": "3e44c2ad56341658eaabd8e36db2b5c9dc07817f",
+    "s3V4Commit": "af9e73eb0da622c3c75bebcf1bf29b8121c8ead7"
+  },
+  "candidate": {
+    "commit": "09f29ba002d11b38f3ac0f1a78e59822fb14844e",
+    "tree": "738f457162b44c1b12e02d316167b3af899c22b0",
+    "activeRepositoryClean": true
+  },
+  "diagnosticBoundary": {
+    "claim": "S35_ADAPTIVE_ONLY_NOT_RENDERER_RETRY_NOT_ACCEPTANCE",
+    "receiptSha256": "ae9a3cd339ac2148bc8a4b8820cc807f4dba0d36b965103da3a2f1da127c0bda",
+    "receiptSchemaExact": true,
+    "sameReceiptBubblewrapSeccompAppArmorAndFormalIdentity": true,
+    "rawStreamsRecorded": false,
+    "rawStderrRead": false,
+    "receiptContentRecorded": false,
+    "pathValuesRecorded": false,
+    "argvRecorded": false,
+    "productionSocketUsed": false,
+    "productionSpoolPresent": false,
+    "bookRequestExecuted": false,
+    "renderExecuted": false,
+    "s4Executed": false,
+    "s5Executed": false,
+    "stageTimeoutMs": 15000,
+    "totalTimeoutMs": 45000,
+    "timeoutKillsWholeProcessGroupAndAwaitsClose": true,
+    "firstFailureStopsLaterStages": true
+  },
+  "rawOracle": {
+    "construction": "UTF8_RECEIPT_BROWSER_VERSION_PLUS_HEX_200A",
+    "canonicalBytes": 23,
+    "canonicalSha256": "3e15f7d92307ab888c3933d5b9da2c436e62ef6d11481fea2bdf85d8d6e50b29",
+    "suffixHex": "200a",
+    "expectedRawBytes": 25,
+    "expectedRawSha256": "91a7b4e121afdabc374f04d53220353ef25ecf30bf153ff5dc0670b237dc4be5",
+    "trimApplied": false,
+    "generalWhitespaceAllowed": false,
+    "stderrAllowlist": [],
+    "priorFailureFingerprintAllowed": false
+  },
+  "absoluteTruePreflight": {
+    "formalUsrReadOnlyMountPresent": true,
+    "regular": true,
+    "symlink": false,
+    "rootOwned": true,
+    "executable": true,
+    "worldWritable": false,
+    "nlink": 1,
+    "sha256": "b860051e15938770f4164177f2fc2d4e1af26b226c9b0c3ea75a36d1be33a3cf",
+    "inodeBindingSha256": "e0b978d330474651a02f4eceb2ff3aea4559a4664e822e2c87261802ed04adad",
+    "executed": false
+  },
+  "binaryBindings": {
+    "browser": {
+      "sha256": "c38a09eb6554dab8c41256cba62510bbeb1697c72e60fee0b6725180457ee0d7",
+      "beforeInodeBindingSha256": "6bff16559ef86cddcfdbbb7ef09f06348afb8dd92b5c3e5c513f38ff75fcbdd6",
+      "afterStageAInodeBindingSha256": "6bff16559ef86cddcfdbbb7ef09f06348afb8dd92b5c3e5c513f38ff75fcbdd6"
+    },
+    "bubblewrap": {
+      "sha256": "52231e1caf55bcbc667b269f49c63599a6f7db4767ae6a039580d0ff853db712",
+      "beforeInodeBindingSha256": "5fb261c8af046c3d5b40044da7a8cd6608e2c15f0a396c246329d59d5d7eebdb",
+      "afterStageAInodeBindingSha256": "5fb261c8af046c3d5b40044da7a8cd6608e2c15f0a396c246329d59d5d7eebdb"
+    },
+    "node": {
+      "sha256": "3517c2df0b2f8cd7f422b4b8450ef81c6889f08eb03e281d6de9079b15e6a327",
+      "beforeInodeBindingSha256": "e9b344588a19188c82f5e7145a8089119efd07683187670677c8abadc5232c48",
+      "afterStageAInodeBindingSha256": "e9b344588a19188c82f5e7145a8089119efd07683187670677c8abadc5232c48"
+    },
+    "absoluteTrue": {
+      "beforeInodeBindingSha256": "e0b978d330474651a02f4eceb2ff3aea4559a4664e822e2c87261802ed04adad",
+      "afterStageAInodeBindingSha256": "e0b978d330474651a02f4eceb2ff3aea4559a4664e822e2c87261802ed04adad"
+    }
+  },
+  "preExecutionSourcePreservation": {
+    "status": "PASS",
+    "preservedBeforeUnitStart": true,
+    "quarantineRootOnlyMode0700": true,
+    "allPreservedFilesRootOwnedRegularMode0600Nlink1": true,
+    "logicalSources": {
+      "diagnosticRunnerSha256": "0976aff643fb96f3cbb08b244a9dc1171e5ac8c218e7bd150d46e47d3c590c6d",
+      "diagnosticUnitSha256": "7f6aef2d9e5aca570f79c9f728eea952bca99ba328cfeaac1473e3a86ca35083",
+      "effectivePropertiesSha256": "2b4221914ef08130270f0efbf36748ffcb17946c84bbeb1975307aa1dfc42526",
+      "formalServiceSourceSha256": "8ef370f46b123b645fc11ceea1bef6283281de37b6178ffa5e13b1e854cc3421",
+      "appArmorProfileSha256": "6e641e3e8a5036c8f02443eb0b235e8e357957fa03a00e0c51fc88998575162d"
+    },
+    "systemdAnalyzeVerify": "PASS",
+    "unrelatedPreexistingSystemdWarningCount": 1
+  },
+  "formalSandbox": {
+    "privateNetwork": true,
+    "ipAddressDeny": [
+      "0.0.0.0/0",
+      "::/0"
+    ],
+    "restrictAddressFamilies": [
+      "AF_UNIX"
+    ],
+    "appArmorProfileSha256": "6e641e3e8a5036c8f02443eb0b235e8e357957fa03a00e0c51fc88998575162d",
+    "seccompSha256": "942698fb5a2fb27e2cd36d36e6d8cc5db42e04dcd4af8adde8bd4e617ae50e44",
+    "stageABubblewrapArgumentsSha256": "b5defb8e8982247b2424e77a4d8c33ed399337a951933c049dfa2958f49c3482",
+    "pathEnvironmentOverride": false,
+    "descendantEnvironmentOverride": false,
+    "extraBinMountAdded": false,
+    "formalUsrMountReused": true,
+    "inheritedEnvironmentKeySetSha256": "b1fde848b5bb5e184cbb612a6f2945a977fa1425bd05901a897f14a2b524dc76"
+  },
+  "diagnosticRun": {
+    "status": "FAIL_CLOSED_AT_STAGE_A",
+    "unitStartExitCode": 1,
+    "startedAt": "2026-08-15T08:40:20Z",
+    "finishedAt": "2026-08-15T08:40:23Z",
+    "totalElapsedMs": 2778,
+    "sanitizedResultSha256": "f9462cd3262d7813375770bb5b3228151f0e76d652d5231dfae1c3c4b0468b74",
+    "stages": [
+      {
+        "stage": "S35_A_BWRAP_DIRECT_BROWSER_VERSION",
+        "exitCode": 1,
+        "signal": null,
+        "timedOut": false,
+        "stdoutBytes": 0,
+        "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stderrBytes": 66,
+        "stderrSha256": "a4d2a58a559193b52811416426b7bef97f0658b6bf01bf2b14b7cbd790e120dc",
+        "matchesPriorS3V4FailureFingerprint": true,
+        "acceptedByAllowlist": false,
+        "match": false
+      }
+    ],
+    "stageB": "NOT_RUN_AFTER_STAGE_A_FAILURE",
+    "stageC": "NOT_RUN_AFTER_STAGE_A_FAILURE",
+    "nodeExecutionCount": 0,
+    "absoluteTrueExecutionCount": 0,
+    "browserVersionAttemptCount": 1,
+    "renderCount": 0,
+    "bookRequestCount": 0
+  },
+  "diagnosticNarrowing": {
+    "stageADirectBrowserFailureMatchesS3V4Fingerprint": true,
+    "failureOccursBeforeNodePermissionOrNodeChildSpawn": true,
+    "nodePermissionPathExonerated": false,
+    "absoluteTrueControlObserved": false,
+    "boundedConclusion": "FAILURE_IS_AT_OR_BEFORE_FORMAL_BWRAP_DIRECT_BROWSER_STARTUP_NOT_SPECIFICALLY_NODE_CHILD_SPAWN"
+  },
+  "cleanup": {
+    "status": "PASS",
+    "diagnosticUnit": "NOT_FOUND_INACTIVE",
+    "diagnosticProcesses": 0,
+    "bubblewrapProcesses": 0,
+    "chromiumProcesses": 0,
+    "rendererSocketPresent": false,
+    "appArmorProfileLoaded": false,
+    "productionSpoolPresent": false,
+    "runRootPresent": false,
+    "cupsPort631Listeners": 0,
+    "appArmorDeniedCount": 0,
+    "oomCount": 0,
+    "coredumpCount": 0,
+    "quarantineRootOnlyMode0700": true,
+    "quarantineRegularFileCount": 6,
+    "quarantineNonconformingFileCount": 0,
+    "quarantineManifestSha256": "d55a002c30235d9f45cfd404044aaf64084bea7d6f6d90fe79df90aacdc7a971"
+  },
+  "postCleanupCoreInvariants": {
+    "activeCommit": "09f29ba002d11b38f3ac0f1a78e59822fb14844e",
+    "activeTree": "738f457162b44c1b12e02d316167b3af899c22b0",
+    "apiActive": true,
+    "apiMainPid": 293190,
+    "apiFourWayBindingAndRepositoryClean": true,
+    "apiNRestarts": 10,
+    "webActive": true,
+    "webMainPid": 293192,
+    "webFourWayBindingAndRepositoryClean": true,
+    "webNRestarts": 10,
+    "databaseQuickCheck": "ok",
+    "migrationCount": 10,
+    "accounts": 0,
+    "photos": 0,
+    "privateAiJobs": 0,
+    "caddyConfigurationSha256": "c5691b38229753bcc2bbdcd8cc8b32f691433ab5924b9c3130c3436b8ea787db",
+    "caddyMainPid": 24470,
+    "caddyActive": true,
+    "caddyChangedOrReloaded": false,
+    "webLoopbackStatus": 200,
+    "publicMissingAuthStatus": 401,
+    "bookEnabled": false,
+    "privateAiEnabled": false,
+    "otpConfigured": false
+  },
+  "openFindings": {
+    "p0": [],
+    "p1": [
+      "renderer_target_child_nonzero_exit_candidate09f"
+    ],
+    "p2": []
+  },
+  "nonClaims": [
+    "not renderer target acceptance",
+    "not a renderer retry",
+    "not proof that absolute true or Node permission spawning passes or fails",
+    "not S4 or S5 evidence",
+    "not Book enabled",
+    "not production GO",
+    "not live user data",
+    "not evidence containing stdout, stderr, receipt content, argv, absolute path values or credentials"
+  ],
+  "productionReady": false,
+  "releaseDecision": "NO_GO",
+  "sensitiveDataRecorded": false
+}

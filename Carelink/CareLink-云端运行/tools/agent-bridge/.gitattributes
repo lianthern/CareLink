@@ -1,0 +1,16 @@
+# Frozen task inputs are byte-addressed and must survive Windows checkouts.
+* text=auto eol=lf
+
+*.gif binary
+*.gz binary
+*.jpeg binary
+*.jpg binary
+*.pdf binary
+*.png binary
+*.mp4 binary
+*.tar binary
+*.webp binary
+*.zip binary
+
+# Source receipts are immutable snapshots, including original line endings.
+receipts/** -text

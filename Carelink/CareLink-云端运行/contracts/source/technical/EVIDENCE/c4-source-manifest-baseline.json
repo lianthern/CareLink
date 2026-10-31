@@ -1,0 +1,1668 @@
+{
+  "schemaVersion": "unseen-c4-source-manifest/1",
+  "status": "historical_code_fingerprint_not_safe_import_allowlist",
+  "origin": {
+    "sessionAbsolutePath": "/Users/max/.codex/sessions/2026/08/13/rollout-2026-08-13T00-03-38-019ff649-2b0c-7d61-a7c8-b0b9e4db956e.jsonl",
+    "timestampUtc": "2026-08-12T14:31:38.070Z",
+    "callId": "call_mEMWzsdl4Y4P28QaLBztXw4z"
+  },
+  "historicalMethod": {
+    "includeExtensions": [
+      ".cjs",
+      ".css",
+      ".html",
+      ".js",
+      ".json",
+      ".md",
+      ".mjs",
+      ".py",
+      ".sql",
+      ".toml",
+      ".ts",
+      ".tsx",
+      ".wxml",
+      ".wxss"
+    ],
+    "excludedDirectoryNames": [
+      ".git",
+      ".next",
+      "__pycache__",
+      "artifacts",
+      "backups",
+      "dist",
+      "node_modules",
+      "output",
+      "releases"
+    ],
+    "pathKind": "absolute POSIX path as emitted by find",
+    "pathEncoding": "UTF-8; no normalization",
+    "sort": "bytewise absolute path; LC_ALL=C for reproduction",
+    "lineFormat": "{sha256}  {absolutePath}\\n",
+    "aggregate": "SHA-256 of the raw concatenation of ordered lines",
+    "observedPathSafety": {
+      "nonAsciiPaths": 0,
+      "crOrLfPaths": 0
+    }
+  },
+  "verifier": {
+    "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX/work/unseen-product-reboot-2026-08-12/technical/EVIDENCE/verify_c4_source_manifest.py",
+    "sha256": "cc05a051f126606ffc62803fac2dd559994c085438b9b25318302ebad81754f4"
+  },
+  "scopes": [
+    {
+      "id": "formal_web",
+      "rootAbsolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX/work/unseen-panorama-rebuild",
+      "selection": "source_extensions",
+      "expectedCount": 130,
+      "expectedAggregateSha256": "2542c7b71425bd7946a707d353cdfd3f2be31a17079df6aa151513d24fbe2b50",
+      "entries": [
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX/work/unseen-panorama-rebuild/miniapp/app 2.json",
+          "bytes": 462,
+          "sha256": "80c0b4ab067e1658d8600724eeaff403d6830e1f2684ca077c3147504b740011"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX/work/unseen-panorama-rebuild/miniapp/app 2.wxss",
+          "bytes": 2108,
+          "sha256": "43a0460ee2a4f5dfee9f3a303d251202507df724dd1af4571f851849982ea140"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX/work/unseen-panorama-rebuild/miniapp/app.js",
+          "bytes": 4728,
+          "sha256": "749eb230b43da0e26875b3d155ace55a0af36d83a9b0f408a7ad0fe5955b47a3"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX/work/unseen-panorama-rebuild/miniapp/app.json",
+          "bytes": 724,
+          "sha256": "8c4f8e3da80ab9dc575be84307d27653adec2aee610840073f802cfe66cefd00"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX/work/unseen-panorama-rebuild/miniapp/app.wxss",
+          "bytes": 2571,
+          "sha256": "dd8b7530bb3e1afb4f438923378ad10fb7e4ff6e6bbc2e556cba419a6ffb09f5"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX/work/unseen-panorama-rebuild/miniapp/cloudfunctions/unseenNative/config.json",
+          "bytes": 63,
+          "sha256": "b67b9a84c2e0b1082996ad261a6c7301243d821d2a09c5d92cf4ed4e1d996955"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX/work/unseen-panorama-rebuild/miniapp/cloudfunctions/unseenNative/index.js",
+          "bytes": 25230,
+          "sha256": "b30b4b7df3aa116c8123d6ec107635a354b3999dd2b92636d3d0888114c17e72"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX/work/unseen-panorama-rebuild/miniapp/cloudfunctions/unseenNative/package.json",
+          "bytes": 162,
+          "sha256": "7005d27b85d443492e0475cb2b142663310aff63b50bca5cc03a8d3612bcbe7a"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX/work/unseen-panorama-rebuild/miniapp/cloudfunctions/unseenNative/test.js",
+          "bytes": 1365,
+          "sha256": "556fb34eb33a0b9329644a35265b97b37de33bfd8c646687312228278ae3d2b5"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX/work/unseen-panorama-rebuild/miniapp/pages/capture/capture.js",
+          "bytes": 136686,
+          "sha256": "2f9f3bd93d56ee1cd55427df32632e64fdf416be187d8deb8c661d644bdd2b96"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX/work/unseen-panorama-rebuild/miniapp/pages/capture/capture.json",
+          "bytes": 117,
+          "sha256": "43b8611c76c45a5ff41baa983bb47a2eb1991da32732e2dee898178285e8be8b"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX/work/unseen-panorama-rebuild/miniapp/pages/capture/capture.wxml",
+          "bytes": 7186,
+          "sha256": "3d1e0bac082ec6e9b810309757f8d00ce7715af822567247c249316eec416287"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX/work/unseen-panorama-rebuild/miniapp/pages/capture/capture.wxss",
+          "bytes": 8963,
+          "sha256": "327aa9d178cb1ff824a84746d23ea31285a592531003925416b9941ac0975779"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX/work/unseen-panorama-rebuild/miniapp/pages/create/create.js",
+          "bytes": 10010,
+          "sha256": "3ff8e71556832051ae3c19f7025cdcfb68fd39560752f19bbd081496b3ab31a2"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX/work/unseen-panorama-rebuild/miniapp/pages/create/create.json",
+          "bytes": 47,
+          "sha256": "2447e633f5390f8295b07bea8d02880092967225578ee5633ac340921a64aa93"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX/work/unseen-panorama-rebuild/miniapp/pages/create/create.wxml",
+          "bytes": 3968,
+          "sha256": "031e02b1809f56e28cb44dbda0c0a460c566e2b2e48a464fb62a5825dca3771c"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX/work/unseen-panorama-rebuild/miniapp/pages/create/create.wxss",
+          "bytes": 2578,
+          "sha256": "8bb0afdff2df1f35512333b809c7ff252e1d2295375b939d9dd1345a84168337"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX/work/unseen-panorama-rebuild/miniapp/pages/demo-ai-pano/demo-ai-pano.js",
+          "bytes": 2029,
+          "sha256": "7c49eaff7247127ca8bc6d77325dce651c97e5cfe72177839c87b1a01ee99d1c"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX/work/unseen-panorama-rebuild/miniapp/pages/demo-ai-pano/demo-ai-pano.json",
+          "bytes": 133,
+          "sha256": "e6d877a8834f9ac66702c3c6acf3c970cd750c057a99578cf749c6c8627c187a"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX/work/unseen-panorama-rebuild/miniapp/pages/demo-ai-pano/demo-ai-pano.wxml",
+          "bytes": 2415,
+          "sha256": "2a0ac7a70bc537f154e463fe5bfc1f7a474af89ac1fec0abbbe88ca71b0ffee7"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX/work/unseen-panorama-rebuild/miniapp/pages/demo-ai-pano/demo-ai-pano.wxss",
+          "bytes": 4935,
+          "sha256": "5345594e507f58c9b05741b8622dcab2ac770e0737f443420cc8cf6fef376bcd"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX/work/unseen-panorama-rebuild/miniapp/pages/demo-archive/demo-archive.js",
+          "bytes": 5459,
+          "sha256": "426825287c0a7418f5b5144d9470c62afdad8f3d24d698932886037b22804bd5"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX/work/unseen-panorama-rebuild/miniapp/pages/demo-archive/demo-archive.json",
+          "bytes": 100,
+          "sha256": "59438dbcd1f4d09b5caf1ff31c2fdf52b7484791bef1552d6c97a95b8ea10d0f"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX/work/unseen-panorama-rebuild/miniapp/pages/demo-archive/demo-archive.wxml",
+          "bytes": 7332,
+          "sha256": "ce7c0e38909c5e3b476d401ce248ad52001842c64fe0ebeecc4ba97103c47d77"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX/work/unseen-panorama-rebuild/miniapp/pages/demo-archive/demo-archive.wxss",
+          "bytes": 14102,
+          "sha256": "5ee7c88ea0e5b1ac336e02e4a7fdf4ac84232c4fcad08ab58acdb3c3beea734a"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX/work/unseen-panorama-rebuild/miniapp/pages/demo-detail/demo-detail.js",
+          "bytes": 4188,
+          "sha256": "ed1cfb291bfbdb46a059021fe70c4a3b401ec4cd835c88f5fd7bcf9562c79ce6"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX/work/unseen-panorama-rebuild/miniapp/pages/demo-detail/demo-detail.json",
+          "bytes": 60,
+          "sha256": "4bdc76b1ebbd9ee425f5b3e7a981ad553849b0adf8b098c2d05a1a465c56d268"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX/work/unseen-panorama-rebuild/miniapp/pages/demo-detail/demo-detail.wxml",
+          "bytes": 1138,
+          "sha256": "8d0150a678632571b19f57de24148c794796774b4e5308f2dae88d68fb867d29"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX/work/unseen-panorama-rebuild/miniapp/pages/demo-detail/demo-detail.wxss",
+          "bytes": 1861,
+          "sha256": "3049a5490fb0209752d090d138532e1463e7f25a9ee4f84528accf30da522fda"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX/work/unseen-panorama-rebuild/miniapp/pages/demo-story/demo-story.js",
+          "bytes": 3620,
+          "sha256": "0f9fd5c1883bf6f461af975a624f2353f6f23597e913d0431a72c5266dd931bf"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX/work/unseen-panorama-rebuild/miniapp/pages/demo-story/demo-story.json",
+          "bytes": 84,
+          "sha256": "5020737d84d5d3429e783f16035e48dd139167801e5f34859e7168e00df9fa1b"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX/work/unseen-panorama-rebuild/miniapp/pages/demo-story/demo-story.wxml",
+          "bytes": 1928,
+          "sha256": "7fcf185341edde3e4bf4c04c5c20e6e63e3bd1efa8f44bc3cb5643801349d92d"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX/work/unseen-panorama-rebuild/miniapp/pages/demo-story/demo-story.wxss",
+          "bytes": 2996,
+          "sha256": "378216b2b39e0cb53def6af8620e80ad84d9069900728fc2373992f7fec1bd6f"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX/work/unseen-panorama-rebuild/miniapp/pages/demo-vision/demo-vision.js",
+          "bytes": 2911,
+          "sha256": "51684ea2c38c1b4497775313553b1bdb2635801851ce51b2458e6ed5e348cbea"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX/work/unseen-panorama-rebuild/miniapp/pages/demo-vision/demo-vision.json",
+          "bytes": 78,
+          "sha256": "b26d86f5d6be5c9818dbcd946d7f7f5b73892a40ee1b20de4b06c472a8e84ead"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX/work/unseen-panorama-rebuild/miniapp/pages/demo-vision/demo-vision.wxml",
+          "bytes": 4974,
+          "sha256": "9e2edaca04b7333db8182344d7d2e00271ff1c4028a5e26458255b2c2d68a835"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX/work/unseen-panorama-rebuild/miniapp/pages/demo-vision/demo-vision.wxss",
+          "bytes": 8313,
+          "sha256": "406c97877f233ccefb9b932adf5976245dab94b7e94307d1da7fe0e40622299b"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX/work/unseen-panorama-rebuild/miniapp/pages/demo/demo.js",
+          "bytes": 1151,
+          "sha256": "f5f31ab911c1e49504d96dc93fd5e61e65f8bc6586e815453a1a966b7b62010c"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX/work/unseen-panorama-rebuild/miniapp/pages/demo/demo.json",
+          "bytes": 60,
+          "sha256": "4bdc76b1ebbd9ee425f5b3e7a981ad553849b0adf8b098c2d05a1a465c56d268"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX/work/unseen-panorama-rebuild/miniapp/pages/demo/demo.wxml",
+          "bytes": 4317,
+          "sha256": "b66a993eaeeb2fc49836a633cf0d6afb0c727b36f5152721aeb86467118181a8"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX/work/unseen-panorama-rebuild/miniapp/pages/demo/demo.wxss",
+          "bytes": 5892,
+          "sha256": "664f819f7390ba6a86022f4c92a924ea72e316ea774528a7d1362aa1611588c4"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX/work/unseen-panorama-rebuild/miniapp/pages/index/index.js",
+          "bytes": 4937,
+          "sha256": "72e8193019d5c5b58d1dcd572c3046f124385e7deed1223a55f78a89a117d03d"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX/work/unseen-panorama-rebuild/miniapp/pages/index/index.json",
+          "bytes": 75,
+          "sha256": "d1039a9db1320ac72866ee68110fe1adcd032c9cb1a4b04b657b29f49c83abbe"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX/work/unseen-panorama-rebuild/miniapp/pages/index/index.wxml",
+          "bytes": 4711,
+          "sha256": "3e866a673f3eb08fbad7d29fa15537b3a674c9572c6b3be1ab08349af46c8487"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX/work/unseen-panorama-rebuild/miniapp/pages/index/index.wxss",
+          "bytes": 7784,
+          "sha256": "5dcfc57c70494c9332a417ba7415223e372f485fece434b52340a691bd887a8e"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX/work/unseen-panorama-rebuild/miniapp/pages/pano/pano.js",
+          "bytes": 2222,
+          "sha256": "12bc574185a47eff78231a6e2a8182b1ceeb5d498c898876753e62748bd065e7"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX/work/unseen-panorama-rebuild/miniapp/pages/pano/pano.json",
+          "bytes": 75,
+          "sha256": "a6b9ae90e78f7304cef45356eaed73b0396a220ad33ebfa433b17ccbc65a7e55"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX/work/unseen-panorama-rebuild/miniapp/pages/pano/pano.wxml",
+          "bytes": 1623,
+          "sha256": "8b0c7aa8b8e477acd92a3e9e1e32ab07affbf95dc23089ac1d927d4bbf6cb8ab"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX/work/unseen-panorama-rebuild/miniapp/pages/pano/pano.wxss",
+          "bytes": 1820,
+          "sha256": "8f442368dc5be20fcee63f077e6b0aae5cf8b21966fe1aa0326f52a62f4ab1b3"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX/work/unseen-panorama-rebuild/miniapp/pages/photos/photos.js",
+          "bytes": 5448,
+          "sha256": "e549adda35ccec062dd220cc9d33cd55ef76b51fab1c15f899f634f611e03371"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX/work/unseen-panorama-rebuild/miniapp/pages/photos/photos.json",
+          "bytes": 50,
+          "sha256": "f309c3cab2a9029a5d595e3908e994d566037c5ffa7c5401231251d0954f476b"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX/work/unseen-panorama-rebuild/miniapp/pages/photos/photos.wxml",
+          "bytes": 3448,
+          "sha256": "c5a6d9ade2803d682f43d2eb291402b50db00e1a6acc83c81f061f6e69a281f1"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX/work/unseen-panorama-rebuild/miniapp/pages/photos/photos.wxss",
+          "bytes": 3174,
+          "sha256": "329239da71a2e6100d962164305d841818f53396b516e010e1048a22c7213110"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX/work/unseen-panorama-rebuild/miniapp/pages/space/space.js",
+          "bytes": 3044,
+          "sha256": "aa94d2c65127d8a879602fde35bee0287eab3d4ce6be320b03a00179d1650ed3"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX/work/unseen-panorama-rebuild/miniapp/pages/space/space.json",
+          "bytes": 47,
+          "sha256": "ba06daac12bfe7f83c727ccc55f224887890d6e8e42b20e980ec11d9e7fe0e1c"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX/work/unseen-panorama-rebuild/miniapp/pages/space/space.wxml",
+          "bytes": 3016,
+          "sha256": "feb25145dbaf311a12b5a5934df64ccdd356213ebb1d1dab25b4fd130b6a9ec0"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX/work/unseen-panorama-rebuild/miniapp/pages/space/space.wxss",
+          "bytes": 2404,
+          "sha256": "829708d849df4a502e4faaa5a7b8f03f6a9a0527b773aef54070966552ae2d9c"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX/work/unseen-panorama-rebuild/miniapp/pages/sweep/sweep.js",
+          "bytes": 26110,
+          "sha256": "818eb4b110ce383aa0e08876023457733d75989f900c79a39eaaba7e109ef868"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX/work/unseen-panorama-rebuild/miniapp/pages/sweep/sweep.json",
+          "bytes": 143,
+          "sha256": "c680aeb3cec7443e7a60374e23c8e46b78c7667d77a44c50cb4f3cda2e3a8b74"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX/work/unseen-panorama-rebuild/miniapp/pages/sweep/sweep.wxml",
+          "bytes": 3915,
+          "sha256": "e2c31bc825fe6789a339c6829ac8d2d97070b4dde099951ca492605b127ed46f"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX/work/unseen-panorama-rebuild/miniapp/pages/sweep/sweep.wxss",
+          "bytes": 6078,
+          "sha256": "0061dc25f87e4e49c9dd284063fc9edacdb1b684ede5785269e4bccb7e4a667b"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX/work/unseen-panorama-rebuild/miniapp/project.config.json",
+          "bytes": 1549,
+          "sha256": "e0e3a8bf2020d11c36daef90d35260bde56c329491b7ad3b9156b337c3f8a23d"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX/work/unseen-panorama-rebuild/miniapp/project.private.config.json",
+          "bytes": 571,
+          "sha256": "ea02bd665438db966814cf95060c36cf1e0efbe9575b4d3fe8e6979bbbe82572"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX/work/unseen-panorama-rebuild/miniapp/sitemap 2.json",
+          "bytes": 153,
+          "sha256": "078a4d39b960279916f6271f64c0c430b64dd5ff6b9cd1dae62f88be5d2d75a9"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX/work/unseen-panorama-rebuild/miniapp/sitemap.json",
+          "bytes": 165,
+          "sha256": "77f3bcb4d8e1023d568316eee830fd3df9f932e6a9be4562995fa54b6ea01289"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX/work/unseen-panorama-rebuild/miniapp/tests/capture-seam-integration.test.js",
+          "bytes": 5743,
+          "sha256": "79c6a55d008f68aae59d72e7fc194cfe57840d923052120a0c061c2b10bc6a30"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX/work/unseen-panorama-rebuild/miniapp/tests/capture-visual-integration.test.js",
+          "bytes": 5926,
+          "sha256": "d11d7470f9a419f49f13e297629c5f82e509b3dd1200d979bfa0bc14d7bda281"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX/work/unseen-panorama-rebuild/miniapp/tests/cloud-chain.test.js",
+          "bytes": 9245,
+          "sha256": "7f43fc3941c45518583271c2fe3925e6874acac43f4c6feab632c9803c99af9f"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX/work/unseen-panorama-rebuild/miniapp/tests/sweep-page.test.js",
+          "bytes": 8143,
+          "sha256": "213d46d9165231848882e9738977760b24d63cf495d6010d0ea4ec4e96ddc88c"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX/work/unseen-panorama-rebuild/miniapp/tests/upload-first-mvp.test.js",
+          "bytes": 24110,
+          "sha256": "5e448f23c521971241e3257642e9dae15fe902c938254bd0905cd2853744368f"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX/work/unseen-panorama-rebuild/miniapp/tests/visionkit-capture.test.js",
+          "bytes": 20054,
+          "sha256": "da265f9d26ba3669a8c137f1416c9ed9b25ef0b37764713b5c6853fcf01c48d7"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX/work/unseen-panorama-rebuild/miniapp/tests/visionkit-sweep.test.js",
+          "bytes": 6698,
+          "sha256": "1c851a5f67aa128ebdd743c7d9e3f47eec4ca779192affcf36db26c04fb3cf86"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX/work/unseen-panorama-rebuild/miniapp/utils/capture-pose.js",
+          "bytes": 7465,
+          "sha256": "b01751f60fc1d2d6326e76fad7caee59c3bf2b2e9cb33e0a52e0cc80f6f765ea"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX/work/unseen-panorama-rebuild/miniapp/utils/capture-quality.js",
+          "bytes": 3453,
+          "sha256": "794deae6fcb610b9da89bd8eac2062835beb274b3755327a7634f7cd908d6dee"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX/work/unseen-panorama-rebuild/miniapp/utils/file-rules.js",
+          "bytes": 6154,
+          "sha256": "43303af7475a55d49f37ff8a54f8008644fdad5e843afed1cc6779c7d6a3c0f7"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX/work/unseen-panorama-rebuild/miniapp/utils/mini-visual-registration.js",
+          "bytes": 4000,
+          "sha256": "2cb35db1c3339203cc3952a3689469e25e4ad178a16acb2aad85eed130f64ca0"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX/work/unseen-panorama-rebuild/miniapp/utils/pano-core.js",
+          "bytes": 154836,
+          "sha256": "37ad875af522f1fa2ed0ab4bc8e4a83ac8f9f5ae6f399605d864bcefca26fbf9"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX/work/unseen-panorama-rebuild/miniapp/utils/pano-sweep-core.js",
+          "bytes": 60001,
+          "sha256": "2407832971ac649ecdc491e53e851408dc4ae6b0e20663aaadf8acf9264c9ac4"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX/work/unseen-panorama-rebuild/miniapp/utils/store.js",
+          "bytes": 10038,
+          "sha256": "074e40ec72032812ce3b868cd5cedd1855e2b4f64a0b20bbcc24b2e2234c7629"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX/work/unseen-panorama-rebuild/miniapp/utils/upload 2.js",
+          "bytes": 23654,
+          "sha256": "529a750431e16b9da9501782b81d75596df0a59d2bacdfbbeb4bcc8c9fb894cb"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX/work/unseen-panorama-rebuild/miniapp/utils/upload.js",
+          "bytes": 29338,
+          "sha256": "dde3a057e57f0db48bd2a37d885a5b69cf43edb2a4e63aa21d13dea2adabe50d"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX/work/unseen-panorama-rebuild/miniapp/utils/util 2.js",
+          "bytes": 9821,
+          "sha256": "02387b62c8aaa8d1baf4d31db15ec95d35c2851c5172f0b78014ee120b60403e"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX/work/unseen-panorama-rebuild/miniapp/utils/util.js",
+          "bytes": 15701,
+          "sha256": "f85efcb095864a4b19449b3af3b88eea3ec461526b5b6883ea1a00079dc06bff"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX/work/unseen-panorama-rebuild/miniapp/utils/visionkit-capture.js",
+          "bytes": 26454,
+          "sha256": "00810e37af26d2bc526188a2620da2083436a98baf4cbb1f9ac989ec310ebd89"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX/work/unseen-panorama-rebuild/tools/VISUAL_STITCH_GEOMETRY.md",
+          "bytes": 3411,
+          "sha256": "61195ee55c9f562542f30499d2b4a783b20427ec3851cdc27367b99fe08dad64"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX/work/unseen-panorama-rebuild/tools/android-webview-harness/README.md",
+          "bytes": 562,
+          "sha256": "36c2277c3df1c41ab43cea3da5723ef4428779139163b93ad0504659d3defbff"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX/work/unseen-panorama-rebuild/tools/benchmark_mini_capture_hotspots.js",
+          "bytes": 5569,
+          "sha256": "075b596fe625d7a46beba86ec62ae51877d2208a0d4bd4e557556a5aa21cc368"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX/work/unseen-panorama-rebuild/tools/check_wechat_domains.py",
+          "bytes": 4313,
+          "sha256": "4261eb0208c0e83f38ee912f9ae25f20e7bd90618e480ddb2f17e4397c8863cc"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX/work/unseen-panorama-rebuild/tools/deploy_cloudbase_backend.py",
+          "bytes": 3518,
+          "sha256": "c105419ce802a3c9724b1d52fdeabc27f5782ea809398c3831ce7e8bade235fa"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX/work/unseen-panorama-rebuild/tools/pano_synthetic.js",
+          "bytes": 10306,
+          "sha256": "ecf243caaa6b0150e0a448e4172efb32b57efc3df34d4d800f5fbbaa6fa8db01"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX/work/unseen-panorama-rebuild/tools/renew_upload_policy.py",
+          "bytes": 9296,
+          "sha256": "4aff31ad96bc3aa5b728a61c7fdc85d6f7f2134a615c7059369bc1290f5d434c"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX/work/unseen-panorama-rebuild/tools/test_capture_watchdogs.js",
+          "bytes": 15254,
+          "sha256": "93ed8a44a7b6d176666393552bd3de547c80f5f4315d6de30a54c8f9b32efbc0"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX/work/unseen-panorama-rebuild/tools/test_check_wechat_domains.py",
+          "bytes": 819,
+          "sha256": "cc3a78ec1f235e4f71d2c8189b9726be256be3df73273b3ab931a6dda3e8a09e"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX/work/unseen-panorama-rebuild/tools/test_cloud_e2e.py",
+          "bytes": 6315,
+          "sha256": "d8b0ecf41f63ae74144dcadf47eacff5d518bae74735238754d979ddac2be4b5"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX/work/unseen-panorama-rebuild/tools/test_demo_center_contract.js",
+          "bytes": 6959,
+          "sha256": "535cbf5cd8583303ed6de84064394f3db28c99c8691dea0cc430031d5bb475e5"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX/work/unseen-panorama-rebuild/tools/test_dynamic_scene_stitch.js",
+          "bytes": 31816,
+          "sha256": "56ec0822a9e39ae2a6761fe1f0c76cce785e19d6d14a6daf853eb7fde0800de5"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX/work/unseen-panorama-rebuild/tools/test_local_residual_warp.js",
+          "bytes": 22996,
+          "sha256": "bf4a57e8b2d2ff5077a9359b52ef0500dba21c9f215f0c5c3c848effcdaa3e11"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX/work/unseen-panorama-rebuild/tools/test_miniapp_demo_pages.js",
+          "bytes": 6751,
+          "sha256": "2cbe741043d49ffad1c2afbec1bd9379e20f1830baf8376fcb81e38e728301cc"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX/work/unseen-panorama-rebuild/tools/test_miniapp_home_layout.js",
+          "bytes": 15189,
+          "sha256": "e9fe1e276d2341f9705dcde239d1fafb8b135098a09c2541a2a582fe6199ee4c"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX/work/unseen-panorama-rebuild/tools/test_miniapp_simulator.js",
+          "bytes": 3053,
+          "sha256": "27231aee2734c84e6d448e3f6d0f4a442c926c57c4fbedd2b886c948c9f82dc0"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX/work/unseen-panorama-rebuild/tools/test_miniapp_upload_first_simulator.js",
+          "bytes": 12880,
+          "sha256": "723dc95a730f1ebca4a4a0ecead8c50bbe8a44977a9f6d23af96f9304e747969"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX/work/unseen-panorama-rebuild/tools/test_native_cloud_e2e.js",
+          "bytes": 7142,
+          "sha256": "2c57625a6e60f8b4e3fa64347e44178cacefc0f54715fe161ee7efc9741e1028"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX/work/unseen-panorama-rebuild/tools/test_pano_capture.js",
+          "bytes": 11608,
+          "sha256": "feba3e479915a6c3c680a5d516d70ba49bcff16d1b0ff7fcd554f6a0cdb90100"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX/work/unseen-panorama-rebuild/tools/test_pano_sweep_core.js",
+          "bytes": 18564,
+          "sha256": "b40fd6cf65e9f5ec2dbc3fd03d85086ebc40f32b1a0885c31c43283b76c2170e"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX/work/unseen-panorama-rebuild/tools/test_renew_upload_policy.py",
+          "bytes": 2711,
+          "sha256": "5fe68363d834e2293e191af86b4da00a62f21d8e6e7a9262a8215ec8acbf89af"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX/work/unseen-panorama-rebuild/tools/test_seam_blending.js",
+          "bytes": 20114,
+          "sha256": "347d87ee0ba5b34990ae6718c3deea0966d2d5e103bd9d7a8a8691995795bb7d"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX/work/unseen-panorama-rebuild/tools/test_visual_stitch_geometry.js",
+          "bytes": 22087,
+          "sha256": "7e9f163db1580cb5b2b7b499d22c4966f1617e92424e3abf8d44a02ee95c4403"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX/work/unseen-panorama-rebuild/tools/test_web_capture_runtime.js",
+          "bytes": 10428,
+          "sha256": "e6e3814405b6af3288796860de4209bc7428cde105d859d19379fc215bc1a68e"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX/work/unseen-panorama-rebuild/tools/test_web_geometry_stability.js",
+          "bytes": 4305,
+          "sha256": "f3c24a37da4e1d1e8959be3614a058e780cd6b3100f6632e1db1d888db4bf8e1"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX/work/unseen-panorama-rebuild/web/UPLOAD-FIRST-README.md",
+          "bytes": 2349,
+          "sha256": "33ff54af5a633ed926f89bde40e8adcb61927655f7261470d70f9358d8f8621a"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX/work/unseen-panorama-rebuild/web/demo-data.js",
+          "bytes": 13418,
+          "sha256": "67e35bf69811e7ec59ecbcc459106662038c7cc1b98cfff904aa228d99cd69a2"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX/work/unseen-panorama-rebuild/web/demo.html",
+          "bytes": 71255,
+          "sha256": "7f18c88f0916b3b5d35fe41565466f89705c8b2194c6a5b01368821f92e0549c"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX/work/unseen-panorama-rebuild/web/index.html",
+          "bytes": 1002,
+          "sha256": "32c1a1646611982f48f96a1c8e9c569f2828e07083723543eb245046d770e1d5"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX/work/unseen-panorama-rebuild/web/join.html",
+          "bytes": 118442,
+          "sha256": "ae68bcedca9017a8fe05f7991912f3ef3114b4b332d3eb459e0e4e96868f11ab"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX/work/unseen-panorama-rebuild/web/pano-capture-runtime.js",
+          "bytes": 18165,
+          "sha256": "4d2c03c6dcf4268d840f7196d183a735772767ab35b29bee05102e2581c45385"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX/work/unseen-panorama-rebuild/web/pano-capture.css",
+          "bytes": 11623,
+          "sha256": "faeb1e426060a2252c72864725cd0d6b199837991bd270c7308487e9061c1f98"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX/work/unseen-panorama-rebuild/web/pano-capture.html",
+          "bytes": 4628,
+          "sha256": "72cbf71c7b34a0421bf55fd1c87a79f0a53e6b213782b212da04bd875ce6aab5"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX/work/unseen-panorama-rebuild/web/pano-capture.js",
+          "bytes": 126058,
+          "sha256": "5b5a4f89edb6893f1bb8126cdd0bf631b7775d5e92255b687e00d3d8eb281a50"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX/work/unseen-panorama-rebuild/web/pano-sweep.css",
+          "bytes": 11895,
+          "sha256": "055fcb4d7356f494f82a4c24258c9c978f332bdd006daf03651c901c8f70ff34"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX/work/unseen-panorama-rebuild/web/pano-sweep.html",
+          "bytes": 4974,
+          "sha256": "d0bba0a93ee1acb0f0a65e85ab4acd6fd1de209039de221bec9d94f0d42d782e"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX/work/unseen-panorama-rebuild/web/pano-sweep.js",
+          "bytes": 50940,
+          "sha256": "dc6521a085002cd7824468a3af5fa93ab0f67d8f91755a20e5f0c185488d4ab5"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX/work/unseen-panorama-rebuild/web/pov.html",
+          "bytes": 14516,
+          "sha256": "3066bbf208b731aa207a1cb68f5676522ec6eb1d929c5538cad41481f166f521"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX/work/unseen-panorama-rebuild/web/show.html",
+          "bytes": 63405,
+          "sha256": "58bed0bf18064b3053184e49d153f44e1b2cd4fb7a046bd90e635c68151c4308"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX/work/unseen-panorama-rebuild/web/studio-login.html",
+          "bytes": 18155,
+          "sha256": "7206fe4f35cd6d4b89a091a47d81e2409181c7f134824bae662d15e739cbdc1e"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX/work/unseen-panorama-rebuild/web/test-browser.mjs",
+          "bytes": 20768,
+          "sha256": "f43b8eb64b48f68b8393c4d1301db42bbba4e0928a1ce1991488e79e3565aa3d"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX/work/unseen-panorama-rebuild/web/test-production-cloud.mjs",
+          "bytes": 6944,
+          "sha256": "e6031010dd1e4560f1d98a4b65364e90e5a8e9bf0f1b6b4fdddc2ed2c482fd83"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX/work/unseen-panorama-rebuild/web/test-upload-first.mjs",
+          "bytes": 9498,
+          "sha256": "6f5ef9296f2c6a1c72e918c37e78cba1b3175f0ffdfe00b15e1eaf7f7ca7fd7d"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX/work/unseen-panorama-rebuild/web/unseen-core.mjs",
+          "bytes": 12490,
+          "sha256": "3e9ad91a22075c12b00b946dcd3bd7f2f3a9e5e5e380dff5a20752c860316f40"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX/work/unseen-panorama-rebuild/web/unseen.css",
+          "bytes": 54465,
+          "sha256": "5d20b5acd26931033e746ce98f6e30c9084486beebe32e0c6b77645aeabc4641"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX/work/unseen-panorama-rebuild/web/unseen.js",
+          "bytes": 90044,
+          "sha256": "50157d612cc2c5802f4f97339271e0ab90fd2b14aa453930eaa2b62d5f005cde"
+        }
+      ]
+    },
+    {
+      "id": "recovered_source",
+      "rootAbsolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX 3/work/unseen-panorama-rebuild",
+      "selection": "source_extensions",
+      "expectedCount": 174,
+      "expectedAggregateSha256": "a8d1901e45d39fc1eaa4f28905887a2ab451dafdab7d3b64f475537d0976e915",
+      "entries": [
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX 3/work/unseen-panorama-rebuild/UNSEEN-miniapp-ai-demo-archive-v8-20260803.json",
+          "bytes": 130,
+          "sha256": "7e05e748655e8b2da244d18920390a10b84e1646d98dd15b84d936526a33feba"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX 3/work/unseen-panorama-rebuild/UNSEEN-miniapp-ai-panorama-curated-v9-20260803.json",
+          "bytes": 130,
+          "sha256": "67f16533069db771cac47a563d8f58c23313a45ede2ec20dda1af2039951ae9a"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX 3/work/unseen-panorama-rebuild/UNSEEN-miniapp-demo-center-v6-20260802.json",
+          "bytes": 130,
+          "sha256": "80fca523e3c87a513934e74e59ece39ac4f30d449f7cc648bcb3563fa8c36e2d"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX 3/work/unseen-panorama-rebuild/UNSEEN-miniapp-native-cloud-v3-20260802.json",
+          "bytes": 126,
+          "sha256": "8137bd551a4e6bf48045001a07c997b8bbb50b1bdfe8d5412b8c5e27bb1814bb"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX 3/work/unseen-panorama-rebuild/UNSEEN-miniapp-native-cloud-v4-20260802.json",
+          "bytes": 126,
+          "sha256": "8137bd551a4e6bf48045001a07c997b8bbb50b1bdfe8d5412b8c5e27bb1814bb"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX 3/work/unseen-panorama-rebuild/UNSEEN-miniapp-preview-v25-20260801.json",
+          "bytes": 130,
+          "sha256": "85fda7400f141195125bb939de9e6bac277de874510fc54593b90eae1bb2dc6d"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX 3/work/unseen-panorama-rebuild/UNSEEN-miniapp-real-demo-v7-20260803.json",
+          "bytes": 130,
+          "sha256": "e8a84c61247b4a543b841df3af92530ff171f4dd24054e6327bad6fc253dfb65"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX 3/work/unseen-panorama-rebuild/UNSEEN-miniapp-shared-cloud-final-20260802.json",
+          "bytes": 126,
+          "sha256": "99818056b9deb37c120c0fcc873fce6f122a1286eda853626411229b0e9722fa"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX 3/work/unseen-panorama-rebuild/UNSEEN-miniapp-shared-cloud-final-v2-20260802.json",
+          "bytes": 126,
+          "sha256": "378071428a9ac27ea6c6046a097ab53ae5c7ee64fd2a48d3f31ad3c61efe7286"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX 3/work/unseen-panorama-rebuild/UNSEEN-miniapp-unified-demo-v10-20260804.json",
+          "bytes": 130,
+          "sha256": "4dfe3ced8278c26181393b9b80bbf63390a8853304d404eea79964b64fe54cb9"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX 3/work/unseen-panorama-rebuild/UNSEEN-miniapp-unified-home-v5-20260802.json",
+          "bytes": 126,
+          "sha256": "55b34d904513ee6d9161f0398974bf433d5f3d3c5bd5477d3358822c679934df"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX 3/work/unseen-panorama-rebuild/UNSEEN-miniapp-upload-first-final-20260802.json",
+          "bytes": 126,
+          "sha256": "94ba327c63fde5c8a6c5b2e529506e362ca156a7c366d683efbfa3a049c62131"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX 3/work/unseen-panorama-rebuild/UNSEEN-miniapp-upload-first-preview-20260802.json",
+          "bytes": 130,
+          "sha256": "08043e619fff8d4fdbcf77a5bfd3255ece6caf3ba55e9dc8f90e837d6c72d825"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX 3/work/unseen-panorama-rebuild/backend/README.md",
+          "bytes": 5882,
+          "sha256": "be0ca8bb86edf89ba8085853c823cc2e8c66348cf708ed450e7a3beb815e2961"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX 3/work/unseen-panorama-rebuild/backend/index.js",
+          "bytes": 5529,
+          "sha256": "f7090a5b1d8a07b6d0a7ffc6e5d74ab87b454918234bdad77b4f42553e57e5a9"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX 3/work/unseen-panorama-rebuild/backend/lib/config.js",
+          "bytes": 3322,
+          "sha256": "1476f5923017bd8b34dacd694c1511207d643a3bb27d1e23033fe4e959915244"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX 3/work/unseen-panorama-rebuild/backend/lib/crypto.js",
+          "bytes": 1899,
+          "sha256": "e1a5ef5645486045a462c1c1027f88d1c800d45eb5549f3a49f27c084f33718c"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX 3/work/unseen-panorama-rebuild/backend/lib/errors.js",
+          "bytes": 460,
+          "sha256": "7d752cbe5353620c987e3fb24028e908aa426130e288acd23242b92cce052e08"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX 3/work/unseen-panorama-rebuild/backend/lib/image.js",
+          "bytes": 5665,
+          "sha256": "1565ab10496ebabeeeaa9324044f7485cf0e634685d560bd098724c732ed5fab"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX 3/work/unseen-panorama-rebuild/backend/lib/oss-v1.js",
+          "bytes": 7639,
+          "sha256": "191e8b3b1293ea471573f5c7b454055c5f1eb9492f41f78ad9c2a8b65f2dcb29"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX 3/work/unseen-panorama-rebuild/backend/lib/service.js",
+          "bytes": 26149,
+          "sha256": "babd1169f9d15078c4d0be4a93f813a0618c9565b027025bb6c73636a7cec2ed"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX 3/work/unseen-panorama-rebuild/backend/package.json",
+          "bytes": 419,
+          "sha256": "a856d701887c50a01b5ecf228e2f090f13b767c0c46106c09515c97136814dda"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX 3/work/unseen-panorama-rebuild/backend/ram-policy.template.json",
+          "bytes": 637,
+          "sha256": "d54b4e213dcb5552eb90a71ccb55e9b62f7627777c2f06c32c36277df0977f20"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX 3/work/unseen-panorama-rebuild/backend/test/fake-oss.js",
+          "bytes": 2855,
+          "sha256": "e6608d83092dc8828b91ee3d6150f85cf0d78c5f87f2903213d91619e976e10e"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX 3/work/unseen-panorama-rebuild/backend/test/oss-v1.test.js",
+          "bytes": 2593,
+          "sha256": "d8f8e617c8c4619d25232b89fdcf00cd02f0e7995c19ac078e8f34d5e93df1ed"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX 3/work/unseen-panorama-rebuild/backend/test/service.test.js",
+          "bytes": 9496,
+          "sha256": "6f2b1ee3ed01151c7cd1b4ff564bf873098ff0e3511755c5eda5db255f963713"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX 3/work/unseen-panorama-rebuild/cloudbaserc.json",
+          "bytes": 1731,
+          "sha256": "8e736fd856603093a5ac05ecfa322ffe6ee86cdcb247850ff394b44b009e919a"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX 3/work/unseen-panorama-rebuild/deploy/miaoda-v16-production-panorama-prompt-20260801.md",
+          "bytes": 7225,
+          "sha256": "c6f4f34ed363b1959b20f56e0a9346ed439079f7ce275447a0098e1b8be9948f"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX 3/work/unseen-panorama-rebuild/deploy/miaoda-v20-three-surface-sync-prompt-20260803.md",
+          "bytes": 6620,
+          "sha256": "a790bf51698d71603b91f7a5f6be9c18b134a6e84f8cd054d2dcf2dbb71a47a3"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX 3/work/unseen-panorama-rebuild/deploy/miaoda-v21-app-home-alignment-fix-20260803.md",
+          "bytes": 1317,
+          "sha256": "841318efaefeac4c0e09e9ac7fdab3982aaa080ef81c7e5f41525cb2430dc737"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX 3/work/unseen-panorama-rebuild/deploy/miaoda-v22-desktop-double-render-fix-20260803.md",
+          "bytes": 2931,
+          "sha256": "6c967880b67c62aeb7f9daf4ce87a862c9ee9aad0ee9d86e5430a4ab0e2ad529"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX 3/work/unseen-panorama-rebuild/deploy/miaoda-v23-unified-demo-archive-navigation-20260804.md",
+          "bytes": 3293,
+          "sha256": "4b83da73fc17e85aa9d0b067dc47c5521492764eec8ebf33748a48f5f3abf428"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX 3/work/unseen-panorama-rebuild/deploy/miaoda-v24-ai-wedding-immersive-walkthrough-20260804.md",
+          "bytes": 4813,
+          "sha256": "347d00f9d255e523c0c13efadb4f584eacfc39fbca815fa99a8e5fba6f1c286d"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX 3/work/unseen-panorama-rebuild/deploy/miaoda-v25-ai-wedding-fallback-layer-fix-20260804.md",
+          "bytes": 2242,
+          "sha256": "f99ce8fea911b455032367892ccbc8f1d2ffc9baecc330f1b5550b302a7f3fe6"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX 3/work/unseen-panorama-rebuild/deploy/miaoda-v26-ai-wedding-fallback-seamless-wrap-20260805.md",
+          "bytes": 1746,
+          "sha256": "932ab6dacb6503d0ff58c6904c686fb3aa536b23e9c9871249d6ad0db7c08349"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX 3/work/unseen-panorama-rebuild/docs/UNSEEN-Web-master-PRD-and-build-prompt-20260805.md",
+          "bytes": 29346,
+          "sha256": "12d0de49e7ae8c5b2721d5f1b2fe9706a49d634bf8c99fe5d3cca90dd5f4843a"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX 3/work/unseen-panorama-rebuild/docs/UNSEEN-miaoda-upload-first-product-spec-20260801.md",
+          "bytes": 9279,
+          "sha256": "1985bc83f2572ef924e5a9c3d3db87f4337401201e7d4536f6cb7d3cf57f6029"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX 3/work/unseen-panorama-rebuild/docs/UNSEEN-panorama-research-and-release-20260801.md",
+          "bytes": 8012,
+          "sha256": "5fdb0cbd9df28afe38883019d72558d729f86710ca7f38757f3c6f6391122e26"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX 3/work/unseen-panorama-rebuild/docs/UNSEEN-standalone-web-miniapp-release-20260802.md",
+          "bytes": 19553,
+          "sha256": "8713fe05ab2ae33858d668aa2bde1fbe91aa640f8697467327d50ceafe4447a1"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX 3/work/unseen-panorama-rebuild/docs/UNSEEN-three-surface-unification-20260804.md",
+          "bytes": 5346,
+          "sha256": "f853fd99124a0e7a2950edbdf91a6f4d0608f60a9fd1fb701bdf3346a9196fe8"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX 3/work/unseen-panorama-rebuild/miniapp/app 2.json",
+          "bytes": 462,
+          "sha256": "80c0b4ab067e1658d8600724eeaff403d6830e1f2684ca077c3147504b740011"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX 3/work/unseen-panorama-rebuild/miniapp/app 2.wxss",
+          "bytes": 2108,
+          "sha256": "43a0460ee2a4f5dfee9f3a303d251202507df724dd1af4571f851849982ea140"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX 3/work/unseen-panorama-rebuild/miniapp/app.js",
+          "bytes": 4728,
+          "sha256": "749eb230b43da0e26875b3d155ace55a0af36d83a9b0f408a7ad0fe5955b47a3"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX 3/work/unseen-panorama-rebuild/miniapp/app.json",
+          "bytes": 724,
+          "sha256": "8c4f8e3da80ab9dc575be84307d27653adec2aee610840073f802cfe66cefd00"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX 3/work/unseen-panorama-rebuild/miniapp/app.wxss",
+          "bytes": 2571,
+          "sha256": "dd8b7530bb3e1afb4f438923378ad10fb7e4ff6e6bbc2e556cba419a6ffb09f5"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX 3/work/unseen-panorama-rebuild/miniapp/cloudfunctions/unseenNative/config.json",
+          "bytes": 63,
+          "sha256": "b67b9a84c2e0b1082996ad261a6c7301243d821d2a09c5d92cf4ed4e1d996955"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX 3/work/unseen-panorama-rebuild/miniapp/cloudfunctions/unseenNative/index.js",
+          "bytes": 25230,
+          "sha256": "b30b4b7df3aa116c8123d6ec107635a354b3999dd2b92636d3d0888114c17e72"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX 3/work/unseen-panorama-rebuild/miniapp/cloudfunctions/unseenNative/package.json",
+          "bytes": 162,
+          "sha256": "7005d27b85d443492e0475cb2b142663310aff63b50bca5cc03a8d3612bcbe7a"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX 3/work/unseen-panorama-rebuild/miniapp/cloudfunctions/unseenNative/test.js",
+          "bytes": 1365,
+          "sha256": "556fb34eb33a0b9329644a35265b97b37de33bfd8c646687312228278ae3d2b5"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX 3/work/unseen-panorama-rebuild/miniapp/pages/capture/capture.js",
+          "bytes": 136686,
+          "sha256": "2f9f3bd93d56ee1cd55427df32632e64fdf416be187d8deb8c661d644bdd2b96"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX 3/work/unseen-panorama-rebuild/miniapp/pages/capture/capture.json",
+          "bytes": 117,
+          "sha256": "43b8611c76c45a5ff41baa983bb47a2eb1991da32732e2dee898178285e8be8b"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX 3/work/unseen-panorama-rebuild/miniapp/pages/capture/capture.wxml",
+          "bytes": 7186,
+          "sha256": "3d1e0bac082ec6e9b810309757f8d00ce7715af822567247c249316eec416287"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX 3/work/unseen-panorama-rebuild/miniapp/pages/capture/capture.wxss",
+          "bytes": 8963,
+          "sha256": "327aa9d178cb1ff824a84746d23ea31285a592531003925416b9941ac0975779"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX 3/work/unseen-panorama-rebuild/miniapp/pages/create/create.js",
+          "bytes": 10010,
+          "sha256": "3ff8e71556832051ae3c19f7025cdcfb68fd39560752f19bbd081496b3ab31a2"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX 3/work/unseen-panorama-rebuild/miniapp/pages/create/create.json",
+          "bytes": 47,
+          "sha256": "2447e633f5390f8295b07bea8d02880092967225578ee5633ac340921a64aa93"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX 3/work/unseen-panorama-rebuild/miniapp/pages/create/create.wxml",
+          "bytes": 3968,
+          "sha256": "031e02b1809f56e28cb44dbda0c0a460c566e2b2e48a464fb62a5825dca3771c"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX 3/work/unseen-panorama-rebuild/miniapp/pages/create/create.wxss",
+          "bytes": 2578,
+          "sha256": "8bb0afdff2df1f35512333b809c7ff252e1d2295375b939d9dd1345a84168337"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX 3/work/unseen-panorama-rebuild/miniapp/pages/demo-ai-pano/demo-ai-pano.js",
+          "bytes": 2029,
+          "sha256": "7c49eaff7247127ca8bc6d77325dce651c97e5cfe72177839c87b1a01ee99d1c"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX 3/work/unseen-panorama-rebuild/miniapp/pages/demo-ai-pano/demo-ai-pano.json",
+          "bytes": 133,
+          "sha256": "e6d877a8834f9ac66702c3c6acf3c970cd750c057a99578cf749c6c8627c187a"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX 3/work/unseen-panorama-rebuild/miniapp/pages/demo-ai-pano/demo-ai-pano.wxml",
+          "bytes": 2415,
+          "sha256": "2a0ac7a70bc537f154e463fe5bfc1f7a474af89ac1fec0abbbe88ca71b0ffee7"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX 3/work/unseen-panorama-rebuild/miniapp/pages/demo-ai-pano/demo-ai-pano.wxss",
+          "bytes": 4935,
+          "sha256": "5345594e507f58c9b05741b8622dcab2ac770e0737f443420cc8cf6fef376bcd"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX 3/work/unseen-panorama-rebuild/miniapp/pages/demo-archive/demo-archive.js",
+          "bytes": 5459,
+          "sha256": "426825287c0a7418f5b5144d9470c62afdad8f3d24d698932886037b22804bd5"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX 3/work/unseen-panorama-rebuild/miniapp/pages/demo-archive/demo-archive.json",
+          "bytes": 100,
+          "sha256": "59438dbcd1f4d09b5caf1ff31c2fdf52b7484791bef1552d6c97a95b8ea10d0f"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX 3/work/unseen-panorama-rebuild/miniapp/pages/demo-archive/demo-archive.wxml",
+          "bytes": 7332,
+          "sha256": "ce7c0e38909c5e3b476d401ce248ad52001842c64fe0ebeecc4ba97103c47d77"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX 3/work/unseen-panorama-rebuild/miniapp/pages/demo-archive/demo-archive.wxss",
+          "bytes": 14102,
+          "sha256": "5ee7c88ea0e5b1ac336e02e4a7fdf4ac84232c4fcad08ab58acdb3c3beea734a"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX 3/work/unseen-panorama-rebuild/miniapp/pages/demo-detail/demo-detail.js",
+          "bytes": 4188,
+          "sha256": "ed1cfb291bfbdb46a059021fe70c4a3b401ec4cd835c88f5fd7bcf9562c79ce6"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX 3/work/unseen-panorama-rebuild/miniapp/pages/demo-detail/demo-detail.json",
+          "bytes": 60,
+          "sha256": "4bdc76b1ebbd9ee425f5b3e7a981ad553849b0adf8b098c2d05a1a465c56d268"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX 3/work/unseen-panorama-rebuild/miniapp/pages/demo-detail/demo-detail.wxml",
+          "bytes": 1138,
+          "sha256": "8d0150a678632571b19f57de24148c794796774b4e5308f2dae88d68fb867d29"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX 3/work/unseen-panorama-rebuild/miniapp/pages/demo-detail/demo-detail.wxss",
+          "bytes": 1861,
+          "sha256": "3049a5490fb0209752d090d138532e1463e7f25a9ee4f84528accf30da522fda"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX 3/work/unseen-panorama-rebuild/miniapp/pages/demo-story/demo-story.js",
+          "bytes": 3620,
+          "sha256": "0f9fd5c1883bf6f461af975a624f2353f6f23597e913d0431a72c5266dd931bf"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX 3/work/unseen-panorama-rebuild/miniapp/pages/demo-story/demo-story.json",
+          "bytes": 84,
+          "sha256": "5020737d84d5d3429e783f16035e48dd139167801e5f34859e7168e00df9fa1b"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX 3/work/unseen-panorama-rebuild/miniapp/pages/demo-story/demo-story.wxml",
+          "bytes": 1928,
+          "sha256": "7fcf185341edde3e4bf4c04c5c20e6e63e3bd1efa8f44bc3cb5643801349d92d"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX 3/work/unseen-panorama-rebuild/miniapp/pages/demo-story/demo-story.wxss",
+          "bytes": 2996,
+          "sha256": "378216b2b39e0cb53def6af8620e80ad84d9069900728fc2373992f7fec1bd6f"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX 3/work/unseen-panorama-rebuild/miniapp/pages/demo-vision/demo-vision.js",
+          "bytes": 2911,
+          "sha256": "51684ea2c38c1b4497775313553b1bdb2635801851ce51b2458e6ed5e348cbea"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX 3/work/unseen-panorama-rebuild/miniapp/pages/demo-vision/demo-vision.json",
+          "bytes": 78,
+          "sha256": "b26d86f5d6be5c9818dbcd946d7f7f5b73892a40ee1b20de4b06c472a8e84ead"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX 3/work/unseen-panorama-rebuild/miniapp/pages/demo-vision/demo-vision.wxml",
+          "bytes": 4974,
+          "sha256": "9e2edaca04b7333db8182344d7d2e00271ff1c4028a5e26458255b2c2d68a835"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX 3/work/unseen-panorama-rebuild/miniapp/pages/demo-vision/demo-vision.wxss",
+          "bytes": 8313,
+          "sha256": "406c97877f233ccefb9b932adf5976245dab94b7e94307d1da7fe0e40622299b"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX 3/work/unseen-panorama-rebuild/miniapp/pages/demo/demo.js",
+          "bytes": 1151,
+          "sha256": "f5f31ab911c1e49504d96dc93fd5e61e65f8bc6586e815453a1a966b7b62010c"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX 3/work/unseen-panorama-rebuild/miniapp/pages/demo/demo.json",
+          "bytes": 60,
+          "sha256": "4bdc76b1ebbd9ee425f5b3e7a981ad553849b0adf8b098c2d05a1a465c56d268"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX 3/work/unseen-panorama-rebuild/miniapp/pages/demo/demo.wxml",
+          "bytes": 4317,
+          "sha256": "b66a993eaeeb2fc49836a633cf0d6afb0c727b36f5152721aeb86467118181a8"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX 3/work/unseen-panorama-rebuild/miniapp/pages/demo/demo.wxss",
+          "bytes": 5892,
+          "sha256": "664f819f7390ba6a86022f4c92a924ea72e316ea774528a7d1362aa1611588c4"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX 3/work/unseen-panorama-rebuild/miniapp/pages/index/index.js",
+          "bytes": 4937,
+          "sha256": "72e8193019d5c5b58d1dcd572c3046f124385e7deed1223a55f78a89a117d03d"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX 3/work/unseen-panorama-rebuild/miniapp/pages/index/index.json",
+          "bytes": 75,
+          "sha256": "d1039a9db1320ac72866ee68110fe1adcd032c9cb1a4b04b657b29f49c83abbe"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX 3/work/unseen-panorama-rebuild/miniapp/pages/index/index.wxml",
+          "bytes": 4711,
+          "sha256": "3e866a673f3eb08fbad7d29fa15537b3a674c9572c6b3be1ab08349af46c8487"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX 3/work/unseen-panorama-rebuild/miniapp/pages/index/index.wxss",
+          "bytes": 7784,
+          "sha256": "5dcfc57c70494c9332a417ba7415223e372f485fece434b52340a691bd887a8e"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX 3/work/unseen-panorama-rebuild/miniapp/pages/pano/pano.js",
+          "bytes": 2222,
+          "sha256": "12bc574185a47eff78231a6e2a8182b1ceeb5d498c898876753e62748bd065e7"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX 3/work/unseen-panorama-rebuild/miniapp/pages/pano/pano.json",
+          "bytes": 75,
+          "sha256": "a6b9ae90e78f7304cef45356eaed73b0396a220ad33ebfa433b17ccbc65a7e55"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX 3/work/unseen-panorama-rebuild/miniapp/pages/pano/pano.wxml",
+          "bytes": 1623,
+          "sha256": "8b0c7aa8b8e477acd92a3e9e1e32ab07affbf95dc23089ac1d927d4bbf6cb8ab"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX 3/work/unseen-panorama-rebuild/miniapp/pages/pano/pano.wxss",
+          "bytes": 1820,
+          "sha256": "8f442368dc5be20fcee63f077e6b0aae5cf8b21966fe1aa0326f52a62f4ab1b3"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX 3/work/unseen-panorama-rebuild/miniapp/pages/photos/photos.js",
+          "bytes": 5448,
+          "sha256": "e549adda35ccec062dd220cc9d33cd55ef76b51fab1c15f899f634f611e03371"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX 3/work/unseen-panorama-rebuild/miniapp/pages/photos/photos.json",
+          "bytes": 50,
+          "sha256": "f309c3cab2a9029a5d595e3908e994d566037c5ffa7c5401231251d0954f476b"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX 3/work/unseen-panorama-rebuild/miniapp/pages/photos/photos.wxml",
+          "bytes": 3448,
+          "sha256": "c5a6d9ade2803d682f43d2eb291402b50db00e1a6acc83c81f061f6e69a281f1"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX 3/work/unseen-panorama-rebuild/miniapp/pages/photos/photos.wxss",
+          "bytes": 3174,
+          "sha256": "329239da71a2e6100d962164305d841818f53396b516e010e1048a22c7213110"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX 3/work/unseen-panorama-rebuild/miniapp/pages/space/space.js",
+          "bytes": 3044,
+          "sha256": "aa94d2c65127d8a879602fde35bee0287eab3d4ce6be320b03a00179d1650ed3"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX 3/work/unseen-panorama-rebuild/miniapp/pages/space/space.json",
+          "bytes": 47,
+          "sha256": "ba06daac12bfe7f83c727ccc55f224887890d6e8e42b20e980ec11d9e7fe0e1c"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX 3/work/unseen-panorama-rebuild/miniapp/pages/space/space.wxml",
+          "bytes": 3016,
+          "sha256": "feb25145dbaf311a12b5a5934df64ccdd356213ebb1d1dab25b4fd130b6a9ec0"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX 3/work/unseen-panorama-rebuild/miniapp/pages/space/space.wxss",
+          "bytes": 2404,
+          "sha256": "829708d849df4a502e4faaa5a7b8f03f6a9a0527b773aef54070966552ae2d9c"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX 3/work/unseen-panorama-rebuild/miniapp/pages/sweep/sweep.js",
+          "bytes": 26110,
+          "sha256": "818eb4b110ce383aa0e08876023457733d75989f900c79a39eaaba7e109ef868"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX 3/work/unseen-panorama-rebuild/miniapp/pages/sweep/sweep.json",
+          "bytes": 143,
+          "sha256": "c680aeb3cec7443e7a60374e23c8e46b78c7667d77a44c50cb4f3cda2e3a8b74"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX 3/work/unseen-panorama-rebuild/miniapp/pages/sweep/sweep.wxml",
+          "bytes": 3915,
+          "sha256": "e2c31bc825fe6789a339c6829ac8d2d97070b4dde099951ca492605b127ed46f"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX 3/work/unseen-panorama-rebuild/miniapp/pages/sweep/sweep.wxss",
+          "bytes": 6078,
+          "sha256": "0061dc25f87e4e49c9dd284063fc9edacdb1b684ede5785269e4bccb7e4a667b"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX 3/work/unseen-panorama-rebuild/miniapp/project.config.json",
+          "bytes": 1549,
+          "sha256": "e0e3a8bf2020d11c36daef90d35260bde56c329491b7ad3b9156b337c3f8a23d"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX 3/work/unseen-panorama-rebuild/miniapp/project.private.config.json",
+          "bytes": 571,
+          "sha256": "ea02bd665438db966814cf95060c36cf1e0efbe9575b4d3fe8e6979bbbe82572"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX 3/work/unseen-panorama-rebuild/miniapp/sitemap 2.json",
+          "bytes": 153,
+          "sha256": "078a4d39b960279916f6271f64c0c430b64dd5ff6b9cd1dae62f88be5d2d75a9"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX 3/work/unseen-panorama-rebuild/miniapp/sitemap.json",
+          "bytes": 165,
+          "sha256": "77f3bcb4d8e1023d568316eee830fd3df9f932e6a9be4562995fa54b6ea01289"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX 3/work/unseen-panorama-rebuild/miniapp/tests/capture-seam-integration.test.js",
+          "bytes": 5743,
+          "sha256": "79c6a55d008f68aae59d72e7fc194cfe57840d923052120a0c061c2b10bc6a30"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX 3/work/unseen-panorama-rebuild/miniapp/tests/capture-visual-integration.test.js",
+          "bytes": 5926,
+          "sha256": "d11d7470f9a419f49f13e297629c5f82e509b3dd1200d979bfa0bc14d7bda281"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX 3/work/unseen-panorama-rebuild/miniapp/tests/cloud-chain.test.js",
+          "bytes": 9245,
+          "sha256": "7f43fc3941c45518583271c2fe3925e6874acac43f4c6feab632c9803c99af9f"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX 3/work/unseen-panorama-rebuild/miniapp/tests/sweep-page.test.js",
+          "bytes": 8143,
+          "sha256": "213d46d9165231848882e9738977760b24d63cf495d6010d0ea4ec4e96ddc88c"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX 3/work/unseen-panorama-rebuild/miniapp/tests/upload-first-mvp.test.js",
+          "bytes": 24110,
+          "sha256": "5e448f23c521971241e3257642e9dae15fe902c938254bd0905cd2853744368f"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX 3/work/unseen-panorama-rebuild/miniapp/tests/visionkit-capture.test.js",
+          "bytes": 20054,
+          "sha256": "da265f9d26ba3669a8c137f1416c9ed9b25ef0b37764713b5c6853fcf01c48d7"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX 3/work/unseen-panorama-rebuild/miniapp/tests/visionkit-sweep.test.js",
+          "bytes": 6698,
+          "sha256": "1c851a5f67aa128ebdd743c7d9e3f47eec4ca779192affcf36db26c04fb3cf86"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX 3/work/unseen-panorama-rebuild/miniapp/utils/capture-pose.js",
+          "bytes": 7465,
+          "sha256": "b01751f60fc1d2d6326e76fad7caee59c3bf2b2e9cb33e0a52e0cc80f6f765ea"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX 3/work/unseen-panorama-rebuild/miniapp/utils/capture-quality.js",
+          "bytes": 3453,
+          "sha256": "794deae6fcb610b9da89bd8eac2062835beb274b3755327a7634f7cd908d6dee"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX 3/work/unseen-panorama-rebuild/miniapp/utils/file-rules.js",
+          "bytes": 6154,
+          "sha256": "43303af7475a55d49f37ff8a54f8008644fdad5e843afed1cc6779c7d6a3c0f7"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX 3/work/unseen-panorama-rebuild/miniapp/utils/mini-visual-registration.js",
+          "bytes": 4000,
+          "sha256": "2cb35db1c3339203cc3952a3689469e25e4ad178a16acb2aad85eed130f64ca0"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX 3/work/unseen-panorama-rebuild/miniapp/utils/pano-core.js",
+          "bytes": 154836,
+          "sha256": "37ad875af522f1fa2ed0ab4bc8e4a83ac8f9f5ae6f399605d864bcefca26fbf9"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX 3/work/unseen-panorama-rebuild/miniapp/utils/pano-sweep-core.js",
+          "bytes": 60001,
+          "sha256": "2407832971ac649ecdc491e53e851408dc4ae6b0e20663aaadf8acf9264c9ac4"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX 3/work/unseen-panorama-rebuild/miniapp/utils/store.js",
+          "bytes": 10038,
+          "sha256": "074e40ec72032812ce3b868cd5cedd1855e2b4f64a0b20bbcc24b2e2234c7629"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX 3/work/unseen-panorama-rebuild/miniapp/utils/upload 2.js",
+          "bytes": 23654,
+          "sha256": "529a750431e16b9da9501782b81d75596df0a59d2bacdfbbeb4bcc8c9fb894cb"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX 3/work/unseen-panorama-rebuild/miniapp/utils/upload.js",
+          "bytes": 29338,
+          "sha256": "dde3a057e57f0db48bd2a37d885a5b69cf43edb2a4e63aa21d13dea2adabe50d"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX 3/work/unseen-panorama-rebuild/miniapp/utils/util 2.js",
+          "bytes": 9821,
+          "sha256": "02387b62c8aaa8d1baf4d31db15ec95d35c2851c5172f0b78014ee120b60403e"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX 3/work/unseen-panorama-rebuild/miniapp/utils/util.js",
+          "bytes": 15701,
+          "sha256": "f85efcb095864a4b19449b3af3b88eea3ec461526b5b6883ea1a00079dc06bff"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX 3/work/unseen-panorama-rebuild/miniapp/utils/visionkit-capture.js",
+          "bytes": 26454,
+          "sha256": "00810e37af26d2bc526188a2620da2083436a98baf4cbb1f9ac989ec310ebd89"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX 3/work/unseen-panorama-rebuild/portal.html",
+          "bytes": 911,
+          "sha256": "1cac65302fc9a6737b889dee34edf81e98bbd429fb7f0f7bbb3e6f7f04ad44ef"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX 3/work/unseen-panorama-rebuild/prompts/h5-upload-first-v17-prompt-20260802.md",
+          "bytes": 11915,
+          "sha256": "ef1c4ae0f86c997ca68145b81ffe9d8e4f580a730061ba8dd4d11e2eaa0ff43d"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX 3/work/unseen-panorama-rebuild/prompts/h5-upload-first-v18-blocker-fix-20260802.md",
+          "bytes": 7370,
+          "sha256": "f270aa66d493b7eb6e68059ecc1bdd05e5c0b8e71fe79e8af283f37c8e7dedcb"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX 3/work/unseen-panorama-rebuild/prompts/h5-upload-first-v20-final-blockers-20260802.md",
+          "bytes": 11313,
+          "sha256": "e824690df0131340818fba2047f5d193e1453e0ac86fee8152a35a1a873cc47f"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX 3/work/unseen-panorama-rebuild/tools/VISUAL_STITCH_GEOMETRY.md",
+          "bytes": 3411,
+          "sha256": "61195ee55c9f562542f30499d2b4a783b20427ec3851cdc27367b99fe08dad64"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX 3/work/unseen-panorama-rebuild/tools/android-webview-harness/README.md",
+          "bytes": 562,
+          "sha256": "36c2277c3df1c41ab43cea3da5723ef4428779139163b93ad0504659d3defbff"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX 3/work/unseen-panorama-rebuild/tools/benchmark_mini_capture_hotspots.js",
+          "bytes": 5569,
+          "sha256": "075b596fe625d7a46beba86ec62ae51877d2208a0d4bd4e557556a5aa21cc368"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX 3/work/unseen-panorama-rebuild/tools/check_wechat_domains.py",
+          "bytes": 4313,
+          "sha256": "4261eb0208c0e83f38ee912f9ae25f20e7bd90618e480ddb2f17e4397c8863cc"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX 3/work/unseen-panorama-rebuild/tools/deploy_cloudbase_backend.py",
+          "bytes": 3518,
+          "sha256": "c105419ce802a3c9724b1d52fdeabc27f5782ea809398c3831ce7e8bade235fa"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX 3/work/unseen-panorama-rebuild/tools/pano_synthetic.js",
+          "bytes": 10306,
+          "sha256": "ecf243caaa6b0150e0a448e4172efb32b57efc3df34d4d800f5fbbaa6fa8db01"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX 3/work/unseen-panorama-rebuild/tools/renew_upload_policy.py",
+          "bytes": 9296,
+          "sha256": "4aff31ad96bc3aa5b728a61c7fdc85d6f7f2134a615c7059369bc1290f5d434c"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX 3/work/unseen-panorama-rebuild/tools/test_capture_watchdogs.js",
+          "bytes": 15254,
+          "sha256": "93ed8a44a7b6d176666393552bd3de547c80f5f4315d6de30a54c8f9b32efbc0"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX 3/work/unseen-panorama-rebuild/tools/test_check_wechat_domains.py",
+          "bytes": 819,
+          "sha256": "cc3a78ec1f235e4f71d2c8189b9726be256be3df73273b3ab931a6dda3e8a09e"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX 3/work/unseen-panorama-rebuild/tools/test_cloud_e2e.py",
+          "bytes": 6315,
+          "sha256": "d8b0ecf41f63ae74144dcadf47eacff5d518bae74735238754d979ddac2be4b5"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX 3/work/unseen-panorama-rebuild/tools/test_demo_center_contract.js",
+          "bytes": 6959,
+          "sha256": "535cbf5cd8583303ed6de84064394f3db28c99c8691dea0cc430031d5bb475e5"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX 3/work/unseen-panorama-rebuild/tools/test_dynamic_scene_stitch.js",
+          "bytes": 31816,
+          "sha256": "56ec0822a9e39ae2a6761fe1f0c76cce785e19d6d14a6daf853eb7fde0800de5"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX 3/work/unseen-panorama-rebuild/tools/test_local_residual_warp.js",
+          "bytes": 22996,
+          "sha256": "bf4a57e8b2d2ff5077a9359b52ef0500dba21c9f215f0c5c3c848effcdaa3e11"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX 3/work/unseen-panorama-rebuild/tools/test_miniapp_demo_pages.js",
+          "bytes": 6751,
+          "sha256": "2cbe741043d49ffad1c2afbec1bd9379e20f1830baf8376fcb81e38e728301cc"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX 3/work/unseen-panorama-rebuild/tools/test_miniapp_home_layout.js",
+          "bytes": 15189,
+          "sha256": "e9fe1e276d2341f9705dcde239d1fafb8b135098a09c2541a2a582fe6199ee4c"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX 3/work/unseen-panorama-rebuild/tools/test_miniapp_simulator.js",
+          "bytes": 3053,
+          "sha256": "27231aee2734c84e6d448e3f6d0f4a442c926c57c4fbedd2b886c948c9f82dc0"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX 3/work/unseen-panorama-rebuild/tools/test_miniapp_upload_first_simulator.js",
+          "bytes": 12880,
+          "sha256": "723dc95a730f1ebca4a4a0ecead8c50bbe8a44977a9f6d23af96f9304e747969"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX 3/work/unseen-panorama-rebuild/tools/test_native_cloud_e2e.js",
+          "bytes": 7142,
+          "sha256": "2c57625a6e60f8b4e3fa64347e44178cacefc0f54715fe161ee7efc9741e1028"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX 3/work/unseen-panorama-rebuild/tools/test_pano_capture.js",
+          "bytes": 11608,
+          "sha256": "feba3e479915a6c3c680a5d516d70ba49bcff16d1b0ff7fcd554f6a0cdb90100"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX 3/work/unseen-panorama-rebuild/tools/test_pano_sweep_core.js",
+          "bytes": 18564,
+          "sha256": "b40fd6cf65e9f5ec2dbc3fd03d85086ebc40f32b1a0885c31c43283b76c2170e"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX 3/work/unseen-panorama-rebuild/tools/test_renew_upload_policy.py",
+          "bytes": 2711,
+          "sha256": "5fe68363d834e2293e191af86b4da00a62f21d8e6e7a9262a8215ec8acbf89af"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX 3/work/unseen-panorama-rebuild/tools/test_seam_blending.js",
+          "bytes": 20114,
+          "sha256": "347d87ee0ba5b34990ae6718c3deea0966d2d5e103bd9d7a8a8691995795bb7d"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX 3/work/unseen-panorama-rebuild/tools/test_visual_stitch_geometry.js",
+          "bytes": 22087,
+          "sha256": "7e9f163db1580cb5b2b7b499d22c4966f1617e92424e3abf8d44a02ee95c4403"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX 3/work/unseen-panorama-rebuild/tools/test_web_capture_runtime.js",
+          "bytes": 10428,
+          "sha256": "e6e3814405b6af3288796860de4209bc7428cde105d859d19379fc215bc1a68e"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX 3/work/unseen-panorama-rebuild/tools/test_web_geometry_stability.js",
+          "bytes": 4305,
+          "sha256": "f3c24a37da4e1d1e8959be3614a058e780cd6b3100f6632e1db1d888db4bf8e1"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX 3/work/unseen-panorama-rebuild/web/UPLOAD-FIRST-README.md",
+          "bytes": 2349,
+          "sha256": "33ff54af5a633ed926f89bde40e8adcb61927655f7261470d70f9358d8f8621a"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX 3/work/unseen-panorama-rebuild/web/demo-data.js",
+          "bytes": 13418,
+          "sha256": "67e35bf69811e7ec59ecbcc459106662038c7cc1b98cfff904aa228d99cd69a2"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX 3/work/unseen-panorama-rebuild/web/demo.html",
+          "bytes": 71255,
+          "sha256": "7f18c88f0916b3b5d35fe41565466f89705c8b2194c6a5b01368821f92e0549c"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX 3/work/unseen-panorama-rebuild/web/index.html",
+          "bytes": 1002,
+          "sha256": "32c1a1646611982f48f96a1c8e9c569f2828e07083723543eb245046d770e1d5"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX 3/work/unseen-panorama-rebuild/web/join.html",
+          "bytes": 118442,
+          "sha256": "ae68bcedca9017a8fe05f7991912f3ef3114b4b332d3eb459e0e4e96868f11ab"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX 3/work/unseen-panorama-rebuild/web/pano-capture-runtime.js",
+          "bytes": 18165,
+          "sha256": "4d2c03c6dcf4268d840f7196d183a735772767ab35b29bee05102e2581c45385"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX 3/work/unseen-panorama-rebuild/web/pano-capture.css",
+          "bytes": 11623,
+          "sha256": "faeb1e426060a2252c72864725cd0d6b199837991bd270c7308487e9061c1f98"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX 3/work/unseen-panorama-rebuild/web/pano-capture.html",
+          "bytes": 4628,
+          "sha256": "72cbf71c7b34a0421bf55fd1c87a79f0a53e6b213782b212da04bd875ce6aab5"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX 3/work/unseen-panorama-rebuild/web/pano-capture.js",
+          "bytes": 126058,
+          "sha256": "5b5a4f89edb6893f1bb8126cdd0bf631b7775d5e92255b687e00d3d8eb281a50"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX 3/work/unseen-panorama-rebuild/web/pano-sweep.css",
+          "bytes": 11895,
+          "sha256": "055fcb4d7356f494f82a4c24258c9c978f332bdd006daf03651c901c8f70ff34"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX 3/work/unseen-panorama-rebuild/web/pano-sweep.html",
+          "bytes": 4974,
+          "sha256": "d0bba0a93ee1acb0f0a65e85ab4acd6fd1de209039de221bec9d94f0d42d782e"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX 3/work/unseen-panorama-rebuild/web/pano-sweep.js",
+          "bytes": 50940,
+          "sha256": "dc6521a085002cd7824468a3af5fa93ab0f67d8f91755a20e5f0c185488d4ab5"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX 3/work/unseen-panorama-rebuild/web/pov.html",
+          "bytes": 14516,
+          "sha256": "3066bbf208b731aa207a1cb68f5676522ec6eb1d929c5538cad41481f166f521"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX 3/work/unseen-panorama-rebuild/web/show.html",
+          "bytes": 63405,
+          "sha256": "58bed0bf18064b3053184e49d153f44e1b2cd4fb7a046bd90e635c68151c4308"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX 3/work/unseen-panorama-rebuild/web/studio-login.html",
+          "bytes": 18155,
+          "sha256": "7206fe4f35cd6d4b89a091a47d81e2409181c7f134824bae662d15e739cbdc1e"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX 3/work/unseen-panorama-rebuild/web/test-browser.mjs",
+          "bytes": 20768,
+          "sha256": "f43b8eb64b48f68b8393c4d1301db42bbba4e0928a1ce1991488e79e3565aa3d"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX 3/work/unseen-panorama-rebuild/web/test-production-cloud.mjs",
+          "bytes": 6944,
+          "sha256": "e6031010dd1e4560f1d98a4b65364e90e5a8e9bf0f1b6b4fdddc2ed2c482fd83"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX 3/work/unseen-panorama-rebuild/web/test-upload-first.mjs",
+          "bytes": 9498,
+          "sha256": "6f5ef9296f2c6a1c72e918c37e78cba1b3175f0ffdfe00b15e1eaf7f7ca7fd7d"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX 3/work/unseen-panorama-rebuild/web/unseen-core.mjs",
+          "bytes": 12490,
+          "sha256": "3e9ad91a22075c12b00b946dcd3bd7f2f3a9e5e5e380dff5a20752c860316f40"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX 3/work/unseen-panorama-rebuild/web/unseen.css",
+          "bytes": 54465,
+          "sha256": "5d20b5acd26931033e746ce98f6e30c9084486beebe32e0c6b77645aeabc4641"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX 3/work/unseen-panorama-rebuild/web/unseen.js",
+          "bytes": 90044,
+          "sha256": "50157d612cc2c5802f4f97339271e0ab90fd2b14aa453930eaa2b62d5f005cde"
+        }
+      ]
+    },
+    {
+      "id": "recovered_backend",
+      "rootAbsolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX 3/work/unseen-panorama-rebuild/backend",
+      "selection": "all_files",
+      "expectedCount": 13,
+      "expectedAggregateSha256": "9b1c489ad18ea6278d1c6c770610e5e0500315c63c8a24858d1e7dfcd783934e",
+      "entries": [
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX 3/work/unseen-panorama-rebuild/backend/README.md",
+          "bytes": 5882,
+          "sha256": "be0ca8bb86edf89ba8085853c823cc2e8c66348cf708ed450e7a3beb815e2961"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX 3/work/unseen-panorama-rebuild/backend/index.js",
+          "bytes": 5529,
+          "sha256": "f7090a5b1d8a07b6d0a7ffc6e5d74ab87b454918234bdad77b4f42553e57e5a9"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX 3/work/unseen-panorama-rebuild/backend/lib/config.js",
+          "bytes": 3322,
+          "sha256": "1476f5923017bd8b34dacd694c1511207d643a3bb27d1e23033fe4e959915244"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX 3/work/unseen-panorama-rebuild/backend/lib/crypto.js",
+          "bytes": 1899,
+          "sha256": "e1a5ef5645486045a462c1c1027f88d1c800d45eb5549f3a49f27c084f33718c"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX 3/work/unseen-panorama-rebuild/backend/lib/errors.js",
+          "bytes": 460,
+          "sha256": "7d752cbe5353620c987e3fb24028e908aa426130e288acd23242b92cce052e08"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX 3/work/unseen-panorama-rebuild/backend/lib/image.js",
+          "bytes": 5665,
+          "sha256": "1565ab10496ebabeeeaa9324044f7485cf0e634685d560bd098724c732ed5fab"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX 3/work/unseen-panorama-rebuild/backend/lib/oss-v1.js",
+          "bytes": 7639,
+          "sha256": "191e8b3b1293ea471573f5c7b454055c5f1eb9492f41f78ad9c2a8b65f2dcb29"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX 3/work/unseen-panorama-rebuild/backend/lib/service.js",
+          "bytes": 26149,
+          "sha256": "babd1169f9d15078c4d0be4a93f813a0618c9565b027025bb6c73636a7cec2ed"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX 3/work/unseen-panorama-rebuild/backend/package.json",
+          "bytes": 419,
+          "sha256": "a856d701887c50a01b5ecf228e2f090f13b767c0c46106c09515c97136814dda"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX 3/work/unseen-panorama-rebuild/backend/ram-policy.template.json",
+          "bytes": 637,
+          "sha256": "d54b4e213dcb5552eb90a71ccb55e9b62f7627777c2f06c32c36277df0977f20"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX 3/work/unseen-panorama-rebuild/backend/test/fake-oss.js",
+          "bytes": 2855,
+          "sha256": "e6608d83092dc8828b91ee3d6150f85cf0d78c5f87f2903213d91619e976e10e"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX 3/work/unseen-panorama-rebuild/backend/test/oss-v1.test.js",
+          "bytes": 2593,
+          "sha256": "d8f8e617c8c4619d25232b89fdcf00cd02f0e7995c19ac078e8f34d5e93df1ed"
+        },
+        {
+          "absolutePath": "/Users/max/Library/Mobile Documents/com~apple~CloudDocs/Documents/ADVX 3/work/unseen-panorama-rebuild/backend/test/service.test.js",
+          "bytes": 9496,
+          "sha256": "6f2b1ee3ed01151c7cd1b4ff564bf873098ff0e3511755c5eda5db255f963713"
+        }
+      ]
+    }
+  ],
+  "c4ImportRule": "These scopes prove historical source identity only. Track 0L must create a separate safe-import inventory covering included and excluded files, static assets, reasons, relative target paths, byte counts, and hashes."
+}
+
+

@@ -1,0 +1,25 @@
+{
+  "status": "PASS",
+  "url": "http://127.0.0.1:8765/?scene=./pexels-classroom-v7.scene.json",
+  "sceneState": "SOG ready",
+  "sampleFpsNotBenchmark": 240,
+  "buttonCount": 3,
+  "safeThumbnailCount": 3,
+  "safeThumbnailDimensions": "320x180",
+  "anchors": [
+    {"id": "frame_0001", "positionMaxAbs": 4.735107306252928e-10, "quaternionMaxAbs": 6.785703908496199e-10, "fovAbs": 0.0, "pass": true},
+    {"id": "frame_0053", "positionMaxAbs": 3.8934040019755756e-10, "quaternionMaxAbs": 3.289035710452026e-10, "fovAbs": 0.0, "pass": true},
+    {"id": "frame_0105", "positionMaxAbs": 2.1060175825482474e-10, "quaternionMaxAbs": 2.6787527751537255e-10, "fovAbs": 0.0, "pass": true}
+  ],
+  "walk": {
+    "movementDistance": 0.10624494316634414,
+    "insideBoundary": true,
+    "walkModeActivated": true,
+    "returnedToMiddleAnchor": true,
+    "returnPositionMaxAbs": 3.8934040019755756e-10,
+    "returnQuaternionMaxAbs": 3.289035710452026e-10,
+    "returnFovAbs": 0.0
+  },
+  "consoleErrors": 0
+}
+

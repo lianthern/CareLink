@@ -1,0 +1,161 @@
+{
+  "schemaVersion": "unseen-public-core-temporary-access-browser/1",
+  "status": "PASS",
+  "fixtureDefaultOff": true,
+  "productionInput": false,
+  "healthMock": "TEST_ONLY_CDP_RESPONSE",
+  "browserDiagnostics": {
+    "consoleErrors": [],
+    "exceptions": [],
+    "failedRequests": [],
+    "unexpectedHttpErrors": [],
+    "expectedHealth503": [
+      {
+        "status": 503,
+        "path": "/healthz"
+      },
+      {
+        "status": 503,
+        "path": "/healthz"
+      },
+      {
+        "status": 503,
+        "path": "/healthz"
+      }
+    ],
+    "externalRequests": []
+  },
+  "healthRequests": [
+    {
+      "path": "/healthz",
+      "method": "GET",
+      "hasPostData": false,
+      "scenario": "exact-503"
+    },
+    {
+      "path": "/healthz",
+      "method": "GET",
+      "hasPostData": false,
+      "scenario": "exact-503"
+    },
+    {
+      "path": "/healthz",
+      "method": "GET",
+      "hasPostData": false,
+      "scenario": "missing-200"
+    },
+    {
+      "path": "/healthz",
+      "method": "GET",
+      "hasPostData": false,
+      "scenario": "illegal-503"
+    }
+  ],
+  "failClosedCases": [
+    {
+      "name": "missing-200",
+      "status": 200,
+      "mode": null,
+      "visible": false
+    },
+    {
+      "name": "illegal-503",
+      "status": 503,
+      "mode": "temporary-basic-auth",
+      "visible": false
+    }
+  ],
+  "viewports": [
+    {
+      "name": "desktop-1440",
+      "width": 1440,
+      "height": 900,
+      "count": 1,
+      "title": "临时邀请访问",
+      "copy": "当前通过邀请门浏览；邮件登录、照片上传、AI 问答和纪念册仍在准备，本次临时访问不会接收这些内容。",
+      "afterHeader": true,
+      "beforeMain": true,
+      "overflow": false,
+      "bounds": {
+        "left": 0,
+        "right": 1440,
+        "top": 64,
+        "bottom": 117,
+        "inViewport": true
+      },
+      "innerBounds": {
+        "left": 128,
+        "right": 1312,
+        "inViewport": true
+      },
+      "flexDirection": "row",
+      "reducedMotion": true,
+      "fixture": false,
+      "credentialText": false,
+      "keyboard": {
+        "before": true,
+        "after": true
+      },
+      "screenReader": {
+        "status": true,
+        "copy": true
+      },
+      "zoom200": {
+        "overflow": false,
+        "scale": 2
+      },
+      "screenshot": "release-evidence/local-operable/public-core-ui-temporary-access/desktop-1440.png"
+    },
+    {
+      "name": "mobile-390",
+      "width": 390,
+      "height": 844,
+      "count": 1,
+      "title": "临时邀请访问",
+      "copy": "当前通过邀请门浏览；邮件登录、照片上传、AI 问答和纪念册仍在准备，本次临时访问不会接收这些内容。",
+      "afterHeader": true,
+      "beforeMain": true,
+      "overflow": false,
+      "bounds": {
+        "left": 0,
+        "right": 390,
+        "top": 64,
+        "bottom": 165,
+        "inViewport": true
+      },
+      "innerBounds": {
+        "left": 16,
+        "right": 374,
+        "inViewport": true
+      },
+      "flexDirection": "column",
+      "reducedMotion": true,
+      "fixture": false,
+      "credentialText": false,
+      "keyboard": {
+        "before": true,
+        "after": true
+      },
+      "screenReader": {
+        "status": true,
+        "copy": true
+      },
+      "zoom200": {
+        "overflow": false,
+        "scale": 2
+      },
+      "screenshot": "release-evidence/local-operable/public-core-ui-temporary-access/mobile-390.png"
+    }
+  ],
+  "favicon": {
+    "status": 200,
+    "contentType": "image/svg+xml",
+    "svg": true,
+    "html": false
+  },
+  "cleanup": {
+    "profileRemoved": true,
+    "ownProcessesRemaining": 0
+  },
+  "productMutationCount": 0
+}

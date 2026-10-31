@@ -1,0 +1,27 @@
+{
+  "schemaVersion": "1.0",
+  "jobId": "unseen-3dgs-local-product-2026-09-04-v15",
+  "state": "RELEASE_CANDIDATE_PENDING_EXACT_COMMIT_CI",
+  "overallProductGoal": "ACTIVE",
+  "macStaticValidation": "PASS",
+  "macProductTestCount": 87,
+  "macReleaseContractTestCount": 15,
+  "macTotalTestCount": 102,
+  "pre4060Hardening": "PASS_R3_RELEASE_RUNTIME_SCHEMA_RECOVERY_PRIVACY_AND_REMOTE_LEDGER",
+  "windowsPowerShell51Parse": "REQUIRED_GREEN_CI_GATE_BEFORE_R3_RELEASE",
+  "windowsPowerShell51RuntimeHarness": "REQUIRED_GREEN_CI_GATE_BEFORE_R3_RELEASE",
+  "windowsRuntimeValidation": "PENDING_WINDOWS",
+  "rtx4060Validation": "PENDING_4060",
+  "unknownPose360Canary": "PENDING_4060",
+  "newUnseen360Video": "PENDING_INPUT",
+  "threeDistinctRealPhotos": "PENDING_INPUT",
+  "productionAdapter": "CONTRACT_PENDING_DISABLED",
+  "metrics": {
+    "registeredViews": null,
+    "trainingWallSeconds": null,
+    "peakVramMiB": null,
+    "oom": null,
+    "sogBytes": null,
+    "viewerFps": null
+  }
+}

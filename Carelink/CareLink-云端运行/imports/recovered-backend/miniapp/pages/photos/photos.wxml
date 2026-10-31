@@ -1,0 +1,60 @@
+<view class="page-shell photos-page" style="padding-top:{{navBarTop}}px">
+  <view class="native-nav" style="height:{{navBarHeight}}px">
+    <button class="nav-back" bindtap="onBack" aria-label="返回">‹</button>
+    <text class="nav-title">照片时间轴</text>
+    <view class="nav-spacer"></view>
+  </view>
+
+  <view class="photos-main">
+    <text class="eyebrow">SHARED PHOTOS</text>
+    <text class="heading">{{title}}</text>
+    <text class="lead">从系统相册选择普通照片，本轮最多 9 张。上传状态会逐张显示。</text>
+
+    <view class="upload-panel card">
+      <view class="upload-head">
+        <view>
+          <text class="upload-title">添加照片</text>
+          <text class="upload-sub">JPEG / PNG / WebP · 单张最大 20 MB</text>
+        </view>
+        <text class="queue-count">{{queue.length}} / 9</text>
+      </view>
+      <button class="primary-button choose-button" bindtap="onUpload" disabled="{{!canAdd}}" loading="{{busy}}">{{busy ? '正在处理…' : '从相册选择'}}</button>
+
+      <view class="queue" wx:if="{{queue.length}}">
+        <view class="queue-item" wx:for="{{queue}}" wx:key="clientUploadId">
+          <view class="queue-thumb queue-file-icon" aria-hidden="true">IMG</view>
+          <view class="queue-copy">
+            <text class="queue-name">{{item.name}}</text>
+            <text class="queue-status queue-status--{{item.status}}">{{item.statusText}}</text>
+            <text class="queue-error" wx:if="{{item.error}}">{{item.error}}</text>
+          </view>
+          <button wx:if="{{item.removable}}" class="remove-item" data-id="{{item.clientUploadId}}" bindtap="onRemoveQueueItem" aria-label="从队列移除">×</button>
+        </view>
+        <view class="queue-actions">
+          <button class="small-action" wx:if="{{retryCount}}" bindtap="onRetryUploads" disabled="{{busy}}">只重试失败项（{{retryCount}}）</button>
+          <button class="small-action small-action--done" wx:if="{{doneCount}}" bindtap="onFinish" disabled="{{busy}}">完成并刷新时间轴</button>
+        </view>
+      </view>
+    </view>
+
+    <view class="notice" wx:if="{{localOnly}}">照片会保存到本机空间并立即进入时间轴。连续点击只会启动一轮处理。</view>
+    <view class="notice" wx:else>这是云端空间。如果上传通道已过期，页面会立即提示并保留可重试项，不会无限等待。</view>
+
+    <view class="timeline-head">
+      <text class="timeline-title">时间轴</text>
+      <text class="timeline-count">{{timeline.length}} 张</text>
+    </view>
+    <view wx:if="{{loading}}" class="card empty-state">正在整理照片…</view>
+    <view wx:elif="{{loadError}}" class="card empty-state">
+      <text>{{loadError}}</text>
+      <button class="secondary-button retry-load" bindtap="onRetryLoad">重新加载</button>
+    </view>
+    <view wx:elif="{{!timeline.length}}" class="card empty-state">还没有照片。选择相册中的照片，它们会按时间出现在这里。</view>
+    <view wx:else class="timeline">
+      <button class="timeline-card card" wx:for="{{timeline}}" wx:key="id" data-src="{{item.originalSrc || item.src}}" bindtap="onPreview">
+        <image src="{{item.src}}" mode="aspectFill" />
+        <view class="timeline-copy"><text class="timeline-day">{{item.day}}</text><text class="timeline-author">{{item.contributor}}</text></view>
+      </button>
+    </view>
+  </view>
+</view>

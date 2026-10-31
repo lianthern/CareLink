@@ -1,0 +1,36 @@
+{
+  "key": "unseen-h3-full-film-2026-09-13-v1/E02/attempt-01",
+  "startedAt": "2026-09-14T01:33:00.945787+00:00",
+  "reference": "D:\\H3-runtime\\projects\\unseen-full-v1\\shots\\E01\\attempt-01\\last.png",
+  "inputSha256": "d8546ade4796422c9d776667cb5b7a9430dae17a2e8ec42b3d0b4c2a8779bd71",
+  "seed": 2026091568,
+  "shot": {
+    "id": "E02",
+    "title": "\u4ed6\u4eec\u8fd8\u5728\u4e00\u8d77",
+    "type": "h3_generated_action",
+    "edit_seconds": 4,
+    "generate_seconds_nominal": 4.458333333333333,
+    "frame_count_starting_point": 107,
+    "fps": 24,
+    "recorder": "\u89c2\u5bdf\u89c6\u89d2",
+    "references": [
+      "elder-new-room.png",
+      "02-character-age-reference.png"
+    ],
+    "start_end_and_action": "Medium-wide continuation in the same new apartment reading nook, from the same side of the elderly man and phone. The seventy-two-year-old man lowers his smartphone slightly and looks toward his wife in the neighboring chair by the window. She is the same lifelong partner naturally aged, softly smiling back, with consistent facial features from school and wedding. Bookshelf and city-window light remain in the same positions. He smiles in recognition; they share a quiet glance. A slow modest camera retreat reveals both chairs, no orbit, no new room, no transition back to the childhood house. End on a calm two-shot with space for later typography.",
+    "prompt": "Naturalistic personal-memory footage with believable human movement and gently handheld smartphone perspective. Keep the approved faces, clothes, lighting and room geometry. One continuous shot, no internal cuts, no age change, no photo cards, no text, no camera flying outside, no slow motion, no duplicated people, no DV camcorder. Medium-wide continuation in the same new apartment reading nook, from the same side of the elderly man and phone. The seventy-two-year-old man lowers his smartphone slightly and looks toward his wife in the neighboring chair by the window. She is the same lifelong partner naturally aged, softly smiling back, with consistent facial features from school and wedding. Bookshelf and city-window light remain in the same positions. He smiles in recognition; they share a quiet glance. A slow modest camera retreat reveals both chairs, no orbit, no new room, no transition back to the childhood house. End on a calm two-shot with space for later typography.",
+    "cut_continuity": "E01\u624b\u673a\u3001\u5f00\u886b\u3001\u7a97\u65b9\u5411\u4e00\u81f4\uff0c\u52a8\u4f5c\u7ee7\u7eed\u800c\u4e0d\u662f\u91cd\u65b0\u62ff\u8d77\u3002",
+    "pass_criteria": [
+      "\u540c\u4e00\u4f34\u4fa3\u8eab\u4efd\u6709\u636e\u53ef\u5faa",
+      "\u4e0d\u5f3a\u52a0\u53bb\u4e16\u7b49\u50ac\u6cea\u60c5\u8282",
+      "\u7ed3\u5c3e\u6709\u547c\u5438"
+    ],
+    "audio": "Natural scene sound only; no generated music, UI text or unscripted dialogue.",
+    "status": "planned",
+    "output": null,
+    "timeline_start_seconds": 117.5,
+    "timeline_end_seconds": 121.5
+  },
+  "outputPrefix": "unseen-full-v1/E02/attempt-01",
+  "apiSha256": "e63e63956817d0e0d538a378d0f3c3ec49fc3d6aca0a1a5a6dc71552fd1d0e96"
+}

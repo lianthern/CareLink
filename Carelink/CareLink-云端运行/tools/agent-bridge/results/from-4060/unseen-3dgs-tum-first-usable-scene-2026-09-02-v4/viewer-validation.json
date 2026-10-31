@@ -1,0 +1,79 @@
+{
+  "status": "PASS",
+  "sceneState": "SOG ready",
+  "fps": 203,
+  "initial": {
+    "position": [
+      0.601677656173706,
+      0.21977728605270386,
+      -0.55272376537323
+    ],
+    "quaternion": [
+      -0.07800660343160928,
+      0.2336809707398696,
+      0.05793336379815143,
+      0.9674460703802393
+    ],
+    "fov": 49.134342641,
+    "mode": "photo-anchor"
+  },
+  "walked": {
+    "position": [
+      0.5526987314224243,
+      0.21977728605270386,
+      -0.649836540222168
+    ],
+    "mode": "walk"
+  },
+  "movementDistance": 0.10876500406220856,
+  "walkedInsideBoundary": true,
+  "returned": {
+    "position": [
+      -0.9260300993919373,
+      0.034531522542238235,
+      0.1153932437300682
+    ],
+    "quaternion": [
+      -0.19562633847572686,
+      -0.18162802448410567,
+      -0.27566307809968227,
+      0.9234454308670275
+    ],
+    "fov": 49.134342641,
+    "mode": "photo-anchor"
+  },
+  "expectedPhotoAnchor": {
+    "id": "frame_00050",
+    "label": "TUM frame_00050",
+    "sceneRevisionId": "tum-freiburg1-desk-v4-r001",
+    "position": [
+      -0.926030079,
+      0.034531521,
+      0.115393243
+    ],
+    "quaternion": [
+      -0.19562634,
+      -0.181628028,
+      -0.275663074,
+      0.923445431
+    ],
+    "fov": 49.134342641,
+    "sourceFrame": "images/frame_00050.png"
+  },
+  "photoAnchorErrors": {
+    "positionMaxAbs": 2.0391937249897296e-8,
+    "quaternionMaxAbs": 4.099682260338966e-9,
+    "fovAbs": 0
+  },
+  "message": "已回到这张照片的拍摄视角",
+  "checks": {
+    "sogReady": true,
+    "boundedWalkMoved": true,
+    "boundedWalkStayedInside": true,
+    "photoModeRestored": true,
+    "photoPositionExact": true,
+    "photoQuaternionExact": true,
+    "photoFovExact": true,
+    "confirmationMessage": true
+  }
+}

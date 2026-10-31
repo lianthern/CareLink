@@ -1,0 +1,187 @@
+{
+  "schema": "unseen-shadow-transport-acceptance-evidence/1",
+  "kind": "SHADOW_TRANSPORT_ACCEPTANCE_ONLY",
+  "observedAt": "2026-08-14T18:49:36Z",
+  "result": "REJECTED_BEFORE_SUBSCRIPTION",
+  "claimBoundary": {
+    "stage5EvidenceBaseCommit": "1ea8323e61a1baa4deb760ff26c28b8859161261",
+    "candidateCommit": "49856278ce0c891bc7c5c736a902bb9ca106d879",
+    "packageRebuilt": false,
+    "productionReady": false,
+    "releaseClaim": "NO_GO",
+    "productL3Authorization": false,
+    "corePublicFactsClaimed": false,
+    "bookEnabled": false,
+    "cOrDExecuted": false
+  },
+  "preflight": {
+    "livePrivateAiEnabled": false,
+    "livePrivateAiJobs": 0,
+    "liveAccounts": 0,
+    "macLaunchdState": "not_running_runs1_exit0",
+    "rotatedCurrentCaddySealedBackup": "/var/backups/unseen/shadow-acceptance/20260814T183925Z/Caddyfile.rotated-current",
+    "sealedBackupMetadata": "0600_root_root_regular_nlink1",
+    "sealedBackupExact": true,
+    "exiftoolPackage": "libimage-exiftool-perl",
+    "exiftoolVersion": "12.76+dfsg-1",
+    "ffmpegVersion": "6.1.1-3ubuntu5",
+    "ffprobeVersion": "6.1.1-3ubuntu5"
+  },
+  "canonicalization": {
+    "directMutationSqlStatements": 0,
+    "directReadSqlStatements": 13,
+    "writesUsedOnlyLocalApiPublicTransitionsUploadPortsAndCanonicalDispatcher": true,
+    "shadowServiceScriptSha256": "63e2de55783ccfebeb3e8f48e7aaa09e48a99d53743788f8912f35bdbe1c7268",
+    "sourceSha256": "65e6aa0fa79e3f863c6e86183c1a5fcff1ef2bbb0eb84dd14381e0b00e257a50",
+    "exifDerivativeSha256": "f0cb8d3119ed30dff2ec15cf6fefb458b5d2d2d4082e910b09093f111f8203fc",
+    "viewerSafeSha256": "0c726bb3b731868829711da0e94ca91cc51282ff0d983aa967c1447c46ba89ab",
+    "exifPairPresent": true,
+    "exifPairSha256": "ac603cee4a82808a2d634451976040cc4a45ec0d771384e5b289cbe8953281b7",
+    "decoderProbeStatus": 0,
+    "capturedAtPresent": true,
+    "capturedAtSha256": "d464ce25531f0020091c2865f85ce0f02da3a250c4e7b0c6518c22653c4120d1",
+    "accounts": 1,
+    "spaces": 1,
+    "photos": 1,
+    "privateAiAuthorizations": 1,
+    "privateAiJobs": 1,
+    "initialJobState": "queued",
+    "initialJobAttempts": 0
+  },
+  "sandbox": {
+    "unit": "unseen-shadow-ai-20260814T183925Z.service",
+    "stateMode": "0700",
+    "runtimeMode": "0700",
+    "listener": "127.0.0.1:58657",
+    "loopbackOnly": true,
+    "noNewPrivileges": true,
+    "protectSystemStrict": true,
+    "privateTmp": true,
+    "privateDevices": true,
+    "addressFamiliesRestricted": true,
+    "ipAddressDenyAnyAllowLocalhost": true,
+    "liveDbMediaEnvInaccessible": true,
+    "standardOutput": "null",
+    "standardError": "null"
+  },
+  "temporaryCaddySwitch": {
+    "sourceBackupExact": true,
+    "lineCountBefore": 36,
+    "lineCountAfter": 36,
+    "configHashChanged": true,
+    "byteScope": "one_exact_internal_upstream_token",
+    "caddyContentEmitted": false,
+    "basicAuthOperatorFileRead": false,
+    "validate": "PASS",
+    "reload": "PASS"
+  },
+  "httpMatrix": {
+    "missingBearer": {
+      "status": 401,
+      "stableCode": "private_ai_worker_unauthorized"
+    },
+    "wrongBearer": {
+      "status": 401,
+      "stableCode": "private_ai_worker_unauthorized"
+    },
+    "missingProtocol": {
+      "status": 400,
+      "stableCode": "private_ai_request_invalid"
+    },
+    "wrongHost": {
+      "status": 400,
+      "stableCode": "request_host_invalid"
+    },
+    "wrongForwardedProto": {
+      "status": 426,
+      "stableCode": "private_ai_https_required"
+    },
+    "validCredentialUnavailablePath": {
+      "status": 404,
+      "stableCode": "private_ai_job_unavailable"
+    },
+    "bodyLimit": {
+      "bytes31999": 400,
+      "bytes32000": 400,
+      "bytes32001": 502,
+      "bytes32768": 502,
+      "bytes32769": 502,
+      "requiredLimitBytes": 32768,
+      "requiredOversizeStatus": 413,
+      "pass": false
+    }
+  },
+  "subscriptionOneShot": {
+    "started": false,
+    "imagesSubmitted": 0,
+    "jobLeased": false,
+    "jobCompleted": false,
+    "duplicateTerminalReplayTested": false,
+    "model": "NOT_EXECUTED",
+    "modelVersion": "NOT_EXECUTED",
+    "durationMs": null,
+    "resultFactCount": null,
+    "resultQuestionCount": null,
+    "quota": "NOT_OBSERVED",
+    "error": "BLOCKED_BY_HTTP_BODY_LIMIT_P1"
+  },
+  "cleanup": {
+    "preCleanupShadowQuickCheck": "ok",
+    "preCleanupShadowMigrationCount": 10,
+    "preCleanupJobState": "queued",
+    "preCleanupJobAttempts": 0,
+    "preCleanupCompositionOutboxCount": 0,
+    "caddyRestoredFromSealedBackup": true,
+    "restoredCaddyLineCount": 36,
+    "caddyValidateAfterRestore": "PASS",
+    "caddyActiveAfterRestore": true,
+    "shadowUnitRemoved": true,
+    "shadowPortClosed": true,
+    "runtimeRemoved": true,
+    "macShadowCacheRemoved": true,
+    "existingMacLaunchdUnchangedAndOff": true,
+    "quarantine": "/var/lib/unseen-shadow-acceptance/quarantine/20260814T183925Z",
+    "quarantineMetadata": "0700_root_root_directory",
+    "quarantineQuickCheck": "ok",
+    "quarantineJobState": "queued",
+    "quarantineJobAttempts": 0
+  },
+  "liveAfter": {
+    "publicHttpRedirect": 308,
+    "publicMissingOuterGate": 401,
+    "internalRouteRestoredDisabled": 503,
+    "staticBodySha256": "c5a79af691e0b96c83bd3133379ab369dcf139dbd6300040a7ed0810a69fa3fc",
+    "apiUnitActive": true,
+    "webUnitActive": true,
+    "caddyUnitActive": true,
+    "appListeners": [
+      "127.0.0.1:4173",
+      "127.0.0.1:4282"
+    ],
+    "newPublicListenerCreated": false,
+    "liveSqliteQuickCheck": "ok",
+    "liveMigrationCount": 10,
+    "liveAccounts": 0,
+    "liveSpaces": 0,
+    "livePrivateAiAuthorizations": 0,
+    "livePrivateAiJobs": 0,
+    "livePrivateAiEnabled": false,
+    "liveCoreFactsProviderEnabled": false,
+    "liveBookEnabled": false,
+    "localStaging4282Healthy": true,
+    "rootDomainDnsChanged": false,
+    "wwwHostDnsChanged": false
+  },
+  "outputHygiene": {
+    "credentialMaterialRecorded": false,
+    "credentialHeaderRecorded": false,
+    "privateAiResultRecorded": false,
+    "questionRecorded": false,
+    "imageBytesRecorded": false,
+    "caddyConfigurationContentRecorded": false
+  },
+  "p0": [],
+  "p1": [
+    "CADDY_BODY_LIMIT_IS_32000_DECIMAL_AND_RETURNS_502_OVER_LIMIT_INSTEAD_OF_REQUIRED_32768_BYTE_LIMIT_AND_413"
+  ]
+}
