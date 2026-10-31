@@ -1,1 +1,0 @@
-5ace47a1d2e53696bc939a84999293a04a7226958e848a609666691fd3cc38da  data/tum-room-v6/download/rgbd_dataset_freiburg1_room.tgz.part

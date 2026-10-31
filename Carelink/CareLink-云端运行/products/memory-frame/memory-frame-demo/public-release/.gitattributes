@@ -1,4 +1,0 @@
-* text eol=lf
-*.png binary
-*.woff2 binary
-server/public/vendor/*.mjs -text

@@ -1,4 +1,0 @@
-g unseen-render-ipc -
-u unseen-renderer - "UNSEEN Book renderer" /var/lib/unseen/renderer-spool /usr/sbin/nologin
-m unseen unseen-render-ipc
-m unseen-renderer unseen-render-ipc

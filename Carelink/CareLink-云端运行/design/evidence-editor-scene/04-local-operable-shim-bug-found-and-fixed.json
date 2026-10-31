@@ -1,8 +1,0 @@
-{
-  "discoveredDuring": "真实浏览器复现（同一空间里已经有一张确认过的照片时，打开第二张 needs_confirmation 照片的编辑器）",
-  "symptom": "GET /v1/photos/photo_4423f464f53248759d1103b939d22c70/placement-edit 的响应里，sceneContext.photoId 是 photo_36f27e976ec6421c9091c3abb974dd8a（空间里另一张已确认的照片），不是被请求的目标照片。",
-  "rootCause": "infra/integration/local-operable.mjs 里的 adaptJsonResponse()（仅用于本地开发/测试的响应投影层，不随生产部署）里有一段早于本次修复就存在的『anchor』兜底逻辑：找空间里第一张已确认+可见的照片，借用它的 sceneContext 来让编辑器至少有全景背景可看。这段逻辑此前是无条件执行的——`...body, ..., ...(sceneContext ? { sceneContext } : {})` 里 anchor 算出来的 sceneContext 总是排在 `...body` 后面，会覆盖 editView() 自己返回的（本次修复新增的、真正精确的）sceneContext。",
-  "whyItMattersForTheVerdict": "这正好解释了两个前批代理报告为什么会矛盾：如果测试空间里已经有任意一张别的照片被自动确认（同批上传里混了高/低置信度的照片是很常见的测试设置），本地开发服务器的这个 anchor 兜底就会让『疑似待复核』照片的编辑器看起来有 360 预览——但那其实是全景背景凑巧相同（同一个空间只有一个全景）掩盖过去的假象，sceneContext 里的 photoId/placement 等字段其实全是另一张照片的。批1 的自测很可能就是在这种『空间里已有确认照片』的场景下做的，被这个假象骗过；批2 的实测命中了没有可借用锚点的场景（或直接查驱动层代码），看到了真实的 404。",
-  "fix": "修改 local-operable.mjs 的两处投影（uploader 的 /v1/batch-receipt/items/{iid}/placement-edit 和 manager 的 /v1/photos/{pid}/placement-edit）：优先使用 body.sceneContext（现在 editView()/receiptItem() 自己就会返回，见本次修复），只有它缺失时才回退到旧的 anchor 兜底。",
-  "verifiedAfterFix": "重新起服务后，同一个场景（空间里已有一张确认照片 + 打开另一张 needs_confirmation 照片的编辑器）里，sceneContext.photoId 与请求目标完全一致，且完整走通了『队列 -> 编辑器 360 预览 -> 拖动 -> 保存 -> confirmed』。"
-}

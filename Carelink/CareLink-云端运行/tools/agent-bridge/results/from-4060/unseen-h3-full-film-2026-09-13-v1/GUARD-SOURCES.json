@@ -1,7 +1,0 @@
-{
-  "run_service.original-20260914.py": "c6b4ccda7bfb2998fe2f2e0bb7df3f44a07ef9e57a68bc857d2dc7ee5cdb274c",
-  "run_service.py": "8bdc1dcb026b03082f8f2e34f20388a8738dd93afd97f4ac5c061c4c26a6c294",
-  "owned_service.py": "a38a199de44e23a8f5e7b7fc4e958148b8592dca784b6f53c95133c3d8001a73",
-  "guard_service.py": "8b142c3452cb8ec3f0ff99e06e3603c923eee6aa703dbf0aefe0a4ac1064a863",
-  "test_owned_service.py": "08b852c077202785a9e7ac0ccc5a374e67817383db705bef9690a8cec798d455"
-}

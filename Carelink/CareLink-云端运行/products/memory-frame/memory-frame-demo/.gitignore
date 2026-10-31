@@ -1,6 +1,0 @@
-node_modules/
-.tools/
-.data/
-.env
-cloudbaserc.local.json
-*.log

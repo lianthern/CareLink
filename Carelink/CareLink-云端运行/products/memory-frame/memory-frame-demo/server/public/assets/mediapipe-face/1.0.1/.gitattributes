@@ -1,4 +1,0 @@
-# Preserve upstream runtime bytes and its generated whitespace for hash auditing.
-vision*.js -text -whitespace
-*.tflite binary
-*.gz binary

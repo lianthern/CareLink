@@ -1,9 +1,0 @@
-# Drop-in for the existing huijian.service. Render the complete candidate SHA.
-[Service]
-WorkingDirectory=/opt/huijian-releases/REQUIRED_APP_SHA
-ExecStart=
-ExecStart=/usr/local/bin/node /opt/huijian-releases/REQUIRED_APP_SHA/server.mjs
-Environment=BUILD_ID=REQUIRED_APP_SHA
-Environment=STATE_DIRECTORY=/var/lib/huijian
-Environment=NODE_ENV=production
-EnvironmentFile=/etc/huijian/env
