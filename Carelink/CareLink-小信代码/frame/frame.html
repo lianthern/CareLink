@@ -1,0 +1,14 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>小信 CareLink</title><link rel="stylesheet" href="frame.css?v=p23-1"><script src="config.js?v=p23-1"></script></head><body>
+<main id="carelink" hidden aria-label="家里的相框">
+<img id="photo" alt="家人寄来的照片" hidden><div id="empty"><p>家，就在眼前</p><span>家人的照片会留在这里</span></div>
+<div id="light" aria-label="有一份家人的叮嘱" hidden></div>
+<header><span id="brand"></span><time id="clock"></time></header>
+<div id="dot" role="status" aria-label="有新照片，按键听留言" hidden></div>
+<p id="offline" role="status" hidden></p>
+<section id="bubble" aria-live="polite" hidden><div><b id="speaker"></b><span id="synthetic" hidden>AI 合成内容</span></div><p id="words"></p></section>
+<section id="recording" aria-live="polite" hidden><div class="pulse" aria-hidden="true">●</div><div><strong>我在听，您说</strong><p>再按一下，说好了</p></div><time id="elapsed">00:00</time></section>
+<p id="status" role="status"></p>
+<nav aria-label="按键的触摸入口"><button id="listen" class="listen" type="button">听</button><button id="speak" class="speak" type="button">说</button><button id="main" type="button">说句话</button></nav>
+</main>
+<script src="keys.js?v=p23-1"></script><script src="rules.js?v=p23-1"></script><script src="queue.js?v=p23-1"></script><script src="media.js?v=p23-1"></script><script src="frame.js?v=p23-1"></script>
+</body></html>

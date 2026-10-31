@@ -1,0 +1,55 @@
+html,body{margin:0;min-height:100%;} .product-frame body{overflow:hidden;background:#171611}.product-frame .top,.product-frame #scen,.product-frame #guide,.product-frame .op,.product-frame .colh,.product-frame .grid3>section:nth-child(2),.product-frame .phoneCol,.product-frame footer{display:none!important}.product-frame .wrap,.product-frame .grid3,.product-frame .grid3>section:first-child,.product-frame .stage{margin:0;padding:0;display:block;width:100vw;height:100vh;max-width:none}.product-frame .frame{position:absolute;top:0;right:0;bottom:0;left:0;width:100%;height:100%;max-width:none;aspect-ratio:auto;border:0;border-radius:0;padding:0;box-shadow:none}.product-frame .screen{width:100%;height:100%;border-radius:0}.product-frame .crest{position:fixed;top:14px;left:50%;z-index:10}.product-frame .base{position:fixed;bottom:15px;left:50%;transform:translateX(-50%);z-index:15;background:rgba(40,35,27,.65);border-radius:50px;padding:8px 20px}.product-frame .key{width:88px;height:48px}.product-frame .fclock{font-size:24px}.product-frame .recF{bottom:100px}.product-frame .bubbleF{bottom:110px}.product-frame #mode-switch{position:fixed;top:20px;bottom:auto;right:18px;z-index:20;border:0;border-radius:20px;padding:12px;background:#f8f2e4;color:#453e31}.product-phone .top,.product-phone #scen,.product-phone #guide,.product-phone .grid3>section:not(.phoneCol),.product-phone .colh,.product-phone footer{display:none!important}.product-phone body{background:#f8f3e9}.product-phone .wrap,.product-phone .grid3,.product-phone .phoneCol,.product-phone .phoneP,.product-phone .appwrap{margin:0;padding:0;width:100%;max-width:none;border:0;border-radius:0;box-shadow:none;display:block}.product-phone .appwrap{height:100vh;overflow:hidden}.product-phone .app{transform:none!important;width:100%!important;height:100vh!important;min-height:600px;border-radius:0}.product-phone .notch,.product-phone .psb{display:none}.product-phone #scrHost{height:100%}.product-phone #product-status{bottom:80px}.product-frame #product-status{bottom:80px}#product-status{position:fixed;bottom:8px;left:50%;transform:translateX(-50%);z-index:100;background:#3d4032;color:#fff;border-radius:14px;padding:6px 14px;font-size:13px;max-width:90%;pointer-events:none}#product-status:empty{display:none}#product-tools{position:fixed;right:8px;top:8px;z-index:99;font-size:12px;background:#fff8e9;border-radius:12px;padding:5px 8px}#product-tools a{color:#53613b}.product-frame #product-tools{display:none}.product-phone .modal{max-height:86vh}.product-phone .mb{max-height:70vh;overflow:auto}
+
+/* Full-screen frame has no wooden bezel: the reminder light is an inner glow, and the switch leaves the top-right corner to the photo dot. */
+.product-frame .frame.lit .screen::after{content:"";position:absolute;top:0;right:0;bottom:0;left:0;border-radius:12px;box-shadow:inset 0 0 0 10px #ffc75a,inset 0 0 90px 30px rgba(255,190,80,.75);animation:glow 1.6s ease-in-out infinite;pointer-events:none;z-index:2}
+.product-frame #mode-switch{top:auto!important;right:auto!important;bottom:22px!important;left:22px!important}
+
+/* Hand browsing on the frame: swipe the photo or tap the side arrows. */
+#photo-prev,#photo-next,#photo-dots{display:none}
+.product-frame #photo-prev,.product-frame #photo-next{display:block;position:fixed;top:50%;margin-top:-34px;width:68px;height:68px;border:0;border-radius:34px;background:rgba(255,255,255,.55);color:#453e31;font-size:44px;line-height:60px;padding:0;z-index:12}
+.product-frame #photo-prev{left:16px}.product-frame #photo-next{right:16px}
+.product-frame #photo-dots{display:block;position:fixed;left:0;right:0;bottom:104px;text-align:center;z-index:12;pointer-events:none}
+#photo-dots i{display:inline-block;width:10px;height:10px;margin:0 5px;border-radius:5px;background:rgba(255,255,255,.6);box-shadow:0 1px 3px rgba(0,0,0,.35)}
+#photo-dots i.on{background:#fff;width:22px}
+#fPhoto.slide-next{animation:cl-slide-next .28s ease-out}#fPhoto.slide-prev{animation:cl-slide-prev .28s ease-out}
+@keyframes cl-slide-next{from{transform:translateX(70px);opacity:.25}to{transform:none;opacity:1}}
+@keyframes cl-slide-prev{from{transform:translateX(-70px);opacity:.25}to{transform:none;opacity:1}}
+.product-frame #photo-prev:focus,.product-frame #photo-next:focus{outline:none}
+
+/* Medicine reminder popup on the frame. */
+#remind-pop{display:none;position:fixed;top:0;right:0;bottom:0;left:0;z-index:40;background:rgba(40,28,20,.45)}
+.rp-card{position:absolute;left:50%;top:50%;width:640px;margin-left:-320px;margin-top:-235px;box-sizing:border-box;padding:28px 36px 30px;border-radius:28px;background:#fffaf1;color:#453e31;text-align:center;box-shadow:0 18px 60px rgba(0,0,0,.35)}
+.rp-img{width:150px;height:110px;margin:0 auto 12px;border-radius:14px;background-size:cover;background-position:center}
+.rp-who{font-size:15px;color:#8a7f6a;margin-bottom:6px}
+.rp-title{font-size:40px;font-weight:800;line-height:1.25}
+.rp-detail{font-size:22px;color:#6d6452;margin-top:8px}
+.rp-btns{margin-top:22px;white-space:nowrap}
+.rp-btns button{height:72px;width:168px;margin:0 8px;border:0;border-radius:20px;font-size:26px;font-weight:700;background:#efe6d6;color:#453e31}
+.rp-btns #rp-ok{background:#5aa883;color:#fff}
+.rp-btns button:focus{outline:none}
+
+/* Phone Xiaoxin: spacing by margins (flex gap is compiled away for the frame's WebView), and room for short screens. */
+.xxMsgs>*+*{margin-top:10px}.xxM>*+*{margin-left:7px}.xxHd>*+*{margin-left:10px}.xxIn>*+*{margin-left:8px}.xxQs>*+*{margin-left:6px}.xxM .acts>*{margin:0 6px 6px 0}
+.product-phone .xxChat{height:auto;top:12%}
+#xxMic{width:34px;height:34px;border-radius:50%;border:none;background:#eaf5ff;font-size:15px;flex:none;cursor:pointer}#xxMic.rec{background:#e5484d;animation:glow 1.2s ease-in-out infinite}
+.rp-open #fCap{display:none}
+.product-phone .xxChat,.product-phone .xxMaskC,.product-phone .xxFab{position:fixed}
+
+/* iPad page: the frame interface filling any screen, with a start screen for Safari's sound rule. */
+.product-pad,.product-pad body{height:100%;overflow:hidden;touch-action:manipulation;-webkit-user-select:none;user-select:none;-webkit-tap-highlight-color:transparent}
+#pad-start{position:fixed;top:0;right:0;bottom:0;left:0;z-index:60;background:linear-gradient(180deg,#eaf5ff,#fffefa);text-align:center;color:#0b2856}
+.ps-card{position:absolute;left:0;right:0;top:50%;margin-top:-190px}
+.ps-card .xxa{display:block;width:170px;height:170px;margin:0 auto}
+.ps-card h1{margin:14px 0 6px;font-size:40px}.ps-card p{margin:0;font-size:20px;color:#52677f}
+.ps-card button{margin-top:26px;height:72px;padding:0 54px;border:0;border-radius:36px;background:#1465b8;color:#fff;font-size:26px;font-weight:700}
+.product-pad #product-tools{display:block;position:fixed;top:18px;right:18px;left:auto;bottom:auto;z-index:20}
+
+/* iPad Safari: its toolbars and the home bar eat the bottom of the screen, so size to what is visible and lift the controls well clear of the edge. */
+.product-pad body{position:fixed;top:0;left:0;right:0;bottom:0}
+.product-pad .wrap,.product-pad .grid3,.product-pad .grid3>section:first-child,.product-pad .stage{height:100%;width:100%}
+@supports (height:100dvh){.product-pad .wrap,.product-pad .grid3,.product-pad .grid3>section:first-child,.product-pad .stage{height:100dvh}}
+.product-pad .base{bottom:calc(env(safe-area-inset-bottom,0px) + 48px);padding:10px 24px}
+.product-pad .key{width:136px;height:66px;font-size:22px}
+.product-pad #mode-switch{bottom:calc(env(safe-area-inset-bottom,0px) + 56px)!important}
+.product-pad #photo-dots{bottom:calc(env(safe-area-inset-bottom,0px) + 140px)}
+.product-pad #product-status{bottom:calc(env(safe-area-inset-bottom,0px) + 164px)!important}

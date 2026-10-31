@@ -1,0 +1,4 @@
+const fs=require('fs'),path=require('path'),acorn=require('../../native/unseen-y1max-os-p5-20261018/build-tools/acorn-8.15.0.cjs');
+function normalize(s){return JSON.stringify(acorn.parse(s,{ecmaVersion:2022}),function(k,v){return ['start','end','raw'].includes(k)?undefined:v;});}
+const a='server/public/r15',b='native/unseen-y1max-os-p5-20261018/frame-source/assets/web/r15';
+const rows=[];function walk(dir){for(const e of fs.readdirSync(dir,{withFileTypes:true})){const p=path.join(dir,e.name);if(e.isDirectory())walk(p);else{const n=path.relative(a,p),other=path.join(b,n);if(!fs.existsSync(other)||fs.readFileSync(p).equals(fs.readFileSync(other)))continue;let semantic=null;if(n.endsWith('.js'))try{semantic=normalize(fs.readFileSync(p,'utf8'))===normalize(fs.readFileSync(other,'utf8'));}catch(_){}rows.push({path:n,sameAST:semantic});}}}walk(a);console.log(JSON.stringify(rows,null,2));

@@ -1,0 +1,91 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>小信 CareLink</title><script src="/r15/compat/polyfills.js"></script><script src="/r15/compat/extra.js"></script><link rel="stylesheet" href="/r15/carelink/product/prototype.css?v=706"><link rel="stylesheet" href="/r15/carelink/product/product.css?v=706"><script src="/r15/carelink/product/boot.js?v=706"></script></head><body>
+<svg class="defs" aria-hidden="true"><symbol id="rose" viewBox="0 0 64 64">
+  <path d="M6 46 Q0 30 18 30 Q14 42 6 46Z" fill="#9cc79a"/><path d="M58 46 Q64 30 46 30 Q50 42 58 46Z" fill="#8bbb8a"/>
+  <path d="M20 52 Q14 60 26 58" fill="none" stroke="#8bbb8a" stroke-width="3"/>
+  <circle cx="32" cy="32" r="20" fill="#f7bccb"/><circle cx="32" cy="31" r="15" fill="#f2a0b6"/>
+  <path d="M14 34 Q16 16 32 14 Q48 16 50 34" fill="none" stroke="#fde0e8" stroke-width="2.4"/>
+  <path d="M32 21 A10 10 0 1 1 22.5 28 M32 26 A5 5 0 1 1 27.5 30.5" fill="none" stroke="#d76f8d" stroke-width="2.6" stroke-linecap="round"/>
+</symbol></svg>
+
+<header class="top">
+  <div class="brand"><b>小信 CareLink</b><small>慢病患者的家庭智能陪伴终端 ｜ 赛道二 · 信达生物命题 3 ｜ 相框上两个键给长辈，手机给子女，云端多模态 Agent 管健康</small></div>
+  <div class="clock">
+    <span class="t" id="clk">07:55</span>
+    <button class="cbtn on" id="clkPlay">▶ 走</button>
+    <button class="cbtn" id="clkSpeed">1×</button>
+    <button class="cbtn" id="clkNext">⏭ 下个提醒</button>
+    <button class="cbtn" id="sndBtn">🔊 声音开</button>
+    <button class="cbtn" id="resetBtn">↺ 重置</button>
+  </div>
+</header>
+
+<main class="wrap" id="viewDemo">
+  <div class="scen" id="scen"></div>
+  <div class="guide hide" id="guide"><div class="gt">演示步骤</div><ol id="gSteps"></ol></div>
+
+  <div class="grid3">
+    <section>
+      <div class="colh"><span class="no">1</span><div><b>父母端 · 相框</b><small>横屏，只看不点；木座上两个实体键</small></div></div>
+      <div class="stage">
+        <div class="frame" id="frame">
+          <div class="crest"><div class="led"></div></div>
+          <div class="screen">
+            <div class="photo" id="fPhoto"></div>
+            <div class="fclock"><small>10月30日 · 周四</small><b id="fClk">07:55</b></div>
+            <div class="reddot hide" id="fDot"><i></i></div>
+            <div class="offline-tag hide" id="fOff">⚠ 离线 · 消息在云端排队</div>
+            <div class="dhStage" id="fDh"><div class="dhImg i-xx_main" id="fDhImg"></div><div class="dhListen">● 在听</div><div class="dhTag"><b>健康管家 · 小信</b><span class="aitag">AI 数字人 · 合成内容</span></div></div>
+            <div class="bubbleF" id="fCap"><div class="bimg hide" id="fCapImg"></div><div class="btx"><div class="who" id="fCapWho"></div><div id="fCapTxt"></div><div class="bsub hide" id="fCapSub"></div><div class="pbar"><i id="fCapBar"></i></div></div></div>
+            <div class="recF" id="fRec"><div class="wave"><i></i><i style="animation-delay:.1s"></i><i style="animation-delay:.2s"></i><i style="animation-delay:.3s"></i><i style="animation-delay:.15s"></i><i style="animation-delay:.25s"></i></div><div><div class="big">小信在听您说</div><div style="font-size:14px;opacity:.9">说完再按一下红键 · <span id="fRecT">00:00</span></div></div></div>
+            <div class="toast-frame" id="fToast"><span class="ok">✓</span><span id="fToastT"></span></div>
+          </div>
+        </div>
+        <div class="base"><button class="key g" id="kG">听</button><button class="key r" id="kR">说</button></div>
+      </div>
+      <div class="orn op">
+        <div class="oph"><b>模拟奶奶要说的话</b><small>按红键开始，再按结束；键盘 G 听 · R 说</small></div>
+        <div class="chips" id="uChips"></div>
+        <textarea id="uText" placeholder="也可以直接输入奶奶要说的话……"></textarea>
+        <div class="op-row">
+          <label class="sw"><input type="checkbox" id="swOnline" checked><span class="s"></span>相框在线</label>
+          <label class="sw danger"><input type="checkbox" id="swUnclear"><span class="s"></span>模拟识别不清</label>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="colh"><span class="no">2</span><div><b>云端 · 多模态 Agent</b><small>小信的大脑：理解报告、药盒和口述，管档案与风险</small></div><span class="xxa i-xx_main"></span></div>
+      <div class="orn cloud">
+        <div class="tools" id="tools"></div>
+        <div class="queue"><div><b id="qDown">0</b>待送相框</div><div><b id="qUp">0</b>待上传</div><div><b id="qMem">0</b>记忆卡</div><div><b id="qHealth">0</b>健康记录</div></div>
+        <details class="rdet" open><summary>交互规则（命中会亮）</summary><div class="rules" id="rules"></div></details>
+        <div class="logh">处理记录</div>
+        <div class="log" id="log"></div>
+      </div>
+    </section>
+
+    <section class="phoneCol">
+      <div class="colh"><span class="no">3</span><div><b>子女端 · 手机</b><small>竖屏；小宇，孙子，在外地</small></div></div>
+      <div class="phoneP"><div class="appwrap" id="appwrap"><div class="app" id="app">
+        <div class="notch"></div><div class="psb"><span id="pClk">07:55</span><span>5G ▮▮▮</span></div>
+        <div id="scrHost"></div>
+        <div class="ribT" id="ribT"><div class="av pimg" id="rtAv"></div><div><b id="rtT"></b><small id="rtD"></small></div></div>
+        <div class="atoast" id="atoast"></div>
+        <div class="xxFab" id="xxFab"><div class="ring"></div><span class="xxa i-xx_hello" id="xxFabImg"></span><i class="dot"></i><button class="x" data-xx="off" title="关闭小信浮窗">×</button><span class="bub" id="xxBub"></span></div>
+        <div class="xxMaskC" id="xxMaskC" data-xx="min"></div>
+        <div class="xxChat" id="xxChat">
+          <div class="xxHd"><div class="av"><span class="xxa i-xx_main"></span></div><div class="sp"><b>小信 · 陪着你</b><small><i></i>家里的事我都记着 · AI 生成内容</small></div><button data-xx="off">关闭浮窗</button><button class="min" data-xx="min" title="收起">⌄</button></div>
+          <div class="xxMsgs" id="xxMsgs"></div>
+          <div class="xxQs" id="xxQs"></div>
+          <div class="xxIn"><input id="xxInp" placeholder="问问小信，或者跟他聊聊…"><button data-xx="send">➤</button></div>
+          <div class="xxDisc">小信只做记录和提醒，不诊断、不推荐或调整用药；紧急情况请拨 120</div>
+        </div>
+        <div class="mask" id="mask"></div>
+        <div class="modal orn" id="modal"><span class="mh rib"><span class="key">✿</span><span id="mT"></span></span><button class="mx" id="mX">×</button><div class="mb" id="mB"></div></div>
+      </div></div></div>
+    </section>
+  </div>
+</main>
+
+
+<div id="product-status" role="status"></div><script src="/r15/carelink/keys.js?v=706"></script><script src="/r15/carelink/queue.js?v=706"></script><script src="/r15/carelink/media.js?v=706"></script><script src="/r15/carelink/product/prototype.js?v=706"></script><script src="/r15/carelink/product/compress.js?v=706"></script><script src="/r15/carelink/product/client.js?v=706"></script></body></html>
