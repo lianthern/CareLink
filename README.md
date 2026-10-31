@@ -6,3 +6,6 @@
 
 项目文件保存在 [Carelink](./Carelink/) 文件夹，包含项目源码、设计素材、交互原型及路演资料。
 
+
+[观看 CareLink 视频介绍](Carelink/CareLink%20视频介绍.mp4)
+
